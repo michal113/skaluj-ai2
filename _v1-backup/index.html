@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>skaluj.ai — Agencja transformacji AI</title>
+<meta name="description" content="Projektujemy i wdrażamy agentów AI oraz automatyzacje, które przejmują powtarzalną pracę. Od audytu do skalowania w 6 tygodni.">
+<meta name="theme-color" content="#08080a">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2308080a'/%3E%3Crect x='7' y='18' width='4' height='7' rx='1' fill='%23a8b0bd'/%3E%3Crect x='14' y='13' width='4' height='12' rx='1' fill='%23d5dae2'/%3E%3Crect x='21' y='7' width='4' height='18' rx='1' fill='%236ef3c5'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- Linijka / skala postępu scrolla — gra z nazwą -->
+<aside class="ruler" aria-hidden="true">
+  <div class="ruler-ticks">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div class="ruler-fill"></div>
+  <span class="ruler-label">0%</span>
+</aside>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo" aria-label="skaluj.ai — strona główna">
+      <span class="logo-mark"><i></i><i></i><i></i></span>
+      skaluj<span class="logo-ai">.ai</span>
+    </a>
+    <nav class="nav-links" aria-label="Nawigacja główna">
+      <a href="#case">Case study</a>
+      <a href="#skala">Skala</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#proces">Proces</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#kontakt" class="btn btn-small btn-primary magnetic">Bezpłatny audyt</a>
+      <button class="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <a href="#case">Case study</a>
+  <a href="#skala">Skala</a>
+  <a href="#oferta">Oferta</a>
+  <a href="#proces">Proces</a>
+  <a href="#kontakt" class="mobile-cta">Bezpłatny audyt →</a>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="container hero-content">
+    <a href="#kontakt" class="hero-badge lift" style="--d:0">
+      <span class="badge-new">Nowość</span>
+      Audyt AI w 48 godzin
+      <span class="badge-arrow">→</span>
+    </a>
+
+    <h1 class="hero-title">
+      <span class="line"><span class="line-inner" style="--d:1">Skaluj firmę,</span></span>
+      <span class="line"><span class="line-inner metallic" style="--d:2">nie koszty.</span></span>
+    </h1>
+
+    <p class="hero-sub lift" style="--d:3">
+      Agencja transformacji AI. Projektujemy i&nbsp;wdrażamy agentów oraz automatyzacje,
+      które przejmują powtarzalną pracę — żeby Twój zespół robił to,
+      czego nie da się zautomatyzować.
+    </p>
+
+    <div class="hero-actions lift" style="--d:4">
+      <a href="#kontakt" class="btn btn-primary magnetic">Umów bezpłatny audyt</a>
+      <a href="#case" class="btn btn-ghost magnetic">Zobacz case study <span class="btn-down">↓</span></a>
+    </div>
+  </div>
+
+  <!-- Mockup panelu operacyjnego -->
+  <div class="hero-app-wrap lift" style="--d:5">
+    <div class="hero-app" id="heroApp">
+      <div class="app-titlebar">
+        <span class="tb-dots"><i></i><i></i><i></i></span>
+        <span class="tb-title">skaluj.ai — panel operacyjny</span>
+        <span class="pill pill-live"><i class="dot-live"></i> AI aktywne</span>
+      </div>
+      <div class="app-body">
+        <aside class="app-sidebar">
+          <div class="sb-logo"><span class="logo-mark sm"><i></i><i></i><i></i></span> skaluj.ai</div>
+          <a class="sb-item active"><span class="sb-ico">◉</span> Pulse</a>
+          <a class="sb-item"><span class="sb-ico">⬡</span> Agenci</a>
+          <a class="sb-item"><span class="sb-ico">⚙</span> Automatyzacje</a>
+          <a class="sb-item"><span class="sb-ico">◫</span> Analityka</a>
+          <a class="sb-item"><span class="sb-ico">⇄</span> Integracje</a>
+          <div class="sb-scale">
+            <span class="sb-scale-label">skala operacji</span>
+            <div class="sb-scale-bar"><i></i></div>
+            <span class="sb-scale-val mono">×7,2</span>
+          </div>
+        </aside>
+        <div class="app-main">
+          <div class="app-header">
+            <span class="app-h-title">Dziś</span>
+            <span class="pill pill-ghost mono">na żywo</span>
+          </div>
+          <div class="kpi-row">
+            <div class="kpi">
+              <span class="kpi-label">Zapytania obsłużone</span>
+              <span class="kpi-value mono" data-count="12482">0</span>
+              <span class="kpi-delta up">▲ 18% t/t</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Godziny odzyskane</span>
+              <span class="kpi-value mono" data-count="1240">0</span>
+              <span class="kpi-delta up">▲ 24% t/t</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Koszt / interakcję</span>
+              <span class="kpi-value mono" data-count="63" data-prefix="−" data-suffix="%">−0%</span>
+              <span class="kpi-delta up">vs. baza</span>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-head">
+              <span>Przepustowość operacyjna</span>
+              <span class="mono chart-range">ostatnie 12 tyg.</span>
+            </div>
+            <svg class="chart" viewBox="0 0 520 170" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="rgba(110,243,197,.22)"/>
+                  <stop offset="1" stop-color="rgba(110,243,197,0)"/>
+                </linearGradient>
+              </defs>
+              <path class="chart-area" d="M0,148 C55,142 85,128 135,122 C195,115 225,96 285,84 C345,72 380,58 435,40 C470,29 500,22 520,17 L520,170 L0,170 Z" fill="url(#areaGrad)"/>
+              <path class="chart-line" d="M0,148 C55,142 85,128 135,122 C195,115 225,96 285,84 C345,72 380,58 435,40 C470,29 500,22 520,17"/>
+              <circle class="chart-tip" cx="520" cy="17" r="4"/>
+            </svg>
+          </div>
+          <div class="feed">
+            <div class="feed-item"><i class="dot ok"></i><span><b>Agent Ofertowy</b> wysłał 32 spersonalizowane oferty</span><span class="mono feed-time">2 min</span></div>
+            <div class="feed-item"><i class="dot ok"></i><span><b>Agent Wsparcia</b> rozwiązał zgłoszenie #4821</span><span class="mono feed-time">4 min</span></div>
+            <div class="feed-item"><i class="dot warn"></i><span><b>Eskalacja do zespołu</b> — sprawa niestandardowa</span><span class="mono feed-time">9 min</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-app-glow" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>agenci AI</span><i>◆</i><span>automatyzacja procesów</span><i>◆</i><span>copiloty zespołów</span><i>◆</i><span>wiedza firmowa · RAG</span><i>◆</i><span>integracje</span><i>◆</i><span>analityka</span><i>◆</i><span>AI governance</span><i>◆</i>
+    <span>agenci AI</span><i>◆</i><span>automatyzacja procesów</span><i>◆</i><span>copiloty zespołów</span><i>◆</i><span>wiedza firmowa · RAG</span><i>◆</i><span>integracje</span><i>◆</i><span>analityka</span><i>◆</i><span>AI governance</span><i>◆</i>
+  </div>
+</div>
+
+<!-- ============ CASE STUDY: PRZED / PO ============ -->
+<section id="case" class="case">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow mono">Case study</span>
+      <h2>Jedna decyzja.<br><span class="metallic">Dwie rzeczywistości.</span></h2>
+      <p class="sec-sub">Przesuń suwak i&nbsp;porównaj obsługę klienta przed i&nbsp;po wdrożeniu AI.
+      Liczby pochodzą z&nbsp;publicznie ogłoszonych wyników asystenta AI w&nbsp;Klarna (OpenAI, 2024).</p>
+    </div>
+
+    <div class="ba-frame reveal" id="baFrame" style="--pos:65%">
+      <!-- PRZED -->
+      <div class="ba-side ba-before">
+        <div class="ba-tag mono">przed</div>
+        <div class="ba-inner">
+          <div class="ba-panel-head">
+            <span class="ba-panel-title">Obsługa klienta</span>
+            <span class="pill pill-before">manualnie</span>
+          </div>
+          <div class="ba-big">
+            <span class="ba-big-num mono">11&nbsp;min</span>
+            <span class="ba-big-label">średni czas rozwiązania sprawy</span>
+          </div>
+          <ul class="ba-list">
+            <li><i class="dot bad"></i>700 etatów zajętych rutynowymi zgłoszeniami</li>
+            <li><i class="dot bad"></i>Obsługa 9–17 — kolejka rośnie nocą</li>
+            <li><i class="dot bad"></i>Kilka języków, długie oczekiwanie</li>
+            <li><i class="dot bad"></i>Koszt interakcji: 100% (baza)</li>
+          </ul>
+          <div class="ba-queue">
+            <div class="q-item"><span>#4811 · zwrot płatności</span><span class="mono q-wait">czeka 47 min</span></div>
+            <div class="q-item"><span>#4812 · status przesyłki</span><span class="mono q-wait">czeka 41 min</span></div>
+            <div class="q-item"><span>#4813 · zmiana danych</span><span class="mono q-wait">czeka 38 min</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PO -->
+      <div class="ba-side ba-after">
+        <div class="ba-tag mono">po wdrożeniu AI</div>
+        <div class="ba-inner">
+          <div class="ba-panel-head">
+            <span class="ba-panel-title">Obsługa klienta</span>
+            <span class="pill pill-after"><i class="dot-live"></i> AI + zespół</span>
+          </div>
+          <div class="ba-big">
+            <span class="ba-big-num mono accent">&lt;&nbsp;2&nbsp;min</span>
+            <span class="ba-big-label">średni czas rozwiązania <b class="accent">(−82%)</b></span>
+          </div>
+          <ul class="ba-list">
+            <li><i class="dot ok"></i>2,3 mln rozmów/mies. obsługuje asystent AI — praca ~700 etatów</li>
+            <li><i class="dot ok"></i>Dostępność 24/7 w 35 językach na 23 rynkach</li>
+            <li><i class="dot ok"></i>Satysfakcja klientów na poziomie konsultantów</li>
+            <li><i class="dot ok"></i>Prognozowany wpływ na zysk: +40 mln USD / rok</li>
+          </ul>
+          <div class="ba-queue">
+            <div class="q-item"><span>#4811 · zwrot płatności</span><span class="mono q-done">rozwiązane · 90 s</span></div>
+            <div class="q-item"><span>#4812 · status przesyłki</span><span class="mono q-done">rozwiązane · 45 s</span></div>
+            <div class="q-item"><span>#4813 · zmiana danych</span><span class="mono q-done">rozwiązane · 60 s</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uchwyt -->
+      <div class="ba-handle" role="slider" tabindex="0" aria-label="Porównanie przed i po wdrożeniu AI"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="65">
+        <div class="ba-line"></div>
+        <div class="ba-knob"><span>◂</span><span>▸</span></div>
+      </div>
+    </div>
+
+    <p class="ba-source mono reveal">Źródło: oficjalny komunikat Klarna, luty 2024 — wyniki asystenta AI opartego na technologii OpenAI.</p>
+
+    <div class="mini-cases">
+      <div class="mini-case reveal" style="--d:0">
+        <span class="mc-num mono">360&nbsp;000&nbsp;h</span>
+        <p>rocznej pracy prawników wykonywane w&nbsp;kilka sekund — program COIN analizujący umowy kredytowe.</p>
+        <span class="mc-org mono">JPMorgan Chase</span>
+      </div>
+      <div class="mini-case reveal" style="--d:1">
+        <span class="mc-num mono">~44%</span>
+        <p>zapytań klientów obsługuje AI — równowartość pracy ~250 osób, z&nbsp;ocenami wyższymi niż odpowiedzi ludzi.</p>
+        <span class="mc-org mono">Octopus Energy</span>
+      </div>
+      <div class="mini-case reveal" style="--d:2">
+        <span class="mc-num mono">$50&nbsp;mln</span>
+        <p>rocznych oszczędności dzięki AI w&nbsp;procesie sprzedaży — ok. 4&nbsp;godziny odzyskane tygodniowo na sprzedawcę.</p>
+        <span class="mc-org mono">Lumen Technologies</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKALA — interaktywna gra z nazwą ============ -->
+<section id="skala" class="skala">
+  <div class="skala-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow mono">Dlaczego „skaluj”?</span>
+      <h2>Nazwa to instrukcja.</h2>
+      <p class="sec-sub">Przesuń suwak skali. Tak rośnie przepustowość operacji z&nbsp;AI —
+      przy zespole, który zostaje dokładnie ten sam.</p>
+    </div>
+
+    <div class="skala-stage reveal">
+      <div class="skala-word-wrap" aria-hidden="true">
+        <span class="skala-word metallic" id="skalaWord">skaluj</span>
+        <span class="skala-x mono" id="skalaX">×1</span>
+      </div>
+
+      <div class="skala-control">
+        <span class="mono skala-end">×1</span>
+        <input type="range" id="skalaRange" min="1" max="10" step="1" value="1"
+               aria-label="Mnożnik skali operacji od 1 do 10">
+        <span class="mono skala-end">×10</span>
+      </div>
+
+      <div class="skala-metrics">
+        <div class="sk-metric">
+          <span class="sk-value mono" id="skConvos">8&nbsp;400</span>
+          <span class="sk-label">rozmów obsłużonych / mies.</span>
+        </div>
+        <div class="sk-metric">
+          <span class="sk-value mono" id="skHours">640</span>
+          <span class="sk-label">godzin odzyskanych / mies.</span>
+        </div>
+        <div class="sk-metric sk-zero">
+          <span class="sk-value mono accent">0</span>
+          <span class="sk-label">dodatkowych etatów — <b>zawsze zero</b></span>
+        </div>
+      </div>
+
+      <p class="skala-punch reveal">Ten sam zespół. <span class="accent" id="skalaPunchX">×1</span> przepustowości.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFERTA (jasna sekcja) ============ -->
+<section id="oferta" class="oferta light-sheet">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow mono">Oferta</span>
+      <h2>Co skalujemy</h2>
+      <p class="sec-sub">Nie sprzedajemy „AI”. Wdrażamy systemy, które mają jedną miarę sukcesu:
+      liczby w&nbsp;Twoim rachunku wyników.</p>
+    </div>
+
+    <div class="bento">
+      <article class="bento-card span-2 reveal" style="--d:0">
+        <span class="bc-ico" aria-hidden="true">⬡</span>
+        <h3>Agenci AI dla obsługi klienta</h3>
+        <p>Asystenci, którzy rozwiązują sprawy end-to-end: zwroty, statusy, reklamacje, płatności.
+        24/7, w&nbsp;każdym języku, z&nbsp;eskalacją do człowieka dokładnie wtedy, gdy trzeba.</p>
+        <span class="bc-stat mono">do −82% czasu rozwiązania sprawy</span>
+      </article>
+      <article class="bento-card reveal" style="--d:1">
+        <span class="bc-ico" aria-hidden="true">⚙</span>
+        <h3>Automatyzacja back-office</h3>
+        <p>Faktury, oferty, raporty, onboarding — procesy, które dziś zjadają etaty, jutro dzieją się same.</p>
+      </article>
+      <article class="bento-card reveal" style="--d:2">
+        <span class="bc-ico" aria-hidden="true">◈</span>
+        <h3>Wiedza firmowa (RAG)</h3>
+        <p>Twoje dokumenty, procedury i&nbsp;historia stają się mózgiem operacji — dostępne w&nbsp;sekundę, zawsze aktualne.</p>
+      </article>
+      <article class="bento-card reveal" style="--d:3">
+        <span class="bc-ico" aria-hidden="true">◫</span>
+        <h3>Copiloty dla zespołów</h3>
+        <p>Sprzedaż, HR, dział prawny — narzędzia AI wbudowane w&nbsp;codzienny workflow, nie obok niego.</p>
+      </article>
+      <article class="bento-card reveal" style="--d:4">
+        <span class="bc-ico" aria-hidden="true">⇄</span>
+        <h3>Integracje i&nbsp;dane</h3>
+        <p>Spinamy CRM, ERP i&nbsp;helpdesk w&nbsp;jeden obieg danych. AI jest tak dobre, jak dane, na których pracuje.</p>
+      </article>
+      <article class="bento-card span-2 dark-card reveal" style="--d:5">
+        <span class="bc-ico" aria-hidden="true">◉</span>
+        <h3>AI governance i&nbsp;szkolenia</h3>
+        <p>Bezpieczeństwo, zgodność i&nbsp;kompetencje zespołu — żeby transformacja przetrwała dłużej niż projekt.
+        Budujemy wewnętrznych mistrzów AI, nie zależność od agencji.</p>
+        <span class="bc-stat mono accent">100% wiedzy zostaje u Ciebie</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCES ============ -->
+<section id="proces" class="proces">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow mono">Proces</span>
+      <h2>Od audytu do skali<br><span class="metallic">w 6 tygodni.</span></h2>
+    </div>
+
+    <ol class="steps">
+      <li class="step reveal" style="--d:0">
+        <span class="step-num mono">01</span>
+        <div>
+          <h3>Audyt <span class="step-time mono">48 h</span></h3>
+          <p>Mapujemy procesy i&nbsp;liczymy ROI każdego wdrożenia — zanim wydasz złotówkę.</p>
+        </div>
+      </li>
+      <li class="step reveal" style="--d:1">
+        <span class="step-num mono">02</span>
+        <div>
+          <h3>Pilotaż <span class="step-time mono">6 tygodni</span></h3>
+          <p>Jeden proces, mierzalny wynik. Dowód działania na Twoich danych, nie na slajdach.</p>
+        </div>
+      </li>
+      <li class="step reveal" style="--d:2">
+        <span class="step-num mono">03</span>
+        <div>
+          <h3>Wdrożenie</h3>
+          <p>Produkcja: integracje, bezpieczeństwo, monitoring. AI staje się częścią operacji.</p>
+        </div>
+      </li>
+      <li class="step reveal" style="--d:3">
+        <span class="step-num mono">04</span>
+        <div>
+          <h3>Skalowanie <span class="step-time mono">∞</span></h3>
+          <p>Kolejne procesy, te same fundamenty. Każde następne wdrożenie jest szybsze i&nbsp;tańsze.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="kontakt" class="cta">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div class="container cta-inner reveal">
+    <span class="eyebrow mono">Następny krok</span>
+    <h2 class="cta-title">Gotowy?<br><span class="metallic">Skaluj.</span></h2>
+    <p class="sec-sub">Bezpłatny audyt AI w&nbsp;48 godzin. Pokażemy, gdzie w&nbsp;Twojej firmie
+    leżą godziny i&nbsp;złotówki — i&nbsp;policzymy, ile kosztuje ich nieodzyskiwanie.</p>
+    <div class="cta-actions">
+      <a href="mailto:hello@skaluj.ai" class="btn btn-primary btn-big magnetic">Umów bezpłatny audyt</a>
+      <a href="mailto:hello@skaluj.ai" class="cta-mail mono">hello@skaluj.ai</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <span class="logo-mark"><i></i><i></i><i></i></span>
+        skaluj<span class="logo-ai">.ai</span>
+      </a>
+      <p>Agencja transformacji AI.<br>Zaprojektowane na nowej skali.</p>
+    </div>
+    <nav class="footer-col" aria-label="Nawigacja w stopce">
+      <span class="footer-h mono">Nawigacja</span>
+      <a href="#case">Case study</a>
+      <a href="#skala">Skala</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#proces">Proces</a>
+    </nav>
+    <div class="footer-col">
+      <span class="footer-h mono">Kontakt</span>
+      <a href="mailto:hello@skaluj.ai">hello@skaluj.ai</a>
+      <span class="footer-muted">Warszawa · zdalnie · cała PL</span>
+    </div>
+  </div>
+  <div class="container footer-legal">
+    <span>© <span id="year">2026</span> skaluj.ai — wszystkie prawa zastrzeżone.</span>
+    <span class="mono footer-scale">skala strony: <span id="footerScale">100%</span></span>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

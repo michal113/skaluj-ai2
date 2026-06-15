@@ -1,0 +1,18 @@
+# OS / edytor
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*~
+*.swp
+
+# Logi / pliki tymczasowe
+*.log
+*.tmp
+
+# Node (gdyby doszło narzędzie buildujące)
+node_modules/
+
+# Zmienne środowiskowe / sekrety
+.env
+.env.local

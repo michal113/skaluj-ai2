@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>skaluj.ai — Zamień powtarzalną pracę w oszczędności</title>
+<meta name="description" content="Agencja wdrożeń AI. Automatyzacje, asystenci i modele predykcyjne, które realnie obniżają koszty operacyjne — z policzonym zwrotem.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23000'/%3E%3Cpath d='M16 6 L25 25 L16 21 L7 25 Z' fill='%23d1aad7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Geist:wght@300;400&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SKALUJ.AI — "Scale" style: blackout · editorial · monochrome
+   one accent = iridescent gradient, only on the hero 3D object
+   ============================================================ */
+:root{
+  --void:#000000;
+  --carbon:#111111;
+  --smoke:#262626;
+  --bone:#ffffff;
+  --ash:#a1a1a1;
+  --frost:#e5e5e5;
+  --graphite:#262626;
+  --lilac:#f4f0ff;
+  --grad: linear-gradient(135deg,#d1aad7 0%,#bbdef2 50%,#f4f0ff 100%);
+  --line: rgba(255,255,255,.10);
+  --line-soft: rgba(255,255,255,.06);
+  --fd:"Geist", ui-sans-serif, system-ui, sans-serif;     /* display (Aeonik subst.) */
+  --fb:"Inter", ui-sans-serif, system-ui, sans-serif;      /* body / UI */
+  --fm:"Geist Mono", ui-monospace, monospace;              /* eyebrows */
+  --maxw:1200px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px;-webkit-text-size-adjust:100%}
+body{background:var(--void);color:var(--bone);font-family:var(--fb);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+::selection{background:var(--bone);color:var(--void)}
+::-webkit-scrollbar{width:9px}::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:#1d1d1d;border-radius:5px;border:2px solid #000}
+img,svg{display:block}a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.progress{position:fixed;top:0;left:0;height:1px;width:100%;z-index:9500;transform-origin:0 50%;transform:scaleX(0);background:var(--frost);opacity:.5}
+
+/* ---------- type ---------- */
+.eyebrow{font-family:var(--fm);font-size:12px;font-weight:400;letter-spacing:.083em;text-transform:uppercase;color:var(--ash)}
+.display{font-family:var(--fd);font-weight:300;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--fd);font-weight:300;letter-spacing:-.01em}
+.lead{color:var(--ash);font-size:18px;line-height:1.6}
+
+[data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* ---------- buttons (one shape: pill ghost) ---------- */
+.btn{display:inline-flex;align-items:center;gap:9px;height:42px;padding:0 20px;border-radius:9999px;
+  font-family:var(--fb);font-size:14px;font-weight:500;color:var(--bone);
+  border:1px solid var(--ash);background:transparent;
+  transition:border-color .25s,background-color .25s,transform .2s var(--ease)}
+.btn:hover{border-color:var(--bone);background:rgba(255,255,255,.04)}
+.btn:active{transform:scale(.98)}
+.btn .ar{transition:transform .25s var(--ease)}
+.btn:hover .ar{transform:translateX(3px)}
+.tlink{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-size:14px;font-weight:500;color:var(--bone);transition:gap .25s var(--ease),color .25s}
+.tlink:hover{gap:12px;color:var(--lilac)}
+
+/* ============================================================
+   ANNOUNCEMENT + NAV
+   ============================================================ */
+.ann{border-bottom:1px solid var(--line-soft);background:#000}
+.ann-in{max-width:var(--maxw);margin:0 auto;padding:9px 24px;text-align:center;font-size:13.5px;color:var(--ash)}
+.ann-in a{color:var(--lilac);font-weight:500}
+.ann-in a:hover{text-decoration:underline}
+
+.nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:var(--shadow,rgba(255,255,255,.1) 0 1px 1px 0 inset);border-bottom:1px solid transparent;transition:border-color .35s,background-color .35s}
+.nav.scrolled{border-bottom-color:var(--line-soft);background:rgba(0,0,0,.8)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:500;letter-spacing:-.01em}
+.logo .mk{width:18px;height:18px}
+.logo .tld{color:var(--ash)}
+.nav-links{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+.nav-links a{font-size:14px;color:var(--ash);padding:8px 12px;border-radius:9999px;transition:color .25s}
+.nav-links a:hover{color:var(--bone)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-login{font-size:14px;font-weight:500;color:var(--bone)}
+.nav-login:hover{color:var(--lilac)}
+.burger{display:none;width:38px;height:38px;background:none;border:0;position:relative}
+.burger span{position:absolute;left:9px;right:9px;height:1.5px;background:var(--bone);transition:transform .35s var(--ease),top .35s}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:22px}
+body.menu-open .burger span:nth-child(1){top:18.5px;transform:rotate(45deg)}
+body.menu-open .burger span:nth-child(2){top:18.5px;transform:rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.98);backdrop-filter:blur(16px);
+  display:flex;flex-direction:column;justify-content:center;padding:0 8vw;gap:6px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+body.menu-open .mobile-menu{opacity:1;visibility:visible}
+.mobile-menu a{font-family:var(--fd);font-weight:300;font-size:clamp(2rem,8vw,3rem);letter-spacing:-.02em;padding:12px 0;
+  border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;color:var(--bone)}
+.mobile-menu a .n{font-family:var(--fm);font-size:13px;color:var(--ash)}
+
+/* ============================================================
+   HERO — split: text left, holographic plane right
+   ============================================================ */
+.hero{padding:96px 0 110px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero-eyebrow{margin-bottom:26px;opacity:0;animation:fade .8s var(--ease) .1s forwards}
+.hero h1{font-size:clamp(2.9rem,6.4vw,5.4rem);line-height:1.04;letter-spacing:-.02em;max-width:13ch}
+.hero h1 .ln{display:block;opacity:0;transform:translateY(18px);animation:rise .9s var(--ease) forwards}
+.hero h1 .ln:nth-child(1){animation-delay:.12s}
+.hero h1 .ln:nth-child(2){animation-delay:.22s}
+.hero-sub{margin-top:26px;max-width:480px;color:var(--ash);font-size:16px;line-height:1.65;opacity:0;animation:rise .9s var(--ease) .36s forwards}
+.hero-cta{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;opacity:0;animation:rise .9s var(--ease) .48s forwards}
+@keyframes fade{to{opacity:1}}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* holographic plane */
+.plane-wrap{position:relative;display:flex;justify-content:center;align-items:center;min-height:420px;opacity:0;animation:fade 1.2s var(--ease) .5s forwards}
+.plane-glow{position:absolute;width:78%;height:78%;border-radius:50%;background:var(--grad);filter:blur(80px);opacity:.32;
+  animation:glowpulse 9s ease-in-out infinite}
+@keyframes glowpulse{0%,100%{opacity:.26;transform:scale(.95)}50%{opacity:.4;transform:scale(1.05)}}
+.plane{width:min(440px,90%);position:relative;animation:float 8s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(-10px) rotate(-1deg)}50%{transform:translateY(10px) rotate(1deg)}}
+
+/* ============================================================
+   SECTION scaffold
+   ============================================================ */
+.section{padding:104px 0;border-top:1px solid var(--line-soft)}
+.sec-head{text-align:center;max-width:720px;margin:0 auto 72px}
+.sec-head .eyebrow{display:block;margin-bottom:20px}
+.sec-title{font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.1}
+.sec-sub{margin-top:20px;color:var(--ash);font-size:18px;line-height:1.6}
+
+/* ---------- logo strip ---------- */
+.logos-wrap{padding:56px 0;border-top:1px solid var(--line-soft)}
+.logos-eyebrow{text-align:center;display:block;margin-bottom:34px}
+.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:30px 56px}
+.logo-item{display:flex;align-items:center;gap:10px;color:var(--ash);opacity:.65;transition:opacity .3s,color .3s}
+.logo-item:hover{opacity:1;color:var(--frost)}
+.logo-item svg{width:22px;height:22px;flex:none}
+.logo-item span{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.logos-note{text-align:center;font-family:var(--fm);font-size:10.5px;color:#3a3a3a;margin-top:30px}
+
+/* ============================================================
+   KALKULATOR
+   ============================================================ */
+.calc{max-width:980px;margin:0 auto;border-radius:16px;background:var(--carbon);padding:clamp(24px,3.2vw,40px)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.4vw,44px);align-items:stretch}
+.calc-inputs{display:flex;flex-direction:column;gap:26px;justify-content:center}
+.cf-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.cf-top label{font-size:14px;color:var(--ash)}
+.cf-top output{font-family:var(--fm);font-size:14px;color:var(--bone)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;
+  background:linear-gradient(90deg,var(--bone) var(--p,50%),var(--smoke) var(--p,50%));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--bone);cursor:grab}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--bone);border:0;cursor:grab}
+.calc-assump{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.calc-assump .ca-l{font-size:13px;color:var(--ash)}
+.calc-assump .ca-v{font-family:var(--fm);font-size:13px;color:var(--bone)}
+.calc-note{font-size:12px;color:#6a6a6a;line-height:1.5}
+.calc-result{border-radius:12px;background:var(--smoke);padding:26px;display:flex;flex-direction:column}
+.cr-l{font-size:13px;color:var(--ash)}
+.cr-v{font-family:var(--fd);font-weight:300;font-size:clamp(2.4rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1;margin:10px 0 22px;color:var(--bone)}
+.cr-sub{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.cr-sub .rr-l{display:block;font-size:11px;color:var(--ash);margin-bottom:5px}
+.cr-sub .rr-v{font-size:1.1rem;color:var(--bone)}
+.cr-bar{height:4px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden;margin-bottom:22px}
+.cr-bar i{display:block;height:100%;border-radius:4px;background:var(--bone)}
+.calc-cta{margin-top:auto;width:100%;justify-content:center}
+
+/* ============================================================
+   KORZYŚCI — airy carbon cards, no borders
+   ============================================================ */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.bcard{background:var(--carbon);border-radius:16px;padding:32px}
+.bcard.wide{grid-column:span 3}
+.bcard.half{grid-column:span 3}
+.bcard .bk{font-family:var(--fd);font-weight:300;font-size:clamp(2.4rem,4vw,3.2rem);letter-spacing:-.03em;line-height:1;color:var(--bone)}
+.bcard .bk small{font-size:.4em;color:var(--ash)}
+.bcard h3{font-size:20px;font-weight:400;margin:16px 0 10px;letter-spacing:-.01em}
+.bcard p{color:var(--ash);font-size:15px;line-height:1.6;max-width:46ch}
+
+/* ============================================================
+   OFERTA — accordion
+   ============================================================ */
+.offer{max-width:920px;margin:0 auto;border-top:1px solid var(--line)}
+.offer-item{border-bottom:1px solid var(--line)}
+.offer-head{width:100%;display:grid;grid-template-columns:56px 1fr auto 40px;align-items:center;gap:20px;
+  background:none;border:0;color:inherit;text-align:left;padding:28px 4px}
+.offer-num{font-family:var(--fm);font-size:13px;color:var(--ash)}
+.offer-name{font-family:var(--fd);font-weight:300;font-size:clamp(1.3rem,2.6vw,1.9rem);letter-spacing:-.01em;transition:opacity .3s}
+.offer-meta{font-family:var(--fm);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ash)}
+.offer-ic{width:38px;height:38px;border:1px solid var(--ash);border-radius:9999px;display:grid;place-items:center;justify-self:end;transition:transform .5s var(--ease),border-color .3s}
+.offer-ic svg{width:14px;height:14px;color:var(--bone)}
+.offer-head:hover .offer-name{opacity:.7}
+.offer-item.open .offer-ic{transform:rotate(45deg);border-color:var(--bone)}
+.offer-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.offer-item.open .offer-body{grid-template-rows:1fr}
+.offer-body-in{overflow:hidden}
+.offer-grid{display:grid;grid-template-columns:56px 1fr 1fr;gap:20px;padding:0 4px 36px}
+.offer-desc{grid-column:2;color:var(--ash);font-size:15px;line-height:1.7;max-width:48ch}
+.offer-desc .hl{color:var(--bone)}
+.offer-pts{list-style:none;display:flex;flex-direction:column;gap:11px}
+.offer-pts li{display:flex;gap:11px;align-items:baseline;color:var(--ash);font-size:14px;border-bottom:1px solid var(--line-soft);padding-bottom:11px}
+.offer-pts li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--frost);flex:none;transform:translateY(-3px)}
+
+/* ============================================================
+   CASE STUDIES — carbon cards
+   ============================================================ */
+.cases{display:flex;flex-direction:column;gap:16px;max-width:980px;margin:0 auto}
+.case{background:var(--carbon);border-radius:16px;padding:clamp(28px,3.6vw,44px);display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,56px)}
+.case-tag{display:flex;align-items:center;gap:12px;margin-bottom:22px;font-family:var(--fm);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ash)}
+.case-tag .pill{border:1px solid var(--line);border-radius:9999px;padding:5px 12px;color:var(--frost)}
+.case h3{font-family:var(--fd);font-weight:300;font-size:clamp(1.5rem,2.8vw,2.1rem);letter-spacing:-.01em;line-height:1.15;margin-bottom:14px}
+.case p{color:var(--ash);font-size:15px;line-height:1.7;max-width:46ch}
+.case-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px}
+.case-tags span{font-family:var(--fm);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ash);border:1px solid var(--line-soft);border-radius:9999px;padding:6px 12px}
+.case-metrics{display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--line-soft);padding-left:clamp(20px,3vw,40px)}
+.case-metric{padding:18px 0;border-bottom:1px solid var(--line-soft)}
+.case-metric:last-child{border-bottom:0}
+.case-metric b{display:block;font-family:var(--fd);font-weight:300;font-size:clamp(1.9rem,3.2vw,2.6rem);letter-spacing:-.02em;line-height:1.1}
+.case-metric span{font-size:12.5px;color:var(--ash)}
+
+/* ============================================================
+   PROCES
+   ============================================================ */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:var(--maxw);margin:0 auto;position:relative}
+.proc-step{padding-top:42px;position:relative}
+.proc-step::before{content:"";position:absolute;top:8px;left:0;width:11px;height:11px;border-radius:50%;background:var(--smoke);border:1px solid var(--ash);transition:background-color .4s,border-color .4s}
+.proc.in .proc-step::before{background:var(--bone);border-color:var(--bone)}
+.proc.in .proc-step:nth-child(2)::before{transition-delay:.4s}
+.proc.in .proc-step:nth-child(3)::before{transition-delay:.8s}
+.proc.in .proc-step:nth-child(4)::before{transition-delay:1.2s}
+.proc-step .n{font-family:var(--fm);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ash);display:block;margin-bottom:12px}
+.proc-step h3{font-size:20px;font-weight:400;letter-spacing:-.01em;margin-bottom:9px}
+.proc-step p{color:var(--ash);font-size:14px;line-height:1.6}
+.proc-step .dur{display:inline-block;margin-top:14px;font-family:var(--fm);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ash);border:1px solid var(--line);border-radius:9999px;padding:5px 11px}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta{padding:128px 0;text-align:center;border-top:1px solid var(--line-soft);position:relative;overflow:hidden}
+.cta-glow{position:absolute;left:50%;bottom:-50%;transform:translateX(-50%);width:680px;height:520px;border-radius:50%;background:var(--grad);filter:blur(120px);opacity:.14;pointer-events:none}
+.cta-in{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.cta h2{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.08}
+.cta p{margin-top:18px;color:var(--ash);font-size:18px}
+.cta .btn{margin-top:34px}
+
+/* ============================================================
+   KONTAKT
+   ============================================================ */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,90px);max-width:var(--maxw);margin:0 auto}
+.contact-info .eyebrow{display:block;margin-bottom:20px}
+.contact-info h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;margin-bottom:22px}
+.contact-info p{color:var(--ash);font-size:16px;line-height:1.7;max-width:40ch}
+.contact-rows{margin-top:38px;display:flex;flex-direction:column}
+.crow{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 2px;border-top:1px solid var(--line-soft);font-size:14px;color:var(--ash);transition:color .25s,padding-left .35s var(--ease)}
+.crow:hover{color:var(--bone);padding-left:8px}
+.crow b{font-weight:500;color:var(--bone)}
+.crow .mono{font-family:var(--fm);font-size:12px}
+.form-card{background:var(--carbon);border-radius:16px;padding:clamp(26px,3.4vw,40px);position:relative;overflow:hidden}
+.fg{position:relative;margin-bottom:6px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.fg input,.fg textarea{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--bone);font-family:inherit;font-size:15px;padding:28px 2px 13px;outline:none;resize:none;transition:border-color .3s}
+.fg textarea{min-height:88px}
+.fg label{position:absolute;left:2px;top:27px;color:var(--ash);font-size:15px;pointer-events:none;transition:top .3s var(--ease),font-size .3s,letter-spacing .3s}
+.fg input:focus,.fg textarea:focus{border-color:var(--bone)}
+.fg input:focus + label,.fg input:not(:placeholder-shown) + label,
+.fg textarea:focus + label,.fg textarea:not(:placeholder-shown) + label{top:6px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-family:var(--fm)}
+.budget-l{font-family:var(--fm);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ash);display:block;margin:28px 0 13px}
+.budget{display:flex;gap:8px;flex-wrap:wrap}
+.budget input{position:absolute;opacity:0;pointer-events:none}
+.budget label{border:1px solid var(--line);border-radius:9999px;padding:9px 16px;font-size:13px;color:var(--ash);cursor:pointer;transition:border-color .3s,color .3s}
+.budget label:hover{border-color:var(--ash);color:var(--bone)}
+.budget input:checked + label{border-color:var(--bone);color:var(--bone)}
+.form-submit{margin-top:30px;width:100%;height:48px;justify-content:center}
+.form-note{margin-top:14px;font-size:12px;color:#6a6a6a;text-align:center}
+.form-success{position:absolute;inset:0;background:var(--carbon);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:36px;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s;z-index:5}
+.form-card.sent .form-success{opacity:1;visibility:visible}
+.form-success .ok{width:48px;height:48px;border-radius:9999px;border:1px solid var(--ash);display:grid;place-items:center;color:var(--bone)}
+.form-success .ok svg{width:22px;height:22px}
+.form-success h3{font-size:1.5rem;font-weight:300}
+.form-success p{color:var(--ash);font-size:14px;max-width:32ch}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{border-top:1px solid var(--line-soft);padding:72px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;max-width:var(--maxw);margin:0 auto}
+.footer-brand .logo{font-size:18px;margin-bottom:16px}
+.footer-brand p{color:var(--ash);font-size:14px;max-width:32ch;line-height:1.6}
+.footer h4{font-family:var(--fm);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ash);margin-bottom:18px}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer ul a{color:var(--ash);font-size:14px;transition:color .25s}
+.footer ul a:hover{color:var(--bone)}
+.footer-bottom{max-width:var(--maxw);margin:56px auto 0;padding-top:24px;border-top:1px solid var(--line-soft);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--fm);font-size:11px;color:#6a6a6a}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:8px}
+  .hero h1{max-width:none}
+  .plane-wrap{min-height:300px;order:-1;margin-bottom:8px}
+  .benefits{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr}
+  .case-metrics{border-left:0;border-top:1px solid var(--line-soft);padding-left:0;padding-top:8px;flex-direction:row;gap:18px}
+  .case-metric{flex:1;border-bottom:0}
+  .proc{grid-template-columns:1fr 1fr;gap:32px 24px}
+  .contact{grid-template-columns:1fr}
+}
+@media (max-width:680px){
+  .nav-links{display:none}.burger{display:block}.nav-right .btn,.nav-login{display:none}
+  .section{padding:80px 0}.hero{padding:64px 0 80px}
+  .calc-grid{grid-template-columns:1fr;gap:24px}
+  .offer-head{grid-template-columns:40px 1fr 36px;gap:14px;padding:24px 2px}
+  .offer-meta{display:none}.offer-grid{grid-template-columns:1fr;padding:0 2px 30px}.offer-desc{grid-column:1}
+  .proc{grid-template-columns:1fr}
+  .case-metrics{flex-direction:column}.case-metric{border-bottom:1px solid var(--line-soft)}
+  .footer-grid{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  [data-reveal]{opacity:1;transform:none}
+  .hero-eyebrow,.hero h1 .ln,.hero-sub,.hero-cta,.plane-wrap{opacity:1;transform:none;animation:none}
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+
+<!-- ===== ANNOUNCEMENT ===== -->
+<div class="ann">
+  <div class="ann-in">Nowość: bezpłatny audyt potencjału AI dla Twojej firmy — <a href="#kontakt">Dowiedz się więcej →</a></div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="#start">
+      <svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5 L26 27 L16 22 L6 27 Z" fill="#fff"/></svg>
+      skaluj<span class="tld">.ai</span>
+    </a>
+    <div class="nav-links">
+      <a href="#korzysci">Korzyści</a>
+      <a href="#oferta">Oferta</a>
+      <a href="#case-studies">Case studies</a>
+      <a href="#proces">Proces</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn" href="#kontakt">Umów konsultację <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="nav-login" href="#kontakt">Kontakt</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#korzysci"><span>Korzyści</span><span class="n">01</span></a>
+  <a href="#oferta"><span>Oferta</span><span class="n">02</span></a>
+  <a href="#case-studies"><span>Case studies</span><span class="n">03</span></a>
+  <a href="#proces"><span>Proces</span><span class="n">04</span></a>
+  <a href="#kontakt"><span>Kontakt</span><span class="n">05</span></a>
+</div>
+
+<main>
+<!-- ===== HERO ===== -->
+<header class="hero" id="start">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow hero-eyebrow">Agencja wdrożeń AI</span>
+      <h1><span class="ln">Zamień powtarzalną pracę</span><span class="ln">w oszczędności.</span></h1>
+      <p class="hero-sub">Projektujemy i wdrażamy automatyzacje, asystentów i modele predykcyjne, które realnie obniżają koszty operacyjne — z policzonym zwrotem, w tygodnie zamiast lat.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#kalkulator">Zobacz, ile zaoszczędzisz <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="tlink" href="#kontakt">Umów rozmowę <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="plane-wrap" aria-hidden="true">
+      <div class="plane-glow"></div>
+      <svg class="plane" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bbdef2"/><stop offset="1" stop-color="#d1aad7"/></linearGradient>
+          <linearGradient id="gR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d1aad7"/><stop offset=".55" stop-color="#bbdef2"/><stop offset="1" stop-color="#f4f0ff"/></linearGradient>
+          <linearGradient id="gK" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9cc7e6"/><stop offset="1" stop-color="#bbdef2"/></linearGradient>
+        </defs>
+        <!-- left wing -->
+        <path d="M210 34 L48 352 L210 292 Z" fill="url(#gL)"/>
+        <!-- right wing -->
+        <path d="M210 34 L372 352 L210 292 Z" fill="url(#gR)"/>
+        <!-- inner keel facet -->
+        <path d="M210 34 L210 292 L150 330 Z" fill="url(#gK)" opacity=".9"/>
+        <!-- tail notch fold -->
+        <path d="M210 292 L150 330 L210 360 Z" fill="url(#gL)" opacity=".7"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===== LOGO STRIP ===== -->
+<div class="logos-wrap">
+  <div class="wrap">
+    <span class="eyebrow logos-eyebrow">Zaufali nam</span>
+    <div class="logos">
+      <div class="logo-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg><span>Logoipsum</span></div>
+      <div class="logo-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7z"/></svg><span>Logoipsum</span></div>
+      <div class="logo-item"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="13" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Logoipsum</span></div>
+      <div class="logo-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h6l2-7 4 14 2-7h4"/></svg><span>Logoipsum</span></div>
+      <div class="logo-item"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg><span>Logoipsum</span></div>
+    </div>
+    <p class="logos-note">Miejsce na logo Twoich klientów — wstaw prawdziwe pliki.</p>
+  </div>
+</div>
+
+<!-- ===== KALKULATOR ===== -->
+<section class="section" id="kalkulator">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Kalkulator</span>
+      <h2 class="sec-title">Policz, ile zaoszczędzisz</h2>
+      <p class="sec-sub">Przesuń suwaki i zobacz szacowany zwrot z automatyzacji obsługi. Realny wynik potwierdzamy w bezpłatnym audycie.</p>
+    </div>
+    <div class="calc" data-reveal>
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div>
+            <div class="cf-top"><label for="cReq">Zgłoszenia / miesiąc</label><output id="cReqOut">3 000</output></div>
+            <input type="range" id="cReq" min="200" max="40000" step="100" value="3000" style="--p:7%">
+          </div>
+          <div>
+            <div class="cf-top"><label for="cCost">Koszt obsługi 1 zgłoszenia</label><output id="cCostOut">18 zł</output></div>
+            <input type="range" id="cCost" min="3" max="120" step="1" value="18" style="--p:13%">
+          </div>
+          <div class="calc-assump"><span class="ca-l">Zakładana automatyzacja powtarzalnej obsługi</span><span class="ca-v">70%</span></div>
+          <p class="calc-note">Model poglądowy — realny wynik potwierdzamy w audycie na Twoich danych.</p>
+        </div>
+        <div class="calc-result">
+          <span class="cr-l">Szacowane oszczędności / miesiąc</span>
+          <span class="cr-v" id="cMonthly">37 800 zł</span>
+          <div class="cr-sub">
+            <div><span class="rr-l">Rocznie</span><span class="rr-v" id="cYearly">453 600 zł</span></div>
+            <div><span class="rr-l">Udział kosztów ciętych</span><span class="rr-v">~70%</span></div>
+          </div>
+          <div class="cr-bar"><i style="width:70%"></i></div>
+          <a class="btn calc-cta" href="#kontakt">Umów rozmowę i potwierdź wynik <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KORZYŚCI ===== -->
+<section class="section" id="korzysci">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Korzyści</span>
+      <h2 class="sec-title">AI, które zarabia na siebie</h2>
+      <p class="sec-sub">Nie wdrażamy technologii dla technologii. Każdy projekt zaczyna się od liczby, którą mamy poprawić — i kończy raportem, który to potwierdza.</p>
+    </div>
+    <div class="benefits">
+      <div class="bcard" data-reveal>
+        <div class="bk">−43<small>%</small></div>
+        <h3>Niższe koszty operacyjne</h3>
+        <p>Automatyzacja powtarzalnych procesów obniża koszt obsługi pojedynczej operacji średnio o 43% w pierwszym roku.</p>
+      </div>
+      <div class="bcard" data-reveal data-delay="80">
+        <div class="bk">24/7</div>
+        <h3>Procesy, które nie śpią</h3>
+        <p>Agenci AI pracują w nocy, w weekendy i w święta — bez kolejki zadań i bez urlopów.</p>
+      </div>
+      <div class="bcard" data-reveal data-delay="160">
+        <div class="bk">5×</div>
+        <h3>Skala bez rekrutacji</h3>
+        <p>Obsłuż pięciokrotnie większy wolumen operacji bez liniowego wzrostu zatrudnienia.</p>
+      </div>
+      <div class="bcard" data-reveal>
+        <div class="bk">RT</div>
+        <h3>Decyzje w czasie rzeczywistym</h3>
+        <p>Predykcja popytu, anomalie i ryzyka wykrywane zanim staną się kosztem w arkuszu.</p>
+      </div>
+      <div class="bcard" data-reveal data-delay="80">
+        <div class="bk">14 <small>dni</small></div>
+        <h3>Szybciej niż konkurencja</h3>
+        <p>Pierwszy mierzalny efekt w dwa tygodnie. Pełne wdrożenie w jeden kwartał.</p>
+      </div>
+      <div class="bcard" data-reveal data-delay="160">
+        <div class="bk">100<small>%</small></div>
+        <h3>Policzony zwrot</h3>
+        <p>Każde wdrożenie kończy się raportem ROI — wiesz dokładnie, co i ile Ci dało.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFERTA ===== -->
+<section class="section" id="oferta">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Oferta</span>
+      <h2 class="sec-title">Pełen zakres. Jedna agencja.</h2>
+      <p class="sec-sub">Od pierwszego audytu po utrzymanie produkcyjne — prowadzimy całość wdrożenia, więc nie potrzebujesz trzech dostawców i czterech ofert.</p>
+    </div>
+    <div class="offer" data-reveal>
+      <div class="offer-item">
+        <button class="offer-head" aria-expanded="false"><span class="offer-num">01</span><span class="offer-name">Audyt i strategia AI</span><span class="offer-meta">2–3 tygodnie</span><span class="offer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-grid"><span></span>
+          <p class="offer-desc">Mapujemy procesy całej firmy i wyceniamy potencjał automatyzacji w złotówkach. Dostajesz <span class="hl">priorytetyzowaną mapę wdrożeń</span> z prognozą ROI — zanim wydasz cokolwiek na technologię.</p>
+          <ul class="offer-pts"><li>Warsztaty z zespołami operacyjnymi</li><li>Analiza danych i gotowości infrastruktury</li><li>Business case z prognozą ROI</li></ul>
+        </div></div></div>
+      </div>
+      <div class="offer-item">
+        <button class="offer-head" aria-expanded="false"><span class="offer-num">02</span><span class="offer-name">Automatyzacja procesów</span><span class="offer-meta">LLM + RPA</span><span class="offer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-grid"><span></span>
+          <p class="offer-desc">Obieg dokumentów, fakturowanie, raportowanie, onboarding — procesy pochłaniające etaty zamieniamy w <span class="hl">pipeline'y działające bez nadzoru</span>, z człowiekiem tylko tam, gdzie podejmuje się decyzje.</p>
+          <ul class="offer-pts"><li>Ekstrakcja danych z dokumentów (OCR + LLM)</li><li>Integracje z ERP, CRM i systemami legacy</li><li>Monitoring jakości i ścieżki eskalacji</li></ul>
+        </div></div></div>
+      </div>
+      <div class="offer-item">
+        <button class="offer-head" aria-expanded="false"><span class="offer-num">03</span><span class="offer-name">Asystenci i chatboty AI</span><span class="offer-meta">Obsługa klienta</span><span class="offer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-grid"><span></span>
+          <p class="offer-desc">Asystenci, którzy znają Twoją ofertę, procedury i historię klienta. <span class="hl">70–80% zgłoszeń zamykanych bez człowieka</span>, a zespół zajmuje się tylko sprawami, które naprawdę tego wymagają.</p>
+          <ul class="offer-pts"><li>RAG na bazie wiedzy firmy</li><li>Kanały: www, e-mail, telefon, WhatsApp</li><li>Płynna eskalacja do agenta z pełnym kontekstem</li></ul>
+        </div></div></div>
+      </div>
+      <div class="offer-item">
+        <button class="offer-head" aria-expanded="false"><span class="offer-num">04</span><span class="offer-name">Modele predykcyjne i custom AI</span><span class="offer-meta">ML / dane</span><span class="offer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-grid"><span></span>
+          <p class="offer-desc">Prognoza popytu, dynamiczna wycena, wykrywanie anomalii, scoring ryzyka — modele szyte pod <span class="hl">Twoje dane i Twoją branżę</span>, wpięte w systemy, w których pracuje zespół.</p>
+          <ul class="offer-pts"><li>Modele uczone na danych firmy</li><li>MLOps: wdrożenie, monitoring, retrening</li><li>Dashboardy decyzyjne dla zarządu</li></ul>
+        </div></div></div>
+      </div>
+      <div class="offer-item">
+        <button class="offer-head" aria-expanded="false"><span class="offer-num">05</span><span class="offer-name">Szkolenia i AI adoption</span><span class="offer-meta">Zespoły</span><span class="offer-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-grid"><span></span>
+          <p class="offer-desc">Najlepsze wdrożenie umiera bez ludzi, którzy go używają. Szkolimy zespoły, budujemy playbooki i <span class="hl">mierzymy realną adopcję</span> — nie liczbę rozdanych licencji.</p>
+          <ul class="offer-pts"><li>Warsztaty praktyczne na realnych procesach</li><li>Polityki bezpiecznego użycia AI</li><li>Program ambasadorów wewnątrz firmy</li></ul>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASE STUDIES ===== -->
+<section class="section" id="case-studies">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Case studies</span>
+      <h2 class="sec-title">Liczby mówią za nas</h2>
+      <p class="sec-sub">Trzy przykładowe wdrożenia, trzy branże, jeden wspólny mianownik: zwrot z inwestycji policzony i potwierdzony.</p>
+    </div>
+    <div class="cases">
+      <article class="case" data-reveal>
+        <div>
+          <div class="case-tag"><span class="pill">Produkcja</span><span>Case 01</span></div>
+          <h3>NordPak — predykcyjne planowanie produkcji</h3>
+          <p>Producent opakowań z trzema zakładami planował produkcję w arkuszach. Model uczony na trzech latach zamówień przejął planowanie krótkoterminowe — planiści zatwierdzają, zamiast liczyć.</p>
+          <div class="case-tags"><span>Predykcja popytu</span><span>Integracja ERP</span><span>MLOps</span></div>
+        </div>
+        <div class="case-metrics">
+          <div class="case-metric"><b>−<span data-count="31">0</span>%</b><span>odpadu surowca rocznie</span></div>
+          <div class="case-metric"><b>+<span data-count="18">0</span>%</b><span>wydajności linii</span></div>
+          <div class="case-metric"><b><span data-count="6">0</span> mies.</b><span>do zwrotu z inwestycji</span></div>
+        </div>
+      </article>
+      <article class="case" data-reveal>
+        <div>
+          <div class="case-tag"><span class="pill">E-commerce</span><span>Case 02</span></div>
+          <h3>VeloCart — asystent AI obsługi klienta</h3>
+          <p>Sklep z 40 tys. zamówień miesięcznie tonął w pytaniach o status, rozmiar i zwroty. Asystent oparty o RAG odpowiada w 11 językach i samodzielnie obsługuje zwroty do ustalonego limitu.</p>
+          <div class="case-tags"><span>RAG</span><span>Multichannel</span><span>Automatyzacja zwrotów</span></div>
+        </div>
+        <div class="case-metrics">
+          <div class="case-metric"><b><span data-count="73">0</span>%</b><span>zgłoszeń bez człowieka</span></div>
+          <div class="case-metric"><b>−<span data-count="58">0</span>%</b><span>czasu odpowiedzi</span></div>
+          <div class="case-metric"><b>+<span data-count="12">0</span> pkt</b><span>wzrost NPS</span></div>
+        </div>
+      </article>
+      <article class="case" data-reveal>
+        <div>
+          <div class="case-tag"><span class="pill">Finanse</span><span>Case 03</span></div>
+          <h3>FinLoop — automatyzacja obiegu dokumentów</h3>
+          <p>Firma faktoringowa przetwarzała ręcznie 9 tys. dokumentów miesięcznie. Pipeline OCR + LLM klasyfikuje, ekstrahuje i waliduje dokumenty, a do analityka trafiają tylko przypadki graniczne.</p>
+          <div class="case-tags"><span>OCR + LLM</span><span>Klasyfikacja</span><span>Human-in-the-loop</span></div>
+        </div>
+        <div class="case-metrics">
+          <div class="case-metric"><b><span data-count="14200" data-sep=" ">0</span> h</b><span>pracy ręcznej / rok</span></div>
+          <div class="case-metric"><b><span data-count="99.2" data-dec="1">0</span>%</b><span>trafności klasyfikacji</span></div>
+          <div class="case-metric"><b>−<span data-count="41">0</span>%</b><span>kosztów back-office</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCES ===== -->
+<section class="section" id="proces">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Proces</span>
+      <h2 class="sec-title">Od audytu do skali</h2>
+      <p class="sec-sub">Przejrzysty proces w czterech etapach. Po każdym z nich możesz zakończyć współpracę — zostajesz z wynikami i dokumentacją.</p>
+    </div>
+    <div class="proc" data-proc>
+      <div class="proc-step" data-reveal><span class="n">Etap 01</span><h3>Audyt</h3><p>Mapujemy procesy, liczymy potencjał oszczędności i wybieramy wdrożenie o najszybszym zwrocie.</p><span class="dur">Tydzień 1–2</span></div>
+      <div class="proc-step" data-reveal data-delay="80"><span class="n">Etap 02</span><h3>Pilotaż</h3><p>Działający prototyp na Twoich danych i realnym procesie. Mierzymy efekt przed decyzją o skali.</p><span class="dur">Tydzień 3–6</span></div>
+      <div class="proc-step" data-reveal data-delay="160"><span class="n">Etap 03</span><h3>Wdrożenie</h3><p>Produkcyjna integracja z systemami, szkolenie zespołu, procedury bezpieczeństwa i monitoring.</p><span class="dur">Tydzień 7–12</span></div>
+      <div class="proc-step" data-reveal data-delay="240"><span class="n">Etap 04</span><h3>Skalowanie</h3><p>Rozszerzamy rozwiązanie na kolejne procesy i działy. Stała opieka, optymalizacja, raporty ROI.</p><span class="dur">Ciągle</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="wrap cta-in" data-reveal>
+    <h2>Gotowy, żeby skalować z AI?</h2>
+    <p>30 minut rozmowy, zero zobowiązań. Powiemy wprost, czy AI rozwiąże Twój problem i ile na tym zarobisz.</p>
+    <a class="btn" href="#kontakt">Umów bezpłatną konsultację <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<!-- ===== KONTAKT ===== -->
+<section class="section" id="kontakt">
+  <div class="wrap contact">
+    <div class="contact-info" data-reveal>
+      <span class="eyebrow">Kontakt</span>
+      <h2>Zacznijmy od rozmowy</h2>
+      <p>Opowiedz, gdzie Twoja firma traci czas i pieniądze — my powiemy, czy AI to rozwiąże i ile na tym zarobisz.</p>
+      <div class="contact-rows">
+        <a class="crow" href="mailto:hello@skaluj.ai"><b>E-mail</b><span class="mono">hello@skaluj.ai</span></a>
+        <a class="crow" href="tel:+48221000100"><b>Telefon</b><span class="mono">+48 22 100 01 00</span></a>
+        <div class="crow"><b>Biuro</b><span class="mono">Warszawa / remote-first</span></div>
+        <div class="crow"><b>Odpowiadamy</b><span class="mono">&lt; 24 h, pon–pt</span></div>
+      </div>
+    </div>
+    <div class="form-card" data-reveal id="formCard">
+      <form id="contactForm" novalidate>
+        <div class="fgrid">
+          <div class="fg"><input type="text" id="fName" placeholder=" " required><label for="fName">Imię i nazwisko</label></div>
+          <div class="fg"><input type="email" id="fEmail" placeholder=" " required><label for="fEmail">E-mail służbowy</label></div>
+        </div>
+        <div class="fg"><input type="text" id="fCompany" placeholder=" "><label for="fCompany">Firma</label></div>
+        <div class="fg"><textarea id="fMsg" placeholder=" " rows="3"></textarea><label for="fMsg">Co chcesz zautomatyzować?</label></div>
+        <span class="budget-l">Budżet projektu (PLN)</span>
+        <div class="budget">
+          <input type="radio" name="budget" id="b1"><label for="b1">do 50 tys.</label>
+          <input type="radio" name="budget" id="b2" checked><label for="b2">50–150 tys.</label>
+          <input type="radio" name="budget" id="b3"><label for="b3">150–500 tys.</label>
+          <input type="radio" name="budget" id="b4"><label for="b4">500 tys. +</label>
+        </div>
+        <button type="submit" class="btn form-submit"><span class="submit-label">Wyślij zapytanie</span> <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="form-note">Wysyłając formularz akceptujesz politykę prywatności. Zero spamu.</p>
+      </form>
+      <div class="form-success" aria-live="polite">
+        <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+        <h3>Dziękujemy!</h3>
+        <p>Twoje zapytanie dotarło. Odezwiemy się w ciągu 24 godzin roboczych.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="#start"><svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5 L26 27 L16 22 L6 27 Z" fill="#fff"/></svg> skaluj<span class="tld">.ai</span></a>
+      <p>Agencja wdrożeń AI. Automatyzacje, asystenci i modele predykcyjne — z policzonym ROI.</p>
+    </div>
+    <div><h4>Nawigacja</h4><ul><li><a href="#korzysci">Korzyści</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#case-studies">Case studies</a></li><li><a href="#proces">Proces</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+    <div><h4>Kontakt</h4><ul><li><a href="mailto:hello@skaluj.ai">hello@skaluj.ai</a></li><li><a href="tel:+48221000100">+48 22 100 01 00</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Polityka prywatności</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 skaluj.ai — wszystkie prawa zastrzeżone</span><span>Zaprojektowano w Polsce</span></div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var nav=document.getElementById("nav"), progress=document.querySelector(".progress");
+  addEventListener("scroll",function(){
+    nav.classList.toggle("scrolled",scrollY>10);
+    var h=document.documentElement.scrollHeight-innerHeight;
+    progress.style.transform="scaleX("+(h>0?scrollY/h:0)+")";
+  },{passive:true});
+
+  var burger=document.getElementById("burger");
+  burger.addEventListener("click",function(){document.body.classList.toggle("menu-open");});
+  document.querySelectorAll(".mobile-menu a").forEach(function(a){a.addEventListener("click",function(){document.body.classList.remove("menu-open");});});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var d=e.target.dataset.delay||0;setTimeout(function(){e.target.classList.add("in");},d);io.unobserve(e.target);}});},{threshold:.16,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll("[data-reveal]").forEach(function(el){io.observe(el);});
+  var proc=document.querySelector("[data-proc]");
+  if(proc){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){proc.classList.add("in");o.disconnect();}},{threshold:.3}).observe(proc);}
+
+  /* counters */
+  function fmt(v,dec,sep){var s=dec>0?v.toFixed(dec).replace(".",","):Math.round(v).toString();if(sep)s=s.replace(/\B(?=(\d{3})+(?!\d))/g,sep);return s;}
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;var el=e.target,t=parseFloat(el.dataset.count),dec=parseInt(el.dataset.dec||0,10),sep=el.dataset.sep||"",t0=performance.now(),D=1500;
+    requestAnimationFrame(function s(now){var p=Math.min(1,(now-t0)/D),k=1-Math.pow(1-p,4);el.textContent=fmt(t*k,dec,sep);if(p<1)requestAnimationFrame(s);});
+    cio.unobserve(el);
+  });},{threshold:.6});
+  document.querySelectorAll("[data-count]").forEach(function(el){cio.observe(el);});
+
+  /* accordion */
+  document.querySelectorAll(".offer-item").forEach(function(item){
+    var head=item.querySelector(".offer-head");
+    head.addEventListener("click",function(){
+      var was=item.classList.contains("open");
+      document.querySelectorAll(".offer-item.open").forEach(function(o){o.classList.remove("open");o.querySelector(".offer-head").setAttribute("aria-expanded","false");});
+      if(!was){item.classList.add("open");head.setAttribute("aria-expanded","true");}
+    });
+  });
+  var first=document.querySelector(".offer-item");
+  if(first){first.classList.add("open");first.querySelector(".offer-head").setAttribute("aria-expanded","true");}
+
+  /* kalkulator */
+  (function(){
+    var req=document.getElementById("cReq"),cost=document.getElementById("cCost");
+    if(!req||!cost)return;
+    var reqOut=document.getElementById("cReqOut"),costOut=document.getElementById("cCostOut"),monthly=document.getElementById("cMonthly"),yearly=document.getElementById("cYearly"),AUTO=0.70;
+    function nf(n){return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g," ");}
+    function fill(el){var p=(el.value-el.min)/(el.max-el.min)*100;el.style.setProperty("--p",p+"%");}
+    function calc(){fill(req);fill(cost);var r=+req.value,c=+cost.value,m=r*c*AUTO;reqOut.textContent=nf(r);costOut.textContent=nf(c)+" zł";monthly.textContent=nf(m)+" zł";yearly.textContent=nf(m*12)+" zł";}
+    req.addEventListener("input",calc);cost.addEventListener("input",calc);calc();
+  })();
+
+  /* form */
+  var form=document.getElementById("contactForm"),card=document.getElementById("formCard");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var name=document.getElementById("fName"),email=document.getElementById("fEmail"),ok=true;
+    [name,email].forEach(function(f){var bad=!f.value.trim()||(f.type==="email"&&!/^\S+@\S+\.\S+$/.test(f.value));f.style.borderColor=bad?"#888":"";if(bad)ok=false;});
+    if(!ok)return;
+    var btn=form.querySelector(".form-submit");btn.querySelector(".submit-label").textContent="Wysyłanie…";btn.style.opacity=.6;btn.style.pointerEvents="none";
+    setTimeout(function(){card.classList.add("sent");},850);
+  });
+})();
+</script>
+</body>
+</html>
