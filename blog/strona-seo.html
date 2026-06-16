@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jak stworzyć stronę firmową, która sprzedaje w 2026? — skaluj.ai</title>
+<meta name="description" content="Poznaj sprawdzone zasady budowy strony internetowej dla firmy: struktura, copywriting, UX i SEO on-page, które zamieniają odwiedzających w płacących klientów.">
+<meta property="og:title" content="Jak stworzyć stronę firmową, która sprzedaje w 2026?">
+<meta property="og:description" content="Struktura, copywriting i UX, które zamieniają ruch w klientów. Praktyczny przewodnik dla firm.">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-06-16">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2308090b'/%3E%3Cg stroke='%23eef0f2' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M16 5v7M16 20v7M5 16h7M20 16h7M8.5 8.5l5 5M18.5 18.5l5 5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--bg-elev:#f7f8fa;--bg-elev-2:#eef1f5;--text:#0b0d10;--muted:#565d68;--faint:#8b929c;--line:rgba(0,0,0,.10);--line-2:rgba(0,0,0,.06);--accent:#2f6fe0;--accent-soft:rgba(47,111,224,.10);--r-lg:16px;--r-md:12px;--maxw:1180px;--sans:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Geist Mono",ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:9px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#cfd3da;border-radius:5px;border:2px solid var(--bg)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:0 22px;height:46px;border-radius:var(--r-lg);border:1px solid transparent;font-family:var(--sans);font-size:14.5px;font-weight:500;letter-spacing:-.015em;cursor:pointer;text-decoration:none;transition:all .2s;white-space:nowrap}
+.btn-primary{background:var(--text);color:var(--bg)}.btn-primary:hover{background:#000;box-shadow:0 0 0 3px var(--accent-soft)}
+.btn-sm{height:38px;padding:0 16px;font-size:13.5px;border-radius:9px}
+.nav{position:fixed;top:14px;left:0;right:0;z-index:1000;padding:0 16px}
+.nav-inner{position:relative;max-width:1080px;margin:0 auto;padding:8px 8px 8px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:9999px;box-shadow:0 10px 40px rgba(15,30,60,.08);transition:box-shadow .35s,background-color .35s}
+.nav.scrolled .nav-inner{background:rgba(255,255,255,.92);box-shadow:0 14px 44px rgba(15,30,60,.12)}
+.logo{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:600;letter-spacing:-.03em}
+.logo svg{width:19px;height:19px;color:var(--text)}.logo .tld{color:var(--accent)}
+.nav-links{display:flex;gap:2px;align-items:center;justify-self:center}
+.nav-item{position:relative;display:flex}
+.nav-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-family:inherit;color:var(--muted);padding:9px 14px;border-radius:9999px;background:none;border:0;cursor:pointer;white-space:nowrap;transition:color .25s,background-color .25s}
+.nav-link:hover{color:var(--text);background:rgba(0,0,0,.04)}
+.nav-item.open>.nav-link{color:var(--accent);background:var(--accent-soft)}
+.nav-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;line-height:1}
+.nav-caret{width:11px;height:11px;transition:transform .25s var(--ease)}
+.nav-item.open .nav-caret{transform:rotate(180deg)}
+#blogItem{position:static}
+.dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;transform:translateY(-10px);transform-origin:top center;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(15,30,60,.14);padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .32s var(--ease),visibility .28s;z-index:60}
+.dropdown::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px}
+.nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 14px;border-bottom:1px solid var(--line-2);margin-bottom:8px}
+.dd-head .l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.dd-head .c{font-family:var(--mono);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:5px}
+.dd-head .c svg{width:12px;height:12px;transition:transform .25s var(--ease)}.dd-head .c:hover svg{transform:translateX(3px)}
+.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.dd-item{display:block;padding:12px 14px;border-radius:12px;opacity:0;transform:translateY(6px);transition:background-color .2s,opacity .24s var(--ease),transform .27s var(--ease)}
+.dd-item:hover{background:rgba(47,111,224,.06)}
+.nav-item.open .dd-item{opacity:1;transform:none}
+.nav-item.open .dd-item:nth-child(1){transition-delay:.08s}.nav-item.open .dd-item:nth-child(2){transition-delay:.11s}.nav-item.open .dd-item:nth-child(3){transition-delay:.14s}.nav-item.open .dd-item:nth-child(4){transition-delay:.14s}.nav-item.open .dd-item:nth-child(5){transition-delay:.17s}.nav-item.open .dd-item:nth-child(6){transition-delay:.20s}
+.dd-eyebrow{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.dd-title{display:block;font-size:13.5px;font-weight:500;color:var(--text);letter-spacing:-.01em;line-height:1.35}
+.dd-desc{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
+.nav-right{display:flex;align-items:center;gap:10px;justify-self:end}.nav-right .btn{border-radius:9999px}
+.nav-burger{display:none;width:38px;height:38px;background:none;border:0;position:relative}
+.nav-burger span{position:absolute;left:9px;right:9px;height:1.5px;background:var(--text);transition:transform .35s var(--ease),top .35s}
+.nav-burger span:nth-child(1){top:15px}.nav-burger span:nth-child(2){top:22px}
+body.menu-open .nav-burger span:nth-child(1){top:18.5px;transform:rotate(45deg)}
+body.menu-open .nav-burger span:nth-child(2){top:18.5px;transform:rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:900;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);display:flex;flex-direction:column;justify-content:center;padding:0 8vw;gap:4px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+body.menu-open .mobile-menu{opacity:1;visibility:visible}
+.mobile-menu a{font-size:clamp(1.9rem,8vw,2.8rem);font-weight:500;letter-spacing:-.03em;padding:12px 0;border-bottom:1px solid var(--line-2);display:flex;justify-content:space-between;align-items:center;opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease),transform .5s var(--ease),color .25s}
+.mobile-menu a:hover{color:var(--accent)}.mobile-menu a .n{font-family:var(--mono);font-size:13px;color:var(--faint)}
+body.menu-open .mobile-menu a{opacity:1;transform:none}
+body.menu-open .mobile-menu a:nth-child(1){transition-delay:.05s}body.menu-open .mobile-menu a:nth-child(2){transition-delay:.1s}body.menu-open .mobile-menu a:nth-child(3){transition-delay:.15s}body.menu-open .mobile-menu a:nth-child(4){transition-delay:.2s}body.menu-open .mobile-menu a:nth-child(5){transition-delay:.25s}
+.mobile-menu .mm-blog{border-bottom:1px solid var(--line-2);padding:12px 0;opacity:0;transform:translateY(16px);transition:opacity .5s var(--ease) .28s,transform .5s var(--ease) .28s}
+body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
+.mobile-menu .mm-h{display:flex;justify-content:space-between;align-items:center;font-size:clamp(1.9rem,8vw,2.8rem);font-weight:500;letter-spacing:-.03em;color:var(--text)}
+.mobile-menu .mm-h .n{font-family:var(--mono);font-size:13px;color:var(--faint)}
+.mobile-menu .mm-sub{display:block;font-size:1.05rem;font-weight:400;letter-spacing:-.01em;color:var(--muted);padding:10px 0 0;border:0;opacity:1;transform:none}
+.footer{border-top:1px solid var(--line);padding:80px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px}
+.footer-brand .logo{font-size:18px;margin-bottom:16px}
+.footer-brand p{color:var(--muted);font-size:14px;max-width:32ch;line-height:1.6}
+.footer h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer ul a{color:var(--muted);font-size:14px;transition:color .25s}.footer ul a:hover{color:var(--text)}
+.footer-watermark{margin:70px 0 0;font-size:clamp(3.4rem,12vw,11rem);font-weight:600;letter-spacing:-.05em;line-height:.85;text-align:center;background:linear-gradient(180deg,rgba(0,0,0,.07),transparent);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none}
+.footer-bottom{margin-top:34px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.blog-header{padding:130px 0 56px;border-bottom:1px solid var(--line);text-align:center}
+.blog-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
+.blog-title{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:600;letter-spacing:-.035em;line-height:1.15;max-width:820px;margin:0 auto 20px}
+.blog-meta{font-size:12.5px;color:var(--faint);font-family:var(--mono);display:flex;align-items:center;gap:20px;justify-content:center}
+.blog-body{max-width:720px;margin:0 auto;padding:60px 0 80px}
+.blog-body h2{font-size:1.4rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:52px 0 14px}
+.blog-body p{color:var(--muted);margin-bottom:16px;line-height:1.75}
+.blog-body ul,.blog-body ol{color:var(--muted);padding-left:22px;margin-bottom:18px;line-height:1.75}
+.blog-body li{margin-bottom:8px}
+.blog-body strong{color:var(--text);font-weight:600}
+.blog-body a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.blog-body .lead{font-size:1.1rem;color:var(--muted);line-height:1.75;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line-2)}
+.blog-tip{background:var(--bg-elev);border-left:3px solid var(--accent);border-radius:0 var(--r-md) var(--r-md) 0;padding:16px 20px;margin:24px 0;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.blog-tip strong{color:var(--text)}
+.blog-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-family:var(--mono);color:var(--muted);margin-bottom:32px;transition:color .2s}
+.blog-back:hover{color:var(--text)}.blog-back svg{width:14px;height:14px}
+.blog-cta-box{background:var(--bg-elev);border-radius:24px;padding:44px 48px;text-align:center;max-width:720px;margin:0 auto 80px}
+.blog-cta-box .cta-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+.blog-cta-box h3{font-size:1.4rem;font-weight:600;letter-spacing:-.025em;margin-bottom:12px}
+.blog-cta-box p{color:var(--muted);margin-bottom:26px;font-size:15px}
+.blog-also{max-width:720px;margin:0 auto 80px}
+.blog-also h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.blog-also-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.blog-also-item{border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .2s,background .2s}
+.blog-also-item:hover{border-color:rgba(47,111,224,.4);background:var(--accent-soft)}
+.blog-also-item .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
+.blog-also-item .t{display:block;font-size:13.5px;font-weight:500;color:var(--text);line-height:1.35}
+@media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.blog-header{padding:110px 0 40px}.blog-cta-box{padding:32px 24px}.blog-also-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="../index.html">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M16 2.5v9"/><path d="M16 20.5v9"/><path d="M2.5 16h9"/><path d="M20.5 16h9"/><path d="M6.8 6.8l6 6"/><path d="M19.2 19.2l6 6"/><circle cx="24.5" cy="8" r="1.8" fill="currentColor" stroke="none"/></svg>
+      skaluj<span class="tld">.ai</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="../index.html#case-studies">Case studies</a>
+      <a class="nav-link" href="../index.html#oferta">Oferta</a>
+      <a class="nav-link" href="../index.html#porownanie">Por&oacute;wnanie</a>
+      <a class="nav-link" href="../index.html#proces">Proces</a>
+      <div class="nav-item" id="blogItem">
+        <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">Blog <span class="nav-badge">6</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dropdown" role="menu">
+          <div class="dd-head"><span class="l">Z BLOGA</span><a class="c" href="#">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-grid">
+            <a class="dd-item" href="strona-seo.html"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Jak stworzy&#263; stron&#281; firmow&#261;, kt&oacute;ra sprzedaje w 2026?</span></a>
+            <a class="dd-item" href="automatyzacje-email.html"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">E-mail automation &mdash; 5 scenariuszy, kt&oacute;re dzia&#322;aj&#261; od razu</span></a>
+            <a class="dd-item" href="chatbot-ai.html"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI na stronie: kiedy warto, a kiedy szkodzi?</span></a>
+            <a class="dd-item" href="geo-ai-search.html"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO: jak pozycjonowa&#263; firm&#281; w ChatGPT i Google AI?</span></a>
+            <a class="dd-item" href="meta-ads-ai.html"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty reklam o 30%?</span></a>
+            <a class="dd-item" href="branding.html"><span class="dd-eyebrow">Branding</span><span class="dd-title">Visual identity w 2026 &mdash; DNA skutecznej marki</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm" href="../index.html#kontakt">Um&oacute;w konsultacj&#281;</a>
+      <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html#case-studies"><span>Case studies</span><span class="n">01</span></a>
+  <a href="../index.html#oferta"><span>Oferta</span><span class="n">02</span></a>
+  <a href="../index.html#porownanie"><span>Por&oacute;wnanie</span><span class="n">03</span></a>
+  <a href="../index.html#proces"><span>Proces</span><span class="n">04</span></a>
+  <div class="mm-blog">
+    <span class="mm-h">Blog <span class="n">05</span></span>
+    <a class="mm-sub" href="strona-seo.html">Strona firmowa, kt&oacute;ra sprzedaje</a>
+    <a class="mm-sub" href="automatyzacje-email.html">E-mail automation &mdash; 5 scenariuszy</a>
+    <a class="mm-sub" href="chatbot-ai.html">Chatbot AI: kiedy warto?</a>
+    <a class="mm-sub" href="geo-ai-search.html">GEO &mdash; widoczno&#347;&#263; w AI Search</a>
+    <a class="mm-sub" href="meta-ads-ai.html">Meta Ads z AI</a>
+    <a class="mm-sub" href="branding.html">Visual identity w 2026</a>
+  </div>
+  <a href="../index.html#kontakt"><span>Kontakt</span><span class="n">06</span></a>
+</div>
+
+<main>
+<header class="blog-header">
+  <div class="wrap">
+    <span class="blog-eyebrow">Strona i SEO</span>
+    <h1 class="blog-title">Jak stworzy&#263; stron&#281; firmow&#261;,<br>kt&oacute;ra sprzedaje w 2026?</h1>
+    <div class="blog-meta">
+      <span>16 czerwca 2026</span>
+      <span>&#183;</span>
+      <span>6 min czytania</span>
+    </div>
+  </div>
+</header>
+
+<article class="blog-body wrap">
+  <a class="blog-back" href="../index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Wr&oacute;&#263; na stron&#281; g&#322;&#243;wn&#261;
+  </a>
+
+  <p class="lead">Wi&#281;kszo&#347;&#263; stron firmowych traci ponad 95% odwiedzaj&#261;cych &mdash; bez jednego zlecenia, bez kontaktu, bez &347;ladu. Problem nie le&#380;y w designie. Le&#380;y w braku strategii, kt&oacute;ra prowadzi u&#380;ytkownika od pierwszego klikni&#281;cia do decyzji zakupowej.</p>
+
+  <h2>Dlaczego wi&#281;kszo&#347;&#263; stron firmowych nie sprzedaje?</h2>
+  <p>Typowa strona internetowa dla firmy zaczyna si&#281; od &bdquo;Witamy w firmie XYZ, liderze bran&#380;y od 1998 roku&rdquo;. U&#380;ytkownik, kt&oacute;ry trafi&#322; na stron&#281; z konkretnym problemem, nie szuka historii firmy &mdash; szuka odpowiedzi na pytanie: <strong>czy wy mo&#380;ecie mi pom&oacute;c?</strong></p>
+  <p>Strona internetowa musi od pierwszych sekund komunikowa&#263; propozycj&#281; warto&#347;ci: co robisz, dla kogo i dlaczego to dzia&#322;a. Dopiero p&oacute;&#378;niej przychodzi czas na histori&#281; i &bdquo;o nas&rdquo;.</p>
+
+  <h2>Struktura strony, kt&oacute;ra konwertuje</h2>
+  <p>Skuteczna strona firmowa pod SEO i konwersj&#281; kieruje si&#281; prostym schematem: <strong>Problem &rarr; Rozwi&#261;zanie &rarr; Dow&oacute;d &rarr; Wezwanie do dzia&#322;ania</strong>. Powy&#380;ej linii zgi&#281;cia (cz&#281;&#347;&#263; widoczna bez przewijania) powinna znale&#378;&#263; si&#281; propozycja warto&#347;ci i przycisk CTA &mdash; nie menu ze wszystkimi podstronami i nie slider z pi&#281;knym zdj&#281;ciem.</p>
+  <p>Dalej na stronie warto umie&#347;ci&#263; sekcj&#281; z konkretnym problemem klienta, sekcj&#281; z rozwi&#261;zaniem (twoj&#261; us&#322;ug&#261;), elementy social proof (liczby, opinie, loga klient&oacute;w) i kolejny CTA. Ka&#380;da sekcja ma odpowiada&#263; na jedno pytanie, kt&oacute;re zadaje sobie u&#380;ytkownik na danym etapie podejmowania decyzji.</p>
+
+  <div class="blog-tip">
+    <strong>Zasada jednego przekazu:</strong> Ka&#380;da podstrona powinna mie&#263; dok&#322;adnie jeden cel. Strona g&#322;&#243;wna sprzedaje kontakt, podstrona us&#322;ugi sprzedaje konkretne zamówienie, blog buduje autorytet. Mieszanie cel&oacute;w rozwadnia konwersj&#281;.
+  </div>
+
+  <h2>SEO on-page &mdash; podstawy, kt&oacute;re nadal dzia&#322;aj&#261;</h2>
+  <p>Optymalizacja strony pod wyszukiwarki w 2026 roku nie jest tajemnic&#261;: jeden H1 z g&#322;&#243;wnym s&#322;owem kluczowym, meta description do 160 znak&oacute;w z naturalnym wyst&#261;pieniem frazy, URL oparty na s&#322;owach kluczowych (nie parametrach), alt tagi na ka&#380;dym obrazku, linkowanie wewn&#281;trzne do powi&#261;zanych podstron.</p>
+  <p>Ale sama obecno&#347;&#263; s&#322;owa kluczowego nie wystarcza. Google coraz wyra&#378;niej premiuje strony, kt&oacute;re <strong>wyczerpuj&#261; temat</strong> i odpowiadaj&#261; na pytania u&#380;ytkownika lepiej ni&#380; konkurencja. D&#322;ugo&#347;&#263; tekstu sama w sobie nie jest czynnikiem rankingowym &mdash; liczy si&#281; jako&#347;&#263; i kompletno&#347;&#263; informacji.</p>
+
+  <h2>Core Web Vitals &mdash; szybko&#347;&#263; jako czynnik rankingowy</h2>
+  <p>Od 2021 roku Google w&#322;&#261;czy&#322; Core Web Vitals do algorytmu rankingowego. Trzy kluczowe metryki to: <strong>LCP</strong> (Largest Contentful Paint) &mdash; czas &#322;adowania g&#322;&#243;wnej tre&#347;ci, powinien by&#263; poni&#380;ej 2,5 sekundy; <strong>INP</strong> (Interaction to Next Paint) &mdash; czas reakcji na dzia&#322;ania u&#380;ytkownika; <strong>CLS</strong> (Cumulative Layout Shift) &mdash; stabilno&#347;&#263; uk&#322;adu strony podczas &#322;adowania, powinien by&#263; poni&#380;ej 0,1.</p>
+  <p>Najcz&#281;stsze problemy to nieoptymalizowane obrazy (brak lazy loading, brak atrybut&oacute;w width/height), blokuj&#261;ce skrypty JavaScript &#322;adowane w sekcji head oraz fonty Google bez preconnect. Narz&#281;dzia takie jak PageSpeed Insights i Lighthouse wska&#380;&#261; dok&#322;adnie, co wymaga poprawy.</p>
+
+  <div class="blog-tip">
+    <strong>Szybka wygrana:</strong> Kompresja obraz&oacute;w do formatu WebP lub AVIF mo&#380;e skr&oacute;ci&#263; czas &#322;adowania strony o 40&ndash;60% bez &#380;adnych zmian w kodzie. Wi&#281;kszo&#347;&#263; stron nadal serwuje PNG i JPEG wa&#380;&#261;ce kilka megabajt&oacute;w.
+  </div>
+
+  <h2>Copywriting, kt&oacute;ry sprzedaje</h2>
+  <p>Dobry copywriting na stronie firmowej m&oacute;wi j&#281;zykiem klienta, nie j&#281;zykiem firmy. Zamiast &bdquo;oferujemy kompleksowe us&#322;ugi marketingowe&rdquo; napisz &bdquo;dowiemy si&#281;, czego szuka tw&oacute;j klient i sprawdzimy, czy to op&#322;acalne jeszcze przed pierwsz&#261; z&#322;ot&oacute;wk&#261; wydatek na reklam&#281;&rdquo;. Konkret bije og&oacute;lnik zawsze.</p>
+  <p>Kluczowe elementy: nag&#322;&#243;wek skoncentrowany na korzy&#347;ci (nie na funkcji), podtekst wyja&#347;niaj&#261;cy mechanizm (dlaczego to dzia&#322;a), social proof w postaci liczb lub cytat&oacute;w klient&oacute;w, i wyra&#378;ny CTA z czasownikiem w trybie rozkazuj&#261;cym (&bdquo;um&oacute;w bezp&#322;atn&#261; konsultacj&#281;&rdquo;, nie &bdquo;wi&#281;cej informacji&rdquo;).</p>
+
+  <h2>Jak mierzy&#263;, czy strona sprzedaje?</h2>
+  <p>Bez danych nie ma optymalizacji. Podstawowe metryki do monitorowania: wsp&oacute;&#322;czynnik konwersji (liczba kontakt&oacute;w / liczba sesji), bounce rate (procent u&#380;ytkownik&oacute;w wychodz&#261;cych po jednej podstronie), &#347;redni czas na stronie i mapy cieplne (heatmaps). Google Analytics 4 z konfiguracj&#261; zdarze&#324; dla kontaktu, telefonu i scrollowania to minimum, od kt&oacute;rego nale&#380;y zacz&#261;&#263;.</p>
+  <p>Strona firmowa nie jest projektem jednorazowym &mdash; to &#380;ywy produkt, kt&oacute;ry wymaga ci&#261;g&#322;ych test&oacute;w A/B, aktualizacji tre&#347;ci i dostosowywa&#324; na podstawie danych. Firmy, kt&oacute;re traktuj&#261; stron&#281; jak ulotkę wydrukowan&#261; raz na pi&#281;&#263; lat, systematycznie traci na r&oacute;wnie&#380; systematycznie optymalizuj&#261;cych si&#281; konkurentach.</p>
+</article>
+
+<div class="blog-cta-box wrap">
+  <span class="cta-label">Gotowy na nast&#281;pny krok?</span>
+  <h3>Stworzymy stron&#281;, kt&oacute;ra generuje leady</h3>
+  <p>Audyt obecnej strony, projekt nowej architektury i wdro&#380;enie &mdash; z gwarancj&#261; poprawy kluczowych metryk w 90 dni.</p>
+  <a class="btn btn-primary" href="../index.html#kontakt">Um&oacute;w bezp&#322;atn&#261; konsultacj&#281;</a>
+</div>
+
+<div class="blog-also wrap">
+  <h4>Przeczytaj r&oacute;wnie&#380;</h4>
+  <div class="blog-also-grid">
+    <a class="blog-also-item" href="geo-ai-search.html">
+      <span class="eyebrow">GEO / AI Search</span>
+      <span class="t">GEO: jak pozycjonowa&#263; firm&#281; w ChatGPT, Perplexity i Google AI?</span>
+    </a>
+    <a class="blog-also-item" href="chatbot-ai.html">
+      <span class="eyebrow">Chatbot AI</span>
+      <span class="t">Chatbot AI na stronie: kiedy warto, a kiedy szkodzi wizerunkowi?</span>
+    </a>
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="../index.html"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M16 2.5v9"/><path d="M16 20.5v9"/><path d="M2.5 16h9"/><path d="M20.5 16h9"/><path d="M6.8 6.8l6 6"/><path d="M19.2 19.2l6 6"/><circle cx="24.5" cy="8" r="1.8" fill="currentColor" stroke="none"/></svg>skaluj<span class="tld">.ai</span></a>
+        <p>Agencja wdro&#380;e&#324; AI. Automatyzacje, asystenci i modele predykcyjne &mdash; z policzonym ROI.</p>
+      </div>
+      <div><h4>Nawigacja</h4><ul><li><a href="../index.html#oferta">Oferta</a></li><li><a href="../index.html#case-studies">Case studies</a></li><li><a href="../index.html#proces">Proces</a></li><li><a href="../index.html#kontakt">Kontakt</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a href="mailto:hello@skaluj.ai">hello@skaluj.ai</a></li><li><a href="tel:+48221000100">+48 22 100 01 00</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Polityka prywatno&#347;ci</a></li></ul></div>
+    </div>
+    <div class="footer-watermark" aria-hidden="true">skaluj.ai</div>
+    <div class="footer-bottom"><span>&copy; 2026 skaluj.ai &mdash; wszystkie prawa zastrze&#380;one</span><span>Zaprojektowano w Polsce</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>20);});
+  var burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+  burger&&burger.addEventListener('click',function(){document.body.classList.toggle('menu-open');});
+  mm&&mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open');});});
+  var item=document.getElementById('blogItem'),btn=document.getElementById('blogBtn');
+  if(item&&btn){
+    var t,hoverable=matchMedia('(hover:hover) and (pointer:fine)').matches;
+    function open(){clearTimeout(t);item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    function close(){t=setTimeout(function(){item.classList.remove('open');btn.setAttribute('aria-expanded','false');},280);}
+    if(hoverable){item.addEventListener('mouseenter',open);item.addEventListener('mouseleave',close);}
+    btn.addEventListener('click',function(){item.classList.contains('open')?close():open();});
+    document.addEventListener('click',function(e){if(!item.contains(e.target))item.classList.remove('open');});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')item.classList.remove('open');});
+    item.querySelectorAll('.dropdown a').forEach(function(a){a.addEventListener('click',function(){item.classList.remove('open');});});
+  }
+})();
+</script>
+</body>
+</html>
