@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
@@ -111,15 +111,12 @@ button{font-family:inherit;cursor:pointer}
    NAV
    ============================================================ */
 .nav{position:fixed;top:14px;left:0;right:0;z-index:1000;padding:0 16px}
-.nav-inner{position:relative;max-width:1080px;margin:0 auto;padding:8px 8px 8px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--line);border-radius:9999px;box-shadow:0 10px 40px rgba(15,30,60,.08);
-  transition:box-shadow .35s,background-color .35s}
+.nav-inner{position:relative;max-width:1080px;margin:0 auto;padding:8px 8px 8px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:9999px;box-shadow:0 10px 40px rgba(15,30,60,.08);transition:box-shadow .35s,background-color .35s}
 .nav.scrolled .nav-inner{background:rgba(255,255,255,.92);box-shadow:0 14px 44px rgba(15,30,60,.12)}
 .logo{display:inline-flex;align-items:center;text-decoration:none}
 .logo .brand-img{height:24px;width:auto;display:block}
 /* centralne linki (pill) */
-.nav-links{display:flex;gap:2px;align-items:center;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links{display:flex;gap:2px;align-items:center;justify-self:center}
 .nav-item{position:relative;display:flex}
 .nav-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-family:inherit;color:var(--muted);
   padding:9px 14px;border-radius:9999px;background:none;border:0;cursor:pointer;white-space:nowrap;
@@ -130,35 +127,30 @@ button{font-family:inherit;cursor:pointer}
 .nav-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;line-height:1}
 .nav-caret{width:11px;height:11px;transition:transform .25s var(--ease)}
 .nav-item.open .nav-caret{transform:rotate(180deg)}
-/* dropdown bloga */
-.dropdown{position:absolute;top:calc(100% + 16px);left:50%;
-  transform:translateX(-50%) translateY(-12px) scale(.95);transform-origin:top center;
-  width:min(460px,86vw);background:#fff;border:1px solid var(--line);border-radius:18px;
-  box-shadow:0 24px 60px rgba(15,30,60,.16);padding:10px;
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity .55s var(--ease),transform .6s var(--ease),visibility .55s;z-index:60}
-.dropdown::before{content:"";position:absolute;top:-16px;left:0;right:0;height:16px}
-.nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0) scale(1)}
-/* kaskadowe wysuwanie pozycji */
-.dropdown > *{opacity:0;transform:translateY(14px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
-.nav-item.open .dropdown > *{opacity:1;transform:none}
-.nav-item.open .dropdown > :nth-child(1){transition-delay:.12s}
-.nav-item.open .dropdown > :nth-child(2){transition-delay:.19s}
-.nav-item.open .dropdown > :nth-child(3){transition-delay:.26s}
-.nav-item.open .dropdown > :nth-child(4){transition-delay:.33s}
-.nav-item.open .dropdown > :nth-child(5){transition-delay:.40s}
-.dd-head{display:flex;justify-content:space-between;align-items:center;padding:8px 12px 10px}
+/* dropdown bloga -- mega menu */
+#blogItem{position:static}
+.dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;transform:translateY(-10px);transform-origin:top center;width:auto;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(15,30,60,.14);padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .32s var(--ease),visibility .28s;z-index:60}
+.dropdown::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px}
+.nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 14px;border-bottom:1px solid var(--line-2);margin-bottom:8px}
 .dd-head .l{font-family:var(--fm);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
-.dd-head .c{font-family:var(--fm);font-size:11px;color:var(--accent)}
-.dd-item{display:block;padding:12px 14px;border-radius:12px;transition:background-color .2s}
+.dd-head .c{font-family:var(--fm);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:5px;transition:color .2s}
+.dd-head .c svg{width:12px;height:12px;transition:transform .25s var(--ease)}
+.dd-head .c:hover svg{transform:translateX(3px)}
+.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.dd-item{display:block;padding:12px 14px;border-radius:12px;opacity:0;transform:translateY(6px);transition:background-color .2s,opacity .24s var(--ease),transform .27s var(--ease)}
 .dd-item:hover{background:rgba(47,111,224,.06)}
-.dd-eyebrow{display:block;font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
-.dd-title{display:block;font-size:14.5px;font-weight:500;color:var(--text);letter-spacing:-.01em;line-height:1.3}
-.dd-desc{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.45}
-.dd-all{display:flex;align-items:center;justify-content:space-between;margin:6px 2px 2px;padding:12px 14px;border-top:1px solid var(--line-2);font-size:13px;font-weight:500;color:var(--accent)}
-.dd-all svg{width:14px;height:14px;transition:transform .25s var(--ease)}
-.dd-all:hover svg{transform:translateX(3px)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.nav-item.open .dd-item{opacity:1;transform:none}
+.nav-item.open .dd-item:nth-child(1){transition-delay:.08s}
+.nav-item.open .dd-item:nth-child(2){transition-delay:.11s}
+.nav-item.open .dd-item:nth-child(3){transition-delay:.14s}
+.nav-item.open .dd-item:nth-child(4){transition-delay:.14s}
+.nav-item.open .dd-item:nth-child(5){transition-delay:.17s}
+.nav-item.open .dd-item:nth-child(6){transition-delay:.20s}
+.dd-eyebrow{display:block;font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.dd-title{display:block;font-size:13.5px;font-weight:500;color:var(--text);letter-spacing:-.01em;line-height:1.35}
+.dd-desc{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
+.nav-right{display:flex;align-items:center;gap:10px;justify-self:end}
 .nav-right .btn{border-radius:9999px}
 .nav-burger{display:none;width:38px;height:38px;background:none;border:0;position:relative}
 .nav-burger span{position:absolute;left:9px;right:9px;height:1.5px;background:var(--text);transition:transform .35s var(--ease),top .35s}
@@ -551,6 +543,62 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
 .form-success p{color:var(--muted);font-size:14px;max-width:32ch}
 
 /* ============================================================
+   MULTI-STEP FORM
+   ============================================================ */
+.mf-progress{display:flex;align-items:center;margin-bottom:32px}
+.mf-step{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.mf-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--faint);transition:background .3s,border-color .3s,color .3s;flex-shrink:0}
+.mf-step.mf-active .mf-dot{border-color:var(--accent);background:var(--accent);color:#fff}
+.mf-step.mf-done .mf-dot{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.mf-lbl{font-size:12px;color:var(--faint);white-space:nowrap;transition:color .3s}
+.mf-step.mf-active .mf-lbl,.mf-step.mf-done .mf-lbl{color:var(--text)}
+.mf-line{flex:1;height:1px;background:var(--line);margin:0 12px;min-width:16px;transition:background .4s}
+.mf-line.mf-done{background:var(--accent)}
+.mf-hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;display:block}
+.mf-panel{display:none}
+.mf-panel.mf-active{display:block}
+.mf-sub{font-size:14px;color:var(--muted);margin-bottom:18px;margin-top:-6px}
+.ferr{display:block;font-size:11px;color:#d95a5a;min-height:14px;margin-bottom:4px;padding-left:2px}
+.svc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
+.svc-tile{cursor:pointer}
+.svc-tile input{position:absolute;opacity:0;pointer-events:none}
+.svc-tile-body{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted);transition:border-color .2s,color .2s,background .2s;line-height:1.35;user-select:none}
+.svc-tile:hover .svc-tile-body{border-color:rgba(47,111,224,.4);color:var(--text)}
+.svc-tile input:checked + .svc-tile-body{border-color:var(--accent);color:var(--text);background:var(--accent-soft)}
+.svc-ico{width:16px;height:16px;flex-shrink:0;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.file-drop{border:1.5px dashed var(--line);border-radius:var(--r-lg);padding:22px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;display:block;position:relative;margin-top:12px}
+.file-drop:hover{border-color:var(--accent);background:var(--accent-soft)}
+.file-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:1}
+.file-drop-ico{width:24px;height:24px;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;fill:none;color:var(--faint);margin:0 auto 8px;display:block}
+.file-drop-lbl{display:block;font-size:13px;color:var(--muted)}
+.file-drop-hint{display:block;font-size:11px;color:var(--faint);margin-top:4px}
+.file-name{display:none;font-size:12px;color:var(--accent);margin-top:10px}
+.file-name.has-file{display:block}
+.web-sub{border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;margin-bottom:14px;display:none;animation:fadeSlide .25s ease}
+.web-sub.visible{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mf-sub-title{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:14px}
+.mf-sub-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:14px;display:block;margin-bottom:10px}
+.color-swatches{display:flex;gap:10px;flex-wrap:wrap}
+.cswatch{width:30px;height:30px;border-radius:50%;cursor:pointer;position:relative;display:inline-flex;flex-shrink:0;vertical-align:top}
+.cswatch span{display:block;width:30px;height:30px;border-radius:50%;transition:transform .15s,box-shadow .15s}
+.cswatch input{position:absolute;opacity:0;width:0;height:0}
+.cswatch input:checked + span{box-shadow:0 0 0 2.5px var(--bg-elev),0 0 0 4.5px var(--accent);transform:scale(1.1)}
+.style-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.style-chip{cursor:pointer}
+.style-chip input{position:absolute;opacity:0;pointer-events:none}
+.style-chip span{display:block;border:1px solid var(--line);border-radius:100px;padding:7px 15px;font-size:12.5px;color:var(--muted);transition:all .2s;user-select:none}
+.style-chip:hover span{border-color:rgba(47,111,224,.4);color:var(--text)}
+.style-chip input:checked + span{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.mf-nav{display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.mf-back{border:1px solid var(--line);color:var(--muted);padding:0 20px;height:44px;border-radius:var(--r-lg);font-size:14px;transition:border-color .2s,color .2s;background:none;cursor:pointer;font-family:inherit}
+.mf-back:hover{border-color:var(--accent);color:var(--text)}
+.mf-back[hidden]{display:none !important}
+.mf-next{height:44px;padding:0 24px;font-size:14px}
+.mf-note{margin-top:12px;font-size:12px;color:var(--faint);text-align:center;display:none}
+.mf-note.visible{display:block}
+@media(max-width:600px){.svc-tiles{grid-template-columns:1fr}.mf-lbl{display:none}}
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer{border-top:1px solid var(--line);padding:80px 0 40px;position:relative;overflow:hidden}
@@ -571,6 +619,8 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
    ============================================================ */
 @media (max-width:1020px){
   .bcard.b-7,.bcard.b-5,.bcard.b-4{grid-column:span 12}
+  .cmp-wrap{grid-template-columns:1fr;gap:40px}
+  .cmp-sticky{position:static}
   .case-card{grid-template-columns:1fr}
   .case-metrics{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:8px;flex-direction:row;gap:18px}
   .case-metric{flex:1;border-bottom:0;border-right:1px solid var(--line-2);padding:12px 12px 4px 0}
@@ -598,6 +648,10 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
   .case-metric{border-right:0;border-bottom:1px solid var(--line-2);padding:14px 0}
   .footer-grid{grid-template-columns:1fr}
   .fgrid{grid-template-columns:1fr}
+  .cmp-wrap{grid-template-columns:1fr;gap:40px}
+  .cmp-sticky{position:static}
+  .cmp-thead-cell:first-child,.cmp-cell.cmp-label{display:none}
+  .cmp-thead{grid-template-columns:1fr 1fr}.cmp-row{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
@@ -606,6 +660,24 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
   .hero h1 .line,.hero .eyebrow,.hero-sub,.hero-cta,.hero-screen,.hero-stats{opacity:1;animation:none}
   .hero h1 .uline::after{transform:scaleX(1)}
 }
+/* COMPARISON TABLE */
+.cmp-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
+.cmp-sticky{position:sticky;top:120px}
+.cmp-title-main{font-size:clamp(2.8rem,5.5vw,4.4rem);font-weight:620;letter-spacing:-.04em;line-height:1.08;margin-top:16px}
+.cmp-title-main .cmp-vs{color:var(--faint);font-weight:380}
+.cmp-title-main .cmp-brand{color:var(--accent)}
+.cmp-table{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.cmp-thead{display:grid;grid-template-columns:1.4fr 1fr 1fr;border-bottom:1px solid var(--line);background:var(--bg-elev)}
+.cmp-thead-cell{padding:14px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.cmp-thead-cell.cmp-ours{background:rgba(47,111,224,.07);color:var(--text);font-weight:600}
+.cmp-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;border-bottom:1px solid var(--line-2);transition:background .15s}
+.cmp-row:last-child{border-bottom:0}
+.cmp-row:hover{background:var(--bg-elev)}
+.cmp-cell{padding:17px 20px;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:8px;line-height:1.45}
+.cmp-cell.cmp-label{color:var(--text);font-size:13px}
+.cmp-cell.cmp-ours{background:rgba(47,111,224,.04)}
+.cmp-x{color:#d95a5a;font-size:13px;flex:none}
+.cmp-v{color:#24a35a;font-size:13px;flex:none;font-weight:600}
 </style>
 </head>
 <body>
@@ -621,31 +693,23 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
     <div class="nav-links">
       <a class="nav-link" href="#case-studies">Case studies</a>
       <a class="nav-link" href="#oferta">Oferta</a>
-      <a class="nav-link" href="#korzysci">Korzyści</a>
+      <a class="nav-link" href="#porownanie">Porównanie</a>
       <a class="nav-link" href="#proces">Proces</a>
       <div class="nav-item" id="blogItem">
         <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">
-          Blog <span class="nav-badge">3</span>
+          Blog <span class="nav-badge">6</span>
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="dropdown" role="menu" aria-label="Wpisy na blogu">
-          <div class="dd-head"><span class="l">Z bloga</span><span class="c">AI dla biznesu</span></div>
-          <a class="dd-item" href="#" role="menuitem">
-            <span class="dd-eyebrow">Poradnik</span>
-            <span class="dd-title">Ile kosztuje wdrożenie AI w firmie? Widełki cen 2026</span>
-            <span class="dd-desc">Realne przedziały cenowe, modele rozliczeń i jak liczyć zwrot.</span>
-          </a>
-          <a class="dd-item" href="#" role="menuitem">
-            <span class="dd-eyebrow">Poradnik</span>
-            <span class="dd-title">Automatyzacja obsługi klienta z AI — od czego zacząć</span>
-            <span class="dd-desc">5 procesów, które zautomatyzujesz najszybciej i z największym efektem.</span>
-          </a>
-          <a class="dd-item" href="#" role="menuitem">
-            <span class="dd-eyebrow">Analiza</span>
-            <span class="dd-title">Jak policzyć ROI z wdrożenia sztucznej inteligencji</span>
-            <span class="dd-desc">Prosty model: koszty, oszczędności i czas zwrotu krok po kroku.</span>
-          </a>
-          <a class="dd-all" href="#">Zobacz wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <div class="dropdown" role="menu" aria-label="Wpisy na blogu">
+          <div class="dd-head"><span class="l">Z BLOGA</span><a class="c" href="#">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-grid">
+            <a class="dd-item" href="blog/strona-seo.html" role="menuitem"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Jak stworzy&#263; stron&#281; firmow&#261;, kt&oacute;ra sprzedaje w 2026?</span><span class="dd-desc">Struktura, copywriting i UX, kt&oacute;re zamieniaj&#261; ruch w klient&oacute;w.</span></a>
+            <a class="dd-item" href="blog/automatyzacje-email.html" role="menuitem"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">E-mail automation &mdash; 5 scenariuszy, kt&oacute;re dzia&#322;aj&#261; od razu</span><span class="dd-desc">Od powitania nowego klienta do win-back &mdash; gotowe przep&#322;ywy.</span></a>
+            <a class="dd-item" href="blog/chatbot-ai.html" role="menuitem"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI na stronie: kiedy warto, a kiedy szkodzi wizerunkowi?</span><span class="dd-desc">Praktyczne przypadki u&#380;ycia i b&#322;&#281;dy, kt&oacute;rych lepiej unika&#263;.</span></a>
+            <a class="dd-item" href="blog/geo-ai-search.html" role="menuitem"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO: jak pozycjonowa&#263; firm&#281; w ChatGPT, Perplexity i Google AI?</span><span class="dd-desc">Nowe zasady widoczno&#347;ci w erze wyszukiwania generatywnego.</span></a>
+            <a class="dd-item" href="blog/meta-ads-ai.html" role="menuitem"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty reklam nawet o 30%?</span><span class="dd-desc">Automatyczne testy kreacji, audience signals i optymalizacja bud&#380;etu.</span></a>
+            <a class="dd-item" href="blog/branding.html" role="menuitem"><span class="dd-eyebrow">Branding</span><span class="dd-title">Visual identity w 2026 &mdash; co wyr&oacute;&#380;nia marki, kt&oacute;re zapadaj&#261; w pami&#281;&#263;?</span><span class="dd-desc">Kolor, typografia i sp&oacute;jno&#347;&#263; &mdash; DNA skutecznej marki.</span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -659,13 +723,16 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
 <div class="mobile-menu" id="mobileMenu">
   <a href="#case-studies"><span>Case studies</span><span class="n">01</span></a>
   <a href="#oferta"><span>Oferta</span><span class="n">02</span></a>
-  <a href="#korzysci"><span>Korzyści</span><span class="n">03</span></a>
+  <a href="#porownanie"><span>Porównanie</span><span class="n">03</span></a>
   <a href="#proces"><span>Proces</span><span class="n">04</span></a>
-  <div class="mm-blog">
+    <div class="mm-blog">
     <span class="mm-h">Blog <span class="n">05</span></span>
-    <a class="mm-sub" href="#">Ile kosztuje wdrożenie AI w firmie? (2026)</a>
-    <a class="mm-sub" href="#">Automatyzacja obsługi klienta z AI — od czego zacząć</a>
-    <a class="mm-sub" href="#">Jak policzyć ROI z wdrożenia AI</a>
+    <a class="mm-sub" href="blog/strona-seo.html">Jak stworzy&#263; stron&#281; firmow&#261;, kt&oacute;ra sprzedaje?</a>
+    <a class="mm-sub" href="blog/automatyzacje-email.html">E-mail automation &mdash; 5 scenariuszy AI</a>
+    <a class="mm-sub" href="blog/chatbot-ai.html">Chatbot AI: kiedy warto, a kiedy szkodzi?</a>
+    <a class="mm-sub" href="blog/geo-ai-search.html">GEO: widoczno&#347;&#263; w ChatGPT i Google AI</a>
+    <a class="mm-sub" href="blog/meta-ads-ai.html">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty o 30%?</a>
+    <a class="mm-sub" href="blog/branding.html">Visual identity w 2026 &mdash; DNA skutecznej marki</a>
   </div>
   <a href="#kontakt"><span>Kontakt</span><span class="n">06</span></a>
 </div>
@@ -850,133 +917,127 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
       <p class="sec-sub">Od pierwszego audytu po utrzymanie produkcyjne — prowadzimy całość wdrożenia, więc nie potrzebujesz trzech dostawców i czterech ofert.</p>
     </div>
 
-    <div class="offer" data-reveal>
+        <div class="offer" data-reveal>
       <div class="offer-item">
         <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">01</span><span class="offer-name">Audyt i strategia AI</span><span class="offer-meta">2–3 tygodnie</span>
+          <span class="offer-num">01</span><span class="offer-name">Strona internetowa + SEO</span><span class="offer-meta">AI-built</span>
           <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
         <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
           <span></span>
-          <p class="offer-desc">Mapujemy procesy całej firmy i wyceniamy potencjał automatyzacji w złotówkach. Dostajesz <span class="hl">priorytetyzowaną mapę wdrożeń</span> z prognozą ROI — zanim wydasz cokolwiek na technologię.</p>
-          <ul class="offer-points"><li>Warsztaty z zespołami operacyjnymi</li><li>Analiza danych i gotowości infrastruktury</li><li>Business case z prognozą ROI</li></ul>
+          <p class="offer-desc">Tworzymy strony internetowe projektowane i optymalizowane przez AI — <span class="hl">szybciej, taniej i skuteczniej</span> niż tradycyjne podejście. SEO wbudowane od pierwszego dnia, nie doklejone na końcu.</p>
+          <ul class="offer-points"><li>Projekt i wdrożenie strony w technologii AI</li><li>SEO techniczne i treściowe generowane AI</li><li>Copywriting dostosowany do algorytmów i odbiorcy</li></ul>
         </div></div></div>
       </div>
       <div class="offer-item">
         <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">02</span><span class="offer-name">Automatyzacja procesów</span><span class="offer-meta">LLM + RPA</span>
+          <span class="offer-num">02</span><span class="offer-name">Automatyzacje emailowe i marketingowe</span><span class="offer-meta">Email / Marketing</span>
           <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
         <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
           <span></span>
-          <p class="offer-desc">Obieg dokumentów, fakturowanie, raportowanie, onboarding — procesy pochłaniające etaty zamieniamy w <span class="hl">pipeline'y działające bez nadzoru</span>, z człowiekiem tylko tam, gdzie podejmuje się decyzje.</p>
-          <ul class="offer-points"><li>Ekstrakcja danych z dokumentów (OCR + LLM)</li><li>Integracje z ERP, CRM i systemami legacy</li><li>Monitoring jakości i ścieżki eskalacji</li></ul>
+          <p class="offer-desc">Sekwencje mailowe, follow-upy, kampanie nurturingowe — <span class="hl">działające bez Twojego udziału</span>. AI personalizuje treść, dobiera moment wysyłki i optymalizuje konwersję w czasie rzeczywistym.</p>
+          <ul class="offer-points"><li>Automatyczne sekwencje i follow-upy</li><li>Personalizacja treści i segmentacja AI</li><li>Integracja z CRM i systemami marketingowymi</li></ul>
         </div></div></div>
       </div>
       <div class="offer-item">
         <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">03</span><span class="offer-name">Asystenci i chatboty AI</span><span class="offer-meta">Obsługa klienta</span>
+          <span class="offer-num">03</span><span class="offer-name">Asystent i chatbot AI</span><span class="offer-meta">Obsługa klienta</span>
           <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
         <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
           <span></span>
-          <p class="offer-desc">Asystenci, którzy znają Twoją ofertę, procedury i historię klienta. <span class="hl">70–80% zgłoszeń zamykanych bez człowieka</span>, a zespół zajmuje się tylko sprawami, które naprawdę tego wymagają.</p>
-          <ul class="offer-points"><li>RAG na bazie wiedzy firmy</li><li>Kanały: www, e-mail, telefon, WhatsApp</li><li>Płynna eskalacja do agenta z pełnym kontekstem</li></ul>
+          <p class="offer-desc">Asystenci, którzy znają Twoją ofertę, procedury i historię klienta. <span class="hl">70–80% zgłoszeń zamykanych bez człowieka</span> — na stronie, w mailu, przez telefon czy WhatsApp.</p>
+          <ul class="offer-points"><li>Chatbot na stronie, WhatsApp, e-mail</li><li>Baza wiedzy firmy podpięta do asystenta</li><li>Płynna eskalacja do człowieka z pełnym kontekstem</li></ul>
         </div></div></div>
       </div>
       <div class="offer-item">
         <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">04</span><span class="offer-name">Modele predykcyjne i custom AI</span><span class="offer-meta">ML / dane</span>
+          <span class="offer-num">04</span><span class="offer-name">GEO — widoczność w AI</span><span class="offer-meta">ChatGPT / Perplexity</span>
           <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
         <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
           <span></span>
-          <p class="offer-desc">Prognoza popytu, dynamiczna wycena, wykrywanie anomalii, scoring ryzyka — modele szyte pod <span class="hl">Twoje dane i Twoją branżę</span>, wpięte w systemy, w których pracuje zespół.</p>
-          <ul class="offer-points"><li>Modele uczone na danych firmy</li><li>MLOps: wdrożenie, monitoring, retrening</li><li>Dashboardy decyzyjne dla zarządu</li></ul>
+          <p class="offer-desc">Generative Engine Optimization — optymalizujemy Twoją obecność pod odpowiedzi ChatGPT, Perplexity i Google AI Overviews. <span class="hl">Klienci szukają w AI — bądź tam, gdzie szukają.</span></p>
+          <ul class="offer-points"><li>Optymalizacja treści pod modele językowe</li><li>Budowanie autorytetu w źródłach cytowanych przez AI</li><li>Monitoring wzmianek w odpowiedziach AI</li></ul>
         </div></div></div>
       </div>
       <div class="offer-item">
         <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">05</span><span class="offer-name">Szkolenia i AI adoption</span><span class="offer-meta">Zespoły</span>
+          <span class="offer-num">05</span><span class="offer-name">Meta Ads — AI Optimised</span><span class="offer-meta">Reklamy / Social</span>
           <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
         <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
           <span></span>
-          <p class="offer-desc">Najlepsze wdrożenie umiera bez ludzi, którzy go używają. Szkolimy zespoły, budujemy playbooki i <span class="hl">mierzymy realną adopcję</span> — nie liczbę rozdanych licencji.</p>
-          <ul class="offer-points"><li>Warsztaty praktyczne na realnych procesach</li><li>Polityki bezpiecznego użycia AI</li><li>Program ambasadorów wewnątrz firmy</li></ul>
+          <p class="offer-desc">Kampanie na Facebooku i Instagramie tworzone i optymalizowane przez AI — od kreacji, przez copy, po targetowanie. <span class="hl">Niższy koszt pozyskania klienta</span> i wyższe ROAS bez codziennego nadzoru.</p>
+          <ul class="offer-points"><li>Kreacje i copy generowane i testowane AI</li><li>Automatyczna optymalizacja budżetu i targetowania</li><li>Raportowanie wyników w czasie rzeczywistym</li></ul>
+        </div></div></div>
+      </div>
+      <div class="offer-item">
+        <button class="offer-head" aria-expanded="false">
+          <span class="offer-num">06</span><span class="offer-name">Grafiki i branding</span><span class="offer-meta">Design / AI</span>
+          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
+          <span></span>
+          <p class="offer-desc">Identyfikacja wizualna, posty, banery, materiały sprzedażowe — <span class="hl">produkowane przez AI w ułamku czasu i budżetu</span>. Spójna marka we wszystkich kanałach bez zatrudniania grafika na etat.</p>
+          <ul class="offer-points"><li>Logo, identyfikacja wizualna, brand book</li><li>Grafiki na social media i kampanie reklamowe</li><li>Szablony do samodzielnego użycia przez zespół</li></ul>
         </div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== KORZYŚCI ===== -->
-<section class="section" id="korzysci">
+<!-- ===== POROWNANIE ===== -->
+<section class="section" id="porownanie">
   <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow">03 — Korzyści</span>
-      <h2 class="sec-title"><span class="grad">AI, które zarabia na siebie</span></h2>
-      <p class="sec-sub">Nie wdrażamy technologii dla technologii. Każdy projekt zaczyna się od liczby, którą mamy poprawić — i kończy raportem, który to potwierdza.</p>
-    </div>
-
-    <div class="bento">
-      <div class="bcard b-7" data-reveal>
-        <span class="bcard-tag">koszty / opex</span>
-        <div class="bcard-kpi">−43<small>%</small></div>
-        <h3>Niższe koszty operacyjne</h3>
-        <p>Automatyzacja powtarzalnych procesów — dokumentów, zgłoszeń, raportów — obniża koszt obsługi pojedynczej operacji średnio o 43% już w pierwszym roku.</p>
-        <div class="bcard-viz">
-          <svg class="viz-line" viewBox="0 0 520 140" fill="none">
-            <defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(47,111,224,.2)"/><stop offset="1" stop-color="rgba(47,111,224,0)"/></linearGradient></defs>
-            <g class="gl" stroke-width="1"><line x1="0" y1="35" x2="520" y2="35"/><line x1="0" y1="70" x2="520" y2="70"/><line x1="0" y1="105" x2="520" y2="105"/></g>
-            <path class="area" d="M10 34 C90 36 150 48 220 64 C300 84 380 104 510 114 L510 140 L10 140 Z"/>
-            <path class="path" d="M10 34 C90 36 150 48 220 64 C300 84 380 104 510 114"/>
-            <circle class="dot" cx="510" cy="114" r="4"/>
-          </svg>
-        </div>
+    <div class="cmp-wrap" data-reveal>
+      <div class="cmp-sticky">
+        <span class="eyebrow">03 — Porównanie</span>
+        <h2 class="cmp-title-main">Tradycyjna<br>agencja <span class="cmp-vs">vs</span><br><span class="cmp-brand">Skaluj.ai</span></h2>
       </div>
-
-      <div class="bcard b-5" data-reveal data-delay="80">
-        <span class="bcard-tag">automatyzacja</span>
-        <div class="bcard-kpi">24/7</div>
-        <h3>Procesy, które nie śpią</h3>
-        <p>Agenci AI pracują w nocy, w weekendy i w święta — bez kolejki zadań i bez urlopów.</p>
-        <div class="viz-orbit" aria-hidden="true"><div class="ring"></div><div class="ring"></div><div class="core"></div><div class="sat"></div></div>
-      </div>
-
-      <div class="bcard b-4" data-reveal>
-        <span class="bcard-tag">skala</span>
-        <div class="bcard-kpi">5×</div>
-        <h3>Skala bez rekrutacji</h3>
-        <p>Obsłuż pięciokrotnie większy wolumen bez liniowego wzrostu zatrudnienia.</p>
-        <div class="viz-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      </div>
-
-      <div class="bcard b-4" data-reveal data-delay="80">
-        <span class="bcard-tag">decyzje</span>
-        <div class="bcard-kpi">RT</div>
-        <h3>Decyzje w czasie rzeczywistym</h3>
-        <p>Predykcja popytu, anomalie i ryzyka wykrywane zanim staną się kosztem.</p>
-        <div class="viz-radar" aria-hidden="true"><div class="sweep"></div><div class="blip b1"></div><div class="blip b2"></div></div>
-      </div>
-
-      <div class="bcard b-4" data-reveal data-delay="160">
-        <span class="bcard-tag">przewaga</span>
-        <div class="bcard-kpi">14 <small>dni</small></div>
-        <h3>Szybciej niż konkurencja</h3>
-        <p>Pierwszy mierzalny efekt w dwa tygodnie. Pełne wdrożenie w jeden kwartał — zanim rynek zdąży zareagować.</p>
-        <div class="bcard-viz" aria-hidden="true">
-          <svg width="100%" height="42" viewBox="0 0 300 42" fill="none" preserveAspectRatio="none">
-            <line x1="0" y1="21" x2="300" y2="21" stroke="rgba(0,0,0,.1)"/>
-            <line x1="0" y1="21" x2="140" y2="21" stroke="#5b9bf0" stroke-width="2"/>
-            <circle cx="140" cy="21" r="5" fill="#5b9bf0"/>
-          </svg>
+      <div>
+        <div class="cmp-table">
+          <div class="cmp-thead">
+            <div class="cmp-thead-cell"></div>
+            <div class="cmp-thead-cell">Tradycyjna agencja</div>
+            <div class="cmp-thead-cell cmp-ours">Skaluj.ai</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell cmp-label">Czas realizacji strony</div>
+            <div class="cmp-cell"><span class="cmp-x">✗</span> 6–8 tygodni</div>
+            <div class="cmp-cell cmp-ours"><span class="cmp-v">✓</span> 2–3 tygodnie</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell cmp-label">Warianty reklam testowane miesięcznie</div>
+            <div class="cmp-cell"><span class="cmp-x">✗</span> 3 warianty</div>
+            <div class="cmp-cell cmp-ours"><span class="cmp-v">✓</span> 20+ przez AI</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell cmp-label">Widoczność</div>
+            <div class="cmp-cell"><span class="cmp-x">✗</span> Tylko Google</div>
+            <div class="cmp-cell cmp-ours"><span class="cmp-v">✓</span> Google + GEO (ChatGPT, Gemini, Perplexity)</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell cmp-label">Umowy</div>
+            <div class="cmp-cell"><span class="cmp-x">✗</span> Długoterminowe, z karami</div>
+            <div class="cmp-cell cmp-ours"><span class="cmp-v">✓</span> Bez zobowiązań — działamy, dopóki dowozimy</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell cmp-label">Komunikacja</div>
+            <div class="cmp-cell"><span class="cmp-x">✗</span> Tygodnie na odpowiedź</div>
+            <div class="cmp-cell cmp-ours"><span class="cmp-v">✓</span> Do 24 h roboczych</div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-cell cmp-label">Cena strony B2B</div>
+            <div class="cmp-cell"><span class="cmp-x">✗</span> 15–30 tys. zł</div>
+            <div class="cmp-cell cmp-ours"><span class="cmp-v">✓</span> 6–12 tys. zł</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- ===== PROCES ===== -->
 <section class="section" id="proces">
@@ -1025,21 +1086,86 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
 
       <div class="form-card" data-reveal data-delay="120" id="formCard">
         <form id="contactForm" novalidate>
-          <div class="fgrid">
-            <div class="fgroup"><input type="text" id="fName" placeholder=" " required><label for="fName">Imię i nazwisko</label><span class="bar"></span></div>
-            <div class="fgroup"><input type="email" id="fEmail" placeholder=" " required><label for="fEmail">E-mail służbowy</label><span class="bar"></span></div>
+          <div class="mf-progress">
+            <div class="mf-step mf-active" id="mfDot1"><span class="mf-dot">1</span><span class="mf-lbl">Kontakt</span></div>
+            <div class="mf-line" id="mfLine1"></div>
+            <div class="mf-step" id="mfDot2"><span class="mf-dot">2</span><span class="mf-lbl">Oferta</span></div>
+            <div class="mf-line" id="mfLine2"></div>
+            <div class="mf-step" id="mfDot3"><span class="mf-dot">3</span><span class="mf-lbl">Szczeg&oacute;&#322;y</span></div>
           </div>
-          <div class="fgroup"><input type="text" id="fCompany" placeholder=" "><label for="fCompany">Firma</label><span class="bar"></span></div>
-          <div class="fgroup"><textarea id="fMsg" placeholder=" " rows="3"></textarea><label for="fMsg">Co chcesz zautomatyzować?</label><span class="bar"></span></div>
-          <span class="budget-label">Budżet projektu (PLN)</span>
-          <div class="budget-pills">
-            <input type="radio" name="budget" id="b1"><label for="b1">do 50 tys.</label>
-            <input type="radio" name="budget" id="b2" checked><label for="b2">50–150 tys.</label>
-            <input type="radio" name="budget" id="b3"><label for="b3">150–500 tys.</label>
-            <input type="radio" name="budget" id="b4"><label for="b4">500 tys. +</label>
+          <div class="mf-panel mf-active" id="mfP1">
+            <span class="mf-hint">Krok 1 z 3</span>
+            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281;</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
+            <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
+            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Nazwa firmy</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
           </div>
-          <button type="submit" class="btn btn-primary form-submit"><span class="submit-label">Wyślij zapytanie</span> <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          <p class="form-note">Wysyłając formularz akceptujesz politykę prywatności. Zero spamu.</p>
+          <div class="mf-panel" id="mfP2">
+            <span class="mf-hint">Krok 2 z 3</span>
+            <p class="mf-sub">Co C&#281; interesuje? Mo&#380;esz zaznaczy&#263; kilka.</p>
+            <div class="svc-tiles">
+              <label class="svc-tile"><input type="checkbox" name="svc" value="strona" id="svcStrona"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Strona + SEO</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="email"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>Automatyzacje e-mail</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chatbot AI</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="geo"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>GEO &mdash; widoczno&#347;&#263; AI</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="ads"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>Meta Ads AI</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></svg>Grafiki i branding</span></label>
+            </div>
+            <div class="web-sub" id="webSub">
+              <p class="mf-sub-title">Szczeg&oacute;&#322;y strony internetowej</p>
+              <span class="mf-sub-label">Kolorystyka</span>
+              <div class="color-swatches">
+                <label class="cswatch" title="Niebieski"><input type="radio" name="wColor" value="niebieski"><span style="background:#2f6fe0"></span></label>
+                <label class="cswatch" title="Zielony"><input type="radio" name="wColor" value="zielony"><span style="background:#24a35a"></span></label>
+                <label class="cswatch" title="Fioletowy"><input type="radio" name="wColor" value="fioletowy"><span style="background:#7b5ea7"></span></label>
+                <label class="cswatch" title="Pomara&#324;czowy"><input type="radio" name="wColor" value="pomaranczowy"><span style="background:#d97706"></span></label>
+                <label class="cswatch" title="Czarny"><input type="radio" name="wColor" value="czarny"><span style="background:#111"></span></label>
+                <label class="cswatch" title="R&oacute;&#380;owy"><input type="radio" name="wColor" value="rozowy"><span style="background:#e05a8d"></span></label>
+              </div>
+              <span class="mf-sub-label">Styl</span>
+              <div class="style-chips">
+                <label class="style-chip"><input type="radio" name="wStyle" value="minimalistyczny"><span>Minimalistyczny</span></label>
+                <label class="style-chip"><input type="radio" name="wStyle" value="nowoczesny"><span>Nowoczesny</span></label>
+                <label class="style-chip"><input type="radio" name="wStyle" value="elegancki"><span>Elegancki</span></label>
+                <label class="style-chip"><input type="radio" name="wStyle" value="dynamiczny"><span>Dynamiczny</span></label>
+              </div>
+            </div>
+            <div class="web-sub" id="brandSub">
+              <p class="mf-sub-title">Szczeg&oacute;&#322;y projektu graficznego</p>
+              <span class="mf-sub-label">Kolorystyka</span>
+              <div class="color-swatches">
+                <label class="cswatch" title="Niebieski"><input type="radio" name="bColor" value="niebieski"><span style="background:#2f6fe0"></span></label>
+                <label class="cswatch" title="Zielony"><input type="radio" name="bColor" value="zielony"><span style="background:#24a35a"></span></label>
+                <label class="cswatch" title="Fioletowy"><input type="radio" name="bColor" value="fioletowy"><span style="background:#7b5ea7"></span></label>
+                <label class="cswatch" title="Czarny"><input type="radio" name="bColor" value="czarny"><span style="background:#111"></span></label>
+                <label class="cswatch" title="Czerwony"><input type="radio" name="bColor" value="czerwony"><span style="background:#d95a5a"></span></label>
+                <label class="cswatch" title="R&oacute;&#380;owy"><input type="radio" name="bColor" value="rozowy"><span style="background:#e05a8d"></span></label>
+              </div>
+              <span class="mf-sub-label">Styl</span>
+              <div class="style-chips">
+                <label class="style-chip"><input type="radio" name="bStyle" value="minimalistyczny"><span>Minimalistyczny</span></label>
+                <label class="style-chip"><input type="radio" name="bStyle" value="korporacyjny"><span>Korporacyjny</span></label>
+                <label class="style-chip"><input type="radio" name="bStyle" value="dynamiczny"><span>Dynamiczny</span></label>
+                <label class="style-chip"><input type="radio" name="bStyle" value="elegancki"><span>Elegancki</span></label>
+              </div>
+              <span class="mf-sub-label">Pliki z inspiracjami / brief</span>
+              <label class="file-drop" id="fileDrop">
+                <input type="file" name="brandFiles" id="fBrandFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd">
+                <svg class="file-drop-ico" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                <span class="file-drop-lbl">Kliknij lub upu&#347;&#263; pliki tutaj</span>
+                <span class="file-drop-hint">PDF, JPG, PNG, ZIP, AI, PSD</span>
+                <span class="file-name" id="fFileName"></span>
+              </label>
+            </div>
+          </div>
+          <div class="mf-panel" id="mfP3">
+            <span class="mf-hint">Krok 3 z 3</span>
+            <div class="fgroup"><textarea id="fMsg" placeholder=" " rows="4"></textarea><label for="fMsg">Dodatkowy komentarz (opcjonalnie)</label><span class="bar"></span></div>
+          </div>
+          <div class="mf-nav">
+            <button type="button" class="mf-back" id="mfBack">&#8592; Wstecz</button>
+            <button type="button" class="btn btn-primary mf-next" id="mfNext">Dalej &#8594;</button>
+          </div>
+          <p class="mf-note" id="mfNote">Wysy&#322;aj&#261;c formularz akceptujesz polityk&#281; prywatno&#347;ci. Zero spamu.</p>
         </form>
         <div class="form-success" aria-live="polite">
           <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
@@ -1062,7 +1188,7 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
         </a>
         <p>Agencja wdrożeń AI. Automatyzacje, asystenci i modele predykcyjne — z policzonym ROI.</p>
       </div>
-      <div><h4>Nawigacja</h4><ul><li><a href="#korzysci">Korzyści</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#case-studies">Case studies</a></li><li><a href="#proces">Proces</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+      <div><h4>Nawigacja</h4><ul><li><a href="#porownanie">Porównanie</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#case-studies">Case studies</a></li><li><a href="#proces">Proces</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
       <div><h4>Kontakt</h4><ul><li><a href="mailto:hello@skaluj.ai">hello@skaluj.ai</a></li><li><a href="tel:+48221000100">+48 22 100 01 00</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Polityka prywatności</a></li></ul></div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj.ai</div>
@@ -1207,15 +1333,104 @@ input[type=range]:focus-visible{box-shadow:0 0 0 3px var(--accent-soft)}
   })();
 
   /* form */
-  var form = document.getElementById("contactForm"), card = document.getElementById("formCard");
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var name=document.getElementById("fName"), email=document.getElementById("fEmail"), ok=true;
-    [name,email].forEach(function(f){ var bad = !f.value.trim() || (f.type==="email" && !/^\S+@\S+\.\S+$/.test(f.value)); f.style.borderColor = bad ? "#d05a5a" : ""; if(bad) ok=false; });
-    if(!ok) return;
-    var btn=form.querySelector(".form-submit"); btn.querySelector(".submit-label").textContent="Wysyłanie…"; btn.style.opacity=.7; btn.style.pointerEvents="none";
-    setTimeout(function(){ card.classList.add("sent"); }, 850);
-  });
+  (function(){
+    var step = 1, card = document.getElementById('formCard');
+    var form = document.getElementById('contactForm');
+    var btnBack = document.getElementById('mfBack');
+    var btnNext = document.getElementById('mfNext');
+    var mfNote = document.getElementById('mfNote');
+    var webSub = document.getElementById('webSub');
+    var brandSub = document.getElementById('brandSub');
+    var svcStrona = document.getElementById('svcStrona');
+    var svcBranding = document.getElementById('svcBranding');
+
+    function showStep(n) {
+      for (var i = 1; i <= 3; i++) {
+        var p = document.getElementById('mfP' + i);
+        var d = document.getElementById('mfDot' + i);
+        if (p) p.classList.toggle('mf-active', i === n);
+        if (d) { d.classList.toggle('mf-active', i === n); d.classList.toggle('mf-done', i < n); }
+      }
+      var lines = form.querySelectorAll('.mf-line');
+      for (var j = 0; j < lines.length; j++) lines[j].classList.toggle('mf-done', j < n - 1);
+      btnBack.hidden = (n === 1);
+      btnNext.textContent = n === 3 ? 'Wyślij zapytanie →' : 'Dalej →';
+      mfNote.classList.toggle('visible', n === 3);
+      step = n;
+    }
+
+    function validateStep1() {
+      var fName = document.getElementById('fName');
+      var fEmail = document.getElementById('fEmail');
+      var fCompany = document.getElementById('fCompany');
+      var errName = document.getElementById('errName');
+      var errEmail = document.getElementById('errEmail');
+      var errCompany = document.getElementById('errCompany');
+      var ok = true;
+      if (!fName.value.trim()) { errName.textContent = 'Wpisz imię'; fName.style.borderColor = '#d95a5a'; ok = false; }
+      else { errName.textContent = ''; fName.style.borderColor = ''; }
+      if (!fEmail.value.trim() || !/^\S+@\S+\.\S+$/.test(fEmail.value)) { errEmail.textContent = 'Podaj prawidłowy e-mail'; fEmail.style.borderColor = '#d95a5a'; ok = false; }
+      else { errEmail.textContent = ''; fEmail.style.borderColor = ''; }
+      if (!fCompany.value.trim()) { errCompany.textContent = 'Wpisz nazwę firmy'; fCompany.style.borderColor = '#d95a5a'; ok = false; }
+      else { errCompany.textContent = ''; fCompany.style.borderColor = ''; }
+      return ok;
+    }
+
+    svcStrona && svcStrona.addEventListener('change', function() {
+      webSub.classList.toggle('visible', this.checked);
+    });
+    svcBranding && svcBranding.addEventListener('change', function() {
+      brandSub.classList.toggle('visible', this.checked);
+    });
+
+    var fBrandFiles = document.getElementById('fBrandFiles');
+    fBrandFiles && fBrandFiles.addEventListener('change', function() {
+      var nameEl = document.getElementById('fFileName');
+      if (this.files.length) {
+        nameEl.textContent = this.files.length > 1 ? this.files.length + ' plików' : this.files[0].name;
+        nameEl.classList.add('has-file');
+      } else { nameEl.textContent = ''; nameEl.classList.remove('has-file'); }
+    });
+
+    btnNext.addEventListener('click', function() {
+      if (step < 3) {
+        if (step === 1 && !validateStep1()) return;
+        showStep(step + 1);
+      } else {
+        form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+      }
+    });
+    btnBack.addEventListener('click', function() {
+      if (step > 1) showStep(step - 1);
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var svcs = Array.prototype.map.call(form.querySelectorAll('[name="svc"]:checked'), function(el){ return el.value; });
+      var colorEl = form.querySelector('[name="wColor"]:checked');
+      var styleEl = form.querySelector('[name="wStyle"]:checked');
+      var bColorEl = form.querySelector('[name="bColor"]:checked');
+      var bStyleEl = form.querySelector('[name="bStyle"]:checked');
+      var brandFilesEl = document.getElementById('fBrandFiles');
+      var data = {
+        name: document.getElementById('fName').value.trim(),
+        email: document.getElementById('fEmail').value.trim(),
+        company: document.getElementById('fCompany').value.trim(),
+        services: svcs,
+        webColor: colorEl ? colorEl.value : null,
+        webStyle: styleEl ? styleEl.value : null,
+        brandColor: bColorEl ? bColorEl.value : null,
+        brandStyle: bStyleEl ? bStyleEl.value : null,
+        brandFiles: brandFilesEl ? Array.prototype.map.call(brandFilesEl.files, function(f){ return f.name; }) : [],
+        message: document.getElementById('fMsg').value.trim()
+      };
+      console.log('[skaluj.ai] Formularz:', data);
+      btnNext.disabled = true; btnNext.style.opacity = '.6';
+      setTimeout(function(){ card.classList.add('sent'); }, 700);
+    });
+
+    showStep(1);
+  })();
 })();
 </script>
 
