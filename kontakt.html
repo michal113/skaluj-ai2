@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — skaluj.ai</title>
+<meta name="description" content="Umów bezpłatną konsultację z skaluj.ai. Powiemy, czy AI rozwiąże Twój problem i ile na tym zarobisz.">
+<link rel="canonical" href="https://skaluj.ai/kontakt">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="sygnet.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:        #ffffff;
+  --bg-elev:   #f7f8fa;
+  --bg-elev-2: #eef1f5;
+  --text:      #0b0d10;
+  --muted:     #565d68;
+  --faint:     #8b929c;
+  --line:      rgba(0,0,0,.10);
+  --line-2:    rgba(0,0,0,.06);
+  --accent:    #2f6fe0;
+  --accent-dim:#2456b0;
+  --accent-soft:rgba(47,111,224,.10);
+  --sans:      'Geist','Inter',system-ui,sans-serif;
+  --mono:      'Geist Mono','Fira Mono',monospace;
+  --ease:      cubic-bezier(.4,0,.2,1);
+  --r-lg:      14px;
+  --maxw:      1080px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55;letter-spacing:-.011em;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:9px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#cfd3da;border-radius:5px;border:2px solid var(--bg)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:0 22px;height:46px;border-radius:var(--r-lg);border:1px solid transparent;font-size:14px;font-weight:500;letter-spacing:-.01em;cursor:pointer;transition:background .2s,box-shadow .2s,border-color .2s,color .2s;text-decoration:none}
+.btn-primary{background:var(--text);color:var(--bg)}.btn-primary:hover{background:#000;box-shadow:0 0 0 3px var(--accent-soft)}
+.btn-sm{height:38px;padding:0 16px;font-size:13.5px;border-radius:9px}
+
+/* NAV */
+.nav{position:fixed;top:14px;left:0;right:0;z-index:1000;padding:0 16px}
+.nav-inner{position:relative;max-width:1080px;margin:0 auto;padding:8px 8px 8px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:9999px;box-shadow:0 10px 40px rgba(15,30,60,.08);transition:box-shadow .35s,background-color .35s}
+.nav.scrolled .nav-inner{background:rgba(255,255,255,.92);box-shadow:0 14px 44px rgba(15,30,60,.12)}
+.logo{display:inline-flex;align-items:center;text-decoration:none}
+.logo .brand-img{height:24px;width:auto;display:block}
+.nav-links{display:flex;gap:5px;align-items:center;justify-self:center}
+.nav-item{position:relative;display:flex}
+.nav-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-family:inherit;color:var(--muted);padding:9px 14px;border-radius:9999px;border:0;background:none;cursor:pointer;transition:color .2s,background .2s;text-decoration:none;white-space:nowrap}
+.nav-link:hover{color:var(--text);background:rgba(15,30,60,.05)}
+.nav-link.active{color:var(--accent);background:var(--accent-soft);font-weight:500}
+.nav-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:10px;font-weight:500}
+.nav-caret{width:11px;height:11px;transition:transform .25s var(--ease)}
+.nav-item.open .nav-caret{transform:rotate(180deg)}
+#blogItem{position:static}
+.dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;transform:translateY(-10px);transform-origin:top center;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:0 20px 60px rgba(15,30,60,.12);padding:10px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,transform .25s,visibility .25s}
+.dropdown::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px}
+.nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 14px;border-bottom:1px solid var(--line-2)}
+.dd-head .l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.dd-head .c{font-family:var(--mono);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:5px}
+.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:4px}
+.dd-item{display:block;padding:12px 14px;border-radius:12px;transition:background-color .2s}
+.dd-item:hover{background:rgba(47,111,224,.06)}
+.dd-eyebrow{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.dd-title{display:block;font-size:13.5px;font-weight:500;color:var(--text);letter-spacing:-.01em;line-height:1.35}
+.nav-right{display:flex;align-items:center;gap:10px;justify-self:end}.nav-right .btn{border-radius:9999px}
+.nav-burger{display:none;width:38px;height:38px;background:none;border:0;position:relative;cursor:pointer}
+.nav-burger span{position:absolute;left:9px;right:9px;height:1.5px;background:var(--text);transition:transform .35s var(--ease),top .35s var(--ease),opacity .2s}
+.nav-burger span:nth-child(1){top:15px}.nav-burger span:nth-child(2){top:22px}
+body.menu-open .nav-burger span:nth-child(1){top:18.5px;transform:rotate(45deg)}
+body.menu-open .nav-burger span:nth-child(2){top:18.5px;transform:rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:900;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:40px 32px;gap:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s,visibility .35s}
+body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
+.mobile-menu a{font-size:clamp(1.1rem,3vw,1.4rem);font-weight:500;color:var(--text);letter-spacing:-.02em;padding:10px 0;display:flex;justify-content:space-between;align-items:center;width:100%;border-bottom:1px solid var(--line-2)}
+.mobile-menu a .n{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.mm-blog{width:100%;border-bottom:1px solid var(--line-2);padding-bottom:6px;margin-bottom:4px}
+.mm-h{display:flex;justify-content:space-between;align-items:center;width:100%;padding:10px 0;font-size:clamp(1.1rem,3vw,1.4rem);font-weight:500;letter-spacing:-.02em}
+.mm-sub{font-size:13.5px!important;color:var(--muted)!important;padding:7px 0!important;border-bottom:0!important;font-weight:400!important}
+
+/* PAGE HERO */
+.kontakt-hero{padding:160px 0 64px;border-bottom:1px solid var(--line)}
+.kontakt-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px;margin-bottom:20px}
+.kontakt-hero .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-soft)}
+.kontakt-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:600;letter-spacing:-.04em;line-height:1.1;margin-bottom:18px}
+.kontakt-hero h1 .grad{background:linear-gradient(135deg,var(--text) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.kontakt-hero p{font-size:16px;color:var(--muted);max-width:48ch;line-height:1.7}
+
+/* CONTACT SECTION */
+.kontakt-body{padding:72px 0 100px}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,90px)}
+.contact-info p{color:var(--muted);font-size:15px;line-height:1.7;max-width:42ch}
+.contact-rows{margin-top:40px;display:flex;flex-direction:column}
+.contact-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 2px;border-top:1px solid var(--line-2);font-size:14px;color:var(--muted);transition:color .2s,padding-left .2s}
+.contact-row:hover{color:var(--text);padding-left:8px}
+.contact-row b{font-weight:500;color:var(--text)}
+.contact-row .mono{font-family:var(--mono);font-size:12px}
+
+/* FORM */
+.form-card{padding:0}
+.fgroup{position:relative;margin-bottom:6px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.fgroup input,.fgroup textarea{width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--text);font-family:inherit;font-size:15px;padding:28px 2px 10px;outline:none;transition:border-color .25s}
+.fgroup textarea{min-height:90px}
+.fgroup label{position:absolute;left:2px;top:27px;color:var(--faint);font-size:15px;pointer-events:none;transition:top .3s var(--ease),font-size .3s,letter-spacing .3s,color .3s}
+.fgroup input:focus,.fgroup textarea:focus{border-color:var(--accent)}
+.fgroup input:focus + label,.fgroup input:not(:placeholder-shown) + label,
+.fgroup textarea:focus + label,.fgroup textarea:not(:placeholder-shown) + label{top:6px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.fgroup .bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.fgroup input:focus ~ .bar,.fgroup textarea:focus ~ .bar{transform:scaleX(1)}
+.ferr{display:block;font-size:11px;color:#d95a5a;min-height:14px;margin-bottom:4px;padding-left:2px}
+.form-success{position:absolute;inset:0;background:var(--bg-elev);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:32px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.dash.sent .form-success{opacity:1;visibility:visible}
+.form-success .ok{width:52px;height:52px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center;color:var(--accent)}
+.form-success .ok svg{width:24px;height:24px}
+.form-success h3{font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+.form-success p{color:var(--muted);font-size:14px;max-width:32ch}
+
+/* MULTI-STEP */
+.mf-progress{display:flex;align-items:center;margin-bottom:32px}
+.mf-step{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.mf-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--faint);transition:border-color .3s,background .3s,color .3s}
+.mf-step.mf-active .mf-dot{border-color:var(--accent);background:var(--accent);color:#fff}
+.mf-step.mf-done .mf-dot{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.mf-lbl{font-size:12px;color:var(--faint);white-space:nowrap;transition:color .3s}
+.mf-step.mf-active .mf-lbl,.mf-step.mf-done .mf-lbl{color:var(--text)}
+.mf-line{flex:1;height:1px;background:var(--line);margin:0 12px;min-width:16px;transition:background .4s}
+.mf-line.mf-done{background:var(--accent)}
+.mf-hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;display:block}
+.mf-panel{display:none}
+.mf-panel.mf-active{display:block}
+.mf-sub{font-size:14px;color:var(--muted);margin-bottom:18px;margin-top:-6px}
+.svc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
+.svc-tile{cursor:pointer}
+.svc-tile input{position:absolute;opacity:0;pointer-events:none}
+.svc-tile-body{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted);transition:border-color .2s,background .2s}
+.svc-tile:hover .svc-tile-body{border-color:rgba(47,111,224,.4);color:var(--text)}
+.svc-tile input:checked + .svc-tile-body{border-color:var(--accent);color:var(--text);background:var(--accent-soft)}
+.svc-ico{width:16px;height:16px;flex-shrink:0;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.file-drop{border:1.5px dashed var(--line);border-radius:var(--r-lg);padding:22px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;display:block;position:relative}
+.file-drop:hover{border-color:var(--accent);background:var(--accent-soft)}
+.file-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:1}
+.file-drop-ico{width:24px;height:24px;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;fill:none;color:var(--faint);margin:0 auto 10px;display:block}
+.file-drop-lbl{display:block;font-size:13px;color:var(--muted)}
+.file-drop-hint{display:block;font-size:11px;color:var(--faint);margin-top:4px}
+.file-name{display:none;font-size:12px;color:var(--accent);margin-top:10px}
+.file-name.has-file{display:block}
+.web-sub{border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;margin-bottom:14px;display:none;animation:fadeSlide .25s ease}
+.web-sub.visible{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mf-sub-title{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:14px}
+.mf-sub-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:14px;display:block;margin-bottom:8px}
+.color-swatches{display:flex;gap:10px;flex-wrap:wrap}
+.cswatch{width:30px;height:30px;border-radius:50%;cursor:pointer;position:relative;display:inline-flex;flex-shrink:0;vertical-align:top}
+.cswatch span{display:block;width:30px;height:30px;border-radius:50%;transition:transform .15s,box-shadow .15s}
+.cswatch input{position:absolute;opacity:0;width:0;height:0}
+.cswatch input:checked + span{box-shadow:0 0 0 2.5px var(--bg-elev),0 0 0 4.5px var(--accent);transform:scale(1.1)}
+.style-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.style-chip{cursor:pointer}
+.style-chip input{position:absolute;opacity:0;pointer-events:none}
+.style-chip span{display:block;border:1px solid var(--line);border-radius:100px;padding:7px 15px;font-size:12.5px;color:var(--muted);transition:border-color .2s,background .2s,color .2s}
+.style-chip:hover span{border-color:rgba(47,111,224,.4);color:var(--text)}
+.style-chip input:checked + span{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.mf-nav{display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.mf-back{border:1px solid var(--line);color:var(--muted);padding:0 20px;height:44px;border-radius:var(--r-lg);font-size:14px;transition:border-color .2s,color .2s;background:none;cursor:pointer}
+.mf-back:hover{border-color:var(--accent);color:var(--text)}
+.mf-back[hidden]{display:none !important}
+.mf-next{height:44px;padding:0 24px;font-size:14px}
+.mf-note{margin-top:12px;font-size:12px;color:var(--faint);text-align:center;display:none}
+.mf-note.visible{display:block}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--line);padding:80px 0 40px;position:relative;overflow:hidden}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px}
+.footer-brand .logo{margin-bottom:16px}
+.footer-brand .brand-img{height:28px}
+.footer-brand p{color:var(--muted);font-size:14px;max-width:32ch;line-height:1.6}
+.footer h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer ul a{color:var(--muted);font-size:14px;transition:color .25s}
+.footer ul a:hover{color:var(--text)}
+.footer-watermark{margin:70px 0 0;font-size:clamp(3.4rem,12vw,11rem);font-weight:600;letter-spacing:-.05em;line-height:.85;text-align:center;
+  background:linear-gradient(180deg,rgba(0,0,0,.07),transparent);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none}
+.footer-bottom{margin-top:34px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.footer-sygnet{position:absolute;right:-30px;top:30px;width:215px;height:auto;opacity:.07;pointer-events:none;transform:rotate(-8deg);z-index:0}
+.footer .wrap{position:relative;z-index:1}
+
+@media(max-width:1020px){.contact-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.svc-tiles{grid-template-columns:1fr}.mf-lbl{display:none}}
+@media(max-width:600px){.fgrid{grid-template-columns:1fr}}
+
+/* ============================================================
+   DASHBOARD CHROME (matches main panel style)
+   ============================================================ */
+.dash{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  background:linear-gradient(165deg,#ffffff 0%,#f5f7fa 100%);
+  box-shadow:0 40px 90px rgba(15,30,60,.14),0 12px 32px rgba(15,30,60,.08),0 0 0 1px rgba(0,0,0,.04)}
+.dash::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;z-index:9;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.9) 40%,rgba(255,255,255,.9) 60%,transparent)}
+.dash-top{display:flex;align-items:center;gap:14px;padding:15px 20px;
+  border-bottom:1px solid var(--line-2);background:rgba(0,0,0,.02)}
+.dash-dots{display:flex;gap:7px}
+.dash-dots i{width:9px;height:9px;border-radius:50%;background:#d4d8de;font-style:normal}
+.dash-title{flex:1;text-align:center;font-family:var(--mono);font-size:11px;
+  color:var(--faint);letter-spacing:.04em}
+.dash-live{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.dash-live::before{content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 9px var(--accent)}
+.dash-body{padding:clamp(22px,3vw,34px);text-align:left;position:relative}
+
+.fgroup-hint{display:block;font-size:11.5px;color:var(--faint);line-height:1.5;margin-top:8px}
+.attach-row{display:flex;align-items:center;gap:12px;margin-top:14px}
+.attach-btn{display:inline-flex;align-items:center;gap:7px;padding:0 16px;height:36px;border-radius:8px;border:1px solid var(--line);font-size:13px;color:var(--muted);cursor:pointer;transition:border-color .18s,color .18s;background:var(--bg-elev);white-space:nowrap}
+.attach-btn:hover{border-color:var(--accent);color:var(--accent)}
+.attach-name{font-size:12px;color:var(--faint);font-family:var(--mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:220px}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html" aria-label="skaluj.ai — strona g&#322;&#243;wna">
+      <img class="brand-img" src="logo-skaluj.png" alt="skaluj.ai" width="664" height="170">
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html#case-studies">Case studies</a>
+      <div class="nav-item" id="ofertaItem">
+        <button class="nav-link" id="ofertaBtn" aria-expanded="false" aria-haspopup="true">
+          Oferta
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dropdown" role="menu">
+          <div class="dd-head"><span class="l">OFERTA</span><a class="c" href="index.html#oferta">Pe&#322;en zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="12" height="12"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-grid">
+            <a class="dd-item" href="oferta/strona-seo.html"><span class="dd-eyebrow">01 &middot; Strona + SEO</span><span class="dd-title">Strona internetowa, kt&oacute;ra sprzedaje</span></a>
+            <a class="dd-item" href="oferta/automatyzacje-email.html"><span class="dd-eyebrow">02 &middot; Email / Marketing</span><span class="dd-title">Automatyzacje e-mail i marketing</span></a>
+            <a class="dd-item" href="oferta/chatbot-ai.html"><span class="dd-eyebrow">03 &middot; Chatbot AI</span><span class="dd-title">Asystent i chatbot AI</span></a>
+            <a class="dd-item" href="oferta/branding.html"><span class="dd-eyebrow">04 &middot; Branding</span><span class="dd-title">Identyfikacja wizualna marki</span></a>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="index.html#proces">Proces</a>
+      <div class="nav-item" id="blogItem">
+        <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">
+          Blog <span class="nav-badge">6</span>
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dropdown" role="menu">
+          <div class="dd-head"><span class="l">Z BLOGA</span></div>
+          <div class="dd-grid">
+            <a class="dd-item" href="blog/strona-seo.html"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</span></a>
+            <a class="dd-item" href="blog/automatyzacje-email.html"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">Automatyzacja e-mail marketingu z AI</span></a>
+            <a class="dd-item" href="blog/chatbot-ai.html"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI &mdash; kiedy warto?</span></a>
+            <a class="dd-item" href="blog/geo-ai-search.html"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO &mdash; widoczno&#347;&#263; w ChatGPT</span></a>
+            <a class="dd-item" href="blog/meta-ads-ai.html"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; koszty reklam -30%</span></a>
+            <a class="dd-item" href="blog/branding.html"><span class="dd-eyebrow">Branding</span><span class="dd-title">Identyfikacja wizualna w 2026</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="kontakt.html" onclick="window.location.href='kontakt.html';return false;" class="btn btn-primary btn-sm nav-link active">Um&oacute;w konsultacj&#281;</a>
+      <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#case-studies"><span>Case studies</span><span class="n">01</span></a>
+  <div class="mm-blog">
+    <span class="mm-h">Oferta <span class="n">02</span></span>
+    <a class="mm-sub" href="oferta/strona-seo.html">Strona internetowa + SEO</a>
+    <a class="mm-sub" href="oferta/automatyzacje-email.html">Automatyzacje emailowe i marketingowe</a>
+    <a class="mm-sub" href="oferta/chatbot-ai.html">Asystent i chatbot AI</a>
+    <a class="mm-sub" href="oferta/branding.html">Branding &mdash; identyfikacja wizualna</a>
+  </div>
+  <div class="mm-blog">
+    <span class="mm-h">Blog <span class="n">05</span></span>
+    <a class="mm-sub" href="blog/strona-seo.html">Strona firmowa, kt&oacute;ra sprzedaje</a>
+    <a class="mm-sub" href="blog/automatyzacje-email.html">Automatyzacja e-mail marketingu z AI</a>
+    <a class="mm-sub" href="blog/chatbot-ai.html">Chatbot AI &mdash; kiedy warto?</a>
+    <a class="mm-sub" href="blog/geo-ai-search.html">GEO &mdash; widoczno&#347;&#263; w AI Search</a>
+    <a class="mm-sub" href="blog/meta-ads-ai.html">Meta Ads z AI</a>
+    <a class="mm-sub" href="blog/branding.html">Identyfikacja wizualna w 2026</a>
+  </div>
+  <a><span>Kontakt</span><span class="n">06</span></a>
+</div>
+
+<main>
+<header class="kontakt-hero">
+  <div class="wrap">
+    <span class="eyebrow">Kontakt</span>
+    <h1>Zacznijmy od <span class="grad">rozmowy</span></h1>
+    <p>Opowiedz, gdzie Twoja firma traci czas i pieni&#261;dze &mdash; my powiemy, czy AI to rozwi&#261;&#380;e i ile na tym zarobisz.</p>
+  </div>
+</header>
+
+<section class="kontakt-body">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-rows">
+          <a class="contact-row" href="mailto:hello@skaluj.ai"><b>E-mail</b><span class="mono">hello@skaluj.ai</span></a>
+          <a class="contact-row" href="tel:+48221000100"><b>Telefon</b><span class="mono">+48 22 100 01 00</span></a>
+          <div class="contact-row"><b>Biuro</b><span class="mono">Warszawa / remote-first</span></div>
+          <div class="contact-row"><b>Odpowiadamy</b><span class="mono">&lt; 24 h, pon&ndash;pt</span></div>
+        </div>
+      </div>
+
+      <div class="dash" id="formCard">
+        <div class="dash-top">
+          <span class="dash-dots"><i></i><i></i><i></i></span>
+          <span class="dash-title">formularz kontaktowy &middot; skaluj.ai</span>
+          <span class="dash-live">kontakt</span>
+        </div>
+        <div class="dash-body">
+        <form id="contactForm" novalidate>
+          <div class="mf-progress">
+            <div class="mf-step mf-active" id="mfDot1"><span class="mf-dot">1</span><span class="mf-lbl">Kontakt</span></div>
+            <div class="mf-line" id="mfLine1"></div>
+            <div class="mf-step" id="mfDot2"><span class="mf-dot">2</span><span class="mf-lbl">Oferta</span></div>
+            <div class="mf-line" id="mfLine2"></div>
+            <div class="mf-step" id="mfDot3"><span class="mf-dot">3</span><span class="mf-lbl">Szczeg&oacute;&#322;y</span></div>
+          </div>
+          <div class="mf-panel mf-active" id="mfP1">
+            <span class="mf-hint">Krok 1 z 3</span>
+            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
+            <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
+            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
+          </div>
+          <div class="mf-panel" id="mfP2">
+            <span class="mf-hint">Krok 2 z 3</span>
+            <p class="mf-sub">Co Ci&#281; interesuje? Mo&#380;esz zaznaczy&#263; kilka.</p>
+            <div class="svc-tiles">
+              <label class="svc-tile"><input type="checkbox" name="svc" value="strona" id="svcStrona"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Strona + SEO</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="email"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email / Mailing</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chatbot AI</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="geo"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>GEO / AI Search</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="ads"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Meta Ads</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>Branding</span></label>
+            </div>
+            <div class="web-sub" id="webSub">
+              <p class="mf-sub-title">Szczeg&oacute;&#322;y strony internetowej</p>
+            </div>
+            <div class="web-sub" id="brandSub">
+              <p class="mf-sub-title">Szczeg&oacute;&#322;y projektu graficznego</p>
+            </div>
+          </div>
+          <div class="mf-panel" id="mfP3">
+            <span class="mf-hint">Krok 3 z 3</span>
+            <div class="fgroup">
+              <textarea id="fMsg" placeholder=" " rows="5"></textarea>
+              <label for="fMsg">Dodatkowe informacje (opcjonalnie)</label>
+              <span class="bar"></span>
+              <span class="fgroup-hint">Je&#347;li masz preferencje dotycz&#261;ce koloru, stylu, inspiracje czy inne wytyczne &mdash; opisz je tutaj. Im wi&#281;cej szczeg&oacute;&#322;&oacute;w, tym lepiej dopasujemy ofert&#281;.</span>
+            </div>
+            <div class="attach-row">
+              <label class="attach-btn" for="fAttach">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                Za&#322;&#261;cz plik
+              </label>
+              <input type="file" id="fAttach" name="attachment" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx" style="display:none">
+              <span class="attach-name" id="fAttachName"></span>
+            </div>
+          </div>
+          <div class="mf-nav">
+            <button type="button" class="mf-back" id="mfBack">&#8592; Wstecz</button>
+            <button type="button" class="btn btn-primary mf-next" id="mfNext">Dalej →</button>
+          </div>
+          <p class="mf-note" id="mfNote">Wysy&#322;aj&#261;c formularz akceptujesz polityk&#281; prywatno&#347;ci. Zero spamu.</p>
+        </form>
+        <div class="form-success" aria-live="polite">
+          <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <h3>Dzi&#281;kujemy!</h3>
+          <p>Twoje zapytanie dotar&#322;o. Odezwiemy si&#281; w ci&#261;gu 24 godzin roboczych.</p>
+        </div>
+        </div><!-- /dash-body -->
+      </div><!-- /dash -->
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <img src="sygnet.png" class="footer-sygnet" alt="" aria-hidden="true">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html"><img class="brand-img" src="logo-skaluj.png" alt="skaluj.ai" width="664" height="170"></a>
+        <p>Agencja wdro&#380;e&#324; AI. Automatyzacje, asystenci i modele predykcyjne &mdash; z policzonym ROI.</p>
+      </div>
+      <div><h4>Nawigacja</h4><ul><li><a href="index.html#oferta">Oferta</a></li><li><a href="index.html#case-studies">Case studies</a></li><li><a href="index.html#proces">Proces</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a href="mailto:hello@skaluj.ai">hello@skaluj.ai</a></li><li><a href="tel:+48221000100">+48 22 100 01 00</a></li><li>Warszawa / remote-first</li></ul></div>
+    </div>
+    <div class="footer-watermark" aria-hidden="true">skaluj.ai</div>
+    <div class="footer-bottom"><span>&copy; 2026 skaluj.ai &mdash; wszystkie prawa zastrze&#380;one</span><span>Zaprojektowano w Polsce</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var nav = document.getElementById("nav");
+  addEventListener("scroll", function(){ nav.classList.toggle("scrolled", scrollY > 20); }, {passive:true});
+
+  var burger = document.getElementById("burger");
+  burger.addEventListener("click", function(){ document.body.classList.toggle("menu-open"); });
+  document.querySelectorAll(".mobile-menu a").forEach(function(a){ a.addEventListener("click", function(){ document.body.classList.remove("menu-open"); }); });
+
+  /* dropdowns */
+  function initDrop(item, btn){
+    if(!item||!btn) return;
+    var t, hoverable = matchMedia("(hover:hover) and (pointer:fine)").matches;
+    function open(){ clearTimeout(t); item.classList.add("open"); btn.setAttribute("aria-expanded","true"); }
+    function close(){ clearTimeout(t); item.classList.remove("open"); btn.setAttribute("aria-expanded","false"); }
+    function scheduleClose(){ clearTimeout(t); t=setTimeout(close,180); }
+    if(hoverable){ item.addEventListener("mouseenter",open); item.addEventListener("mouseleave",scheduleClose); }
+    else { btn.addEventListener("click",function(e){ e.preventDefault(); e.stopPropagation(); item.classList.contains("open")?close():open(); }); }
+    document.addEventListener("click",function(e){ if(!item.contains(e.target)) close(); });
+    document.addEventListener("keydown",function(e){ if(e.key==="Escape") close(); });
+    item.querySelectorAll(".dropdown a").forEach(function(a){ a.addEventListener("click",close); });
+  }
+  initDrop(document.getElementById("blogItem"), document.getElementById("blogBtn"));
+  initDrop(document.getElementById("ofertaItem"), document.getElementById("ofertaBtn"));
+
+  /* multi-step form */
+  (function(){
+    var step = 1, card = document.getElementById("formCard");
+    var form = document.getElementById("contactForm");
+    var btnBack = document.getElementById("mfBack");
+    var btnNext = document.getElementById("mfNext");
+    var mfNote = document.getElementById("mfNote");
+    var webSub = document.getElementById("webSub");
+    var brandSub = document.getElementById("brandSub");
+    var svcStrona = document.getElementById("svcStrona");
+    var svcBranding = document.getElementById("svcBranding");
+
+    function showStep(n){
+      for(var i=1;i<=3;i++){
+        var p=document.getElementById("mfP"+i), d=document.getElementById("mfDot"+i);
+        if(p) p.classList.toggle("mf-active",i===n);
+        if(d){ d.classList.toggle("mf-active",i===n); d.classList.toggle("mf-done",i<n); }
+      }
+      var lines=form.querySelectorAll(".mf-line");
+      for(var j=0;j<lines.length;j++) lines[j].classList.toggle("mf-done",j<n-1);
+      btnBack.hidden=(n===1);
+      btnNext.textContent=n===3?"Wyślij zapytanie →":"Dalej →";
+      mfNote.classList.toggle("visible",n===3);
+      step=n;
+    }
+
+    function validateStep1(){
+      var fName=document.getElementById("fName"), fEmail=document.getElementById("fEmail"), fCompany=document.getElementById("fCompany");
+      var errName=document.getElementById("errName"), errEmail=document.getElementById("errEmail"), errCompany=document.getElementById("errCompany");
+      var ok=true;
+      if(!fName.value.trim()){ errName.textContent="Wpisz imi\u0119"; fName.style.borderColor="#d95a5a"; ok=false; }
+      else { errName.textContent=""; fName.style.borderColor=""; }
+      if(!fEmail.value.trim()||!/^\S+@\S+\.\S+$/.test(fEmail.value)){ errEmail.textContent="Podaj prawid\u0142owy e-mail"; fEmail.style.borderColor="#d95a5a"; ok=false; }
+      else { errEmail.textContent=""; fEmail.style.borderColor=""; }
+      if(!fCompany.value.trim()){ errCompany.textContent="Wpisz nazw\u0119 firmy"; fCompany.style.borderColor="#d95a5a"; ok=false; }
+      else { errCompany.textContent=""; fCompany.style.borderColor=""; }
+      return ok;
+    }
+
+    svcStrona&&svcStrona.addEventListener("change",function(){ webSub.classList.toggle("visible",this.checked); });
+    svcBranding&&svcBranding.addEventListener("change",function(){ brandSub.classList.toggle("visible",this.checked); });
+
+    var fBrandFiles=document.getElementById("fBrandFiles");
+    fBrandFiles&&fBrandFiles.addEventListener("change",function(){
+      var nameEl=document.getElementById("fFileName");
+      if(this.files.length){ nameEl.textContent=this.files.length>1?this.files.length+" plik\u00f3w":this.files[0].name; nameEl.classList.add("has-file"); }
+      else { nameEl.textContent=""; nameEl.classList.remove("has-file"); }
+    });
+
+    btnNext.addEventListener("click",function(){
+      if(step<3){ if(step===1&&!validateStep1()) return; showStep(step+1); }
+      else { form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
+    });
+    btnBack.addEventListener("click",function(){ if(step>1) showStep(step-1); });
+
+    var fAttach=document.getElementById("fAttach");
+    fAttach&&fAttach.addEventListener("change",function(){
+      var nameEl=document.getElementById("fAttachName");
+      if(this.files.length){ nameEl.textContent=this.files.length>1?this.files.length+" plików":this.files[0].name; }
+      else { nameEl.textContent=""; }
+    });
+
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      btnNext.disabled=true; btnNext.style.opacity=".6";
+      setTimeout(function(){ card.classList.add("sent"); },700);
+    });
+
+    showStep(1);
+  })();
+})();
+</script>
+</body>
+</html>

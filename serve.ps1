@@ -12,6 +12,8 @@ $mime = @{
   ".jpg"  = "image/jpeg"
   ".ico"  = "image/x-icon"
   ".woff2" = "font/woff2"
+  ".mp4"  = "video/mp4"
+  ".webm" = "video/webm"
 }
 
 $listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, $port)

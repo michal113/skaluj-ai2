@@ -3,21 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chatbot AI na stronie: kiedy warto, a kiedy szkodzi wizerunkowi? — skaluj.ai</title>
-<meta name="description" content="Chatbot AI na stronie internetowej — kiedy zwiększa konwersję, a kiedy odpycha klientów. Praktyczne przypadki użycia i checklist gotowości dla firmy.">
-<meta property="og:title" content="Chatbot AI na stronie: kiedy warto, a kiedy szkodzi wizerunkowi?">
-<meta property="og:description" content="Chatbot AI na stronie internetowej — kiedy zwiększa konwersję, a kiedy odpycha klientów. Praktyczne przypadki użycia i checklist gotowości dla firmy.">
+<title>Chatbot AI na stronie — kiedy warto, a kiedy szkodzi — skaluj.ai</title>
+<meta name="description" content="Chatbot AI na stronie internetowej: kiedy realnie podnosi konwersję, a kiedy odstrasza klientów. Scenariusze, błędy, koszty wdrożenia i checklista gotowości.">
+<link rel="canonical" href="https://skaluj.ai/blog/chatbot-ai-na-stronie">
+<meta property="og:title" content="Chatbot AI na stronie — kiedy warto, a kiedy szkodzi">
+<meta property="og:description" content="Chatbot AI na stronie internetowej: kiedy realnie podnosi konwersję, a kiedy odstrasza klientów. Scenariusze, błędy, koszty wdrożenia i checklista gotowości.">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2026-06-08">
+<meta property="og:image" content="https://skaluj.ai/assets/blog/chatbot-ai-hero.jpg"><!-- [DO UZUPEŁNIENIA: hero image po pobraniu z Pexels] -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chatbot AI na stronie — kiedy warto, a kiedy szkodzi">
+<meta name="twitter:description" content="Chatbot AI na stronie internetowej: kiedy realnie podnosi konwersję, a kiedy odstrasza klientów. Scenariusze, błędy, koszty wdrożenia i checklista gotowości.">
+<meta name="twitter:image" content="https://skaluj.ai/assets/blog/chatbot-ai-hero.jpg">
+<meta property="article:published_time" content="2026-06-23">
+<meta property="article:author" content="Sergiusz Serafin">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2308090b'/%3E%3Cg stroke='%23eef0f2' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M16 5v7M16 20v7M5 16h7M20 16h7M8.5 8.5l5 5M18.5 18.5l5 5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="../sygnet.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Chatbot AI na stronie — kiedy warto, a kiedy szkodzi?",
+  "description": "Chatbot AI na stronie internetowej: kiedy realnie podnosi konwersję, a kiedy odstrasza klientów. Scenariusze, błędy, koszty wdrożenia i checklista gotowości.",
+  "url": "https://skaluj.ai/blog/chatbot-ai-na-stronie",
+  "datePublished": "2026-06-23",
+  "dateModified": "2026-06-23",
+  "author": {
+    "@type": "Organization",
+    "name": "skaluj.ai",
+    "url": "https://skaluj.ai"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "skaluj.ai",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://skaluj.ai/logo-skaluj.png"
+    }
+  },
+  "inLanguage": "pl",
+  "keywords": "chatbot AI na stronie, chatbot AI dla firm, wdrożenie chatbota AI, obsługa klienta AI 24/7, kwalifikacja leadów chatbot, ROI chatbota"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile kosztuje wdrożenie chatbota AI na stronie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Od kilku tysięcy złotych za konfigurację gotowej platformy z bazą wiedzy do kilkudziesięciu tysięcy za rozwiązanie custom z integracją CRM. Przy odpowiednim wolumenie zapytań inwestycja zwraca się zwykle w 2–6 miesięcy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy chatbot AI zastąpi obsługę klienta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nie w 100%. Przejmuje powtarzalne pytania (zwykle 60–80%), ale złożone sprawy, reklamacje i sytuacje emocjonalne wymagają człowieka. Dlatego ścieżka eskalacji jest obowiązkowa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy chatbot AI może zmyślać odpowiedzi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak, jeśli nie ma dostępu do aktualnej, udokumentowanej bazy wiedzy. Dobrze wdrożony bot odpowiada tylko w oparciu o przekazany kontekst i mówi 'nie wiem / połączę z konsultantem', gdy pytanie wykracza poza jego zakres."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy chatbot AI jest zgodny z RODO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Musi być. Jeśli zbiera dane (np. kontakt do leada), potrzebujesz informacji o przetwarzaniu danych i zgodności z RODO. Firma powinna mieć kontrolę nad tym, jakie dane bot wykorzystuje i przechowuje."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak szybko można wdrożyć chatbota AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gotowy widget z bazą wiedzy — kilka dni do 2 tygodni. Rozwiązanie custom z integracją CRM i dedykowanymi przepływami — zwykle 3–8 tygodni. Najdłuższy etap to przygotowanie treści i scenariuszy."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://skaluj.ai/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://skaluj.ai/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Chatbot AI na stronie — kiedy warto, a kiedy szkodzi?", "item": "https://skaluj.ai/blog/chatbot-ai-na-stronie"}
+  ]
+}
+</script>
+
 <style>
 :root{--bg:#ffffff;--bg-elev:#f7f8fa;--bg-elev-2:#eef1f5;--text:#0b0d10;--muted:#565d68;--faint:#8b929c;--line:rgba(0,0,0,.10);--line-2:rgba(0,0,0,.06);--accent:#2f6fe0;--accent-soft:rgba(47,111,224,.10);--r-lg:16px;--r-md:12px;--maxw:1180px;--sans:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Geist Mono",ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--accent);color:#fff}
 ::-webkit-scrollbar{width:9px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#cfd3da;border-radius:5px;border:2px solid var(--bg)}
@@ -39,7 +135,7 @@ a{color:inherit;text-decoration:none}
 .nav-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;line-height:1}
 .nav-caret{width:11px;height:11px;transition:transform .25s var(--ease)}
 .nav-item.open .nav-caret{transform:rotate(180deg)}
-#blogItem{position:static}
+#blogItem,#ofertaItem{position:static}
 .dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;transform:translateY(-10px);transform-origin:top center;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(15,30,60,.14);padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .32s var(--ease),visibility .28s;z-index:60}
 .dropdown::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px}
 .nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
@@ -47,7 +143,7 @@ a{color:inherit;text-decoration:none}
 .dd-head .l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .dd-head .c{font-family:var(--mono);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:5px}
 .dd-head .c svg{width:12px;height:12px;transition:transform .25s var(--ease)}.dd-head .c:hover svg{transform:translateX(3px)}
-.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}#ofertaItem .dd-grid{grid-template-columns:repeat(4,1fr)}
 .dd-item{display:block;padding:12px 14px;border-radius:12px;opacity:0;transform:translateY(6px);transition:background-color .2s,opacity .24s var(--ease),transform .27s var(--ease)}
 .dd-item:hover{background:rgba(47,111,224,.06)}
 .nav-item.open .dd-item{opacity:1;transform:none}
@@ -87,6 +183,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blog-meta{font-size:12.5px;color:var(--faint);font-family:var(--mono);display:flex;align-items:center;gap:20px;justify-content:center}
 .blog-body{max-width:720px;margin:0 auto;padding:60px 0 80px}
 .blog-body h2{font-size:1.4rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:52px 0 14px}
+.blog-body h3{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;line-height:1.3;margin:32px 0 10px;color:var(--text)}
 .blog-body p{color:var(--muted);margin-bottom:16px;line-height:1.75}
 .blog-body ul,.blog-body ol{color:var(--muted);padding-left:22px;margin-bottom:18px;line-height:1.75}
 .blog-body li{margin-bottom:8px}
@@ -108,40 +205,70 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blog-also-item:hover{border-color:rgba(47,111,224,.4);background:var(--accent-soft)}
 .blog-also-item .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
 .blog-also-item .t{display:block;font-size:13.5px;font-weight:500;color:var(--text);line-height:1.35}
+.faq-section{max-width:720px;margin:0 auto 80px}
+.faq-section h2{font-size:1.4rem;font-weight:600;letter-spacing:-.025em;margin-bottom:28px}
+.faq-item{border-bottom:1px solid var(--line-2);padding:20px 0}
+.faq-item:last-child{border-bottom:0}
+.faq-q{font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-.01em}
+.faq-a{font-size:14.5px;color:var(--muted);line-height:1.7}
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.blog-header{padding:110px 0 40px}.blog-cta-box{padding:32px 24px}.blog-also-grid{grid-template-columns:1fr}}
+.logo .brand-img{height:24px;width:auto;display:block}
+.footer{position:relative;overflow:hidden}
+.footer-sygnet{position:absolute;right:-30px;top:30px;width:200px;height:auto;opacity:.07;pointer-events:none;transform:rotate(-8deg);z-index:0}
+.footer .wrap{position:relative;z-index:1}
+@media(max-width:680px){.footer-sygnet{width:150px;right:-24px;opacity:.06}}
+
+.blog-table-wrap{overflow-x:auto;margin:28px 0;-webkit-overflow-scrolling:touch}
+.blog-table{width:100%;border-collapse:collapse;font-size:14px;min-width:480px}
+.blog-table th{background:var(--bg-elev-2);color:var(--text);font-weight:600;text-align:left;padding:11px 14px;border-bottom:2px solid var(--line)}
+.blog-table td{padding:10px 14px;border-bottom:1px solid var(--line-2);color:var(--muted);vertical-align:top;line-height:1.6}
+.blog-table tr:last-child td{border-bottom:0}
+.blog-table tr:hover td{background:var(--bg-elev)}
+.toc-box{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:14px;padding:20px 24px;margin:0 0 40px}
+.toc-box h4{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.toc-box ol{color:var(--muted);padding-left:18px;font-size:14.5px;line-height:1.7;margin:0}
+.toc-box li{margin-bottom:5px}
+.toc-box a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a class="logo" href="../index.html">
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M16 2.5v9"/><path d="M16 20.5v9"/><path d="M2.5 16h9"/><path d="M20.5 16h9"/><path d="M6.8 6.8l6 6"/><path d="M19.2 19.2l6 6"/><circle cx="24.5" cy="8" r="1.8" fill="currentColor" stroke="none"/></svg>
-      skaluj<span class="tld">.ai</span>
-    </a>
+    <a class="logo" href="../index.html"><img class="brand-img" src="../logo-skaluj.png" alt="skaluj.ai" width="664" height="170"></a>
     <div class="nav-links">
       <a class="nav-link" href="../index.html#case-studies">Case studies</a>
-      <a class="nav-link" href="../index.html#oferta">Oferta</a>
-      <a class="nav-link" href="../index.html#porownanie">Por&oacute;wnanie</a>
+      <div class="nav-item" id="ofertaItem">
+        <button class="nav-link" id="ofertaBtn" aria-expanded="false" aria-haspopup="true">Oferta <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dropdown" role="menu" aria-label="Nasza oferta">
+          <div class="dd-head"><span class="l">Oferta</span><a class="c" href="../index.html#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-grid">
+            <a class="dd-item" href="../oferta/strona-seo.html"><span class="dd-eyebrow">01 · Strona · SEO · GEO</span><span class="dd-title">Strona, która sprzedaje</span><span class="dd-desc">Projekt, SEO i GEO w standardzie — widoczna w Google i polecana przez AI.</span></a>
+            <a class="dd-item" href="../oferta/automatyzacje-email.html"><span class="dd-eyebrow">02 · Automatyzacje AI</span><span class="dd-title">Procesy, które robią się same</span><span class="dd-desc">Mailing, faktury, oferty, raporty, CRM — powtarzalną pracę przejmują automaty.</span></a>
+            <a class="dd-item" href="../oferta/chatbot-ai.html"><span class="dd-eyebrow">03 · Chatbot AI</span><span class="dd-title">Klient obsłużony w sekundy, 24/7</span><span class="dd-desc">Asystent zna Twoją ofertę i zamyka rutynowe zgłoszenia bez człowieka.</span></a>
+            <a class="dd-item" href="../oferta/branding.html"><span class="dd-eyebrow">04 · Branding</span><span class="dd-title">Marka spójna w każdym kanale</span><span class="dd-desc">AI podsuwa pomysły — projekty wykonuje nasz zespół doświadczonych grafików.</span></a>
+          </div>
+        </div>
+      </div>
       <a class="nav-link" href="../index.html#proces">Proces</a>
       <div class="nav-item" id="blogItem">
         <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">Blog <span class="nav-badge">6</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="dropdown" role="menu">
           <div class="dd-head"><span class="l">Z BLOGA</span><a class="c" href="#">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-grid">
-            <a class="dd-item" href="strona-seo.html"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Jak stworzy&#263; stron&#281; firmow&#261;, kt&oacute;ra sprzedaje w 2026?</span></a>
-            <a class="dd-item" href="automatyzacje-email.html"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">E-mail automation &mdash; 5 scenariuszy, kt&oacute;re dzia&#322;aj&#261; od razu</span></a>
-            <a class="dd-item" href="chatbot-ai.html"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI na stronie: kiedy warto, a kiedy szkodzi?</span></a>
+            <a class="dd-item" href="strona-seo.html"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</span></a>
+            <a class="dd-item" href="automatyzacje-email.html"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">Automatyzacja e-mail marketingu z AI &mdash; 5 scenariuszy</span></a>
+            <a class="dd-item" href="chatbot-ai.html"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI na stronie &mdash; kiedy warto, a kiedy szkodzi?</span></a>
             <a class="dd-item" href="geo-ai-search.html"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO: jak pozycjonowa&#263; firm&#281; w ChatGPT i Google AI?</span></a>
             <a class="dd-item" href="meta-ads-ai.html"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty reklam o 30%?</span></a>
-            <a class="dd-item" href="branding.html"><span class="dd-eyebrow">Branding</span><span class="dd-title">Visual identity w 2026 &mdash; DNA skutecznej marki</span></a>
+            <a class="dd-item" href="branding.html"><span class="dd-eyebrow">Branding</span><span class="dd-title">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</span></a>
           </div>
         </div>
       </div>
     </div>
     <div class="nav-right">
-      <a class="btn btn-primary btn-sm" href="../index.html#kontakt">Um&oacute;w konsultacj&#281;</a>
+      <a href="../kontakt.html" onclick="window.location.href='../kontakt.html';return false;" class="btn btn-primary btn-sm">Um&oacute;w konsultacj&#281;</a>
       <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
@@ -149,19 +276,24 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="../index.html#case-studies"><span>Case studies</span><span class="n">01</span></a>
-  <a href="../index.html#oferta"><span>Oferta</span><span class="n">02</span></a>
-  <a href="../index.html#porownanie"><span>Por&oacute;wnanie</span><span class="n">03</span></a>
-  <a href="../index.html#proces"><span>Proces</span><span class="n">04</span></a>
   <div class="mm-blog">
-    <span class="mm-h">Blog <span class="n">05</span></span>
-    <a class="mm-sub" href="strona-seo.html">Strona firmowa, kt&oacute;ra sprzedaje</a>
-    <a class="mm-sub" href="automatyzacje-email.html">E-mail automation &mdash; 5 scenariuszy</a>
-    <a class="mm-sub" href="chatbot-ai.html">Chatbot AI: kiedy warto?</a>
+    <span class="mm-h">Oferta <span class="n">02</span></span>
+    <a class="mm-sub" href="../oferta/strona-seo.html">Strona internetowa + SEO i GEO</a>
+    <a class="mm-sub" href="../oferta/automatyzacje-email.html">Automatyzacje biznesowe AI</a>
+    <a class="mm-sub" href="../oferta/chatbot-ai.html">Asystent i chatbot AI</a>
+    <a class="mm-sub" href="../oferta/branding.html">Grafiki i branding</a>
+  </div>
+  <a href="../index.html#proces"><span>Proces</span><span class="n">03</span></a>
+  <div class="mm-blog">
+    <span class="mm-h">Blog <span class="n">04</span></span>
+    <a class="mm-sub" href="strona-seo.html">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</a>
+    <a class="mm-sub" href="automatyzacje-email.html">Automatyzacja e-mail marketingu z AI</a>
+    <a class="mm-sub" href="chatbot-ai.html">Chatbot AI &mdash; kiedy warto, a kiedy szkodzi?</a>
     <a class="mm-sub" href="geo-ai-search.html">GEO &mdash; widoczno&#347;&#263; w AI Search</a>
     <a class="mm-sub" href="meta-ads-ai.html">Meta Ads z AI</a>
-    <a class="mm-sub" href="branding.html">Visual identity w 2026</a>
+    <a class="mm-sub" href="branding.html">Identyfikacja wizualna w 2026</a>
   </div>
-  <a href="../index.html#kontakt"><span>Kontakt</span><span class="n">06</span></a>
+  <a><span>Kontakt</span><span class="n">05</span></a>
 </div>
 
 <main>
@@ -170,9 +302,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     <span class="blog-eyebrow">Chatbot AI</span>
     <h1 class="blog-title">Chatbot AI na stronie:<br>kiedy warto, a kiedy szkodzi?</h1>
     <div class="blog-meta">
-      <span>8 czerwca 2026</span>
+      <span>23 czerwca 2026</span>
       <span>&#183;</span>
-      <span>5 min czytania</span>
+      <span>~7 min czytania</span>
+      <span>&#183;</span>
     </div>
   </div>
 </header>
@@ -180,53 +313,150 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 <article class="blog-body wrap">
   <a class="blog-back" href="../index.html">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Wr&oacute;&#263; na stron&#281; g&#322;&oacute;wn&#261;
+    Wr&oacute;&#263; na stron&#281; g&#322;&#243;wn&#261;
   </a>
 
-  <p class="lead">Chatboty AI mog&#261; podnie&#347;&#263; konwersj&#281; o 15&ndash;30% &mdash; ale tylko wtedy, gdy s&#261; prawid&#322;owo wdro&#380;one i dopasowane do specyfiki firmy. Wdro&#380;ony pochopnie, bez przemylanej architektury wiedzy i &#347;cie&#380;ki eskalacji do cz&#322;owieka, chatbot staje si&#281; g&#322;&#243;wnym powodem, dla kt&oacute;rego potencjalny klient zamyka kart&#281; i przechodzi do konkurencji.</p>
+  <p class="lead">Dobrze wdro&#380;ony <strong>chatbot AI na stronie</strong> potrafi podnie&#347;&#263; konwersj&#281; o kilkana&#347;cie do kilkudziesi&#281;ciu procent. Ale jest druga strona tego medalu, o kt&oacute;rej ma&#322;o kto m&oacute;wi: wdro&#380;ony pochopnie &mdash; bez bazy wiedzy i bez &#347;cie&#380;ki eskalacji do cz&#322;owieka &mdash; staje si&#281; g&#322;&#243;wnym powodem, dla kt&oacute;rego potencjalny klient zamyka kart&#281; i idzie do konkurencji.</p>
 
-  <h2>Kiedy chatbot AI przynosi realny zysk?</h2>
-  <p>Chatbot AI sprawdza si&#281; najlepiej w okre&#347;lonych scenariuszach, w kt&oacute;rych ilo&#347;&#263; zapyta&#324; jest wysoka, a odpowiedzi daj&#261; si&#281; standaryzowa&#263;. Trzy przypadki, gdzie zwrot z inwestycji jest niemal gwarantowany:</p>
-  <p><strong>Obs&#322;uga posprzeda&#380;owa i FAQ.</strong> Je&#347;li Tw&oacute;j zesp&oacute;&#322; obs&#322;ugi klienta odpowiada codziennie na te same 20&ndash;30 pyta&#324; (status zam&oacute;wienia, zasady zwrot&oacute;w, godziny pracy), chatbot mo&#380;e obs&#322;u&#380;y&#263; 60&ndash;80% tych zapyta&#324; bez udzia&#322;u cz&#322;owieka. Czas odpowiedzi spada z godzin do sekund, a zesp&oacute;&#322; mo&#380;e skupi&#263; si&#281; na trudniejszych sprawach.</p>
-  <p><strong>Kwalifikacja lead&oacute;w.</strong> Na stronach us&#322;ugowych chatbot mo&#380;e pe&#322;ni&#263; rol&#281; pierwszego filtru &mdash; zbiera&#263; informacje o projekcie, bud&#380;ecie i harmonogramie zanim do rozmowy do&#322;&#261;czy handlowiec. Firmy wdra&#380;aj&#261;ce ten model notuj&#261; skr&oacute;cenie cyklu sprzeda&#380;owego o 20&ndash;40%, bo handlowiec dostaje ju&#380; wst&#281;pnie zakwalifikowanego klienta.</p>
-  <p><strong>Rekomendacje produktowe.</strong> W e-commerce chatbot oparty na AI mo&#380;e pe&#322;ni&#263; rol&#281; wirtualnego doradcy: zadaje pytania o potrzeby klienta i wskazuje konkretne produkty z katalogu, skracaj&#261;c &#347;cie&#380;k&#281; od wej&#347;cia na stron&#281; do dodania do koszyka. Badania pokazuj&#261;, &#380;e spersonalizowane rekomendacje przez chatbot podnosz&#261; &#347;redni&#261; warto&#347;&#263; koszyka o 10&ndash;25%.</p>
-
-  <h2>Trzy b&#322;&#281;dy, kt&oacute;re niszcz&#261; UX</h2>
-  <p>Wi&#281;kszo&#347;&#263; nieudanych wdro&#380;e&#324; chatbot&oacute;w wynika nie z technologii, ale z b&#322;&#281;d&oacute;w projektowych. Oto trzy najcz&#281;stsze:</p>
-  <p><strong>Brak bazy wiedzy.</strong> Chatbot AI jest tak dobry, jak dane, kt&oacute;rymi go zasilono. Je&#347;li model nie ma dost&#281;pu do aktualnych informacji o produktach, cennikach i procedurach, zacznie &#322;udzi&#263; lub wymyśla&#263; odpowiedzi (tzw. halucynacje). Klient, kt&oacute;ry dosta&#322; b&#322;&#281;dn&#261; informacj&#281; od chatbota, traci zaufanie do ca&#322;ej firmy &mdash; a nie tylko do bota.</p>
-  <p><strong>Brak &#347;cie&#380;ki eskalacji.</strong> Ka&#380;dy chatbot musi mie&#263; jasno zdefiniowany moment, w kt&oacute;rym przekazuje rozmow&#281; do cz&#322;owieka. Pytania emocjonalne, reklamacje, z&#322;o&#380;one sytuacje &mdash; bot nie powinien pr&oacute;bowa&#263; ich obs&#322;u&#380;y&#263; samodzielnie. Brak tej opcji frustruje u&#380;ytkownik&oacute;w i prowadzi do porzucenia rozmowy.</p>
-  <p><strong>Narzucaj&#261;cy si&#281; tryb uruchomienia.</strong> Pop-up chatbota otwieraj&#261;cy si&#281; automatycznie po 2 sekundach od wej&#347;cia na stron&#281;, pokrywaj&#261;cy tre&#347;&#263; na mobile, to jeden z najszybszych sposob&oacute;w na odstraszenie u&#380;ytkownika. Bot powinien by&#263; dost&#281;pny, nie nachalny. Ustawienie go jako statyczny widget w rogu strony z dyskretnym przyciskiem to znacznie lepsze podej&#347;cie.</p>
-
-  <h2>Modele AI do wyboru w 2026 roku</h2>
-  <p>Rynek chatbot&oacute;w AI w 2026 roku dzieli si&#281; na trzy kategorie: gotowe platformy SaaS, modele custom oparte na API i rozwi&#261;zania hybrydowe. Ka&#380;de ma swoje miejsce:</p>
-  <p><strong>Platformy SaaS</strong> (Intercom, Tidio AI, Crisp) s&#261; idealne dla ma&#322;ych i &#347;rednich firm, kt&oacute;re potrzebuj&#261; wdro&#380;enia w dniach, a nie miesi&#261;cach. Oferuj&#261; gotowe integracje z popularnymi CRM i platform e-commerce. Minusy: ograniczona personalizacja, wysoki koszt przy du&#380;ej skali, dane klient&oacute;w w systemach zewn&#281;trznych.</p>
-  <p><strong>Modele custom na API</strong> (OpenAI, Anthropic, Google) daj&#261; pe&#322;n&#261; kontrol&#281; nad zachowaniem bota, jego osobowo&#347;ci&#261; i dost&#281;pem do danych. Wdro&#380;enie trwa d&#322;u&#380;ej (2&ndash;8 tygodni), ale efekt ko&#324;cowy jest znacznie lepiej dopasowany do specyfiki firmy. To rozwi&#261;zanie dla firm z ambicjami na naprawd&#281; dojrza&#322;&#261; obs&#322;ug&#281; AI.</p>
-  <p><strong>Hybrydowe flow</strong> &#322;&#261;cz&#261; platform&#281; SaaS (do obs&#322;ugi standardowych zapyta&#324;) z zewn&#281;trznym API (do z&#322;o&#380;onych przypadk&oacute;w) i ludzkim agentem (do eskalacji). Najbardziej elastyczne i sprawdzaj&#261;ce si&#281; w firmach z r&oacute;&#380;norodnymi kategoriami pyta&#324;.</p>
-
-  <h2>Koszt wdro&#380;enia vs. zwrot z inwestycji</h2>
-  <p>Wdro&#380;enie chatbota AI kosztuje w Polsce od 3&ndash;5 tys. z&#322;. (prosta konfiguracja platformy SaaS z baz&#261; wiedzy) do 30&ndash;80 tys. z&#322;. (rozwi&#261;zanie custom z integracj&#261; CRM, API j&#281;zykowego i panelem administracyjnym). Firmy, kt&oacute;re policz&#261; ROI przed wdro&#380;eniem, rzadko si&#281; rozczarowuj&#261;.</p>
-  <p>Prosty rachunek: je&#347;li Tw&oacute;j zesp&oacute;&#322; obs&#322;uguje 500 zapyta&#324; miesięcznie, a ka&#380;de kosztuje Ci&#281; 15 z&#322;. czasu pracownika &mdash; to 7 500 z&#322;. miesi&#281;cznie na sam&#261; obs&#322;ug&#281;. Chatbot obs&#322;uguj&#261;cy 70% tych zapyta&#324; to oszcz&#281;dno&#347;&#263; 5 250 z&#322;. miesi&#281;cznie &mdash; a wi&#281;c zwrot z inwestycji w 2&ndash;6 miesi&#261;cy nawet przy dro&#380;szym wdro&#380;eniu.</p>
-
-  <h2>Checklista got&oacute;wo&#347;ci &mdash; 5 punkt&oacute;w</h2>
-  <p>Zanim zdecydujesz si&#281; na wdro&#380;enie chatbota, sprawd&#378;, czy spe&#322;niasz te warunki:</p>
-  <ol>
-    <li><strong>Masz udokumentowan&#261; baz&#281; wiedzy.</strong> FAQ, cennik, opis us&#322;ug i produkt&oacute;w &mdash; w formie, kt&oacute;r&#261; mo&#380;na załadowa&#263; do systemu. Bez tego bot b&#281;dzie wymyśla&#322;.</li>
-    <li><strong>Zdefiniowane zakresy tematyczne.</strong> Wiesz, na jakie pytania bot ma odpowiada&#263;, a kt&oacute;rych ma si&#281; trzyma&#263; z dala (np. pytania prawne, medyczne, delikatne reklamacje).</li>
-    <li><strong>&#346;cie&#380;ka eskalacji jest gotowa.</strong> Wiesz, kto i jak przejmuje rozmow&#281; od bota &mdash; przez live chat, e-mail czy telefon.</li>
-    <li><strong>Masz mierniki sukcesu.</strong> Zdefiniowane KPI: wsp&oacute;&#322;czynnik rozwi&#261;zania (containment rate), NPS po rozmowie z botem, liczba eskalacji.</li>
-    <li><strong>Plan aktualizacji wiedzy.</strong> Bot bez aktualizacji szybko staje si&#281; dezinformacj&#261;. Kto i jak cz&#281;sto b&#281;dzie aktualizowa&#322; baz&#281; wiedzy?</li>
-  </ol>
+  <p>Dlatego nie zaczniemy od &bdquo;dlaczego chatbot jest super&rdquo;. Zaczniemy od szczerego rozr&oacute;&#380;nienia: kiedy chatbot realnie zarabia, a kiedy szkodzi. Bo chatbot to narz&#281;dzie, nie cel sam w sobie.</p>
 
   <div class="blog-tip">
-    <strong>Eskalacja do cz&#322;owieka jako wymaganie, nie opcja:</strong> Wed&#322;ug bada&#324; Gartner, 64% u&#380;ytkownik&oacute;w porzuca interakcj&#281; z chatbotem, gdy nie mog&#261; si&#281; dosta&#263; do &#380;ywego cz&#322;owieka w trudnej sytuacji. <strong>Przycisk &bdquo;Po&#322;&#261;cz z konsultantem&rdquo; powinien by&#263; widoczny od pierwszej wiadomo&#347;ci</strong> &mdash; jego obecno&#347;&#263; paradoksalnie sprawia, &#380;e wi&#281;kszo&#347;&#263; u&#380;ytkownik&oacute;w nie musi z niego korzysta&#263;, bo czuj&#261; si&#281; bezpiecznie.
+    <strong>Zasada na start:</strong> Nie ka&#380;da firma potrzebuje chatbota. Je&#347;li dostajesz 3 zapytania tygodniowo, to przerost formy. Chatbot ma sens przy powtarzalnym, du&#380;ym wolumenie pyta&#324; &mdash; nie jako gad&#380;et &bdquo;bo AI&rdquo;.
   </div>
+
+  <h2>Kiedy chatbot AI przynosi realny zysk?</h2>
+  <p>Chatbot sprawdza si&#281; tam, gdzie zapyta&#324; jest du&#380;o, a odpowiedzi daj&#261; si&#281; standaryzowa&#263;. Trzy scenariusze, w kt&oacute;rych zwrot jest niemal pewny:</p>
+  <ul>
+    <li><strong>Obs&#322;uga posprzeda&#380;owa i FAQ.</strong> Je&#347;li zesp&oacute;&#322; codziennie odpowiada na te same 20&ndash;30 pyta&#324; (status zam&oacute;wienia, zwroty, godziny pracy), bot obs&#322;u&#380;y wi&#281;kszo&#347;&#263; z nich bez udzia&#322;u cz&#322;owieka. Czas odpowiedzi spada z godzin do sekund, a ludzie zajmuj&#261; si&#281; trudniejszymi sprawami.</li>
+    <li><strong>Kwalifikacja lead&oacute;w.</strong> Na stronach us&#322;ugowych bot pe&#322;ni rol&#281; pierwszego filtru &mdash; zbiera informacje o projekcie, bud&#380;ecie i terminie, zanim do rozmowy wejdzie handlowiec. Efekt: kr&oacute;tszy cykl sprzeda&#380;y, bo handlowiec dostaje wst&#281;pnie zakwalifikowanego klienta.</li>
+    <li><strong>Rekomendacje produktowe.</strong> W e-commerce bot dzia&#322;a jak wirtualny doradca: pyta o potrzeby i wskazuje konkretne produkty, skracaj&#261;c drog&#281; od wej&#347;cia do koszyka i podnosz&#261;c &#347;redni&#261; warto&#347;&#263; zam&oacute;wienia.</li>
+  </ul>
+
+  <h2>Trzy b&#322;&#281;dy, kt&oacute;re niszcz&#261; UX</h2>
+  <p>Wi&#281;kszo&#347;&#263; nieudanych wdro&#380;e&#324; to nie wina technologii, tylko projektu. Trzy najcz&#281;stsze:</p>
+  <ul>
+    <li><strong>Brak bazy wiedzy.</strong> Chatbot jest tak dobry, jak dane, kt&oacute;rymi go nakarmisz. Bez dost&#281;pu do aktualnych informacji o produktach, cennikach i procedurach zacznie zmyśla&#263; (halucynowa&#263;). Klient, kt&oacute;ry dosta&#322; b&#322;&#281;dn&#261; informacj&#281; od bota, traci zaufanie do ca&#322;ej firmy &mdash; nie tylko do bota.</li>
+    <li><strong>Brak &#347;cie&#380;ki eskalacji.</strong> Ka&#380;dy bot musi mie&#263; jasny moment przekazania rozmowy do cz&#322;owieka. Pytania emocjonalne, reklamacje, sytuacje z&#322;o&#380;one &mdash; bot nie powinien pr&oacute;bowa&#263; ich obs&#322;u&#380;y&#263; sam.</li>
+    <li><strong>Narzucaj&#261;cy si&#281; tryb uruchomienia.</strong> Pop-up otwieraj&#261;cy si&#281; po 2 sekundach i zas&#322;aniaj&#261;cy tre&#347;&#263; na mobile to najszybszy spos&oacute;b na odstraszenie u&#380;ytkownika. Bot ma by&#263; dost&#281;pny, nie nachalny &mdash; dyskretny widget w rogu bije agresywne okno na g&#322;ow&#281;.</li>
+  </ul>
+
+  <div class="blog-tip">
+    <strong>Eskalacja do cz&#322;owieka to wym&oacute;g, nie opcja.</strong> Ponad 60% u&#380;ytkownik&oacute;w porzuca rozmow&#281; z botem, gdy nie mog&#261; dotrze&#263; do &#380;ywego cz&#322;owieka w trudnej sytuacji. Przycisk &bdquo;Po&#322;&#261;cz z konsultantem&rdquo; widoczny od pierwszej wiadomo&#347;ci paradoksalnie sprawia, &#380;e wi&#281;kszo&#347;&#263; z niego nie korzysta &mdash; bo czuj&#261; si&#281; bezpiecznie.
+  </div>
+
+  <h2>Modele AI do wyboru w 2026</h2>
+  <p>Rynek dzieli si&#281; na trzy kategorie. Ka&#380;da ma swoje miejsce:</p>
+  <ul>
+    <li><strong>Gotowe platformy SaaS</strong> (Intercom, Tidio AI, Crisp). Dla ma&#322;ych i &#347;rednich firm, kt&oacute;re potrzebuj&#261; wdro&#380;enia w dniach, nie miesi&#261;cach. Gotowe integracje z CRM i e-commerce. Minusy: ograniczona personalizacja, rosn&#261;cy koszt przy skali, dane w zewn&#281;trznych systemach.</li>
+    <li><strong>Modele custom na API</strong> (<a href="https://platform.openai.com/docs" target="_blank" rel="noopener">OpenAI</a>, <a href="https://www.anthropic.com/" target="_blank" rel="noopener">Anthropic</a>, Google). Pe&#322;na kontrola nad zachowaniem bota, jego tonem i dost&#281;pem do danych. Wdro&#380;enie trwa d&#322;u&#380;ej (2&ndash;8 tygodni), ale efekt jest znacznie lepiej dopasowany. Rozwi&#261;zanie dla firm z ambicj&#261; na dojrza&#322;&#261; obs&#322;ug&#281; AI.</li>
+    <li><strong>Hybryda.</strong> Platforma SaaS do standardowych pyta&#324; + zewn&#281;trzne API do z&#322;o&#380;onych przypadk&oacute;w + cz&#322;owiek do eskalacji. Najbardziej elastyczne i najlepsze przy zr&oacute;&#380;nicowanych kategoriach pyta&#324;.</li>
+  </ul>
+
+  <div class="blog-table-wrap">
+  <table class="blog-table">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>SaaS (gotowa platforma)</th>
+        <th>Custom (własne LLM/API)</th>
+        <th>Hybryda</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Koszt startu</strong></td>
+        <td>Niski (abonament ~300–2 000 zł/mies.)</td>
+        <td>Wysoki (kilkanaście–kilkadziesiąt tys. zł)</td>
+        <td>Średni</td>
+      </tr>
+      <tr>
+        <td><strong>Czas wdrożenia</strong></td>
+        <td>Kilka dni – 2 tygodnie</td>
+        <td>3–8 tygodni</td>
+        <td>2–4 tygodnie</td>
+      </tr>
+      <tr>
+        <td><strong>Integracja z CRM/ERP</strong></td>
+        <td>Ograniczona (webhook, Zapier)</td>
+        <td>Pełna (API)</td>
+        <td>Częściowa</td>
+      </tr>
+      <tr>
+        <td><strong>Kontrola danych</strong></td>
+        <td>Dane u dostawcy SaaS</td>
+        <td>Dane na własnym serwerze</td>
+        <td>Zależna od konfiguracji</td>
+      </tr>
+      <tr>
+        <td><strong>Dla kogo?</strong></td>
+        <td>MŚP, FAQ-boty, szybki start</td>
+        <td>Enterprise, złożone procesy, RODO+</td>
+        <td>Firmy skalujące, hybrydowe procesy</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Koszt wdro&#380;enia vs. zwrot z inwestycji</h2>
+  <p>W Polsce wdro&#380;enie chatbota to rozrzut od kilku tysi&#281;cy z&#322;otych (prosta konfiguracja SaaS z baz&#261; wiedzy) do kilkudziesi&#281;ciu tysi&#281;cy (rozwi&#261;zanie custom z integracj&#261; CRM, API j&#281;zykowym i panelem). Firmy, kt&oacute;re policz&#261; ROI przed wdro&#380;eniem, rzadko si&#281; rozczarowuj&#261;.</p>
+  <p>Prosty rachunek: je&#347;li zesp&oacute;&#322; obs&#322;uguje 500 zapyta&#324; miesi&#281;cznie, a ka&#380;de kosztuje ~15 z&#322;. czasu pracownika, to 7 500 z&#322;. miesi&#281;cznie na sam&#261; obs&#322;ug&#281;. Bot przejmuj&#261;cy 70% tych zapyta&#324; to oszcz&#281;dno&#347;&#263; ~5 250 z&#322;. miesi&#281;cznie &mdash; czyli zwrot w 2&ndash;6 miesi&#281;cy nawet przy dro&#380;szym wdro&#380;eniu. A to liczy tylko oszcz&#281;dno&#347;&#263;, jeszcze nie dodatkowe leady i konwersj&#281;.</p>
+
+  <div class="blog-tip">
+    <strong>Konkret bije og&oacute;lnik:</strong> Zanim zapytasz &bdquo;ile kosztuje chatbot&rdquo;, policz, ile kosztuje Ci&#281; jego brak &mdash; w straconych zapytaniach po godzinach i w godzinach zespo&#322;u na powtarzalne pytania.
+  </div>
+
+  <h2>Checklista got&oacute;wo&#347;ci &mdash; 5 punkt&oacute;w</h2>
+  <p>Zanim zdecydujesz si&#281; na wdro&#380;enie, sprawd&#378;, czy masz:</p>
+  <ol>
+    <li><strong>Udokumentowan&#261; baz&#281; wiedzy</strong> &mdash; FAQ, cennik, opisy us&#322;ug w formie, kt&oacute;r&#261; da si&#281; za&#322;adowa&#263; do systemu. Bez tego bot zmyśla.</li>
+    <li><strong>Zdefiniowane zakresy tematyczne</strong> &mdash; wiesz, na co bot odpowiada, a od czego trzyma si&#281; z daleka (np. kwestie prawne, medyczne, delikatne reklamacje).</li>
+    <li><strong>Gotow&#261; &#347;cie&#380;k&#281; eskalacji</strong> &mdash; kto i jak przejmuje rozmow&#281;: live chat, e-mail, telefon.</li>
+    <li><strong>Mierniki sukcesu</strong> &mdash; KPI: containment rate (odsetek rozwi&#261;zanych spraw), liczba eskalacji, satysfakcja po rozmowie.</li>
+    <li><strong>Plan aktualizacji wiedzy</strong> &mdash; bot bez aktualizacji szybko staje si&#281; dezinformacj&#261;. Kto i jak cz&#281;sto od&#347;wie&#380;a baz&#281;?</li>
+  </ol>
+
+  <p>Chatbot najlepiej dzia&#322;a nie w izolacji, tylko jako element wi&#281;kszej ca&#322;o&#347;ci: razem z <a href="automatyzacje-email.html">automatyzacj&#261; e-mail marketingu</a> i osadzony na <a href="strona-seo.html">stronie, kt&oacute;ra konwertuje</a>. Bot zbiera i kwalifikuje, mail dogrzewa, strona domyka.</p>
+
+  <h2>Jak wdro&#380;y&#263; chatbota, kt&oacute;ry pomaga, a nie szkodzi</h2>
+  <p>R&oacute;&#380;nica mi&#281;dzy chatbotem, kt&oacute;ry zarabia, a tym, kt&oacute;ry odstrasza, to nie model &mdash; to przygotowanie: baza wiedzy, zasady, &#347;cie&#380;ka eskalacji i ton sp&oacute;jny z mark&#261;. W skaluj.ai w&#322;a&#347;nie od tego zaczynamy. Zobacz, <a href="../index.html#proces">jak prowadzimy wdro&#380;enie</a>, albo sprawdź zakres <a href="../oferta/chatbot-ai.html">wdro&#380;enia chatbota AI dopasowanego do firmy</a> &mdash; z naciskiem na to, &#380;eby bot realnie odci&#261;&#380;a&#322; zesp&oacute;&#322; i podnosi&#322; konwersj&#281;, a nie by&#322; kolejnym okienkiem, kt&oacute;re ludzie zamykaj&#261;.</p>
 </article>
+
+</div>
+
+<section class="faq-section wrap" aria-label="Najcz&#281;stsze pytania">
+  <h2>FAQ &mdash; chatbot AI na stronie</h2>
+
+  <div class="faq-item">
+    <p class="faq-q">Ile kosztuje wdro&#380;enie chatbota AI na stronie?</p>
+    <p class="faq-a">Od kilku tysi&#281;cy z&#322;otych za konfiguracj&#281; gotowej platformy z baz&#261; wiedzy do kilkudziesi&#281;ciu tysi&#281;cy za rozwi&#261;zanie custom z integracj&#261; CRM. Przy odpowiednim wolumenie zapyta&#324; inwestycja zwraca si&#281; zwykle w 2&ndash;6 miesi&#281;cy.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Czy chatbot AI zast&#261;pi obs&#322;ug&#281; klienta?</p>
+    <p class="faq-a">Nie w 100%. Przejmuje powtarzalne pytania (zwykle 60&ndash;80%), ale z&#322;o&#380;one sprawy, reklamacje i sytuacje emocjonalne wymagaj&#261; cz&#322;owieka. Dlatego &#347;cie&#380;ka eskalacji jest obowi&#261;zkowa.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Czy chatbot AI mo&#380;e zmyśla&#263; odpowiedzi?</p>
+    <p class="faq-a">Tak, je&#347;li nie ma dost&#281;pu do aktualnej, udokumentowanej bazy wiedzy. Dobrze wdro&#380;ony bot odpowiada tylko w oparciu o przekazany kontekst i m&oacute;wi &bdquo;nie wiem / po&#322;&#261;cz&#281; z konsultantem&rdquo;, gdy pytanie wykracza poza jego zakres.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Czy chatbot AI jest zgodny z <a href="https://gdpr.eu/" target="_blank" rel="noopener">RODO</a>?</p>
+    <p class="faq-a">Musi by&#263;. Je&#347;li zbiera dane (np. kontakt do leada), potrzebujesz informacji o przetwarzaniu danych i zgodno&#347;ci z RODO. Firma powinna mie&#263; kontrol&#281; nad tym, jakie dane bot wykorzystuje i przechowuje.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q">Jak szybko mo&#380;na wdro&#380;y&#263; chatbota AI?</p>
+    <p class="faq-a">Gotowy widget z baz&#261; wiedzy &mdash; kilka dni do 2 tygodni. Rozwi&#261;zanie custom z integracj&#261; CRM i dedykowanymi przep&#322;ywami &mdash; zwykle 3&ndash;8 tygodni. Najd&#322;u&#380;szy etap to przygotowanie tre&#347;ci i scenariuszy.</p>
+  </div>
+</section>
 
 <div class="blog-cta-box wrap">
   <span class="cta-label">Gotowy na nast&#281;pny krok?</span>
-  <h3>Wdro&#380;ymy chatbota AI skrojonego pod Twoj&#261; firm&#281;</h3>
-  <p>Analiza potrzeb, projekt architektury wiedzy, integracja z Twoim CRM i pe&#322;ne wdro&#380;enie &mdash; z mierzonymi wynikami po 30 dniach.</p>
-  <a class="btn btn-primary" href="../index.html#kontakt">Um&oacute;w bezp&#322;atn&#261; konsultacj&#281;</a>
+  <h3>Chcesz wiedzie&#263;, czy chatbot ma sens akurat w Twojej firmie?</h3>
+  <p>Policzymy ROI i powiemy szczerze, czy warto &mdash; zanim wydasz z&#322;ot&oacute;wk&#281;.</p>
+  <a href="../kontakt.html" onclick="window.location.href='../kontakt.html';return false;" class="btn btn-primary">Um&oacute;w bezp&#322;atn&#261; konsultacj&#281;</a>
 </div>
 
 <div class="blog-also wrap">
@@ -234,24 +464,25 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   <div class="blog-also-grid">
     <a class="blog-also-item" href="automatyzacje-email.html">
       <span class="eyebrow">Automatyzacje</span>
-      <span class="t">E-mail automation z AI &mdash; 5 scenariuszy, kt&oacute;re dzia&#322;aj&#261; od razu</span>
+      <span class="t">Automatyzacja e-mail marketingu z AI &mdash; 5 scenariuszy</span>
     </a>
     <a class="blog-also-item" href="strona-seo.html">
       <span class="eyebrow">Strona i SEO</span>
-      <span class="t">Jak stworzy&#263; stron&#281; firmow&#261;, kt&oacute;ra sprzedaje w 2026?</span>
+      <span class="t">Strona internetowa dla firmy, kt&oacute;ra sprzedaje w 2026</span>
     </a>
   </div>
 </div>
 </main>
 
 <footer class="footer">
+  <img src="../sygnet.png" class="footer-sygnet" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="logo" href="../index.html"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M16 2.5v9"/><path d="M16 20.5v9"/><path d="M2.5 16h9"/><path d="M20.5 16h9"/><path d="M6.8 6.8l6 6"/><path d="M19.2 19.2l6 6"/><circle cx="24.5" cy="8" r="1.8" fill="currentColor" stroke="none"/></svg>skaluj<span class="tld">.ai</span></a>
+        <a class="logo" href="../index.html"><img class="brand-img" src="../logo-skaluj.png" alt="skaluj.ai" width="664" height="170"></a>
         <p>Agencja wdro&#380;e&#324; AI. Automatyzacje, asystenci i modele predykcyjne &mdash; z policzonym ROI.</p>
       </div>
-      <div><h4>Nawigacja</h4><ul><li><a href="../index.html#oferta">Oferta</a></li><li><a href="../index.html#case-studies">Case studies</a></li><li><a href="../index.html#proces">Proces</a></li><li><a href="../index.html#kontakt">Kontakt</a></li></ul></div>
+      <div><h4>Nawigacja</h4><ul><li><a href="../index.html#oferta">Oferta</a></li><li><a href="../index.html#case-studies">Case studies</a></li><li><a href="../index.html#proces">Proces</a></li><li><a>Kontakt</a></li></ul></div>
       <div><h4>Kontakt</h4><ul><li><a href="mailto:hello@skaluj.ai">hello@skaluj.ai</a></li><li><a href="tel:+48221000100">+48 22 100 01 00</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Polityka prywatno&#347;ci</a></li></ul></div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj.ai</div>
@@ -277,6 +508,19 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     document.addEventListener('keydown',function(e){if(e.key==='Escape')item.classList.remove('open');});
     item.querySelectorAll('.dropdown a').forEach(function(a){a.addEventListener('click',function(){item.classList.remove('open');});});
   }
+})();
+</script>
+<script>
+(function(){
+  var item=document.getElementById('ofertaItem'),btn=document.getElementById('ofertaBtn');
+  if(!item||!btn)return;
+  var t,hoverable=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function open(){clearTimeout(t);item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  function close(){t=setTimeout(function(){item.classList.remove('open');btn.setAttribute('aria-expanded','false');},220);}
+  if(hoverable){item.addEventListener('mouseenter',open);item.addEventListener('mouseleave',close);}
+  btn.addEventListener('click',function(e){e.preventDefault();item.classList.contains('open')?close():open();});
+  document.addEventListener('click',function(e){if(!item.contains(e.target))item.classList.remove('open');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')item.classList.remove('open');});
 })();
 </script>
 </body>

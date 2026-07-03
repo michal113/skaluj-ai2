@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatyzacje biznesowe AI — skaluj.ai</title>
+<meta name="description" content="Automatyzujemy powtarzalne procesy w firmie: mailing, faktury i dokumenty, leady i CRM, oferty, raporty, umawianie spotkań i więcej. Audyt → pilotaż → wdrożenie, z policzonym zwrotem.">
+<meta property="og:title" content="Automatyzacje biznesowe AI — skaluj.ai">
+<meta property="og:description" content="Powtarzalna praca robi się sama: mailing, dokumenty, leady, raporty, terminy. Ty odbierasz wyniki.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="../sygnet.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--bg-elev:#f7f8fa;--bg-elev-2:#eef1f5;--text:#0b0d10;--muted:#565d68;--faint:#8b929c;--line:rgba(0,0,0,.10);--line-2:rgba(0,0,0,.06);--accent:#2f6fe0;--accent-dim:#2456b0;--accent-soft:rgba(47,111,224,.10);--r-lg:16px;--r-md:12px;--maxw:1180px;--sans:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Geist Mono",ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:0 22px;height:46px;border-radius:var(--r-lg);border:1px solid transparent;font-family:var(--sans);font-size:14.5px;font-weight:500;letter-spacing:-.015em;cursor:pointer;text-decoration:none;transition:all .2s;white-space:nowrap}
+.btn-primary{background:var(--text);color:var(--bg)}.btn-primary:hover{background:#000;box-shadow:0 0 0 3px var(--accent-soft)}
+.btn-sm{height:38px;padding:0 16px;font-size:13.5px;border-radius:9px}
+.nav{position:fixed;top:14px;left:0;right:0;z-index:1000;padding:0 16px}
+.nav-inner{position:relative;max-width:1080px;margin:0 auto;padding:8px 8px 8px 20px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;background:rgba(255,255,255,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:9999px;box-shadow:0 10px 40px rgba(15,30,60,.08);transition:box-shadow .35s,background-color .35s}
+.nav.scrolled .nav-inner{background:rgba(255,255,255,.92);box-shadow:0 14px 44px rgba(15,30,60,.12)}
+.logo{display:inline-flex;align-items:center;text-decoration:none}
+.logo .brand-img{height:24px;width:auto;display:block}
+.nav-links{display:flex;gap:2px;align-items:center;justify-self:center}
+.nav-item{position:relative;display:flex}
+.nav-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-family:inherit;color:var(--muted);padding:9px 14px;border-radius:9999px;background:none;border:0;cursor:pointer;white-space:nowrap;transition:color .25s,background-color .25s}
+.nav-link:hover{color:var(--text);background:rgba(0,0,0,.04)}
+.nav-item.open>.nav-link{color:var(--accent);background:var(--accent-soft)}
+.nav-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;line-height:1}
+.nav-caret{width:11px;height:11px;transition:transform .25s var(--ease)}
+.nav-item.open .nav-caret{transform:rotate(180deg)}
+#blogItem,#ofertaItem{position:static}
+.dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;transform:translateY(-10px);transform-origin:top center;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(15,30,60,.14);padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .32s var(--ease),visibility .28s;z-index:60}
+.dropdown::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px}
+.nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 14px;border-bottom:1px solid var(--line-2);margin-bottom:8px}
+.dd-head .l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.dd-head .c{font-family:var(--mono);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:5px}
+.dd-head .c svg{width:12px;height:12px;transition:transform .25s var(--ease)}.dd-head .c:hover svg{transform:translateX(3px)}
+.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}#ofertaItem .dd-grid{grid-template-columns:repeat(4,1fr)}
+.dd-item{display:block;padding:12px 14px;border-radius:12px;opacity:0;transform:translateY(6px);transition:background-color .2s,opacity .24s var(--ease),transform .27s var(--ease)}
+.dd-item:hover{background:rgba(47,111,224,.06)}
+.nav-item.open .dd-item{opacity:1;transform:none}
+.nav-item.open .dd-item:nth-child(1){transition-delay:.08s}.nav-item.open .dd-item:nth-child(2){transition-delay:.11s}.nav-item.open .dd-item:nth-child(3){transition-delay:.14s}.nav-item.open .dd-item:nth-child(4){transition-delay:.14s}.nav-item.open .dd-item:nth-child(5){transition-delay:.17s}.nav-item.open .dd-item:nth-child(6){transition-delay:.20s}
+.dd-eyebrow{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.dd-title{display:block;font-size:13.5px;font-weight:500;color:var(--text);letter-spacing:-.01em;line-height:1.35}
+.dd-desc{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
+.nav-right{display:flex;align-items:center;gap:10px;justify-self:end}.nav-right .btn{border-radius:9999px}
+.nav-burger{display:none;width:38px;height:38px;background:none;border:0;position:relative}
+.nav-burger span{position:absolute;left:9px;right:9px;height:1.5px;background:var(--text);transition:transform .35s var(--ease),top .35s}
+.nav-burger span:nth-child(1){top:15px}.nav-burger span:nth-child(2){top:22px}
+body.menu-open .nav-burger span:nth-child(1){top:18.5px;transform:rotate(45deg)}
+body.menu-open .nav-burger span:nth-child(2){top:18.5px;transform:rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:900;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);display:flex;flex-direction:column;justify-content:center;padding:0 8vw;gap:4px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;overflow-y:auto}
+body.menu-open .mobile-menu{opacity:1;visibility:visible}
+.mobile-menu>a{font-size:clamp(1.5rem,7vw,2.4rem);font-weight:500;letter-spacing:-.03em;padding:12px 0;border-bottom:1px solid var(--line-2);display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.mobile-menu>a:hover{color:var(--accent)}.mobile-menu>a .n{font-family:var(--mono);font-size:13px;color:var(--faint)}
+.mobile-menu .mm-blog{border-bottom:1px solid var(--line-2);padding:12px 0}
+.mobile-menu .mm-h{display:flex;justify-content:space-between;align-items:center;font-size:clamp(1.5rem,7vw,2.4rem);font-weight:500;letter-spacing:-.03em;color:var(--text)}
+.mobile-menu .mm-h .n{font-family:var(--mono);font-size:13px;color:var(--faint)}
+.mobile-menu .mm-sub{display:block;font-size:1.02rem;font-weight:400;letter-spacing:-.01em;color:var(--muted);padding:9px 0 0}
+.footer{border-top:1px solid var(--line);padding:80px 0 40px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px}
+.footer-brand .logo{margin-bottom:16px}.footer-brand .brand-img{height:28px}
+.footer-brand p{color:var(--muted);font-size:14px;max-width:32ch;line-height:1.6}
+.footer h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer ul a{color:var(--muted);font-size:14px;transition:color .25s}.footer ul a:hover{color:var(--text)}
+.footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.svc-header{padding:130px 0 50px;border-bottom:1px solid var(--line)}
+.svc-header--video{position:relative;overflow:hidden;border-bottom:0;padding:170px 0 90px;isolation:isolate;background:#070c16}
+.svc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:0;transition:opacity .6s ease}
+.svc-hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,12,22,.80) 0%,rgba(7,12,22,.60) 45%,rgba(7,12,22,.82) 100%)}
+.svc-header--video .svc-eyebrow{color:#7fb0ff}
+.svc-header--video .svc-title{color:#fff}
+.svc-header--video .svc-sub{color:rgba(255,255,255,.85)}
+.svc-header--video .btn-primary{background:#fff;color:#0b0d10}
+.svc-header--video .btn-primary:hover{background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.30)}
+.svc-header--video .svc-cta-row .btn:not(.btn-primary){border:1px solid rgba(255,255,255,.45)!important;color:#fff}
+.svc-header--video .svc-cta-row .btn:not(.btn-primary):hover{background:rgba(255,255,255,.12)}
+.svc-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
+.svc-title{font-size:clamp(2rem,5vw,3.3rem);font-weight:600;letter-spacing:-.04em;line-height:1.08;max-width:780px;margin:0 0 20px}
+.svc-sub{font-size:1.12rem;color:var(--muted);max-width:620px;line-height:1.6}
+.svc-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.svc-body{max-width:760px;margin:0 auto;padding:60px 0 70px}
+.svc-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-family:var(--mono);color:var(--muted);margin-bottom:34px;transition:color .2s}
+.svc-back:hover{color:var(--text)}.svc-back svg{width:14px;height:14px}
+.svc-body h2{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:50px 0 14px}
+.svc-body p{color:var(--muted);margin-bottom:16px;line-height:1.75}
+.svc-body strong{color:var(--text);font-weight:600}
+.svc-list{list-style:none;display:grid;gap:12px;margin:8px 0 20px}
+.svc-list li{position:relative;padding-left:30px;color:var(--muted);line-height:1.6}
+.svc-list li::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:var(--accent-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f6fe0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");background-size:11px;background-repeat:no-repeat;background-position:center}
+.svc-list li strong{color:var(--text)}
+.svc-tip{background:var(--bg-elev);border-left:3px solid var(--accent);border-radius:0 var(--r-md) var(--r-md) 0;padding:16px 20px;margin:24px 0;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.svc-tip strong{color:var(--text)}
+.svc-steps{display:grid;gap:14px;margin:10px 0 20px}
+.svc-step{display:flex;gap:16px;align-items:flex-start}
+.svc-step .num{flex:none;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:13px;display:grid;place-items:center;font-weight:500}
+.svc-step .tx{color:var(--muted);line-height:1.6;padding-top:3px}.svc-step .tx b{color:var(--text);font-weight:600}
+.svc-cta-box{background:var(--bg-elev);border-radius:24px;padding:44px 48px;text-align:center;max-width:760px;margin:0 auto 80px}
+.svc-cta-box .cta-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+.svc-cta-box h3{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;margin-bottom:12px}
+.svc-cta-box p{color:var(--muted);margin-bottom:26px;font-size:15px}
+.svc-also{max-width:760px;margin:0 auto 80px}
+.svc-also h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.svc-also-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.svc-also-item{border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .2s,background .2s}
+.svc-also-item:hover{border-color:rgba(47,111,224,.4);background:var(--accent-soft)}
+.svc-also-item .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
+.svc-also-item .t{display:block;font-size:14px;font-weight:500;color:var(--text);line-height:1.35}
+@media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.svc-header{padding:110px 0 40px}.svc-cta-box{padding:32px 24px}.svc-also-grid{grid-template-columns:1fr}}
+.logo .brand-img{height:24px;width:auto;display:block}
+.footer{position:relative;overflow:hidden}
+.footer-sygnet{position:absolute;right:-30px;top:30px;width:200px;height:auto;opacity:.07;pointer-events:none;transform:rotate(-8deg);z-index:0}
+.footer .wrap{position:relative;z-index:1}
+@media(max-width:680px){.footer-sygnet{width:150px;right:-24px;opacity:.06}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="../index.html" aria-label="skaluj.ai — strona główna"><img class="brand-img" src="../logo-skaluj.png" alt="skaluj.ai" width="664" height="170"></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../index.html#case-studies">Case studies</a>
+      <div class="nav-item" id="ofertaItem">
+        <button class="nav-link" id="ofertaBtn" aria-expanded="false" aria-haspopup="true">Oferta <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dropdown" role="menu" aria-label="Nasza oferta">
+          <div class="dd-head"><span class="l">Oferta</span><a class="c" href="../index.html#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-grid">
+            <a class="dd-item" href="strona-seo.html"><span class="dd-eyebrow">01 · Strona · SEO · GEO</span><span class="dd-title">Strona, która sprzedaje</span><span class="dd-desc">Projekt, SEO i GEO w standardzie — widoczna w Google i polecana przez AI.</span></a>
+            <a class="dd-item" href="automatyzacje-email.html"><span class="dd-eyebrow">02 · Automatyzacje AI</span><span class="dd-title">Procesy, które robią się same</span><span class="dd-desc">Mailing, faktury, oferty, raporty, CRM — powtarzalną pracę przejmują automaty.</span></a>
+            <a class="dd-item" href="chatbot-ai.html"><span class="dd-eyebrow">03 · Chatbot AI</span><span class="dd-title">Klient obsłużony w sekundy, 24/7</span><span class="dd-desc">Asystent zna Twoją ofertę i zamyka rutynowe zgłoszenia bez człowieka.</span></a>
+            <a class="dd-item" href="branding.html"><span class="dd-eyebrow">04 · Branding</span><span class="dd-title">Marka spójna w każdym kanale</span><span class="dd-desc">AI podsuwa pomysły — projekty wykonuje nasz zespół doświadczonych grafików.</span></a>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="../index.html#proces">Proces</a>
+      <div class="nav-item" id="blogItem">
+        <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">Blog <span class="nav-badge">6</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dropdown" role="menu" aria-label="Wpisy na blogu">
+          <div class="dd-head"><span class="l">Z bloga</span><a class="c" href="../index.html#oferta">Strona główna <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-grid">
+            <a class="dd-item" href="../blog/strona-seo.html"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Strona firmowa, która sprzedaje</span></a>
+            <a class="dd-item" href="../blog/automatyzacje-email.html"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">E-mail automation — 5 scenariuszy</span></a>
+            <a class="dd-item" href="../blog/chatbot-ai.html"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI: kiedy warto?</span></a>
+            <a class="dd-item" href="../blog/geo-ai-search.html"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO: widoczność w ChatGPT i Google AI</span></a>
+            <a class="dd-item" href="../blog/meta-ads-ai.html"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI — niższe koszty</span></a>
+            <a class="dd-item" href="../blog/branding.html"><span class="dd-eyebrow">Branding</span><span class="dd-title">Visual identity w 2026</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="../kontakt.html" onclick="window.location.href='../kontakt.html';return false;" class="btn btn-primary btn-sm">Umów konsultację</a>
+      <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html#case-studies"><span>Case studies</span><span class="n">01</span></a>
+  <div class="mm-blog">
+    <span class="mm-h">Oferta <span class="n">02</span></span>
+    <a class="mm-sub" href="strona-seo.html">Strona internetowa + SEO i GEO</a>
+    <a class="mm-sub" href="automatyzacje-email.html">Automatyzacje biznesowe AI</a>
+    <a class="mm-sub" href="chatbot-ai.html">Asystent i chatbot AI</a>
+    <a class="mm-sub" href="branding.html">Grafiki i branding</a>
+  </div>
+  <a href="../index.html#proces"><span>Proces</span><span class="n">03</span></a>
+  <div class="mm-blog">
+    <span class="mm-h">Blog <span class="n">04</span></span>
+    <a class="mm-sub" href="../blog/strona-seo.html">Strona firmowa, która sprzedaje</a>
+    <a class="mm-sub" href="../blog/automatyzacje-email.html">E-mail automation — 5 scenariuszy</a>
+    <a class="mm-sub" href="../blog/chatbot-ai.html">Chatbot AI: kiedy warto?</a>
+    <a class="mm-sub" href="../blog/geo-ai-search.html">GEO — widoczność w AI Search</a>
+    <a class="mm-sub" href="../blog/meta-ads-ai.html">Meta Ads z AI</a>
+    <a class="mm-sub" href="../blog/branding.html">Visual identity w 2026</a>
+  </div>
+  <a><span>Kontakt</span><span class="n">05</span></a>
+</div>
+
+<main>
+<header class="svc-header svc-header--video">
+  <video class="svc-hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="../assets/hero-automatyzacje-email.mp4" type="video/mp4">
+  </video>
+  <div class="svc-hero-overlay"></div>
+  <div class="wrap">
+    <span class="svc-eyebrow">02 — Automatyzacje AI</span>
+    <h1 class="svc-title">Automatyzacje biznesowe AI — powtarzalna praca robi się sama</h1>
+    <p class="svc-sub">Łączymy narzędzia, których już używasz, i budujemy automaty przejmujące rutynę: mailing, dokumenty, leady, oferty, raporty, terminy. Zespół zajmuje się tym, co przynosi pieniądze — resztę robi system.</p>
+    <div class="svc-cta-row">
+      <a href="../kontakt.html" onclick="window.location.href='../kontakt.html';return false;" class="btn btn-primary">Zautomatyzuj procesy</a>
+      <a class="btn" href="../index.html#oferta" style="border:1px solid var(--line)">Cała oferta</a>
+    </div>
+  </div>
+</header>
+
+<article class="svc-body wrap">
+  <a class="svc-back" href="../index.html#oferta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Wróć do oferty</a>
+
+  <h2>Dla kogo to jest</h2>
+  <p>Dla firm, w których zespół codziennie robi ręcznie to, co system mógłby robić sam: przepisuje dane między narzędziami, wysyła te same maile, wystawia dokumenty, składa raporty. Jeśli słyszysz u siebie „zawsze tak robiliśmy" albo „to zajmuje tylko chwilę" — pomnóż tę chwilę przez liczbę powtórzeń w miesiącu. Właśnie tam leżą Twoje godziny i pieniądze.</p>
+
+  <h2>Co automatyzujemy</h2>
+  <p>Poniżej najczęstsze procesy, które przejmują nasze automaty. Każdy budujemy pod Twoje narzędzia i Twoją specyfikę — to lista możliwości, nie zamknięty katalog.</p>
+  <ul class="svc-list">
+    <li><strong>Mailing i komunikacja z klientami</strong> — sekwencje powitalne, follow-upy po zapytaniu, nurturing, reaktywacja uśpionych kontaktów, przypomnienia o terminach. AI personalizuje treść i dobiera moment wysyłki.</li>
+    <li><strong>Faktury i dokumenty</strong> — automatyczny odczyt faktur i dokumentów (AI + OCR), segregacja, przekazywanie do księgowości, przypomnienia o płatnościach i monitoring zaległości.</li>
+    <li><strong>Leady i sprzedaż</strong> — lead z formularza lub reklamy trafia prosto do CRM, AI ocenia jego potencjał, przypisuje właściwemu handlowcowi i od razu odpala follow-up.</li>
+    <li><strong>Oferty i wyceny</strong> — oferta generowana z szablonu i danych klienta w minuty, automatyczna wysyłka i przypomnienie, gdy klient długo nie odpowiada.</li>
+    <li><strong>Raportowanie</strong> — dane ze sprzedaży, marketingu i finansów zbierane z wielu narzędzi w jeden raport lub dashboard — codziennie, tygodniowo, na żądanie.</li>
+    <li><strong>Umawianie spotkań</strong> — rezerwacje, potwierdzenia i przypomnienia bez mailowego ping-ponga; kalendarz pilnuje się sam.</li>
+    <li><strong>Obsługa zgłoszeń</strong> — automatyczna segregacja i przydzielanie ticketów, odpowiedzi na powtarzalne pytania, eskalacja trudnych spraw do człowieka.</li>
+    <li><strong>Synchronizacja danych</strong> — CRM, arkusze, sklep i księgowość mówią jednym głosem. Koniec z ręcznym przeklejaniem i rozjechanymi danymi.</li>
+    <li><strong>Rekrutacja i onboarding</strong> — wstępna selekcja CV, umawianie rozmów, sekwencja onboardingowa dla nowego pracownika krok po kroku.</li>
+    <li><strong>Social media i treści</strong> — planowanie i publikacja postów, recykling treści między kanałami, spójny kalendarz publikacji bez pilnowania.</li>
+    <li><strong>Monitoring i alerty</strong> — powiadomienie tam, gdzie pracujesz (np. Slack), gdy dzieje się coś ważnego: nowy lead, płatność, opóźnienie, błąd w procesie.</li>
+    <li><strong>Integracje szyte na miarę</strong> — Gmail/Outlook, Slack, Notion, Airtable, CRM-y, sklepy internetowe, Make, n8n, własne API. Jeśli narzędzie ma API — spinamy je.</li>
+  </ul>
+
+  <h2>Jak budujemy automatyzacje — proces krok po kroku</h2>
+  <div class="svc-steps">
+    <div class="svc-step"><span class="num">1</span><span class="tx"><b>Audyt procesów.</b> Siadamy z Tobą i mapujemy powtarzalne zadania: co się robi, jak często, w jakich narzędziach i ile to kosztuje (czas × stawka). Na tej podstawie wybieramy procesy o największym zwrocie z automatyzacji.</span></div>
+    <div class="svc-step"><span class="num">2</span><span class="tx"><b>Projekt przepływu.</b> Rozrysowujemy automatyzację od zdarzenia do rezultatu: co ją uruchamia, przez jakie narzędzia przechodzi, co robi AI, a co zostaje przy człowieku. Zanim powstanie kod, wiesz dokładnie, jak to będzie działać.</span></div>
+    <div class="svc-step"><span class="num">3</span><span class="tx"><b>Pilotaż na małej skali.</b> Budujemy pierwszy automat i testujemy go na realnych danych — na wycinku procesu, pod nadzorem. Dopiero gdy widzisz, że działa poprawnie, zwiększamy zasięg.</span></div>
+    <div class="svc-step"><span class="num">4</span><span class="tx"><b>Wdrożenie i integracje.</b> Spinamy narzędzia na stałe, ustawiamy obsługę błędów, alerty i logi (żaden przypadek nie ginie po cichu) oraz szkolimy zespół z obsługi.</span></div>
+    <div class="svc-step"><span class="num">5</span><span class="tx"><b>Monitoring i rozwój.</b> Automaty raportują swoją pracę. Sprawdzamy wyniki, poprawiamy wąskie gardła i dokładamy kolejne procesy — zaczynając zawsze od tych z najlepszym zwrotem.</span></div>
+  </div>
+
+  <div class="svc-tip"><strong>Od czego zacząć?</strong> Od procesu, który powtarza się najczęściej i boli najbardziej — tam zwrot z automatyzacji widać w tygodnie, a sukces pierwszego automatu finansuje kolejne.</div>
+
+  <h2>Efekty, których możesz oczekiwać</h2>
+  <p>Na starcie ustalamy mierzalne cele (np. liczba godzin odzyskanych w miesiącu, czas reakcji na zapytanie, odsetek dokumentów przetwarzanych bez człowieka) i raportujemy je. Kierunki, w których pracujemy: <strong>godziny zdjęte z powtarzalnych zadań</strong>, mniej błędów ludzkich, szybsze odpowiedzi klientom i procesy, które skalują się bez zatrudniania kolejnych osób.</p>
+
+  <h2>Automat wykonuje — człowiek nadzoruje</h2>
+  <p>Każda automatyzacja ma jasno wyznaczone granice: rutynę wykonuje system, a decyzje nietypowe i wyjątki trafiają do człowieka z pełnym kontekstem. Do tego obsługa błędów i alerty — jeśli coś pójdzie nie tak, wiesz o tym od razu, zamiast odkrywać po tygodniu.</p>
+</article>
+
+<div class="svc-cta-box wrap">
+  <span class="cta-label">Gotowy na następny krok?</span>
+  <h3>Koniec z ręczną, powtarzalną robotą</h3>
+  <p>Na bezpłatnym audycie pokażemy, które procesy w Twojej firmie da się zautomatyzować i ile godzin miesięcznie na tym odzyskasz.</p>
+  <a href="../kontakt.html" onclick="window.location.href='../kontakt.html';return false;" class="btn btn-primary">Umów bezpłatną konsultację</a>
+</div>
+
+<div class="svc-also wrap">
+  <h4>Zobacz też</h4>
+  <div class="svc-also-grid">
+    <a class="svc-also-item" href="chatbot-ai.html"><span class="eyebrow">Chatbot AI</span><span class="t">Asystent i chatbot AI — obsługa klienta 24/7</span></a>
+    <a class="svc-also-item" href="strona-seo.html"><span class="eyebrow">Strona + SEO</span><span class="t">Strona internetowa, która zamienia ruch w klientów</span></a>
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <img src="../sygnet.png" class="footer-sygnet" alt="" aria-hidden="true">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="../index.html" aria-label="skaluj.ai"><img class="brand-img" src="../logo-skaluj.png" alt="skaluj.ai" width="664" height="170"></a>
+        <p>Agencja wdrożeń AI. Automatyzacje, asystenci i modele predykcyjne — z policzonym ROI.</p>
+      </div>
+      <div><h4>Oferta</h4><ul><li><a href="strona-seo.html">Strona + SEO</a></li><li><a href="automatyzacje-email.html">Automatyzacje biznesowe AI</a></li><li><a href="chatbot-ai.html">Chatbot AI</a></li><li><a href="branding.html">Branding</a></li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a href="mailto:hello@skaluj.ai">hello@skaluj.ai</a></li><li><a href="tel:+48221000100">+48 22 100 01 00</a></li><li><a>Formularz</a></li><li><a href="../index.html">Strona główna</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 skaluj.ai — wszystkie prawa zastrzeżone</span><span>Zaprojektowano w Polsce</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>20);});
+  var burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+  burger&&burger.addEventListener('click',function(){document.body.classList.toggle('menu-open');});
+  mm&&mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open');});});
+  function initDrop(item,btn){
+    if(!item||!btn)return;
+    var t,hoverable=matchMedia('(hover:hover) and (pointer:fine)').matches;
+    function open(){clearTimeout(t);item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+    function close(){t=setTimeout(function(){item.classList.remove('open');btn.setAttribute('aria-expanded','false');},220);}
+    if(hoverable){item.addEventListener('mouseenter',open);item.addEventListener('mouseleave',close);}
+    btn.addEventListener('click',function(e){e.preventDefault();item.classList.contains('open')?close():open();});
+    document.addEventListener('click',function(e){if(!item.contains(e.target))item.classList.remove('open');});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')item.classList.remove('open');});
+  }
+  initDrop(document.getElementById('ofertaItem'),document.getElementById('ofertaBtn'));
+  initDrop(document.getElementById('blogItem'),document.getElementById('blogBtn'));
+})();
+</script>
+<!-- svc-hero-video-fadein -->
+<script>
+(function(){
+  var v = document.querySelector('.svc-hero-video');
+  if(!v) return;
+  function show(){ v.style.opacity='1'; }
+  if(v.readyState >= 3){ show(); }
+  else { v.addEventListener('canplay', show, {once:true}); }
+})();
+</script>
+</body>
+</html>
