@@ -16,3 +16,5 @@ node_modules/
 # Zmienne środowiskowe / sekrety
 .env
 .env.local
+
+# pipeline test 2026-07-03T08:18Z
