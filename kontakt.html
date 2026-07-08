@@ -94,13 +94,27 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 
 /* CONTACT SECTION */
 .kontakt-body{padding:72px 0 100px}
-.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,90px)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,80px);align-items:start}
+.contact-info{display:flex;flex-direction:column}
+#formCard{width:100%}
+.ci-reassure{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.7;max-width:52ch}
+.contact-note{margin-top:22px;display:flex;gap:12px;padding:15px 17px;border:1px solid var(--line-2);border-radius:var(--r-lg);background:var(--accent-soft);max-width:60ch}
+.contact-note svg{flex:none;width:17px;height:17px;color:var(--accent);margin-top:2px}
+.contact-note p{margin:0;font-size:12.5px;line-height:1.6;color:var(--muted)}
+.contact-note b{color:var(--text);font-weight:600}
 .contact-info p{color:var(--muted);font-size:15px;line-height:1.7;max-width:42ch}
 .contact-rows{margin-top:40px;display:flex;flex-direction:column}
 .contact-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 2px;border-top:1px solid var(--line-2);font-size:14px;color:var(--muted);transition:color .2s,padding-left .2s}
 .contact-row:hover{color:var(--text);padding-left:8px}
 .contact-row b{font-weight:500;color:var(--text)}
 .contact-row .mono{font-family:var(--mono);font-size:12px}
+.talk-flow{margin-top:38px;padding-top:30px;border-top:1px solid var(--line-2)}
+.talk-flow-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:20px}
+.talk-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.talk-steps li{display:flex;gap:14px;align-items:flex-start}
+.ts-num{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:500}
+.ts-txt b{display:block;font-size:14.5px;font-weight:600;color:var(--text);letter-spacing:-.01em;margin-bottom:3px}
+.ts-txt span{display:block;font-size:13px;color:var(--muted);line-height:1.55}
 
 /* FORM */
 .form-card{padding:0}
@@ -191,7 +205,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 .footer-sygnet{position:absolute;right:-30px;top:30px;width:215px;height:auto;opacity:.07;pointer-events:none;transform:rotate(-8deg);z-index:0}
 .footer .wrap{position:relative;z-index:1}
 
-@media(max-width:1020px){.contact-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:1020px){.contact-grid{grid-template-columns:1fr}.contact-info{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}
 @media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.svc-tiles{grid-template-columns:1fr}.mf-lbl{display:none}}
 @media(max-width:600px){.fgrid{grid-template-columns:1fr}}
@@ -308,6 +322,11 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
     <span class="eyebrow">Kontakt</span>
     <h1>Zacznijmy od <span class="grad">rozmowy</span></h1>
     <p>Opowiedz, gdzie Twoja firma traci czas i pieni&#261;dze &mdash; my powiemy, czy AI to rozwi&#261;&#380;e i ile na tym zarobisz.</p>
+    <p class="ci-reassure">Ka&#380;de zapytanie analizujemy indywidualnie. Nie wysy&#322;amy automatycznych wiadomo&#347;ci marketingowych &mdash; piszemy wy&#322;&#261;cznie w sprawie Twojego zapytania.</p>
+    <div class="contact-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <p><b>Poufno&#347;&#263;:</b> Twoje dane i przes&#322;ane pliki traktujemy jako poufne i nie udost&#281;pniamy ich osobom trzecim. Na &#380;yczenie podpiszemy NDA przed rozmow&#261;.</p>
+    </div>
   </div>
 </header>
 
@@ -318,8 +337,16 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         <div class="contact-rows">
           <a class="contact-row" href="mailto:kontakt@skaluj.ai"><b>E-mail</b><span class="mono">kontakt@skaluj.ai</span></a>
           
-          <div class="contact-row"><b>Biuro</b><span class="mono">Warszawa / remote-first</span></div>
+          <div class="contact-row"><b>Lokalizacja</b><span class="mono">Rzeszów</span></div>
           <div class="contact-row"><b>Odpowiadamy</b><span class="mono">&lt; 24 h, pon&ndash;pt</span></div>
+        </div>
+        <div class="talk-flow">
+          <span class="talk-flow-label">Jak wygląda pierwsza rozmowa</span>
+          <ol class="talk-steps">
+            <li><span class="ts-num">1</span><div class="ts-txt"><b>Wypełniasz formularz</b><span>Kilka pytań o Twoją firmę i cel — zajmuje dwie minuty.</span></div></li>
+            <li><span class="ts-num">2</span><div class="ts-txt"><b>Pokazujemy gotowe demo</b><span>30-minutowe spotkanie z wstępnym projektem — od razu widzisz kierunek, zamiast słuchać obietnic.</span></div></li>
+            <li><span class="ts-num">3</span><div class="ts-txt"><b>Decydujesz — bez zobowiązań</b><span>Dostajesz jasny plan, termin i wycenę — wszystko, czego potrzebujesz, żeby ruszyć. Startujemy, gdy dasz zielone światło.</span></div></li>
+          </ol>
         </div>
       </div>
 
@@ -331,77 +358,34 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         </div>
         <div class="dash-body">
         <form id="contactForm" novalidate>
-          <div class="mf-progress">
-            <div class="mf-step mf-active" id="mfDot1"><span class="mf-dot">1</span><span class="mf-lbl">Kontakt</span></div>
-            <div class="mf-line" id="mfLine1"></div>
-            <div class="mf-step" id="mfDot2"><span class="mf-dot">2</span><span class="mf-lbl">Oferta</span></div>
-            <div class="mf-line" id="mfLine2"></div>
-            <div class="mf-step" id="mfDot3"><span class="mf-dot">3</span><span class="mf-lbl">Szczeg&oacute;&#322;y</span></div>
+          <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
+          <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
+          <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
+          <p class="mf-sub" style="margin-top:10px">Co Ci&#281; interesuje? Mo&#380;esz zaznaczy&#263; kilka.</p>
+          <div class="svc-tiles">
+            <label class="svc-tile"><input type="checkbox" name="svc" value="strona" id="svcStrona"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Strona + SEO</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="email"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email / Mailing</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chatbot AI</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="geo"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>GEO / AI Search</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="ads"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Meta Ads</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>Branding</span></label>
           </div>
-          <div class="mf-panel mf-active" id="mfP1">
-            <span class="mf-hint">Krok 1 z 3</span>
-            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
-            <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
-            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
+          <div class="fgroup">
+            <textarea id="fMsg" placeholder=" " rows="5"></textarea>
+            <label for="fMsg">Opisz swój projekt — strona, branding, automatyzacja, chatbot…</label>
+            <span class="bar"></span>
+            <span class="fgroup-hint">Napisz, czego potrzebujesz i co chcesz osi&#261;gn&#261;&#263; &mdash; cel, styl, inspiracje, przyk&#322;ady. Im wi&#281;cej szczeg&oacute;&#322;&oacute;w, tym lepiej dopasujemy ofert&#281;.</span>
           </div>
-          <div class="mf-panel" id="mfP2">
-            <span class="mf-hint">Krok 2 z 3</span>
-            <p class="mf-sub">Co Ci&#281; interesuje? Mo&#380;esz zaznaczy&#263; kilka.</p>
-            <div class="svc-tiles">
-              <label class="svc-tile"><input type="checkbox" name="svc" value="strona" id="svcStrona"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Strona + SEO</span></label>
-              <label class="svc-tile"><input type="checkbox" name="svc" value="email"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email / Mailing</span></label>
-              <label class="svc-tile"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chatbot AI</span></label>
-              <label class="svc-tile"><input type="checkbox" name="svc" value="geo"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>GEO / AI Search</span></label>
-              <label class="svc-tile"><input type="checkbox" name="svc" value="ads"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Meta Ads</span></label>
-              <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>Branding</span></label>
-            </div>
-            <div class="web-sub" id="webSub">
-              <p class="mf-sub-title">Szczegóły strony internetowej</p>
-              <div class="fgroup"><textarea id="wDesc" name="wDesc" placeholder=" " rows="4"></textarea><label for="wDesc">Opisz stronę, jakiej potrzebujesz — cel, styl, przykłady, funkcje</label><span class="bar"></span></div>
-              <div class="attach-row">
-                <label class="attach-btn" for="fWebFiles">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-                  Załącz plik
-                </label>
-                <input type="file" id="fWebFiles" name="webFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx" style="display:none">
-                <span class="attach-name" id="fWebFilesName"></span>
-              </div>
-            </div>
-            <div class="web-sub" id="brandSub">
-              <p class="mf-sub-title">Szczegóły projektu graficznego</p>
-              <div class="fgroup"><textarea id="bDesc" name="bDesc" placeholder=" " rows="4"></textarea><label for="bDesc">Opisz projekt — marka, styl, do czego ma służyć, przykłady, które lubisz</label><span class="bar"></span></div>
-              <div class="attach-row">
-                <label class="attach-btn" for="fBrandFiles">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-                  Załącz plik
-                </label>
-                <input type="file" id="fBrandFiles" name="brandFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd" style="display:none">
-                <span class="attach-name" id="fBrandFilesName"></span>
-              </div>
-            </div>
+          <div class="attach-row">
+            <label class="attach-btn" for="fAttach">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+              Za&#322;&#261;cz pliki (brief, inspiracje, logo&hellip;)
+            </label>
+            <input type="file" id="fAttach" name="attachment" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx" style="display:none">
+            <span class="attach-name" id="fAttachName"></span>
           </div>
-          <div class="mf-panel" id="mfP3">
-            <span class="mf-hint">Krok 3 z 3</span>
-            <div class="fgroup">
-              <textarea id="fMsg" placeholder=" " rows="5"></textarea>
-              <label for="fMsg">Dodatkowe informacje (opcjonalnie)</label>
-              <span class="bar"></span>
-              <span class="fgroup-hint">Je&#347;li masz preferencje dotycz&#261;ce koloru, stylu, inspiracje czy inne wytyczne &mdash; opisz je tutaj. Im wi&#281;cej szczeg&oacute;&#322;&oacute;w, tym lepiej dopasujemy ofert&#281;.</span>
-            </div>
-            <div class="attach-row">
-              <label class="attach-btn" for="fAttach">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-                Za&#322;&#261;cz plik
-              </label>
-              <input type="file" id="fAttach" name="attachment" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx" style="display:none">
-              <span class="attach-name" id="fAttachName"></span>
-            </div>
-          </div>
-          <div class="mf-nav">
-            <button type="button" class="mf-back" id="mfBack">&#8592; Wstecz</button>
-            <button type="button" class="btn btn-primary mf-next" id="mfNext">Dalej →</button>
-          </div>
-          <p class="mf-note" id="mfNote">Wysy&#322;aj&#261;c formularz akceptujesz polityk&#281; prywatno&#347;ci. Zero spamu.</p>
+          <button type="submit" class="btn btn-primary" id="mfSubmit" style="width:100%;margin-top:12px;justify-content:center">Wyślij zapytanie &#8594;</button>
+          <p class="mf-note visible" id="mfNote">Wysy&#322;aj&#261;c formularz akceptujesz polityk&#281; prywatno&#347;ci. Zero spamu.</p>
         </form>
         <div class="form-success" aria-live="polite">
           <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -424,7 +408,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         <p>Agencja transformacji cyfrowej dla firm B2B. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
       </div>
       <div><h4>Nawigacja</h4><ul><li><a href="index.html#oferta">Oferta</a></li><li><a href="index.html#case-studies">Case studies</a></li><li><a href="index.html#proces">Proces</a></li></ul></div>
-      <div><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a></li><li>Warszawa / remote-first</li></ul></div>
+      <div><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a></li></ul></div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj.ai</div>
     <div class="footer-bottom"><span>&copy; 2026 skaluj.ai &mdash; wszystkie prawa zastrze&#380;one</span><span>Zaprojektowano w Polsce</span></div>
@@ -462,31 +446,11 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 
   /* multi-step form */
   (function(){
-    var step = 1, card = document.getElementById("formCard");
+    var card = document.getElementById("formCard");
     var form = document.getElementById("contactForm");
-    var btnBack = document.getElementById("mfBack");
-    var btnNext = document.getElementById("mfNext");
-    var mfNote = document.getElementById("mfNote");
-    var webSub = document.getElementById("webSub");
-    var brandSub = document.getElementById("brandSub");
-    var svcStrona = document.getElementById("svcStrona");
-    var svcBranding = document.getElementById("svcBranding");
+    var submitBtn = document.getElementById("mfSubmit");
 
-    function showStep(n){
-      for(var i=1;i<=3;i++){
-        var p=document.getElementById("mfP"+i), d=document.getElementById("mfDot"+i);
-        if(p) p.classList.toggle("mf-active",i===n);
-        if(d){ d.classList.toggle("mf-active",i===n); d.classList.toggle("mf-done",i<n); }
-      }
-      var lines=form.querySelectorAll(".mf-line");
-      for(var j=0;j<lines.length;j++) lines[j].classList.toggle("mf-done",j<n-1);
-      btnBack.hidden=(n===1);
-      btnNext.textContent=n===3?"Wyślij zapytanie →":"Dalej →";
-      mfNote.classList.toggle("visible",n===3);
-      step=n;
-    }
-
-    function validateStep1(){
+    function validateForm(){
       var fName=document.getElementById("fName"), fEmail=document.getElementById("fEmail"), fCompany=document.getElementById("fCompany");
       var errName=document.getElementById("errName"), errEmail=document.getElementById("errEmail"), errCompany=document.getElementById("errCompany");
       var ok=true;
@@ -499,22 +463,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       return ok;
     }
 
-    svcStrona&&svcStrona.addEventListener("change",function(){ webSub.classList.toggle("visible",this.checked); });
-    svcBranding&&svcBranding.addEventListener("change",function(){ brandSub.classList.toggle("visible",this.checked); });
-
-    var fBrandFiles=document.getElementById("fBrandFiles");
-    fBrandFiles&&fBrandFiles.addEventListener("change",function(){
-      var nameEl=document.getElementById("fFileName");
-      if(this.files.length){ nameEl.textContent=this.files.length>1?this.files.length+" plik\u00f3w":this.files[0].name; nameEl.classList.add("has-file"); }
-      else { nameEl.textContent=""; nameEl.classList.remove("has-file"); }
-    });
-
-    btnNext.addEventListener("click",function(){
-      if(step<3){ if(step===1&&!validateStep1()) return; showStep(step+1); }
-      else { form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
-    });
-    btnBack.addEventListener("click",function(){ if(step>1) showStep(step-1); });
-
     var fAttach=document.getElementById("fAttach");
     fAttach&&fAttach.addEventListener("change",function(){
       var nameEl=document.getElementById("fAttachName");
@@ -522,21 +470,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       else { nameEl.textContent=""; }
     });
 
-    [["fWebFiles","fWebFilesName"],["fBrandFiles","fBrandFilesName"]].forEach(function(pair){
-      var inp=document.getElementById(pair[0]); var lbl=document.getElementById(pair[1]);
-      if(inp&&lbl){ inp.addEventListener("change",function(){
-        if(this.files.length){ lbl.textContent=this.files.length>1?this.files.length+" plików":this.files[0].name; }
-        else { lbl.textContent=""; }
-      }); }
-    });
-
     form.addEventListener("submit",function(e){
       e.preventDefault();
-      btnNext.disabled=true; btnNext.style.opacity=".6";
+      if(!validateForm()) return;
+      submitBtn.disabled=true; submitBtn.style.opacity=".6";
       setTimeout(function(){ card.classList.add("sent"); },700);
     });
-
-    showStep(1);
   })();
 })();
 </script>
