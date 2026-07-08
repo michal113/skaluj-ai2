@@ -1634,7 +1634,13 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </div>
       </div>
 
-      <div class="form-card" data-reveal data-delay="120" id="formCard">
+      <div class="dash" data-reveal data-delay="120" id="formCard">
+        <div class="dash-top">
+          <span class="dash-dots"><i></i><i></i><i></i></span>
+          <span class="dash-title">formularz kontaktowy &middot; skaluj.ai</span>
+          <span class="dash-live">kontakt</span>
+        </div>
+        <div class="dash-body">
         <form id="contactForm" novalidate>
           <div class="mf-progress">
             <div class="mf-step mf-active" id="mfDot1"><span class="mf-dot">1</span><span class="mf-lbl">Kontakt</span></div>
@@ -1645,9 +1651,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           </div>
           <div class="mf-panel mf-active" id="mfP1">
             <span class="mf-hint">Krok 1 z 3</span>
-            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281;</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
+            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
             <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
-            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Nazwa firmy</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
+            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
           </div>
           <div class="mf-panel" id="mfP2">
             <span class="mf-hint">Krok 2 z 3</span>
@@ -1661,48 +1667,24 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
               <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></svg>Grafiki i branding</span></label>
             </div>
             <div class="web-sub" id="webSub">
-              <p class="mf-sub-title">Szczeg&oacute;&#322;y strony internetowej</p>
-              <span class="mf-sub-label">Kolorystyka</span>
-              <div class="color-swatches">
-                <label class="cswatch" title="Niebieski"><input type="radio" name="wColor" value="niebieski"><span style="background:#2f6fe0"></span></label>
-                <label class="cswatch" title="Zielony"><input type="radio" name="wColor" value="zielony"><span style="background:#24a35a"></span></label>
-                <label class="cswatch" title="Fioletowy"><input type="radio" name="wColor" value="fioletowy"><span style="background:#7b5ea7"></span></label>
-                <label class="cswatch" title="Pomara&#324;czowy"><input type="radio" name="wColor" value="pomaranczowy"><span style="background:#d97706"></span></label>
-                <label class="cswatch" title="Czarny"><input type="radio" name="wColor" value="czarny"><span style="background:#111"></span></label>
-                <label class="cswatch" title="R&oacute;&#380;owy"><input type="radio" name="wColor" value="rozowy"><span style="background:#e05a8d"></span></label>
-              </div>
-              <span class="mf-sub-label">Styl</span>
-              <div class="style-chips">
-                <label class="style-chip"><input type="radio" name="wStyle" value="minimalistyczny"><span>Minimalistyczny</span></label>
-                <label class="style-chip"><input type="radio" name="wStyle" value="nowoczesny"><span>Nowoczesny</span></label>
-                <label class="style-chip"><input type="radio" name="wStyle" value="elegancki"><span>Elegancki</span></label>
-                <label class="style-chip"><input type="radio" name="wStyle" value="dynamiczny"><span>Dynamiczny</span></label>
-              </div>
+              <p class="mf-sub-title">Szczegóły strony internetowej</p>
+              <div class="fgroup"><textarea id="wDesc" name="wDesc" placeholder=" " rows="4"></textarea><label for="wDesc">Opisz stronę, jakiej potrzebujesz — cel, styl, przykłady, funkcje</label><span class="bar"></span></div>
+              <label class="file-drop" id="fileDropWeb">
+                <input type="file" name="webFiles" id="fWebFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx">
+                <svg class="file-drop-ico" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                <span class="file-drop-lbl">Kliknij lub upuść pliki tutaj</span>
+                <span class="file-drop-hint">PDF, JPG, PNG, ZIP, DOC (opcjonalnie)</span>
+                <span class="file-name" id="fWebFileName"></span>
+              </label>
             </div>
             <div class="web-sub" id="brandSub">
-              <p class="mf-sub-title">Szczeg&oacute;&#322;y projektu graficznego</p>
-              <span class="mf-sub-label">Kolorystyka</span>
-              <div class="color-swatches">
-                <label class="cswatch" title="Niebieski"><input type="radio" name="bColor" value="niebieski"><span style="background:#2f6fe0"></span></label>
-                <label class="cswatch" title="Zielony"><input type="radio" name="bColor" value="zielony"><span style="background:#24a35a"></span></label>
-                <label class="cswatch" title="Fioletowy"><input type="radio" name="bColor" value="fioletowy"><span style="background:#7b5ea7"></span></label>
-                <label class="cswatch" title="Czarny"><input type="radio" name="bColor" value="czarny"><span style="background:#111"></span></label>
-                <label class="cswatch" title="Czerwony"><input type="radio" name="bColor" value="czerwony"><span style="background:#d95a5a"></span></label>
-                <label class="cswatch" title="R&oacute;&#380;owy"><input type="radio" name="bColor" value="rozowy"><span style="background:#e05a8d"></span></label>
-              </div>
-              <span class="mf-sub-label">Styl</span>
-              <div class="style-chips">
-                <label class="style-chip"><input type="radio" name="bStyle" value="minimalistyczny"><span>Minimalistyczny</span></label>
-                <label class="style-chip"><input type="radio" name="bStyle" value="korporacyjny"><span>Korporacyjny</span></label>
-                <label class="style-chip"><input type="radio" name="bStyle" value="dynamiczny"><span>Dynamiczny</span></label>
-                <label class="style-chip"><input type="radio" name="bStyle" value="elegancki"><span>Elegancki</span></label>
-              </div>
-              <span class="mf-sub-label">Pliki z inspiracjami / brief</span>
+              <p class="mf-sub-title">Szczegóły projektu graficznego</p>
+              <div class="fgroup"><textarea id="bDesc" name="bDesc" placeholder=" " rows="4"></textarea><label for="bDesc">Opisz projekt — marka, styl, do czego ma służyć, przykłady, które lubisz</label><span class="bar"></span></div>
               <label class="file-drop" id="fileDrop">
                 <input type="file" name="brandFiles" id="fBrandFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd">
                 <svg class="file-drop-ico" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                <span class="file-drop-lbl">Kliknij lub upu&#347;&#263; pliki tutaj</span>
-                <span class="file-drop-hint">PDF, JPG, PNG, ZIP, AI, PSD</span>
+                <span class="file-drop-lbl">Kliknij lub upuść pliki tutaj</span>
+                <span class="file-drop-hint">PDF, JPG, PNG, ZIP, AI, PSD (opcjonalnie)</span>
                 <span class="file-name" id="fFileName"></span>
               </label>
             </div>
@@ -1721,6 +1703,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
           <h3>Dziękujemy!</h3>
           <p>Twoje zapytanie dotarło. Odezwiemy się w ciągu 24 godzin roboczych.</p>
+        </div>
         </div>
       </div>
     </div>
@@ -2149,26 +2132,32 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var svcs = Array.prototype.map.call(form.querySelectorAll('[name="svc"]:checked'), function(el){ return el.value; });
-      var colorEl = form.querySelector('[name="wColor"]:checked');
-      var styleEl = form.querySelector('[name="wStyle"]:checked');
-      var bColorEl = form.querySelector('[name="bColor"]:checked');
-      var bStyleEl = form.querySelector('[name="bStyle"]:checked');
       var brandFilesEl = document.getElementById('fBrandFiles');
+      var webFilesEl = document.getElementById('fWebFiles');
+      var wDescEl = document.getElementById('wDesc');
+      var bDescEl = document.getElementById('bDesc');
       var data = {
         name: document.getElementById('fName').value.trim(),
         email: document.getElementById('fEmail').value.trim(),
         company: document.getElementById('fCompany').value.trim(),
         services: svcs,
-        webColor: colorEl ? colorEl.value : null,
-        webStyle: styleEl ? styleEl.value : null,
-        brandColor: bColorEl ? bColorEl.value : null,
-        brandStyle: bStyleEl ? bStyleEl.value : null,
+        webDesc: wDescEl ? wDescEl.value.trim() : '',
+        brandDesc: bDescEl ? bDescEl.value.trim() : '',
+        webFiles: webFilesEl ? Array.prototype.map.call(webFilesEl.files, function(f){ return f.name; }) : [],
         brandFiles: brandFilesEl ? Array.prototype.map.call(brandFilesEl.files, function(f){ return f.name; }) : [],
         message: document.getElementById('fMsg').value.trim()
       };
       console.log('[skaluj.ai] Formularz:', data);
       btnNext.disabled = true; btnNext.style.opacity = '.6';
       setTimeout(function(){ card.classList.add('sent'); }, 700);
+    });
+
+    [['fWebFiles','fWebFileName'],['fBrandFiles','fFileName']].forEach(function(pair){
+      var inp=document.getElementById(pair[0]); var lbl=document.getElementById(pair[1]);
+      if(inp&&lbl){ inp.addEventListener('change',function(){
+        if(this.files.length){ lbl.textContent=this.files.length>1?this.files.length+' plików':this.files[0].name; lbl.classList.add('has-file'); }
+        else { lbl.textContent=''; lbl.classList.remove('has-file'); }
+      }); }
     });
 
     showStep(1);

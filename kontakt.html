@@ -356,10 +356,28 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
               <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>Branding</span></label>
             </div>
             <div class="web-sub" id="webSub">
-              <p class="mf-sub-title">Szczeg&oacute;&#322;y strony internetowej</p>
+              <p class="mf-sub-title">Szczegóły strony internetowej</p>
+              <div class="fgroup"><textarea id="wDesc" name="wDesc" placeholder=" " rows="4"></textarea><label for="wDesc">Opisz stronę, jakiej potrzebujesz — cel, styl, przykłady, funkcje</label><span class="bar"></span></div>
+              <div class="attach-row">
+                <label class="attach-btn" for="fWebFiles">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                  Załącz plik
+                </label>
+                <input type="file" id="fWebFiles" name="webFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx" style="display:none">
+                <span class="attach-name" id="fWebFilesName"></span>
+              </div>
             </div>
             <div class="web-sub" id="brandSub">
-              <p class="mf-sub-title">Szczeg&oacute;&#322;y projektu graficznego</p>
+              <p class="mf-sub-title">Szczegóły projektu graficznego</p>
+              <div class="fgroup"><textarea id="bDesc" name="bDesc" placeholder=" " rows="4"></textarea><label for="bDesc">Opisz projekt — marka, styl, do czego ma służyć, przykłady, które lubisz</label><span class="bar"></span></div>
+              <div class="attach-row">
+                <label class="attach-btn" for="fBrandFiles">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                  Załącz plik
+                </label>
+                <input type="file" id="fBrandFiles" name="brandFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd" style="display:none">
+                <span class="attach-name" id="fBrandFilesName"></span>
+              </div>
             </div>
           </div>
           <div class="mf-panel" id="mfP3">
@@ -502,6 +520,14 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       var nameEl=document.getElementById("fAttachName");
       if(this.files.length){ nameEl.textContent=this.files.length>1?this.files.length+" plików":this.files[0].name; }
       else { nameEl.textContent=""; }
+    });
+
+    [["fWebFiles","fWebFilesName"],["fBrandFiles","fBrandFilesName"]].forEach(function(pair){
+      var inp=document.getElementById(pair[0]); var lbl=document.getElementById(pair[1]);
+      if(inp&&lbl){ inp.addEventListener("change",function(){
+        if(this.files.length){ lbl.textContent=this.files.length>1?this.files.length+" plików":this.files[0].name; }
+        else { lbl.textContent=""; }
+      }); }
     });
 
     form.addEventListener("submit",function(e){
