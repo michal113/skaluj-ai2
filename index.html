@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skaluj.ai — agencja transformacji cyfrowej i AI dla firm B2B</title>
-<meta name="description" content="Strony internetowe pod SEO i widoczność w AI (GEO), automatyzacje i branding dla firm B2B. Zwiększ efektywność i skaluj biznes w sieci. Umów bezpłatną konsultację.">
+<title>Skaluj.ai — agencja transformacji cyfrowej i AI dla firm</title>
+<meta name="description" content="Strony internetowe pod SEO i widoczność w AI (GEO), automatyzacje i branding dla firm. Zwiększ efektywność i skaluj biznes w sieci. Umów bezpłatną konsultację.">
 <link rel="canonical" href="https://skaluj.ai/">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://skaluj.ai/">
-<meta property="og:title" content="Skaluj.ai — agencja transformacji cyfrowej i AI dla firm B2B">
-<meta property="og:description" content="Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding dla firm B2B. Umów bezpłatną konsultację.">
+<meta property="og:title" content="Skaluj.ai — agencja transformacji cyfrowej i AI dla firm">
+<meta property="og:description" content="Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding dla firm. Umów bezpłatną konsultację.">
 <meta property="og:image" content="https://skaluj.ai/logo-skaluj.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Skaluj.ai — agencja transformacji cyfrowej i AI dla firm B2B">
-<meta name="twitter:description" content="Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding dla firm B2B.">
+<meta name="twitter:title" content="Skaluj.ai — agencja transformacji cyfrowej i AI dla firm">
+<meta name="twitter:description" content="Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding dla firm.">
 <meta property="og:locale" content="pl_PL">
 <link rel="icon" type="image/png" href="sygnet.png">
 
@@ -28,7 +28,7 @@
       "name": "skaluj.ai",
       "url": "https://skaluj.ai/",
       "logo": "https://skaluj.ai/logo-skaluj.png",
-      "description": "Agencja transformacji cyfrowej dla firm B2B w Polsce: strony internetowe pod SEO i widoczność w AI (GEO), automatyzacje biznesowe AI, chatboty AI oraz branding.",
+      "description": "Agencja transformacji cyfrowej dla firm w Polsce: strony internetowe pod SEO i widoczność w AI (GEO), automatyzacje biznesowe AI, chatboty AI oraz branding.",
       "email": "kontakt@skaluj.ai",
       "areaServed": "PL",
       "contactPoint": {
@@ -209,8 +209,10 @@ button{font-family:inherit;cursor:pointer}
   transition:color .2s,background-color .2s,font-weight .2s}
 .nav-link:hover{color:var(--text);background:rgba(15,30,60,.05)}
 .nav-link.active{color:var(--text);font-weight:550}
-.nav-link.active::after{content:"";position:absolute;left:50%;bottom:2px;transform:translateX(-50%);
-  width:4px;height:4px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px rgba(47,111,224,.6)}
+/* aktywna zakładka — podkreślenie rozwijane od lewej, jak .uline na "erze AI." w hero */
+.nav-link.active::after{content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2px;
+  background:var(--accent);border-radius:2px;transform:scaleX(0);transform-origin:left;
+  animation:wipe .55s var(--ease) forwards;box-shadow:0 0 8px var(--accent-soft)}
 .nav-item.open > .nav-link{color:var(--accent);background:var(--accent-soft)}
 .nav-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;line-height:1}
 .nav-caret{width:11px;height:11px;transition:transform .25s var(--ease)}
@@ -562,13 +564,17 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .offer-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease-io)}
 .offer-item.open .offer-body{grid-template-rows:1fr}
 .offer-body-in{overflow:hidden}
-.offer-body-grid{display:grid;grid-template-columns:64px 1fr 1fr;gap:22px;padding:2px 6px 40px}
-.offer-desc{grid-column:2;color:var(--muted);font-size:15px;line-height:1.7;max-width:50ch}
+.offer-body-grid{display:grid;grid-template-columns:64px 1fr 1fr;grid-template-rows:auto 1fr;gap:22px;padding:2px 6px 32px}
+.offer-desc{grid-column:2;grid-row:1;color:var(--muted);font-size:15px;line-height:1.7;max-width:50ch}
 .offer-desc .hl{color:var(--text)}
-.offer-points{list-style:none;display:flex;flex-direction:column;gap:11px}
+.offer-points{grid-column:3;grid-row:1/3;list-style:none;display:flex;flex-direction:column;gap:11px;align-self:start}
 .offer-points li{display:flex;gap:11px;align-items:baseline;color:var(--muted);font-size:13.5px;border-bottom:1px solid var(--line-2);padding-bottom:11px}
 .offer-points li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);transform:translateY(-2px);flex:none}
-.offer-detail{grid-column:2/-1;justify-self:start;display:inline-flex;align-items:center;gap:7px;margin-top:8px;font-size:13.5px;font-weight:500;color:var(--accent);transition:gap .2s}
+.offer-detail{grid-column:2;grid-row:2;justify-self:start;align-self:end;display:inline-flex;align-items:center;gap:9px;
+  height:46px;padding:0 24px;border-radius:9999px;background:var(--accent);color:#fff;
+  font-size:14.5px;font-weight:500;letter-spacing:-.01em;box-shadow:0 3px 14px rgba(47,111,224,.28);
+  transition:background-color .2s,box-shadow .25s var(--ease),transform .25s var(--ease)}
+.offer-detail:hover{background:var(--accent-dim);transform:translateY(-1px);box-shadow:0 6px 20px rgba(47,111,224,.38)}
 .offer-detail svg{transition:transform .2s}.offer-detail:hover svg{transform:translateX(3px)}
 /* podsekcja z wideo — mailing */
 
@@ -730,7 +736,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 /* ============================================================
    FAQ
    ============================================================ */
-.faq-wrap{max-width:820px;margin:0 auto}
+.faq-wrap{max-width:820px}
+#faq .sec-head{margin-bottom:24px}
 .faq-item{border-bottom:1px solid var(--line-2)}
 .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left;background:none;border:0;padding:22px 4px;cursor:pointer;font-family:var(--sans);font-size:clamp(1rem,1.6vw,1.15rem);font-weight:500;letter-spacing:-.015em;color:var(--text);transition:color .2s}
 .faq-q:hover{color:var(--accent)}
@@ -742,18 +749,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .faq-a-in{overflow:hidden}
 .faq-a p{padding:0 44px 22px 4px;color:var(--muted);font-size:15px;line-height:1.7;max-width:68ch}
 .faq-a p strong{color:var(--text)}
-
-/* ============================================================
-   CTA
-   ============================================================ */
-.cta{position:relative;border-top:1px solid var(--line-2);padding:130px 0;text-align:center;overflow:hidden}
-.cta::after{content:"";position:absolute;left:50%;bottom:-40%;transform:translateX(-50%);width:760px;height:520px;border-radius:50%;
-  background:radial-gradient(ellipse,var(--accent-soft),transparent 70%);filter:blur(40px);pointer-events:none}
-.cta-inner{position:relative;z-index:1;max-width:620px;margin:0 auto}
-.cta h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:500;letter-spacing:-.04em;line-height:1.05;
-  background:linear-gradient(180deg,#0b0d10,#3a3f47);-webkit-background-clip:text;background-clip:text;color:transparent}
-.cta p{margin-top:18px;color:var(--muted);font-size:1.05rem;line-height:1.6}
-.cta .btn{margin-top:32px}
 
 /* ============================================================
    KONTAKT
@@ -923,9 +918,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .dash-body{padding:18px}
   .offer-head{grid-template-columns:44px 1fr 40px;gap:14px;padding:24px 4px}
   .offer-meta{display:none}
-  .offer-body-grid{grid-template-columns:1fr;padding:0 4px 32px}
-  .offer-detail{grid-column:1/-1}
-  .offer-desc{grid-column:1}
+  .offer-body-grid{grid-template-columns:1fr;grid-template-rows:none;padding:0 4px 32px}
+  .offer-detail{grid-column:1;grid-row:auto}
+  .offer-desc{grid-column:1;grid-row:auto}
+  .offer-points{grid-column:1;grid-row:auto}
 
   .case-metrics{flex-direction:column}
   .case-metric{border-right:0;border-bottom:1px solid var(--line-2);padding:14px 0}
@@ -942,6 +938,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   [data-reveal]{opacity:1;transform:none}
   .hero h1 .line,.hero .eyebrow,.hero-sub,.hero-cta,.hero-screen{opacity:1;animation:none}
   .hero h1 .uline::after{transform:scaleX(1)}
+  .nav-link.active::after{transform:scaleX(1);animation:none}
 }
 /* COMPARISON TABLE */
 .cmp-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
@@ -980,9 +977,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       <img class="logo-word" src="samo%20skaluj.png" alt="skaluj.ai" width="478" height="112">
     </a>
     <div class="nav-links">
-      <a class="nav-link" href="#start">Strona główna</a>
-      <a class="nav-link" href="#integracje">Integracje</a>
-      <a class="nav-link" href="#case-studies">Case studies</a>
+      <a class="nav-link" href="#start">Start</a>
       <div class="nav-item" id="ofertaItem">
         <button class="nav-link" id="ofertaBtn" data-spy="oferta" aria-expanded="false" aria-haspopup="true">
           Oferta
@@ -998,6 +993,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           </div>
         </div>
       </div>
+      <a class="nav-link" href="#case-studies">Case studies</a>
+      <a class="nav-link" href="#integracje">Integracje</a>
       <a class="nav-link" href="#proces">Proces</a>
       <a class="nav-link" href="#faq">FAQ</a>
       <div class="nav-item" id="blogItem">
@@ -1026,16 +1023,16 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#start"><span>Strona główna</span><span class="n">01</span></a>
-  <a href="#integracje"><span>Integracje</span><span class="n">02</span></a>
-  <a href="#case-studies"><span>Case studies</span><span class="n">03</span></a>
+  <a href="#start"><span>Start</span><span class="n">01</span></a>
     <div class="mm-blog">
-    <span class="mm-h">Oferta <span class="n">04</span></span>
+    <span class="mm-h">Oferta <span class="n">02</span></span>
     <a class="mm-sub" href="oferta/strona-seo.html">Strona internetowa + SEO i GEO</a>
     <a class="mm-sub" href="oferta/automatyzacje-email.html">Automatyzacje biznesowe AI</a>
     <a class="mm-sub" href="oferta/chatbot-ai.html">Asystent i chatbot AI</a>
     <a class="mm-sub" href="oferta/branding.html">Grafiki i branding</a>
   </div>
+  <a href="#case-studies"><span>Case studies</span><span class="n">03</span></a>
+  <a href="#integracje"><span>Integracje</span><span class="n">04</span></a>
   <a href="#proces"><span>Proces</span><span class="n">05</span></a>
   <a href="#faq"><span>FAQ</span><span class="n">06</span></a>
     <div class="mm-blog">
@@ -1058,7 +1055,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     <p class="hero-eyebrow">Agencja transformacji cyfrowej dla firm</p>
     <h1>
       <span class="line">Wszystko, czego Twoja firma</span>
-      <span class="line">potrzebuje w <span class="uline">erze AI.</span></span>
+      <span class="line">potrzebuje w <span class="uline">świecie AI.</span></span>
     </h1>
     <p class="hero-sub">
       Projektujemy <strong>strony szyte na miarę</strong> — od pierwszego dnia zoptymalizowane pod <strong>SEO i widoczność
@@ -1256,25 +1253,63 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   </div>
 </header>
 
-<!-- ===== INTEGRACJE ===== -->
-<section class="section integ" id="integracje">
+<!-- ===== OFERTA ===== -->
+<section class="section" id="oferta">
   <div class="wrap">
-    <div class="integ-grid">
-      <div class="integ-visual" data-reveal>
-        <img src="assets/integrations-network.png" alt="Diagram integracji — skaluj.ai w centrum stacku narzędzi (Slack, Notion, Google, Meta, OpenAI, Make, n8n)" loading="lazy">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">01 — Oferta</span>
+      <h2 class="sec-title"><span class="grad">Pełen zakres. Jedna agencja.</span></h2>
+      <p class="sec-sub">Od pierwszego audytu po utrzymanie produkcyjne — prowadzimy całość wdrożenia, więc nie potrzebujesz trzech dostawców i czterech ofert.</p>
+    </div>
+
+        <div class="offer" data-reveal>
+      <div class="offer-item" id="oferta-www">
+        <button class="offer-head" aria-expanded="false">
+          <span class="offer-num">01</span><span class="offer-name">Strony internetowe pod SEO i GEO</span><span class="offer-meta">Google + AI Search</span>
+          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
+          <span></span>
+          <p class="offer-desc">Projektujemy strony, które <span class="hl">zamieniają ruch w klientów</span> — z SEO i widocznością w AI (GEO) wbudowanymi od pierwszego dnia, nie doklejonymi na końcu. AI przyspiesza projekt, copy i optymalizację, więc efekt dostajesz w tygodnie, nie w kwartały.</p>
+          <ul class="offer-points"><li>Projekt UX, który prowadzi od problemu do kontaktu</li><li>SEO techniczne i treściowe wbudowane od startu</li><li><strong>Widoczność w AI (GEO)</strong> — polecana w ChatGPT, Perplexity i Google AI Overviews</li><li>Copywriting sprzedażowy — język klienta, jasne CTA</li><li>Gotowa pod integracje: formularz, CRM, analityka GA4</li></ul>
+          <a class="offer-detail" href="oferta/strona-seo.html">Szczegóły oferty <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
       </div>
-      <div class="integ-content" data-reveal data-delay="100">
-        <span class="integ-eyebrow">Integracje</span>
-        <h2 class="integ-title">Spinamy Twoje narzędzia w jeden system, który działa sam</h2>
-        <p class="integ-sub">skaluj.ai staje w centrum Twojego stacku i łączy aplikacje, których już używasz — Slack, Notion, Google, Make, n8n, OpenAI — w jeden przepływ. Koniec z ręcznym przeklejaniem danych między zakładkami.</p>
-        <ul class="integ-list">
-          <li><span class="ico"></span><span class="txt"><b>Obsługa klienta</b><span>Asystent odpowiada na stronie i w Slacku, a eskaluje tylko trudne sprawy.</span></span></li>
-          <li><span class="ico"></span><span class="txt"><b>Faktury i księgowość</b><span>Dokumenty czytane i wprowadzane automatycznie — bez ręcznego przepisywania.</span></span></li>
-          <li><span class="ico"></span><span class="txt"><b>Mailing i follow-upy</b><span>Sekwencje odpalają się same we właściwym momencie, bez Twojego udziału.</span></span></li>
-          <li><span class="ico"></span><span class="txt"><b>Raportowanie</b><span>Dane z narzędzi zbierane i podsumowywane bez ręcznej roboty.</span></span></li>
-          <li><span class="ico"></span><span class="txt"><b>Synchronizacja danych</b><span>Jedno źródło prawdy — narzędzia gadają ze sobą w tle.</span></span></li>
-        </ul>
-        <a href="kontakt.html" class="btn btn-primary">Zobacz, co możemy zautomatyzować <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="offer-item" id="oferta-email">
+        <button class="offer-head" aria-expanded="false">
+          <span class="offer-num">02</span><span class="offer-name">Automatyzacje biznesowe AI</span><span class="offer-meta">Procesy / Workflow</span>
+          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
+          <span></span>
+          <p class="offer-desc">Łączymy narzędzia, których już używasz, i budujemy automaty przejmujące powtarzalną pracę — od maili i faktur po raporty i CRM. <span class="hl">Procesy robią się same, a zespół zajmuje się tym, co przynosi pieniądze</span>.</p>
+          <ul class="offer-points"><li>Mailing i follow-upy — sekwencje wysyłają się same, żaden lead nie czeka</li><li>Faktury i dokumenty — odczyt AI, księgowanie, przypomnienia o płatnościach</li><li>Leady i CRM — kwalifikacja, przypisywanie, synchronizacja danych</li><li>Oferty i raporty — generowane automatycznie z Twoich danych</li><li>Integracje: Gmail, Slack, Notion, CRM-y, Make / n8n i własne API</li></ul>
+          <a class="offer-detail" href="oferta/automatyzacje-email.html">Szczegóły oferty <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
+      </div>
+      <div class="offer-item" id="oferta-chatbot">
+        <button class="offer-head" aria-expanded="false">
+          <span class="offer-num">03</span><span class="offer-name">Asystent i chatbot AI</span><span class="offer-meta">Obsługa klienta</span>
+          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
+          <span></span>
+          <p class="offer-desc">Asystent, który zna Twoją ofertę, procedury i historię klienta — <span class="hl">odpowiada w sekundy i zamyka rutynowe zgłoszenia bez angażowania zespołu</span>. Na stronie, w mailu i na WhatsAppie, 24/7.</p>
+          <ul class="offer-points"><li>Jeden asystent — strona, WhatsApp i e-mail</li><li>Baza wiedzy Twojej firmy podpięta do asystenta</li><li>Eskalacja do człowieka z pełnym kontekstem rozmowy</li><li>Obsługa po godzinach i w szczytach — bez kolejek</li></ul>
+          <a class="offer-detail" href="oferta/chatbot-ai.html">Szczegóły oferty <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
+      </div>
+      <div class="offer-item" id="oferta-branding">
+        <button class="offer-head" aria-expanded="false">
+          <span class="offer-num">04</span><span class="offer-name">Grafiki i branding</span><span class="offer-meta">Design / Branding</span>
+          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
+          <span></span>
+          <p class="offer-desc">Identyfikacja wizualna, posty, banery i materiały sprzedażowe. AI podsuwa pomysły i przyspiesza koncepcje, ale <span class="hl">każdy projekt wykonuje nasz zespół profesjonalnych grafików z wieloletnim doświadczeniem</span> — marka wychodzi dopracowana i Twoja, nie generyczna.</p>
+          <ul class="offer-points"><li>Logo, system wizualny i mini brand book</li><li>Grafiki na social media i kampanie reklamowe</li><li>Szablony, z których zespół korzysta samodzielnie</li><li>Jeden styl — na stronie, w reklamach i w mailach</li></ul>
+          <a class="offer-detail" href="oferta/branding.html">Szczegóły oferty <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div></div></div>
       </div>
     </div>
   </div>
@@ -1285,7 +1320,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   <div class="wrap">
 
     <div class="sec-head" data-reveal>
-      <span class="eyebrow">01 — Case studies</span>
+      <span class="eyebrow">02 — Case studies</span>
       <h2 class="sec-title"><span class="grad">Liczby mówią za nas</span></h2>
       <p class="sec-sub">Jedno wdrożenie. Prawdziwe dane. Policzony zwrot z inwestycji potwierdzony przez klienta.</p>
     </div>
@@ -1443,63 +1478,25 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- ===== OFERTA ===== -->
-<section class="section" id="oferta">
+<!-- ===== INTEGRACJE ===== -->
+<section class="section integ" id="integracje">
   <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="eyebrow">02 — Oferta</span>
-      <h2 class="sec-title"><span class="grad">Pełen zakres. Jedna agencja.</span></h2>
-      <p class="sec-sub">Od pierwszego audytu po utrzymanie produkcyjne — prowadzimy całość wdrożenia, więc nie potrzebujesz trzech dostawców i czterech ofert.</p>
-    </div>
-
-        <div class="offer" data-reveal>
-      <div class="offer-item" id="oferta-www">
-        <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">01</span><span class="offer-name">Strony internetowe pod SEO i GEO</span><span class="offer-meta">Google + AI Search</span>
-          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
-          <span></span>
-          <p class="offer-desc">Projektujemy strony, które <span class="hl">zamieniają ruch w klientów</span> — z SEO i widocznością w AI (GEO) wbudowanymi od pierwszego dnia, nie doklejonymi na końcu. AI przyspiesza projekt, copy i optymalizację, więc efekt dostajesz w tygodnie, nie w kwartały.</p>
-          <ul class="offer-points"><li>Projekt UX, który prowadzi od problemu do kontaktu</li><li>SEO techniczne i treściowe wbudowane od startu</li><li><strong>Widoczność w AI (GEO)</strong> — polecana w ChatGPT, Perplexity i Google AI Overviews</li><li>Copywriting sprzedażowy — język klienta, jasne CTA</li><li>Gotowa pod integracje: formularz, CRM, analityka GA4</li></ul>
-          <a class="offer-detail" href="oferta/strona-seo.html">Szczegóły oferty <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div></div></div>
+    <div class="integ-grid">
+      <div class="integ-visual" data-reveal>
+        <img src="assets/integrations-network.png" alt="Diagram integracji — skaluj.ai w centrum stacku narzędzi (Slack, Notion, Google, Meta, OpenAI, Make, n8n)" loading="lazy">
       </div>
-      <div class="offer-item" id="oferta-email">
-        <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">02</span><span class="offer-name">Automatyzacje biznesowe AI</span><span class="offer-meta">Procesy / Workflow</span>
-          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
-          <span></span>
-          <p class="offer-desc">Łączymy narzędzia, których już używasz, i budujemy automaty przejmujące powtarzalną pracę — od maili i faktur po raporty i CRM. <span class="hl">Procesy robią się same, a zespół zajmuje się tym, co przynosi pieniądze</span>.</p>
-          <ul class="offer-points"><li>Mailing i follow-upy — sekwencje wysyłają się same, żaden lead nie czeka</li><li>Faktury i dokumenty — odczyt AI, księgowanie, przypomnienia o płatnościach</li><li>Leady i CRM — kwalifikacja, przypisywanie, synchronizacja danych</li><li>Oferty i raporty — generowane automatycznie z Twoich danych</li><li>Integracje: Gmail, Slack, Notion, CRM-y, Make / n8n i własne API</li></ul>
-          <a class="offer-detail" href="oferta/automatyzacje-email.html">Szczegóły oferty <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div></div></div>
-      </div>
-      <div class="offer-item" id="oferta-chatbot">
-        <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">03</span><span class="offer-name">Asystent i chatbot AI</span><span class="offer-meta">Obsługa klienta</span>
-          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
-          <span></span>
-          <p class="offer-desc">Asystent, który zna Twoją ofertę, procedury i historię klienta — <span class="hl">odpowiada w sekundy i zamyka rutynowe zgłoszenia bez angażowania zespołu</span>. Na stronie, w mailu i na WhatsAppie, 24/7.</p>
-          <ul class="offer-points"><li>Jeden asystent — strona, WhatsApp i e-mail</li><li>Baza wiedzy Twojej firmy podpięta do asystenta</li><li>Eskalacja do człowieka z pełnym kontekstem rozmowy</li><li>Obsługa po godzinach i w szczytach — bez kolejek</li></ul>
-          <a class="offer-detail" href="oferta/chatbot-ai.html">Szczegóły oferty <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div></div></div>
-      </div>
-      <div class="offer-item" id="oferta-branding">
-        <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">04</span><span class="offer-name">Grafiki i branding</span><span class="offer-meta">Design / Branding</span>
-          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-        </button>
-        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
-          <span></span>
-          <p class="offer-desc">Identyfikacja wizualna, posty, banery i materiały sprzedażowe. AI podsuwa pomysły i przyspiesza koncepcje, ale <span class="hl">każdy projekt wykonuje nasz zespół profesjonalnych grafików z wieloletnim doświadczeniem</span> — marka wychodzi dopracowana i Twoja, nie generyczna.</p>
-          <ul class="offer-points"><li>Logo, system wizualny i mini brand book</li><li>Grafiki na social media i kampanie reklamowe</li><li>Szablony, z których zespół korzysta samodzielnie</li><li>Jeden styl — na stronie, w reklamach i w mailach</li></ul>
-          <a class="offer-detail" href="oferta/branding.html">Szczegóły oferty <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div></div></div>
+      <div class="integ-content" data-reveal data-delay="100">
+        <span class="integ-eyebrow">Integracje</span>
+        <h2 class="integ-title">Spinamy Twoje narzędzia w jeden system, który działa sam</h2>
+        <p class="integ-sub">skaluj.ai staje w centrum Twojego stacku i łączy aplikacje, których już używasz — Slack, Notion, Google, Make, n8n, OpenAI — w jeden przepływ. Koniec z ręcznym przeklejaniem danych między zakładkami.</p>
+        <ul class="integ-list">
+          <li><span class="ico"></span><span class="txt"><b>Obsługa klienta</b><span>Asystent odpowiada na stronie i w Slacku, a eskaluje tylko trudne sprawy.</span></span></li>
+          <li><span class="ico"></span><span class="txt"><b>Faktury i księgowość</b><span>Dokumenty czytane i wprowadzane automatycznie — bez ręcznego przepisywania.</span></span></li>
+          <li><span class="ico"></span><span class="txt"><b>Mailing i follow-upy</b><span>Sekwencje odpalają się same we właściwym momencie, bez Twojego udziału.</span></span></li>
+          <li><span class="ico"></span><span class="txt"><b>Raportowanie</b><span>Dane z narzędzi zbierane i podsumowywane bez ręcznej roboty.</span></span></li>
+          <li><span class="ico"></span><span class="txt"><b>Synchronizacja danych</b><span>Jedno źródło prawdy — narzędzia gadają ze sobą w tle.</span></span></li>
+        </ul>
+        <a href="kontakt.html" class="btn btn-primary">Zobacz, co możemy zautomatyzować <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
@@ -1580,7 +1577,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     <div class="faq-wrap" data-reveal>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Czym zajmuje się skaluj.ai?<span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-        <div class="faq-a"><div class="faq-a-in"><p>skaluj.ai to <strong>agencja transformacji cyfrowej dla firm B2B</strong> w Polsce. Tworzymy strony internetowe zoptymalizowane pod SEO i widoczność w AI (GEO), wdrażamy automatyzacje i chatboty AI oraz projektujemy branding. Prowadzimy całość wdrożenia — od audytu po opiekę po starcie.</p></div></div>
+        <div class="faq-a"><div class="faq-a-in"><p>skaluj.ai to <strong>agencja transformacji cyfrowej dla firm</strong> w Polsce. Tworzymy strony internetowe zoptymalizowane pod SEO i widoczność w AI (GEO), wdrażamy automatyzacje i chatboty AI oraz projektujemy branding. Prowadzimy całość wdrożenia — od audytu po opiekę po starcie.</p></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Od czego zaczyna się współpraca?<span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
@@ -1620,17 +1617,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Dla jakich firm pracujecie?<span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
-        <div class="faq-a"><div class="faq-a-in"><p>Współpracujemy z <strong>firmami B2B w Polsce</strong> — zarówno tymi, które dopiero wchodzą do sieci, jak i tymi, które już w niej są i chcą zdominować swoją niszę. Nie zamykamy się w jednej branży; zaczynamy od tego, gdzie tracisz czas i pieniądze.</p></div></div>
+        <div class="faq-a"><div class="faq-a-in"><p>Współpracujemy z <strong>firmami w Polsce</strong> — zarówno tymi, które dopiero wchodzą do sieci, jak i tymi, które już w niej są i chcą zdominować swoją niszę. Nie zamykamy się w jednej branży; zaczynamy od tego, gdzie tracisz czas i pieniądze.</p></div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="wrap cta-inner" data-reveal>
-    <h2>Gotowy, żeby skalować z AI?</h2>
-    <p>30 minut rozmowy, zero zobowiązań. Powiemy wprost, czy AI rozwiąże Twój problem i ile na tym zarobisz. Jeśli nie — też usłyszysz to wprost.</p>
-    <a href="kontakt.html" onclick="window.location.href='kontakt.html';return false;" class="btn btn-primary">Umów bezpłatną konsultację <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </section>
 
@@ -1719,7 +1708,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
                            "name":  "Czym zajmuje się skaluj.ai?",
                            "acceptedAnswer":  {
                                                   "@type":  "Answer",
-                                                  "text":  "skaluj.ai to agencja transformacji cyfrowej dla firm B2B w Polsce. Tworzymy strony internetowe zoptymalizowane pod SEO i widoczność w AI (GEO), wdrażamy automatyzacje i chatboty AI oraz projektujemy branding. Prowadzimy całość wdrożenia — od audytu po opiekę po starcie."
+                                                  "text":  "skaluj.ai to agencja transformacji cyfrowej dla firm w Polsce. Tworzymy strony internetowe zoptymalizowane pod SEO i widoczność w AI (GEO), wdrażamy automatyzacje i chatboty AI oraz projektujemy branding. Prowadzimy całość wdrożenia — od audytu po opiekę po starcie."
                                               }
                        },
                        {
@@ -1799,7 +1788,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
                            "name":  "Dla jakich firm pracujecie?",
                            "acceptedAnswer":  {
                                                   "@type":  "Answer",
-                                                  "text":  "Współpracujemy z firmami B2B w Polsce — zarówno tymi, które dopiero wchodzą do sieci, jak i tymi, które już w niej są i chcą zdominować swoją niszę. Nie zamykamy się w jednej branży; zaczynamy od tego, gdzie tracisz czas i pieniądze."
+                                                  "text":  "Współpracujemy z firmami w Polsce — zarówno tymi, które dopiero wchodzą do sieci, jak i tymi, które już w niej są i chcą zdominować swoją niszę. Nie zamykamy się w jednej branży; zaczynamy od tego, gdzie tracisz czas i pieniądze."
                                               }
                        }
                    ]
@@ -1817,7 +1806,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <a class="logo" href="#start" aria-label="skaluj.ai — strona główna">
           <img class="brand-img" src="logo-skaluj.png" alt="skaluj.ai" width="664" height="170">
         </a>
-        <p>Agencja transformacji cyfrowej dla firm B2B. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
+        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
       </div>
       <div><h4>Nawigacja</h4><ul><li><a href="#proces">Proces</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#case-studies">Case studies</a></li><li><a>Kontakt</a></li></ul></div>
       <div><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a></li><li><a href="#">LinkedIn</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li></ul></div>
