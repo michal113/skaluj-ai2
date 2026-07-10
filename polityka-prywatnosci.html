@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" href="sygnet.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:        #ffffff;
@@ -30,7 +30,7 @@
   --accent-dim:#2456b0;
   --accent-soft:rgba(47,111,224,.10);
   --sans:      'Geist','Inter',system-ui,sans-serif;
-  --mono:      'Geist Mono','Fira Mono',monospace;
+  --mono:      'Azeret Mono','Fira Mono',monospace;
   --ease:      cubic-bezier(.4,0,.2,1);
   --r-lg:      14px;
   --maxw:      1080px;
@@ -60,18 +60,19 @@ a{color:inherit;text-decoration:none}
 .nav-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:10px;font-weight:500}
 .nav-caret{width:11px;height:11px;transition:transform .25s var(--ease)}
 .nav-item.open .nav-caret{transform:rotate(180deg)}
-#blogItem{position:static}
+#blogItem,#ofertaItem{position:static}
 .dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;transform:translateY(-10px);transform-origin:top center;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:0 20px 60px rgba(15,30,60,.12);padding:10px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,transform .25s,visibility .25s}
 .dropdown::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px}
 .nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
 .dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 14px;border-bottom:1px solid var(--line-2)}
 .dd-head .l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .dd-head .c{font-family:var(--mono);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:5px}
-.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:4px}
+.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:4px}#ofertaItem .dd-grid{grid-template-columns:repeat(4,1fr)}
 .dd-item{display:block;padding:12px 14px;border-radius:12px;transition:background-color .2s}
 .dd-item:hover{background:rgba(47,111,224,.06)}
 .dd-eyebrow{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
 .dd-title{display:block;font-size:13.5px;font-weight:500;color:var(--text);letter-spacing:-.01em;line-height:1.35}
+.dd-desc{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
 .nav-right{display:flex;align-items:center;gap:10px;justify-self:end}.nav-right .btn{border-radius:9999px}
 .nav-burger{display:none;width:38px;height:38px;background:none;border:0;position:relative;cursor:pointer}
 .nav-burger span{position:absolute;left:9px;right:9px;height:1.5px;background:var(--text);transition:transform .35s var(--ease),top .35s var(--ease),opacity .2s}
@@ -266,10 +267,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         <div class="dropdown" role="menu">
           <div class="dd-head"><span class="l">OFERTA</span><a class="c" href="index.html#oferta">Pe&#322;en zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="12" height="12"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-grid">
-            <a class="dd-item" href="oferta/strona-seo.html"><span class="dd-eyebrow">01 &middot; Strona + SEO</span><span class="dd-title">Strona internetowa, kt&oacute;ra sprzedaje</span></a>
-            <a class="dd-item" href="oferta/automatyzacje-email.html"><span class="dd-eyebrow">02 &middot; Email / Marketing</span><span class="dd-title">Automatyzacje e-mail i marketing</span></a>
-            <a class="dd-item" href="oferta/chatbot-ai.html"><span class="dd-eyebrow">03 &middot; Chatbot AI</span><span class="dd-title">Asystent i chatbot AI</span></a>
-            <a class="dd-item" href="oferta/branding.html"><span class="dd-eyebrow">04 &middot; Branding</span><span class="dd-title">Identyfikacja wizualna marki</span></a>
+            <a class="dd-item" href="oferta/strona-seo.html" role="menuitem"><span class="dd-eyebrow">01 &middot; Strona &middot; SEO &middot; GEO</span><span class="dd-title">Strona, kt&oacute;ra sprzedaje</span><span class="dd-desc">Projekt, SEO i GEO w standardzie &mdash; widoczna w Google i polecana przez AI.</span></a>
+            <a class="dd-item" href="oferta/automatyzacje-email.html" role="menuitem"><span class="dd-eyebrow">02 &middot; Automatyzacje AI</span><span class="dd-title">Procesy, kt&oacute;re robi&#261; si&#281; same</span><span class="dd-desc">Mailing, faktury, oferty, raporty, CRM &mdash; powtarzaln&#261; prac&#281; przejmuj&#261; automaty.</span></a>
+            <a class="dd-item" href="oferta/chatbot-ai.html" role="menuitem"><span class="dd-eyebrow">03 &middot; Chatbot AI</span><span class="dd-title">Klient obs&#322;u&#380;ony w sekundy, 24/7</span><span class="dd-desc">Asystent zna Twoj&#261; ofert&#281; i zamyka rutynowe zg&#322;oszenia bez cz&#322;owieka.</span></a>
+            <a class="dd-item" href="oferta/branding.html" role="menuitem"><span class="dd-eyebrow">04 &middot; Branding</span><span class="dd-title">Marka sp&oacute;jna w ka&#380;dym kanale</span><span class="dd-desc">AI podsuwa pomys&#322;y &mdash; projekty wykonuje nasz zesp&oacute;&#322; do&#347;wiadczonych grafik&oacute;w.</span></a>
           </div>
         </div>
       </div>
@@ -282,12 +283,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         <div class="dropdown" role="menu">
           <div class="dd-head"><span class="l">Z BLOGA</span></div>
           <div class="dd-grid">
-            <a class="dd-item" href="blog/strona-seo.html"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</span></a>
-            <a class="dd-item" href="blog/automatyzacje-email.html"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">Automatyzacja e-mail marketingu z AI</span></a>
-            <a class="dd-item" href="blog/chatbot-ai.html"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI &mdash; kiedy warto?</span></a>
-            <a class="dd-item" href="blog/geo-ai-search.html"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO &mdash; widoczno&#347;&#263; w ChatGPT</span></a>
-            <a class="dd-item" href="blog/meta-ads-ai.html"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; koszty reklam -30%</span></a>
-            <a class="dd-item" href="blog/branding.html"><span class="dd-eyebrow">Branding</span><span class="dd-title">Identyfikacja wizualna w 2026</span></a>
+            <a class="dd-item" href="blog/strona-seo.html" role="menuitem"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</span><span class="dd-desc">Struktura, copywriting i UX, kt&oacute;re zamieniaj&#261; ruch w klient&oacute;w.</span></a>
+            <a class="dd-item" href="blog/automatyzacje-email.html" role="menuitem"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">Automatyzacja e-mail marketingu z AI &mdash; 5 scenariuszy</span><span class="dd-desc">Od powitania nowego klienta do win-back &mdash; gotowe przep&#322;ywy.</span></a>
+            <a class="dd-item" href="blog/chatbot-ai.html" role="menuitem"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI na stronie &mdash; kiedy warto, a kiedy szkodzi?</span><span class="dd-desc">Praktyczne przypadki u&#380;ycia i b&#322;&#281;dy, kt&oacute;rych lepiej unika&#263;.</span></a>
+            <a class="dd-item" href="blog/geo-ai-search.html" role="menuitem"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO: jak pozycjonowa&#263; firm&#281; w ChatGPT i Google AI?</span><span class="dd-desc">Nowe zasady widoczno&#347;ci w erze wyszukiwania generatywnego.</span></a>
+            <a class="dd-item" href="blog/meta-ads-ai.html" role="menuitem"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty reklam nawet o 30%?</span><span class="dd-desc">Automatyczne testy kreacji, audience signals i optymalizacja bud&#380;etu.</span></a>
+            <a class="dd-item" href="blog/branding.html" role="menuitem"><span class="dd-eyebrow">Branding</span><span class="dd-title">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</span><span class="dd-desc">Kolor, typografia i sp&oacute;jno&#347;&#263; &mdash; DNA skutecznej marki.</span></a>
           </div>
         </div>
       </div>

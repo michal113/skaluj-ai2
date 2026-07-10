@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" href="sygnet.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@300..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:        #ffffff;
@@ -25,7 +25,7 @@
   --accent-dim:#2456b0;
   --accent-soft:rgba(47,111,224,.10);
   --sans:      'Geist','Inter',system-ui,sans-serif;
-  --mono:      'Geist Mono','Fira Mono',monospace;
+  --mono:      'Azeret Mono','Fira Mono',monospace;
   --ease:      cubic-bezier(.4,0,.2,1);
   --r-lg:      14px;
   --maxw:      1080px;
@@ -58,18 +58,19 @@ a{color:inherit;text-decoration:none}
 .nav-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9999px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:10px;font-weight:500}
 .nav-caret{width:11px;height:11px;transition:transform .25s var(--ease)}
 .nav-item.open .nav-caret{transform:rotate(180deg)}
-#blogItem{position:static}
+#blogItem,#ofertaItem{position:static}
 .dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;transform:translateY(-10px);transform-origin:top center;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:0 20px 60px rgba(15,30,60,.12);padding:10px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,transform .25s,visibility .25s}
 .dropdown::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px}
 .nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
 .dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 14px;border-bottom:1px solid var(--line-2)}
 .dd-head .l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .dd-head .c{font-family:var(--mono);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:5px}
-.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:4px}
+.dd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:4px}#ofertaItem .dd-grid{grid-template-columns:repeat(4,1fr)}
 .dd-item{display:block;padding:12px 14px;border-radius:12px;transition:background-color .2s}
 .dd-item:hover{background:rgba(47,111,224,.06)}
 .dd-eyebrow{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
 .dd-title{display:block;font-size:13.5px;font-weight:500;color:var(--text);letter-spacing:-.01em;line-height:1.35}
+.dd-desc{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
 .nav-right{display:flex;align-items:center;gap:10px;justify-self:end}.nav-right .btn{border-radius:9999px;box-shadow:0 3px 12px rgba(11,13,16,.16);transition:background-color .2s,box-shadow .25s var(--ease),transform .25s var(--ease)}.nav-right .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(11,13,16,.22),0 0 0 3px var(--accent-soft)}
 .nav-burger{display:none;width:38px;height:38px;background:none;border:0;position:relative;cursor:pointer}
 .nav-burger span{position:absolute;left:9px;right:9px;height:1.5px;background:var(--text);transition:transform .35s var(--ease),top .35s var(--ease),opacity .2s}
@@ -84,19 +85,19 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 .mm-h{display:flex;justify-content:space-between;align-items:center;width:100%;padding:10px 0;font-size:clamp(1.1rem,3vw,1.4rem);font-weight:500;letter-spacing:-.02em}
 .mm-sub{font-size:13.5px!important;color:var(--muted)!important;padding:7px 0!important;border-bottom:0!important;font-weight:400!important}
 
-/* PAGE HERO */
-.kontakt-hero{padding:160px 0 64px;border-bottom:1px solid var(--line)}
-.kontakt-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px;margin-bottom:20px}
-.kontakt-hero .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-soft)}
-.kontakt-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:600;letter-spacing:-.04em;line-height:1.1;margin-bottom:18px}
-.kontakt-hero h1 .grad{background:linear-gradient(135deg,var(--text) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.kontakt-hero p{font-size:16px;color:var(--muted);max-width:48ch;line-height:1.7}
-
-/* CONTACT SECTION */
-.kontakt-body{padding:72px 0 100px}
-.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,80px);align-items:start}
+/* CONTACT SECTION — jedna sekcja: naglowek + info po lewej, formularz od gory po prawej */
+.kontakt-body{padding:128px 0 100px;position:relative;overflow:hidden}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(36px,5vw,72px);align-items:start}
 .contact-info{display:flex;flex-direction:column}
+.contact-info .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.contact-info .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-soft)}
+.contact-info h1{font-size:clamp(2rem,3.6vw,2.9rem);font-weight:600;letter-spacing:-.035em;line-height:1.08;margin-bottom:16px}
+.contact-info h1 .grad{background:linear-gradient(135deg,var(--text) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 #formCard{width:100%}
+/* branded ghost — rozmyty sygnet w tle sekcji */
+.brand-ghost{position:absolute;top:-56px;right:-56px;width:clamp(300px,26vw,440px);height:auto;pointer-events:none;user-select:none;z-index:0;opacity:.05;filter:blur(4px);transform:rotate(8deg)}
+.kontakt-body>.wrap{position:relative;z-index:1}
+@media(max-width:680px){.brand-ghost{width:220px;top:-30px;right:-36px;opacity:.045}}
 .ci-reassure{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.7;max-width:52ch}
 .contact-note{margin-top:22px;display:flex;gap:12px;padding:15px 17px;border:1px solid var(--line-2);border-radius:var(--r-lg);background:var(--accent-soft);max-width:60ch}
 .contact-note svg{flex:none;width:17px;height:17px;color:var(--accent);margin-top:2px}
@@ -255,10 +256,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         <div class="dropdown" role="menu">
           <div class="dd-head"><span class="l">OFERTA</span><a class="c" href="index.html#oferta">Pe&#322;en zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="12" height="12"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-grid">
-            <a class="dd-item" href="oferta/strona-seo.html"><span class="dd-eyebrow">01 &middot; Strona + SEO</span><span class="dd-title">Strona internetowa, kt&oacute;ra sprzedaje</span></a>
-            <a class="dd-item" href="oferta/automatyzacje-email.html"><span class="dd-eyebrow">02 &middot; Email / Marketing</span><span class="dd-title">Automatyzacje e-mail i marketing</span></a>
-            <a class="dd-item" href="oferta/chatbot-ai.html"><span class="dd-eyebrow">03 &middot; Chatbot AI</span><span class="dd-title">Asystent i chatbot AI</span></a>
-            <a class="dd-item" href="oferta/branding.html"><span class="dd-eyebrow">04 &middot; Branding</span><span class="dd-title">Identyfikacja wizualna marki</span></a>
+            <a class="dd-item" href="oferta/strona-seo.html" role="menuitem"><span class="dd-eyebrow">01 &middot; Strona &middot; SEO &middot; GEO</span><span class="dd-title">Strona, kt&oacute;ra sprzedaje</span><span class="dd-desc">Projekt, SEO i GEO w standardzie &mdash; widoczna w Google i polecana przez AI.</span></a>
+            <a class="dd-item" href="oferta/automatyzacje-email.html" role="menuitem"><span class="dd-eyebrow">02 &middot; Automatyzacje AI</span><span class="dd-title">Procesy, kt&oacute;re robi&#261; si&#281; same</span><span class="dd-desc">Mailing, faktury, oferty, raporty, CRM &mdash; powtarzaln&#261; prac&#281; przejmuj&#261; automaty.</span></a>
+            <a class="dd-item" href="oferta/chatbot-ai.html" role="menuitem"><span class="dd-eyebrow">03 &middot; Chatbot AI</span><span class="dd-title">Klient obs&#322;u&#380;ony w sekundy, 24/7</span><span class="dd-desc">Asystent zna Twoj&#261; ofert&#281; i zamyka rutynowe zg&#322;oszenia bez cz&#322;owieka.</span></a>
+            <a class="dd-item" href="oferta/branding.html" role="menuitem"><span class="dd-eyebrow">04 &middot; Branding</span><span class="dd-title">Marka sp&oacute;jna w ka&#380;dym kanale</span><span class="dd-desc">AI podsuwa pomys&#322;y &mdash; projekty wykonuje nasz zesp&oacute;&#322; do&#347;wiadczonych grafik&oacute;w.</span></a>
           </div>
         </div>
       </div>
@@ -266,6 +267,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       <a class="nav-link" href="index.html#integracje">Integracje</a>
       <a class="nav-link" href="index.html#proces">Proces</a>
       <a class="nav-link" href="index.html#faq">FAQ</a>
+      <a class="nav-link active" href="kontakt.html">Kontakt</a>
       <div class="nav-item" id="blogItem">
         <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">
           Blog <span class="nav-badge">6</span>
@@ -317,23 +319,19 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 </div>
 
 <main>
-<header class="kontakt-hero">
-  <div class="wrap">
-    <span class="eyebrow">Kontakt</span>
-    <h1>Zacznijmy od <span class="grad">rozmowy</span></h1>
-    <p>Opowiedz, gdzie Twoja firma traci czas i pieni&#261;dze &mdash; my powiemy, czy AI to rozwi&#261;&#380;e i ile na tym zarobisz.</p>
-    <p class="ci-reassure">Ka&#380;de zapytanie analizujemy indywidualnie. Nie wysy&#322;amy automatycznych wiadomo&#347;ci marketingowych &mdash; piszemy wy&#322;&#261;cznie w sprawie Twojego zapytania.</p>
-    <div class="contact-note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <p><b>Poufno&#347;&#263;:</b> Twoje dane i przes&#322;ane pliki traktujemy jako poufne i nie udost&#281;pniamy ich osobom trzecim. Na &#380;yczenie podpiszemy NDA przed rozmow&#261;.</p>
-    </div>
-  </div>
-</header>
-
 <section class="kontakt-body">
+  <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="contact-grid">
       <div class="contact-info">
+        <span class="eyebrow">Kontakt</span>
+        <h1>Zacznijmy od <span class="grad">rozmowy</span></h1>
+        <p>Opowiedz, gdzie Twoja firma traci czas i pieni&#261;dze &mdash; my powiemy, czy AI to rozwi&#261;&#380;e i ile na tym zarobisz.</p>
+        <p class="ci-reassure">Ka&#380;de zapytanie analizujemy indywidualnie. Nie wysy&#322;amy automatycznych wiadomo&#347;ci marketingowych &mdash; piszemy wy&#322;&#261;cznie w sprawie Twojego zapytania.</p>
+        <div class="contact-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <p><b>Poufno&#347;&#263;:</b> Twoje dane i przes&#322;ane pliki traktujemy jako poufne i nie udost&#281;pniamy ich osobom trzecim. Na &#380;yczenie podpiszemy NDA przed rozmow&#261;.</p>
+        </div>
         <div class="contact-rows">
           <a class="contact-row" href="mailto:kontakt@skaluj.ai"><b>E-mail</b><span class="mono">kontakt@skaluj.ai</span></a>
           
