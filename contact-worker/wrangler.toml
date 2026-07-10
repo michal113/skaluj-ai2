@@ -5,7 +5,7 @@ compatibility_date = "2024-11-01"
 # Zmienne jawne (mozesz nadpisac w dashboardzie):
 [vars]
 TO_EMAIL = "kontakt@skaluj.ai"
-FROM_EMAIL = "skaluj.ai <onboarding@resend.dev>"
+FROM_EMAIL = "skaluj.ai <formularz@skaluj.ai>"
 ALLOW_ORIGIN = "*"
 
 # RESEND_API_KEY ustaw jako SEKRET (nie tutaj!):
