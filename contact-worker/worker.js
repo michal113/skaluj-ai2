@@ -127,8 +127,9 @@ export default {
     }
 
     if (!r.ok) {
-      const detail = await r.text().catch(() => "");
-      return json({ ok: false, error: "Wysylka nie powiodla sie.", detail: detail.slice(0, 300) }, 502, allow);
+      let detail = "";
+      try { detail = await r.text(); } catch (e) {}
+      return json({ ok: false, error: "Wysylka nie powiodla sie.", status: r.status, detail: detail.slice(0, 400) }, 502, allow);
     }
 
     return json({ ok: true }, 200, allow);
