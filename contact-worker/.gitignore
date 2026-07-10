@@ -1,0 +1,5 @@
+# Sekrety i artefakty wrangler — NIGDY nie commituj
+.dev.vars
+.dev.vars.*
+.wrangler/
+node_modules/
