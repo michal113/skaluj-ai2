@@ -116,7 +116,7 @@
 }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%;scrollbar-gutter:stable;overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{
   background:var(--bg);color:var(--text);
   font-family:var(--sans);font-size:16px;line-height:1.55;letter-spacing:-.011em;
@@ -921,7 +921,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 /* ===== branded ghost — jeden duzy rozmyty sygnet w prawym gornym rogu kazdej sekcji (symetrycznie) ===== */
 .brand-ghost{position:absolute;top:-56px;right:-56px;width:clamp(300px,28vw,460px);height:auto;pointer-events:none;user-select:none;z-index:0;opacity:.05;filter:blur(4px);transform:rotate(8deg)}
 .brand-ghost--footer{top:auto;right:-3%;bottom:-15%;width:min(40vw,440px);transform:rotate(-8deg)}
-.section,.cs-section{position:relative}
+.section,.cs-section{position:relative}#faq{overflow:hidden}
 .section>.wrap,.cs-section>.wrap,.offer-sticky>.wrap{position:relative;z-index:1}
 @media(max-width:680px){.brand-ghost{width:230px;opacity:.045;top:-30px;right:-40px}}
 
@@ -1315,7 +1315,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 <!-- ===== OFERTA ===== -->
 <section class="section" id="oferta">
   <div class="offer-sticky">
-  <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">01 — Oferta</span>
@@ -1379,7 +1378,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
 <!-- ===== CASE STUDIES ===== -->
 <section class="section cs-section" id="case-studies">
-  <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true">
   <div class="wrap">
 
     <div class="sec-head" data-reveal>
@@ -1525,7 +1523,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
 <!-- ===== INTEGRACJE ===== -->
 <section class="section integ" id="integracje">
-  <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="integ-grid">
       <div class="integ-visual" data-reveal>
@@ -1550,7 +1547,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
 <!-- ===== PROCES ===== -->
 <section class="section" id="proces">
-  <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">03 — Proces</span>
@@ -1673,7 +1669,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
 <!-- ===== KONTAKT ===== -->
 <section class="section" id="kontakt-section">
-  <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="contact-grid">
       <div class="contact-info" data-reveal>
