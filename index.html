@@ -890,31 +890,55 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .footer-watermark{margin:70px 0 0;font-size:clamp(3.4rem,12vw,11rem);font-weight:600;letter-spacing:-.05em;line-height:.85;text-align:center;
   background:linear-gradient(180deg,rgba(0,0,0,.07),transparent);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none}
 .footer-bottom{margin-top:34px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint)}
-/* ===== BRANDING: loader-kurtyna, sygnet watermark, micro-anim ===== */
+/* ===== BRANDING: loader-kurtyna v2 — litery slide-up, niebieska kropka, wielki licznik %, podwojna kurtyna ===== */
 .brand-loader{position:fixed;inset:0;z-index:6000;background:#0b0d10;display:flex;align-items:center;justify-content:center;
-  animation:blExit .8s cubic-bezier(.76,0,.24,1) 1.3s forwards;will-change:transform}
-.brand-loader.skip{display:none}
-.bl-center{position:relative;display:flex;align-items:center;gap:16px}
-.bl-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:360px;height:360px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(47,111,224,.35),transparent 65%);filter:blur(34px);animation:blBreathe 1.5s var(--ease) infinite alternate}
-.bl-mark{position:relative;width:52px;height:auto;animation:blPop .7s var(--ease) both;filter:drop-shadow(0 0 26px rgba(47,111,224,.5))}
-.bl-word{position:relative;height:29px;width:auto;clip-path:inset(0 100% 0 0);animation:blWipe .65s var(--ease) .4s forwards}
-.bl-foot{position:absolute;left:0;right:0;bottom:24px;display:flex;justify-content:space-between;align-items:baseline;padding:0 28px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42)}
-.bl-count{font-size:14px;letter-spacing:.06em;color:#fff;font-variant-numeric:tabular-nums}
-.bl-count::after{content:"%";opacity:.55;margin-left:1px}
-.bl-line{position:absolute;left:0;bottom:0;height:2px;width:100%;background:rgba(255,255,255,.09);overflow:hidden}
-.bl-line::after{content:"";position:absolute;inset:0;left:-100%;background:linear-gradient(90deg,var(--accent-dim),var(--accent),#7aa9f5);animation:blFill 1.15s cubic-bezier(.65,0,.35,1) .1s forwards}
-@keyframes blPop{0%{opacity:0;transform:scale(.4) rotate(-10deg)}60%{opacity:1;transform:scale(1.08) rotate(2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
-@keyframes blWipe{to{clip-path:inset(0 0 0 0)}}
-@keyframes blBreathe{from{opacity:.65;transform:translate(-50%,-50%) scale(.9)}to{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+  animation:blExit .85s cubic-bezier(.83,0,.17,1) 1.62s forwards;will-change:transform;overflow:hidden}
+.bl-veil{position:fixed;inset:0;z-index:5995;background:linear-gradient(180deg,#3b7af0,#16336f);
+  animation:blExit .85s cubic-bezier(.83,0,.17,1) 1.74s forwards;will-change:transform;pointer-events:none}
+.brand-loader.skip,.bl-veil.skip{display:none}
+.brand-loader::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 50% at 50% 42%,rgba(47,111,224,.10),transparent 70%)}
+.bl-center{position:relative;display:flex;align-items:center;gap:clamp(14px,2.2vw,22px);animation:blLift .45s var(--ease) 1.5s forwards}
+.bl-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(72vw,520px);height:min(72vw,520px);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(47,111,224,.38),transparent 62%);filter:blur(42px);animation:blBreathe 1.4s var(--ease) infinite alternate}
+.bl-mark{position:relative;width:clamp(44px,6.4vw,74px);height:auto;opacity:0;
+  animation:blMark .8s cubic-bezier(.34,1.4,.4,1) .1s forwards;filter:drop-shadow(0 0 30px rgba(47,111,224,.55))}
+.bl-word{position:relative;overflow:hidden;white-space:nowrap;line-height:1.22;
+  font-weight:600;font-size:clamp(42px,6.4vw,74px);letter-spacing:-.045em;color:#fff}
+.bl-ch{display:inline-block;transform:translateY(125%);animation:blCh .7s var(--ease) forwards}
+.bl-ch:nth-child(1){animation-delay:.24s}.bl-ch:nth-child(2){animation-delay:.29s}.bl-ch:nth-child(3){animation-delay:.34s}
+.bl-ch:nth-child(4){animation-delay:.39s}.bl-ch:nth-child(5){animation-delay:.44s}.bl-ch:nth-child(6){animation-delay:.49s}
+.bl-ch:nth-child(8){animation-delay:.56s}.bl-ch:nth-child(9){animation-delay:.61s}
+.bl-dot{color:#4a8bff;transform:translateY(125%) scale(.4);text-shadow:0 0 26px rgba(74,139,255,.85);
+  animation:blDot .65s cubic-bezier(.3,1.6,.35,1) .74s forwards}
+.bl-word::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:34%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);filter:blur(7px);transform:skewX(-18deg);
+  animation:blShine .7s ease 1.08s forwards}
+.bl-big{position:absolute;left:clamp(16px,4vw,56px);bottom:clamp(6px,2.6vh,30px);display:flex;align-items:baseline;pointer-events:none;user-select:none;
+  font-weight:600;font-size:clamp(84px,16vw,210px);letter-spacing:-.055em;line-height:.9;font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.28));-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:blLift .45s var(--ease) 1.5s forwards}
+.bl-pct{font-size:.2em;font-family:var(--mono);font-weight:400;letter-spacing:0;margin-left:.1em;
+  color:#4a8bff;-webkit-text-fill-color:#4a8bff}
+.bl-foot{position:absolute;right:28px;bottom:24px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);animation:blLift .45s var(--ease) 1.5s forwards}
+.bl-line{position:absolute;left:0;bottom:0;height:2px;width:100%;background:rgba(255,255,255,.08);overflow:hidden}
+.bl-line::after{content:"";position:absolute;inset:0;left:-100%;background:linear-gradient(90deg,var(--accent-dim),var(--accent),#7aa9f5);animation:blFill 1.4s cubic-bezier(.65,0,.35,1) .1s forwards}
+@keyframes blMark{0%{opacity:0;transform:translateX(-42px) rotate(-18deg) scale(.5)}60%{opacity:1;transform:translateX(4px) rotate(3deg) scale(1.06)}100%{opacity:1;transform:none}}
+@keyframes blCh{to{transform:translateY(0)}}
+@keyframes blDot{0%{transform:translateY(125%) scale(.4)}55%{transform:translateY(-9%) scale(1.32)}100%{transform:translateY(0) scale(1)}}
+@keyframes blShine{to{left:136%}}
+@keyframes blBreathe{from{opacity:.6;transform:translate(-50%,-50%) scale(.88)}to{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
 @keyframes blFill{to{left:0}}
+@keyframes blLift{to{opacity:0;transform:translateY(-26px)}}
 @keyframes blExit{to{transform:translateY(-101%)}}
 @keyframes blFade{to{opacity:0;visibility:hidden;pointer-events:none}}
 @media (prefers-reduced-motion:reduce){
   .brand-loader{animation:blFade .4s ease .3s forwards}
-  .bl-mark,.bl-word,.bl-glow,.bl-line::after{animation:none}
-  .bl-word{clip-path:none}
+  .bl-veil{display:none}
+  .bl-mark{opacity:1;animation:none}
+  .bl-glow,.bl-line::after,.bl-word::after,.bl-center,.bl-big,.bl-foot{animation:none}
+  .bl-ch,.bl-dot{transform:none;animation:none}
 }
 .footer{position:relative;overflow:hidden}
 .footer .wrap{position:relative;z-index:1}
@@ -1004,25 +1028,25 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   <div class="bl-center">
     <span class="bl-glow"></span>
     <img src="sygnet.png" class="bl-mark" alt="">
-    <img src="samo%20skaluj%20biale.png" class="bl-word" alt="">
+    <span class="bl-word"><span class="bl-ch">s</span><span class="bl-ch">k</span><span class="bl-ch">a</span><span class="bl-ch">l</span><span class="bl-ch">u</span><span class="bl-ch">j</span><span class="bl-ch bl-dot">.</span><span class="bl-ch">a</span><span class="bl-ch">i</span></span>
   </div>
-  <div class="bl-foot">
-    <span class="bl-count" id="blCount">0</span>
-    <span>Agencja transformacji cyfrowej</span>
-  </div>
+  <div class="bl-big" aria-hidden="true"><span id="blCount">0</span><span class="bl-pct">%</span></div>
+  <div class="bl-foot">Agencja transformacji cyfrowej</div>
   <span class="bl-line"></span>
 </div>
+<div class="bl-veil" id="blVeil" aria-hidden="true"></div>
 <script>(function(){try{
-  var bl=document.getElementById('brandLoader');
-  if(sessionStorage.getItem('blSeen')){bl.classList.add('skip');return;}
+  var bl=document.getElementById('brandLoader'), veil=document.getElementById('blVeil');
+  function skip(){ bl.classList.add('skip'); if(veil) veil.classList.add('skip'); }
+  if(sessionStorage.getItem('blSeen')){skip();return;}
   sessionStorage.setItem('blSeen','1');
   var el=document.getElementById('blCount');
   if(el && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var D=1200,t0=null;
-    requestAnimationFrame(function step(now){ if(!t0)t0=now; var p=Math.min(1,(now-t0)/D); var k=1-Math.pow(1-p,2.2); el.textContent=Math.round(k*100); if(p<1)requestAnimationFrame(step); });
+    var D=1450,t0=null;
+    requestAnimationFrame(function step(now){ if(!t0)t0=now; var p=Math.min(1,(now-t0)/D); var k=1-Math.pow(1-p,2.8); el.textContent=Math.round(k*100); if(p<1)requestAnimationFrame(step); });
   } else if(el){ el.textContent='100'; }
   /* failsafe: gdyby animacja CSS nie ruszyla (zamrozony compositor, karta w tle), kurtyna i tak znika */
-  setTimeout(function(){ bl.classList.add('skip'); }, 2600);
+  setTimeout(skip, 3300);
 }catch(e){}})();</script>
 <div class="grain" aria-hidden="true"></div>
 <div class="progress" aria-hidden="true"></div>
