@@ -147,7 +147,7 @@ button{font-family:inherit;cursor:pointer}
   font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--muted);
 }
 .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-soft)}
-.section{position:relative;padding:120px 0;border-top:1px solid var(--line-2)}
+.section{position:relative;padding:96px 0;border-top:1px solid var(--line-2)}
 .sec-head{max-width:680px;margin-bottom:64px}
 .sec-head .eyebrow{margin-bottom:20px}
 .sec-title{font-size:clamp(2rem,4.4vw,3.3rem);font-weight:500;letter-spacing:-.035em;line-height:1.05}
@@ -553,7 +553,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .offer-item{border-bottom:1px solid var(--line);scroll-margin-top:96px}
 /* tryb przypiety (pin-scroll): sekcja to wysoki tor, tresc klei sie do ekranu,
    a postep scrolla otwiera karty 1->4; po koncu toru strona plynie normalnie */
-#oferta.pinned-track{height:300vh;padding:0;border-top:1px solid var(--line-2);overflow-anchor:none}
+#oferta.pinned-track{height:240vh;padding:0;border-top:1px solid var(--line-2);overflow-anchor:none}
 #oferta.pinned-track .offer-sticky{position:sticky;top:0;padding:104px 0 138px}
 #oferta.pinned-track .sec-head{margin-bottom:28px}
 #oferta.pinned-track .offer-head{padding:22px 6px}
@@ -966,7 +966,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .nav-links{display:none}
   .nav-burger{display:block}
   .nav-right .btn{display:none}
-  .section{padding:84px 0}
+  .section{padding:72px 0}
   .hero{padding:130px 0 80px}
   
   .dash-body{padding:18px}
@@ -1975,7 +1975,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       if(len <= 0) return;
       var p = (scrollY - sec.offsetTop) / len;
       if(p < 0 || p > 1) return;
-      var step = Math.min(items.length - 1, Math.max(0, Math.floor(p * items.length)));
+      /* karty otwieraja sie na pierwszych SPAN toru; reszta = krotki wybieg do odpiecia,
+         zeby ostatnia karta nie wisiala pol ekranu jako "martwy scroll" */
+      var SPAN = 0.9, n = items.length;
+      var step = Math.max(0, Math.min(n - 1, Math.floor(p / SPAN * (n - 1) + 1e-6)));
       if(step !== cur) openIdx(step);
     }
     function apply(){
