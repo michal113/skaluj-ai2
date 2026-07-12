@@ -87,7 +87,10 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- fonty asynchronicznie (nie blokuja renderu); loader-kurtyna zakrywa ew. FOUT -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Azeret+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Azeret+Mono:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Azeret+Mono:wght@300;400;500&display=swap"></noscript>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 <style>
 /* ============================================================
@@ -99,7 +102,7 @@
   --bg-elev-2: #eef1f5;
   --text:      #0b0d10;
   --muted:     #565d68;
-  --faint:     #8b929c;
+  --faint:     #626873;
   --line:      rgba(0,0,0,.10);
   --line-2:    rgba(0,0,0,.06);
   --accent:    #2f6fe0;
@@ -883,7 +886,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .footer-brand .logo-mark{height:28px}
 .footer-brand .logo-word{height:18px}
 .footer-brand p{color:var(--muted);font-size:14px;max-width:32ch;line-height:1.6}
-.footer h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.footer h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
 .footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
 .footer ul a{color:var(--muted);font-size:14px;transition:color .25s}
 .footer ul a:hover{color:var(--text)}
@@ -1017,7 +1020,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 <div class="brand-loader" id="brandLoader" aria-hidden="true">
   <div class="bl-center">
     <span class="bl-glow"></span>
-    <img src="sygnet.png" class="bl-mark" alt="">
+    <img src="sygnet.png" class="bl-mark" alt="" width="140" height="170">
     <span class="bl-word"><span class="bl-ch">s</span><span class="bl-ch">k</span><span class="bl-ch">a</span><span class="bl-ch">l</span><span class="bl-ch">u</span><span class="bl-ch">j</span><span class="bl-ch bl-dot">.</span><span class="bl-ch">a</span><span class="bl-ch">i</span></span>
   </div>
   <div class="bl-foot">Agencja transformacji cyfrowej</div>
@@ -1155,7 +1158,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <span class="dash-live">na żywo</span>
         </div>
         <div class="dash-body">
-          <div class="pa-tabs" id="paTabs" role="tablist">
+          <div class="pa-tabs" id="paTabs">
             <span class="pa-tab-glider" id="paGlider" aria-hidden="true"></span>
             <button type="button" class="pa-tab is-active" data-k="auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 3 5 13.5h5.2L10.8 21 19 9.8h-5.6z"/></svg>Automatyzacja</button>
             <button type="button" class="pa-tab" data-k="website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.6 2.2 2.6 15.3 0 17.5c-2.6-2.2-2.6-15.3 0-17.5z"/></svg>Strona + SEO</button>
@@ -1411,7 +1414,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <!-- lewa: galeria screenshotów -->
         <div class="cs-left-col">
           <div class="cs-gallery cs-gallery--single" id="csGallery">
-            <img src="assets/leniar-screen-1.png" alt="Strona Leniar — hero" loading="lazy" class="cs-gallery-img">
+            <img src="assets/leniar-screen-1.png" alt="Strona Leniar — hero" loading="lazy" class="cs-gallery-img" width="2940" height="1654">
           </div>
           <!-- PageSpeed badges -->
           <div class="cs-ps-badges">
@@ -1476,7 +1479,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       </div>
 
       <!-- ZWIJANA TRESC -->
-      <div class="cs-body" id="csBody" aria-hidden="true">
+      <div class="cs-body" id="csBody" aria-hidden="true" inert>
       <div class="cs-body-inner">
 
       <!-- ROZWIĄZANIE -->
@@ -1534,7 +1537,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   <div class="wrap">
     <div class="integ-grid">
       <div class="integ-visual" data-reveal>
-        <img src="assets/integrations-network.png" alt="Diagram integracji — skaluj.ai w centrum stacku narzędzi (Slack, Notion, Google, Meta, OpenAI, Make, n8n)" loading="lazy">
+        <img src="assets/integrations-network.png" alt="Diagram integracji — skaluj.ai w centrum stacku narzędzi (Slack, Notion, Google, Meta, OpenAI, Make, n8n)" loading="lazy" width="1024" height="1024">
       </div>
       <div class="integ-content" data-reveal data-delay="100">
         <span class="integ-eyebrow">Integracje</span>
@@ -1627,7 +1630,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 <!-- ===== CTA ===== -->
 <!-- ===== FAQ ===== -->
 <section class="section" id="faq">
-  <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true">
+  <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true" width="140" height="170">
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">04 — FAQ</span>
@@ -1859,7 +1862,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
-  <img src="sygnet.png" class="brand-ghost brand-ghost--footer" alt="" aria-hidden="true">
+  <img src="sygnet.png" class="brand-ghost brand-ghost--footer" alt="" aria-hidden="true" width="140" height="170">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -1869,8 +1872,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </a>
         <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
       </div>
-      <div><h4>Nawigacja</h4><ul><li><a href="#start">Start</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#case-studies">Case studies</a></li><li><a href="#integracje">Integracje</a></li><li><a href="#proces">Proces</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-      <div><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li></ul></div>
+      <div><h3>Nawigacja</h3><ul><li><a href="#start">Start</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#case-studies">Case studies</a></li><li><a href="#integracje">Integracje</a></li><li><a href="#proces">Proces</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h3>Kontakt</h3><ul><li><a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li></ul></div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj.ai</div>
     <div class="footer-bottom"><span>© 2026 skaluj.ai — wszystkie prawa zastrzeżone</span><span>Zaprojektowano w Polsce</span></div>
@@ -2206,13 +2209,29 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   var isMobile = matchMedia("(max-width: 768px)").matches ||
     (matchMedia("(hover: none) and (pointer: coarse)").matches && matchMedia("(max-width: 900px)").matches);
   if(isMobile){ return; }
+  /* WebGL software-render (SwiftShader/llvmpipe) = brak GPU: headless Chrome (Lighthouse),
+     maszyny bez akceleracji. Render 66k wierzcholkow na CPU zabija glowny watek (TBT).
+     Wtedy w ogole nie ladujemy three.js — zostaje statyczny gradient .hero-bg.
+     Uzytkownicy z GPU dostaja pelny efekt. */
+  function noUsableGPU(){
+    try{
+      var c = document.createElement("canvas");
+      var gl = c.getContext("webgl") || c.getContext("experimental-webgl");
+      if(!gl) return true;
+      var ext = gl.getExtension("WEBGL_debug_renderer_info");
+      var r = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : "";
+      var lose = gl.getExtension("WEBGL_lose_context"); if(lose) lose.loseContext();
+      return /swiftshader|llvmpipe|softwar|basic render|microsoft basic/i.test(r);
+    }catch(e){ return true; }
+  }
+  if(noUsableGPU()){ return; }
   var THREE;
   try { THREE = await import("three"); }
   catch(e){ console.warn("three.js nie załadował się — tło hero zostaje na gradiencie zapasowym", e); return; }
 
   /* drift peryferyjny: ledwo zauważalny ruch (pełny cykl wzoru ~30s) —
      tło ma być odczuwalne kątem oka, nigdy konkurować z CTA */
-  var SPEED = 0.008, SIZE = 256;
+  var SPEED = 0.008, SIZE = 256, SEG = 128;   /* SEG: segmenty siatki (256 -> 128 = 4x mniej wierzcholkow, wizualnie identycznie) */
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var renderer = new THREE.WebGLRenderer({ canvas:canvas, antialias:true, alpha:true });
@@ -2295,7 +2314,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   `;
 
   var mat = new THREE.RawShaderMaterial({ uniforms:uniforms, vertexShader:vert, fragmentShader:frag, transparent:true });
-  var mesh = new THREE.Mesh(new THREE.PlaneGeometry(SIZE, SIZE, SIZE, SIZE), mat);
+  var mesh = new THREE.Mesh(new THREE.PlaneGeometry(SIZE, SIZE, SEG, SEG), mat);
   scene.add(mesh);
 
   function resize(){
@@ -2310,13 +2329,17 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   if(window.IntersectionObserver){
     new IntersectionObserver(function(es){ heroVisible = es[0].isIntersecting; }, {threshold:0}).observe(host);
   }
+  var MIN_DT = 1/30, acc = 0;         /* limit ~30 kl/s: drift jest wolny, 30fps wyglada identycznie, a o polowe taniej */
   function loop(){
     requestAnimationFrame(loop);
     var dt = clock.getDelta();
     if(!heroVisible) return;          /* nie renderuj, gdy hero poza ekranem */
     if(dt > 0.05) dt = 0.05;          /* klamra: bez skoku czasu po powrocie na kartę */
-    uniforms.time.value += dt * SPEED;
-    renderer.render(scene, camera);   /* pełna płynność — render w każdej klatce */
+    acc += dt;
+    if(acc < MIN_DT) return;          /* pomin klatke do progu 30fps */
+    uniforms.time.value += acc * SPEED;
+    acc = 0;
+    renderer.render(scene, camera);
   }
   if(reduce){ renderer.render(scene, camera); }
   else { loop(); }
@@ -2333,6 +2356,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       var open = body.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(open));
       body.setAttribute('aria-hidden', String(!open));
+      if(open){ body.removeAttribute('inert'); } else { body.setAttribute('inert',''); }
       if(label) label.textContent = open ? 'Zwi\u0144 szczeg\u00f3\u0142y' : 'Rozwi\u0144 szczeg\u00f3\u0142y';
       if(!open){
         setTimeout(function(){
