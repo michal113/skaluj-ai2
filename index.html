@@ -603,6 +603,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 /* wariant ghost — link informacyjny obok konwersyjnego CTA */
 .offer-detail--ghost{background:transparent;color:var(--text);border:1px solid var(--line);box-shadow:none}
 .offer-detail--ghost:hover{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.22);box-shadow:none}
+/* srednie szerokosci: kolumna opisu za waska na 2 przyciski — CTA schodzi do wlasnego rzedu pod trescia */
+@media(max-width:1080px) and (min-width:721px){
+  .offer-ctas{grid-column:2/4;grid-row:3}
+}
 /* podsekcja z wideo — mailing */
 
 /* ============================================================
@@ -989,7 +993,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .offer-num::after{display:none}
   .offer-meta{display:none}
   .offer-body-grid{grid-template-columns:1fr;grid-template-rows:none;padding:0 4px 32px}
-  .offer-ctas{grid-column:1;grid-row:auto}
+  .offer-ctas{grid-column:1;grid-row:auto;flex-direction:column;align-items:stretch;width:100%}
+  .offer-ctas .offer-detail{justify-content:center}
   .offer-desc{grid-column:1;grid-row:auto}
   .offer-points{grid-column:1;grid-row:auto}
 

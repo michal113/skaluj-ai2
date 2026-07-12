@@ -1,5 +1,6 @@
 # Minimalny serwer statyczny do podglądu (bez zależności zewnętrznych)
-$port = 4173
+# Port: z env PORT (autoPort podglądu), fallback 4173 przy ręcznym odpaleniu
+$port = if ($env:PORT) { [int]$env:PORT } else { 4173 }
 $root = "D:\skaluj-ai"
 
 $mime = @{
