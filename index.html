@@ -890,7 +890,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .footer-watermark{margin:70px 0 0;font-size:clamp(3.4rem,12vw,11rem);font-weight:600;letter-spacing:-.05em;line-height:.85;text-align:center;
   background:linear-gradient(180deg,rgba(0,0,0,.07),transparent);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none}
 .footer-bottom{margin-top:34px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint)}
-/* ===== BRANDING: loader-kurtyna v2 — litery slide-up, niebieska kropka, wielki licznik %, podwojna kurtyna ===== */
+/* ===== BRANDING: loader-kurtyna v2 — litery slide-up, niebieska kropka, podwojna kurtyna ===== */
 .brand-loader{position:fixed;inset:0;z-index:6000;background:#0b0d10;display:flex;align-items:center;justify-content:center;
   animation:blExit .85s cubic-bezier(.83,0,.17,1) 1.62s forwards;will-change:transform;overflow:hidden}
 .bl-veil{position:fixed;inset:0;z-index:5995;background:linear-gradient(180deg,#3b7af0,#16336f);
@@ -911,15 +911,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .bl-ch:nth-child(8){animation-delay:.56s}.bl-ch:nth-child(9){animation-delay:.61s}
 .bl-dot{color:#4a8bff;transform:translateY(125%) scale(.4);text-shadow:0 0 26px rgba(74,139,255,.85);
   animation:blDot .65s cubic-bezier(.3,1.6,.35,1) .74s forwards}
-.bl-word::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:34%;pointer-events:none;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);filter:blur(7px);transform:skewX(-18deg);
-  animation:blShine .7s ease 1.08s forwards}
-.bl-big{position:absolute;left:clamp(16px,4vw,56px);bottom:clamp(6px,2.6vh,30px);display:flex;align-items:baseline;pointer-events:none;user-select:none;
-  font-weight:600;font-size:clamp(84px,16vw,210px);letter-spacing:-.055em;line-height:.9;font-variant-numeric:tabular-nums;
-  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,.28));-webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:blLift .45s var(--ease) 1.5s forwards}
-.bl-pct{font-size:.2em;font-family:var(--mono);font-weight:400;letter-spacing:0;margin-left:.1em;
-  color:#4a8bff;-webkit-text-fill-color:#4a8bff}
 .bl-foot{position:absolute;right:28px;bottom:24px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
   color:rgba(255,255,255,.42);animation:blLift .45s var(--ease) 1.5s forwards}
 .bl-line{position:absolute;left:0;bottom:0;height:2px;width:100%;background:rgba(255,255,255,.08);overflow:hidden}
@@ -927,7 +918,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 @keyframes blMark{0%{opacity:0;transform:translateX(-42px) rotate(-18deg) scale(.5)}60%{opacity:1;transform:translateX(4px) rotate(3deg) scale(1.06)}100%{opacity:1;transform:none}}
 @keyframes blCh{to{transform:translateY(0)}}
 @keyframes blDot{0%{transform:translateY(125%) scale(.4)}55%{transform:translateY(-9%) scale(1.32)}100%{transform:translateY(0) scale(1)}}
-@keyframes blShine{to{left:136%}}
 @keyframes blBreathe{from{opacity:.6;transform:translate(-50%,-50%) scale(.88)}to{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
 @keyframes blFill{to{left:0}}
 @keyframes blLift{to{opacity:0;transform:translateY(-26px)}}
@@ -937,7 +927,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .brand-loader{animation:blFade .4s ease .3s forwards}
   .bl-veil{display:none}
   .bl-mark{opacity:1;animation:none}
-  .bl-glow,.bl-line::after,.bl-word::after,.bl-center,.bl-big,.bl-foot{animation:none}
+  .bl-glow,.bl-line::after,.bl-center,.bl-foot{animation:none}
   .bl-ch,.bl-dot{transform:none;animation:none}
 }
 .footer{position:relative;overflow:hidden}
@@ -1030,7 +1020,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     <img src="sygnet.png" class="bl-mark" alt="">
     <span class="bl-word"><span class="bl-ch">s</span><span class="bl-ch">k</span><span class="bl-ch">a</span><span class="bl-ch">l</span><span class="bl-ch">u</span><span class="bl-ch">j</span><span class="bl-ch bl-dot">.</span><span class="bl-ch">a</span><span class="bl-ch">i</span></span>
   </div>
-  <div class="bl-big" aria-hidden="true"><span id="blCount">0</span><span class="bl-pct">%</span></div>
   <div class="bl-foot">Agencja transformacji cyfrowej</div>
   <span class="bl-line"></span>
 </div>
@@ -1040,11 +1029,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   function skip(){ bl.classList.add('skip'); if(veil) veil.classList.add('skip'); }
   if(sessionStorage.getItem('blSeen')){skip();return;}
   sessionStorage.setItem('blSeen','1');
-  var el=document.getElementById('blCount');
-  if(el && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var D=1450,t0=null;
-    requestAnimationFrame(function step(now){ if(!t0)t0=now; var p=Math.min(1,(now-t0)/D); var k=1-Math.pow(1-p,2.8); el.textContent=Math.round(k*100); if(p<1)requestAnimationFrame(step); });
-  } else if(el){ el.textContent='100'; }
   /* failsafe: gdyby animacja CSS nie ruszyla (zamrozony compositor, karta w tle), kurtyna i tak znika */
   setTimeout(skip, 3300);
 }catch(e){}})();</script>
