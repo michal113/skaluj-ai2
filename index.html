@@ -359,6 +359,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .dash-dots i:nth-child(2){background:#febc2e}
 .dash-dots i:nth-child(3){background:#28c840}
 .dash-title{flex:1;text-align:center;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.04em}
+.dash-demo{font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#9a6a00;background:rgba(254,188,46,.16);border:1px solid rgba(254,188,46,.5);border-radius:5px;padding:2px 7px;cursor:default}
 .dash-live{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .dash-live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 9px var(--accent)}
 .dash-body{padding:clamp(22px,3vw,34px);text-align:left}
@@ -477,7 +478,14 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .integ-visual img{position:relative;z-index:1;width:100%;max-width:720px;height:auto;display:block;margin:0}
 .integ-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px}
 .integ-title{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:500;letter-spacing:-.035em;line-height:1.1;margin-bottom:18px}
-.integ-sub{color:var(--muted);font-size:1.02rem;line-height:1.65;max-width:52ch;margin-bottom:32px}
+.integ-sub{color:var(--muted);font-size:1.02rem;line-height:1.65;max-width:52ch;margin-bottom:22px}
+/* przykladowy przeplyw lead -> follow-up */
+.integ-flow{margin:0 0 30px}
+.integ-flow-cap{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.integ-flow-chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px 7px}
+.integ-flow-step{font-family:var(--mono);font-size:11.5px;letter-spacing:-.01em;color:var(--text);background:var(--bg-elev);border:1px solid var(--line);border-radius:8px;padding:8px 12px;white-space:nowrap}
+.integ-flow-step--out{color:var(--accent);background:var(--accent-soft);border-color:rgba(47,111,224,.4);font-weight:500}
+.integ-flow-arr{width:15px;height:15px;color:var(--faint);flex:none}
 .integ-list{list-style:none;display:grid;gap:18px;margin-bottom:36px}
 .integ-list li{display:flex;gap:14px;align-items:flex-start}
 .integ-list .ico{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-top:1px}
@@ -660,9 +668,12 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .cs-stars{color:#f5a623;font-size:18px;letter-spacing:2px;margin-bottom:12px}
 .cs-placeholder{color:var(--accent);font-style:italic}
 /* cs gallery */
-.cs-gallery{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin-top:24px;aspect-ratio:16/9;background:var(--bg)}
-.cs-gallery-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease-io)}
-.cs-gallery:hover .cs-gallery-img{transform:scale(1.03)}
+.cs-gallery{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cs-shot{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--bg)}
+.cs-gallery-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s var(--ease-io)}
+.cs-shot:hover .cs-gallery-img{transform:scale(1.04)}
+.cs-shot-cap{position:absolute;left:10px;bottom:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(11,13,16,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:4px 9px}
+@media(max-width:680px){.cs-gallery{grid-template-columns:1fr;gap:12px}}
 /* PageSpeed badges */
 .cs-ps-badges{display:flex;flex-direction:column;gap:16px;margin-top:16px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg-elev)}
 .cs-ps-scores{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
@@ -751,6 +762,11 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .ptl-cta{margin-top:16px}
 .ptl-cta a{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:100px;background:var(--accent);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:opacity .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(47,111,224,.3)}
 .ptl-cta a:hover{opacity:.88;box-shadow:0 6px 22px rgba(47,111,224,.45)}
+/* pasek gwarancji pod timeline */
+.ptl-assure{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;margin-top:56px;padding-top:34px;border-top:1px solid var(--line-2)}
+.ptl-assure-item{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;letter-spacing:-.01em;color:var(--text)}
+.ptl-assure-item svg{width:19px;height:19px;color:var(--accent);flex:none}
+@media(max-width:600px){.ptl-assure{flex-direction:column;align-items:flex-start;gap:14px;margin-top:40px;padding-top:28px}}
 /* ── Mobile: vertical ── */
 @media(max-width:767px){
   .ptl-row{grid-template-columns:1fr;gap:32px;padding-left:32px}
@@ -1173,6 +1189,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       <div class="dash" id="kalkulator">
         <div class="dash-top">
           <span class="dash-dots"><i></i><i></i><i></i></span>
+          <span class="dash-demo" title="Przykładowe dane demonstracyjne — realne metryki podpinamy przy wdrożeniu">Demo</span>
           <span class="dash-title">panel wyników · skaluj.ai</span>
           <span class="dash-live">na żywo</span>
         </div>
@@ -1188,7 +1205,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <div class="pa-panels">
           <!-- PANEL: Automatyzacja (przegląd oszczędności) -->
           <div class="pa-panel" id="ppAuto">
-            <p class="pa-period">Czerwiec 2026 — dane bieżące</p>
+            <p class="pa-period">Panel demonstracyjny · przykładowe dane</p>
             <div class="pa-hero-row">
               <div class="pa-hero">
                 <svg class="pa-hero-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4l3 2"/></svg>
@@ -1233,7 +1250,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
           <!-- PANEL: Strona + SEO -->
           <div class="pa-panel pa-hidden" id="ppWebsite">
-            <p class="pa-period">Czerwiec 2026 — dane bieżące</p>
+            <p class="pa-period">Panel demonstracyjny · przykładowe dane</p>
             <div class="pa-kpis">
               <div class="pa-kpi"><span class="pa-ki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 3 5 13.5h5.2L10.8 21 19 9.8h-5.6z"/></svg></span><span class="pa-kl">Sesje / miesiąc</span><span class="pa-kv" data-val="12840" data-sep=" ">0</span><span class="pa-trend pa-up">&#8593; +18% vs maj</span></div>
               <div class="pa-kpi"><span class="pa-ki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><path d="M2.8 19.5c0-3.4 2.5-6 5.7-6s5.7 2.6 5.7 6"/><circle cx="16.3" cy="8.6" r="2.4"/><path d="M15 13.6c2.6.4 4.7 2.7 4.7 5.9"/></svg></span><span class="pa-kl">Nowi odwiedzający</span><span class="pa-kv" data-val="67" data-suffix="%">0</span><span class="pa-trend pa-up">&#8593; +5 pp vs maj</span></div>
@@ -1276,7 +1293,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
           <!-- PANEL: Mailing -->
           <div class="pa-panel pa-hidden" id="ppMail">
-            <p class="pa-period">Czerwiec 2026 — dane bieżące</p>
+            <p class="pa-period">Panel demonstracyjny · przykładowe dane</p>
             <div class="pa-kpis">
               <div class="pa-kpi"><span class="pa-ki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M8.3 12.3l2.4 2.4 5-5.4"/></svg></span><span class="pa-kl">Dostarczalność</span><span class="pa-kv" data-val="99.1" data-dec="1" data-suffix="%">0</span><span class="pa-trend pa-up">&#8593; +0.3 pp vs maj</span></div>
               <div class="pa-kpi"><span class="pa-ki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="2"/><circle cx="16" cy="16" r="2"/><path d="M17 7 7 17"/></svg></span><span class="pa-kl">Open rate</span><span class="pa-kv" data-val="46.8" data-dec="1" data-suffix="%">0</span><span class="pa-trend pa-up">&#8593; +8.4 pp vs maj</span></div>
@@ -1308,7 +1325,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
           <!-- PANEL: Chatbot AI -->
           <div class="pa-panel pa-hidden" id="ppChatbot">
-            <p class="pa-period">Czerwiec 2026 — dane bieżące</p>
+            <p class="pa-period">Panel demonstracyjny · przykładowe dane</p>
             <div class="pa-kpis">
               <div class="pa-kpi"><span class="pa-ki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v10.5H9.5L5 20v-4H4z"/></svg></span><span class="pa-kl">Rozmów / miesiąc</span><span class="pa-kv" data-val="2340" data-sep=" ">0</span><span class="pa-trend pa-up">&#8593; +24% vs maj</span></div>
               <div class="pa-kpi"><span class="pa-ki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M9.3 9.3c0-1 1.1-1.8 2.7-1.8s2.7.7 2.7 1.6c0 2.3-5.4 1-5.4 3.3 0 .9 1.1 1.6 2.7 1.6s2.7-.8 2.7-1.8"/></svg></span><span class="pa-kl">Sprzedaż przez chat</span><span class="pa-kv" data-val="64800" data-sep=" " data-suffix=" zł">0</span><span class="pa-trend pa-up">&#8593; +38% vs maj</span></div>
@@ -1444,8 +1461,15 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 
         <!-- lewa: galeria screenshotów -->
         <div class="cs-left-col">
-          <div class="cs-gallery cs-gallery--single" id="csGallery">
-            <img src="assets/leniar-screen-1.png" alt="Strona Leniar — hero" loading="lazy" class="cs-gallery-img" width="2940" height="1654">
+          <div class="cs-gallery" id="csGallery">
+            <figure class="cs-shot">
+              <img src="assets/leniar-screen-1.png" alt="Strona Leniar — sekcja główna" loading="lazy" class="cs-gallery-img" width="2940" height="1654">
+              <figcaption class="cs-shot-cap">Strona główna</figcaption>
+            </figure>
+            <figure class="cs-shot">
+              <img src="assets/leniar-screen-2.png" alt="Strona Leniar — formularz zapytania z analizą DFM" loading="lazy" class="cs-gallery-img" width="2940" height="1658">
+              <figcaption class="cs-shot-cap">Formularz zapytań</figcaption>
+            </figure>
           </div>
           <!-- PageSpeed badges -->
           <div class="cs-ps-badges">
@@ -1574,6 +1598,18 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <span class="integ-eyebrow">Integracje</span>
         <h2 class="integ-title">Spinamy Twoje narzędzia w jeden system, który działa sam</h2>
         <p class="integ-sub">skaluj.ai staje w centrum Twojego stacku i łączy aplikacje, których już używasz — Slack, Notion, Google, Make, n8n, OpenAI — w jeden przepływ. Koniec z ręcznym przeklejaniem danych między zakładkami.</p>
+        <div class="integ-flow" aria-label="Przykładowy przepływ: od nowego leada do automatycznego follow-upu">
+          <span class="integ-flow-cap">Przykładowy przepływ</span>
+          <div class="integ-flow-chain">
+            <span class="integ-flow-step">Lead z formularza</span>
+            <svg class="integ-flow-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="integ-flow-step">Kwalifikacja AI</span>
+            <svg class="integ-flow-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="integ-flow-step">CRM + alert Slack</span>
+            <svg class="integ-flow-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <span class="integ-flow-step integ-flow-step--out">Auto follow-up</span>
+          </div>
+        </div>
         <ul class="integ-list">
           <li><span class="ico"></span><span class="txt"><b>Obsługa klienta</b><span>Asystent odpowiada na stronie i w Slacku, a eskaluje tylko trudne sprawy.</span></span></li>
           <li><span class="ico"></span><span class="txt"><b>Faktury i księgowość</b><span>Dokumenty czytane i wprowadzane automatycznie — bez ręcznego przepisywania.</span></span></li>
@@ -1653,6 +1689,12 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </div>
 
       </div><!-- /ptl-row -->
+
+      <div class="ptl-assure" data-reveal>
+        <span class="ptl-assure-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg>Bezpłatny audyt na start</span>
+        <span class="ptl-assure-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg>Demo, zanim zapłacisz</span>
+        <span class="ptl-assure-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg>Bez lock-in — decydujesz po demie</span>
+      </div>
     </div><!-- /ptl -->
   </div>
 </section>
@@ -1712,6 +1754,22 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Dla jakich firm pracujecie?<span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
         <div class="faq-a"><div class="faq-a-in"><p>Współpracujemy z <strong>firmami w Polsce</strong> — zarówno tymi, które dopiero wchodzą do sieci, jak i tymi, które już w niej są i chcą zdominować swoją niszę. Nie zamykamy się w jednej branży; zaczynamy od tego, gdzie tracisz czas i pieniądze.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Czy podpisujemy umowę i czy jest okres wypowiedzenia?<span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-in"><p>Zaczynamy od <strong>bezpłatnego audytu i demo</strong> — umowę podpisujemy dopiero, gdy akceptujesz kierunek i zakres. Zasady ustalamy z góry, bez sztywnego okresu wypowiedzenia i bez uzależniania Cię od nas: pracujemy tak, żebyś w każdej chwili mógł przejąć to, co zbudowaliśmy.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Ile kosztuje utrzymanie po wdrożeniu?<span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-in"><p>Zależy od zakresu: część rzeczy to <strong>koszt jednorazowy</strong> (np. strona), a opcjonalna opieka, hosting czy rozwój automatyzacji rozliczane są miesięcznie. Stawki ustalamy z góry przy wycenie — bez ukrytych opłat i bez abonamentu, którego nie potrzebujesz.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Co, jeśli demo mnie nie przekona?<span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-in"><p><strong>Nic nie tracisz.</strong> Demo przygotowujemy przed jakąkolwiek płatnością i do niczego nie zobowiązuje. Jeśli kierunek nie trafia w Twoje potrzeby — nie ruszamy dalej, a Ty i tak wychodzisz z konkretną analizą swojego procesu.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Czy nie taniej zrobić to samemu — na Wix albo ChatGPT?<span class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-in"><p>Na start — jasne, i czasem to dobra droga. Różnica pojawia się, gdy strona i procesy mają <strong>realnie zarabiać</strong>: SEO i widoczność w AI (GEO) wbudowane od podstaw, integracje z Twoimi narzędziami, spójny branding i czas, którego nie tracisz na sklejanie tego samodzielnie. Płacisz za efekt i za to, że ktoś bierze całość na siebie — od A do Z.</p></div></div>
       </div>
     </div>
 
@@ -1888,6 +1946,38 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
                            "acceptedAnswer":  {
                                                   "@type":  "Answer",
                                                   "text":  "Współpracujemy z firmami w Polsce — zarówno tymi, które dopiero wchodzą do sieci, jak i tymi, które już w niej są i chcą zdominować swoją niszę. Nie zamykamy się w jednej branży; zaczynamy od tego, gdzie tracisz czas i pieniądze."
+                                              }
+                       },
+                       {
+                           "@type":  "Question",
+                           "name":  "Czy podpisujemy umowę i czy jest okres wypowiedzenia?",
+                           "acceptedAnswer":  {
+                                                  "@type":  "Answer",
+                                                  "text":  "Zaczynamy od bezpłatnego audytu i demo — umowę podpisujemy dopiero, gdy akceptujesz kierunek i zakres. Zasady ustalamy z góry, bez sztywnego okresu wypowiedzenia i bez uzależniania Cię od nas: pracujemy tak, żebyś w każdej chwili mógł przejąć to, co zbudowaliśmy."
+                                              }
+                       },
+                       {
+                           "@type":  "Question",
+                           "name":  "Ile kosztuje utrzymanie po wdrożeniu?",
+                           "acceptedAnswer":  {
+                                                  "@type":  "Answer",
+                                                  "text":  "Zależy od zakresu: część rzeczy to koszt jednorazowy (np. strona), a opcjonalna opieka, hosting czy rozwój automatyzacji rozliczane są miesięcznie. Stawki ustalamy z góry przy wycenie — bez ukrytych opłat i bez abonamentu, którego nie potrzebujesz."
+                                              }
+                       },
+                       {
+                           "@type":  "Question",
+                           "name":  "Co, jeśli demo mnie nie przekona?",
+                           "acceptedAnswer":  {
+                                                  "@type":  "Answer",
+                                                  "text":  "Nic nie tracisz. Demo przygotowujemy przed jakąkolwiek płatnością i do niczego nie zobowiązuje. Jeśli kierunek nie trafia w Twoje potrzeby — nie ruszamy dalej, a Ty i tak wychodzisz z konkretną analizą swojego procesu."
+                                              }
+                       },
+                       {
+                           "@type":  "Question",
+                           "name":  "Czy nie taniej zrobić to samemu — na Wix albo ChatGPT?",
+                           "acceptedAnswer":  {
+                                                  "@type":  "Answer",
+                                                  "text":  "Na start — jasne, i czasem to dobra droga. Różnica pojawia się, gdy strona i procesy mają realnie zarabiać: SEO i widoczność w AI (GEO) wbudowane od podstaw, integracje z Twoimi narzędziami, spójny branding i czas, którego nie tracisz na sklejanie tego samodzielnie. Płacisz za efekt i za to, że ktoś bierze całość na siebie — od A do Z."
                                               }
                        }
                    ]
