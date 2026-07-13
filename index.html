@@ -767,6 +767,29 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .ptl-assure-item{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;letter-spacing:-.01em;color:var(--text)}
 .ptl-assure-item svg{width:19px;height:19px;color:var(--accent);flex:none}
 @media(max-width:600px){.ptl-assure{flex-direction:column;align-items:flex-start;gap:14px;margin-top:40px;padding-top:28px}}
+/* ===== O NAS ===== */
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.about-lead{font-size:1.12rem;line-height:1.65;color:var(--text);margin:8px 0 16px;max-width:52ch}
+.about-p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:26px;max-width:52ch}
+.about-values{list-style:none;display:grid;gap:16px;margin-bottom:30px}
+.about-values li{display:flex;gap:13px;align-items:flex-start}
+.av-ico{flex:none;margin-top:1px}
+.av-ico svg{width:20px;height:20px;color:var(--accent)}
+.about-values b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--text);margin-bottom:2px}
+.about-values div span{color:var(--muted);font-size:13.5px;line-height:1.55}
+.about-cta{margin-top:2px}
+.about-visual{position:relative;justify-self:center}
+.about-photo{position:relative;width:min(340px,82vw);border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 24px 60px -22px rgba(15,30,60,.32)}
+.about-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(85% 55% at 50% 0%,rgba(47,111,224,.12),transparent 68%);pointer-events:none}
+.about-photo img{width:100%;height:auto;display:block}
+.about-badge{position:absolute;left:-18px;bottom:22px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:12px;padding:9px 15px 9px 11px;box-shadow:0 12px 30px -10px rgba(15,30,60,.22)}
+.about-badge img{width:22px;height:auto;display:block}
+.about-badge b{display:block;font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--text)}
+.about-badge span{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--faint)}
+@media(max-width:860px){
+  .about-grid{grid-template-columns:1fr;gap:38px}
+  .about-visual{justify-self:start}
+}
 /* ── Mobile: vertical ── */
 @media(max-width:767px){
   .ptl-row{grid-template-columns:1fr;gap:32px;padding-left:32px}
@@ -1100,6 +1123,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       <a class="nav-link" href="#case-studies">Case studies</a>
       <a class="nav-link" href="#integracje">Integracje</a>
       <a class="nav-link" href="#proces">Proces</a>
+      <a class="nav-link" href="#o-nas">O nas</a>
       <a class="nav-link" href="#faq">FAQ</a>
       <a class="nav-link" href="#kontakt-section">Kontakt</a>
       <div class="nav-item" id="blogItem">
@@ -1139,9 +1163,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   <a href="#case-studies"><span>Case studies</span><span class="n">03</span></a>
   <a href="#integracje"><span>Integracje</span><span class="n">04</span></a>
   <a href="#proces"><span>Proces</span><span class="n">05</span></a>
-  <a href="#faq"><span>FAQ</span><span class="n">06</span></a>
+  <a href="#o-nas"><span>O nas</span><span class="n">06</span></a>
+  <a href="#faq"><span>FAQ</span><span class="n">07</span></a>
     <div class="mm-blog">
-    <span class="mm-h">Blog <span class="n">07</span></span>
+    <span class="mm-h">Blog <span class="n">08</span></span>
     <a class="mm-sub" href="blog/strona-seo.html">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</a>
     <a class="mm-sub" href="blog/automatyzacje-email.html">Automatyzacja e-mail marketingu z AI AI</a>
     <a class="mm-sub" href="blog/chatbot-ai.html">Chatbot AI &mdash; kiedy warto, a kiedy szkodzi?</a>
@@ -1149,7 +1174,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     <a class="mm-sub" href="blog/meta-ads-ai.html">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty o 30%?</a>
     <a class="mm-sub" href="blog/branding.html">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</a>
   </div>
-  <a href="kontakt.html"><span>Kontakt</span><span class="n">08</span></a>
+  <a href="kontakt.html"><span>Kontakt</span><span class="n">09</span></a>
 </div>
 
 <main>
@@ -1700,7 +1725,36 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 </section>
 
 
-<!-- ===== CTA ===== -->
+<!-- ===== O NAS ===== -->
+<section class="section" id="o-nas">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy" data-reveal>
+        <span class="eyebrow">O nas</span>
+        <h2 class="sec-title"><span class="grad">Za skaluj.ai stoją ludzie, nie automat</span></h2>
+        <p class="about-lead">Jesteśmy wyspecjalizowaną, kameralną ekipą z Rzeszowa. Łączymy to, co AI robi najlepiej — szybkość i skalę — z tym, czego algorytm nie dowiezie: zrozumieniem Twojego biznesu, smakiem w projekcie i realną odpowiedzialnością za efekt.</p>
+        <p class="about-p">Nie jesteśmy fabryką stron. Bierzemy tyle wdrożeń, ile możemy poprowadzić osobiście — od pierwszego audytu po opiekę po starcie. Dlatego Twoje zapytanie trafia do konkretnego człowieka, a nie do formularza w próżni.</p>
+        <ul class="about-values">
+          <li><span class="av-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg></span><div><b>Realne wdrożenia, nie szablony</b><span>Każdy projekt robimy pod Twój biznes — AI przyspiesza, człowiek dowozi.</span></div></li>
+          <li><span class="av-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg></span><div><b>Uczciwość zamiast obietnic</b><span>Mówimy, co da się zrobić i ile realnie zajmie — bez marketingowej mgły.</span></div></li>
+          <li><span class="av-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-5"/></svg></span><div><b>Bez lock-in</b><span>Budujemy tak, żebyś w każdej chwili mógł przejąć to, co dla Ciebie zrobiliśmy.</span></div></li>
+        </ul>
+        <a class="btn btn-primary about-cta" href="#kontakt-section">Poznajmy się <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="about-visual" data-reveal data-delay="100">
+        <div class="about-photo">
+          <img src="assets/portret-zespol.png" alt="" width="322" height="352" loading="lazy">
+        </div>
+        <div class="about-badge">
+          <img src="sygnet.png" alt="" width="140" height="170" aria-hidden="true">
+          <div><b>skaluj.ai</b><span>Rzeszów, Polska</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ===== FAQ ===== -->
 <section class="section" id="faq">
   <img src="sygnet.png" class="brand-ghost" alt="" aria-hidden="true" width="140" height="170">
@@ -1998,7 +2052,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </a>
         <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
       </div>
-      <div><h3>Nawigacja</h3><ul><li><a href="#start">Start</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#case-studies">Case studies</a></li><li><a href="#integracje">Integracje</a></li><li><a href="#proces">Proces</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h3>Nawigacja</h3><ul><li><a href="#start">Start</a></li><li><a href="#oferta">Oferta</a></li><li><a href="#case-studies">Case studies</a></li><li><a href="#integracje">Integracje</a></li><li><a href="#proces">Proces</a></li><li><a href="#o-nas">O nas</a></li><li><a href="#faq">FAQ</a></li></ul></div>
       <div><h3>Kontakt</h3><ul><li><a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a></li><li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li></ul></div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj.ai</div>
