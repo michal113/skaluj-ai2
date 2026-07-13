@@ -7,7 +7,7 @@
   /* ---------- KONFIGURACJA (uzupełnij po wdrożeniu) ---------- */
   const CONFIG = {
     // Adres Cloudflare Workera. Pusty => bot działa lokalnie (baseline, bez AI).
-    WORKER_URL: "https://botszkalu.sergiuszserafin26.workers.dev/",
+    WORKER_URL: "",
     // Link do Google Calendar „Harmonogram terminów" (Appointment schedule).
     // Pusty => karta rezerwacji pokaże przycisk kierujący do formularza kontaktu.
     BOOKING_URL: "",
