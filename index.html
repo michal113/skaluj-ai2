@@ -778,6 +778,12 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .about-values b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--text);margin-bottom:2px}
 .about-values div span{color:var(--muted);font-size:13.5px;line-height:1.55}
 .about-cta{margin-top:2px}
+/* niebieska kropka w skaluj.ai + podkreslenie "ludzie" jak na hero */
+.about-dot{-webkit-text-fill-color:var(--accent);color:var(--accent)}
+.about-copy .uline{position:relative;-webkit-text-fill-color:var(--text);color:var(--text)}
+.about-copy .uline::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:2px;background:var(--accent);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .85s var(--ease) .25s;box-shadow:0 0 12px var(--accent-soft)}
+.about-copy.in .uline::after{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){.about-copy .uline::after{transform:scaleX(1);transition:none}}
 .about-visual{position:relative;justify-self:center}
 .about-photo{position:relative;width:min(340px,82vw);border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 24px 60px -22px rgba(15,30,60,.32)}
 .about-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(85% 55% at 50% 0%,rgba(47,111,224,.12),transparent 68%);pointer-events:none}
@@ -1731,7 +1737,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     <div class="about-grid">
       <div class="about-copy" data-reveal>
         <span class="eyebrow">O nas</span>
-        <h2 class="sec-title"><span class="grad">Za skaluj.ai stoją ludzie, nie automat</span></h2>
+        <h2 class="sec-title"><span class="grad">Za skaluj<span class="about-dot">.</span>ai stoją <span class="uline">ludzie</span>, nie automat</span></h2>
         <p class="about-lead">Jesteśmy wyspecjalizowaną, kameralną ekipą z Rzeszowa. Łączymy to, co AI robi najlepiej — szybkość i skalę — z tym, czego algorytm nie dowiezie: zrozumieniem Twojego biznesu, smakiem w projekcie i realną odpowiedzialnością za efekt.</p>
         <p class="about-p">Nie jesteśmy fabryką stron. Bierzemy tyle wdrożeń, ile możemy poprowadzić osobiście — od pierwszego audytu po opiekę po starcie. Dlatego Twoje zapytanie trafia do konkretnego człowieka, a nie do formularza w próżni.</p>
         <ul class="about-values">
