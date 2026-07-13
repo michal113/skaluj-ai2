@@ -7,7 +7,7 @@
   /* ---------- KONFIGURACJA (uzupełnij po wdrożeniu) ---------- */
   const CONFIG = {
     // Adres Cloudflare Workera. Pusty => bot działa lokalnie (baseline, bez AI).
-    WORKER_URL: "",
+    WORKER_URL: "https://botszkalu.sergiuszserafin26.workers.dev/",
     // Link do Google Calendar „Harmonogram terminów" (Appointment schedule).
     // Pusty => karta rezerwacji pokaże przycisk kierujący do formularza kontaktu.
     BOOKING_URL: "",
@@ -23,7 +23,10 @@
   const CSS = `
   .cb-launcher{position:fixed;right:24px;bottom:24px;z-index:99998;height:58px;width:58px;border:none;cursor:pointer;border-radius:50%;
     background:#0b0d10;color:#fff;box-shadow:0 12px 34px rgba(11,13,16,.30),0 3px 10px rgba(15,30,60,.14);
-    display:grid;place-items:center;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+    display:grid;place-items:center;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .3s;
+    opacity:0;pointer-events:none}
+  .cb-launcher.cb-ready{opacity:1;pointer-events:auto;animation:cbEnter .62s cubic-bezier(.34,1.56,.64,1)}
+  @keyframes cbEnter{0%{opacity:0;transform:scale(.2) translateY(34px)}55%{opacity:1;transform:scale(1.14) translateY(0)}100%{transform:scale(1)}}
   .cb-launcher:hover{transform:translateY(-2px);box-shadow:0 0 0 4px rgba(47,111,224,.16),0 14px 38px rgba(11,13,16,.34)}
   .cb-launcher .ic{width:24px;height:24px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
   .cb-launcher .ic-close{position:absolute;transform:scale(0) rotate(90deg)}
@@ -32,7 +35,7 @@
   .cb-launcher .pulse{position:absolute;inset:0;border-radius:50%;animation:cbpulse 2.8s infinite}
   @keyframes cbpulse{0%{box-shadow:0 0 0 0 rgba(47,111,224,.34)}70%{box-shadow:0 0 0 14px rgba(47,111,224,0)}100%{box-shadow:0 0 0 0 rgba(47,111,224,0)}}
   .cb-badge{position:fixed;right:21px;bottom:64px;z-index:99999;background:var(--cb-accent,#2f6fe0);color:#fff;font:600 11px "Geist Mono",monospace;
-    min-width:19px;height:19px;border-radius:10px;display:grid;place-items:center;padding:0 6px;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:opacity .3s}
+    min-width:19px;height:19px;border-radius:10px;display:grid;place-items:center;padding:0 6px;box-shadow:0 2px 8px rgba(0,0,0,.18);opacity:0;transition:opacity .3s}
   .cb-launcher.open ~ .cb-badge{opacity:0;pointer-events:none}
   .cb-panel{position:fixed;right:24px;bottom:94px;z-index:99999;width:384px;max-width:calc(100vw - 32px);height:588px;max-height:calc(100vh - 128px);
     background:#fff;border:1px solid rgba(0,0,0,.10);border-radius:18px;box-shadow:0 30px 80px rgba(15,30,60,.20),0 8px 24px rgba(15,30,60,.09);
@@ -220,4 +223,17 @@
   send.onclick = () => sendMsg();
   input.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); } });
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 96) + "px"; });
+
+  /* ---------- POKAZANIE PO ZAŁADOWANIU STRONY ---------- */
+  function isMobile() { return window.matchMedia("(max-width: 600px)").matches; }
+  function reveal() {
+    launcher.classList.add("cb-ready");
+    if (isMobile()) {
+      setTimeout(() => { badge.style.opacity = "1"; }, 500);   // telefon: tylko launcher + odznaka, bez otwierania
+    } else {
+      setTimeout(() => { if (!opened) toggle(); }, 1500);       // desktop: sam się otwiera po chwili
+    }
+  }
+  if (document.readyState === "complete") setTimeout(reveal, 650);
+  else window.addEventListener("load", () => setTimeout(reveal, 650));
 })();
