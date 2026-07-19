@@ -37,7 +37,7 @@
   .cb-badge{position:fixed;right:21px;bottom:64px;z-index:99999;background:var(--cb-accent,#2f6fe0);color:#fff;font:600 11px "Geist Mono",monospace;
     min-width:19px;height:19px;border-radius:10px;display:grid;place-items:center;padding:0 6px;box-shadow:0 2px 8px rgba(0,0,0,.18);opacity:0;transition:opacity .3s}
   .cb-launcher.open ~ .cb-badge{opacity:0;pointer-events:none}
-  .cb-panel{position:fixed;right:24px;bottom:94px;z-index:99999;width:384px;max-width:calc(100vw - 32px);height:588px;max-height:calc(100vh - 128px);
+  .cb-panel{position:fixed;right:24px;bottom:94px;z-index:99999;width:384px;max-width:calc(100vw - 32px);height:588px;max-height:calc(100dvh - 128px);
     background:#fff;border:1px solid rgba(0,0,0,.10);border-radius:18px;box-shadow:0 30px 80px rgba(15,30,60,.20),0 8px 24px rgba(15,30,60,.09);
     display:flex;flex-direction:column;overflow:hidden;font-family:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#0b0d10;position:fixed;
     opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;transform-origin:bottom right;
@@ -84,7 +84,7 @@
   .cb-send{width:38px;height:38px;flex:none;border:none;border-radius:10px;cursor:pointer;background:#0b0d10;color:#fff;display:grid;place-items:center;transition:box-shadow .2s,background .2s}
   .cb-send:hover{background:#000;box-shadow:0 0 0 3px rgba(47,111,224,.14)}.cb-send:disabled{opacity:.4;cursor:default;box-shadow:none}
   .cb-cred{text-align:center;font:10px "Geist Mono",monospace;color:#8b929c;margin-top:8px;letter-spacing:.06em}.cb-cred b{color:#2f6fe0;font-weight:500}
-  @media(max-width:480px){.cb-panel{right:12px;left:12px;bottom:86px;width:auto;height:calc(100vh - 108px)}.cb-launcher{right:16px;bottom:16px}}
+  @media(max-width:600px){.cb-panel{right:12px;left:12px;bottom:84px;width:auto;height:min(70vh,540px);max-height:calc(100dvh - 92px)}.cb-launcher{right:16px;bottom:16px}.cb-badge{right:16px;bottom:60px}}
   `;
 
   /* ---------- WIEDZA (tryb lokalny bez Workera) ---------- */
