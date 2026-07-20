@@ -57,7 +57,7 @@
       "provider": { "@id": "https://skaluj.ai/#organization" },
       "areaServed": "PL",
       "description": "Strony internetowe dla firm z SEO i widocznością w AI (GEO) wbudowanymi od pierwszego dnia — projekt UX, SEO techniczne i treściowe, copywriting sprzedażowy oraz integracje z CRM i GA4.",
-      "url": "https://skaluj.ai/oferta/strona-seo.html"
+      "url": "https://skaluj.ai/oferta/strona-seo"
     },
     {
       "@type": "Service",
@@ -66,7 +66,7 @@
       "provider": { "@id": "https://skaluj.ai/#organization" },
       "areaServed": "PL",
       "description": "Automatyzacje AI przejmujące powtarzalną pracę — mailing i follow-upy, faktury i dokumenty, kwalifikacja leadów i CRM, oferty i raporty. Integracje z Gmail, Slack, Notion, Make/n8n i własnym API.",
-      "url": "https://skaluj.ai/oferta/automatyzacje-email.html"
+      "url": "https://skaluj.ai/oferta/automatyzacje-email"
     },
     {
       "@type": "Service",
@@ -75,7 +75,7 @@
       "provider": { "@id": "https://skaluj.ai/#organization" },
       "areaServed": "PL",
       "description": "Chatbot AI dla firm, który zna Twoją ofertę i procedury — odpowiada w sekundy i zamyka rutynowe zgłoszenia na stronie, w mailu i na WhatsAppie, 24/7, z eskalacją do człowieka.",
-      "url": "https://skaluj.ai/oferta/chatbot-ai.html"
+      "url": "https://skaluj.ai/oferta/chatbot-ai"
     },
     {
       "@type": "Service",
@@ -84,7 +84,7 @@
       "provider": { "@id": "https://skaluj.ai/#organization" },
       "areaServed": "PL",
       "description": "Identyfikacja wizualna, logo, system wizualny i materiały sprzedażowe wykonywane przez zespół grafików. AI wspiera research i koncepcję, finalny projekt jest ludzki i spójny w każdym kanale.",
-      "url": "https://skaluj.ai/oferta/branding.html"
+      "url": "https://skaluj.ai/oferta/branding"
     }
   ]
 }
@@ -207,7 +207,7 @@ button{font-family:inherit;cursor:pointer}
 .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.06)}
 .logo-word{height:16px;width:auto;display:block}
 /* centralne linki (pill) */
-.nav-links{display:flex;gap:5px;align-items:center;justify-self:center}
+.nav-links{display:flex;gap:10px;align-items:center;justify-self:center}
 .nav-item{position:relative;display:flex}
 .nav-link{position:relative;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-family:inherit;color:var(--muted);
   padding:8px 13px;border-radius:9999px;background:none;border:0;cursor:pointer;white-space:nowrap;
@@ -227,6 +227,9 @@ button{font-family:inherit;cursor:pointer}
 .dropdown{position:absolute;top:calc(100% + 6px);left:0;right:0;transform:translateY(-10px);transform-origin:top center;width:auto;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(15,30,60,.14);padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .32s var(--ease),visibility .28s;z-index:60}
 .dropdown::before{content:"";position:absolute;top:-6px;left:0;right:0;height:6px}
 .nav-item.open .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+/* kompaktowy dropdown-lista (Wspolpraca) — zakotwiczony pod przyciskiem, nie mega-panel */
+.dropdown--menu{left:50%;right:auto;width:308px;margin-left:-154px;padding:8px}
+.dropdown--menu .dd-item{padding:11px 13px}
 .dd-head{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 14px;border-bottom:1px solid var(--line-2);margin-bottom:8px}
 .dd-head .l{font-family:var(--fm);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .dd-head .c{font-family:var(--fm);font-size:11px;color:var(--accent);display:inline-flex;align-items:center;gap:5px;transition:color .2s}
@@ -627,20 +630,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .cs-badge-left{display:flex;align-items:center;gap:14px;flex-shrink:0}
 .cs-badge{border:none;border-radius:100px;padding:6px 16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;background:#0b0d10;color:#fff}
 .cs-case-no{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
-/* top grid: gallery left, description+diagnoza right */
-.cs-top-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,52px);margin-bottom:36px}
-.cs-left-col{display:flex;flex-direction:column}
-.cs-right-col{display:flex;flex-direction:column}
-.cs-title{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:600;letter-spacing:-.04em;line-height:1.1;margin-bottom:14px}
-.cs-hook{color:var(--muted);font-size:14.5px;line-height:1.65;margin-bottom:0}
-/* metrics row */
-.cs-metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;margin-bottom:40px}
-.cs-metrics-row .cs-metric-item{background:var(--bg-elev);padding:clamp(16px,2.5vw,26px);border-bottom:0;border-right:0}
-.cs-metric-item{padding:18px 0;border-bottom:1px solid var(--line-2)}
-.cs-metric-item:last-child{border-bottom:0}
-.cs-metric-item b{display:block;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:600;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;background:linear-gradient(100deg,#1d4ed8,#2f6fe0 52%,#5b9bf0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.cs-metric-item b sup{font-size:.45em;font-weight:500;vertical-align:super;letter-spacing:0}
-.cs-metric-item span{display:block;margin-top:5px;font-size:12px;color:var(--faint);line-height:1.4}
+/* header — pelna szerokosc */
+.cs-title{font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:600;letter-spacing:-.04em;line-height:1.1;margin-bottom:14px;max-width:26ch}
+.cs-hook{color:var(--muted);font-size:15px;line-height:1.7;max-width:70ch}
 .cs-block{margin-bottom:52px}
 .cs-block:last-child{margin-bottom:0}
 .cs-block-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px}
@@ -648,9 +640,19 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .cs-two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px)}
 .cs-body-text{color:var(--muted);font-size:15px;line-height:1.75}
 .cs-body-text+.cs-body-text{margin-top:14px}
-.cs-problem-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:4px}
-.cs-problem-list li{display:flex;align-items:baseline;gap:12px;color:var(--muted);font-size:14px;line-height:1.55}
-.cs-problem-list li::before{content:"";display:inline-block;flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:2px}
+/* przed / po */
+.cs-ba{display:grid;grid-template-columns:1fr 52px 1fr;align-items:stretch;gap:clamp(12px,1.8vw,20px);margin:44px 0 6px}
+.cs-ba-col{border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(20px,2.6vw,30px);background:var(--bg)}
+.cs-ba-col--after{border-color:rgba(47,111,224,.30);background:linear-gradient(180deg,rgba(47,111,224,.055),rgba(47,111,224,.015))}
+.cs-ba-head{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.cs-ba-col--after .cs-ba-head{color:var(--accent)}
+.cs-ba-col ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+.cs-ba-col li{display:flex;align-items:baseline;gap:11px;font-size:14px;line-height:1.55;color:var(--muted)}
+.cs-ba-col li::before{font-family:var(--mono);font-weight:600;flex:none}
+.cs-ba-col--before li::before{content:"\2715";color:#c0532f;font-size:12px}
+.cs-ba-col--after li{color:var(--text)}
+.cs-ba-col--after li::before{content:"\2713";color:var(--accent);font-size:13px}
+.cs-ba-arrow{align-self:center;justify-self:center;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;box-shadow:0 10px 24px rgba(33,88,200,.32)}
 .cs-sol-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
 .cs-sol-card{border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(20px,3vw,32px);background:var(--bg)}
 .cs-sol-card-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:12px;display:block}
@@ -667,30 +669,35 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .cs-cta-col{display:flex;flex-direction:column;align-items:flex-end;gap:12px;flex-shrink:0}
 .cs-stars{color:#f5a623;font-size:18px;letter-spacing:2px;margin-bottom:12px}
 .cs-placeholder{color:var(--accent);font-style:italic}
-/* cs gallery */
-.cs-gallery{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.cs-shot{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--bg)}
-.cs-gallery-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s var(--ease-io)}
-.cs-shot:hover .cs-gallery-img{transform:scale(1.04)}
-.cs-shot-cap{position:absolute;left:10px;bottom:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(11,13,16,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:4px 9px}
-@media(max-width:680px){.cs-gallery{grid-template-columns:1fr;gap:12px}}
-/* PageSpeed badges */
-.cs-ps-badges{display:flex;flex-direction:column;gap:16px;margin-top:16px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg-elev)}
-.cs-ps-scores{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
-.cs-ps-badge{display:flex;align-items:center;gap:13px}
-.cs-ps-ring{flex-shrink:0}
-.cs-ps-ring-bg{fill:none;stroke:rgba(0,0,0,.08)}
-.cs-ps-ring-fg{fill:none;stroke:var(--accent);filter:drop-shadow(0 0 4px rgba(47,111,224,.35))}
-.cs-ps-info b{display:block;font-size:1.35rem;font-weight:700;letter-spacing:-.03em;color:var(--text);line-height:1;font-variant-numeric:tabular-nums}
-.cs-ps-info span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+/* hero — duze zrzuty w ramkach przegladarki (kadr 16:9 = zrzut widoczny w calosci) */
+.cs-hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,18px);margin-top:34px;align-items:start}
+.cs-shot{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 24px 60px -22px rgba(15,30,60,.22)}
+.cs-win-bar{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line-2);background:var(--bg-elev);text-decoration:none;flex:none}
+.cs-win-bar svg{color:var(--accent);flex:none}
+a.cs-win-bar{transition:background-color .2s}
+a.cs-win-bar:hover{background:var(--accent-soft)}
+a.cs-win-bar:hover .cs-win-url{color:var(--accent)}
+.cs-win-dots{display:flex;gap:6px;flex:none}
+.cs-win-dots i{width:8px;height:8px;border-radius:50%}
+.cs-win-dots i:nth-child(1){background:#ff5f57}.cs-win-dots i:nth-child(2){background:#febc2e}.cs-win-dots i:nth-child(3){background:#28c840}
+.cs-win-url{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;color:var(--muted);transition:color .2s}
+.cs-hero-img{width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;object-position:center;display:block;transition:transform .6s var(--ease-io)}
+.cs-shot:hover .cs-hero-img{transform:scale(1.03)}
+/* pasek dowodow — nachodzi na zrzuty */
+.cs-proof{position:relative;z-index:2;width:fit-content;max-width:calc(100% - 20px);margin:-30px auto 0;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:20px;padding:14px 28px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 20px 50px -14px rgba(15,30,60,.25)}
+.cs-proof-div{width:1px;height:40px;background:var(--line-2)}
+.cs-score{display:flex;align-items:center;gap:12px}
+.cs-score-ring{position:relative;width:52px;height:52px;flex:none;display:grid;place-items:center}
+.cs-score-ring svg{position:absolute;inset:0}
+.cs-score-ring b{position:relative;font-size:15px;font-weight:700;letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums}
+.cs-ps-ring-bg{fill:none;stroke:rgba(47,111,224,.14)}
+.cs-ps-ring-fg{fill:none;stroke:var(--accent);filter:drop-shadow(0 0 3px rgba(47,111,224,.3))}
+.cs-score-cap b{display:block;font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--text);line-height:1.2}
+.cs-score-cap span{display:block;margin-top:2px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .cs-ps-spark{fill:var(--accent);filter:drop-shadow(0 0 4px rgba(47,111,224,.45));flex:none}
-.cs-ps-ai{display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid rgba(47,111,224,.22);border-radius:10px;
-  background:linear-gradient(135deg,rgba(47,111,224,.08),rgba(47,111,224,.02));font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--text)}
-.cs-ps-ai span{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:400;text-align:right}
-.cs-ps-source{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;padding:10px 18px;border-radius:9999px;border:1px solid var(--line);background:#fff;font-family:var(--sans);font-size:13.5px;font-weight:500;letter-spacing:-.005em;color:var(--text);transition:border-color .2s,color .2s,background-color .2s,box-shadow .2s,transform .2s}
-.cs-ps-source svg{flex-shrink:0;color:var(--accent);transition:transform .2s var(--ease)}
-.cs-ps-source:hover{border-color:var(--accent);color:var(--accent-dim);background:var(--accent-soft);box-shadow:0 6px 18px rgba(47,111,224,.18);transform:translateY(-1px)}
-.cs-ps-source:hover svg{transform:translate(2px,-2px)}
+.cs-proof-ai{display:flex;align-items:center;gap:10px}
+.cs-proof-ai b{display:block;font-size:13.5px;font-weight:600;letter-spacing:-.01em;color:var(--text);line-height:1.2}
+.cs-proof-ai span{display:block;margin-top:3px;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
 [data-cs-reveal]{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease-io),transform .6s var(--ease-io)}
 [data-cs-reveal].in{opacity:1;transform:none}
 /* ---- expand/collapse ---- */
@@ -704,8 +711,13 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .cs-body>*{overflow:hidden}
 .cs-body-inner{min-height:0;padding-top:36px}
 @media(max-width:860px){
-  .cs-top-grid,.cs-sol-cards{grid-template-columns:1fr}
-  .cs-metrics-row{grid-template-columns:1fr}
+  .cs-sol-cards{grid-template-columns:1fr}
+  .cs-hero{grid-template-columns:1fr}
+  .cs-shot{height:clamp(240px,52vw,380px)}
+  .cs-proof{gap:14px;padding:12px 18px;margin-top:-22px;border-radius:18px}
+  .cs-proof-div{display:none}
+  .cs-ba{grid-template-columns:1fr}
+  .cs-ba-arrow{transform:rotate(90deg);margin:-2px auto}
   .cs-results-bar{grid-template-columns:1fr}
   .cs-footer{grid-template-columns:1fr}
   .cs-cta-col{align-items:flex-start}
@@ -789,6 +801,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .about-photo{position:relative;width:min(340px,82vw);border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 24px 60px -22px rgba(15,30,60,.32)}
 .about-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(85% 55% at 50% 0%,rgba(47,111,224,.12),transparent 68%);pointer-events:none}
 .about-photo img{width:100%;height:auto;display:block}
+.about-photo--ph{aspect-ratio:322/352;display:grid;place-items:center;background:var(--bg-elev)}
+.about-ph-in{display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--faint);text-align:center;padding:20px}
+.about-ph-in svg{width:50px;height:50px;opacity:.55}
+.about-ph-in span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
 .about-badge{position:absolute;left:-18px;bottom:22px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:12px;padding:9px 15px 9px 11px;box-shadow:0 12px 30px -10px rgba(15,30,60,.22)}
 .about-badge img{width:22px;height:auto;display:block}
 .about-badge b{display:block;font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--text)}
@@ -907,6 +923,37 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .svc-tile-body{display:flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted);transition:border-color .2s,color .2s,background .2s;line-height:1.35;user-select:none}
 .svc-tile:hover .svc-tile-body{border-color:rgba(47,111,224,.4);color:var(--text)}
 .svc-tile input:checked + .svc-tile-body{border-color:var(--accent);color:var(--text);background:var(--accent-soft)}
+/* ===== formularz etapowy — stepper checkout ===== */
+.mf-stepper{display:flex;align-items:center;margin-bottom:28px}
+.mf-sstep{display:flex;align-items:center;gap:9px;flex:none}
+.mf-dot{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--faint);background:#fff;transition:border-color .3s,background .3s,color .3s,box-shadow .3s}
+.mf-sstep.mf-active .mf-dot{border-color:var(--accent);background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;box-shadow:0 4px 12px rgba(33,88,200,.3)}
+.mf-sstep.mf-done .mf-dot{border-color:rgba(47,111,224,.45);color:var(--accent);background:var(--accent-soft)}
+.mf-lbl{font-size:12.5px;color:var(--faint);white-space:nowrap;transition:color .3s}
+.mf-sstep.mf-active .mf-lbl{color:var(--text);font-weight:550}
+.mf-sstep.mf-done .mf-lbl{color:var(--text)}
+.mf-line{flex:1;height:1.5px;background:var(--bg-elev-2);margin:0 12px;min-width:14px;border-radius:1px;position:relative;overflow:hidden}
+.mf-line::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#66b0ff,#2158c8);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.mf-line.mf-done::after{transform:scaleX(1)}
+.mf-step{display:none}
+.mf-step.is-on{display:block;animation:mfUp .4s var(--ease) both}
+@keyframes mfUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.mf-step.is-on{animation:none}}
+.mf-step-head{margin-bottom:18px}
+.mf-step-head h4{font-size:21px;font-weight:600;letter-spacing:-.025em;margin:0 0 6px}
+.mf-step-head p{font-size:13px;color:var(--faint);margin:0}
+.mf-nav{display:flex;gap:10px;margin-top:20px}
+.mf-nav .btn{flex:1;justify-content:center}
+.mf-back{flex:none;width:46px;height:46px;display:grid;place-items:center;background:none;border:1px solid var(--line);border-radius:50%;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
+.mf-back:hover{color:var(--accent);border-color:rgba(47,111,224,.45);background:var(--accent-soft)}
+.mf-ferr{display:block;margin-top:-6px;margin-bottom:4px}
+/* kafelki: badge z checkiem */
+.svc-tile-body{position:relative;padding-right:38px}
+.svc-tile-body::after{content:"";position:absolute;top:50%;right:11px;transform:translateY(-50%) scale(.4);width:20px;height:20px;border-radius:50%;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='white'%20stroke-width='3.4'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M5%2013l4%204L19%207'/%3E%3C/svg%3E"),linear-gradient(135deg,#3d7ef0,#2158c8);
+  background-size:11px,cover;background-position:center;background-repeat:no-repeat;
+  opacity:0;transition:opacity .22s var(--ease),transform .28s var(--ease);box-shadow:0 3px 8px rgba(33,88,200,.3)}
+.svc-tile input:checked + .svc-tile-body::after{opacity:1;transform:translateY(-50%) scale(1)}
 .svc-ico{width:16px;height:16px;flex-shrink:0;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .file-drop{border:1.5px dashed var(--line);border-radius:var(--r-lg);padding:22px 16px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;display:block;position:relative;margin-top:12px}
 .file-drop:hover{border-color:var(--accent);background:var(--accent-soft)}
@@ -1021,6 +1068,15 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .section,.cs-section{position:relative}#faq{overflow:hidden}
 .section>.wrap,.cs-section>.wrap,.offer-sticky>.wrap{position:relative;z-index:1}
 @media(max-width:680px){.brand-ghost{width:230px;opacity:.045;top:-30px;right:-40px}}
+/* ===== oferta: brand mark w tle — wielki OSTRY sygnet (wektor) skadrowany prawa krawedzia + aura ===== */
+.offer-sticky{position:relative;overflow:hidden}
+.offer-sticky::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(54vw 62vh at 80% 52%,rgba(47,111,224,.06),transparent 66%)}
+.offer-brand-bg{position:absolute;top:50%;right:-7%;transform:translateY(-50%);width:min(44vw,600px);height:auto;z-index:0;pointer-events:none;opacity:.08}
+@media(max-width:680px){
+  .offer-sticky::before{background:radial-gradient(120vw 50vh at 88% 46%,rgba(47,111,224,.05),transparent 66%)}
+  .offer-brand-bg{width:78vw;right:-26%;opacity:.07}
+}
 
 /* ============================================================
    RESPONSIVE
@@ -1043,9 +1099,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 @media (max-width:560px){
   .footer-grid{grid-template-columns:1fr;gap:34px}
 }
-@media (max-width:1040px){
+@media (max-width:900px){
   .nav-links{display:none}
   .nav-burger{display:block}
+  .nav-right > .nav-link{display:none}
 }
 @media (max-width:720px){
   .nav-links{display:none}
@@ -1131,7 +1188,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       <img class="logo-word" src="samo%20skaluj.png" alt="skaluj.ai" width="478" height="112">
     </a>
     <div class="nav-links">
-      <a class="nav-link" href="#start">Start</a>
       <div class="nav-item" id="ofertaItem">
         <button class="nav-link" id="ofertaBtn" data-spy="oferta" aria-expanded="false" aria-haspopup="true">
           Oferta
@@ -1140,39 +1196,47 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <div class="dropdown" role="menu" aria-label="Nasza oferta">
           <div class="dd-head"><span class="l">OFERTA</span><a class="c" href="#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-grid">
-            <a class="dd-item" href="oferta/strona-seo.html" role="menuitem"><span class="dd-eyebrow">01 · Strona · SEO · GEO</span><span class="dd-title">Strona, która sprzedaje</span><span class="dd-desc">Projekt, SEO i GEO w standardzie — widoczna w Google i polecana przez AI.</span></a>
-            <a class="dd-item" href="oferta/automatyzacje-email.html" role="menuitem"><span class="dd-eyebrow">02 · Automatyzacje AI</span><span class="dd-title">Procesy, które robią się same</span><span class="dd-desc">Mailing, faktury, oferty, raporty, CRM — powtarzalną pracę przejmują automaty.</span></a>
-            <a class="dd-item" href="oferta/chatbot-ai.html" role="menuitem"><span class="dd-eyebrow">03 · Chatbot AI</span><span class="dd-title">Klient obsłużony w sekundy, 24/7</span><span class="dd-desc">Asystent zna Twoją ofertę i zamyka rutynowe zgłoszenia bez człowieka.</span></a>
-            <a class="dd-item" href="oferta/branding.html" role="menuitem"><span class="dd-eyebrow">04 · Branding</span><span class="dd-title">Marka spójna w każdym kanale</span><span class="dd-desc">AI podsuwa pomysły — projekty wykonuje nasz zespół doświadczonych grafików.</span></a>
+            <a class="dd-item" href="oferta/strona-seo" role="menuitem"><span class="dd-eyebrow">01 · Strona · SEO · GEO</span><span class="dd-title">Strona, która sprzedaje</span><span class="dd-desc">Projekt, SEO i GEO w standardzie — widoczna w Google i polecana przez AI.</span></a>
+            <a class="dd-item" href="oferta/automatyzacje-email" role="menuitem"><span class="dd-eyebrow">02 · Automatyzacje AI</span><span class="dd-title">Procesy, które robią się same</span><span class="dd-desc">Mailing, faktury, oferty, raporty, CRM — powtarzalną pracę przejmują automaty.</span></a>
+            <a class="dd-item" href="oferta/chatbot-ai" role="menuitem"><span class="dd-eyebrow">03 · Chatbot AI</span><span class="dd-title">Klient obsłużony w sekundy, 24/7</span><span class="dd-desc">Asystent zna Twoją ofertę i zamyka rutynowe zgłoszenia bez człowieka.</span></a>
+            <a class="dd-item" href="oferta/branding" role="menuitem"><span class="dd-eyebrow">04 · Branding</span><span class="dd-title">Marka spójna w każdym kanale</span><span class="dd-desc">AI podsuwa pomysły — projekty wykonuje nasz zespół doświadczonych grafików.</span></a>
           </div>
         </div>
       </div>
       <a class="nav-link" href="#case-studies">Case studies</a>
-      <a class="nav-link" href="#integracje">Integracje</a>
-      <a class="nav-link" href="#proces">Proces</a>
-      <a class="nav-link" href="#o-nas">O nas</a>
-      <a class="nav-link" href="#faq">FAQ</a>
-      <a class="nav-link" href="#kontakt-section">Kontakt</a>
+      <div class="nav-item" id="wspolItem">
+        <button class="nav-link" id="wspolBtn" data-spy="integracje proces o-nas faq" aria-expanded="false" aria-haspopup="true">
+          Współpraca
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown dropdown--menu" role="menu" aria-label="Współpraca ze skaluj.ai">
+          <a class="dd-item" href="#integracje" role="menuitem"><span class="dd-title">Integracje</span><span class="dd-desc">Twoje narzędzia spięte w jeden system.</span></a>
+          <a class="dd-item" href="#proces" role="menuitem"><span class="dd-title">Proces</span><span class="dd-desc">Droga od audytu do startu, krok po kroku.</span></a>
+          <a class="dd-item" href="#o-nas" role="menuitem"><span class="dd-title">O nas</span><span class="dd-desc">Ludzie, którzy stoją za skaluj.ai.</span></a>
+          <a class="dd-item" href="#faq" role="menuitem"><span class="dd-title">FAQ</span><span class="dd-desc">Umowa, koszty, utrzymanie — konkrety.</span></a>
+        </div>
+      </div>
       <div class="nav-item" id="blogItem">
         <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">
           Blog <span class="nav-badge">6</span>
           <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
         </button>
                 <div class="dropdown" role="menu" aria-label="Wpisy na blogu">
-          <div class="dd-head"><span class="l">Z BLOGA</span><a class="c" href="blog/index.html">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-head"><span class="l">Z BLOGA</span><a class="c" href="blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-grid">
-            <a class="dd-item" href="blog/strona-seo.html" role="menuitem"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</span><span class="dd-desc">Struktura, copywriting i UX, kt&oacute;re zamieniaj&#261; ruch w klient&oacute;w.</span></a>
-            <a class="dd-item" href="blog/automatyzacje-email.html" role="menuitem"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">Automatyzacja e-mail marketingu z AI &mdash; 5 scenariuszy</span><span class="dd-desc">Od powitania nowego klienta do win-back &mdash; gotowe przep&#322;ywy.</span></a>
-            <a class="dd-item" href="blog/chatbot-ai.html" role="menuitem"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI na stronie &mdash; kiedy warto, a kiedy szkodzi?</span><span class="dd-desc">Praktyczne przypadki u&#380;ycia i b&#322;&#281;dy, kt&oacute;rych lepiej unika&#263;.</span></a>
-            <a class="dd-item" href="blog/geo-ai-search.html" role="menuitem"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO: jak pozycjonowa&#263; firm&#281; w ChatGPT i Google AI?</span><span class="dd-desc">Nowe zasady widoczno&#347;ci w erze wyszukiwania generatywnego.</span></a>
-            <a class="dd-item" href="blog/meta-ads-ai.html" role="menuitem"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty reklam nawet o 30%?</span><span class="dd-desc">Automatyczne testy kreacji, audience signals i optymalizacja bud&#380;etu.</span></a>
-            <a class="dd-item" href="blog/branding.html" role="menuitem"><span class="dd-eyebrow">Branding</span><span class="dd-title">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</span><span class="dd-desc">Kolor, typografia i sp&oacute;jno&#347;&#263; &mdash; DNA skutecznej marki.</span></a>
+            <a class="dd-item" href="blog/strona-seo" role="menuitem"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</span><span class="dd-desc">Struktura, copywriting i UX, kt&oacute;re zamieniaj&#261; ruch w klient&oacute;w.</span></a>
+            <a class="dd-item" href="blog/automatyzacje-email" role="menuitem"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">Automatyzacja e-mail marketingu z AI &mdash; 5 scenariuszy</span><span class="dd-desc">Od powitania nowego klienta do win-back &mdash; gotowe przep&#322;ywy.</span></a>
+            <a class="dd-item" href="blog/chatbot-ai" role="menuitem"><span class="dd-eyebrow">Chatbot AI</span><span class="dd-title">Chatbot AI na stronie &mdash; kiedy warto, a kiedy szkodzi?</span><span class="dd-desc">Praktyczne przypadki u&#380;ycia i b&#322;&#281;dy, kt&oacute;rych lepiej unika&#263;.</span></a>
+            <a class="dd-item" href="blog/geo-ai-search" role="menuitem"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO: jak pozycjonowa&#263; firm&#281; w ChatGPT i Google AI?</span><span class="dd-desc">Nowe zasady widoczno&#347;ci w erze wyszukiwania generatywnego.</span></a>
+            <a class="dd-item" href="blog/meta-ads-ai" role="menuitem"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty reklam nawet o 30%?</span><span class="dd-desc">Automatyczne testy kreacji, audience signals i optymalizacja bud&#380;etu.</span></a>
+            <a class="dd-item" href="blog/branding" role="menuitem"><span class="dd-eyebrow">Branding</span><span class="dd-title">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</span><span class="dd-desc">Kolor, typografia i sp&oacute;jno&#347;&#263; &mdash; DNA skutecznej marki.</span></a>
           </div>
         </div>
       </div>
     </div>
     <div class="nav-right">
-      <a href="kontakt.html" class="btn btn-primary btn-sm">Umów konsultację</a>
+      <a class="nav-link" href="#kontakt-section">Kontakt</a>
+      <a href="kontakt" class="btn btn-primary btn-sm">Umów konsultację</a>
       <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
   </div>
@@ -1182,10 +1246,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   <a href="#start"><span>Start</span><span class="n">01</span></a>
     <div class="mm-blog">
     <span class="mm-h">Oferta <span class="n">02</span></span>
-    <a class="mm-sub" href="oferta/strona-seo.html">Strona internetowa + SEO i GEO</a>
-    <a class="mm-sub" href="oferta/automatyzacje-email.html">Automatyzacje biznesowe AI</a>
-    <a class="mm-sub" href="oferta/chatbot-ai.html">Asystent i chatbot AI</a>
-    <a class="mm-sub" href="oferta/branding.html">Grafiki i branding</a>
+    <a class="mm-sub" href="oferta/strona-seo">Strona internetowa + SEO i GEO</a>
+    <a class="mm-sub" href="oferta/automatyzacje-email">Automatyzacje biznesowe AI</a>
+    <a class="mm-sub" href="oferta/chatbot-ai">Asystent i chatbot AI</a>
+    <a class="mm-sub" href="oferta/branding">Grafiki i branding</a>
   </div>
   <a href="#case-studies"><span>Case studies</span><span class="n">03</span></a>
   <a href="#integracje"><span>Integracje</span><span class="n">04</span></a>
@@ -1194,14 +1258,14 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   <a href="#faq"><span>FAQ</span><span class="n">07</span></a>
     <div class="mm-blog">
     <span class="mm-h">Blog <span class="n">08</span></span>
-    <a class="mm-sub" href="blog/strona-seo.html">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</a>
-    <a class="mm-sub" href="blog/automatyzacje-email.html">Automatyzacja e-mail marketingu z AI AI</a>
-    <a class="mm-sub" href="blog/chatbot-ai.html">Chatbot AI &mdash; kiedy warto, a kiedy szkodzi?</a>
-    <a class="mm-sub" href="blog/geo-ai-search.html">GEO: widoczno&#347;&#263; w ChatGPT i Google AI</a>
-    <a class="mm-sub" href="blog/meta-ads-ai.html">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty o 30%?</a>
-    <a class="mm-sub" href="blog/branding.html">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</a>
+    <a class="mm-sub" href="blog/strona-seo">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</a>
+    <a class="mm-sub" href="blog/automatyzacje-email">Automatyzacja e-mail marketingu z AI AI</a>
+    <a class="mm-sub" href="blog/chatbot-ai">Chatbot AI &mdash; kiedy warto, a kiedy szkodzi?</a>
+    <a class="mm-sub" href="blog/geo-ai-search">GEO: widoczno&#347;&#263; w ChatGPT i Google AI</a>
+    <a class="mm-sub" href="blog/meta-ads-ai">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty o 30%?</a>
+    <a class="mm-sub" href="blog/branding">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</a>
   </div>
-  <a href="kontakt.html"><span>Kontakt</span><span class="n">09</span></a>
+  <a href="kontakt"><span>Kontakt</span><span class="n">09</span></a>
 </div>
 
 <main>
@@ -1295,7 +1359,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
               <div class="pa-box pa-right-col">
                 <div class="pa-feed-head"><span class="pa-feed-title">Aktywność automatyzacji</span><span class="pa-live-dot">na żywo</span></div>
                 <ul class="pa-feed" id="paFeedAuto"></ul>
-                <a href="kontakt.html" class="btn btn-primary pa-cta">Odzyskaj swoje godziny <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a href="kontakt" class="btn btn-primary pa-cta">Odzyskaj swoje godziny <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               </div>
             </div>
           </div>
@@ -1338,7 +1402,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
               <div class="pa-box pa-right-col">
                 <div class="pa-feed-head"><span class="pa-feed-title">Aktywność strony</span><span class="pa-live-dot">na żywo</span></div>
                 <ul class="pa-feed" id="paFeedWebsite"></ul>
-                <a href="kontakt.html" class="btn btn-primary pa-cta">Chcę taki ruch u siebie <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a href="kontakt" class="btn btn-primary pa-cta">Chcę taki ruch u siebie <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               </div>
             </div>
           </div>
@@ -1370,7 +1434,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
               <div class="pa-box pa-right-col">
                 <div class="pa-feed-head"><span class="pa-feed-title">Automatyzacja mailingu</span><span class="pa-live-dot">na żywo</span></div>
                 <ul class="pa-feed" id="paFeedMail"></ul>
-                <a href="kontakt.html" class="btn btn-primary pa-cta">Włącz mailing na autopilot <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a href="kontakt" class="btn btn-primary pa-cta">Włącz mailing na autopilot <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               </div>
             </div>
           </div>
@@ -1398,7 +1462,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
               <div class="pa-box pa-right-col">
                 <div class="pa-feed-head"><span class="pa-feed-title">Rozmowy na żywo</span><span class="pa-live-dot">na żywo</span></div>
                 <ul class="pa-feed" id="paFeedChatbot"></ul>
-                <a href="kontakt.html" class="btn btn-primary pa-cta">Chcę takiego asystenta <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a href="kontakt" class="btn btn-primary pa-cta">Chcę takiego asystenta <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
               </div>
             </div>
           </div>
@@ -1414,6 +1478,15 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 <!-- ===== OFERTA ===== -->
 <section class="section" id="oferta">
   <div class="offer-sticky">
+  <svg class="offer-brand-bg" aria-hidden="true" viewBox="0 0 140 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="obgA" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#66b0ff"/><stop offset="1" stop-color="#2158c8"/></linearGradient>
+      <linearGradient id="obgB" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#66b0ff"/><stop offset="1" stop-color="#2158c8"/></linearGradient>
+      <path id="obgSlash" d="M94.3 0 L130.4 0 Q143.4 0 133.9 8.9 L55.5 81.9 Q48.9 88 39.9 88 L5.4 88 Q-7.6 88 1.8 79 L78.8 6.2 Q85.3 0 94.3 0 Z"/>
+    </defs>
+    <use href="#obgSlash" fill="url(#obgA)"/>
+    <use href="#obgSlash" y="89" fill="url(#obgB)"/>
+  </svg>
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <span class="eyebrow">01 — Oferta</span>
@@ -1432,8 +1505,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <p class="offer-desc">Projektujemy strony, które <span class="hl">zamieniają ruch w klientów</span> — z SEO i widocznością w AI (GEO) wbudowanymi od pierwszego dnia, nie doklejonymi na końcu. AI przyspiesza projekt, copy i optymalizację, więc efekt dostajesz w tygodnie, nie w kwartały.</p>
           <ul class="offer-points"><li>Projekt UX, który prowadzi od problemu do kontaktu</li><li>SEO techniczne i treściowe wbudowane od startu</li><li><strong>Widoczność w AI (GEO)</strong> — polecana w ChatGPT, Perplexity i Google AI Overviews</li><li>Copywriting sprzedażowy — język klienta, jasne CTA</li><li>Gotowa pod integracje: formularz, CRM, analityka GA4</li></ul>
           <div class="offer-ctas">
-            <a class="offer-detail" href="kontakt.html">Wyceń moją stronę <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="offer-detail offer-detail--ghost" href="oferta/strona-seo.html">Szczegóły oferty</a>
+            <a class="offer-detail" href="kontakt">Wyceń moją stronę <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="offer-detail offer-detail--ghost" href="oferta/strona-seo">Szczegóły oferty</a>
           </div>
         </div></div></div>
       </div>
@@ -1447,8 +1520,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <p class="offer-desc">Łączymy narzędzia, których już używasz, i budujemy automaty przejmujące powtarzalną pracę — od maili i faktur po raporty i CRM. <span class="hl">Procesy robią się same, a zespół zajmuje się tym, co przynosi pieniądze</span>.</p>
           <ul class="offer-points"><li>Mailing i follow-upy — sekwencje wysyłają się same, żaden lead nie czeka</li><li>Faktury i dokumenty — odczyt AI, księgowanie, przypomnienia o płatnościach</li><li>Leady i CRM — kwalifikacja, przypisywanie, synchronizacja danych</li><li>Oferty i raporty — generowane automatycznie z Twoich danych</li><li>Integracje: Gmail, Slack, Notion, CRM-y, Make / n8n i własne API</li></ul>
           <div class="offer-ctas">
-            <a class="offer-detail" href="kontakt.html">Zautomatyzuj moją firmę <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="offer-detail offer-detail--ghost" href="oferta/automatyzacje-email.html">Szczegóły oferty</a>
+            <a class="offer-detail" href="kontakt">Zautomatyzuj moją firmę <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="offer-detail offer-detail--ghost" href="oferta/automatyzacje-email">Szczegóły oferty</a>
           </div>
         </div></div></div>
       </div>
@@ -1462,8 +1535,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <p class="offer-desc">Asystent, który zna Twoją ofertę, procedury i historię klienta — <span class="hl">odpowiada w sekundy i zamyka rutynowe zgłoszenia bez angażowania zespołu</span>. Na stronie, w mailu i na WhatsAppie, 24/7.</p>
           <ul class="offer-points"><li>Jeden asystent — strona, WhatsApp i e-mail</li><li>Baza wiedzy Twojej firmy podpięta do asystenta</li><li>Eskalacja do człowieka z pełnym kontekstem rozmowy</li><li>Obsługa po godzinach i w szczytach — bez kolejek</li></ul>
           <div class="offer-ctas">
-            <a class="offer-detail" href="kontakt.html">Chcę asystenta 24/7 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="offer-detail offer-detail--ghost" href="oferta/chatbot-ai.html">Szczegóły oferty</a>
+            <a class="offer-detail" href="kontakt">Chcę asystenta 24/7 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="offer-detail offer-detail--ghost" href="oferta/chatbot-ai">Szczegóły oferty</a>
           </div>
         </div></div></div>
       </div>
@@ -1477,8 +1550,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <p class="offer-desc">Identyfikacja wizualna, posty, banery i materiały sprzedażowe. AI podsuwa pomysły i przyspiesza koncepcje, ale <span class="hl">każdy projekt wykonuje nasz zespół profesjonalnych grafików z wieloletnim doświadczeniem</span> — marka wychodzi dopracowana i Twoja, nie generyczna.</p>
           <ul class="offer-points"><li>Logo, system wizualny i mini brand book</li><li>Grafiki na social media i kampanie reklamowe</li><li>Szablony, z których zespół korzysta samodzielnie</li><li>Jeden styl — na stronie, w reklamach i w mailach</li></ul>
           <div class="offer-ctas">
-            <a class="offer-detail" href="kontakt.html">Odśwież moją markę <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="offer-detail offer-detail--ghost" href="oferta/branding.html">Szczegóły oferty</a>
+            <a class="offer-detail" href="kontakt">Odśwież moją markę <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="offer-detail offer-detail--ghost" href="oferta/branding">Szczegóły oferty</a>
           </div>
         </div></div></div>
       </div>
@@ -1508,71 +1581,81 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </div>
       </div>
 
-      <!-- TOP: galeria + opis + diagnoza -->
-      <div class="cs-top-grid">
+      <!-- HEADER — pelna szerokosc -->
+      <h3 class="cs-title">Odlewnia Leniar — od zera do międzynarodowych zapytań B2B</h3>
+      <p class="cs-hook">Producent odlewów ciśnieniowych Zamak&nbsp;5 (Leniar) nie miał strony ani kanału sprzedaży. Wdrożyliśmy stronę B2B w trzech językach i automatyzację mailingu — firma zaczęła pozyskiwać zapytania także z zagranicy, bez ręcznej obsługi.</p>
 
-        <!-- lewa: galeria screenshotów -->
-        <div class="cs-left-col">
-          <div class="cs-gallery" id="csGallery">
-            <figure class="cs-shot">
-              <img src="assets/leniar-screen-1.png" alt="Strona Leniar — sekcja główna" loading="lazy" class="cs-gallery-img" width="2940" height="1654">
-              <figcaption class="cs-shot-cap">Strona główna</figcaption>
-            </figure>
-            <figure class="cs-shot">
-              <img src="assets/leniar-screen-2.png" alt="Strona Leniar — formularz zapytania z analizą DFM" loading="lazy" class="cs-gallery-img" width="2940" height="1658">
-              <figcaption class="cs-shot-cap">Formularz zapytań</figcaption>
-            </figure>
-          </div>
-          <!-- PageSpeed badges -->
-          <div class="cs-ps-badges">
-            <div class="cs-ps-scores">
-              <div class="cs-ps-badge">
-                <svg class="cs-ps-ring" viewBox="0 0 36 36" width="56" height="56">
-                  <circle cx="18" cy="18" r="15.9" class="cs-ps-ring-bg" stroke-width="3"/>
-                  <circle cx="18" cy="18" r="15.9" class="cs-ps-ring-fg" stroke-width="3" stroke-dasharray="100 0" stroke-linecap="round" transform="rotate(-90 18 18)"/>
-                </svg>
-                <div class="cs-ps-info"><b>100</b><span>SEO</span></div>
-              </div>
-              <div class="cs-ps-badge">
-                <svg class="cs-ps-ring" viewBox="0 0 36 36" width="56" height="56">
-                  <circle cx="18" cy="18" r="15.9" class="cs-ps-ring-bg" stroke-width="3"/>
-                  <circle cx="18" cy="18" r="15.9" class="cs-ps-ring-fg" stroke-width="3" stroke-dasharray="100 0" stroke-linecap="round" transform="rotate(-90 18 18)"/>
-                </svg>
-                <div class="cs-ps-info"><b>100</b><span>Accessibility</span></div>
-              </div>
-            </div>
-            <div class="cs-ps-ai">
-              <svg viewBox="0 0 24 24" class="cs-ps-spark" width="15" height="15" aria-hidden="true"><path d="M12 2.5c.6 3.7 2.3 5.4 6 6-3.7.6-5.4 2.3-6 6-.6-3.7-2.3-5.4-6-6 3.7-.6 5.4-2.3 6-6z"/></svg>
-              Widoczna w AI
-              <span>ChatGPT · Perplexity · Google AI</span>
-            </div>
-            <a class="cs-ps-source" href="https://odlewnialeniar.pl/" target="_blank" rel="noopener">
-              Odwiedź stronę odlewni Leniar
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
-            </a>
-          </div>
+      <!-- HERO — duze zrzuty w ramkach przegladarki -->
+      <div class="cs-hero">
+        <figure class="cs-shot cs-shot--main">
+          <a class="cs-win-bar" href="https://odlewnialeniar.pl/" target="_blank" rel="noopener" aria-label="Odwiedź stronę odlewni Leniar (nowa karta)">
+            <span class="cs-win-dots"><i></i><i></i><i></i></span>
+            <span class="cs-win-url">odlewnialeniar.pl</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+          <img src="assets/leniar-screen-1.png" alt="Strona Leniar — sekcja główna" loading="lazy" class="cs-hero-img" width="2940" height="1654">
+        </figure>
+        <figure class="cs-shot cs-shot--side">
+          <span class="cs-win-bar">
+            <span class="cs-win-dots"><i></i><i></i><i></i></span>
+            <span class="cs-win-url">Formularz zapytań</span>
+          </span>
+          <img src="assets/leniar-screen-2.png" alt="Strona Leniar — formularz zapytania z analizą DFM" loading="lazy" class="cs-hero-img" width="2940" height="1658">
+        </figure>
+      </div>
+
+      <!-- PASEK DOWODOW — nachodzi na zrzuty -->
+      <div class="cs-proof">
+        <div class="cs-score">
+          <span class="cs-score-ring">
+            <svg viewBox="0 0 36 36" width="52" height="52" aria-hidden="true">
+              <circle cx="18" cy="18" r="15.9" class="cs-ps-ring-bg" stroke-width="2.6"/>
+              <circle cx="18" cy="18" r="15.9" class="cs-ps-ring-fg" stroke-width="2.6" stroke-dasharray="100 0" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+            </svg>
+            <b>100</b>
+          </span>
+          <div class="cs-score-cap"><b>SEO</b><span>PageSpeed</span></div>
         </div>
-
-        <!-- prawa: tytuł + opis + diagnoza -->
-        <div class="cs-right-col">
-          <h3 class="cs-title">Odlewnia Leniar — od zera do międzynarodowych zapytań B2B</h3>
-          <p class="cs-hook">Producent odlewów ciśnieniowych Zamak&nbsp;5 (Leniar) nie miał strony ani kanału sprzedaży. Wdrożyliśmy stronę B2B w trzech językach i automatyzację mailingu — firma zaczęła pozyskiwać zapytania także z zagranicy, bez ręcznej obsługi.</p>
-
-          <div class="cs-block-label" style="margin-top:28px">Diagnoza problemu</div>
-          <ul class="cs-problem-list">
-            <li>Brak strony = brak kanału pozyskiwania klientów, zero zapytań przychodzących</li>
-            <li>Brak widoczności w Google i w nowych wyszukiwarkach AI (ChatGPT, Perplexity)</li>
-            <li>Brak dotarć do rynków zagranicznych mimo konkurencyjnej niszy</li>
-            <li>Ręczne, czasochłonne wysyłanie ofert mailem — jeden po jednym</li>
-          </ul>
+        <div class="cs-score">
+          <span class="cs-score-ring">
+            <svg viewBox="0 0 36 36" width="52" height="52" aria-hidden="true">
+              <circle cx="18" cy="18" r="15.9" class="cs-ps-ring-bg" stroke-width="2.6"/>
+              <circle cx="18" cy="18" r="15.9" class="cs-ps-ring-fg" stroke-width="2.6" stroke-dasharray="100 0" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+            </svg>
+            <b>100</b>
+          </span>
+          <div class="cs-score-cap"><b>Accessibility</b><span>PageSpeed</span></div>
+        </div>
+        <span class="cs-proof-div" aria-hidden="true"></span>
+        <div class="cs-proof-ai">
+          <svg viewBox="0 0 24 24" class="cs-ps-spark" width="17" height="17" aria-hidden="true"><path d="M12 2.5c.6 3.7 2.3 5.4 6 6-3.7.6-5.4 2.3-6 6-.6-3.7-2.3-5.4-6-6 3.7-.6 5.4-2.3 6-6z"/></svg>
+          <div><b>Widoczna w AI</b><span>ChatGPT · Perplexity · Google AI</span></div>
         </div>
       </div>
 
-      <!-- METRYKI — zawsze widoczne -->
-      <div class="cs-metrics-row">
-        <div class="cs-metric-item"><b>AI-ready</b><span>widoczność w ChatGPT, Perplexity, Google AI Overviews</span></div>
-        <div class="cs-metric-item"><b>Automatyczny emailing</b><span>oferty wysyłane automatycznie, nie lądują w spamie</span></div>
-        <div class="cs-metric-item"><b>Leady B2B + Strona B2B</b><span>klienci sami się zgłaszają przez formularz na stronie, również z Niemiec</span></div>
+      <!-- PRZED / PO -->
+      <div class="cs-ba">
+        <div class="cs-ba-col cs-ba-col--before">
+          <div class="cs-ba-head">Przed</div>
+          <ul>
+            <li>Zero zapytań przychodzących — brak strony i kanału sprzedaży</li>
+            <li>Niewidoczna w Google i w wyszukiwarkach AI (ChatGPT, Perplexity)</li>
+            <li>Brak dotarcia do rynków zagranicznych mimo konkurencyjnej niszy</li>
+            <li>Oferty wysyłane ręcznie, mail po mailu</li>
+          </ul>
+        </div>
+        <div class="cs-ba-arrow" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div class="cs-ba-col cs-ba-col--after">
+          <div class="cs-ba-head">Po wdrożeniu</div>
+          <ul>
+            <li>Strona B2B w trzech językach — PL / DE / EN</li>
+            <li>100/100 SEO i widoczność w ChatGPT, Perplexity i Google AI</li>
+            <li>Zapytania przychodzą same przez formularz — również z Niemiec</li>
+            <li>Mailing w pełni automatyczny, bez wpadania do spamu</li>
+          </ul>
+        </div>
       </div>
 
       <!-- TOGGLE BUTTON -->
@@ -1627,7 +1710,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </div>
         <div class="cs-cta-col">
           <a href="https://odlewnialeniar.pl/" target="_blank" rel="noopener" class="btn btn-primary">Zobacz stronę na żywo <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="kontakt.html" class="btn btn-ghost" style="margin-top:4px">Chcę takich wyników</a>
+          <a href="kontakt" class="btn btn-ghost" style="margin-top:4px">Chcę takich wyników</a>
         </div>
       </div>
 
@@ -1669,7 +1752,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <li><span class="ico"></span><span class="txt"><b>Raportowanie</b><span>Dane z narzędzi zbierane i podsumowywane bez ręcznej roboty.</span></span></li>
           <li><span class="ico"></span><span class="txt"><b>Synchronizacja danych</b><span>Jedno źródło prawdy — narzędzia gadają ze sobą w tle.</span></span></li>
         </ul>
-        <a href="kontakt.html" class="btn btn-primary">Połącz moje narzędzia <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="kontakt" class="btn btn-primary">Połącz moje narzędzia <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
@@ -1769,8 +1852,11 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <a class="btn btn-primary about-cta" href="#kontakt-section">Poznajmy się <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="about-visual" data-reveal data-delay="100">
-        <div class="about-photo">
-          <img src="assets/portret-zespol.png" alt="" width="322" height="352" loading="lazy">
+        <div class="about-photo about-photo--ph">
+          <div class="about-ph-in">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>Zdjęcie wkrótce</span>
+          </div>
         </div>
         <div class="about-badge">
           <img src="sygnet.png" alt="" width="140" height="170" aria-hidden="true">
@@ -1903,26 +1989,67 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <form id="contactForm" novalidate>
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:0;height:0;opacity:0">
 
-          <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
-          <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
-          <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
-          <p class="mf-sub" style="margin-top:10px">Co Ci&#281; interesuje? Mo&#380;esz zaznaczy&#263; kilka.</p>
-          <div class="svc-tiles">
-            <label class="svc-tile"><input type="checkbox" name="svc" value="strona" id="svcStrona"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Strona + SEO i GEO</span></label>
-            <label class="svc-tile"><input type="checkbox" name="svc" value="email"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>Automatyzacje</span></label>
-            <label class="svc-tile"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chatbot AI</span></label>
-            <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></svg>Grafiki i branding</span></label>
+          <div class="mf-stepper" aria-hidden="true">
+            <span class="mf-sstep mf-active"><span class="mf-dot">1</span><span class="mf-lbl">Zakres</span></span>
+            <i class="mf-line"></i>
+            <span class="mf-sstep"><span class="mf-dot">2</span><span class="mf-lbl">Projekt</span></span>
+            <i class="mf-line"></i>
+            <span class="mf-sstep"><span class="mf-dot">3</span><span class="mf-lbl">Kontakt</span></span>
           </div>
-          <div class="fgroup"><textarea id="fMsg" placeholder=" " rows="5"></textarea><label for="fMsg">Opisz swój projekt — strona, branding, automatyzacja, chatbot… Im więcej szczegółów, tym lepiej dopasujemy ofertę.</label><span class="bar"></span></div>
-          <label class="file-drop" id="fileDrop">
-            <input type="file" name="files" id="fFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx">
-            <svg class="file-drop-ico" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-            <span class="file-drop-lbl">Załącz pliki (brief, inspiracje, logo…)</span>
-            <span class="file-drop-hint">PDF, JPG, PNG, ZIP, AI, PSD, DOC — opcjonalnie</span>
-            <span class="file-name" id="fFilesName"></span>
-          </label>
-          <button type="submit" class="btn btn-primary" id="mfSubmit" style="width:100%;margin-top:10px;justify-content:center">Odbierz wycenę i demo &#8594;</button>
-          <p class="mf-note visible" id="mfNote">Wysy&#322;aj&#261;c formularz akceptujesz polityk&#281; prywatno&#347;ci. Zero spamu.</p>
+
+          <!-- KROK 1: zakres -->
+          <div class="mf-step is-on" data-step="1">
+            <div class="mf-step-head">
+              <h4>Czego potrzebujesz?</h4>
+              <p>Możesz zaznaczyć kilka opcji.</p>
+            </div>
+            <div class="svc-tiles">
+              <label class="svc-tile"><input type="checkbox" name="svc" value="strona" id="svcStrona"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Strona + SEO i GEO</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="email"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>Automatyzacje</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chatbot AI</span></label>
+              <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></svg>Grafiki i branding</span></label>
+            </div>
+            <span class="ferr mf-ferr" id="errSvc"></span>
+            <div class="mf-nav">
+              <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- KROK 2: projekt -->
+          <div class="mf-step" data-step="2">
+            <div class="mf-step-head">
+              <h4>Opowiedz o projekcie</h4>
+              <p>Szczegóły i pliki pomogą nam trafniej wycenić — oba pola są opcjonalne.</p>
+            </div>
+            <div class="fgroup"><textarea id="fMsg" placeholder=" " rows="4"></textarea><label for="fMsg">Opisz swój projekt — cel, zakres, terminy…</label><span class="bar"></span></div>
+            <label class="file-drop" id="fileDrop">
+              <input type="file" name="files" id="fFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx">
+              <svg class="file-drop-ico" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              <span class="file-drop-lbl">Załącz pliki (brief, inspiracje, logo…)</span>
+              <span class="file-drop-hint">PDF, JPG, PNG, ZIP, AI, PSD, DOC — opcjonalnie</span>
+              <span class="file-name" id="fFilesName"></span>
+            </label>
+            <div class="mf-nav mf-nav--split">
+              <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- KROK 3: kontakt -->
+          <div class="mf-step" data-step="3">
+            <div class="mf-step-head">
+              <h4>Dokąd wysłać wycenę i demo?</h4>
+              <p>Odezwiemy się w ciągu 24 godzin roboczych.</p>
+            </div>
+            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
+            <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
+            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
+            <div class="mf-nav mf-nav--split">
+              <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <button type="submit" class="btn btn-primary" id="mfSubmit">Odbierz wycenę i demo <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <p class="mf-note visible" id="mfNote">Wysy&#322;aj&#261;c formularz akceptujesz polityk&#281; prywatno&#347;ci. Zero spamu.</p>
+          </div>
         </form>
         <div class="form-success" aria-live="polite">
           <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
@@ -2087,23 +2214,21 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       <nav class="footer-col" aria-label="Oferta">
         <h3>Oferta</h3>
         <ul>
-          <li><a href="oferta/strona-seo.html">Strony i SEO/GEO</a></li>
-          <li><a href="oferta/automatyzacje-email.html">Automatyzacje AI</a></li>
-          <li><a href="oferta/chatbot-ai.html">Chatbot AI</a></li>
-          <li><a href="oferta/branding.html">Grafiki i branding</a></li>
-          <li><a href="oferta/meta-ads.html">Meta Ads</a></li>
-          <li><a href="oferta/geo.html">GEO / AI Search</a></li>
+          <li><a href="oferta/strona-seo">Strony i SEO/GEO</a></li>
+          <li><a href="oferta/automatyzacje-email">Automatyzacje AI</a></li>
+          <li><a href="oferta/chatbot-ai">Chatbot AI</a></li>
+          <li><a href="oferta/branding">Grafiki i branding</a></li>
         </ul>
       </nav>
       <nav class="footer-col" aria-label="Blog">
         <h3>Blog</h3>
         <ul>
-          <li><a href="blog/strona-seo.html">Strony i SEO</a></li>
-          <li><a href="blog/automatyzacje-email.html">Automatyzacje</a></li>
-          <li><a href="blog/chatbot-ai.html">Chatbot AI</a></li>
-          <li><a href="blog/geo-ai-search.html">GEO / AI Search</a></li>
-          <li><a href="blog/meta-ads-ai.html">Meta Ads</a></li>
-          <li><a href="blog/index.html" class="footer-all">Wszystkie wpisy →</a></li>
+          <li><a href="blog/strona-seo">Strony i SEO</a></li>
+          <li><a href="blog/automatyzacje-email">Automatyzacje</a></li>
+          <li><a href="blog/chatbot-ai">Chatbot AI</a></li>
+          <li><a href="blog/geo-ai-search">GEO / AI Search</a></li>
+          <li><a href="blog/meta-ads-ai">Meta Ads</a></li>
+          <li><a href="blog/" class="footer-all">Wszystkie wpisy →</a></li>
         </ul>
       </nav>
       <nav class="footer-col" aria-label="Nawigacja">
@@ -2125,7 +2250,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <li><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s6.5-5 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 16 12 21 12 21z"/><circle cx="12" cy="10.3" r="2.3"/></svg>Rzeszów, Polska</span></li>
         </ul>
         <a class="btn btn-primary btn-sm footer-cta" href="#kontakt-section">Umów konsultację <svg class="ar" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="footer-privacy" href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <a class="footer-privacy" href="polityka-prywatnosci">Polityka prywatności</a>
       </div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj.ai</div>
@@ -2362,7 +2487,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   (function(){
     var map={};
     document.querySelectorAll('.nav-link[href^="#"]').forEach(function(a){ map[a.getAttribute("href").slice(1)]=a; });
-    document.querySelectorAll('.nav-link[data-spy]').forEach(function(a){ map[a.getAttribute("data-spy")]=a; });
+    document.querySelectorAll('.nav-link[data-spy]').forEach(function(a){ a.getAttribute("data-spy").split(/\s+/).forEach(function(id){ map[id]=a; }); });
     var ids=Object.keys(map), secs=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
     if(!secs.length) return;
     var spy=new IntersectionObserver(function(entries){
@@ -2394,6 +2519,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     }
     initDrop(document.getElementById("blogItem"), document.getElementById("blogBtn"));
     initDrop(document.getElementById("ofertaItem"), document.getElementById("ofertaBtn"));
+    initDrop(document.getElementById("wspolItem"), document.getElementById("wspolBtn"));
   })();
 
   /* form */
@@ -2418,6 +2544,39 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       else { errCompany.textContent = ''; fCompany.style.borderColor = ''; }
       return ok;
     }
+
+    /* nawigacja etapowa: stepper 1 zakres -> 2 projekt -> 3 kontakt */
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.mf-step'));
+    var mfDots = Array.prototype.slice.call(form.querySelectorAll('.mf-sstep'));
+    var mfLines = Array.prototype.slice.call(form.querySelectorAll('.mf-line'));
+    var mfCur = 0;
+    function mfShow(i){
+      steps[mfCur].classList.remove('is-on');
+      mfCur = i;
+      var s = steps[mfCur];
+      void s.offsetWidth;
+      s.classList.add('is-on');
+      mfDots.forEach(function(el,idx){ el.classList.toggle('mf-active', idx===mfCur); el.classList.toggle('mf-done', idx<mfCur); });
+      mfLines.forEach(function(el,idx){ el.classList.toggle('mf-done', idx<mfCur); });
+    }
+    function mfValidStep(i){
+      if(i === 0){
+        var any = form.querySelectorAll('[name="svc"]:checked').length > 0;
+        var err = document.getElementById('errSvc');
+        if(!any){ err.textContent = 'Zaznacz przynajmniej jedną opcję'; return false; }
+        err.textContent = ''; return true;
+      }
+      return true;
+    }
+    form.addEventListener('click', function(e){
+      var next = e.target.closest('.mf-next');
+      var back = e.target.closest('.mf-back');
+      if(next){ if(mfValidStep(mfCur) && mfCur < steps.length-1) mfShow(mfCur+1); }
+      if(back && mfCur > 0) mfShow(mfCur-1);
+    });
+    form.addEventListener('change', function(e){
+      if(e.target.name === 'svc') document.getElementById('errSvc').textContent = '';
+    });
 
     /* URL Cloudflare Workera (patrz contact-worker/README.md). Pusty = formularz jeszcze NIE wysyla. */
     var FORM_ENDPOINT = "https://skaluj-kontakt.ni4324234fdsfd.workers.dev";
