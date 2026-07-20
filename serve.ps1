@@ -42,6 +42,11 @@ while ($true) {
       $path = [Uri]::UnescapeDataString(($Matches[1] -split '\?')[0])
       if ($path -eq '/') { $path = '/index.html' }
       $file = [System.IO.Path]::GetFullPath((Join-Path $root ($path.TrimStart('/') -replace '/', '\')))
+      # extensionless URL fallback: try .html (mirrors GitHub Pages behaviour)
+      if ($file.StartsWith($root) -and !(Test-Path $file -PathType Leaf) -and [System.IO.Path]::GetExtension($file) -eq "") {
+        $candidate = $file + ".html"
+        if (Test-Path $candidate -PathType Leaf) { $file = $candidate }
+      }
       if ($file.StartsWith($root) -and (Test-Path $file -PathType Leaf)) {
         $ext = [System.IO.Path]::GetExtension($file).ToLower()
         $ct = $mime[$ext]; if (-not $ct) { $ct = "application/octet-stream" }
