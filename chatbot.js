@@ -221,28 +221,29 @@
   input.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); } });
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 96) + "px"; });
 
-  /* ---------- POKAZANIE: po zjechaniu do sekcji Oferta (strona główna), inaczej po załadowaniu ---------- */
+  /* ---------- POKAZANIE: strona główna wysuwa się przy sekcji Oferta; podstrony tylko pokazują launcher (bez auto-otwarcia) ---------- */
   function isMobile() { return window.matchMedia("(max-width: 600px)").matches; }
   let revealed = false;
-  function reveal() {
+  function reveal(autoOpen) {
     if (revealed) return; revealed = true;
     launcher.classList.add("cb-ready");
     if (isMobile()) {
       setTimeout(() => { badge.style.opacity = "1"; }, 500);   // telefon: tylko launcher + odznaka, bez otwierania
-    } else {
-      setTimeout(() => { if (!opened) toggle(); }, 1500);       // desktop: sam się otwiera po chwili
+    } else if (autoOpen) {
+      setTimeout(() => { if (!opened) toggle(); }, 1500);       // desktop + strona główna: sam się otwiera po chwili
     }
+    // desktop + podstrona: tylko launcher — panel otwiera się DOPIERO po kliknięciu
   }
   const offerSection = document.getElementById("oferta");
   if (offerSection && "IntersectionObserver" in window) {
-    // strona główna: widżet wychyla się dopiero, gdy user dojedzie do sekcji Oferta (Asystent i chatbot AI)
+    // strona główna: widżet wychyla się (i na desktopie sam otwiera) dopiero, gdy user dojedzie do sekcji Oferta
     const obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { obs.disconnect(); reveal(); } });
+      entries.forEach(function (e) { if (e.isIntersecting) { obs.disconnect(); reveal(true); } });
     }, { threshold: 0, rootMargin: "0px 0px -30% 0px" });
     obs.observe(offerSection);
   } else {
-    // podstrony (brak sekcji Oferta): dotychczasowe zachowanie — po załadowaniu strony
-    if (document.readyState === "complete") setTimeout(reveal, 650);
-    else window.addEventListener("load", () => setTimeout(reveal, 650));
+    // podstrony (brak sekcji Oferta): pokaż sam launcher po załadowaniu — NIGDY nie otwieraj panelu bez kliknięcia
+    if (document.readyState === "complete") setTimeout(() => reveal(false), 650);
+    else window.addEventListener("load", () => setTimeout(() => reveal(false), 650));
   }
 })();
