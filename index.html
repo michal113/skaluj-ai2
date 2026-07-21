@@ -671,16 +671,11 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .cs-placeholder{color:var(--accent);font-style:italic}
 /* hero — duze zrzuty w ramkach przegladarki (kadr 16:9 = zrzut widoczny w calosci) */
 .cs-hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,18px);margin-top:34px;align-items:start}
-.cs-shot{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 24px 60px -22px rgba(15,30,60,.22)}
-.cs-win-bar{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line-2);background:var(--bg-elev);text-decoration:none;flex:none}
-.cs-win-bar svg{color:var(--accent);flex:none}
-a.cs-win-bar{transition:background-color .2s}
-a.cs-win-bar:hover{background:var(--accent-soft)}
-a.cs-win-bar:hover .cs-win-url{color:var(--accent)}
-.cs-win-dots{display:flex;gap:6px;flex:none}
-.cs-win-dots i{width:8px;height:8px;border-radius:50%}
-.cs-win-dots i:nth-child(1){background:#ff5f57}.cs-win-dots i:nth-child(2){background:#febc2e}.cs-win-dots i:nth-child(3){background:#28c840}
-.cs-win-url{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;color:var(--muted);transition:color .2s}
+.cs-shot{position:relative;display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;text-decoration:none;box-shadow:0 24px 60px -22px rgba(15,30,60,.22);transition:box-shadow .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease)}
+.cs-shot:hover{border-color:var(--accent);box-shadow:0 30px 70px -20px rgba(47,111,224,.32);transform:translateY(-3px)}
+.cs-shot:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.cs-shot-go{position:absolute;top:12px;right:12px;z-index:2;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#3d7ef0,#2158c8);box-shadow:0 6px 16px rgba(33,88,200,.4);opacity:0;transform:translateY(-6px) scale(.9);transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.cs-shot:hover .cs-shot-go,.cs-shot:focus-visible .cs-shot-go{opacity:1;transform:translateY(0) scale(1)}
 .cs-hero-img{width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;object-position:center;display:block;transition:transform .6s var(--ease-io)}
 .cs-shot:hover .cs-hero-img{transform:scale(1.03)}
 /* pasek dowodow — nachodzi na zrzuty */
@@ -713,7 +708,6 @@ a.cs-win-bar:hover .cs-win-url{color:var(--accent)}
 @media(max-width:860px){
   .cs-sol-cards{grid-template-columns:1fr}
   .cs-hero{grid-template-columns:1fr}
-  .cs-shot{height:clamp(240px,52vw,380px)}
   .cs-proof{gap:14px;padding:12px 18px;margin-top:-22px;border-radius:18px}
   .cs-proof-div{display:none}
   .cs-ba{grid-template-columns:1fr}
@@ -1585,23 +1579,16 @@ a.cs-win-bar:hover .cs-win-url{color:var(--accent)}
       <h3 class="cs-title">Odlewnia Leniar — od zera do międzynarodowych zapytań B2B</h3>
       <p class="cs-hook">Producent odlewów ciśnieniowych Zamak&nbsp;5 (Leniar) nie miał strony ani kanału sprzedaży. Wdrożyliśmy stronę B2B w trzech językach i automatyzację mailingu — firma zaczęła pozyskiwać zapytania także z zagranicy, bez ręcznej obsługi.</p>
 
-      <!-- HERO — duze zrzuty w ramkach przegladarki -->
+      <!-- HERO — duze zrzuty, kazdy klikalny (nowa karta) -->
       <div class="cs-hero">
-        <figure class="cs-shot cs-shot--main">
-          <a class="cs-win-bar" href="https://odlewnialeniar.pl/" target="_blank" rel="noopener" aria-label="Odwiedź stronę odlewni Leniar (nowa karta)">
-            <span class="cs-win-dots"><i></i><i></i><i></i></span>
-            <span class="cs-win-url">odlewnialeniar.pl</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
-          </a>
+        <a class="cs-shot cs-shot--main" href="https://odlewnialeniar.pl/" target="_blank" rel="noopener" aria-label="Otwórz stronę odlewni Leniar (nowa karta)">
           <img src="assets/leniar-screen-1.png" alt="Strona Leniar — sekcja główna" loading="lazy" class="cs-hero-img" width="2940" height="1654">
-        </figure>
-        <figure class="cs-shot cs-shot--side">
-          <span class="cs-win-bar">
-            <span class="cs-win-dots"><i></i><i></i><i></i></span>
-            <span class="cs-win-url">Formularz zapytań</span>
-          </span>
+          <span class="cs-shot-go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+        <a class="cs-shot cs-shot--side" href="https://odlewnialeniar.pl/kontakt" target="_blank" rel="noopener" aria-label="Otwórz formularz zapytań na stronie Leniar (nowa karta)">
           <img src="assets/leniar-screen-2.png" alt="Strona Leniar — formularz zapytania z analizą DFM" loading="lazy" class="cs-hero-img" width="2940" height="1658">
-        </figure>
+          <span class="cs-shot-go" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
       </div>
 
       <!-- PASEK DOWODOW — nachodzi na zrzuty -->
