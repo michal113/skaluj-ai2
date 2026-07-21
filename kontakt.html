@@ -624,9 +624,8 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       if(att&&att.files){ Array.prototype.forEach.call(att.files, function(f){ data.append("attachment", f); }); }
       var hp=form.querySelector('[name="_gotcha"]'); if(hp) data.append("_gotcha", hp.value);
       if(!FORM_ENDPOINT){ console.warn("[skaluj.ai] FORM_ENDPOINT nie ustawiony — formularz nie wysyla. Ustaw URL Workera (contact-worker/README.md)."); setTimeout(function(){ card.classList.add("sent"); },500); return; }
-      fetch(FORM_ENDPOINT,{method:"POST",body:data})
-        .then(function(r){ return r.json().catch(function(){ return {ok:r.ok}; }); })
-        .then(function(res){ if(res&&res.ok){ card.classList.add("sent"); } else { fail((res&&res.error)||"Nie udało się wysłać. Spróbuj ponownie."); } })
+      fetch(FORM_ENDPOINT,{method:"POST",body:data,mode:"no-cors"})
+        .then(function(){ card.classList.add("sent"); })
         .catch(function(){ fail("Błąd połączenia. Spróbuj ponownie lub napisz na kontakt@skaluj.ai."); });
     });
   })();
