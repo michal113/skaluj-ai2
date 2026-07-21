@@ -37,7 +37,7 @@
   .cb-badge{position:fixed;right:21px;bottom:64px;z-index:99999;background:var(--cb-accent,#2f6fe0);color:#fff;font:600 11px "Geist Mono",monospace;
     min-width:19px;height:19px;border-radius:10px;display:grid;place-items:center;padding:0 6px;box-shadow:0 2px 8px rgba(0,0,0,.18);opacity:0;transition:opacity .3s}
   .cb-launcher.open ~ .cb-badge{opacity:0;pointer-events:none}
-  .cb-panel{position:fixed;right:24px;bottom:94px;z-index:99999;width:384px;max-width:calc(100vw - 32px);height:588px;max-height:calc(100dvh - 128px);
+  .cb-panel{position:fixed;right:24px;bottom:94px;z-index:99999;width:312px;max-width:calc(100vw - 32px);height:472px;max-height:calc(100dvh - 128px);
     background:#fff;border:1px solid rgba(15,30,60,.09);border-radius:20px;box-shadow:0 30px 90px rgba(15,30,60,.20),0 8px 24px rgba(15,30,60,.08);
     display:flex;flex-direction:column;overflow:hidden;font-family:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#0b0d10;position:fixed;
     opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;transform-origin:bottom right;
@@ -48,8 +48,8 @@
   .cb-head{display:flex;align-items:center;gap:11px;padding:13px 15px;border-bottom:1px solid rgba(15,30,60,.07);background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
   .cb-hava{flex:none;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#3d7ef0,#2158c8);display:grid;place-items:center;box-shadow:0 4px 12px rgba(33,88,200,.28)}
   .cb-hava svg{width:17px;height:auto;color:#fff}
-  .cb-id{flex:1;min-width:0}
-  .cb-id b{font-size:14px;font-weight:600;letter-spacing:-.01em;color:#0b0d10;line-height:1.2}
+  .cb-id{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+  .cb-id b{font-size:14px;font-weight:600;letter-spacing:-.01em;color:#0b0d10;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
   .cb-live{display:inline-flex;align-items:center;gap:6px;font-family:"Geist Mono",monospace;font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#2f6fe0;flex:none;background:rgba(47,111,224,.08);border:1px solid rgba(47,111,224,.18);border-radius:9999px;padding:4px 9px}
   .cb-live::before{content:"";width:6px;height:6px;border-radius:50%;background:#2f6fe0;animation:cblive 2.2s infinite}
   @keyframes cblive{0%,100%{box-shadow:0 0 0 0 rgba(47,111,224,.4)}55%{box-shadow:0 0 0 4px rgba(47,111,224,0)}}
@@ -150,8 +150,7 @@
     <div class="cb-panel" id="cbPanel" role="dialog" aria-label="Czat skaluj.ai">
       <div class="cb-head">
         <span class="cb-hava">${AV}</span>
-        <div class="cb-id"><b>Asystent skaluj.ai</b></div>
-        <span class="cb-live">Live chat</span>
+        <div class="cb-id"><b>Asystent skaluj.ai</b><span class="cb-live">Live chat</span></div>
         <button class="cb-hbtn" id="cbClose" aria-label="Zamknij"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
       <div class="cb-body" id="cbBody"></div>
@@ -222,9 +221,11 @@
   input.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); } });
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 96) + "px"; });
 
-  /* ---------- POKAZANIE PO ZAŁADOWANIU STRONY ---------- */
+  /* ---------- POKAZANIE: po zjechaniu do sekcji Oferta (strona główna), inaczej po załadowaniu ---------- */
   function isMobile() { return window.matchMedia("(max-width: 600px)").matches; }
+  let revealed = false;
   function reveal() {
+    if (revealed) return; revealed = true;
     launcher.classList.add("cb-ready");
     if (isMobile()) {
       setTimeout(() => { badge.style.opacity = "1"; }, 500);   // telefon: tylko launcher + odznaka, bez otwierania
@@ -232,6 +233,16 @@
       setTimeout(() => { if (!opened) toggle(); }, 1500);       // desktop: sam się otwiera po chwili
     }
   }
-  if (document.readyState === "complete") setTimeout(reveal, 650);
-  else window.addEventListener("load", () => setTimeout(reveal, 650));
+  const offerSection = document.getElementById("oferta");
+  if (offerSection && "IntersectionObserver" in window) {
+    // strona główna: widżet wychyla się dopiero, gdy user dojedzie do sekcji Oferta (Asystent i chatbot AI)
+    const obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { obs.disconnect(); reveal(); } });
+    }, { threshold: 0, rootMargin: "0px 0px -30% 0px" });
+    obs.observe(offerSection);
+  } else {
+    // podstrony (brak sekcji Oferta): dotychczasowe zachowanie — po załadowaniu strony
+    if (document.readyState === "complete") setTimeout(reveal, 650);
+    else window.addEventListener("load", () => setTimeout(reveal, 650));
+  }
 })();
