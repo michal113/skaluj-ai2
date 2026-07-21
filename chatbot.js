@@ -69,9 +69,9 @@
   .cb-typing i{width:7px;height:7px;border-radius:50%;background:#2f6fe0;opacity:.7;animation:cbdot 1.2s infinite}
   .cb-typing i:nth-child(2){animation-delay:.18s}.cb-typing i:nth-child(3){animation-delay:.36s}
   @keyframes cbdot{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:.9}}
-  .cb-chips{display:flex;flex-wrap:nowrap;gap:6px;padding:4px 14px 12px;overflow-x:auto;scrollbar-width:none}
+  .cb-chips{display:flex;flex-wrap:wrap;gap:5px;padding:4px 10px 12px;overflow-x:auto;scrollbar-width:none}
   .cb-chips::-webkit-scrollbar{display:none}
-  .cb-chip{flex:none;background:#fff;border:1px solid rgba(47,111,224,.26);color:#2456c9;font:500 11.5px "Geist",sans-serif;padding:6px 10px;border-radius:9999px;cursor:pointer;transition:all .2s;white-space:nowrap}
+  .cb-chip{flex:none;background:#fff;border:1px solid rgba(47,111,224,.26);color:#2456c9;font:500 9.5px "Geist",sans-serif;padding:5px 8px;border-radius:9999px;cursor:pointer;transition:all .2s;white-space:nowrap}
   .cb-chip:hover{border-color:#2f6fe0;color:#fff;background:linear-gradient(135deg,#3d7ef0,#2158c8);box-shadow:0 4px 12px rgba(33,88,200,.24)}
   .cb-book{margin:2px 0 4px 37px;max-width:84%;border:1px solid rgba(47,111,224,.18);border-radius:15px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(15,30,60,.07);animation:cbin .4s cubic-bezier(.22,1,.36,1) both}
   .cb-book-top{padding:13px 15px;border-bottom:1px solid rgba(15,30,60,.06);display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(102,176,255,.08),rgba(33,88,200,.05))}
