@@ -2575,7 +2575,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       data.append('email', document.getElementById('fEmail').value.trim());
       data.append('company', document.getElementById('fCompany').value.trim());
       var msgEl=document.getElementById('fMsg'); if(msgEl) data.append('message', msgEl.value.trim());
-      Array.prototype.forEach.call(form.querySelectorAll('[name="svc"]:checked'), function(c){ data.append('svc', c.value); });
+      var svcList=[]; Array.prototype.forEach.call(form.querySelectorAll('[name="svc"]:checked'), function(c){ svcList.push(c.value); }); data.append('svc', svcList.join(', '));
       var att=document.getElementById('fAttach')||document.getElementById('fFiles');
       if(att&&att.files){ Array.prototype.forEach.call(att.files, function(f){ data.append('attachment', f); }); }
       var hp=form.querySelector('[name="_gotcha"]'); if(hp) data.append('_gotcha', hp.value);
