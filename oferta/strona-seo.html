@@ -166,31 +166,47 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a class="logo" href="../" aria-label="skaluj.ai &mdash; strona g&#322;&#243;wna"><img class="logo-mark" src="../sygnet.png" alt="" width="140" height="170" aria-hidden="true"><img class="logo-word" src="../samo%20skaluj.png" alt="skaluj.ai" width="478" height="112"></a>
+    <a class="logo" href="../" aria-label="skaluj.ai — strona główna">
+      <img class="logo-mark" src="../sygnet.png" alt="" width="140" height="170" aria-hidden="true">
+      <img class="logo-word" src="../samo%20skaluj.png" alt="skaluj.ai" width="478" height="112">
+    </a>
     <div class="nav-links">
-      <a class="nav-link" href="../#start">Start</a>
       <div class="nav-item" id="ofertaItem">
-        <button class="nav-link" id="ofertaBtn" aria-expanded="false" aria-haspopup="true">Oferta <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="nav-link" id="ofertaBtn" data-spy="oferta" aria-expanded="false" aria-haspopup="true">
+          Oferta
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
         <div class="dropdown" role="menu" aria-label="Nasza oferta">
-          <div class="dd-head"><span class="l">Oferta</span><a class="c" href="../#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-head"><span class="l">OFERTA</span><a class="c" href="../#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-grid">
-            <a class="dd-item" href="../oferta/strona-seo"><span class="dd-eyebrow">01 · Strona · SEO · GEO</span><span class="dd-title">Strona, która sprzedaje</span><span class="dd-desc">Projekt, SEO i GEO w standardzie — widoczna w Google i polecana przez AI.</span></a>
-            <a class="dd-item" href="../oferta/geo-seo"><span class="dd-eyebrow">02 · GEO i SEO</span><span class="dd-title">Widoczny w AI, nie tylko w Google</span><span class="dd-desc">Masz już stronę? Pozycjonujemy ją w ChatGPT, Perplexity i Google AI Overviews.</span></a>
-            <a class="dd-item" href="../oferta/automatyzacje-email"><span class="dd-eyebrow">03 · Automatyzacje AI</span><span class="dd-title">Procesy, które robią się same</span><span class="dd-desc">Mailing, faktury, oferty, raporty, CRM — powtarzalną pracę przejmują automaty.</span></a>
-            <a class="dd-item" href="../oferta/chatbot-ai"><span class="dd-eyebrow">04 · Chatbot AI</span><span class="dd-title">Klient obsłużony w sekundy, 24/7</span><span class="dd-desc">Asystent zna Twoją ofertę i zamyka rutynowe zgłoszenia bez człowieka.</span></a>
-            <a class="dd-item" href="../oferta/branding"><span class="dd-eyebrow">05 · Branding</span><span class="dd-title">Marka spójna w każdym kanale</span><span class="dd-desc">AI podsuwa pomysły — projekty wykonuje nasz zespół doświadczonych grafików.</span></a>
+            <a class="dd-item" href="../oferta/strona-seo" role="menuitem"><span class="dd-eyebrow">01 · Strona · SEO · GEO</span><span class="dd-title">Strona, która sprzedaje</span><span class="dd-desc">Projekt, SEO i GEO w standardzie — widoczna w Google i polecana przez AI.</span></a>
+            <a class="dd-item" href="../oferta/geo-seo" role="menuitem"><span class="dd-eyebrow">02 · GEO i SEO</span><span class="dd-title">Widoczny w AI, nie tylko w Google</span><span class="dd-desc">Masz już stronę? Pozycjonujemy ją w ChatGPT, Perplexity i Google AI Overviews.</span></a>
+            <a class="dd-item" href="../oferta/automatyzacje-email" role="menuitem"><span class="dd-eyebrow">03 · Automatyzacje AI</span><span class="dd-title">Procesy, które robią się same</span><span class="dd-desc">Mailing, faktury, oferty, raporty, CRM — powtarzalną pracę przejmują automaty.</span></a>
+            <a class="dd-item" href="../oferta/chatbot-ai" role="menuitem"><span class="dd-eyebrow">04 · Chatbot AI</span><span class="dd-title">Klient obsłużony w sekundy, 24/7</span><span class="dd-desc">Asystent zna Twoją ofertę i zamyka rutynowe zgłoszenia bez człowieka.</span></a>
+            <a class="dd-item" href="../oferta/branding" role="menuitem"><span class="dd-eyebrow">05 · Branding</span><span class="dd-title">Marka spójna w każdym kanale</span><span class="dd-desc">AI podsuwa pomysły — projekty wykonuje nasz zespół doświadczonych grafików.</span></a>
           </div>
         </div>
       </div>
       <a class="nav-link" href="../#case-studies">Case studies</a>
-      <a class="nav-link" href="../#integracje">Integracje</a>
-      <a class="nav-link" href="../#proces">Proces</a>
-      <a class="nav-link" href="../#faq">FAQ</a>
-      <a class="nav-link" href="../kontakt">Kontakt</a>
+      <div class="nav-item" id="wspolItem">
+        <button class="nav-link" id="wspolBtn" data-spy="integracje proces o-nas faq" aria-expanded="false" aria-haspopup="true">
+          Współpraca
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown dropdown--menu" role="menu" aria-label="Współpraca ze skaluj.ai">
+          <a class="dd-item" href="../#integracje" role="menuitem"><span class="dd-title">Integracje</span><span class="dd-desc">Twoje narzędzia spięte w jeden system.</span></a>
+          <a class="dd-item" href="../#proces" role="menuitem"><span class="dd-title">Proces</span><span class="dd-desc">Droga od audytu do startu, krok po kroku.</span></a>
+          <a class="dd-item" href="../#o-nas" role="menuitem"><span class="dd-title">O nas</span><span class="dd-desc">Ludzie, którzy stoją za skaluj.ai.</span></a>
+          <a class="dd-item" href="../#faq" role="menuitem"><span class="dd-title">FAQ</span><span class="dd-desc">Umowa, koszty, utrzymanie — konkrety.</span></a>
+        </div>
+      </div>
       <div class="nav-item" id="blogItem">
-        <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">Blog <span class="nav-badge">6</span><svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="dropdown" role="menu" aria-label="Wpisy na blogu">
-          <div class="dd-head"><span class="l">Z bloga</span><a class="c" href="../blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">
+          Blog <span class="nav-badge">6</span>
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+                <div class="dropdown" role="menu" aria-label="Wpisy na blogu">
+          <div class="dd-head"><span class="l">Z BLOGA</span><a class="c" href="../blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-grid">
             <a class="dd-item" href="../blog/strona-seo" role="menuitem"><span class="dd-eyebrow">Strona i SEO</span><span class="dd-title">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</span><span class="dd-desc">Struktura, copywriting i UX, kt&oacute;re zamieniaj&#261; ruch w klient&oacute;w.</span></a>
             <a class="dd-item" href="../blog/automatyzacje-email" role="menuitem"><span class="dd-eyebrow">Automatyzacje</span><span class="dd-title">Automatyzacja e-mail marketingu z AI &mdash; 5 scenariuszy</span><span class="dd-desc">Od powitania nowego klienta do win-back &mdash; gotowe przep&#322;ywy.</span></a>
@@ -198,12 +214,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
             <a class="dd-item" href="../blog/geo-ai-search" role="menuitem"><span class="dd-eyebrow">GEO / AI Search</span><span class="dd-title">GEO: jak pozycjonowa&#263; firm&#281; w ChatGPT i Google AI?</span><span class="dd-desc">Nowe zasady widoczno&#347;ci w erze wyszukiwania generatywnego.</span></a>
             <a class="dd-item" href="../blog/meta-ads-ai" role="menuitem"><span class="dd-eyebrow">Meta Ads</span><span class="dd-title">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty reklam nawet o 30%?</span><span class="dd-desc">Automatyczne testy kreacji, audience signals i optymalizacja bud&#380;etu.</span></a>
             <a class="dd-item" href="../blog/branding" role="menuitem"><span class="dd-eyebrow">Branding</span><span class="dd-title">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</span><span class="dd-desc">Kolor, typografia i sp&oacute;jno&#347;&#263; &mdash; DNA skutecznej marki.</span></a>
-          
           </div>
         </div>
       </div>
     </div>
     <div class="nav-right">
+      <a class="nav-link" href="../kontakt">Kontakt</a>
       <a href="../kontakt" class="btn btn-primary btn-sm">Umów konsultację</a>
       <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
@@ -212,7 +228,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="../#start"><span>Start</span><span class="n">01</span></a>
-  <div class="mm-blog">
+    <div class="mm-blog">
     <span class="mm-h">Oferta <span class="n">02</span></span>
     <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i GEO</a>
     <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w AI — GEO i SEO</a>
@@ -223,17 +239,18 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
   <a href="../#case-studies"><span>Case studies</span><span class="n">03</span></a>
   <a href="../#integracje"><span>Integracje</span><span class="n">04</span></a>
   <a href="../#proces"><span>Proces</span><span class="n">05</span></a>
-  <a href="../#faq"><span>FAQ</span><span class="n">06</span></a>
-  <div class="mm-blog">
-    <span class="mm-h">Blog <span class="n">07</span></span>
-    <a class="mm-sub" href="../blog/strona-seo">Strona firmowa, która sprzedaje</a>
-    <a class="mm-sub" href="../blog/automatyzacje-email">E-mail automation — 5 scenariuszy</a>
-    <a class="mm-sub" href="../blog/chatbot-ai">Chatbot AI: kiedy warto?</a>
-    <a class="mm-sub" href="../blog/geo-ai-search">GEO — widoczność w AI Search</a>
-    <a class="mm-sub" href="../blog/meta-ads-ai">Meta Ads z AI</a>
-    <a class="mm-sub" href="../blog/branding">Visual identity w 2026</a>
+  <a href="../#o-nas"><span>O nas</span><span class="n">06</span></a>
+  <a href="../#faq"><span>FAQ</span><span class="n">07</span></a>
+    <div class="mm-blog">
+    <span class="mm-h">Blog <span class="n">08</span></span>
+    <a class="mm-sub" href="../blog/strona-seo">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</a>
+    <a class="mm-sub" href="../blog/automatyzacje-email">Automatyzacja e-mail marketingu z AI AI</a>
+    <a class="mm-sub" href="../blog/chatbot-ai">Chatbot AI &mdash; kiedy warto, a kiedy szkodzi?</a>
+    <a class="mm-sub" href="../blog/geo-ai-search">GEO: widoczno&#347;&#263; w ChatGPT i Google AI</a>
+    <a class="mm-sub" href="../blog/meta-ads-ai">Meta Ads z AI &mdash; jak ci&#261;&#263; koszty o 30%?</a>
+    <a class="mm-sub" href="../blog/branding">Identyfikacja wizualna w 2026 &mdash; DNA skutecznej marki</a>
   </div>
-  <a href="../kontakt"><span>Kontakt</span><span class="n">08</span></a>
+  <a href="../kontakt"><span>Kontakt</span><span class="n">09</span></a>
 </div>
 
 <main>
@@ -511,5 +528,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .brand-ghost--footer{top:auto;right:-3%;bottom:-15%;width:min(40vw,440px);transform:rotate(-8deg)}
 @media(max-width:1020px){.footer-grid{grid-template-columns:1fr 1fr;gap:34px 40px}.footer-brand{grid-column:1/-1;margin-bottom:8px}.footer-brand p{max-width:52ch}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr;gap:34px}}
-</style></body>
+</style><script>(function(){var i=document.getElementById("wspolItem"),b=document.getElementById("wspolBtn");if(!i||!b||i.dataset.wspol)return;i.dataset.wspol="1";var t,h=matchMedia("(hover:hover) and (pointer:fine)").matches;function o(){clearTimeout(t);i.classList.add("open");b.setAttribute("aria-expanded","true");}function c(){clearTimeout(t);i.classList.remove("open");b.setAttribute("aria-expanded","false");}function s(){clearTimeout(t);t=setTimeout(c,180);}if(h){i.addEventListener("mouseenter",o);i.addEventListener("mouseleave",s);i.addEventListener("focusin",o);i.addEventListener("focusout",s);b.addEventListener("click",function(e){e.preventDefault();o();});}else{b.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();i.classList.contains("open")?c():o();});}document.addEventListener("click",function(e){if(!i.contains(e.target))c();});document.addEventListener("keydown",function(e){if(e.key==="Escape")c();});i.querySelectorAll(".dropdown a").forEach(function(a){a.addEventListener("click",c);});})();</script>
+</body>
 </html>
