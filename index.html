@@ -2042,6 +2042,29 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </div>
       </div>
     </div>
+
+    <!-- ===== Cal.com — wybór terminu ===== -->
+    <style>
+      .cal-embed-block{margin-top:clamp(48px,7vw,88px);padding-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
+      .cal-embed-head{text-align:center;max-width:660px;margin:0 auto 34px}
+      .cal-embed-head p{color:var(--muted);font-size:15px;line-height:1.7;margin-top:14px}
+      .cal-inline{width:100%;min-height:640px;overflow:auto;border:1px solid var(--line);border-radius:16px;background:var(--bg-elev)}
+    </style>
+    <div class="cal-embed-block" data-reveal>
+      <div class="cal-embed-head">
+        <span class="eyebrow">Wolisz od razu?</span>
+        <h2 class="sec-title" style="margin-top:16px"><span class="grad">Wybierz termin <span class="uline">konsultacji</span></span></h2>
+        <p>Kliknij dogodny termin — potwierdzenie, wydarzenie w kalendarzu i link do spotkania w Google Meet generują się automatycznie.</p>
+      </div>
+      <div id="my-cal-inline" class="cal-inline"></div>
+    </div>
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "30min", {origin:"https://cal.com"});
+      Cal.ns["30min"]("inline", { elementOrSelector:"#my-cal-inline", config: {"layout":"month_view"}, calLink: "skalujai/30min" });
+      Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
+
   </div>
 </section>
 <!-- ===== FAQ ===== -->
