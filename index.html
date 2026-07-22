@@ -774,7 +774,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .ptl-assure-item svg{width:19px;height:19px;color:var(--accent);flex:none}
 @media(max-width:600px){.ptl-assure{flex-direction:column;align-items:flex-start;gap:14px;margin-top:40px;padding-top:28px}}
 /* ===== O NAS ===== */
-.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.about-grid{display:grid;grid-template-columns:1fr;gap:60px;align-items:center}
 .about-lead{font-size:1.12rem;line-height:1.65;color:var(--text);margin:8px 0 16px;max-width:52ch}
 .about-p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:26px;max-width:52ch}
 .about-values{list-style:none;display:grid;gap:16px;margin-bottom:30px}
@@ -791,28 +791,24 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .sec-title .uline::after,.integ-title .uline::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:2px;background:var(--accent);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .85s var(--ease) .25s;box-shadow:0 0 12px var(--accent-soft)}
 [data-reveal].in .sec-title .uline::after,[data-reveal].in .integ-title .uline::after{transform:scaleX(1)}
 @media (prefers-reduced-motion:reduce){.sec-title .uline::after,.integ-title .uline::after{transform:scaleX(1);transition:none}}
-.about-visual{position:relative;justify-self:center;align-self:end}
-/* kolumna tekstu — zsunieta nizej i w prawo, blizej kobiety (balans kompozycji).
-   WAZNE: [data-reveal].in zeruje transform, wiec pozycja docelowa MUSI zawierac offset
-   (inaczej reveal go kasuje). Stan przed reveal = offset +18px w dol dla fade-in. */
-.about-copy[data-reveal]{transform:translate(90px,108px)}
-.about-copy[data-reveal].in{transform:translate(90px,90px)}
-/* osoba — sama, bez karty; dol postaci dociagniety do linii konczacej sekcje (-padding sekcji) */
-.about-person{display:block;width:min(680px,50vw);height:auto;pointer-events:none;user-select:none;
-  margin-bottom:-96px;transform:translateX(90px);
+/* Osoba WYJETA z gridu (pozycja absolutna). Wczesniej obrazek rozpychal swoja kolumne
+   gridu i kradl szerokosc tekstowi -> tekst byl waski (~294px) i wysoki, przez co naglowek
+   ladowal wysoko. Teraz tekst ma stabilna szerokosc, a postac kotwiczy prawo-dol sekcji,
+   dzieki czemu naglowek naturalnie rowna sie z gora postaci. */
+#o-nas{position:relative;overflow:hidden}
+.about-copy{position:relative;z-index:1;max-width:600px}
+.about-copy[data-reveal]{transform:translateY(18px)}
+.about-copy[data-reveal].in{transform:none}
+.about-visual{position:absolute;right:0;bottom:0;margin:0;width:min(680px,45vw);
+  display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none}
+.about-person{display:block;width:100%;height:auto;user-select:none;margin:0;
   filter:drop-shadow(0 8px 20px rgba(15,30,60,.10))}
-/* srednie desktopy: mniejsze przesuniecia, zeby nic nie wychodzilo poza kadr */
+/* Ponizej ~1361px za malo miejsca na duza postac obok tekstu (mala postac -> naglowek
+   znow wisialby wysoko). Dlatego uklad pionowy: postac wraca do flow, pod tekstem. */
 @media(max-width:1360px){
-  .about-person{width:min(560px,44vw);transform:translateX(0)}
-  .about-copy[data-reveal]{transform:translate(45px,88px)}
-  .about-copy[data-reveal].in{transform:translate(45px,70px)}
-}
-@media(max-width:860px){
-  .about-grid{grid-template-columns:1fr;gap:38px}
-  .about-visual{justify-self:start}
-  .about-person{width:min(560px,88vw);transform:none}
-  .about-copy[data-reveal]{transform:translateY(18px)}
-  .about-copy[data-reveal].in{transform:none}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-copy{max-width:720px}
+  .about-visual{position:static;width:min(520px,86vw);display:block;margin:8px auto 0}
 }
 /* ── Mobile: vertical ── */
 @media(max-width:767px){
@@ -1846,10 +1842,11 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </ul>
         <a class="btn btn-primary about-cta" href="#kontakt-section">Poznajmy się <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <div class="about-visual" data-reveal data-delay="100">
-        <img class="about-person" src="assets/onas-osoba.webp" alt="Członkini zespołu skaluj.ai wskazująca na sekcję O nas" width="1067" height="1100" loading="lazy">
-      </div>
     </div>
+  </div>
+  <!-- postac poza .wrap: kotwiczy do prawej krawedzi SEKCJI (viewport), nie do .wrap -->
+  <div class="about-visual" data-reveal data-delay="100">
+    <img class="about-person" src="assets/onas-osoba.webp" alt="Członkini zespołu skaluj.ai wskazująca na sekcję O nas" width="1067" height="1100" loading="lazy">
   </div>
 </section>
 
