@@ -939,6 +939,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .mf-step-head{margin-bottom:18px}
 .mf-step-head h4{font-size:21px;font-weight:600;letter-spacing:-.025em;margin:0 0 6px}
 .mf-step-head p{font-size:13px;color:var(--faint);margin:0}
+.cal-inline{width:100%;min-height:520px;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--bg-elev)}
 .mf-nav{display:flex;gap:10px;margin-top:20px}
 .mf-nav .btn{flex:1;justify-content:center}
 .mf-back{flex:none;width:46px;height:46px;display:grid;place-items:center;background:none;border:1px solid var(--line);border-radius:50%;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
@@ -1978,6 +1979,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
             <span class="mf-sstep"><span class="mf-dot">2</span><span class="mf-lbl">Projekt</span></span>
             <i class="mf-line"></i>
             <span class="mf-sstep"><span class="mf-dot">3</span><span class="mf-lbl">Kontakt</span></span>
+            <i class="mf-line"></i>
+            <span class="mf-sstep"><span class="mf-dot">4</span><span class="mf-lbl">Termin</span></span>
           </div>
 
           <!-- KROK 1: zakres -->
@@ -2029,7 +2032,20 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
             <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
             <div class="mf-nav mf-nav--split">
               <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
-              <button type="submit" class="btn btn-primary" id="mfSubmit">Odbierz wycenę i demo <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- KROK 4: termin (opcjonalny) -->
+          <div class="mf-step" data-step="4">
+            <div class="mf-step-head">
+              <h4>Wybierz termin &mdash; albo pomiń</h4>
+              <p>Umów bezpłatną konsultację od razu. Nieobowiązkowe &mdash; możesz wysłać bez wybierania terminu.</p>
+            </div>
+            <div id="my-cal-inline" class="cal-inline"></div>
+            <div class="mf-nav mf-nav--split">
+              <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+              <button type="submit" class="btn btn-primary" id="mfSubmit">Wyślij zgłoszenie <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
             <p class="mf-note visible" id="mfNote">Wysy&#322;aj&#261;c formularz akceptujesz polityk&#281; prywatno&#347;ci. Zero spamu.</p>
           </div>
@@ -2039,53 +2055,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <h3>Dziękujemy!</h3>
           <p>Twoje zapytanie dotarło. Odezwiemy się w ciągu 24 godzin roboczych.</p>
         </div>
-
-        <!-- ===== Cal.com — przycisk + rozwijany kalendarz ===== -->
-        <style>
-          .cal-toggle-wrap{margin-top:18px}
-          .cal-or{display:flex;align-items:center;text-align:center;color:var(--faint);font-size:11px;text-transform:uppercase;letter-spacing:.14em;margin:6px 0 14px;font-family:var(--mono)}
-          .cal-or::before,.cal-or::after{content:"";flex:1;height:1px;background:var(--line)}
-          .cal-or span{padding:0 12px}
-          .btn-cal{display:flex;width:100%;align-items:center;justify-content:center;gap:9px;padding:14px 18px;border-radius:12px;font-weight:600;font-size:15px;cursor:pointer;background:var(--bg-elev-2);color:var(--text);border:1px solid var(--line);transition:box-shadow .2s,background .2s}
-          .btn-cal:hover{background:var(--bg-elev);box-shadow:0 0 0 3px var(--accent-soft)}
-          .btn-cal>svg:first-child{stroke:var(--accent);flex:none}
-          .btn-cal .chev{margin-left:auto;transition:transform .25s;flex:none}
-          .btn-cal[aria-expanded="true"] .chev{transform:rotate(180deg)}
-          .cal-collapse{margin-top:14px}
-          .cal-inline{width:100%;min-height:600px;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--bg-elev)}
-        </style>
-        <div class="cal-toggle-wrap">
-          <div class="cal-or"><span>albo</span></div>
-          <button type="button" class="btn-cal" id="calToggle" aria-expanded="false">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            Umów termin od razu
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="cal-collapse" id="calCollapse" hidden>
-            <div id="my-cal-inline" class="cal-inline"></div>
-          </div>
-        </div>
-        <script>
-        (function(){
-          var btn=document.getElementById('calToggle'), box=document.getElementById('calCollapse'), loaded=false;
-          if(!btn) return;
-          btn.addEventListener('click', function(){
-            if(box.hasAttribute('hidden')){
-              box.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true');
-              if(!loaded){ loaded=true; initCal(); }
-              setTimeout(function(){ box.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 80);
-            } else {
-              box.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false');
-            }
-          });
-          function initCal(){
-            (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-            Cal("init", "30min", {origin:"https://cal.com"});
-            Cal.ns["30min"]("inline", { elementOrSelector:"#my-cal-inline", config: {"layout":"month_view"}, calLink: "skalujai/30min" });
-            Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-          }
-        })();
-        </script>
         </div>
       </div>
     </div>
@@ -2583,6 +2552,13 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     var mfDots = Array.prototype.slice.call(form.querySelectorAll('.mf-sstep'));
     var mfLines = Array.prototype.slice.call(form.querySelectorAll('.mf-line'));
     var mfCur = 0;
+    var calLoaded = false;
+    function initCal(){
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "30min", {origin:"https://cal.com"});
+      Cal.ns["30min"]("inline", { elementOrSelector:"#my-cal-inline", config: {"layout":"month_view"}, calLink: "skalujai/30min" });
+      Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    }
     function mfShow(i){
       steps[mfCur].classList.remove('is-on');
       mfCur = i;
@@ -2591,6 +2567,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       s.classList.add('is-on');
       mfDots.forEach(function(el,idx){ el.classList.toggle('mf-active', idx===mfCur); el.classList.toggle('mf-done', idx<mfCur); });
       mfLines.forEach(function(el,idx){ el.classList.toggle('mf-done', idx<mfCur); });
+      if(!calLoaded && s.querySelector && s.querySelector('#my-cal-inline')){ calLoaded=true; initCal(); }
     }
     function mfValidStep(i){
       if(i === 0){
@@ -2599,6 +2576,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         if(!any){ err.textContent = 'Zaznacz przynajmniej jedną opcję'; return false; }
         err.textContent = ''; return true;
       }
+      if(i === 2){ return validateForm(); }
       return true;
     }
     form.addEventListener('click', function(e){
