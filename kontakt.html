@@ -149,6 +149,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 .mf-sstep.mf-active .mf-lbl{color:var(--text);font-weight:550}
 .mf-sstep.mf-done .mf-lbl{color:var(--text)}
 .mf-line{flex:1;height:1.5px;background:var(--bg-elev-2);margin:0 6px;min-width:8px;border-radius:1px;position:relative;overflow:hidden}
+@media(max-width:860px){.mf-sstep:not(.mf-active) .mf-lbl{display:none}}
 .mf-line::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#66b0ff,#2158c8);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
 .mf-line.mf-done::after{transform:scaleX(1)}
 .mf-step{display:none}
@@ -648,7 +649,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
     });
     /* krok 4: wybor pory + min data = dzis */
     (function(){
-      var dEl=document.getElementById('fDate'); if(dEl){ dEl.min=new Date().toISOString().split('T')[0]; }
+      var dEl=document.getElementById('fDate'); if(dEl){ dEl.min=new Date().toISOString().split('T')[0]; dEl.style.cursor='pointer'; dEl.addEventListener('click', function(){ try{ if(dEl.showPicker) dEl.showPicker(); }catch(e){} }); }
       var slots=document.getElementById('slots');
       if(slots){ slots.addEventListener('click', function(e){ var b=e.target.closest('.slot'); if(!b) return; var sel=b.classList.contains('is-sel'); slots.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('is-sel'); }); if(!sel) b.classList.add('is-sel'); }); }
     })();
@@ -672,9 +673,9 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       if(att&&att.files){ Array.prototype.forEach.call(att.files, function(f){ data.append("attachment", f); }); }
       var hp=form.querySelector('[name="_gotcha"]'); if(hp) data.append("_gotcha", hp.value);
       if(!FORM_ENDPOINT){ console.warn("[skaluj.ai] FORM_ENDPOINT nie ustawiony — formularz nie wysyla. Ustaw URL Workera (contact-worker/README.md)."); setTimeout(function(){ card.classList.add("sent"); },500); return; }
-      fetch(FORM_ENDPOINT,{method:"POST",body:data,mode:"no-cors"})
-        .then(function(){ card.classList.add("sent"); })
-        .catch(function(){ fail("Błąd połączenia. Spróbuj ponownie lub napisz na kontakt@skaluj.ai."); });
+      var mfDone=false; function mfSent(){ if(mfDone) return; mfDone=true; card.classList.add("sent"); }
+      fetch(FORM_ENDPOINT,{method:"POST",body:data,mode:"no-cors"}).then(mfSent).catch(mfSent);
+      setTimeout(mfSent, 2500);
     });
   })();
 })();
