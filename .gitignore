@@ -16,3 +16,4 @@ node_modules/
 # Zmienne środowiskowe / sekrety
 .env
 .env.local
+.claude/launch.json
