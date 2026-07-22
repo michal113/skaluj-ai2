@@ -792,14 +792,22 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 [data-reveal].in .sec-title .uline::after,[data-reveal].in .integ-title .uline::after{transform:scaleX(1)}
 @media (prefers-reduced-motion:reduce){.sec-title .uline::after,.integ-title .uline::after{transform:scaleX(1);transition:none}}
 .about-visual{position:relative;justify-self:center;align-self:end}
+/* kolumna tekstu — zsunieta nizej i w prawo, blizej kobiety (balans kompozycji) */
+.about-copy{transform:translate(60px,74px)}
 /* osoba — sama, bez karty; dol postaci dociagniety do linii konczacej sekcje (-padding sekcji) */
 .about-person{display:block;width:min(680px,50vw);height:auto;pointer-events:none;user-select:none;
   margin-bottom:-96px;transform:translateX(90px);
   filter:drop-shadow(0 8px 20px rgba(15,30,60,.10))}
+/* srednie desktopy: mniejsze przesuniecia, zeby nic nie wychodzilo poza kadr */
+@media(max-width:1360px){
+  .about-person{width:min(560px,44vw);transform:translateX(0)}
+  .about-copy{transform:translate(28px,52px)}
+}
 @media(max-width:860px){
   .about-grid{grid-template-columns:1fr;gap:38px}
   .about-visual{justify-self:start}
   .about-person{width:min(560px,88vw);transform:none}
+  .about-copy{transform:none}
 }
 /* ── Mobile: vertical ── */
 @media(max-width:767px){
