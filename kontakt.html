@@ -158,7 +158,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 .mf-step-head{margin-bottom:18px}
 .mf-step-head h4{font-size:21px;font-weight:600;letter-spacing:-.025em;margin:0 0 6px}
 .mf-step-head p{font-size:13px;color:var(--faint);margin:0}
-.cal-inline{width:100%;min-height:520px;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--bg-elev)}
+.date-wrap{display:block;margin-bottom:2px}.date-cap{display:block;font-size:12px;color:var(--faint);margin-bottom:6px}.date-wrap input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;color:var(--text);background:#fff}.date-wrap input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.slot{padding:9px 16px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:var(--mono);font-size:13px;color:var(--text);cursor:pointer;transition:border-color .18s,background .18s,color .18s}.slot:hover{border-color:var(--accent);color:var(--accent)}.slot.is-sel{background:var(--accent);border-color:var(--accent);color:#fff}
 .mf-nav{display:flex;gap:10px;margin-top:20px}
 .mf-nav .btn{flex:1;justify-content:center}
 .mf-back{flex:none;width:46px;height:46px;display:grid;place-items:center;background:none;border:1px solid var(--line);border-radius:50%;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
@@ -459,10 +459,17 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
           <!-- KROK 4: termin (opcjonalny) -->
           <div class="mf-step" data-step="4">
             <div class="mf-step-head">
-              <h4>Wybierz termin &mdash; albo pomiń</h4>
-              <p>Umów bezpłatną konsultację od razu. Nieobowiązkowe &mdash; możesz wysłać bez wybierania terminu.</p>
+              <h4>Wybierz dogodny termin</h4>
+              <p>Zaproponuj dzień i porę &mdash; potwierdzimy szczegóły. Nieobowiązkowe, możesz pominąć.</p>
             </div>
-            <div id="my-cal-inline" class="cal-inline"></div>
+            <label class="date-wrap"><span class="date-cap">Preferowany dzień</span><input type="date" id="fDate"></label>
+            <div class="slots" id="slots" role="group" aria-label="Preferowana pora">
+              <button type="button" class="slot" data-time="9:00">9:00</button>
+              <button type="button" class="slot" data-time="11:00">11:00</button>
+              <button type="button" class="slot" data-time="13:00">13:00</button>
+              <button type="button" class="slot" data-time="15:00">15:00</button>
+              <button type="button" class="slot" data-time="17:00">17:00</button>
+            </div>
             <div class="mf-nav mf-nav--split">
               <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
               <button type="submit" class="btn btn-primary" id="mfSubmit">Wyślij zgłoszenie &#8594;</button>
@@ -608,13 +615,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
     var mfDots = Array.prototype.slice.call(form.querySelectorAll('.mf-sstep'));
     var mfLines = Array.prototype.slice.call(form.querySelectorAll('.mf-line'));
     var mfCur = 0;
-    var calLoaded = false;
-    function initCal(){
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "30min", {origin:"https://cal.com"});
-      Cal.ns["30min"]("inline", { elementOrSelector:"#my-cal-inline", config: {"layout":"month_view"}, calLink: "skalujai/30min" });
-      Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-    }
     function mfShow(i){
       steps[mfCur].classList.remove('is-on');
       mfCur = i;
@@ -623,7 +623,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       s.classList.add('is-on');
       mfDots.forEach(function(el,idx){ el.classList.toggle('mf-active', idx===mfCur); el.classList.toggle('mf-done', idx<mfCur); });
       mfLines.forEach(function(el,idx){ el.classList.toggle('mf-done', idx<mfCur); });
-      if(!calLoaded && s.querySelector && s.querySelector('#my-cal-inline')){ calLoaded=true; initCal(); }
     }
     function mfValidStep(i){
       if(i === 0){
@@ -644,6 +643,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
     form.addEventListener('change', function(e){
       if(e.target.name === 'svc') document.getElementById('errSvc').textContent = '';
     });
+    /* krok 4: wybor pory + min data = dzis */
+    (function(){
+      var dEl=document.getElementById('fDate'); if(dEl){ dEl.min=new Date().toISOString().split('T')[0]; }
+      var slots=document.getElementById('slots');
+      if(slots){ slots.addEventListener('click', function(e){ var b=e.target.closest('.slot'); if(!b) return; var sel=b.classList.contains('is-sel'); slots.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('is-sel'); }); if(!sel) b.classList.add('is-sel'); }); }
+    })();
 
     /* URL Cloudflare Workera (patrz contact-worker/README.md). Pusty = formularz jeszcze NIE wysyla. */
     var FORM_ENDPOINT = "https://hook.eu1.make.com/jodayajcv3hc0mxfsz28x4l1uvtis5mw";
@@ -659,7 +664,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       data.append("email", document.getElementById("fEmail").value.trim());
       data.append("company", document.getElementById("fCompany").value.trim());
       var msgEl=document.getElementById("fMsg"); if(msgEl) data.append("message", msgEl.value.trim());
-      var svcList=[]; Array.prototype.forEach.call(form.querySelectorAll('[name="svc"]:checked'), function(c){ svcList.push(c.value); }); data.append("svc", svcList.join(", "));
+      var svcList=[]; Array.prototype.forEach.call(form.querySelectorAll('[name="svc"]:checked'), function(c){ svcList.push(c.value); }); data.append("svc", svcList.join(", ")); var dEl=document.getElementById('fDate'); var tEl=form.querySelector('.slot.is-sel'); var termin=((dEl&&dEl.value)?dEl.value:'')+((tEl)?' '+tEl.getAttribute('data-time'):''); data.append('termin', termin.trim());
       var att=document.getElementById("fAttach")||document.getElementById("fFiles");
       if(att&&att.files){ Array.prototype.forEach.call(att.files, function(f){ data.append("attachment", f); }); }
       var hp=form.querySelector('[name="_gotcha"]'); if(hp) data.append("_gotcha", hp.value);
