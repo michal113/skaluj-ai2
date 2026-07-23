@@ -2359,13 +2359,26 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     if(location.hash.indexOf("#oferta-")===0) openOffer(location.hash.slice(1));
   })();
 
-  /* pin-scroll oferty: scrollowanie przez sekcję otwiera karty 1->4, potem strona plynie dalej
-     (desktop z wysokim viewportem; wylaczone przy prefers-reduced-motion) */
+  /* pin-scroll oferty + sygnał „dotarłem do oferty 04 (Asystent i chatbot AI)".
+     Chatbot (chatbot.js) nasłuchuje eventu „skaluj:chatbot-offer" i DOPIERO wtedy się
+     pokazuje / sam otwiera — nie wcześniej.
+     (pin-scroll: desktop z wysokim viewportem; wylaczony przy prefers-reduced-motion) */
   (function(){
     var sec = document.getElementById("oferta");
-    if(!sec || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if(!sec) return;
     var items = [].slice.call(sec.querySelectorAll(".offer-item"));
-    if(items.length < 2) return;
+    var chatbotItem = document.getElementById("oferta-chatbot");
+    var chatbotIdx = items.indexOf(chatbotItem);
+
+    var signaled = false;
+    function signalChatbot(){
+      if(signaled) return; signaled = true;
+      window.__skalujChatbotOffer = true;                 // flaga na wypadek, gdy chatbot.js jeszcze nie nasłuchuje
+      window.dispatchEvent(new CustomEvent("skaluj:chatbot-offer"));
+    }
+
+    var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var canPin = !reduced && items.length >= 2;
     var mq = matchMedia("(min-width:1200px) and (min-height:860px)");
     var active = false, cur = 0;
     function openIdx(i){
@@ -2375,6 +2388,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         o.querySelector(".offer-head").setAttribute("aria-expanded", on ? "true" : "false");
       });
       cur = i;
+      if(chatbotIdx >= 0 && i >= chatbotIdx) signalChatbot();   // dojechał scrollem do karty 04
     }
     function onScroll(){
       var len = sec.offsetHeight - innerHeight;
@@ -2391,8 +2405,18 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       if(mq.matches && !active){ sec.classList.add("pinned-track"); addEventListener("scroll", onScroll, {passive:true}); active = true; onScroll(); }
       else if(!mq.matches && active){ sec.classList.remove("pinned-track"); removeEventListener("scroll", onScroll); active = false; }
     }
-    apply();
-    if(mq.addEventListener) mq.addEventListener("change", apply); else addEventListener("resize", apply);
+    if(canPin){
+      apply();
+      if(mq.addEventListener) mq.addEventListener("change", apply); else addEventListener("resize", apply);
+    }
+
+    /* tryb bez pinu (mobile / mniejszy desktop / reduced-motion): sygnał, gdy karta 04
+       wejdzie w widok podczas zwykłego scrolla. W trybie pinu pomijamy (active) — tam decyduje openIdx. */
+    if(chatbotItem && "IntersectionObserver" in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting && !active) signalChatbot(); });
+      }, { threshold: 0, rootMargin: "0px 0px -35% 0px" }).observe(chatbotItem);
+    }
   })();
 
 

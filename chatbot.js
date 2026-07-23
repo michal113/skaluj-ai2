@@ -235,12 +235,15 @@
     // desktop + podstrona: tylko launcher — panel otwiera się DOPIERO po kliknięciu
   }
   const offerSection = document.getElementById("oferta");
-  if (offerSection && "IntersectionObserver" in window) {
-    // strona główna: widżet wychyla się (i na desktopie sam otwiera) dopiero, gdy user dojedzie do sekcji Oferta
-    const obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { obs.disconnect(); reveal(true); } });
-    }, { threshold: 0, rootMargin: "0px 0px -30% 0px" });
-    obs.observe(offerSection);
+  if (offerSection) {
+    // strona główna: widżet pokazuje się (i na desktopie sam otwiera) DOPIERO, gdy user
+    // dojedzie scrollem do oferty 04 „Asystent i chatbot AI". Sygnał emituje index.html
+    // (event „skaluj:chatbot-offer") — w trybie pin-scroll dokładnie przy tej karcie,
+    // a w zwykłym accordionie gdy karta wejdzie w widok.
+    let armed = false;
+    const armChat = function () { if (armed) return; armed = true; reveal(true); };
+    window.addEventListener("skaluj:chatbot-offer", armChat, { once: true });
+    if (window.__skalujChatbotOffer) armChat();   // sygnał mógł paść, zanim tu doszliśmy
   } else {
     // podstrony (brak sekcji Oferta): pokaż sam launcher po załadowaniu — NIGDY nie otwieraj panelu bez kliknięcia
     if (document.readyState === "complete") setTimeout(() => reveal(false), 650);
