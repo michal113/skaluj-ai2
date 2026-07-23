@@ -42,6 +42,11 @@ while ($true) {
       $path = [Uri]::UnescapeDataString(($Matches[1] -split '\?')[0])
       if ($path -eq '/') { $path = '/index.html' }
       $file = [System.IO.Path]::GetFullPath((Join-Path $root ($path.TrimStart('/') -replace '/', '\')))
+      # directory index fallback: /blog/ or /blog -> blog/index.html (mirrors GitHub Pages)
+      if ($file.StartsWith($root) -and (Test-Path $file -PathType Container)) {
+        $idx = Join-Path $file "index.html"
+        if (Test-Path $idx -PathType Leaf) { $file = $idx }
+      }
       # extensionless URL fallback: try .html (mirrors GitHub Pages behaviour)
       if ($file.StartsWith($root) -and !(Test-Path $file -PathType Leaf) -and [System.IO.Path]::GetExtension($file) -eq "") {
         $candidate = $file + ".html"
