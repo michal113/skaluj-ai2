@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://skaluj.ai/</loc><priority>1.0</priority></url>
-  <url><loc>https://skaluj.ai/kontakt.html</loc><priority>0.9</priority></url>
-  <url><loc>https://skaluj.ai/oferta/strona-seo.html</loc><priority>0.8</priority></url>
-  <url><loc>https://skaluj.ai/oferta/automatyzacje-email.html</loc><priority>0.8</priority></url>
-  <url><loc>https://skaluj.ai/oferta/chatbot-ai.html</loc><priority>0.8</priority></url>
-  <url><loc>https://skaluj.ai/oferta/branding.html</loc><priority>0.8</priority></url>
-  <url><loc>https://skaluj.ai/blog/strona-seo.html</loc><priority>0.6</priority></url>
-  <url><loc>https://skaluj.ai/blog/automatyzacje-email.html</loc><priority>0.6</priority></url>
-  <url><loc>https://skaluj.ai/blog/chatbot-ai.html</loc><priority>0.6</priority></url>
-  <url><loc>https://skaluj.ai/blog/geo-ai-search.html</loc><priority>0.6</priority></url>
-  <url><loc>https://skaluj.ai/blog/meta-ads-ai.html</loc><priority>0.6</priority></url>
-  <url><loc>https://skaluj.ai/blog/branding.html</loc><priority>0.6</priority></url>
+  <url><loc>https://skaluj.ai/</loc><lastmod>2026-07-25</lastmod><priority>1.0</priority></url>
+  <url><loc>https://skaluj.ai/kontakt</loc><lastmod>2026-07-25</lastmod><priority>0.9</priority></url>
+  <url><loc>https://skaluj.ai/oferta/strona-seo</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
+  <url><loc>https://skaluj.ai/oferta/geo-seo</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
+  <url><loc>https://skaluj.ai/oferta/automatyzacje-email</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
+  <url><loc>https://skaluj.ai/oferta/chatbot-ai</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
+  <url><loc>https://skaluj.ai/oferta/branding</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
+  <url><loc>https://skaluj.ai/blog/</loc><lastmod>2026-07-25</lastmod><priority>0.7</priority></url>
+  <url><loc>https://skaluj.ai/blog/strona-seo</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
+  <url><loc>https://skaluj.ai/blog/automatyzacje-email</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
+  <url><loc>https://skaluj.ai/blog/chatbot-ai</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
+  <url><loc>https://skaluj.ai/blog/geo-ai-search</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
+  <url><loc>https://skaluj.ai/blog/meta-ads-ai</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
+  <url><loc>https://skaluj.ai/blog/branding</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
 </urlset>
