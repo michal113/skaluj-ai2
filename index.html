@@ -980,6 +980,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .mf-next{height:44px;padding:0 24px;font-size:14px}
 .mf-note{margin-top:12px;font-size:12px;color:var(--faint);text-align:center;display:none}
 .mf-note.visible{display:block}
+.mf-consent{display:flex;gap:10px;align-items:flex-start;margin:18px 0 4px;font-size:12.5px;line-height:1.5;color:var(--muted);text-align:left;cursor:pointer}
+.mf-consent input{margin:2px 0 0;width:17px;height:17px;flex:none;accent-color:var(--accent);cursor:pointer}
+.mf-consent a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.ferr-consent{display:block;margin:0 0 2px 27px}
 @media(max-width:600px){.svc-tiles{grid-template-columns:1fr}.mf-lbl{display:none}}
 /* ============================================================
    FOOTER
@@ -2041,11 +2045,13 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
               <button type="button" class="slot" data-time="17:00">17:00</button>
             </div>
             <p class="slot-note" id="slotNote"></p>
+            <label class="mf-consent"><input type="checkbox" id="fConsent"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych przez skaluj.ai w celu obsługi tego zapytania, zgodnie z <a href="polityka-prywatnosci" target="_blank" rel="noopener">Polityką prywatności</a>.</span></label>
+            <span class="ferr ferr-consent" id="errConsent"></span>
             <div class="mf-nav mf-nav--split">
               <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
               <button type="submit" class="btn btn-primary" id="mfSubmit">Wyślij zgłoszenie <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
-            <p class="mf-note visible" id="mfNote">Wysy&#322;aj&#261;c formularz akceptujesz polityk&#281; prywatno&#347;ci. Zero spamu.</p>
+            <p class="mf-note visible" id="mfNote">Odpowiadamy zwykle w 24 h roboczych. Zero spamu.</p>
           </div>
         </form>
         <div class="form-success" aria-live="polite">
@@ -2635,6 +2641,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       if (!validateForm()) return;
+      var fConsent=document.getElementById('fConsent'), errConsent=document.getElementById('errConsent');
+      if(fConsent && !fConsent.checked){ if(errConsent){ errConsent.textContent='Zaznacz zgodę na przetwarzanie danych, aby wysłać zgłoszenie.'; errConsent.style.color='#d95a5a'; } fConsent.focus(); return; }
+      if(errConsent) errConsent.textContent='';
       var note=document.getElementById('mfNote');
       function fail(msg){ submitBtn.disabled=false; submitBtn.style.opacity=''; if(note){ note.textContent=msg; note.style.color='#d95a5a'; } }
       submitBtn.disabled = true; submitBtn.style.opacity = '.6';
@@ -2648,6 +2657,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       var att=document.getElementById('fAttach')||document.getElementById('fFiles');
       if(att&&att.files){ Array.prototype.forEach.call(att.files, function(f){ data.append('attachment', f); }); }
       var hp=form.querySelector('[name="_gotcha"]'); if(hp) data.append('_gotcha', hp.value);
+      data.append('consent', 'Zgoda RODO na przetwarzanie danych: tak');
       if(!FORM_ENDPOINT){ console.warn('[skaluj.ai] FORM_ENDPOINT nie ustawiony — formularz nie wysyla. Ustaw URL Workera (contact-worker/README.md).'); setTimeout(function(){ card.classList.add('sent'); }, 500); return; }
       var mfDone=false; function mfSent(){ if(mfDone) return; mfDone=true; card.classList.add('sent'); }
       fetch(FORM_ENDPOINT,{method:'POST',body:data,mode:'no-cors'}).then(mfSent).catch(mfSent);

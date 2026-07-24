@@ -79,6 +79,9 @@
   .cb-book .cta{display:block;margin:12px 15px 14px;text-align:center;background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;text-decoration:none;font-size:13.5px;font-weight:500;padding:11px;border-radius:11px;transition:box-shadow .2s,filter .2s}
   .cb-book .cta:hover{filter:brightness(1.06);box-shadow:0 6px 18px rgba(33,88,200,.32)}.cb-book iframe{width:100%;height:520px;border:0;display:block}
   .cb-foot{padding:12px 14px;border-top:1px solid rgba(15,30,60,.07);background:#fff}
+  .cb-disc{margin:8px 2px 0;font-size:10px;line-height:1.4;color:#9aa1ab;text-align:center}
+  .cb-disc a{color:#8b929c;text-decoration:underline;text-underline-offset:2px}
+  .cb-disc a:hover{color:#2f6fe0}
   .cb-inrow{display:flex;align-items:flex-end;gap:9px;background:#f6f8fb;border:1px solid rgba(15,30,60,.08);border-radius:9999px;padding:5px 5px 5px 16px;transition:border-color .2s,background .2s,box-shadow .2s}
   .cb-inrow:focus-within{border-color:#2f6fe0;background:#fff;box-shadow:0 0 0 3px rgba(47,111,224,.12)}
   .cb-in{flex:1;border:none;background:none;outline:none;font:14px "Geist",sans-serif;color:#0b0d10;resize:none;max-height:96px;line-height:1.5;padding:8px 0}
@@ -139,6 +142,7 @@
   /* ---------- BUDOWA UI ---------- */
   const style = document.createElement("style"); style.textContent = CSS; document.head.appendChild(style);
   const AV = '<svg viewBox="-8 0 152 177" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M94.3 0L130.4 0Q143.4 0 133.9 8.9L55.5 81.9Q48.9 88 39.9 88L5.4 88Q-7.6 88 1.8 79L78.8 6.2Q85.3 0 94.3 0Z"/><path d="M94.3 89L130.4 89Q143.4 89 133.9 97.9L55.5 170.9Q48.9 177 39.9 177L5.4 177Q-7.6 177 1.8 168L78.8 95.2Q85.3 89 94.3 89Z"/></svg>';
+  const ppPath = (location.pathname.indexOf("/oferta/") > -1 || location.pathname.indexOf("/blog/") > -1) ? "../polityka-prywatnosci" : "polityka-prywatnosci";
   const wrap = document.createElement("div");
   wrap.innerHTML = `
     <button class="cb-launcher" id="cbLauncher" aria-label="Otwórz czat">
@@ -150,7 +154,7 @@
     <div class="cb-panel" id="cbPanel" role="dialog" aria-label="Czat skaluj.ai">
       <div class="cb-head">
         <span class="cb-hava">${AV}</span>
-        <div class="cb-id"><b>Asystent skaluj.ai</b><span class="cb-live">Live chat</span></div>
+        <div class="cb-id"><b>Asystent AI skaluj.ai</b><span class="cb-live">Wirtualny asystent</span></div>
         <button class="cb-hbtn" id="cbClose" aria-label="Zamknij"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
       <div class="cb-body" id="cbBody"></div>
@@ -159,6 +163,7 @@
         <div class="cb-inrow"><textarea class="cb-in" id="cbIn" rows="1" placeholder="Napisz wiadomość…"></textarea>
           <button class="cb-send" id="cbSend" aria-label="Wyślij"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button>
         </div>
+        <p class="cb-disc">Odpowiada asystent AI. Nie podawaj danych wrażliwych. <a href="${ppPath}" target="_blank" rel="noopener">Prywatność</a></p>
       </div>
     </div>`;
   document.body.appendChild(wrap);
@@ -203,7 +208,7 @@
   }
   async function greet() {
     const t = typing(); await new Promise(r => setTimeout(r, 650)); t.remove();
-    addMsg('Cześć! 👋 Jestem asystentem <b>skaluj.ai</b>. W czym mogę pomóc?', "bot");
+    addMsg('Cześć! 👋 Jestem <b>wirtualnym asystentem AI</b> skaluj.ai — odpowiadam automatycznie. W czym mogę pomóc?', "bot");
     setChips(["Co oferujecie?", "Ile kosztuje strona?", "Umów spotkanie"]);
   }
   async function sendMsg(text) {
