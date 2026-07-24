@@ -57,7 +57,7 @@
   .cb-hbtn:hover{background:rgba(0,0,0,.05);color:#0b0d10}
   .cb-body{flex:1;overflow-y:auto;padding:20px 16px 8px;background:#fbfcfe url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='-8%200%20152%20177'%3E%3Cg%20fill='%232f6fe0'%20fill-opacity='.045'%3E%3Cpath%20d='M94.3%200L130.4%200Q143.4%200%20133.9%208.9L55.5%2081.9Q48.9%2088%2039.9%2088L5.4%2088Q-7.6%2088%201.8%2079L78.8%206.2Q85.3%200%2094.3%200Z'/%3E%3Cpath%20d='M94.3%2089L130.4%2089Q143.4%2089%20133.9%2097.9L55.5%20170.9Q48.9%20177%2039.9%20177L5.4%20177Q-7.6%20177%201.8%20168L78.8%2095.2Q85.3%2089%2094.3%2089Z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/148px auto}
   .cb-body::-webkit-scrollbar{width:8px}.cb-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.12);border-radius:4px;border:2px solid transparent;background-clip:padding-box}
-  .cb-msg{display:flex;gap:9px;margin-bottom:14px;align-items:flex-end;animation:cbin .4s cubic-bezier(.22,1,.36,1) both}
+  .cb-msg{display:flex;gap:9px;margin-bottom:14px;align-items:flex-start;animation:cbin .4s cubic-bezier(.22,1,.36,1) both}
   @keyframes cbin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .cb-msg .mava{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,#3d7ef0,#2158c8);display:grid;place-items:center;flex:none;box-shadow:0 3px 8px rgba(33,88,200,.24)}
   .cb-msg .mava svg{width:13px;height:auto;color:#fff}
@@ -154,7 +154,7 @@
     <div class="cb-panel" id="cbPanel" role="dialog" aria-label="Czat skaluj.ai">
       <div class="cb-head">
         <span class="cb-hava">${AV}</span>
-        <div class="cb-id"><b>Asystent AI skaluj.ai</b><span class="cb-live">Wirtualny asystent</span></div>
+        <div class="cb-id"><b>Asystent AI skaluj.ai</b><span class="cb-live">Online</span></div>
         <button class="cb-hbtn" id="cbClose" aria-label="Zamknij"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
       <div class="cb-body" id="cbBody"></div>
