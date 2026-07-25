@@ -1202,7 +1202,37 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .nav-item.open .dd-row{transition-delay:0s}
 }
 </style>
-</head>
+<style id="nav-blog">
+/* NAV — dropdown Blog (ta sama rodzina wizualna co Oferta) */
+#blogItem{position:relative}
+.dropdown--blog{left:50%;right:auto;width:428px;margin-left:-214px;padding:10px;border-radius:16px}
+.dropdown--blog .dd-head{padding:5px 10px 11px;margin-bottom:6px}
+.dropdown--blog .dd-head .l{font-family:var(--mono,ui-monospace,monospace);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.dd-row--post{padding:8px 11px}
+.dd-row--post .dd-tx i{display:block;font-style:normal;font-family:var(--mono,ui-monospace,monospace);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 3px}
+.dd-row--post .dd-tx b{font-size:13px;font-weight:500;line-height:1.35;margin:0}
+.nav-item.open .dd-row:nth-of-type(6){transition-delay:.19s}
+</style><style id="blog-sec">
+/* ============================================================
+   BLOG — siatka wpisow na stronie glownej
+   ============================================================ */
+.blogs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.blogs-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-lg,16px);
+  background:var(--bg-elev);padding:26px 24px 22px;text-decoration:none;
+  transition:border-color .35s,background-color .35s,transform .35s var(--ease),box-shadow .35s var(--ease)}
+.blogs-card:hover{border-color:rgba(0,0,0,.16);background:var(--bg-elev-2);transform:translateY(-3px);
+  box-shadow:0 18px 40px -20px rgba(15,30,60,.30)}
+.blogs-tag{display:block;font-family:var(--mono,ui-monospace,monospace);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.blogs-card h3{font-size:1.05rem;font-weight:500;letter-spacing:-.02em;line-height:1.35;margin:0 0 10px;color:var(--text)}
+.blogs-card p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0 0 18px}
+.blogs-more{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:var(--accent)}
+.blogs-more svg{width:14px;height:14px;transition:transform .25s var(--ease)}
+.blogs-card:hover .blogs-more svg{transform:translateX(4px)}
+.blogs-all{margin-top:34px;display:flex;justify-content:center}
+@media(max-width:980px){.blogs-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.blogs-grid{grid-template-columns:1fr}.blogs-card{padding:22px 20px 20px}}
+</style></head>
 <body>
 <style>.skip-link{position:absolute;left:8px;top:-52px;z-index:100000;background:#0b0d10;color:#fff;padding:10px 16px;border-radius:8px;font:500 14px "Geist",sans-serif;text-decoration:none;transition:top .2s}.skip-link:focus{top:8px}</style>
 <a class="skip-link" href="#tresc">Przejdź do treści</a>
@@ -1253,7 +1283,21 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       <a class="nav-link" href="#case-studies">Case studies</a>
       <a class="nav-link" href="#proces">Proces</a>
       <a class="nav-link" href="#faq">FAQ</a>
-      <a class="nav-link" href="blog/">Blog</a>
+      <div class="nav-item" id="blogItem">
+        <button class="nav-link" id="blogBtn" data-spy="blog-section" aria-expanded="false" aria-haspopup="true">
+          Blog
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown dropdown--blog" role="menu" aria-label="Wpisy na blogu">
+          <div class="dd-head"><span class="l">Blog</span><a class="c" href="blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <a class="dd-row dd-row--post" href="blog/strona-seo" role="menuitem"><span class="dd-tx"><i>Strona i SEO</i><b>Strona, która sprzedaje</b></span></a>
+          <a class="dd-row dd-row--post" href="blog/automatyzacje-email" role="menuitem"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z AI — 5 scenariuszy</b></span></a>
+          <a class="dd-row dd-row--post" href="blog/chatbot-ai" role="menuitem"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI — kiedy warto, a kiedy szkodzi</b></span></a>
+          <a class="dd-row dd-row--post" href="blog/geo-ai-search" role="menuitem"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w ChatGPT i AI</b></span></a>
+          <a class="dd-row dd-row--post" href="blog/meta-ads-ai" role="menuitem"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — tnij koszty nawet o 30%</b></span></a>
+          <a class="dd-row dd-row--post" href="blog/branding" role="menuitem"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w 2026</b></span></a>
+        </div>
+      </div>
     </div>
     <div class="nav-right">
       <a href="kontakt" class="btn btn-primary btn-sm">Umów konsultację</a>
@@ -1960,13 +2004,65 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   </div>
 </section>
 
+<!-- ===== BLOG ===== -->
+<section class="section" id="blog-section">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">05 — Blog</span>
+      <h2 class="sec-title"><span class="grad">Wiedza, którą <span class="uline">stosujemy</span></span></h2>
+      <p class="sec-sub">Konkretne poradniki o stronach, SEO i GEO, automatyzacjach i brandingu — dokładnie to podejście, które wdrażamy u klientów.</p>
+    </div>
+    <div class="blogs-grid">
+      <a class="blogs-card" href="blog/strona-seo" data-reveal>
+        <span class="blogs-tag">Strona i SEO</span>
+        <h3>Strona internetowa dla firmy, która sprzedaje (2026)</h3>
+        <p>Struktura, copywriting, SEO i Core Web Vitals — sprawdzony schemat konwersji krok po kroku.</p>
+        <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blogs-card" href="blog/automatyzacje-email" data-reveal data-delay="60">
+        <span class="blogs-tag">Automatyzacje</span>
+        <h3>Automatyzacja e-mail marketingu z AI — 5 scenariuszy</h3>
+        <p>Welcome, koszyk, onboarding, win-back i upsell — gotowe przepływy do wdrożenia w tydzień.</p>
+        <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blogs-card" href="blog/chatbot-ai" data-reveal data-delay="120">
+        <span class="blogs-tag">Chatbot AI</span>
+        <h3>Chatbot AI na stronie — kiedy warto, a kiedy szkodzi</h3>
+        <p>Kiedy realnie podnosi konwersję, a kiedy odstrasza klientów. Scenariusze, błędy i checklista.</p>
+        <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blogs-card" href="blog/geo-ai-search" data-reveal>
+        <span class="blogs-tag">GEO / AI Search</span>
+        <h3>GEO: jak pozycjonować firmę w ChatGPT i Google AI</h3>
+        <p>Jak sprawić, by ChatGPT, Perplexity i Google AI cytowały Twoją firmę. Schema, E-E-A-T, llms.txt.</p>
+        <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blogs-card" href="blog/meta-ads-ai" data-reveal data-delay="60">
+        <span class="blogs-tag">Meta Ads</span>
+        <h3>Meta Ads z AI — jak ciąć koszty reklam nawet o 30%</h3>
+        <p>Advantage+, automatyczne testowanie kreacji i optymalizacja budżetu. Metody obniżania CPA.</p>
+        <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="blogs-card" href="blog/branding" data-reveal data-delay="120">
+        <span class="blogs-tag">Branding</span>
+        <h3>Identyfikacja wizualna w 2026 — DNA skutecznej marki</h3>
+        <p>Psychologia koloru, typografia, spójność i brand book. Dlaczego markę wciąż projektuje człowiek.</p>
+        <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+    <div class="blogs-all" data-reveal>
+      <a class="btn btn-ghost" href="blog/">Wszystkie wpisy <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== KONTAKT ===== -->
 <section class="section" id="kontakt-section">
   <div class="wrap">
     <div class="contact-grid">
       <div class="contact-info" data-reveal>
         <div class="ci-head">
-        <span class="eyebrow">05 — Kontakt</span>
+        <span class="eyebrow">06 — Kontakt</span>
         <h2 class="sec-title" style="margin-top:20px"><span class="grad">Zacznijmy od <span class="uline">rozmowy</span></span></h2>
         <p>Powiedz, gdzie Twoja firma traci czas i pieniądze — my powiemy, czy AI to rozwiąże i ile na tym zarobisz.</p>
         <p class="ci-reassure">Każde zapytanie analizujemy indywidualnie. Nie wysyłamy automatycznych wiadomości marketingowych — piszemy wyłącznie w sprawie Twojego zapytania.</p>
@@ -2585,6 +2681,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       item.querySelectorAll(".dropdown a").forEach(function(a){ a.addEventListener("click",close); });
     }
     initDrop(document.getElementById("ofertaItem"), document.getElementById("ofertaBtn"));
+    initDrop(document.getElementById("blogItem"), document.getElementById("blogBtn"));
   })();
 
   /* form */

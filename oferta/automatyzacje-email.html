@@ -171,7 +171,17 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
   .nav-item.open .dd-row{transition-delay:0s}
 }
 </style>
-</head>
+<style id="nav-blog">
+/* NAV — dropdown Blog (ta sama rodzina wizualna co Oferta) */
+#blogItem{position:relative}
+.dropdown--blog{left:50%;right:auto;width:428px;margin-left:-214px;padding:10px;border-radius:16px}
+.dropdown--blog .dd-head{padding:5px 10px 11px;margin-bottom:6px}
+.dropdown--blog .dd-head .l{font-family:var(--mono,ui-monospace,monospace);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.dd-row--post{padding:8px 11px}
+.dd-row--post .dd-tx i{display:block;font-style:normal;font-family:var(--mono,ui-monospace,monospace);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 3px}
+.dd-row--post .dd-tx b{font-size:13px;font-weight:500;line-height:1.35;margin:0}
+.nav-item.open .dd-row:nth-of-type(6){transition-delay:.19s}
+</style></head>
 <body>
 
 <nav class="nav" id="nav">
@@ -199,7 +209,21 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
       <a class="nav-link" href="../#case-studies">Case studies</a>
       <a class="nav-link" href="../#proces">Proces</a>
       <a class="nav-link" href="../#faq">FAQ</a>
-      <a class="nav-link" href="../blog/">Blog</a>
+      <div class="nav-item" id="blogItem">
+        <button class="nav-link" id="blogBtn" aria-expanded="false" aria-haspopup="true">
+          Blog
+          <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown dropdown--blog" role="menu" aria-label="Wpisy na blogu">
+          <div class="dd-head"><span class="l">Blog</span><a class="c" href="../blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <a class="dd-row dd-row--post" href="../blog/strona-seo" role="menuitem"><span class="dd-tx"><i>Strona i SEO</i><b>Strona, która sprzedaje</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email" role="menuitem"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z AI — 5 scenariuszy</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/chatbot-ai" role="menuitem"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI — kiedy warto, a kiedy szkodzi</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/geo-ai-search" role="menuitem"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w ChatGPT i AI</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai" role="menuitem"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — tnij koszty nawet o 30%</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/branding" role="menuitem"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w 2026</b></span></a>
+        </div>
+      </div>
     </div>
     <div class="nav-right">
       <a href="../kontakt" class="btn btn-primary btn-sm">Umów konsultację</a>
