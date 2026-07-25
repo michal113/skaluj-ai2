@@ -3,7 +3,7 @@
  * Sekret w Cloudflare:  GEMINI_API_KEY = AQ...  (klucz z aistudio.google.com)
  */
 
-const KNOWLEDGE_URL_DEFAULT = "https://michal113.github.io/skaluj-ai2/wiedza.txt";
+const KNOWLEDGE_URL_DEFAULT = "https://skaluj.ai/wiedza.txt";
 const MODEL = "gemini-2.5-flash"; // jak nie działa, zmień na "gemini-2.0-flash"
 
 const SYSTEM_RULES = `Jesteś asystentem na stronie skaluj.ai — agencji transformacji cyfrowej dla firm B2B (strony pod SEO i GEO, automatyzacje AI, chatboty, branding).

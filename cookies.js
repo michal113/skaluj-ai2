@@ -70,7 +70,7 @@
   '.ck-acc:hover{filter:brightness(1.05);box-shadow:0 8px 20px rgba(33,88,200,.30)}' +
   '.ck-nec{background:#eef1f6;color:#2b333f}' +
   '.ck-nec:hover{background:#e5e9f0}' +
-  '.ck-set{background:none;border:none;cursor:pointer;color:#8b929c;font:500 11px "Geist",sans-serif;padding:8px 2px 0;margin-top:4px;text-decoration:underline;text-underline-offset:2px}' +
+  '.ck-set{background:none;border:none;cursor:pointer;color:#565d68;font:500 11px "Geist",sans-serif;padding:8px 2px 0;margin-top:4px;text-decoration:underline;text-underline-offset:2px}' +
   '.ck-set:hover{color:#2456c9}' +
   '.ck-opts{max-height:0;overflow:hidden;transition:max-height .35s var(--ease,cubic-bezier(.22,1,.36,1))}' +
   '.ck.open .ck-opts{max-height:160px}' +

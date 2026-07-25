@@ -69,6 +69,15 @@
     },
     {
       "@type": "Service",
+      "name": "Pozycjonowanie w AI — GEO i SEO",
+      "serviceType": "Generative Engine Optimization (GEO) i SEO",
+      "provider": { "@id": "https://skaluj.ai/#organization" },
+      "areaServed": "PL",
+      "description": "Pozycjonowanie istniejącej strony w wynikach AI i w Google — optymalizacja pod ChatGPT, Perplexity i Google AI Overviews (GEO) prowadzona równolegle z klasycznym SEO.",
+      "url": "https://skaluj.ai/oferta/geo-seo"
+    },
+    {
+      "@type": "Service",
       "name": "Automatyzacje biznesowe AI",
       "serviceType": "Automatyzacja procesów biznesowych z AI",
       "provider": { "@id": "https://skaluj.ai/#organization" },
@@ -917,7 +926,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .mf-panel{display:none}
 .mf-panel.mf-active{display:block}
 .mf-sub{font-size:14px;color:var(--muted);margin-bottom:18px;margin-top:-6px}
-.ferr{display:block;font-size:11px;color:#d95a5a;min-height:14px;margin-bottom:4px;padding-left:2px}
+.ferr{display:block;font-size:11px;color:#c02c2c;min-height:14px;margin-bottom:4px;padding-left:2px}
 .svc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px}
 .svc-tile{cursor:pointer;display:flex}
 .svc-tile input{position:absolute;opacity:0;pointer-events:none}
@@ -1165,7 +1174,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .cmp-cell{padding:17px 20px;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:8px;line-height:1.45}
 .cmp-cell.cmp-label{color:var(--text);font-size:13px}
 .cmp-cell.cmp-ours{background:rgba(47,111,224,.04)}
-.cmp-x{color:#d95a5a;font-size:13px;flex:none}
+.cmp-x{color:#c02c2c;font-size:13px;flex:none}
 .cmp-v{color:#24a35a;font-size:13px;flex:none;font-weight:600}
 </style>
 <style id="nav-v3">
@@ -2366,6 +2375,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <li><a href="blog/chatbot-ai">Chatbot AI</a></li>
           <li><a href="blog/geo-ai-search">GEO / AI Search</a></li>
           <li><a href="blog/meta-ads-ai">Meta Ads</a></li>
+          <li><a href="blog/branding">Branding</a></li>
           <li><a href="blog/" class="footer-all">Wszystkie wpisy →</a></li>
         </ul>
       </nav>
@@ -2698,11 +2708,11 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       var errEmail = document.getElementById('errEmail');
       var errCompany = document.getElementById('errCompany');
       var ok = true;
-      if (!fName.value.trim()) { errName.textContent = 'Wpisz imię'; fName.style.borderColor = '#d95a5a'; ok = false; }
+      if (!fName.value.trim()) { errName.textContent = 'Wpisz imię'; fName.style.borderColor = '#c02c2c'; ok = false; }
       else { errName.textContent = ''; fName.style.borderColor = ''; }
-      if (!fEmail.value.trim() || !/^\S+@\S+\.\S+$/.test(fEmail.value)) { errEmail.textContent = 'Podaj prawidłowy e-mail'; fEmail.style.borderColor = '#d95a5a'; ok = false; }
+      if (!fEmail.value.trim() || !/^\S+@\S+\.\S+$/.test(fEmail.value)) { errEmail.textContent = 'Podaj prawidłowy e-mail'; fEmail.style.borderColor = '#c02c2c'; ok = false; }
       else { errEmail.textContent = ''; fEmail.style.borderColor = ''; }
-      if (!fCompany.value.trim()) { errCompany.textContent = 'Wpisz nazwę firmy'; fCompany.style.borderColor = '#d95a5a'; ok = false; }
+      if (!fCompany.value.trim()) { errCompany.textContent = 'Wpisz nazwę firmy'; fCompany.style.borderColor = '#c02c2c'; ok = false; }
       else { errCompany.textContent = ''; fCompany.style.borderColor = ''; }
       return ok;
     }
@@ -2815,10 +2825,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       e.preventDefault();
       if (!validateForm()) return;
       var fConsent=document.getElementById('fConsent'), errConsent=document.getElementById('errConsent');
-      if(fConsent && !fConsent.checked){ if(errConsent){ errConsent.textContent='Zaznacz zgodę na przetwarzanie danych, aby wysłać zgłoszenie.'; errConsent.style.color='#d95a5a'; } fConsent.focus(); return; }
+      if(fConsent && !fConsent.checked){ if(errConsent){ errConsent.textContent='Zaznacz zgodę na przetwarzanie danych, aby wysłać zgłoszenie.'; errConsent.style.color='#c02c2c'; } fConsent.focus(); return; }
       if(errConsent) errConsent.textContent='';
       var note=document.getElementById('mfNote');
-      function fail(msg){ submitBtn.disabled=false; submitBtn.style.opacity=''; if(note){ note.textContent=msg; note.style.color='#d95a5a'; } }
+      function fail(msg){ submitBtn.disabled=false; submitBtn.style.opacity=''; if(note){ note.textContent=msg; note.style.color='#c02c2c'; } }
       submitBtn.disabled = true; submitBtn.style.opacity = '.6';
       if(note){ note.style.color=''; note.textContent='Wysyłam…'; }
       var data=new FormData();

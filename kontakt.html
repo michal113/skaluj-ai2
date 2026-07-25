@@ -46,7 +46,7 @@
   --bg-elev-2: #eef1f5;
   --text:      #0b0d10;
   --muted:     #565d68;
-  --faint:     #8b929c;
+  --faint:     #626873;
   --line:      rgba(0,0,0,.10);
   --line-2:    rgba(0,0,0,.06);
   --accent:    #2f6fe0;
@@ -159,7 +159,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 .fgroup textarea:focus + label,.fgroup textarea:not(:placeholder-shown) + label{top:6px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
 .fgroup .bar{position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
 .fgroup input:focus ~ .bar,.fgroup textarea:focus ~ .bar{transform:scaleX(1)}
-.ferr{display:block;font-size:11px;color:#d95a5a;min-height:14px;margin-bottom:4px;padding-left:2px}
+.ferr{display:block;font-size:11px;color:#c02c2c;min-height:14px;margin-bottom:4px;padding-left:2px}
 .form-success{position:absolute;inset:0;background:var(--bg-elev);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:32px;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
 .dash.sent .form-success{opacity:1;visibility:visible}
 .form-success .ok{width:52px;height:52px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center;color:var(--accent)}
@@ -598,6 +598,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
           <li><a href="blog/chatbot-ai">Chatbot AI</a></li>
           <li><a href="blog/geo-ai-search">GEO / AI Search</a></li>
           <li><a href="blog/meta-ads-ai">Meta Ads</a></li>
+          <li><a href="blog/branding">Branding</a></li>
           <li><a href="blog/" class="footer-all">Wszystkie wpisy →</a></li>
         </ul>
       </nav>
@@ -668,11 +669,11 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       var fName=document.getElementById("fName"), fEmail=document.getElementById("fEmail"), fCompany=document.getElementById("fCompany");
       var errName=document.getElementById("errName"), errEmail=document.getElementById("errEmail"), errCompany=document.getElementById("errCompany");
       var ok=true;
-      if(!fName.value.trim()){ errName.textContent="Wpisz imi\u0119"; fName.style.borderColor="#d95a5a"; ok=false; }
+      if(!fName.value.trim()){ errName.textContent="Wpisz imi\u0119"; fName.style.borderColor="#c02c2c"; ok=false; }
       else { errName.textContent=""; fName.style.borderColor=""; }
-      if(!fEmail.value.trim()||!/^\S+@\S+\.\S+$/.test(fEmail.value)){ errEmail.textContent="Podaj prawid\u0142owy e-mail"; fEmail.style.borderColor="#d95a5a"; ok=false; }
+      if(!fEmail.value.trim()||!/^\S+@\S+\.\S+$/.test(fEmail.value)){ errEmail.textContent="Podaj prawid\u0142owy e-mail"; fEmail.style.borderColor="#c02c2c"; ok=false; }
       else { errEmail.textContent=""; fEmail.style.borderColor=""; }
-      if(!fCompany.value.trim()){ errCompany.textContent="Wpisz nazw\u0119 firmy"; fCompany.style.borderColor="#d95a5a"; ok=false; }
+      if(!fCompany.value.trim()){ errCompany.textContent="Wpisz nazw\u0119 firmy"; fCompany.style.borderColor="#c02c2c"; ok=false; }
       else { errCompany.textContent=""; fCompany.style.borderColor=""; }
       return ok;
     }
@@ -787,10 +788,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       e.preventDefault();
       if(!validateForm()) return;
       var fConsent=document.getElementById("fConsent"), errConsent=document.getElementById("errConsent");
-      if(fConsent && !fConsent.checked){ if(errConsent){ errConsent.textContent="Zaznacz zgodę na przetwarzanie danych, aby wysłać zgłoszenie."; errConsent.style.color="#d95a5a"; } fConsent.focus(); return; }
+      if(fConsent && !fConsent.checked){ if(errConsent){ errConsent.textContent="Zaznacz zgodę na przetwarzanie danych, aby wysłać zgłoszenie."; errConsent.style.color="#c02c2c"; } fConsent.focus(); return; }
       if(errConsent) errConsent.textContent="";
       var note=document.getElementById("mfNote");
-      function fail(msg){ submitBtn.disabled=false; submitBtn.style.opacity=""; if(note){ note.textContent=msg; note.style.color="#d95a5a"; } }
+      function fail(msg){ submitBtn.disabled=false; submitBtn.style.opacity=""; if(note){ note.textContent=msg; note.style.color="#c02c2c"; } }
       submitBtn.disabled=true; submitBtn.style.opacity=".6";
       if(note){ note.style.color=""; note.textContent="Wysyłam…"; }
       var data=new FormData();
