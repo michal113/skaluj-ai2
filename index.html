@@ -2099,13 +2099,13 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:0;height:0;opacity:0">
 
           <div class="mf-stepper" aria-hidden="true">
-            <span class="mf-sstep mf-active"><span class="mf-dot">1</span><span class="mf-lbl">Zakres</span></span>
+            <span class="mf-sstep mf-active"><i class="mf-num">01</i><span class="mf-lbl">Zakres</span></span>
             <i class="mf-line"></i>
-            <span class="mf-sstep"><span class="mf-dot">2</span><span class="mf-lbl">Projekt</span></span>
+            <span class="mf-sstep"><i class="mf-num">02</i><span class="mf-lbl">Projekt</span></span>
             <i class="mf-line"></i>
-            <span class="mf-sstep"><span class="mf-dot">3</span><span class="mf-lbl">Kontakt</span></span>
+            <span class="mf-sstep"><i class="mf-num">03</i><span class="mf-lbl">Kontakt</span></span>
             <i class="mf-line"></i>
-            <span class="mf-sstep"><span class="mf-dot">4</span><span class="mf-lbl">Termin</span></span>
+            <span class="mf-sstep"><i class="mf-num">04</i><span class="mf-lbl">Termin</span></span>
           </div>
 
           <!-- KROK 1: zakres -->
@@ -3006,5 +3006,36 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 </script>
 <script src="cookies.js" defer></script>
 <script src="chatbot.js" defer></script>
+<style>
+/* ===== formularz v2 - jezyk wizualny reszty strony ===== */
+.mf-stepper{display:flex;align-items:flex-end;margin-bottom:clamp(26px,4vw,34px)}
+.mf-sstep{display:flex;align-items:baseline;gap:8px;flex:none;padding-bottom:10px;border-bottom:1.5px solid transparent;transition:border-color .35s ease}
+.mf-sstep.mf-active{border-bottom-color:var(--accent)}
+.mf-num{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.02em;color:var(--faint);font-style:normal;transition:color .35s}
+.mf-sstep.mf-active .mf-num{color:var(--accent)}
+.mf-lbl{font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);white-space:nowrap;transition:color .35s}
+.mf-sstep.mf-active .mf-lbl{color:var(--text);font-weight:500}
+.mf-line{flex:1;height:1px;min-width:12px;margin:0 12px 14px;background:var(--line);transition:background .4s}
+.mf-line.mf-done{background:rgba(47,111,224,.4)}
+@media(max-width:680px){.mf-sstep:not(.mf-active) .mf-lbl{display:none}.mf-line{margin:0 8px 14px}}
+
+.mf-step-head{margin-bottom:22px}
+.mf-step-head h4{font-size:clamp(1.5rem,3.5vw,1.95rem);font-weight:500;letter-spacing:-.035em;line-height:1.1;margin:0 0 10px;color:var(--text)}
+.mf-step-head p{font-size:14.5px;color:var(--muted);margin:0;line-height:1.55;max-width:46ch}
+
+.svc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
+.svc-tile-body{align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:16px 40px 16px 16px;font-size:14.5px;color:var(--text);background:#fff;line-height:1.25;transition:border-color .2s,background .2s,box-shadow .2s}
+.svc-tile:hover .svc-tile-body{border-color:rgba(47,111,224,.45);background:var(--bg-elev)}
+.svc-tile input:checked + .svc-tile-body{border-color:var(--accent);background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent)}
+.svc-ico{width:17px;height:17px;stroke-width:1.6;color:var(--faint);transition:color .2s}
+.svc-tile:hover .svc-tile-body .svc-ico{color:var(--muted)}
+.svc-tile input:checked + .svc-tile-body .svc-ico{color:var(--accent)}
+@media(max-width:560px){.svc-tiles{grid-template-columns:1fr}}
+
+.mf-nav{margin-top:26px;padding-top:22px;border-top:1px solid var(--line-2)}
+.mf-back{width:48px;height:48px;border-radius:12px;flex:none}
+.date-cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.slot{border-radius:11px;padding:10px 17px;font-size:12.5px}
+</style>
 </body>
 </html>
