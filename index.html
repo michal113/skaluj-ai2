@@ -944,7 +944,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .mf-step-head{margin-bottom:18px}
 .mf-step-head h4{font-size:21px;font-weight:600;letter-spacing:-.025em;margin:0 0 6px}
 .mf-step-head p{font-size:13px;color:var(--faint);margin:0}
-.date-wrap{display:block;margin-bottom:2px}.date-cap{display:block;font-size:12px;color:var(--faint);margin-bottom:6px}.date-wrap input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;color:var(--text);background:#fff}.date-wrap input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.slot{padding:9px 16px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:var(--mono);font-size:13px;color:var(--text);cursor:pointer;transition:border-color .18s,background .18s,color .18s}.slot:hover{border-color:var(--accent);color:var(--accent)}.slot.is-sel{background:var(--accent);border-color:var(--accent);color:#fff}.slot.is-busy,.slot:disabled{opacity:.45;cursor:not-allowed;text-decoration:line-through;background:var(--bg-elev);color:var(--faint);border-color:var(--line)}.slot.is-busy:hover{border-color:var(--line);color:var(--faint)}.slots.is-loading{opacity:.5;pointer-events:none}.slot-note{font-size:12px;color:var(--faint);margin-top:9px;display:none}
+.date-wrap{display:block;margin-bottom:2px}.date-cap{display:block;font-size:12px;color:var(--faint);margin-bottom:6px}.date-wrap input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;color:var(--text);background:#fff}.date-wrap input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}.cal{border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px;background:#fff}.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.cal-mon{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}.cal-nav{display:flex;gap:6px}.cal-nav button{width:28px;height:28px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;display:grid;place-items:center;color:var(--muted);font-size:15px;line-height:1;transition:border-color .18s,color .18s}.cal-nav button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}.cal-nav button:disabled{opacity:.3;cursor:not-allowed}.cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:5px}.cal-dow span{text-align:center;font-family:var(--mono);font-size:10px;color:var(--faint);text-transform:uppercase}.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}.cal-d{padding:9px 0;border:1px solid transparent;border-radius:9px;background:transparent;font-family:var(--mono);font-size:13px;color:var(--text);cursor:pointer;transition:border-color .18s,background .18s,color .18s}.cal-d:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}.cal-d:disabled{color:var(--faint);opacity:.35;cursor:not-allowed}.cal-d.is-sel{background:var(--accent);border-color:var(--accent);color:#fff}.cal-d.is-today:not(.is-sel){border-color:var(--line)}.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.slot{padding:9px 16px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:var(--mono);font-size:13px;color:var(--text);cursor:pointer;transition:border-color .18s,background .18s,color .18s}.slot:hover{border-color:var(--accent);color:var(--accent)}.slot.is-sel{background:var(--accent);border-color:var(--accent);color:#fff}.slot.is-busy,.slot:disabled{opacity:.45;cursor:not-allowed;text-decoration:line-through;background:var(--bg-elev);color:var(--faint);border-color:var(--line)}.slot.is-busy:hover{border-color:var(--line);color:var(--faint)}.slots.is-loading{opacity:.5;pointer-events:none}.slot-note{font-size:12px;color:var(--faint);margin-top:9px;display:none}
 .mf-nav{display:flex;gap:10px;margin-top:20px}
 .mf-nav .btn{flex:1;justify-content:center}
 .mf-back{flex:none;width:46px;height:46px;display:grid;place-items:center;background:none;border:1px solid var(--line);border-radius:50%;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
@@ -2135,16 +2135,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <div class="mf-step" data-step="2">
             <div class="mf-step-head">
               <h4>Opowiedz o projekcie</h4>
-              <p>Szczegóły i pliki pomogą nam trafniej wycenić — oba pola są opcjonalne.</p>
+              <p>Im więcej szczegółów, tym trafniej wycenimy. Pole jest opcjonalne.</p>
             </div>
             <div class="fgroup"><textarea id="fMsg" placeholder=" " rows="4"></textarea><label for="fMsg">Opisz swój projekt — cel, zakres, terminy…</label><span class="bar"></span></div>
-            <label class="file-drop" id="fileDrop">
-              <input type="file" name="files" id="fFiles" multiple accept=".pdf,.jpg,.jpeg,.png,.zip,.ai,.psd,.doc,.docx">
-              <svg class="file-drop-ico" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-              <span class="file-drop-lbl">Załącz pliki (brief, inspiracje, logo…)</span>
-              <span class="file-drop-hint">PDF, JPG, PNG, ZIP, AI, PSD, DOC — opcjonalnie</span>
-              <span class="file-name" id="fFilesName"></span>
-            </label>
             <div class="mf-nav mf-nav--split">
               <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
               <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -2160,6 +2153,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
             <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
             <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
             <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
+            <div class="fgroup"><input type="tel" id="fPhone" placeholder=" " autocomplete="tel"><label for="fPhone">Telefon (opcjonalnie)</label><span class="bar"></span></div>
             <div class="mf-nav mf-nav--split">
               <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
               <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -2172,7 +2166,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
               <h4>Wybierz dogodny termin</h4>
               <p>Zaproponuj dzień i porę &mdash; potwierdzimy szczegóły. Nieobowiązkowe, możesz pominąć.</p>
             </div>
-            <label class="date-wrap"><span class="date-cap">Preferowany dzień</span><input type="date" id="fDate"></label>
+            <span class="date-cap">Preferowany dzie&#324;</span>
+            <div class="cal" id="calHost"></div>
+            <input type="hidden" id="fDate">
             <div class="slots" id="slots" role="group" aria-label="Preferowana pora">
               <button type="button" class="slot" data-time="9:00">9:00</button>
               <button type="button" class="slot" data-time="11:00">11:00</button>
@@ -2744,13 +2740,53 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     form.addEventListener('change', function(e){
       if(e.target.name === 'svc') document.getElementById('errSvc').textContent = '';
     });
+    /* kalendarz w stylu skaluj */
+    (function(){
+      var host=document.getElementById('calHost'); if(!host) return;
+      var hid=document.getElementById('fDate');
+      var MON=['Stycze\u0144','Luty','Marzec','Kwiecie\u0144','Maj','Czerwiec','Lipiec','Sierpie\u0144','Wrzesie\u0144','Pa\u017adziernik','Listopad','Grudzie\u0144'];
+      var DOW=['Pn','Wt','\u015ar','Cz','Pt','So','Nd'];
+      var today=new Date(); today.setHours(0,0,0,0);
+      var view=new Date(today.getFullYear(),today.getMonth(),1);
+      var sel=null;
+      function p2(n){ return (n<10?'0':'')+n; }
+      function iso(d){ return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate()); }
+      function render(){
+        var y=view.getFullYear(), m=view.getMonth();
+        var startIdx=(new Date(y,m,1).getDay()+6)%7;
+        var days=new Date(y,m+1,0).getDate();
+        var atStart=(y===today.getFullYear()&&m===today.getMonth());
+        var h='<div class="cal-head"><span class="cal-mon">'+MON[m]+' '+y+'</span><span class="cal-nav">'+
+          '<button type="button" data-cal="prev"'+(atStart?' disabled':'')+' aria-label="Poprzedni miesiac">&lsaquo;</button>'+
+          '<button type="button" data-cal="next" aria-label="Nastepny miesiac">&rsaquo;</button></span></div>';
+        h+='<div class="cal-dow">';
+        for(var i=0;i<7;i++) h+='<span>'+DOW[i]+'</span>';
+        h+='</div><div class="cal-grid">';
+        for(var e=0;e<startIdx;e++) h+='<span></span>';
+        for(var d=1;d<=days;d++){
+          var dt=new Date(y,m,d), s=iso(dt);
+          var cls='cal-d'+(sel===s?' is-sel':'')+(dt.getTime()===today.getTime()?' is-today':'');
+          h+='<button type="button" class="'+cls+'" data-d="'+s+'"'+(dt<today?' disabled':'')+'>'+d+'</button>';
+        }
+        host.innerHTML=h+'</div>';
+      }
+      host.addEventListener('click', function(ev){
+        var nav=ev.target.closest('[data-cal]');
+        if(nav){ view.setMonth(view.getMonth()+(nav.getAttribute('data-cal')==='next'?1:-1)); render(); return; }
+        var b=ev.target.closest('.cal-d'); if(!b||b.disabled) return;
+        sel=b.getAttribute('data-d');
+        if(hid){ hid.value=sel; hid.dispatchEvent(new Event('change')); }
+        render();
+      });
+      render();
+    })();
+
     /* krok 4: wybor pory + min data = dzis + blokowanie zajetych godzin */
     (function(){
       var SLOTS_URL='https://script.google.com/macros/s/AKfycbxHbJA_9YE26k3MnfnvOdBhmGzZ6QtFOokRNXN7vHEMXTEXlKYGH1T2P1iCa5yggNvW/exec';
       var dEl=document.getElementById('fDate');
       var slots=document.getElementById('slots');
       var note=document.getElementById('slotNote');
-      if(dEl){ dEl.min=new Date().toISOString().split('T')[0]; dEl.style.cursor='pointer'; dEl.addEventListener('click', function(){ try{ if(dEl.showPicker) dEl.showPicker(); }catch(e){} }); }
       if(slots){ slots.addEventListener('click', function(e){ var b=e.target.closest('.slot'); if(!b||b.disabled) return; var sel=b.classList.contains('is-sel'); slots.querySelectorAll('.slot').forEach(function(s){ s.classList.remove('is-sel'); }); if(!sel) b.classList.add('is-sel'); }); }
       function setNote(t){ if(note){ note.textContent=t||''; note.style.display=t?'block':'none'; } }
       function markBusy(list){
@@ -2789,10 +2825,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       data.append('name', document.getElementById('fName').value.trim());
       data.append('email', document.getElementById('fEmail').value.trim());
       data.append('company', document.getElementById('fCompany').value.trim());
+      var phEl=document.getElementById('fPhone'); if(phEl) data.append('phone', phEl.value.trim());
       var msgEl=document.getElementById('fMsg'); if(msgEl) data.append('message', msgEl.value.trim());
       var svcList=[]; Array.prototype.forEach.call(form.querySelectorAll('[name="svc"]:checked'), function(c){ svcList.push(c.value); }); data.append('svc', svcList.join(', ')); var dEl=document.getElementById('fDate'); var tEl=form.querySelector('.slot.is-sel'); var termin=((dEl&&dEl.value)?dEl.value:'')+((tEl)?' '+tEl.getAttribute('data-time'):''); data.append('termin', termin.trim());
-      var att=document.getElementById('fAttach')||document.getElementById('fFiles');
-      if(att&&att.files){ Array.prototype.forEach.call(att.files, function(f){ data.append('attachment', f); }); }
       var hp=form.querySelector('[name="_gotcha"]'); if(hp) data.append('_gotcha', hp.value);
       data.append('consent', 'Zgoda RODO na przetwarzanie danych: tak');
       if(!FORM_ENDPOINT){ console.warn('[skaluj.ai] FORM_ENDPOINT nie ustawiony — formularz nie wysyla. Ustaw URL Workera (contact-worker/README.md).'); setTimeout(function(){ card.classList.add('sent'); }, 500); return; }
@@ -2801,12 +2836,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       setTimeout(mfSent, 2500);
     });
 
-    var filesInput = document.getElementById('fFiles');
-    var filesLbl = document.getElementById('fFilesName');
-    filesInput && filesInput.addEventListener('change', function(){
-      if(this.files.length){ filesLbl.textContent=this.files.length>1?this.files.length+' plików':this.files[0].name; filesLbl.classList.add('has-file'); }
-      else { filesLbl.textContent=''; filesLbl.classList.remove('has-file'); }
-    });
   })();
 })();
 </script>
@@ -2981,5 +3010,17 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 </script>
 <script src="cookies.js" defer></script>
 <script src="chatbot.js" defer></script>
+<style>
+/* formularz: wyzsza, stala sylwetka okna (przyciski przy dolnej krawedzi) */
+@media(min-width:721px){
+  .mf-step.is-on{display:flex;flex-direction:column;min-height:500px}
+  .mf-step.is-on > .mf-nav{margin-top:auto;padding-top:20px}
+}
+</style>
+<style>
+/* pola: jedna linia akcentu zamiast dwoch (krawedz pola wystarczy) */
+.fgroup .bar{display:none}
+.fgroup input:focus,.fgroup textarea:focus{border-bottom-width:1.5px}
+</style>
 </body>
 </html>
