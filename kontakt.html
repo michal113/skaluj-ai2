@@ -1001,5 +1001,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
   }).observe(card,{attributes:true,attributeFilter:['class']});
 })();
 </script>
+<style>
+/* formularz: wyzsza, stala sylwetka okna (przyciski przy dolnej krawedzi) */
+@media(min-width:721px){
+  .mf-step.is-on{display:flex;flex-direction:column;min-height:500px}
+  .mf-step.is-on > .mf-nav{margin-top:auto;padding-top:20px}
+}
+</style>
 </body>
 </html>
