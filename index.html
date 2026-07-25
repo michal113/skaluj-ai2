@@ -500,11 +500,12 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .integ-list .txt span{color:var(--muted);font-size:13.5px;line-height:1.55}
 @media(max-width:880px){
   .integ-grid{grid-template-columns:1fr;gap:36px}
-  .integ-visual{order:-1}
-  .integ-visual img{max-width:420px}
+  /* jedna kolumna: kasujemy przesuniecie z ukladu 2-kolumnowego i centrujemy diagram */
+  .integ-visual{order:-1;justify-content:center;margin-left:0}
+  .integ-visual img{max-width:min(420px,86vw);margin:0 auto}
 }
 @media(max-width:480px){
-  .integ-visual img{max-width:320px}
+  .integ-visual img{max-width:min(330px,84vw)}
 }
 
 /* ============================================================
@@ -1104,6 +1105,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 }
 @media (max-width:560px){
   .footer-grid{grid-template-columns:1fr;gap:34px}
+  /* odznaka case study zawija sie zamiast rozpychac strone na waskich ekranach */
+  .cs-badge-left{flex-shrink:1;flex-wrap:wrap;min-width:0}
+  .cs-badge{white-space:normal}
 }
 @media (max-width:900px){
   .nav-links{display:none}
