@@ -470,7 +470,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
               <label class="svc-tile qt-chatbot"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><span class="svc-iw"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="svc-txt">Chatbot AI</span></span></label>
               <label class="svc-tile qt-brand"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><span class="svc-iw"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></span><span class="svc-txt">Branding</span></span></label>
             </div>
-            <span class="ferr mf-ferr" id="errSvc"></span>
+            <span class="ferr mf-ferr" id="errSvc" role="alert"></span>
             <div class="mf-nav">
               <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             </div>
@@ -502,9 +502,9 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
               <h4>Dok&#261;d wys&#322;a&#263; wycen&#281; i demo?</h4>
               <p>Odezwiemy si&#281; w ci&#261;gu 24 godzin roboczych.</p>
             </div>
-            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
-            <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
-            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
+            <div class="fgroup"><input type="text" id="fName" aria-describedby="errName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName" role="alert"></span></div>
+            <div class="fgroup"><input type="email" id="fEmail" aria-describedby="errEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail" role="alert"></span></div>
+            <div class="fgroup"><input type="text" id="fCompany" aria-describedby="errCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany" role="alert"></span></div>
             <div class="fgroup"><input type="tel" id="fPhone" placeholder=" " autocomplete="tel"><label for="fPhone">Telefon (opcjonalnie)</label><span class="bar"></span></div>
             <div class="mf-nav mf-nav--split">
               <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
@@ -531,7 +531,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
             </div>
             <p class="slot-note" id="slotNote"></p>
             <label class="mf-consent"><input type="checkbox" id="fConsent"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych przez skaluj.ai w celu obsługi tego zapytania, zgodnie z <a href="polityka-prywatnosci" target="_blank" rel="noopener">Polityką prywatności</a>.</span></label>
-            <span class="ferr ferr-consent" id="errConsent"></span>
+            <span class="ferr ferr-consent" id="errConsent" role="alert"></span>
             <div class="mf-nav mf-nav--split">
               <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
               <button type="submit" class="btn btn-primary" id="mfSubmit">Wyślij zgłoszenie <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -669,12 +669,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       var fName=document.getElementById("fName"), fEmail=document.getElementById("fEmail"), fCompany=document.getElementById("fCompany");
       var errName=document.getElementById("errName"), errEmail=document.getElementById("errEmail"), errCompany=document.getElementById("errCompany");
       var ok=true;
-      if(!fName.value.trim()){ errName.textContent="Wpisz imi\u0119"; fName.style.borderColor="#c02c2c"; ok=false; }
-      else { errName.textContent=""; fName.style.borderColor=""; }
-      if(!fEmail.value.trim()||!/^\S+@\S+\.\S+$/.test(fEmail.value)){ errEmail.textContent="Podaj prawid\u0142owy e-mail"; fEmail.style.borderColor="#c02c2c"; ok=false; }
-      else { errEmail.textContent=""; fEmail.style.borderColor=""; }
-      if(!fCompany.value.trim()){ errCompany.textContent="Wpisz nazw\u0119 firmy"; fCompany.style.borderColor="#c02c2c"; ok=false; }
-      else { errCompany.textContent=""; fCompany.style.borderColor=""; }
+      if(!fName.value.trim()){ errName.textContent="Wpisz imi\u0119"; fName.style.borderColor="#c02c2c"; fName.setAttribute("aria-invalid","true"); ok=false; }
+      else { errName.textContent=""; fName.style.borderColor=""; fName.setAttribute("aria-invalid","false"); }
+      if(!fEmail.value.trim()||!/^\S+@\S+\.\S+$/.test(fEmail.value)){ errEmail.textContent="Podaj prawid\u0142owy e-mail"; fEmail.style.borderColor="#c02c2c"; fEmail.setAttribute("aria-invalid","true"); ok=false; }
+      else { errEmail.textContent=""; fEmail.style.borderColor=""; fEmail.setAttribute("aria-invalid","false"); }
+      if(!fCompany.value.trim()){ errCompany.textContent="Wpisz nazw\u0119 firmy"; fCompany.style.borderColor="#c02c2c"; fCompany.setAttribute("aria-invalid","true"); ok=false; }
+      else { errCompany.textContent=""; fCompany.style.borderColor=""; fCompany.setAttribute("aria-invalid","false"); }
       return ok;
     }
 

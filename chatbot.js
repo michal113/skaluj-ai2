@@ -40,10 +40,10 @@
   .cb-panel{position:fixed;right:24px;bottom:94px;z-index:99999;width:312px;max-width:calc(100vw - 32px);height:472px;max-height:calc(100dvh - 128px);
     background:#fff;border:1px solid rgba(15,30,60,.09);border-radius:20px;box-shadow:0 30px 90px rgba(15,30,60,.20),0 8px 24px rgba(15,30,60,.08);
     display:flex;flex-direction:column;overflow:hidden;font-family:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#0b0d10;position:fixed;
-    opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;transform-origin:bottom right;
-    transition:opacity .32s cubic-bezier(.22,1,.36,1),transform .32s cubic-bezier(.22,1,.36,1)}
+    opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;visibility:hidden;transform-origin:bottom right;
+    transition:opacity .32s cubic-bezier(.22,1,.36,1),transform .32s cubic-bezier(.22,1,.36,1),visibility .32s}
   .cb-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;z-index:9;background:linear-gradient(90deg,#66b0ff,#2158c8)}
-  .cb-panel.open{opacity:1;transform:none;pointer-events:auto}
+  .cb-panel.open{opacity:1;transform:none;pointer-events:auto;visibility:visible}
   /* naglowek — czysty brand: kafelek z sygnetem + nazwa + status */
   .cb-head{display:flex;align-items:center;gap:11px;padding:13px 15px;border-bottom:1px solid rgba(15,30,60,.07);background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
   .cb-hava{flex:none;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#3d7ef0,#2158c8);display:grid;place-items:center;box-shadow:0 4px 12px rgba(33,88,200,.28)}
@@ -145,7 +145,7 @@
   const ppPath = (location.pathname.indexOf("/oferta/") > -1 || location.pathname.indexOf("/blog/") > -1) ? "../polityka-prywatnosci" : "polityka-prywatnosci";
   const wrap = document.createElement("div");
   wrap.innerHTML = `
-    <button class="cb-launcher" id="cbLauncher" aria-label="Otwórz czat">
+    <button class="cb-launcher" id="cbLauncher" aria-label="Otwórz czat" aria-expanded="false" aria-controls="cbPanel">
       <span class="pulse"></span>
       <svg class="ic ic-chat" viewBox="-8 0 152 177" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M94.3 0L130.4 0Q143.4 0 133.9 8.9L55.5 81.9Q48.9 88 39.9 88L5.4 88Q-7.6 88 1.8 79L78.8 6.2Q85.3 0 94.3 0Z"/><path d="M94.3 89L130.4 89Q143.4 89 133.9 97.9L55.5 170.9Q48.9 177 39.9 177L5.4 177Q-7.6 177 1.8 168L78.8 95.2Q85.3 89 94.3 89Z"/></svg>
       <svg class="ic ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -157,10 +157,10 @@
         <div class="cb-id"><b>Asystent AI skaluj.ai</b><span class="cb-live">Online</span></div>
         <button class="cb-hbtn" id="cbClose" aria-label="Zamknij"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
-      <div class="cb-body" id="cbBody"></div>
+      <div class="cb-body" id="cbBody" role="log" aria-live="polite" aria-atomic="false" aria-label="Historia rozmowy"></div>
       <div class="cb-chips" id="cbChips"></div>
       <div class="cb-foot">
-        <div class="cb-inrow"><textarea class="cb-in" id="cbIn" rows="1" placeholder="Napisz wiadomość…"></textarea>
+        <div class="cb-inrow"><textarea class="cb-in" id="cbIn" rows="1" aria-label="Napisz wiadomość" placeholder="Napisz wiadomość…"></textarea>
           <button class="cb-send" id="cbSend" aria-label="Wyślij"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button>
         </div>
         <p class="cb-disc">Odpowiada asystent AI. Nie podawaj danych wrażliwych. <a href="${ppPath}" target="_blank" rel="noopener">Prywatność</a></p>
@@ -175,9 +175,13 @@
 
   function toggle() {
     opened = !opened; launcher.classList.toggle("open", opened); panel.classList.toggle("open", opened);
+    launcher.setAttribute("aria-expanded", opened ? "true" : "false");
+    launcher.setAttribute("aria-label", opened ? "Zamknij czat" : "Otwórz czat");
     if (opened) { badge.style.opacity = "0"; if (!greeted) { greeted = true; greet(); } setTimeout(() => input.focus(), 300); }
+    else { launcher.focus(); }
   }
   launcher.onclick = toggle; $("#cbClose").onclick = toggle;
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && opened) toggle(); });
 
   function addMsg(text, who) {
     const d = document.createElement("div"); d.className = "cb-msg " + who;
