@@ -477,7 +477,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
             <div class="fgroup">
               <textarea id="fMsg" placeholder=" " rows="4"></textarea>
               <label for="fMsg">Opisz swój projekt — cel, zakres, terminy…</label>
-              <span class="bar"></span>
+              
             </div>
             <span class="fgroup-hint">Napisz, czego potrzebujesz i co chcesz osi&#261;gn&#261;&#263; &mdash; cel, styl, inspiracje, przyk&#322;ady. Im wi&#281;cej szczeg&oacute;&#322;&oacute;w, tym lepiej dopasujemy ofert&#281;.</span>
             <div class="mf-nav mf-nav--split">
@@ -492,10 +492,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
               <h4>Dok&#261;d wys&#322;a&#263; wycen&#281; i demo?</h4>
               <p>Odezwiemy si&#281; w ci&#261;gu 24 godzin roboczych.</p>
             </div>
-            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName"></span></div>
-            <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail"></span></div>
-            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany"></span></div>
-            <div class="fgroup"><input type="tel" id="fPhone" placeholder=" " autocomplete="tel"><label for="fPhone">Telefon (opcjonalnie)</label><span class="bar"></span></div>
+            <div class="fgroup"><input type="text" id="fName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="ferr" id="errName"></span></div>
+            <div class="fgroup"><input type="email" id="fEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="ferr" id="errEmail"></span></div>
+            <div class="fgroup"><input type="text" id="fCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="ferr" id="errCompany"></span></div>
+            <div class="fgroup"><input type="tel" id="fPhone" placeholder=" " autocomplete="tel"><label for="fPhone">Telefon (opcjonalnie)</label></div>
             <div class="mf-nav mf-nav--split">
               <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
               <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -1021,6 +1021,16 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 .mf-back{width:48px;height:48px;border-radius:12px;flex:none}
 .date-cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
 .slot{border-radius:11px;padding:10px 17px;font-size:12.5px}
+
+/* pola: jedna linia zamiast dwoch + brak pudelek autouzupelniania */
+.fgroup input:-webkit-autofill,.fgroup input:-webkit-autofill:hover,
+.fgroup input:-webkit-autofill:focus,.fgroup textarea:-webkit-autofill{
+  -webkit-box-shadow:0 0 0 1000px #fff inset;box-shadow:0 0 0 1000px #fff inset;
+  -webkit-text-fill-color:var(--text);caret-color:var(--text);
+  transition:background-color 9999s ease-in-out 0s}
+.fgroup input:-webkit-autofill + label{top:6px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.fgroup input:focus,.fgroup textarea:focus{border-bottom-width:1.5px}
+
 </style>
 </body>
 </html>
