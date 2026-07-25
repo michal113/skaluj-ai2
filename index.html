@@ -3047,5 +3047,67 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .fgroup input:focus,.fgroup textarea:focus{border-bottom-width:1.5px}
 
 </style>
+<style>
+/* ===== formularz v3 - rejestr panelu wynikow ===== */
+/* kroki jako segmentowany przelacznik (jak .pa-tabs) */
+.mf-stepper{position:relative;display:inline-flex;align-items:center;gap:2px;padding:4px;
+  background:var(--bg-elev-2);border:1px solid var(--line-2);border-radius:9999px;
+  margin-bottom:22px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.mf-stepper::-webkit-scrollbar{display:none}
+.mf-sstep{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border:0;border-radius:9999px;
+  background:none;white-space:nowrap;transition:background .3s ease,box-shadow .3s ease}
+.mf-sstep.mf-active{background:#fff;box-shadow:0 2px 10px rgba(15,30,60,.14),0 0 0 1px rgba(0,0,0,.045)}
+.mf-num{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--faint);font-style:normal;transition:color .3s}
+.mf-sstep.mf-active .mf-num{color:var(--accent)}
+.mf-lbl{font-family:var(--sans);font-size:12.5px;font-weight:500;letter-spacing:-.01em;text-transform:none;
+  color:var(--muted);white-space:nowrap;transition:color .3s}
+.mf-sstep.mf-active .mf-lbl{color:var(--text)}
+.mf-line{display:none}
+@media(max-width:600px){.mf-sstep{padding:8px 12px}.mf-sstep:not(.mf-active) .mf-lbl{display:none}}
+
+/* naglowek kroku */
+.mf-step-head{margin-bottom:18px}
+.mf-step-head h4{font-size:clamp(1.2rem,2.5vw,1.55rem);font-weight:560;letter-spacing:-.03em;line-height:1.15;margin:0 0 7px;color:var(--text)}
+.mf-step-head p{font-size:12.5px;color:var(--faint);margin:0;line-height:1.5;max-width:52ch}
+
+/* kafelki uslug jak karty KPI */
+.svc-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.svc-tile-body{display:flex;flex-direction:column;align-items:flex-start;gap:0;
+  background:var(--bg-elev);border:1px solid var(--line-2);border-radius:14px;
+  padding:14px 34px 14px 16px;font-size:12.8px;font-weight:500;color:var(--text);line-height:1.3;
+  transition:border-color .22s,background .22s,box-shadow .22s}
+.svc-tile:hover .svc-tile-body{border-color:rgba(47,111,224,.35);box-shadow:0 4px 14px rgba(15,30,60,.06)}
+.svc-tile input:checked + .svc-tile-body{border-color:var(--accent);background:var(--accent-soft);box-shadow:none}
+.svc-ico{width:28px;height:28px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
+  padding:6px;margin-bottom:10px;flex:none;stroke-width:2;transition:background .22s,color .22s}
+.svc-tile input:checked + .svc-tile-body .svc-ico{background:var(--accent);color:#fff}
+.svc-tile-body::after{top:14px;right:14px;transform:translateY(0) scale(.4)}
+.svc-tile input:checked + .svc-tile-body::after{transform:translateY(0) scale(1)}
+@media(max-width:560px){.svc-tiles{grid-template-columns:1fr}}
+
+/* pola jako wypelnione karty */
+.fgroup{margin-bottom:9px}
+.fgroup input,.fgroup textarea{background:var(--bg-elev);border:1px solid var(--line-2);border-bottom:1px solid var(--line-2);
+  border-radius:12px;padding:25px 14px 9px;font-size:14.5px;transition:border-color .22s,box-shadow .22s,background .22s}
+.fgroup textarea{padding-top:26px;min-height:104px}
+.fgroup label{left:15px;top:20px;font-size:14.5px}
+.fgroup input:focus,.fgroup textarea:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft);border-bottom-width:1px}
+.fgroup input:focus + label,.fgroup input:not(:placeholder-shown) + label,
+.fgroup textarea:focus + label,.fgroup textarea:not(:placeholder-shown) + label{top:8px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.fgroup input:-webkit-autofill,.fgroup input:-webkit-autofill:hover,.fgroup input:-webkit-autofill:focus{
+  -webkit-box-shadow:0 0 0 1000px var(--bg-elev) inset;box-shadow:0 0 0 1000px var(--bg-elev) inset}
+.fgroup input:-webkit-autofill + label{top:8px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+
+/* kalendarz i godziny jak karty panelu */
+.cal{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:14px;padding:15px 16px 13px}
+.date-cap{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+.cal-d{border-radius:8px}
+.slot{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:10px;padding:10px 16px;font-size:12.5px;font-weight:500}
+.slot.is-sel{background:var(--accent);border-color:var(--accent);color:#fff}
+.slot-note{font-size:11px;color:var(--faint)}
+
+.mf-nav{margin-top:22px;padding-top:20px;border-top:1px solid var(--line-2)}
+.mf-back{width:48px;height:48px;border-radius:12px;flex:none;border-color:var(--line-2);background:var(--bg-elev)}
+</style>
 </body>
 </html>
