@@ -408,144 +408,138 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 </div>
 
 <main id="tresc">
-<section class="kontakt-body quest">
-  <div class="q-bg" aria-hidden="true"><i class="q-blob q-blob--1"></i><i class="q-blob q-blob--2"></i><i class="q-blob q-blob--3"></i></div>
-  <div class="wrap q-wrap">
+<section class="section ctc" id="kontakt-section">
+  <div class="ctc-bg" aria-hidden="true">
+    <span class="ctc-glow ctc-glow--a"></span>
+    <span class="ctc-glow ctc-glow--b"></span>
+  </div>
 
-    <header class="q-head">
-      <span class="q-eyebrow">Bezpłatna konsultacja <b>&middot; ok. 2 minuty</b></span>
-      <h1>Bezpłatny audyt, wycena i <span class="grad">demo</span></h1>
-      <p class="q-sub">Kilka pytań o Twój projekt — w 24 h roboczych odzywamy się z pełnym, bezpłatnym audytem (co realnie da się u Ciebie zautomatyzować) i wstępną wyceną. Działające demo konkretnej strony lub automatyzacji przygotowujemy z Twojego briefu — zanim cokolwiek zapłacisz. Bez zobowiązań.</p>
-    </header>
-
-    <div class="q-xp">
-      <div class="q-xp-top" aria-hidden="true">
-        <span class="q-lvl" id="qLvl">Krok 1 z 4</span>
-        <span class="q-hint">≈ 2 minuty</span>
-      </div>
-      <div class="q-xp-bar" aria-hidden="true"><i id="qXpFill"></i></div>
+  <div class="wrap">
+    <div class="ctc-head in" data-reveal>
+      <span class="eyebrow">Kontakt</span>
+      <h1 class="ctc-title">Zacznijmy od <em>rozmowy</em>.</h1>
+      <p class="ctc-sub">Powiedz, gdzie Twoja firma traci czas i pieniądze. Sprawdzimy, czy AI to rozwiąże — i ile na tym zarobisz. Audyt i działające demo dostajesz, zanim cokolwiek zapłacisz.</p>
     </div>
 
-    <div class="dash" id="formCard">
-        <div class="dash-body">
-        <form id="contactForm" novalidate>
-          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:0;height:0;opacity:0">
-
-          <div class="mf-stepper" aria-hidden="true">
-            <span class="mf-sstep mf-active"><span class="mf-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/></svg></span><span class="mf-lbl">Zakres</span></span>
-            <i class="mf-line"></i>
-            <span class="mf-sstep"><span class="mf-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span><span class="mf-lbl">Projekt</span></span>
-            <i class="mf-line"></i>
-            <span class="mf-sstep"><span class="mf-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="mf-lbl">Kontakt</span></span>
-            <i class="mf-line"></i>
-            <span class="mf-sstep"><span class="mf-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg></span><span class="mf-lbl">Termin</span></span>
-          </div>
-
-          <!-- KROK 1: zakres -->
-          <div class="mf-step is-on" data-step="1">
-            <div class="mf-step-head">
-              <span class="q-tag">Zakres współpracy</span>
-              <h4>Czego potrzebujesz?</h4>
-              <p>Zaznacz wszystkie obszary, kt&oacute;re Ci&#281; interesuj&#261; &mdash; mo&#380;esz wybra&#263; kilka.</p>
-            </div>
-            <div class="svc-tiles">
-              <label class="svc-tile qt-strona"><input type="checkbox" name="svc" value="strona" id="svcStrona"><span class="svc-tile-body"><span class="svc-iw"><svg class="svc-ico" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span class="svc-txt">Strona + SEO i GEO</span></span></label>
-              <label class="svc-tile qt-geo"><input type="checkbox" name="svc" value="geo" id="svcGeo"><span class="svc-tile-body"><span class="svc-iw"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></span><span class="svc-txt">GEO i SEO (widoczno&#347;&#263; w AI)</span></span></label>
-              <label class="svc-tile qt-email"><input type="checkbox" name="svc" value="email"><span class="svc-tile-body"><span class="svc-iw"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span class="svc-txt">Automatyzacje</span></span></label>
-              <label class="svc-tile qt-chatbot"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><span class="svc-iw"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="svc-txt">Chatbot AI</span></span></label>
-              <label class="svc-tile qt-brand"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><span class="svc-iw"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></span><span class="svc-txt">Branding</span></span></label>
-            </div>
-            <span class="ferr mf-ferr" id="errSvc" role="alert"></span>
-            <div class="mf-nav">
-              <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            </div>
-          </div>
-
-          <!-- KROK 2: projekt -->
-          <div class="mf-step" data-step="2">
-            <div class="mf-step-head">
-              <span class="q-tag">Szczegóły projektu</span>
-              <h4>Opowiedz o projekcie</h4>
-              <p>Im wi&#281;cej szczeg&oacute;&#322;&oacute;w, tym trafniejsza wycena &mdash; oba pola s&#261; opcjonalne.</p>
-            </div>
-            <div class="fgroup">
-              <textarea id="fMsg" placeholder=" " rows="4"></textarea>
-              <label for="fMsg">Opisz swój projekt — cel, zakres, terminy…</label>
-              <span class="bar"></span>
-            </div>
-            <span class="fgroup-hint">Napisz, czego potrzebujesz i co chcesz osi&#261;gn&#261;&#263; &mdash; cel, styl, inspiracje, przyk&#322;ady. Im wi&#281;cej szczeg&oacute;&#322;&oacute;w, tym lepiej dopasujemy ofert&#281;.</span>
-            <div class="mf-nav mf-nav--split">
-              <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
-              <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            </div>
-          </div>
-
-          <!-- KROK 3: kontakt -->
-          <div class="mf-step" data-step="3">
-            <div class="mf-step-head">
-              <span class="q-tag">Dane kontaktowe</span>
-              <h4>Dok&#261;d wys&#322;a&#263; wycen&#281; i demo?</h4>
-              <p>Odezwiemy si&#281; w ci&#261;gu 24 godzin roboczych.</p>
-            </div>
-            <div class="fgroup"><input type="text" id="fName" aria-describedby="errName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName" role="alert"></span></div>
-            <div class="fgroup"><input type="email" id="fEmail" aria-describedby="errEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail" role="alert"></span></div>
-            <div class="fgroup"><input type="text" id="fCompany" aria-describedby="errCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany" role="alert"></span></div>
-            <div class="fgroup"><input type="tel" id="fPhone" placeholder=" " autocomplete="tel"><label for="fPhone">Telefon (opcjonalnie)</label><span class="bar"></span></div>
-            <div class="mf-nav mf-nav--split">
-              <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
-              <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            </div>
-          </div>
-
-          <!-- KROK 4: termin (opcjonalny) -->
-          <div class="mf-step" data-step="4">
-            <div class="mf-step-head">
-              <span class="q-tag">Termin rozmowy</span>
-              <h4>Wybierz dogodny termin</h4>
-              <p>Zaproponuj dzień i porę &mdash; potwierdzimy szczegóły. Nieobowiązkowe, możesz pominąć.</p>
-            </div>
-            <span class="date-cap">Preferowany dzie&#324;</span>
-            <div class="cal" id="calHost"></div>
-            <input type="hidden" id="fDate">
-            <div class="slots" id="slots" role="group" aria-label="Preferowana pora">
-              <button type="button" class="slot" data-time="9:00">9:00</button>
-              <button type="button" class="slot" data-time="11:00">11:00</button>
-              <button type="button" class="slot" data-time="13:00">13:00</button>
-              <button type="button" class="slot" data-time="15:00">15:00</button>
-              <button type="button" class="slot" data-time="17:00">17:00</button>
-            </div>
-            <p class="slot-note" id="slotNote"></p>
-            <label class="mf-consent"><input type="checkbox" id="fConsent"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych przez skaluj.ai w celu obsługi tego zapytania, zgodnie z <a href="polityka-prywatnosci" target="_blank" rel="noopener">Polityką prywatności</a>.</span></label>
-            <span class="ferr ferr-consent" id="errConsent" role="alert"></span>
-            <div class="mf-nav mf-nav--split">
-              <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
-              <button type="submit" class="btn btn-primary" id="mfSubmit">Odbierz bezpłatny audyt <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-            </div>
-            <p class="mf-note visible" id="mfNote">Odpowiadamy zwykle w 24 h roboczych. Zero spamu.</p>
-          </div>
-        </form>
-        <div class="form-success" aria-live="polite">
-          <span class="q-trophy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-          <h3>Dzi&#281;kujemy za zg&#322;oszenie</h3>
-          <p>Otrzymali&#347;my Twoje zapytanie. Odezwiemy si&#281; z wycen&#261; i demem w ci&#261;gu 24 godzin roboczych.</p>
-          <span class="q-done-badge">Zg&#322;oszenie przyj&#281;te</span>
-        </div>
-
-
-        </div><!-- /dash-body -->
-      </div><!-- /dash -->
-
-      <div class="q-rewards" aria-label="Co otrzymujesz">
-        <span class="q-rew-label">W ramach bezpłatnej konsultacji</span>
-        <div class="q-rew-row">
-          <span class="q-rew q-rew--gift"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 8h20v4H2z"/><path d="M12 8v13"/><path d="M12 8s-1.5-5-4.5-5C5 3 4.5 6 6.5 7c1.6.8 5.5 1 5.5 1z"/><path d="M12 8s1.5-5 4.5-5C19 3 19.5 6 17.5 7c-1.6.8-5.5 1-5.5 1z"/></svg></i>Pe&#322;ny audyt za darmo</span>
-          <span class="q-rew q-rew--demo"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="M10.5 7.5l3.5 2.5-3.5 2.5z"/></svg></i>Demo z briefu</span>
-          <span class="q-rew q-rew--time"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></i>Odpowied&#378; &lt; 24 h</span>
-        </div>
+    <div class="ctc-card in" data-reveal data-delay="120" id="formCard">
+      <div class="ctc-card-head">
+        <span class="ctc-card-tag">Bezpłatna wycena</span>
+        <span class="ctc-card-time">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          ok. 2 minuty
+        </span>
       </div>
 
-      <p class="q-trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Poufno&#347;&#263; gwarantowana &mdash; na &#380;yczenie NDA &nbsp;&middot;&nbsp; <a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a> &nbsp;&middot;&nbsp; Rzesz&oacute;w, Polska</p>
+      <form id="contactForm" novalidate>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:0;height:0;opacity:0">
 
+        <div class="mf-stepper" aria-hidden="true">
+          <span class="mf-sstep mf-active"><span class="mf-dot">1</span><span class="mf-lbl">Zakres</span></span>
+          <i class="mf-line"></i>
+          <span class="mf-sstep"><span class="mf-dot">2</span><span class="mf-lbl">Projekt</span></span>
+          <i class="mf-line"></i>
+          <span class="mf-sstep"><span class="mf-dot">3</span><span class="mf-lbl">Kontakt</span></span>
+          <i class="mf-line"></i>
+          <span class="mf-sstep"><span class="mf-dot">4</span><span class="mf-lbl">Termin</span></span>
+        </div>
+
+        <!-- KROK 1: zakres -->
+        <div class="mf-step is-on" data-step="1">
+          <div class="mf-step-head">
+            <h4>Czego potrzebujesz?</h4>
+            <p>Zaznacz wszystko, co Cię interesuje — to kierunek rozmowy, nie zobowiązanie.</p>
+          </div>
+          <div class="svc-tiles">
+            <label class="svc-tile"><input type="checkbox" name="svc" value="strona" id="svcStrona"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Strona + SEO i GEO</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="geo" id="svcGeo"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>GEO i SEO (widoczność w AI)</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="email"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>Automatyzacje</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chatbot AI</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></svg>Grafiki i branding</span></label>
+          </div>
+          <span class="ferr mf-ferr" id="errSvc" role="alert"></span>
+          <div class="mf-nav">
+            <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <!-- KROK 2: projekt -->
+        <div class="mf-step" data-step="2">
+          <div class="mf-step-head">
+            <h4>Opowiedz o projekcie</h4>
+            <p>Im więcej szczegółów, tym trafniejsza wycena. Pole jest opcjonalne — możesz pominąć.</p>
+          </div>
+          <div class="fgroup"><textarea id="fMsg" placeholder=" " rows="4"></textarea><label for="fMsg">Opisz swój projekt — cel, zakres, terminy…</label><span class="bar"></span></div>
+          <div class="mf-nav mf-nav--split">
+            <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+            <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <!-- KROK 3: kontakt -->
+        <div class="mf-step" data-step="3">
+          <div class="mf-step-head">
+            <h4>Dokąd wysłać wycenę i demo?</h4>
+            <p>Odzywamy się w ciągu 24 godzin roboczych. Bez zapisów na newsletter.</p>
+          </div>
+          <div class="fgroup"><input type="text" id="fName" aria-describedby="errName" placeholder=" " autocomplete="given-name"><label for="fName">Imi&#281; i nazwisko</label><span class="bar"></span><span class="ferr" id="errName" role="alert"></span></div>
+          <div class="fgroup"><input type="email" id="fEmail" aria-describedby="errEmail" placeholder=" " autocomplete="email"><label for="fEmail">E-mail</label><span class="bar"></span><span class="ferr" id="errEmail" role="alert"></span></div>
+          <div class="fgroup"><input type="text" id="fCompany" aria-describedby="errCompany" placeholder=" " autocomplete="organization"><label for="fCompany">Firma</label><span class="bar"></span><span class="ferr" id="errCompany" role="alert"></span></div>
+          <div class="fgroup"><input type="tel" id="fPhone" placeholder=" " autocomplete="tel"><label for="fPhone">Telefon (opcjonalnie)</label><span class="bar"></span></div>
+          <div class="mf-nav mf-nav--split">
+            <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+            <button type="button" class="btn btn-primary mf-next">Dalej <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+
+        <!-- KROK 4: termin (opcjonalny) -->
+        <div class="mf-step" data-step="4">
+          <div class="mf-step-head">
+            <h4>Wybierz dogodny termin</h4>
+            <p>Zaproponuj dzień i porę &mdash; potwierdzimy szczegóły. Nieobowiązkowe, możesz wysłać od razu.</p>
+          </div>
+          <span class="date-cap">Preferowany dzie&#324;</span>
+          <div class="cal" id="calHost"></div>
+          <input type="hidden" id="fDate">
+          <div class="slots" id="slots" role="group" aria-label="Preferowana pora">
+            <button type="button" class="slot" data-time="9:00">9:00</button>
+            <button type="button" class="slot" data-time="11:00">11:00</button>
+            <button type="button" class="slot" data-time="13:00">13:00</button>
+            <button type="button" class="slot" data-time="15:00">15:00</button>
+            <button type="button" class="slot" data-time="17:00">17:00</button>
+          </div>
+          <p class="slot-note" id="slotNote"></p>
+          <label class="mf-consent"><input type="checkbox" id="fConsent"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych przez skaluj.ai w celu obsługi tego zapytania, zgodnie z <a href="polityka-prywatnosci" target="_blank" rel="noopener">Polityką prywatności</a>.</span></label>
+          <span class="ferr ferr-consent" id="errConsent" role="alert"></span>
+          <div class="mf-nav mf-nav--split">
+            <button type="button" class="mf-back" aria-label="Wstecz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+            <button type="submit" class="btn btn-primary" id="mfSubmit">Odbierz bezpłatny audyt <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+          <p class="mf-note visible" id="mfNote">Odpowiadamy zwykle w 24 h roboczych &middot; zero spamu</p>
+        </div>
+      </form>
+
+      <div class="form-success" aria-live="polite">
+        <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+        <h3>Zgłoszenie przyjęte.</h3>
+        <p>Odezwiemy się w ciągu 24 godzin roboczych — z audytem i propozycją demo.</p>
+      </div>
+    </div>
+
+    <ul class="ctc-trust in" data-reveal data-delay="180">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Audyt i demo za darmo</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Bez zobowiązań</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Odpowiedź &lt; 24 h</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>NDA na życzenie</li>
+    </ul>
+
+    <div class="ctc-alt in" data-reveal data-delay="240">
+      <span class="ctc-alt-lbl">Wolisz napisać wprost?</span>
+      <a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a>
+      <span class="ctc-alt-dot">·</span>
+      <a href="tel:+48531003789">531 003 789</a>
+      <span class="ctc-alt-dot">·</span>
+      <span>Rzeszów</span>
+    </div>
   </div>
 </section>
 </main>
@@ -644,25 +638,28 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
   initDrop(document.getElementById("blogItem"), document.getElementById("blogBtn"));
   initDrop(document.getElementById("ofertaItem"), document.getElementById("ofertaBtn"));
 
-  /* multi-step form */
+  /* form */
   (function(){
-    var card = document.getElementById("formCard");
-    var form = document.getElementById("contactForm");
-    var submitBtn = document.getElementById("mfSubmit");
+    var card = document.getElementById('formCard');
+    var form = document.getElementById('contactForm');
+    var submitBtn = document.getElementById('mfSubmit');
 
-    function validateForm(){
-      var fName=document.getElementById("fName"), fEmail=document.getElementById("fEmail"), fCompany=document.getElementById("fCompany");
-      var errName=document.getElementById("errName"), errEmail=document.getElementById("errEmail"), errCompany=document.getElementById("errCompany");
-      var ok=true;
-      if(!fName.value.trim()){ errName.textContent="Wpisz imi\u0119"; fName.style.borderColor="#c02c2c"; fName.setAttribute("aria-invalid","true"); ok=false; }
-      else { errName.textContent=""; fName.style.borderColor=""; fName.setAttribute("aria-invalid","false"); }
-      if(!fEmail.value.trim()||!/^\S+@\S+\.\S+$/.test(fEmail.value)){ errEmail.textContent="Podaj prawid\u0142owy e-mail"; fEmail.style.borderColor="#c02c2c"; fEmail.setAttribute("aria-invalid","true"); ok=false; }
-      else { errEmail.textContent=""; fEmail.style.borderColor=""; fEmail.setAttribute("aria-invalid","false"); }
-      if(!fCompany.value.trim()){ errCompany.textContent="Wpisz nazw\u0119 firmy"; fCompany.style.borderColor="#c02c2c"; fCompany.setAttribute("aria-invalid","true"); ok=false; }
-      else { errCompany.textContent=""; fCompany.style.borderColor=""; fCompany.setAttribute("aria-invalid","false"); }
+    function validateForm() {
+      var fName = document.getElementById('fName');
+      var fEmail = document.getElementById('fEmail');
+      var fCompany = document.getElementById('fCompany');
+      var errName = document.getElementById('errName');
+      var errEmail = document.getElementById('errEmail');
+      var errCompany = document.getElementById('errCompany');
+      var ok = true;
+      if (!fName.value.trim()) { errName.textContent = 'Wpisz imię'; fName.style.borderColor = '#c02c2c'; ok = false; }
+      else { errName.textContent = ''; fName.style.borderColor = ''; }
+      if (!fEmail.value.trim() || !/^\S+@\S+\.\S+$/.test(fEmail.value)) { errEmail.textContent = 'Podaj prawidłowy e-mail'; fEmail.style.borderColor = '#c02c2c'; ok = false; }
+      else { errEmail.textContent = ''; fEmail.style.borderColor = ''; }
+      if (!fCompany.value.trim()) { errCompany.textContent = 'Wpisz nazwę firmy'; fCompany.style.borderColor = '#c02c2c'; ok = false; }
+      else { errCompany.textContent = ''; fCompany.style.borderColor = ''; }
       return ok;
     }
-
 
     /* nawigacja etapowa: stepper 1 zakres -> 2 projekt -> 3 kontakt */
     var steps = Array.prototype.slice.call(form.querySelectorAll('.mf-step'));
@@ -697,7 +694,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
     form.addEventListener('change', function(e){
       if(e.target.name === 'svc') document.getElementById('errSvc').textContent = '';
     });
-
     /* kalendarz w stylu skaluj */
     (function(){
       var host=document.getElementById('calHost'); if(!host) return;
@@ -769,30 +765,31 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 
     /* URL Cloudflare Workera (patrz contact-worker/README.md). Pusty = formularz jeszcze NIE wysyla. */
     var FORM_ENDPOINT = "https://hook.eu1.make.com/jodayajcv3hc0mxfsz28x4l1uvtis5mw";
-    form.addEventListener("submit",function(e){
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      if(!validateForm()) return;
-      var fConsent=document.getElementById("fConsent"), errConsent=document.getElementById("errConsent");
-      if(fConsent && !fConsent.checked){ if(errConsent){ errConsent.textContent="Zaznacz zgodę na przetwarzanie danych, aby wysłać zgłoszenie."; errConsent.style.color="#c02c2c"; } fConsent.focus(); return; }
-      if(errConsent) errConsent.textContent="";
-      var note=document.getElementById("mfNote");
-      function fail(msg){ submitBtn.disabled=false; submitBtn.style.opacity=""; if(note){ note.textContent=msg; note.style.color="#c02c2c"; } }
-      submitBtn.disabled=true; submitBtn.style.opacity=".6";
-      if(note){ note.style.color=""; note.textContent="Wysyłam…"; }
+      if (!validateForm()) return;
+      var fConsent=document.getElementById('fConsent'), errConsent=document.getElementById('errConsent');
+      if(fConsent && !fConsent.checked){ if(errConsent){ errConsent.textContent='Zaznacz zgodę na przetwarzanie danych, aby wysłać zgłoszenie.'; errConsent.style.color='#c02c2c'; } fConsent.focus(); return; }
+      if(errConsent) errConsent.textContent='';
+      var note=document.getElementById('mfNote');
+      function fail(msg){ submitBtn.disabled=false; submitBtn.style.opacity=''; if(note){ note.textContent=msg; note.style.color='#c02c2c'; } }
+      submitBtn.disabled = true; submitBtn.style.opacity = '.6';
+      if(note){ note.style.color=''; note.textContent='Wysyłam…'; }
       var data=new FormData();
-      data.append("name", document.getElementById("fName").value.trim());
-      data.append("email", document.getElementById("fEmail").value.trim());
-      data.append("company", document.getElementById("fCompany").value.trim());
-      var phEl=document.getElementById("fPhone"); if(phEl) data.append("phone", phEl.value.trim());
-      var msgEl=document.getElementById("fMsg"); if(msgEl) data.append("message", msgEl.value.trim());
-      var svcList=[]; Array.prototype.forEach.call(form.querySelectorAll('[name="svc"]:checked'), function(c){ svcList.push(c.value); }); data.append("svc", svcList.join(", ")); var dEl=document.getElementById('fDate'); var tEl=form.querySelector('.slot.is-sel'); var termin=((dEl&&dEl.value)?dEl.value:'')+((tEl)?' '+tEl.getAttribute('data-time'):''); data.append('termin', termin.trim());
-      var hp=form.querySelector('[name="_gotcha"]'); if(hp) data.append("_gotcha", hp.value);
-      data.append("consent", "Zgoda RODO na przetwarzanie danych: tak");
-      if(!FORM_ENDPOINT){ console.warn("[skaluj.ai] FORM_ENDPOINT nie ustawiony — formularz nie wysyla. Ustaw URL Workera (contact-worker/README.md)."); setTimeout(function(){ card.classList.add("sent"); },500); return; }
-      var mfDone=false; function mfSent(){ if(mfDone) return; mfDone=true; card.classList.add("sent"); }
-      fetch(FORM_ENDPOINT,{method:"POST",body:data,mode:"no-cors"}).then(mfSent).catch(mfSent);
+      data.append('name', document.getElementById('fName').value.trim());
+      data.append('email', document.getElementById('fEmail').value.trim());
+      data.append('company', document.getElementById('fCompany').value.trim());
+      var phEl=document.getElementById('fPhone'); if(phEl) data.append('phone', phEl.value.trim());
+      var msgEl=document.getElementById('fMsg'); if(msgEl) data.append('message', msgEl.value.trim());
+      var svcList=[]; Array.prototype.forEach.call(form.querySelectorAll('[name="svc"]:checked'), function(c){ svcList.push(c.value); }); data.append('svc', svcList.join(', ')); var dEl=document.getElementById('fDate'); var tEl=form.querySelector('.slot.is-sel'); var termin=((dEl&&dEl.value)?dEl.value:'')+((tEl)?' '+tEl.getAttribute('data-time'):''); data.append('termin', termin.trim());
+      var hp=form.querySelector('[name="_gotcha"]'); if(hp) data.append('_gotcha', hp.value);
+      data.append('consent', 'Zgoda RODO na przetwarzanie danych: tak');
+      if(!FORM_ENDPOINT){ console.warn('[skaluj.ai] FORM_ENDPOINT nie ustawiony — formularz nie wysyla. Ustaw URL Workera (contact-worker/README.md).'); setTimeout(function(){ card.classList.add('sent'); }, 500); return; }
+      var mfDone=false; function mfSent(){ if(mfDone) return; mfDone=true; card.classList.add('sent'); }
+      fetch(FORM_ENDPOINT,{method:'POST',body:data,mode:'no-cors'}).then(mfSent).catch(mfSent);
       setTimeout(mfSent, 2500);
     });
+
   })();
 })();
 </script>
@@ -836,159 +833,208 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 @media(max-width:1020px){.footer-grid{grid-template-columns:1fr 1fr;gap:34px 40px}.footer-brand{grid-column:1/-1;margin-bottom:8px}.footer-brand p{max-width:52ch}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr;gap:34px}}
 </style>
-<style>
+<style id="contact-v2">
 /* ============================================================
-   KONTAKT — premium, single-focus (nakladka; silnik formularza bez zmian)
+   KONTAKT v2 — ciemna scena + wyeksponowany kokpit formularza
+   Cel: jeden punkt skupienia. Formularz przestaje wygladac
+   jak makieta okna (klasa .dash zostaje tylko dla demo w hero),
+   dane kontaktowe schodza pod spod i nie konkuruja z CTA.
    ============================================================ */
-.quest{padding:120px 0 88px;position:relative;overflow:hidden;min-height:100vh}
-.quest::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(15,30,60,.05) 1px,transparent 1px);background-size:26px 26px;
-  -webkit-mask-image:radial-gradient(ellipse 66% 56% at 50% 34%,#000 32%,transparent 74%);mask-image:radial-gradient(ellipse 66% 56% at 50% 34%,#000 32%,transparent 74%);pointer-events:none}
-.q-bg{position:absolute;inset:0;pointer-events:none}
-.q-blob{position:absolute;border-radius:50%;filter:blur(80px)}
-.q-blob--1{width:520px;height:520px;left:-160px;top:40px;background:radial-gradient(circle,rgba(47,111,224,.10),transparent 66%);animation:qDrift 26s ease-in-out infinite alternate}
-.q-blob--2{width:440px;height:440px;right:-140px;top:320px;background:radial-gradient(circle,rgba(47,111,224,.06),transparent 66%);animation:qDrift 30s ease-in-out infinite alternate-reverse}
-.q-blob--3{display:none}
-@keyframes qDrift{from{transform:translate(0,0)}to{transform:translate(30px,-24px)}}
-.q-wrap{max-width:640px;margin:0 auto;position:relative;z-index:1}
+.ctc{
+  background:#08090c;color:#fff;
+  border-top:0;
+  padding:clamp(78px,9vw,128px) 0;
+  position:relative;isolation:isolate;overflow:hidden;
+}
+.ctc-bg{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.ctc-glow{position:absolute;border-radius:50%;filter:blur(100px);will-change:transform}
+.ctc-glow--a{
+  width:min(760px,95vw);height:520px;left:50%;top:-190px;margin-left:calc(min(760px,95vw) / -2);
+  background:radial-gradient(circle,rgba(47,111,224,.50),transparent 70%);
+  animation:ctcDriftA 26s ease-in-out infinite alternate;
+}
+.ctc-glow--b{
+  width:min(600px,85vw);height:440px;right:-140px;bottom:-180px;
+  background:radial-gradient(circle,rgba(112,88,240,.34),transparent 70%);
+  animation:ctcDriftB 32s ease-in-out infinite alternate;
+}
+@keyframes ctcDriftA{from{transform:translate3d(0,0,0)}to{transform:translate3d(38px,26px,0)}}
+@keyframes ctcDriftB{from{transform:translate3d(0,0,0)}to{transform:translate3d(-34px,-22px,0)}}
+/* delikatna siatka punktow — glebia bez halasu */
+.ctc-bg::after{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.075) 1px,transparent 1px);
+  background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(ellipse 78% 62% at 50% 38%,#000,transparent 76%);
+  mask-image:radial-gradient(ellipse 78% 62% at 50% 38%,#000,transparent 76%);
+}
 
 /* — naglowek — */
-.q-head{text-align:center;margin-bottom:30px}
-.q-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid var(--line);border-radius:9999px;
-  background:rgba(255,255,255,.7);backdrop-filter:blur(8px);font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
-.q-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.q-eyebrow b{font-weight:400;color:var(--faint)}
-.q-head h1{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:600;letter-spacing:-.038em;line-height:1.08;margin-bottom:14px}
-.q-head .grad{background:linear-gradient(120deg,var(--text) 20%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.q-sub{color:var(--muted);font-size:15px;line-height:1.65;max-width:50ch;margin:0 auto}
-
-/* — pasek postepu (subtelny) — */
-.q-xp{margin:0 0 20px}
-.q-xp-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
-.q-lvl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);font-weight:500;transition:color .3s}
-.q-hint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--faint)}
-.q-xp-bar{height:5px;border-radius:9999px;background:var(--bg-elev-2);overflow:hidden}
-#qXpFill{display:block;height:100%;width:15%;border-radius:inherit;background:linear-gradient(90deg,var(--accent),#4b89f4);
-  transition:width .7s cubic-bezier(.22,1,.36,1)}
-
-/* — karta — */
-.quest .dash::before{background:linear-gradient(90deg,transparent,rgba(47,111,224,.42),transparent)}
-.quest .dash{border-radius:20px;scroll-margin-top:96px;
-  box-shadow:0 40px 90px -24px rgba(15,30,60,.20),0 10px 30px -12px rgba(15,30,60,.10),0 0 0 1px rgba(15,30,60,.05)}
-
-/* — wezly krokow (stonowane) — */
-.quest .mf-stepper{margin-bottom:28px}
-.quest .mf-sstep{gap:9px}
-.quest .mf-dot{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:var(--bg-elev);color:var(--faint);transition:border-color .35s,background .35s,color .35s,box-shadow .35s}
-.quest .mf-dot svg{width:16px;height:16px}
-.quest .mf-sstep.mf-active .mf-dot{border-color:transparent;color:#fff;background:linear-gradient(135deg,#3d7ef0,#2158c8);box-shadow:0 8px 20px -6px rgba(33,88,200,.45)}
-.quest .mf-sstep.mf-done .mf-dot{border-color:rgba(47,111,224,.28);background:var(--accent-soft);color:var(--accent)}
-.quest .mf-sstep.mf-done .mf-dot svg{display:none}
-.quest .mf-sstep.mf-done .mf-dot::after{content:"";width:15px;height:15px;
-  background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%232f6fe0'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M5%2013l4%204L19%207'/%3E%3C/svg%3E") center/contain no-repeat;animation:qFade .35s ease both}
-@keyframes qFade{from{opacity:0}to{opacity:1}}
-.quest .mf-lbl{font-size:11.5px}
-.quest .mf-sstep.mf-active .mf-lbl{font-weight:550;color:var(--text)}
-.quest .mf-line{height:2px;border-radius:2px;background:var(--bg-elev-2);margin:0 8px}
-.quest .mf-line::after{background:var(--accent)}
-
-/* — naglowek kroku — */
-.q-tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:9px}
-.quest .mf-step-head h4{font-size:21px;letter-spacing:-.03em}
-
-/* — kafelki (jeden akcent, subtelnie) — */
-.quest .svc-tiles{gap:10px}
-.quest .svc-tile-body{padding:13px 14px;border-radius:13px;gap:12px;font-size:13.5px;font-weight:500;
-  transition:border-color .22s,background .22s,box-shadow .25s var(--ease)}
-.quest .svc-tile:hover .svc-tile-body{box-shadow:0 8px 22px -14px rgba(15,30,60,.28)}
-.svc-iw{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;background:var(--bg-elev-2);color:var(--muted);transition:background .25s,color .25s}
-.svc-iw .svc-ico{width:16px;height:16px}
-.quest .svc-tile:hover .svc-iw{background:var(--accent-soft);color:var(--accent)}
-.quest .svc-tile input:checked + .svc-tile-body .svc-iw{background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff}
-
-/* — przyciski (ciemny, firmowy, premium) — */
-.quest .mf-nav{border-top:1px solid var(--line-2);gap:10px}
-.quest .mf-nav .btn-primary{height:48px;border-radius:12px;font-weight:550;font-size:14px;
-  background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;border-color:transparent;
-  box-shadow:0 10px 24px -9px rgba(33,88,200,.6);transition:transform .2s var(--ease),box-shadow .25s var(--ease),filter .2s}
-.quest .mf-nav .btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px);box-shadow:0 16px 32px -10px rgba(33,88,200,.68)}
-.quest .mf-nav .btn .ar{transition:transform .25s var(--ease)}
-.quest .mf-nav .btn:hover .ar{transform:translateX(3px)}
-.quest .mf-back{width:46px;height:46px;border-radius:12px;padding:0;display:grid;place-items:center}
-
-/* — ekran potwierdzenia — */
-.quest .form-success{background:rgba(255,255,255,.96);backdrop-filter:blur(10px);z-index:5;gap:16px}
-.q-trophy{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;color:var(--accent);
-  border:1px solid rgba(47,111,224,.3);background:var(--accent-soft)}
-.q-trophy svg{width:30px;height:30px}
-.dash.sent .q-trophy{animation:qConfirm .5s cubic-bezier(.34,1.4,.64,1) both}
-@keyframes qConfirm{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
-.quest .form-success h3{font-size:1.55rem;font-weight:600;letter-spacing:-.03em}
-.q-done-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;border-radius:9999px;background:var(--bg-elev);border:1px solid var(--line-2);color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-
-/* — korzysci — */
-.q-rewards{margin-top:26px;text-align:center}
-.q-rew-label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:13px}
-.q-rew-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.q-rew{display:inline-flex;align-items:center;gap:9px;padding:10px 16px;border:1px solid var(--line);border-radius:12px;
-  background:rgba(255,255,255,.8);backdrop-filter:blur(6px);font-size:13px;font-weight:500;color:var(--text);
-  transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s}
-.q-rew:hover{transform:translateY(-2px);box-shadow:0 10px 22px -12px rgba(15,30,60,.18);border-color:rgba(47,111,224,.3)}
-.q-rew i{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none;background:var(--accent-soft);color:var(--accent)}
-.q-rew i svg{width:15px;height:15px}
-
-/* — pigulka zaufania — */
-.q-trust{margin-top:20px;text-align:center;font-size:12px;color:var(--faint);display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
-.q-trust svg{width:13px;height:13px;color:var(--accent);flex:none}
-.q-trust a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
-.q-trust a:hover{color:var(--accent)}
-
-@media(max-width:680px){
-  .quest{padding:104px 0 64px}
-  .quest .mf-dot{width:34px;height:34px;border-radius:10px}
-  .quest .mf-dot svg{width:15px;height:15px}
-  .q-sub{font-size:14px}
-  .quest .mf-step-head h4{font-size:19px}
+.ctc-head{text-align:center;max-width:730px;margin:0 auto clamp(34px,4.4vw,54px)}
+.ctc .eyebrow{color:rgba(255,255,255,.58)}
+.ctc-title{
+  margin-top:20px;color:#fff;
+  font-size:clamp(2.05rem,4.6vw,3.35rem);font-weight:500;
+  letter-spacing:-.035em;line-height:1.05;
 }
-@media (prefers-reduced-motion:reduce){
-  .q-blob{animation:none}
+.ctc-title em{font-style:normal;position:relative;white-space:nowrap}
+.ctc-title em::after{
+  content:"";position:absolute;left:0;right:0;bottom:.02em;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,#5b95f5,#a8c5ff);
+  transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease) .3s;
+}
+.ctc-head[data-reveal].in .ctc-title em::after{transform:scaleX(1)}
+.ctc-sub{
+  margin:18px auto 0;color:rgba(255,255,255,.6);
+  font-size:clamp(.98rem,1.35vw,1.075rem);line-height:1.68;max-width:60ch;
+}
+
+/* — kokpit — */
+.ctc-card{
+  position:relative;max-width:760px;margin:0 auto;
+  background:#fff;color:var(--text);
+  border-radius:22px;padding:clamp(22px,3.2vw,38px);
+  box-shadow:0 44px 90px -26px rgba(0,0,0,.72),0 6px 22px -8px rgba(0,0,0,.35);
+}
+/* swietlista krawedz — 1px gradient po obrysie */
+.ctc-card::before{
+  content:"";position:absolute;inset:-1px;border-radius:23px;padding:1px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(122,168,255,.42),rgba(255,255,255,0));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+}
+.ctc-card-head{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line-2);
+}
+.ctc-card-tag{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+.ctc-card-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.ctc-card-time{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--faint);white-space:nowrap}
+.ctc-card-time svg{width:14px;height:14px;flex:none}
+
+/* — stepper: 4 segmenty zamiast kropek z linijkami — */
+.ctc .mf-stepper{display:flex;gap:10px;margin-bottom:30px}
+.ctc .mf-line{display:none}
+.ctc .mf-sstep{
+  flex:1;min-width:0;display:grid;
+  grid-template-columns:auto 1fr;grid-template-areas:"bar bar" "num lbl";
+  align-items:center;gap:9px 7px;
+}
+.ctc .mf-sstep::before{
+  content:"";grid-area:bar;height:3px;border-radius:99px;
+  background:var(--bg-elev-2);transition:background .5s var(--ease);
+}
+.ctc .mf-sstep.mf-done::before{background:rgba(47,111,224,.45)}
+.ctc .mf-sstep.mf-active::before{background:linear-gradient(90deg,#5b95f5,#2158c8)}
+.ctc .mf-sstep .mf-dot{
+  grid-area:num;width:auto;height:auto;border:0;background:none;border-radius:0;box-shadow:none;
+  display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint);transition:color .3s;
+}
+.ctc .mf-sstep.mf-active .mf-dot{color:var(--accent)}
+.ctc .mf-sstep.mf-done .mf-dot{color:rgba(47,111,224,.8)}
+.ctc .mf-sstep .mf-lbl{
+  grid-area:lbl;font-size:12px;color:var(--faint);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ctc .mf-sstep.mf-active .mf-lbl{color:var(--text);font-weight:550}
+.ctc .mf-sstep.mf-done .mf-lbl{color:var(--muted)}
+
+/* — tresc kroku — */
+.ctc .mf-step.is-on{align-items:stretch;gap:0}
+.ctc .mf-step-head{margin-bottom:20px}
+.ctc .mf-step-head h4{font-size:clamp(19px,2.2vw,23px);letter-spacing:-.028em}
+.ctc .mf-step-head p{font-size:13.2px;line-height:1.6;color:var(--faint)}
+.ctc .svc-tiles{grid-template-columns:1fr 1fr;gap:10px}
+.ctc .svc-tile:nth-child(5){grid-column:1 / -1}
+.ctc .svc-tile-body{padding:14px 42px 14px 15px;border-radius:12px;font-size:13.2px;gap:11px}
+.ctc .svc-ico{width:18px;height:18px;color:var(--accent)}
+.ctc .svc-tile input:checked + .svc-tile-body{box-shadow:0 0 0 1px var(--accent)}
+
+/* — nawigacja: akcja na niebiesko, wraca kolem — */
+.ctc .mf-nav{
+  display:flex;align-items:center;gap:12px;
+  margin-top:26px;padding-top:22px;border-top:1px solid var(--line-2);
+}
+.ctc .mf-nav .btn{flex:1;justify-content:center;height:50px;border-radius:13px;font-size:15px;font-weight:550}
+.ctc .mf-nav .btn-primary{
+  background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;border-color:transparent;
+  box-shadow:0 10px 24px -9px rgba(33,88,200,.6);
+}
+.ctc .mf-nav .btn-primary:hover{box-shadow:0 15px 30px -9px rgba(33,88,200,.68);filter:brightness(1.05)}
+.ctc .mf-back{
+  flex:none;width:50px;height:50px;padding:0;border-radius:13px;
+  display:grid;place-items:center;background:none;border:1px solid var(--line);color:var(--muted);
+}
+.ctc .mf-back:hover{border-color:rgba(47,111,224,.45);color:var(--accent);background:var(--accent-soft)}
+.ctc .mf-note{margin-top:14px;font-size:12px;color:var(--faint)}
+
+/* — ekran potwierdzenia (naprawa: JS dopisuje .sent do #formCard) — */
+.ctc-card.sent .form-success,
+#formCard.sent .form-success{opacity:1;visibility:visible}
+.ctc .form-success{
+  background:#fff;border-radius:22px;padding:44px 34px;gap:18px;
+  transform:scale(.97);transition:opacity .5s var(--ease),visibility .5s,transform .5s var(--ease);
+}
+.ctc-card.sent .form-success{transform:none}
+.ctc .form-success .ok{
+  width:58px;height:58px;border:0;color:#fff;
+  background:linear-gradient(135deg,#3d7ef0,#2158c8);
+  box-shadow:0 12px 26px -8px rgba(33,88,200,.6);
+}
+.ctc .form-success h3{font-size:1.6rem;letter-spacing:-.03em}
+.ctc .form-success p{max-width:40ch;line-height:1.65}
+
+/* — pasek zaufania — */
+.ctc-trust{
+  list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+  max-width:820px;margin:28px auto 0;padding:0;
+}
+.ctc-trust li{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:9px 15px;border-radius:100px;
+  border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.045);
+  font-size:12.5px;color:rgba(255,255,255,.76);
+}
+.ctc-trust svg{width:14px;height:14px;flex:none;color:#7aa8ff}
+
+/* — dane kontaktowe: cicho, pod spodem, poza walka o uwage — */
+.ctc-alt{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:9px 14px;
+  max-width:760px;margin:30px auto 0;padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.10);
+  font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.45);
+}
+.ctc-alt-lbl{color:rgba(255,255,255,.4)}
+.ctc-alt a{
+  color:rgba(255,255,255,.88);border-bottom:1px solid rgba(255,255,255,.24);
+  padding-bottom:1px;transition:color .22s,border-color .22s;
+}
+.ctc-alt a:hover{color:#fff;border-color:#7aa8ff}
+.ctc-alt-dot{opacity:.45}
+
+@media(max-width:720px){
+  .ctc-card{padding:20px 17px;border-radius:18px}
+  .ctc-card::before{border-radius:19px}
+  .ctc .form-success{border-radius:18px;padding:36px 22px}
+  .ctc-card-head{margin-bottom:18px;padding-bottom:15px}
+  .ctc .mf-stepper{gap:7px;margin-bottom:24px}
+  .ctc .svc-tiles{grid-template-columns:1fr}
+  .ctc .svc-tile:nth-child(5){grid-column:auto}
+  .ctc-trust{gap:8px}
+  .ctc-trust li{font-size:12px;padding:8px 13px}
+}
+@media(min-width:721px){
+  .ctc .mf-step.is-on{min-height:430px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ctc-glow{animation:none}
+  .ctc-title em::after{transition:none;transform:scaleX(1)}
+  .ctc .form-success{transform:none;transition:opacity .3s,visibility .3s}
 }
 </style>
-<script>
-/* KONTAKT — subtelny pasek postepu + potwierdzenie. Silnik formularza bez zmian. */
-(function(){
-  "use strict";
-  var stepper=document.querySelector('.mf-stepper'), card=document.getElementById('formCard'), form=document.getElementById('contactForm');
-  if(!stepper||!card||!form) return;
-  var fill=document.getElementById('qXpFill'), lvl=document.getElementById('qLvl');
-  var reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var PCT=[15,45,75,95];
-  function activeIdx(){
-    var d=stepper.querySelectorAll('.mf-sstep');
-    for(var i=0;i<d.length;i++) if(d[i].classList.contains('mf-active')) return i;
-    return 0;
-  }
-  function update(){
-    var i=activeIdx();
-    fill.style.width=PCT[i]+'%';
-    lvl.textContent='Krok '+(i+1)+' z 4';
-  }
-  new MutationObserver(update).observe(stepper,{attributes:true,subtree:true,attributeFilter:['class']});
-
-  form.addEventListener('click',function(e){
-    if(e.target.closest('.mf-next')||e.target.closest('.mf-back')){
-      setTimeout(function(){
-        if(card.getBoundingClientRect().top<64) card.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
-      },80);
-    }
-  });
-
-  new MutationObserver(function(){
-    if(!card.classList.contains('sent')) return;
-    fill.style.width='100%';
-    lvl.textContent='Wysłano';
-  }).observe(card,{attributes:true,attributeFilter:['class']});
-})();
-</script>
 <style>
 /* formularz: wyzsza, stala sylwetka okna (przyciski przy dolnej krawedzi) */
 @media(min-width:721px){
