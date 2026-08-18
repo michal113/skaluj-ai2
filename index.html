@@ -3203,5 +3203,291 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .ctc .form-success{transform:none;transition:opacity .3s,visibility .3s}
 }
 </style>
+<style id="mfx-style">
+/* ============================================================
+   FORMULARZ v3 — dopracowanie UX (nakladka na istniejacy kreator)
+   ============================================================ */
+.mfx-sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* --- plynna zmiana wysokosci zamiast sztywnego min-height --- */
+#contactForm{transition:height .45s cubic-bezier(.22,1,.36,1)}
+#contactForm.mfx-anim{overflow:hidden}
+#contactForm .mf-step{min-height:0}
+@media (prefers-reduced-motion:reduce){#contactForm{transition:none}}
+
+/* --- pasek postepu (usuniety - stepper juz pokazuje krok) --- */
+.mfx-meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 8px;
+  font-family:var(--mono,ui-monospace,monospace);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.mfx-meta b{color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums}
+.mfx-bar{position:relative;height:3px;border-radius:999px;background:var(--line-2);overflow:hidden;margin:0 0 22px}
+.mfx-bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,#3d7ef0,#2158c8);transition:width .55s cubic-bezier(.22,1,.36,1)}
+
+/* --- kafelki uslug: reakcja na klikniecie --- */
+.svc-tile .svc-tile-body{transition:border-color .22s,background-color .22s,color .22s,box-shadow .22s,transform .18s cubic-bezier(.22,1,.36,1)}
+.svc-tile:active .svc-tile-body{transform:scale(.985)}
+.svc-tile input:focus-visible + .svc-tile-body{outline:2px solid var(--accent);outline-offset:2px}
+.mfx-count{display:inline-flex;align-items:center;gap:6px;margin-left:auto;
+  font-family:var(--mono,ui-monospace,monospace);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);opacity:0;transform:translateY(-3px);transition:opacity .28s,transform .28s}
+.mfx-count.on{opacity:1;transform:none}
+
+/* --- pole poprawne: dyskretny znacznik --- */
+.fgroup{position:relative}
+.fgroup.mfx-ok > input{border-color:rgba(36,163,90,.5)}
+.mfx-tick{position:absolute;right:2px;top:14px;width:16px;height:16px;pointer-events:none;
+  opacity:0;transform:scale(.6);transition:opacity .25s,transform .3s cubic-bezier(.22,1,.36,1)}
+.fgroup.mfx-ok .mfx-tick{opacity:1;transform:none}
+.mfx-tick svg{width:16px;height:16px;stroke:#24a35a;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* --- licznik znakow w opisie --- */
+.mfx-chars{display:block;margin-top:7px;text-align:right;
+  font-family:var(--mono,ui-monospace,monospace);font-size:10.5px;letter-spacing:.08em;color:var(--faint);
+  opacity:0;transition:opacity .25s,color .25s}
+.mfx-chars.on{opacity:1}
+.mfx-chars.good{color:#24a35a}
+
+/* --- podsumowanie przed wyslaniem --- */
+.mfx-recap{border:1px solid var(--line);border-radius:var(--r-lg,14px);background:var(--bg-elev);
+  padding:14px 16px;margin:0 0 18px}
+.mfx-recap-h{display:block;font-family:var(--mono,ui-monospace,monospace);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.mfx-recap dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0;font-size:13px}
+.mfx-recap dt{color:var(--faint);white-space:nowrap}
+.mfx-recap dd{margin:0;color:var(--text);overflow-wrap:anywhere}
+.mfx-recap .mfx-edit{background:none;border:0;padding:0;margin-left:8px;cursor:pointer;
+  font:inherit;font-size:11.5px;color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.mfx-recap .mfx-edit:hover{color:var(--accent-dim,#2456b0)}
+
+/* --- przycisk wysylki: stan ladowania --- */
+#mfSubmit.mfx-loading{position:relative;color:transparent!important}
+#mfSubmit.mfx-loading .ar{opacity:0}
+#mfSubmit.mfx-loading::after{content:"";position:absolute;left:50%;top:50%;width:17px;height:17px;margin:-8.5px 0 0 -8.5px;
+  border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:mfxSpin .7s linear infinite}
+@keyframes mfxSpin{to{transform:rotate(360deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  .mfx-bar i,.mfx-count,.mfx-tick,.svc-tile .svc-tile-body{transition:none}
+  #mfSubmit.mfx-loading::after{animation-duration:1.6s}
+}
+</style>
+<script>
+/* ============================================================
+   FORMULARZ v3 — warstwa UX. Nie zastepuje istniejacej logiki,
+   tylko ja uzupelnia (obserwuje zmiany krokow i reaguje).
+   ============================================================ */
+(function(){
+  if (window.__mfxReady) return;
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  window.__mfxReady = true;
+
+  var steps  = [].slice.call(form.querySelectorAll('.mf-step'));
+  var titles = ['Zakres','Projekt','Kontakt','Termin'];
+  if (!steps.length) return;
+
+  function cur(){ for (var i=0;i<steps.length;i++) if (steps[i].classList.contains('is-on')) return i; return 0; }
+  function visibleNext(){ return [].slice.call(form.querySelectorAll('.mf-next')).filter(function(b){ return b.offsetParent; })[0]; }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+
+  /* ---------- pasek postepu + komunikat dla czytnika ---------- */
+  var stepper = form.querySelector('.mf-stepper');
+  var live = document.createElement('p');
+  live.className = 'mfx-sr';
+  live.setAttribute('aria-live','polite');
+  if (stepper && stepper.parentNode) stepper.parentNode.insertBefore(live, stepper.nextSibling);
+  else form.insertBefore(live, form.firstChild);
+
+  /* plynna zmiana wysokosci karty (zamiast sztywnego min-height, ktory
+     i tak nie dzialal - krok 4 jest wyzszy niz zadeklarowane 430px) */
+  function syncHeight(){
+    var start = form.offsetHeight;
+    form.style.height = 'auto';
+    var end = form.offsetHeight;
+    if (Math.abs(start - end) < 2){ form.style.height = ''; return; }
+    form.classList.add('mfx-anim');
+    form.style.height = start + 'px';
+    void form.offsetHeight;
+    form.style.height = end + 'px';
+  }
+  form.addEventListener('transitionend', function(e){
+    if (e.target === form && e.propertyName === 'height'){
+      form.style.height = '';
+      form.classList.remove('mfx-anim');
+    }
+  });
+
+  /* ---------- fokus i zapowiedz przy zmianie kroku ---------- */
+  var last = 0;
+  function onStep(i){
+    if (live) live.textContent = 'Krok ' + (i+1) + ' z ' + steps.length + ': ' + (titles[i]||'');
+    var head = steps[i].querySelector('.mf-step-head h4');
+    if (head){
+      head.setAttribute('tabindex','-1');
+      try { head.focus({preventScroll:true}); } catch(e){ head.focus(); }
+    }
+    if (i === steps.length-1) buildRecap();
+    syncHeight();
+  }
+  new MutationObserver(function(){
+    var i = cur();
+    if (i !== last){ last = i; onStep(i); }
+  }).observe(form, {subtree:true, attributes:true, attributeFilter:['class']});
+
+  /* ---------- Enter przechodzi dalej (zamiast nic nie robic) ---------- */
+  form.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' || e.shiftKey) return;
+    var t = e.target;
+    if (!t || t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON') return;
+    if (t.type === 'checkbox') return;
+    var nx = visibleNext();
+    if (nx){ e.preventDefault(); nx.click(); }
+  });
+
+  /* ---------- walidacja na zywo ---------- */
+  var RULES = {
+    fName:    { err:'errName',    ok:function(v){ return v.trim().length > 0; } },
+    fEmail:   { err:'errEmail',   ok:function(v){ return /^\S+@\S+\.\S+$/.test(v.trim()); } },
+    fCompany: { err:'errCompany', ok:function(v){ return v.trim().length > 0; } }
+  };
+  Object.keys(RULES).forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    var grp = el.closest('.fgroup');
+    if (grp && !grp.querySelector('.mfx-tick')){
+      var tick = document.createElement('span');
+      tick.className = 'mfx-tick';
+      tick.setAttribute('aria-hidden','true');
+      tick.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+      grp.appendChild(tick);
+    }
+    function refresh(){
+      var good = RULES[id].ok(el.value);
+      var errEl = document.getElementById(RULES[id].err);
+      if (grp) grp.classList.toggle('mfx-ok', good && el.value.trim() !== '');
+      el.setAttribute('aria-invalid', good ? 'false' : 'true');
+      if (good){
+        if (errEl) errEl.textContent = '';
+        el.style.borderColor = '';
+      }
+    }
+    el.addEventListener('input', refresh);
+    el.addEventListener('blur', refresh);
+  });
+
+  /* fokus na pierwszym blednym polu po nieudanej walidacji kroku */
+  form.addEventListener('click', function(e){
+    if (!e.target.closest('.mf-next')) return;
+    setTimeout(function(){
+      var msgs = [].slice.call(form.querySelectorAll('.mf-step.is-on .ferr')).filter(function(s){ return s.textContent.trim(); });
+      msgs.forEach(function(s){
+        var g = s.closest(".fgroup");
+        var fld = g ? g.querySelector("input,textarea") : null;
+        if (fld) fld.setAttribute("aria-invalid", "true");
+      });
+      if (!msgs.length) return;
+      var grp = msgs[0].closest('.fgroup');
+      var bad = grp ? grp.querySelector('input,textarea') : null;
+      if (bad && bad.focus) bad.focus();
+    }, 60);
+  });
+
+  /* ---------- licznik wybranych uslug ---------- */
+  var count = null;
+  var h1 = steps[0].querySelector('.mf-step-head h4');
+  if (h1){
+    h1.style.display = 'flex';
+    h1.style.alignItems = 'baseline';
+    h1.style.gap = '10px';
+    count = document.createElement('span');
+    count.className = 'mfx-count';
+    h1.appendChild(count);
+  }
+  function refreshCount(){
+    if (!count) return;
+    var n = form.querySelectorAll('[name="svc"]:checked').length;
+    count.textContent = n ? (n + (n === 1 ? ' wybrana' : (n < 5 ? ' wybrane' : ' wybranych'))) : '';
+    count.classList.toggle('on', n > 0);
+  }
+  form.addEventListener('change', function(e){ if (e.target.name === 'svc') refreshCount(); });
+  form.addEventListener('click', function(e){ if (e.target.closest('.mf-next,.mf-back')) setTimeout(syncHeight, 30); });
+  refreshCount();
+
+  /* ---------- licznik znakow w opisie projektu ---------- */
+  var msg = document.getElementById('fMsg');
+  if (msg){
+    var chars = document.createElement('span');
+    chars.className = 'mfx-chars';
+    chars.setAttribute('aria-hidden','true');
+    var mgrp = msg.closest('.fgroup');
+    if (mgrp && mgrp.parentNode) mgrp.parentNode.insertBefore(chars, mgrp.nextSibling);
+    msg.addEventListener('input', function(){
+      var n = msg.value.trim().length;
+      chars.classList.toggle('on', n > 0);
+      chars.classList.toggle('good', n >= 40);
+      chars.textContent = n < 40
+        ? (n + ' znak' + (n === 1 ? '' : (n < 5 ? 'i' : 'ów')))
+        : (n + ' znaków — to wystarczy na trafną wycenę');
+    });
+  }
+
+  /* ---------- podsumowanie na ostatnim kroku ---------- */
+  var NAMES = { strona:'Strona + SEO i GEO', geo:'GEO i SEO', email:'Automatyzacje', chatbot:'Chatbot AI', branding:'Branding' };
+  var recap = null;
+  function buildRecap(){
+    var host = steps[steps.length-1];
+    var headEl = host.querySelector('.mf-step-head');
+    if (!headEl) return;
+    if (!recap){
+      recap = document.createElement('div');
+      recap.className = 'mfx-recap';
+      headEl.parentNode.insertBefore(recap, headEl.nextSibling);
+    }
+    function val(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; }
+    var svc = [].slice.call(form.querySelectorAll('[name="svc"]:checked'))
+      .map(function(c){ return NAMES[c.value] || c.value; }).join(', ');
+    var rows = '';
+    if (svc) rows += '<dt>Zakres</dt><dd>' + esc(svc) + '<button type="button" class="mfx-edit" data-go="0">zmień</button></dd>';
+    var who = [val('fName'), val('fCompany')].filter(Boolean).join(' · ');
+    if (who) rows += '<dt>Kontakt</dt><dd>' + esc(who) + '</dd>';
+    if (val('fEmail')) rows += '<dt>E-mail</dt><dd>' + esc(val('fEmail')) + '<button type="button" class="mfx-edit" data-go="2">zmień</button></dd>';
+    recap.innerHTML = '<span class="mfx-recap-h">Wysyłasz</span><dl>' + rows + '</dl>';
+  }
+
+  /* "zmien" cofa do wlasciwego kroku */
+  form.addEventListener('click', function(e){
+    var b = e.target.closest('.mfx-edit');
+    if (!b) return;
+    e.preventDefault();
+    var target = parseInt(b.getAttribute('data-go'), 10);
+    var guard = 0;
+    (function back(){
+      if (cur() <= target || guard++ > 6) return;
+      var bk = [].slice.call(form.querySelectorAll('.mf-back')).filter(function(x){ return x.offsetParent; })[0];
+      if (bk){ bk.click(); setTimeout(back, 90); }
+    })();
+  });
+
+  /* ---------- stan wysylki + przewiniecie do potwierdzenia ---------- */
+  var submitBtn = document.getElementById('mfSubmit');
+  form.addEventListener('submit', function(){
+    if (submitBtn && submitBtn.disabled) submitBtn.classList.add('mfx-loading');
+  });
+  var card = form.closest('.form-card') || form.parentElement;
+  if (card){
+    new MutationObserver(function(){
+      if (card.classList.contains('sent')){
+        if (submitBtn) submitBtn.classList.remove('mfx-loading');
+        var okBox = card.querySelector('.form-success');
+        if (okBox){
+          try { okBox.scrollIntoView({block:'center', behavior:'smooth'}); } catch(e){}
+          var h = okBox.querySelector('h3');
+          if (h){ h.setAttribute('tabindex','-1'); setTimeout(function(){ try{ h.focus({preventScroll:true}); }catch(e){} }, 400); }
+        }
+      }
+    }).observe(card, {attributes:true, attributeFilter:['class']});
+  }
+})();
+</script>
 </body>
 </html>
