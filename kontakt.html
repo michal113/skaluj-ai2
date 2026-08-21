@@ -1050,77 +1050,105 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 </style>
 <style id="mfx-style">
 /* ============================================================
-   FORMULARZ v3 — dopracowanie UX (nakladka na istniejacy kreator)
+   FORMULARZ v3 — "brief, ktory sklada sie na oczach"
+   Sygnatura: to, co wysylasz, jest widoczne od pierwszego kroku.
    ============================================================ */
 .mfx-sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
-/* --- plynna zmiana wysokosci zamiast sztywnego min-height --- */
+/* --- szyna postepu na gornej krawedzi karty; stepper zbedny --- */
+.mfx-host{position:relative;overflow:hidden}
+.mfx-rail{position:absolute;left:0;right:0;top:0;height:2px;background:rgba(15,30,60,.08);z-index:4}
+.mfx-rail i{display:block;height:100%;width:25%;border-radius:0 2px 2px 0;
+  background:linear-gradient(90deg,#5b96ff,#2158c8);transition:width .6s cubic-bezier(.22,1,.36,1)}
+#contactForm .mf-stepper{display:none}
+
+/* --- plynna wysokosc zamiast sztywnego min-height --- */
 #contactForm{transition:height .45s cubic-bezier(.22,1,.36,1)}
 #contactForm.mfx-anim{overflow:hidden}
 #contactForm .mf-step{min-height:0}
-@media (prefers-reduced-motion:reduce){#contactForm{transition:none}}
 
-/* --- pasek postepu (usuniety - stepper juz pokazuje krok) --- */
-.mfx-meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 8px;
-  font-family:var(--mono,ui-monospace,monospace);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
-.mfx-meta b{color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums}
-.mfx-bar{position:relative;height:3px;border-radius:999px;background:var(--line-2);overflow:hidden;margin:0 0 22px}
-.mfx-bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
-  background:linear-gradient(90deg,#3d7ef0,#2158c8);transition:width .55s cubic-bezier(.22,1,.36,1)}
+/* --- przejscia kierunkowe: naprzod w lewo, wstecz w prawo --- */
+#contactForm .mf-step.is-on{animation:mfxFwd .42s cubic-bezier(.22,1,.36,1) both}
+#contactForm.mfx-rev .mf-step.is-on{animation-name:mfxRev}
+@keyframes mfxFwd{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+@keyframes mfxRev{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:none}}
 
-/* --- kafelki uslug: reakcja na klikniecie --- */
-.svc-tile .svc-tile-body{transition:border-color .22s,background-color .22s,color .22s,box-shadow .22s,transform .18s cubic-bezier(.22,1,.36,1)}
-.svc-tile:active .svc-tile-body{transform:scale(.985)}
+/* --- SYGNATURA: brief --- */
+.mfx-brief{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;
+  padding:12px 14px;margin:0 0 20px;border:1px dashed var(--line);border-radius:12px;
+  background:linear-gradient(180deg,rgba(47,111,224,.035),transparent);
+  opacity:0;transform:translateY(-4px);transition:opacity .35s,transform .35s}
+.mfx-brief.on{opacity:1;transform:none}
+.mfx-brief-l{flex:none;font-family:var(--mono,ui-monospace,monospace);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);padding-top:5px}
+.mfx-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0}
+.mfx-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);font-size:12px;color:var(--text);
+  animation:mfxPop .34s cubic-bezier(.34,1.56,.64,1) both}
+.mfx-chip.is-svc{border-color:rgba(47,111,224,.35);background:var(--accent-soft);color:var(--accent)}
+.mfx-chip b{font-weight:500}
+@keyframes mfxPop{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}
+
+/* --- kafelki: linia korzysci + sprezysty znacznik --- */
+.svc-tile .svc-tile-body{transition:border-color .22s,background-color .22s,color .22s,box-shadow .22s,transform .2s cubic-bezier(.34,1.56,.64,1)}
+.svc-tile:active .svc-tile-body{transform:scale(.98)}
 .svc-tile input:focus-visible + .svc-tile-body{outline:2px solid var(--accent);outline-offset:2px}
-.mfx-count{display:inline-flex;align-items:center;gap:6px;margin-left:auto;
-  font-family:var(--mono,ui-monospace,monospace);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);opacity:0;transform:translateY(-3px);transition:opacity .28s,transform .28s}
-.mfx-count.on{opacity:1;transform:none}
+.svc-tile input:checked + .svc-tile-body::after{transition:opacity .2s,transform .32s cubic-bezier(.34,1.56,.64,1)}
+.svc-tile-body{align-items:flex-start!important}
+.svc-tile-body > .svc-ico{margin-top:2px;flex:none}
+.mfx-txt{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1;padding-right:22px}
+.mfx-t{line-height:1.3}
+.mfx-sub{display:block;font-size:11.5px;font-weight:400;color:var(--faint);line-height:1.4}
+.svc-tile input:checked + .svc-tile-body .mfx-sub{color:var(--muted)}
 
-/* --- pole poprawne: dyskretny znacznik --- */
+/* --- pole poprawne --- */
 .fgroup{position:relative}
 .fgroup.mfx-ok > input{border-color:rgba(36,163,90,.5)}
 .mfx-tick{position:absolute;right:2px;top:14px;width:16px;height:16px;pointer-events:none;
-  opacity:0;transform:scale(.6);transition:opacity .25s,transform .3s cubic-bezier(.22,1,.36,1)}
+  opacity:0;transform:scale(.6);transition:opacity .25s,transform .3s cubic-bezier(.34,1.56,.64,1)}
 .fgroup.mfx-ok .mfx-tick{opacity:1;transform:none}
 .mfx-tick svg{width:16px;height:16px;stroke:#24a35a;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 
-/* --- licznik znakow w opisie --- */
-.mfx-chars{display:block;margin-top:7px;text-align:right;
-  font-family:var(--mono,ui-monospace,monospace);font-size:10.5px;letter-spacing:.08em;color:var(--faint);
-  opacity:0;transition:opacity .25s,color .25s}
-.mfx-chars.on{opacity:1}
-.mfx-chars.good{color:#24a35a}
+/* --- termin: zwiniety, bo jest opcjonalny --- */
+.mfx-dt{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:13px 15px;margin:0 0 16px;border:1px solid var(--line);border-radius:12px;background:#fff;
+  font:inherit;font-size:13.5px;color:var(--text);cursor:pointer;text-align:left;
+  transition:border-color .2s,background-color .2s}
+.mfx-dt:hover{border-color:rgba(47,111,224,.45);background:var(--accent-soft)}
+.mfx-dt-r{display:inline-flex;align-items:center;gap:8px;color:var(--faint);font-size:12px;flex:none}
+.mfx-dt-r b{color:var(--accent);font-weight:500}
+.mfx-dt-c{width:13px;height:13px;transition:transform .3s cubic-bezier(.22,1,.36,1);flex:none}
+.mfx-dt[aria-expanded="true"] .mfx-dt-c{transform:rotate(180deg)}
+.mfx-dtbody[hidden]{display:none}
 
-/* --- podsumowanie przed wyslaniem --- */
-.mfx-recap{border:1px solid var(--line);border-radius:var(--r-lg,14px);background:var(--bg-elev);
-  padding:14px 16px;margin:0 0 18px}
-.mfx-recap-h{display:block;font-family:var(--mono,ui-monospace,monospace);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--faint);margin-bottom:10px}
-.mfx-recap dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0;font-size:13px}
-.mfx-recap dt{color:var(--faint);white-space:nowrap}
-.mfx-recap dd{margin:0;color:var(--text);overflow-wrap:anywhere}
-.mfx-recap .mfx-edit{background:none;border:0;padding:0;margin-left:8px;cursor:pointer;
-  font:inherit;font-size:11.5px;color:var(--accent);text-decoration:underline;text-underline-offset:2px}
-.mfx-recap .mfx-edit:hover{color:var(--accent-dim,#2456b0)}
+/* --- sukces: co dalej --- */
+.mfx-next{list-style:none;margin:22px 0 0;padding:0;text-align:left;display:grid;gap:0}
+.mfx-next li{position:relative;padding:0 0 18px 28px;font-size:13.5px;color:var(--muted);line-height:1.5}
+.mfx-next li:last-child{padding-bottom:0}
+.mfx-next li::before{content:"";position:absolute;left:4px;top:5px;width:9px;height:9px;border-radius:50%;
+  background:#fff;border:2px solid var(--accent)}
+.mfx-next li:not(:last-child)::after{content:"";position:absolute;left:8px;top:16px;bottom:2px;width:1px;background:var(--line)}
+.mfx-next b{display:block;color:var(--text);font-weight:550;font-size:14px;margin-bottom:2px}
+.mfx-next .w{font-family:var(--mono,ui-monospace,monospace);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:3px}
 
-/* --- przycisk wysylki: stan ladowania --- */
+/* --- przycisk wysylki --- */
 #mfSubmit.mfx-loading{position:relative;color:transparent!important}
 #mfSubmit.mfx-loading .ar{opacity:0}
 #mfSubmit.mfx-loading::after{content:"";position:absolute;left:50%;top:50%;width:17px;height:17px;margin:-8.5px 0 0 -8.5px;
   border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:mfxSpin .7s linear infinite}
 @keyframes mfxSpin{to{transform:rotate(360deg)}}
 
+@media (max-width:560px){
+  .mfx-brief{gap:8px}
+  .mfx-brief-l{padding-top:0}
+}
 @media (prefers-reduced-motion:reduce){
-  .mfx-bar i,.mfx-count,.mfx-tick,.svc-tile .svc-tile-body{transition:none}
-  #mfSubmit.mfx-loading::after{animation-duration:1.6s}
+  #contactForm,.mfx-rail i,.mfx-chip,.mfx-tick,.svc-tile .svc-tile-body,.mfx-dt-c{transition:none!important;animation:none!important}
+  #contactForm .mf-step.is-on{animation:none}
 }
 </style>
 <script>
-/* ============================================================
-   FORMULARZ v3 — warstwa UX. Nie zastepuje istniejacej logiki,
-   tylko ja uzupelnia (obserwuje zmiany krokow i reaguje).
-   ============================================================ */
 (function(){
   if (window.__mfxReady) return;
   var form = document.getElementById('contactForm');
@@ -1132,19 +1160,55 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
   if (!steps.length) return;
 
   function cur(){ for (var i=0;i<steps.length;i++) if (steps[i].classList.contains('is-on')) return i; return 0; }
-  function visibleNext(){ return [].slice.call(form.querySelectorAll('.mf-next')).filter(function(b){ return b.offsetParent; })[0]; }
+  function vis(sel){ return [].slice.call(form.querySelectorAll(sel)).filter(function(b){ return b.offsetParent; })[0]; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+  function val(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; }
 
-  /* ---------- pasek postepu + komunikat dla czytnika ---------- */
-  var stepper = form.querySelector('.mf-stepper');
+  var host = form.closest('.ctc-card') || form.closest('.form-card') || form.parentElement;
+  if (host) host.classList.add('mfx-host');
+
+  /* ---------- szyna postepu ---------- */
+  var rail = document.createElement('div');
+  rail.className = 'mfx-rail';
+  rail.innerHTML = '<i></i>';
+  rail.setAttribute('aria-hidden','true');
+  if (host) host.insertBefore(rail, host.firstChild);
+  var railFill = rail.querySelector('i');
+
   var live = document.createElement('p');
   live.className = 'mfx-sr';
   live.setAttribute('aria-live','polite');
-  if (stepper && stepper.parentNode) stepper.parentNode.insertBefore(live, stepper.nextSibling);
-  else form.insertBefore(live, form.firstChild);
+  form.insertBefore(live, form.firstChild);
 
-  /* plynna zmiana wysokosci karty (zamiast sztywnego min-height, ktory
-     i tak nie dzialal - krok 4 jest wyzszy niz zadeklarowane 430px) */
+  /* ---------- SYGNATURA: brief ---------- */
+  var brief = document.createElement('div');
+  brief.className = 'mfx-brief';
+  brief.innerHTML = '<span class="mfx-brief-l">Twój brief</span><div class="mfx-chips"></div>';
+  form.insertBefore(brief, form.firstChild);
+  var chips = brief.querySelector('.mfx-chips');
+
+  var NAMES = { strona:'Strona + SEO i GEO', geo:'GEO i SEO', email:'Automatyzacje', chatbot:'Chatbot AI', branding:'Branding' };
+  var prevKeys = '';
+  function renderBrief(){
+    var items = [];
+    [].slice.call(form.querySelectorAll('[name="svc"]:checked')).forEach(function(c){
+      items.push({ k:'s'+c.value, cls:'is-svc', t:NAMES[c.value] || c.value });
+    });
+    var who = [val('fName'), val('fCompany')].filter(Boolean).join(' · ');
+    if (who) items.push({ k:'w'+who, cls:'', t:who });
+    if (val('fEmail')) items.push({ k:'e'+val('fEmail'), cls:'', t:val('fEmail') });
+    var d = val('fDate'); var slot = form.querySelector('.slot.is-sel');
+    if (d) items.push({ k:'d'+d+(slot?slot.getAttribute('data-time'):''), cls:'', t:d + (slot ? ', ' + slot.getAttribute('data-time') : '') });
+
+    var keys = items.map(function(i){ return i.k; }).join('|');
+    if (keys === prevKeys) return;
+    prevKeys = keys;
+    chips.innerHTML = items.map(function(i){ return '<span class="mfx-chip ' + i.cls + '"><b>' + esc(i.t) + '</b></span>'; }).join('');
+    brief.classList.toggle('on', items.length > 0);
+    syncHeight();
+  }
+
+  /* ---------- plynna wysokosc ---------- */
   function syncHeight(){
     var start = form.offsetHeight;
     form.style.height = 'auto';
@@ -1162,31 +1226,63 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
     }
   });
 
-  /* ---------- fokus i zapowiedz przy zmianie kroku ---------- */
+  /* ---------- zmiana kroku: szyna, fokus, zapowiedz ---------- */
   var last = 0;
   function onStep(i){
+    if (railFill) railFill.style.width = Math.round((i+1)/steps.length*100) + '%';
     if (live) live.textContent = 'Krok ' + (i+1) + ' z ' + steps.length + ': ' + (titles[i]||'');
     var head = steps[i].querySelector('.mf-step-head h4');
     if (head){
       head.setAttribute('tabindex','-1');
       try { head.focus({preventScroll:true}); } catch(e){ head.focus(); }
     }
-    if (i === steps.length-1) buildRecap();
+    renderBrief();
     syncHeight();
   }
   new MutationObserver(function(){
     var i = cur();
-    if (i !== last){ last = i; onStep(i); }
+    if (i !== last){ form.classList.toggle('mfx-rev', i < last); last = i; onStep(i); }
   }).observe(form, {subtree:true, attributes:true, attributeFilter:['class']});
 
-  /* ---------- Enter przechodzi dalej (zamiast nic nie robic) ---------- */
+  /* ---------- Enter przechodzi dalej ---------- */
   form.addEventListener('keydown', function(e){
     if (e.key !== 'Enter' || e.shiftKey) return;
     var t = e.target;
-    if (!t || t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON') return;
-    if (t.type === 'checkbox') return;
-    var nx = visibleNext();
+    if (!t || t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.type === 'checkbox') return;
+    var nx = vis('.mf-next');
     if (nx){ e.preventDefault(); nx.click(); }
+  });
+
+  /* ---------- opisy pod kafelkami ---------- */
+  var SUB = {
+    strona:'Projekt, treści i SEO od pierwszego dnia',
+    geo:'Widoczność w ChatGPT i Google AI',
+    email:'Powtarzalna praca przechodzi na automaty',
+    chatbot:'Rutynowe pytania obsłużone 24/7',
+    branding:'Spójna marka w każdym kanale'
+  };
+  [].slice.call(form.querySelectorAll('[name="svc"]')).forEach(function(inp){
+    var body = inp.nextElementSibling;
+    if (!body || body.querySelector('.mfx-txt')) return;
+    var txt = SUB[inp.value];
+    if (!txt) return;
+    var tn = null;
+    for (var k = 0; k < body.childNodes.length; k++){
+      var nd = body.childNodes[k];
+      if (nd.nodeType === 3 && nd.textContent.trim()){ tn = nd; break; }
+    }
+    if (!tn) return;
+    var wrap = document.createElement('span');
+    wrap.className = 'mfx-txt';
+    var tt = document.createElement('span');
+    tt.className = 'mfx-t';
+    tt.textContent = tn.textContent.trim();
+    var s = document.createElement('span');
+    s.className = 'mfx-sub';
+    s.textContent = txt;
+    wrap.appendChild(tt);
+    wrap.appendChild(s);
+    body.replaceChild(wrap, tn);
   });
 
   /* ---------- walidacja na zywo ---------- */
@@ -1211,24 +1307,24 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       var errEl = document.getElementById(RULES[id].err);
       if (grp) grp.classList.toggle('mfx-ok', good && el.value.trim() !== '');
       el.setAttribute('aria-invalid', good ? 'false' : 'true');
-      if (good){
-        if (errEl) errEl.textContent = '';
-        el.style.borderColor = '';
-      }
+      if (good){ if (errEl) errEl.textContent = ''; el.style.borderColor = ''; }
+      renderBrief();
     }
     el.addEventListener('input', refresh);
     el.addEventListener('blur', refresh);
   });
 
-  /* fokus na pierwszym blednym polu po nieudanej walidacji kroku */
+  form.addEventListener('change', function(e){ if (e.target.name === 'svc') renderBrief(); });
   form.addEventListener('click', function(e){
+    if (e.target.closest('.slot, .cal-grid button')) setTimeout(renderBrief, 60);
+    if (e.target.closest('.mf-next, .mf-back')) setTimeout(syncHeight, 40);
     if (!e.target.closest('.mf-next')) return;
     setTimeout(function(){
       var msgs = [].slice.call(form.querySelectorAll('.mf-step.is-on .ferr')).filter(function(s){ return s.textContent.trim(); });
       msgs.forEach(function(s){
-        var g = s.closest(".fgroup");
-        var fld = g ? g.querySelector("input,textarea") : null;
-        if (fld) fld.setAttribute("aria-invalid", "true");
+        var g = s.closest('.fgroup');
+        var fld = g ? g.querySelector('input,textarea') : null;
+        if (fld) fld.setAttribute('aria-invalid','true');
       });
       if (!msgs.length) return;
       var grp = msgs[0].closest('.fgroup');
@@ -1237,101 +1333,72 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
     }, 60);
   });
 
-  /* ---------- licznik wybranych uslug ---------- */
-  var count = null;
-  var h1 = steps[0].querySelector('.mf-step-head h4');
-  if (h1){
-    h1.style.display = 'flex';
-    h1.style.alignItems = 'baseline';
-    h1.style.gap = '10px';
-    count = document.createElement('span');
-    count.className = 'mfx-count';
-    h1.appendChild(count);
-  }
-  function refreshCount(){
-    if (!count) return;
-    var n = form.querySelectorAll('[name="svc"]:checked').length;
-    count.textContent = n ? (n + (n === 1 ? ' wybrana' : (n < 5 ? ' wybrane' : ' wybranych'))) : '';
-    count.classList.toggle('on', n > 0);
-  }
-  form.addEventListener('change', function(e){ if (e.target.name === 'svc') refreshCount(); });
-  form.addEventListener('click', function(e){ if (e.target.closest('.mf-next,.mf-back')) setTimeout(syncHeight, 30); });
-  refreshCount();
+  /* ---------- termin zwiniety (jest opcjonalny, wiec nie moze dominowac) ---------- */
+  (function(){
+    var s4 = steps[steps.length-1];
+    var cap = s4.querySelector('.date-cap');
+    var note = s4.querySelector('#slotNote');
+    if (!cap || !note) return;
+    var body = document.createElement('div');
+    body.className = 'mfx-dtbody';
+    body.hidden = true;
+    cap.parentNode.insertBefore(body, cap);
+    var n = cap, moved = [];
+    while (n){ var nx = n.nextSibling; moved.push(n); if (n === note) break; n = nx; }
+    moved.forEach(function(el){ body.appendChild(el); });
 
-  /* ---------- licznik znakow w opisie projektu ---------- */
-  var msg = document.getElementById('fMsg');
-  if (msg){
-    var chars = document.createElement('span');
-    chars.className = 'mfx-chars';
-    chars.setAttribute('aria-hidden','true');
-    var mgrp = msg.closest('.fgroup');
-    if (mgrp && mgrp.parentNode) mgrp.parentNode.insertBefore(chars, mgrp.nextSibling);
-    msg.addEventListener('input', function(){
-      var n = msg.value.trim().length;
-      chars.classList.toggle('on', n > 0);
-      chars.classList.toggle('good', n >= 40);
-      chars.textContent = n < 40
-        ? (n + ' znak' + (n === 1 ? '' : (n < 5 ? 'i' : 'ów')))
-        : (n + ' znaków — to wystarczy na trafną wycenę');
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'mfx-dt';
+    btn.setAttribute('aria-expanded','false');
+    btn.innerHTML = '<span>Zaproponuj termin rozmowy <span style="color:var(--faint)">— opcjonalnie</span></span>' +
+      '<span class="mfx-dt-r"><b class="mfx-dt-v"></b><svg class="mfx-dt-c" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>';
+    body.parentNode.insertBefore(btn, body);
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      body.hidden = open;
+      syncHeight();
     });
-  }
+    var vEl = btn.querySelector('.mfx-dt-v');
+    form.addEventListener('click', function(e){
+      if (!e.target.closest('.slot, .cal-grid button')) return;
+      setTimeout(function(){
+        var d = val('fDate'), sl = form.querySelector('.slot.is-sel');
+        vEl.textContent = d ? (d + (sl ? ', ' + sl.getAttribute('data-time') : '')) : '';
+      }, 60);
+    });
+  })();
 
-  /* ---------- podsumowanie na ostatnim kroku ---------- */
-  var NAMES = { strona:'Strona + SEO i GEO', geo:'GEO i SEO', email:'Automatyzacje', chatbot:'Chatbot AI', branding:'Branding' };
-  var recap = null;
-  function buildRecap(){
-    var host = steps[steps.length-1];
-    var headEl = host.querySelector('.mf-step-head');
-    if (!headEl) return;
-    if (!recap){
-      recap = document.createElement('div');
-      recap.className = 'mfx-recap';
-      headEl.parentNode.insertBefore(recap, headEl.nextSibling);
-    }
-    function val(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; }
-    var svc = [].slice.call(form.querySelectorAll('[name="svc"]:checked'))
-      .map(function(c){ return NAMES[c.value] || c.value; }).join(', ');
-    var rows = '';
-    if (svc) rows += '<dt>Zakres</dt><dd>' + esc(svc) + '<button type="button" class="mfx-edit" data-go="0">zmień</button></dd>';
-    var who = [val('fName'), val('fCompany')].filter(Boolean).join(' · ');
-    if (who) rows += '<dt>Kontakt</dt><dd>' + esc(who) + '</dd>';
-    if (val('fEmail')) rows += '<dt>E-mail</dt><dd>' + esc(val('fEmail')) + '<button type="button" class="mfx-edit" data-go="2">zmień</button></dd>';
-    recap.innerHTML = '<span class="mfx-recap-h">Wysyłasz</span><dl>' + rows + '</dl>';
-  }
-
-  /* "zmien" cofa do wlasciwego kroku */
-  form.addEventListener('click', function(e){
-    var b = e.target.closest('.mfx-edit');
-    if (!b) return;
-    e.preventDefault();
-    var target = parseInt(b.getAttribute('data-go'), 10);
-    var guard = 0;
-    (function back(){
-      if (cur() <= target || guard++ > 6) return;
-      var bk = [].slice.call(form.querySelectorAll('.mf-back')).filter(function(x){ return x.offsetParent; })[0];
-      if (bk){ bk.click(); setTimeout(back, 90); }
-    })();
-  });
-
-  /* ---------- stan wysylki + przewiniecie do potwierdzenia ---------- */
+  /* ---------- sukces: co dalej ---------- */
   var submitBtn = document.getElementById('mfSubmit');
   form.addEventListener('submit', function(){
     if (submitBtn && submitBtn.disabled) submitBtn.classList.add('mfx-loading');
   });
-  var card = form.closest('.form-card') || form.parentElement;
-  if (card){
+  if (host){
     new MutationObserver(function(){
-      if (card.classList.contains('sent')){
-        if (submitBtn) submitBtn.classList.remove('mfx-loading');
-        var okBox = card.querySelector('.form-success');
-        if (okBox){
-          try { okBox.scrollIntoView({block:'center', behavior:'smooth'}); } catch(e){}
-          var h = okBox.querySelector('h3');
-          if (h){ h.setAttribute('tabindex','-1'); setTimeout(function(){ try{ h.focus({preventScroll:true}); }catch(e){} }, 400); }
-        }
+      if (!host.classList.contains('sent')) return;
+      if (submitBtn) submitBtn.classList.remove('mfx-loading');
+      var box = host.querySelector('.form-success');
+      if (box && !box.querySelector('.mfx-next')){
+        var ol = document.createElement('ol');
+        ol.className = 'mfx-next';
+        ol.innerHTML =
+          '<li><span class="w">teraz</span><b>Zgłoszenie u nas</b>Potwierdzenie poszło na ' + esc(val('fEmail') || 'Twój e-mail') + '.</li>' +
+          '<li><span class="w">do 24 h roboczych</span><b>Bezpłatny audyt</b>Sprawdzamy, co realnie da się u Ciebie zautomatyzować, i odzywamy się z wyceną.</li>' +
+          '<li><span class="w">potem</span><b>Demo z Twojego briefu</b>Pokazujemy działające rozwiązanie, zanim cokolwiek zapłacisz.</li>';
+        box.appendChild(ol);
       }
-    }).observe(card, {attributes:true, attributeFilter:['class']});
+      if (box){
+        try { box.scrollIntoView({block:'center', behavior:'smooth'}); } catch(e){}
+        var h = box.querySelector('h3');
+        if (h){ h.setAttribute('tabindex','-1'); setTimeout(function(){ try{ h.focus({preventScroll:true}); }catch(e){} }, 400); }
+      }
+    }).observe(host, {attributes:true, attributeFilter:['class']});
   }
+
+  renderBrief();
+  if (railFill) railFill.style.width = '25%';
 })();
 </script>
 </body>
