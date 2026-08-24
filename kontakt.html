@@ -1351,5 +1351,37 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
   if (railFill) railFill.style.width = '25%';
 })();
 </script>
+<style id="ctc-dark">
+/* ============================================================
+   PODSTRONA KONTAKT — jeden ciemny plan od hero po stopkę.
+   Moment konwersji dostaje własny, immersyjny nastrój; reszta
+   serwisu pozostaje jasna. Tło = ten sam #08090c co sekcja .ctc,
+   więc przejście sekcja→stopka jest bezszwowe.
+   ============================================================ */
+body{background:#08090c}
+::-webkit-scrollbar-track{background:#08090c}
+::-webkit-scrollbar-thumb{background:#2a2e36;border-color:#08090c}
+
+/* --- stopka: ciemny wariant przez nadpisanie zmiennych w jej scope --- */
+.footer{
+  --text:#eef1f6;
+  --muted:#9299a6;
+  --faint:#767e8c;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(255,255,255,.06);
+  border-top-color:rgba(255,255,255,.07);
+}
+/* watermark: ciemny gradient znika na ciemnym tle → jasny, ledwie widoczny */
+.footer .footer-watermark{
+  background:linear-gradient(180deg,rgba(255,255,255,.05),transparent);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+/* logo-word to czarny napis — na ciemnym potrzebny biały wariant */
+.footer-brand .logo-word{content:url("samo%20skaluj%20biale.png")}
+/* dekoracyjny sygnet: .05 gubi się na czerni, delikatnie mocniej */
+.footer .brand-ghost--footer{opacity:.07}
+/* cień przycisku CTA dostrojony do ciemnego tła */
+.footer .footer-cta{box-shadow:0 3px 16px rgba(0,0,0,.4)}
+</style>
 </body>
 </html>
