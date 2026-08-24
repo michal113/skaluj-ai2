@@ -562,6 +562,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
   (function(){
     var step = 1, card = document.getElementById("formCard");
     var form = document.getElementById("contactForm");
+    if(!form) return;
     var btnBack = document.getElementById("mfBack");
     var btnNext = document.getElementById("mfNext");
     var mfNote = document.getElementById("mfNote");

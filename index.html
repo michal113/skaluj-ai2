@@ -380,8 +380,16 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .dash-body{padding:clamp(22px,3vw,34px);text-align:left}
 
 /* panel wyników — interaktywny dashboard */
-.pa-tabs{position:relative;display:inline-flex;flex-wrap:nowrap;gap:2px;margin-bottom:20px;padding:4px;background:var(--bg-elev-2);border:1px solid var(--line-2);border-radius:9999px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.pa-tabs{position:relative;display:inline-flex;flex-wrap:nowrap;gap:2px;margin-bottom:20px;padding:4px;background:var(--bg-elev-2);border:1px solid var(--line-2);border-radius:9999px;max-width:100%;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;-webkit-mask-image:linear-gradient(90deg,#000,#000);mask-image:linear-gradient(90deg,#000,#000);transition:mask-image .2s,-webkit-mask-image .2s}
 .pa-tabs::-webkit-scrollbar{display:none}
+.pa-tab{scroll-snap-align:start}
+/* zaklaki wychodza poza widoczny pasek na waskich ekranach (przewijalny .pa-tabs);
+   wygaszenie krawedzi sygnalizuje, ze jest wiecej do przewiniecia — tylko po tej stronie,
+   gdzie faktycznie cos jest (klasy .can-l/.can-r ustawia JS na podstawie pozycji scrolla) */
+.pa-tabs.can-r{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
+.pa-tabs.can-l{-webkit-mask-image:linear-gradient(90deg,transparent,#000 26px);mask-image:linear-gradient(90deg,transparent,#000 26px)}
+.pa-tabs.can-l.can-r{-webkit-mask-image:linear-gradient(90deg,transparent,#000 26px,#000 calc(100% - 26px),transparent);mask-image:linear-gradient(90deg,transparent,#000 26px,#000 calc(100% - 26px),transparent)}
+@media (prefers-reduced-motion:reduce){.pa-tabs{transition:none}}
 .pa-tab{position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:12.5px;font-weight:500;letter-spacing:-.01em;color:var(--muted);background:none;border:0;border-radius:9999px;padding:8px 16px;cursor:pointer;white-space:nowrap;transition:color .25s}
 .pa-tab svg{width:13px;height:13px;flex:none;opacity:.7;transition:opacity .25s,color .25s}
 .pa-tab:hover{color:var(--text)}
@@ -410,7 +418,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .pa-lower .pa-box:not(.pa-right-col){display:flex;flex-direction:column}
 .pa-lower .pa-box:not(.pa-right-col) .pa-bar-row{flex-grow:1}
 .pa-box{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:14px;padding:16px 18px}
-.pa-box-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.pa-box-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:8px;flex-wrap:wrap}
 .pa-box-title{font-size:12.5px;font-weight:540;color:var(--text);letter-spacing:-.01em}
 .pa-box-sub{font-family:var(--mono);font-size:9px;color:var(--faint);letter-spacing:.06em}
 .pa-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
@@ -2517,6 +2525,19 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   (function(){
     var tabs=document.getElementById("paTabs"); if(!tabs) return;
     var dash=document.getElementById("kalkulator");
+
+    /* wygaszenie krawedzi paska zakladek na waskich ekranach, gdy jest przewijalny —
+       bez tego pasek wyglada jak uciety w polowie etykiety zamiast "przewin dalej" */
+    (function(){
+      function sync(){
+        var max=tabs.scrollWidth-tabs.clientWidth;
+        tabs.classList.toggle("can-l", tabs.scrollLeft>4);
+        tabs.classList.toggle("can-r", tabs.scrollLeft<max-4);
+      }
+      sync();
+      tabs.addEventListener("scroll", sync, {passive:true});
+      window.addEventListener("resize", sync);
+    })();
     var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
     var PANELS={auto:"ppAuto",website:"ppWebsite",mail:"ppMail",chatbot:"ppChatbot"};
     var FEEDS={

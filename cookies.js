@@ -73,7 +73,7 @@
   '.ck-set{background:none;border:none;cursor:pointer;color:#565d68;font:500 11px "Geist",sans-serif;padding:8px 2px 0;margin-top:4px;text-decoration:underline;text-underline-offset:2px}' +
   '.ck-set:hover{color:#2456c9}' +
   '.ck-opts{max-height:0;overflow:hidden;transition:max-height .35s var(--ease,cubic-bezier(.22,1,.36,1))}' +
-  '.ck.open .ck-opts{max-height:160px}' +
+  '.ck.open .ck-opts{max-height:320px}' +
   '.ck-opt{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-top:1px solid rgba(15,30,60,.07)}' +
   '.ck-opt:first-child{margin-top:10px}' +
   '.ck-opt label{font-size:12px;font-weight:550;color:#0b0d10;cursor:pointer}' +
