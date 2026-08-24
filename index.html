@@ -792,7 +792,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .ptl-assure-item svg{width:19px;height:19px;color:var(--accent);flex:none}
 @media(max-width:600px){.ptl-assure{flex-direction:column;align-items:flex-start;gap:14px;margin-top:40px;padding-top:28px}}
 /* ===== O NAS ===== */
-.about-grid{display:grid;grid-template-columns:1fr;gap:60px;align-items:center}
+.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:start}
 .about-lead{font-size:1.12rem;line-height:1.65;color:var(--text);margin:8px 0 16px;max-width:52ch}
 .about-p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:26px;max-width:52ch}
 .about-values{list-style:none;display:grid;gap:16px;margin-bottom:30px}
@@ -809,24 +809,26 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .sec-title .uline::after,.integ-title .uline::after{content:"";position:absolute;left:0;right:0;bottom:.02em;height:2px;background:var(--accent);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .85s var(--ease) .25s;box-shadow:0 0 12px var(--accent-soft)}
 [data-reveal].in .sec-title .uline::after,[data-reveal].in .integ-title .uline::after{transform:scaleX(1)}
 @media (prefers-reduced-motion:reduce){.sec-title .uline::after,.integ-title .uline::after{transform:scaleX(1);transition:none}}
-/* Osoba WYJETA z gridu (pozycja absolutna). Wczesniej obrazek rozpychal swoja kolumne
-   gridu i kradl szerokosc tekstowi -> tekst byl waski (~294px) i wysoki, przez co naglowek
-   ladowal wysoko. Teraz tekst ma stabilna szerokosc, a postac kotwiczy prawo-dol sekcji,
-   dzieki czemu naglowek naturalnie rowna sie z gora postaci. */
-#o-nas{position:relative;overflow:hidden}
+#o-nas{position:relative}
 .about-copy{position:relative;z-index:1;max-width:600px}
 .about-copy[data-reveal]{transform:translateY(18px)}
 .about-copy[data-reveal].in{transform:none}
-.about-visual{position:absolute;right:0;bottom:0;margin:0;width:min(680px,45vw);
-  display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none}
-.about-person{display:block;width:100%;height:auto;user-select:none;margin:0;
-  filter:drop-shadow(0 8px 20px rgba(15,30,60,.10))}
-/* Ponizej ~1361px za malo miejsca na duza postac obok tekstu (mala postac -> naglowek
-   znow wisialby wysoko). Dlatego uklad pionowy: postac wraca do flow, pod tekstem. */
-@media(max-width:1360px){
+/* Zdjecie zespolu: prawdziwa fotografia (nie wycinanka), wiec dostaje
+   traktowanie karty-fotografii — cienka ramka, cien, delikatna poswiata
+   akcentu w tle. Naturalne proporcje 3:2 zrodla = zero ryzykownego kadrowania. */
+.about-visual{position:relative}
+.about-visual::before{content:"";position:absolute;left:6%;top:-12%;width:88%;height:88%;
+  background:radial-gradient(circle,var(--accent-soft),transparent 70%);filter:blur(56px);z-index:0}
+.about-photo{position:relative;z-index:1;border-radius:20px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:0 26px 60px -22px rgba(15,30,60,.28),0 4px 16px rgba(15,30,60,.06)}
+.about-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.about-cap{position:relative;z-index:1;display:inline-flex;align-items:center;gap:9px;margin-top:14px;
+  font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.06em;color:var(--faint)}
+.about-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-soft)}
+@media(max-width:880px){
   .about-grid{grid-template-columns:1fr;gap:40px}
-  .about-copy{max-width:720px}
-  .about-visual{position:static;width:min(520px,86vw);display:block;margin:8px auto 0}
+  .about-copy{max-width:680px}
+  .about-visual{max-width:520px;margin:0 auto}
 }
 /* ── Mobile: vertical ── */
 @media(max-width:767px){
@@ -1101,7 +1103,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .nav-burger{display:block}
   .nav-right .btn{display:none}
   .section{padding:72px 0}
-  .about-person{margin-bottom:-72px;transform:none}
   .hero{padding:130px 0 80px}
   
   .dash-body{padding:18px}
@@ -1902,11 +1903,13 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         </ul>
         <a class="btn btn-primary about-cta" href="kontakt">Poznajmy się <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
+      <div class="about-visual" data-reveal data-delay="100">
+        <div class="about-photo">
+          <img src="assets/onas-praca.webp" alt="Praca zespołu skaluj.ai nad wdrożeniem — biurko z laptopem i monitorami" width="1740" height="1160" loading="lazy">
+        </div>
+        <span class="about-cap">Rzeszów, Polska</span>
+      </div>
     </div>
-  </div>
-  <!-- postac poza .wrap: kotwiczy do prawej krawedzi SEKCJI (viewport), nie do .wrap -->
-  <div class="about-visual" data-reveal data-delay="100">
-    <img class="about-person" src="assets/onas-osoba.webp" alt="Członkini zespołu skaluj.ai wskazująca na sekcję O nas" width="1067" height="1100" loading="lazy">
   </div>
 </section>
 
