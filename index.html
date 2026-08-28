@@ -821,22 +821,36 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .about-copy{position:relative;z-index:1;max-width:600px}
 .about-copy[data-reveal]{transform:translateY(18px)}
 .about-copy[data-reveal].in{transform:none}
-/* Zdjecie zespolu: prawdziwa fotografia (nie wycinanka), wiec dostaje
-   traktowanie karty-fotografii — cienka ramka, cien, delikatna poswiata
-   akcentu w tle. Naturalne proporcje 3:2 zrodla = zero ryzykownego kadrowania. */
+/* Zdjecie zespolu — prawdziwa fotografia z pracowni, nie wycinanka.
+   Mobile: zamknieta karta 3:2. Desktop: kadr wychodzi poza siatke az do
+   prawej krawedzi ekranu i rowna sie z wysokoscia tekstu — czyta sie jak
+   okno do pracowni, ktore trwa dalej poza ekranem, a nie wklejony prostokat.
+   Wczesniej zdjecie konczylo sie w polowie kolumny, zostawiajac 304px pustki. */
 .about-visual{position:relative}
 .about-visual::before{content:"";position:absolute;left:6%;top:-12%;width:88%;height:88%;
   background:radial-gradient(circle,var(--accent-soft),transparent 70%);filter:blur(56px);z-index:0}
 .about-photo{position:relative;z-index:1;border-radius:20px;overflow:hidden;
   border:1px solid var(--line);box-shadow:0 26px 60px -22px rgba(15,30,60,.28),0 4px 16px rgba(15,30,60,.06)}
 .about-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
-.about-cap{position:relative;z-index:1;display:inline-flex;align-items:center;gap:9px;margin-top:14px;
-  font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.06em;color:var(--faint)}
-.about-cap::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-soft)}
-@media(max-width:880px){
+@media(min-width:1100px){
+  /* przycina naddatek bleedu (100vw liczy pasek przewijania, ~4px na strone) */
+  #o-nas{overflow:hidden}
+  .about-grid{align-items:stretch}
+  .about-visual{display:flex;
+    /* do prawej krawedzi: polowa marginesu poza .wrap (max 1180px) + jego padding 24px */
+    margin-right:calc(-1 * (max(0px,(100vw - 1180px)/2) + 24px))}
+  .about-photo{flex:1;display:flex;
+    border-radius:20px 0 0 20px;border-right:0;
+    box-shadow:-26px 26px 60px -28px rgba(15,30,60,.30),0 4px 16px rgba(15,30,60,.05)}
+  /* wysokosc z kolumny tekstu; kadr trzyma laptop i osobe (prawa czesc zrodla) */
+  .about-photo img{height:100%;aspect-ratio:auto;object-position:58% 50%}
+}
+/* Ponizej 1100px kolumny robia sie za waskie: kadr scisnalby sie do pionowego
+   zblizenia na twarz, gubiac laptop i cala scene. Wtedy uklad pionowy. */
+@media(max-width:1099px){
   .about-grid{grid-template-columns:1fr;gap:40px}
   .about-copy{max-width:680px}
-  .about-visual{max-width:520px;margin:0 auto}
+  .about-visual{max-width:560px;margin:0 auto}
 }
 /* ── Mobile: vertical ── */
 @media(max-width:767px){
@@ -1910,7 +1924,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <div class="about-photo">
           <img src="assets/onas-praca.webp" alt="Praca zespołu skaluj.ai nad wdrożeniem — biurko z laptopem i monitorami" width="1740" height="1160" loading="lazy">
         </div>
-        <span class="about-cap">Rzeszów, Polska</span>
       </div>
     </div>
   </div>
