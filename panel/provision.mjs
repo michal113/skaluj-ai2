@@ -24,7 +24,7 @@ const BASE_URL = "https://skaluj-panel.ni4324234fdsfd.workers.dev";
 
 const argv = process.argv.slice(2);
 if (!argv.length || argv[0].startsWith("--")) {
-  console.error('Uzycie: node provision.mjs "Nazwa klienta" [--ga4 ID] [--gsc URL] [--dni 28] [--slug ISTNIEJACY]');
+  console.error('Uzycie: node provision.mjs "Nazwa klienta" [--ga4 ID] [--gsc URL] [--dziala website,auto] [--dni 28] [--slug ISTNIEJACY]');
   process.exit(1);
 }
 
@@ -50,16 +50,29 @@ if (gsc && !/^(https?:\/\/|sc-domain:)/.test(gsc)) {
 }
 if (ga4 && !gsc) console.warn('Uwaga: brak --gsc, wiec karty z Search Console pokaza "—".');
 
+/* --dziala: uslugi, ktore u klienta JUZ PRACUJA, ale nie podlaczylismy pomiaru.
+   Reszta dostaje "offer" — panel z propozycja uruchomienia. Rozroznienie jest
+   istotne: klientowi, ktory za usluge zaplacil, nie wolno proponowac jej zakupu. */
+const dziala = new Set((flag("dziala") || "").split(",").map((s) => s.trim()).filter(Boolean));
+const ZNANE = ["website", "auto", "mail", "chatbot"];
+for (const k of dziala) {
+  if (!ZNANE.includes(k)) {
+    console.error('Blad: --dziala zna tylko: ' + ZNANE.join(", ") + ' (dostalem "' + k + '")');
+    process.exit(1);
+  }
+}
+const stan = (k) => (dziala.has(k) ? "pending" : "offer");
+
 const config = {
   slug,
   clientName,
   panels: {
     website: ga4
       ? { status: "live", ga4PropertyId: ga4.replace(/^properties\//, ""), gscSiteUrl: gsc || null, dateRangeDays: dni }
-      : { status: "pending" },
-    auto: { status: "pending" },
-    mail: { status: "pending" },
-    chatbot: { status: "pending" },
+      : { status: stan("website") },
+    auto: { status: stan("auto") },
+    mail: { status: stan("mail") },
+    chatbot: { status: stan("chatbot") },
   },
 };
 

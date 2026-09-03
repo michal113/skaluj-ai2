@@ -83,6 +83,10 @@ main{flex:1 0 auto}
 /* kropka stanu: pelna i blekitna = na zywo, obrys = czeka na podlaczenie */
 .pa-live-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;
   box-shadow:0 0 0 3px var(--accent-soft)}
+/* dziala u klienta, ale pomiaru jeszcze nie podlaczylismy — blekit, ale pusty srodek */
+.pa-wait-dot{width:6px;height:6px;border-radius:50%;background:transparent;flex:none;
+  box-shadow:inset 0 0 0 1.5px var(--accent)}
+/* nie jest czescia wdrozenia tego klienta */
 .pa-soon-dot{width:6px;height:6px;border-radius:50%;background:transparent;flex:none;
   box-shadow:inset 0 0 0 1.5px var(--faint);opacity:.6}
 

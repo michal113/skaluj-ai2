@@ -205,25 +205,44 @@ function websitePanel(data, days) {
 
 /* ---------- SYGNATURA: panel bez danych jako rysunek techniczny ---------- */
 
-function blueprintPanel(p, contactUrl) {
+/**
+ * status:
+ *   "pending" — usluga u klienta DZIALA, tylko nie podlaczylismy jeszcze pomiaru.
+ *               Nie wolno tu proponowac zakupu: klient juz za to zaplacil.
+ *   "offer"   — usluga nie jest czescia wdrozenia tego klienta. Tu CTA ma sens.
+ */
+function blueprintPanel(p, contactUrl, status) {
+  const dziala = status === "pending";
+
   const cells = (p.metrics || [])
     .map(
       (m) =>
         '<div class="pa-bp-cell"><span class="pa-bp-name">' + esc(m) + "</span>" +
         '<span class="pa-bp-rule"></span>' +
-        '<span class="pa-bp-wait">Uruchomimy z wdrożeniem</span></div>'
+        '<span class="pa-bp-wait">' + (dziala ? "Czeka na pomiar" : "Uruchomimy z wdrożeniem") + "</span></div>"
     )
     .join("");
 
+  const naglowek = dziala
+    ? esc(p.label) + " · działa u Ciebie, pomiar jeszcze niepodłączony"
+    : esc(p.label) + " · nie jest częścią Twojego wdrożenia";
+
+  const tresc = dziala
+    ? '<p class="pa-bp-h">Ta część już u Ciebie pracuje</p>' +
+      '<p class="pa-bp-p">Wdrożyliśmy to i działa — brakuje wyłącznie podłączenia pomiaru, ' +
+      "żebyś widział wyniki w liczbach. Do tego czasu widzisz rysunek metryk, które tu wejdą. " +
+      "Nie pokazujemy żadnych wartości, dopóki nie mamy pewności, że są prawdziwe.</p>" +
+      '<a class="pa-bp-btn" href="' + esc(contactUrl) + "?pomiar=" + esc(p.service) + '">Podłączcie pomiar'
+    : '<p class="pa-bp-h">Nie zmyślamy liczb</p>' +
+      '<p class="pa-bp-p">' + esc(p.lead) + " Do tego czasu widzisz rysunek tego, co powstanie — " +
+      "zamiast danych, których jeszcze nie mierzymy.</p>" +
+      '<a class="pa-bp-btn" href="' + esc(contactUrl) + "?panel=" + esc(p.service) + '">Chcę uruchomić ten panel';
+
   return (
-    '<p class="pa-period">' + esc(p.label) + " · ten panel czeka na podłączenie</p>" +
-    '<div class="pa-bp"><span class="pa-bp-tag">Plan · ' + esc(p.label) + "</span>" +
+    '<p class="pa-period">' + naglowek + "</p>" +
+    '<div class="pa-bp"><span class="pa-bp-tag">' + (dziala ? "Pomiar" : "Plan") + " · " + esc(p.label) + "</span>" +
     '<div class="pa-bp-grid">' + cells + "</div>" +
-    '<div class="pa-bp-body">' +
-    '<p class="pa-bp-h">Nie zmyślamy liczb</p>' +
-    '<p class="pa-bp-p">' + esc(p.lead) + " Do tego czasu widzisz rysunek tego, co powstanie — " +
-    "zamiast danych, których jeszcze nie mierzymy.</p>" +
-    '<a class="pa-bp-btn" href="' + esc(contactUrl) + "?panel=" + esc(p.service) + '">Chcę uruchomić ten panel' +
+    '<div class="pa-bp-body">' + tresc +
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">' +
     '<path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' +
     "</div></div>"
@@ -233,21 +252,27 @@ function blueprintPanel(p, contactUrl) {
 /* ---------- strona ---------- */
 
 export function renderPage({ config, data, days, brand, contactUrl, generatedAt }) {
-  const isLive = (k) => config.panels?.[k]?.status === "live";
-  const liveCount = PANELS.filter((p) => isLive(p.key)).length;
+  /* Trzy stany, nie dwa. "offer" to domyslna wartosc — panel, ktorego klient nie kupil. */
+  const stan = (k) => config.panels?.[k]?.status || "offer";
+  const liveCount = PANELS.filter((p) => stan(p.key) === "live").length;
+  const pendingCount = PANELS.filter((p) => stan(p.key) === "pending").length;
+
+  const KROPKI = {
+    live: '<span class="pa-live-dot" aria-hidden="true"></span>',
+    pending: '<span class="pa-wait-dot" aria-hidden="true"></span>',
+    offer: '<span class="pa-soon-dot" aria-hidden="true"></span>',
+  };
 
   const tabs = PANELS.map((p, i) => {
-    const dot = isLive(p.key)
-      ? '<span class="pa-live-dot" aria-hidden="true"></span>'
-      : '<span class="pa-soon-dot" aria-hidden="true"></span>';
     return (
       '<button type="button" class="pa-tab' + (i === 0 ? " is-active" : "") + '" data-k="' + p.key + '">' +
-      ICONS[p.key] + esc(p.label) + dot + "</button>"
+      ICONS[p.key] + esc(p.label) + (KROPKI[stan(p.key)] || KROPKI.offer) + "</button>"
     );
   }).join("");
 
   const panels = PANELS.map((p, i) => {
-    const body = isLive(p.key) && p.key === "website" ? websitePanel(data, days) : blueprintPanel(p, contactUrl);
+    const s = stan(p.key);
+    const body = s === "live" && p.key === "website" ? websitePanel(data, days) : blueprintPanel(p, contactUrl, s);
     return '<section class="pa-panel' + (i === 0 ? "" : " pa-hidden") + '" data-panel="' + p.key + '">' + body + "</section>";
   }).join("");
 
@@ -255,7 +280,13 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
      "Realne dane z Twoich narzedzi" nad samymi myslnikami czytaloby sie jak awaria. */
   const sub = liveCount
     ? "Realne dane z Twoich narzędzi, pobierane na żywo przy każdym otwarciu tej strony."
+    : pendingCount
+    ? "Twoje wdrożenie pracuje. Podłączamy pomiar, żebyś widział jego wyniki w liczbach."
     : "Tu pojawią się Twoje wyniki. Każdą zakładkę uruchamiamy razem z wdrożeniem usługi.";
+
+  const licznik =
+    "<b>" + liveCount + "</b> z " + PANELS.length + " paneli na żywo" +
+    (pendingCount ? " · " + pendingCount + (pendingCount === 1 ? " czeka" : " czekają") + " na pomiar" : "");
 
   const stamp = new Intl.DateTimeFormat("pl-PL", {
     dateStyle: "long",
@@ -286,7 +317,7 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
   <p class="pnl-eyebrow">Panel wyników · ${esc(config.clientName)}</p>
   <h1 class="pnl-h1">Co dowozi Twoje wdrożenie</h1>
   <p class="pnl-sub">${esc(sub)}</p>
-  <p class="pnl-stamp"><b>${liveCount}</b> z ${PANELS.length} paneli na żywo</p>
+  <p class="pnl-stamp">${licznik}</p>
 </div></section>
 
 <main class="pnl-wrap">
