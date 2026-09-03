@@ -13,6 +13,14 @@
  */
 import { randomBytes } from "node:crypto";
 import { spawnSync } from "node:child_process";
+import { writeFileSync, unlinkSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
+/* Adres, pod ktorym stoi Worker. Strefa DNS skaluj.ai jest w lh.pl, nie w Cloudflare,
+   wiec panel.skaluj.ai wymagalby przeniesienia strefy — na niej wisi dzialajaca strona
+   i rekordy pocztowe Resend, wiec na razie zostajemy na workers.dev. */
+const BASE_URL = "https://skaluj-panel.ni4324234fdsfd.workers.dev";
 
 const argv = process.argv.slice(2);
 if (!argv.length || argv[0].startsWith("--")) {
@@ -58,12 +66,22 @@ const config = {
 const json = JSON.stringify(config);
 console.log("\nKonfiguracja:\n" + JSON.stringify(config, null, 2) + "\n");
 
+/* JSON idzie przez plik tymczasowy, nie przez argument wiersza polecen: w cmd.exe
+   cudzyslowy wewnatrz argumentu rozpadaja sie i wrangler dostaje smieci. */
+const tmp = join(tmpdir(), "panel-" + slug + ".json");
+writeFileSync(tmp, json, "utf8");
+
+/* shell:true jest wymagane — Node >=20 nie uruchamia plikow .cmd (npx.cmd) bez powloki.
+   -y, bo inaczej npx pyta o zgode na instalacje wranglera i wisi bez terminala. */
 const res = spawnSync(
-  process.platform === "win32" ? "npx.cmd" : "npx",
-  ["wrangler", "kv", "key", "put", "--binding", "PANEL_CLIENTS", "--remote", slug, json],
-  { stdio: "inherit" }
+  ["npx", "-y", "wrangler@latest", "kv", "key", "put", "--binding", "PANEL_CLIENTS",
+   "--remote", JSON.stringify(slug), "--path", JSON.stringify(tmp)].join(" "),
+  { stdio: "inherit", shell: true }
 );
 
+try { unlinkSync(tmp); } catch {}
+
+if (res.error) console.error("\nNie udalo sie uruchomic wranglera:", res.error.message);
 if (res.status !== 0) {
   console.error("\nZapis do KV nie powiodl sie. Sprawdz, czy jestes zalogowany (npx wrangler login)");
   console.error("i czy w wrangler.toml jest wypelnione id namespace PANEL_CLIENTS.");
@@ -72,9 +90,8 @@ if (res.status !== 0) {
 
 console.log("\n=================================================");
 console.log("Klient:  " + clientName);
-console.log("Link:    https://panel.skaluj.ai/" + slug);
+console.log("Link:    " + BASE_URL + "/" + slug);
 console.log("=================================================");
-console.log("\nJesli panel nie jest jeszcze pod wlasna domena, uzyj adresu *.workers.dev z 'npx wrangler deploy'.");
 if (ga4) {
   console.log("\nZanim wyslesz link, klient musi nadac dostep Viewer kontu serwisowemu:");
   console.log("  - GA4:            Administracja -> Zarzadzanie dostepem do uslugi");

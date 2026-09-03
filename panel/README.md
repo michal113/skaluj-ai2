@@ -10,6 +10,25 @@ Cztery zakładki są widoczne od razu; te bez podłączonego źródła pokazują
 przyszłych metryk, myślnik zamiast liczby i CTA do kontaktu. Realne dane ma dziś
 tylko **Strona + SEO** (GA4 + Search Console).
 
+## Stan wdrożenia (3 września 2026)
+
+Worker działa. Konfiguracja jednorazowa jest **zrobiona** — poniższą sekcję „Konfiguracja
+jednorazowa" zostawiamy jako dokumentację, nie jako listę zadań.
+
+| | |
+|---|---|
+| Adres | `https://skaluj-panel.ni4324234fdsfd.workers.dev` |
+| Konto serwisowe | `panel-reader@skaluj-panel.iam.gserviceaccount.com` |
+| Projekt GCP | `skaluj-panel`, oba API włączone |
+| Namespace KV | `896bbe772c8548d1a3c7653381aa0e06` (wpisany w `wrangler.toml`) |
+| Sekret | `GOOGLE_SERVICE_ACCOUNT_KEY` wgrany, podpis RS256 zweryfikowany na żywym API Google |
+
+**Własna domena odpada w v1.** Strefa DNS `skaluj.ai` jest w lh.pl (`ns.lh.pl`,
+`ns2.lighthosting.net`), nie w Cloudflare, a custom domain w Workers tego wymaga.
+Przeniesienie strefy oznaczałoby ruszanie DNS-ów, na których wisi działająca strona
+i rekordy pocztowe Resend od formularza kontaktowego — nie warto tego ryzyka dla
+ładniejszego adresu. Link i tak trafia do klienta mailem.
+
 ## Pliki
 
 | Plik | Rola |

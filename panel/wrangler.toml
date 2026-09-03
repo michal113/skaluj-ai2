@@ -18,4 +18,4 @@ DEFAULT_RANGE_DAYS = "28"
 # i wklej ponizej wygenerowany id.
 [[kv_namespaces]]
 binding = "PANEL_CLIENTS"
-id = "WKLEJ_ID_NAMESPACE_PO_UTWORZENIU"
+id = "896bbe772c8548d1a3c7653381aa0e06"
