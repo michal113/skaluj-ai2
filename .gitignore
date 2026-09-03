@@ -25,3 +25,6 @@ service-account*.json
 gcp-*.json
 panel/*.json
 !panel/package.json
+
+# Lokalny cache/stan wranglera (id konta, sesje dev)
+.wrangler/
