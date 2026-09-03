@@ -17,3 +17,11 @@ node_modules/
 .env
 .env.local
 .claude/launch.json
+
+# Klucze kont serwisowych Google (panel klienta) - NIGDY do repo
+*.json.key
+service-account*.json
+*-serviceaccount*.json
+gcp-*.json
+panel/*.json
+!panel/package.json
