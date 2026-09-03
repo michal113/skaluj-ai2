@@ -1,0 +1,6 @@
+{
+  "name": "skaluj-panel",
+  "private": true,
+  "type": "module",
+  "description": "Panel wynikow klienta skaluj.ai (Cloudflare Worker)"
+}

@@ -1,0 +1,21 @@
+name = "skaluj-panel"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# Zmienne jawne (mozesz nadpisac w dashboardzie Cloudflare):
+[vars]
+BRAND_NAME = "skaluj.ai"
+CONTACT_URL = "https://skaluj.ai/kontakt"
+# Ile dni wstecz raportujemy, gdy klient nie ma wlasnego ustawienia w KV:
+DEFAULT_RANGE_DAYS = "28"
+
+# GOOGLE_SERVICE_ACCOUNT_KEY ustaw jako SEKRET (nie tutaj!):
+#   npx wrangler secret put GOOGLE_SERVICE_ACCOUNT_KEY
+#   (wklej CALA zawartosc pliku JSON konta serwisowego)
+
+# Konfiguracje klientow: jeden klucz = jeden slug, wartosc = JSON (patrz README).
+# Utworz namespace raz:  npx wrangler kv namespace create PANEL_CLIENTS
+# i wklej ponizej wygenerowany id.
+[[kv_namespaces]]
+binding = "PANEL_CLIENTS"
+id = "WKLEJ_ID_NAMESPACE_PO_UTWORZENIU"
