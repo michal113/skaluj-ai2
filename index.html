@@ -600,7 +600,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 @supports (-webkit-text-stroke:1px #000){
   .offer-num{color:transparent;-webkit-text-stroke:1.1px #c6ccd6;transition:-webkit-text-stroke-color .35s,transform .45s var(--ease)}
 }
-.offer-num::after{content:"/04";font-size:10px;font-weight:400;letter-spacing:.1em;color:var(--faint);
+/* Mianownik liczony z DOM-u (patrz skrypt: --offer-total). Fallback "/05" musi
+   odpowiadac liczbie pozycji oferty — wczesniej byl tu zaszyty "/04" przy pieciu
+   pozycjach, bo liczba stala daleko od samej listy. */
+.offer-num::after{content:var(--offer-total,"/05");font-size:10px;font-weight:400;letter-spacing:.1em;color:var(--faint);
   -webkit-text-stroke:0;margin-left:4px;align-self:flex-start;margin-top:2px;transition:color .3s}
 .offer-item.open .offer-num{background:linear-gradient(180deg,var(--accent),var(--accent-dim));
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1.1px transparent;
@@ -2436,6 +2439,14 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     });
   }, {threshold:.6});
   document.querySelectorAll("[data-count]").forEach(function(el){ cio.observe(el); });
+
+  /* Mianownik "NN/MM" przy pozycjach oferty liczymy z DOM-u, zeby nie rozjechal
+     sie po dodaniu uslugi. CSS ma fallback na wypadek braku JS. */
+  (function(){
+    var n = document.querySelectorAll(".offer-item").length;
+    if(n) document.documentElement.style.setProperty("--offer-total",
+      '"/' + (n < 10 ? "0" + n : n) + '"');
+  })();
 
   /* accordion */
   document.querySelectorAll(".offer-item").forEach(function(item){
