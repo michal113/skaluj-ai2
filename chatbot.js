@@ -12,7 +12,7 @@
     // Pusty => karta rezerwacji pokaże przycisk kierujący do formularza kontaktu.
     BOOKING_URL: "",
     // Skąd pobrać wiedzę (dla trybu lokalnego bez Workera).
-    KNOWLEDGE_URL: "wiedza.txt",
+    KNOWLEDGE_URL: "/wiedza.txt",
     // Osadzić kalendarz w oknie czatu (true) czy otwierać w nowej karcie (false).
     EMBED_CALENDAR: true,
   };
