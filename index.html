@@ -109,6 +109,15 @@
       "areaServed": "PL",
       "description": "Kampanie reklamowe w ChatGPT (ChatGPT Ads) i reklamy z katalogu produktów, wraz z przygotowaniem feedu, kontekstów rozmów, pomiaru konwersji i raportowania kosztu pozyskania klienta.",
       "url": "https://skaluj.ai/oferta/reklamy-chatgpt"
+    },
+    {
+      "@type": "Service",
+      "name": "Audyt widoczności online",
+      "serviceType": "Audyt SEO, GEO i obecności w social media",
+      "provider": { "@id": "https://skaluj.ai/#organization" },
+      "areaServed": "PL",
+      "description": "Diagnostyczny audyt obecności firmy w internecie: pozycje i kondycja techniczna w Google, widoczność w odpowiedziach wyszukiwarek AI, obecność i spójność w social mediach oraz porównanie z konkurencją, zakończone raportem z listą priorytetów.",
+      "url": "https://skaluj.ai/oferta/audyt-widocznosci"
     }
   ]
 }
@@ -611,7 +620,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 /* Mianownik liczony z DOM-u (patrz skrypt: --offer-total). Fallback "/05" musi
    odpowiadac liczbie pozycji oferty — wczesniej byl tu zaszyty "/04" przy pieciu
    pozycjach, bo liczba stala daleko od samej listy. */
-.offer-num::after{content:var(--offer-total,"/06");font-size:10px;font-weight:400;letter-spacing:.1em;color:var(--faint);
+.offer-num::after{content:var(--offer-total,"/07");font-size:10px;font-weight:400;letter-spacing:.1em;color:var(--faint);
   -webkit-text-stroke:0;margin-left:4px;align-self:flex-start;margin-top:2px;transition:color .3s}
 .offer-item.open .offer-num{background:linear-gradient(180deg,var(--accent),var(--accent-dim));
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1.1px transparent;
@@ -1187,6 +1196,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .dd-row--post .dd-tx b{font-size:13px;font-weight:500;line-height:1.35;margin:0}
 .nav-item.open .dd-row:nth-of-type(6){transition-delay:.19s}
 .nav-item.open .dd-row:nth-of-type(7){transition-delay:.22s}
+.nav-item.open .dd-row:nth-of-type(8){transition-delay:.25s}
 </style><style id="blog-sec">
 /* ============================================================
    BLOG — siatka wpisow na stronie glownej
@@ -1275,6 +1285,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <a class="dd-row" href="oferta/automatyzacje-email" role="menuitem"><span class="dd-n">04</span><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
           <a class="dd-row" href="oferta/chatbot-ai" role="menuitem"><span class="dd-n">05</span><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
           <a class="dd-row" href="oferta/branding" role="menuitem"><span class="dd-n">06</span><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
+          <a class="dd-row" href="oferta/audyt-widocznosci" role="menuitem"><span class="dd-n">07</span><span class="dd-tx"><b>Audyt widoczności online</b><i>Gdzie jesteś w Google, AI i social mediach</i></span></a>
         </div>
       </div>
       <a class="nav-link" href="#case-studies">Case studies</a>
@@ -1294,6 +1305,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <a class="dd-row dd-row--post" href="blog/meta-ads-ai" role="menuitem"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — tnij koszty nawet o 30%</b></span></a>
           <a class="dd-row dd-row--post" href="blog/branding" role="menuitem"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w 2026</b></span></a>
           <a class="dd-row dd-row--post" href="blog/reklamy-chatgpt" role="menuitem"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w ChatGPT — jak działają i ile kosztują</b></span></a>
+          <a class="dd-row dd-row--post" href="blog/audyt-widocznosci" role="menuitem"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności — sprawdź, gdzie jesteś</b></span></a>
         </div>
       </div>
     </div>
@@ -1314,6 +1326,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     <a class="mm-sub" href="oferta/automatyzacje-email">Automatyzacje biznesowe AI</a>
     <a class="mm-sub" href="oferta/chatbot-ai">Asystent i chatbot AI</a>
     <a class="mm-sub" href="oferta/branding">Grafiki i branding</a>
+    <a class="mm-sub" href="oferta/audyt-widocznosci">Audyt widoczności online</a>
   </div>
   <a href="#case-studies"><span>Case studies</span><span class="n">03</span></a>
   <a href="#integracje"><span>Integracje</span><span class="n">04</span></a>
@@ -1595,8 +1608,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <p class="offer-desc">Klienci przestali wpisywać frazy — <span class="hl">zaczęli pytać AI</span>. ChatGPT ma dziś własny system reklamowy i własne wyniki zakupowe, a w Polsce ruszyło to <span class="hl">pod koniec sierpnia 2026</span>. Prowadzimy całość: konto, feed produktowy, konteksty rozmów i pomiar sprzedaży. <span class="hl">Twojej konkurencji jeszcze tam nie ma</span>.</p>
           <ul class="offer-points"><li><strong>Kampanie ChatGPT Ads</strong> — sponsorowane miejsca przy odpowiedziach AI</li><li><strong>Reklamy z katalogu</strong> — feed produktowy zgodny z Google Merchant Center</li><li>Konteksty rozmów zamiast słów kluczowych — tu rozstrzyga się skuteczność</li><li>Pomiar sprzedaży: pixel, GA4 i CRM — raportujemy koszt pozyskania, nie kliknięcia</li><li>Uczciwie: liczymy opłacalność przed startem i ustalamy warunek stopu</li></ul>
           <div class="offer-ctas">
-            <a class="offer-detail" href="kontakt">Chcę być widoczny w ChatGPT <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="offer-detail offer-detail--ghost" href="oferta/reklamy-chatgpt">Szczegóły oferty</a>
+            <a class="offer-detail" href="oferta/reklamy-chatgpt">Chcę być widoczny w ChatGPT <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="offer-detail offer-detail--ghost" href="kontakt">Umów konsultację</a>
           </div>
         </div></div></div>
       </div>
@@ -1642,6 +1655,21 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <div class="offer-ctas">
             <a class="offer-detail" href="kontakt">Odśwież moją markę <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a class="offer-detail offer-detail--ghost" href="oferta/branding">Szczegóły oferty</a>
+          </div>
+        </div></div></div>
+      </div>
+      <div class="offer-item" id="oferta-audyt">
+        <button class="offer-head" aria-expanded="false">
+          <span class="offer-num">07</span><span class="offer-name">Audyt widoczności online</span><span class="offer-meta">Diagnostyka · Raport</span>
+          <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+        </button>
+        <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
+          <span></span>
+          <p class="offer-desc">Zanim zdecydujesz, w co zainwestować, <span class="hl">sprawdź, z czego startujesz</span>. Badamy widoczność w Google, obecność w odpowiedziach AI, social media i kondycję techniczną strony — a potem porównujemy to z konkurencją. Dostajesz raport z <span class="hl">listą priorytetów</span>, nie wydruk z automatu.</p>
+          <ul class="offer-points"><li>Pozycje i indeksacja w Google plus SEO techniczne</li><li><strong>Widoczność w AI</strong> — czy ChatGPT i Perplexity wymieniają Ciebie, czy konkurencję</li><li>Social media: spójność, regularność, realne zaangażowanie</li><li>Porównanie z trzema konkurentami — gdzie oni są, a Ciebie nie ma</li><li>Osobna sekcja „zrób sam" — rzeczy, które wdrożysz bez agencji</li></ul>
+          <div class="offer-ctas">
+            <a class="offer-detail" href="oferta/audyt-widocznosci">Sprawdź, gdzie jesteś <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="offer-detail offer-detail--ghost" href="kontakt">Zamów audyt</a>
           </div>
         </div></div></div>
       </div>
@@ -2074,6 +2102,12 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <p>ChatGPT Ads, product feed ads i konteksty zamiast słów kluczowych. Przewodnik dla firm w Polsce.</p>
         <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
+      <a class="blogs-card" href="blog/audyt-widocznosci" data-reveal data-delay="60">
+        <span class="blogs-tag">Audyt</span>
+        <h3>Audyt widoczności — jak sprawdzić, gdzie jest Twoja firma</h3>
+        <p>Lista kontrolna do przejścia samemu: Google, odpowiedzi AI, social media i kondycja techniczna.</p>
+        <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
     </div>
     <div class="blogs-all" data-reveal>
       <a class="btn btn-ghost" href="blog/">Wszystkie wpisy <svg class="ar" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -2130,6 +2164,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
             <label class="svc-tile"><input type="checkbox" name="svc" value="chatbot"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chatbot AI</span></label>
             <label class="svc-tile"><input type="checkbox" name="svc" value="branding" id="svcBranding"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></svg>Grafiki i branding</span></label>
             <label class="svc-tile"><input type="checkbox" name="svc" value="reklamy-chatgpt"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 12.5h5"/></svg>Reklamy w ChatGPT</span></label>
+            <label class="svc-tile"><input type="checkbox" name="svc" value="audyt"><span class="svc-tile-body"><svg class="svc-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>Audyt widoczności</span></label>
           </div>
           <span class="ferr mf-ferr" id="errSvc" role="alert"></span>
           <div class="mf-nav">
@@ -2373,18 +2408,20 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <li><a href="oferta/automatyzacje-email">Automatyzacje AI</a></li>
           <li><a href="oferta/chatbot-ai">Chatbot AI</a></li>
           <li><a href="oferta/branding">Grafiki i branding</a></li>
+          <li><a href="oferta/audyt-widocznosci">Audyt widoczności</a></li>
         </ul>
       </nav>
       <nav class="footer-col" aria-label="Blog">
         <h3>Blog</h3>
         <ul>
-          <li><a href="blog/strona-seo">Strony i SEO</a></li>
+          <li><a href="blog/strona-seo">Strona i SEO</a></li>
           <li><a href="blog/automatyzacje-email">Automatyzacje</a></li>
           <li><a href="blog/chatbot-ai">Chatbot AI</a></li>
           <li><a href="blog/geo-ai-search">GEO / AI Search</a></li>
           <li><a href="blog/meta-ads-ai">Meta Ads</a></li>
           <li><a href="blog/branding">Branding</a></li>
-          <li><a href="blog/reklamy-chatgpt">Reklamy w ChatGPT</a></li>
+          <li><a href="blog/reklamy-chatgpt">Reklamy AI</a></li>
+          <li><a href="blog/audyt-widocznosci">Audyt</a></li>
           <li><a href="blog/" class="footer-all">Wszystkie wpisy →</a></li>
         </ul>
       </nav>
@@ -3429,7 +3466,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     email:'Powtarzalna praca przechodzi na automaty',
     chatbot:'Rutynowe pytania obsłużone 24/7',
     branding:'Spójna marka w każdym kanale',
-    'reklamy-chatgpt':'Twój produkt tam, gdzie klient pyta AI'
+    'reklamy-chatgpt':'Twój produkt tam, gdzie klient pyta AI',
+    audyt:'Sprawdzamy, gdzie jesteś w Google, AI i social'
   };
   [].slice.call(form.querySelectorAll('[name="svc"]')).forEach(function(inp){
     var body = inp.nextElementSibling;
