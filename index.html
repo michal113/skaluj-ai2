@@ -1206,7 +1206,47 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blogs-all{margin-top:34px;display:flex;justify-content:center}
 @media(max-width:980px){.blogs-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.blogs-grid{grid-template-columns:1fr}.blogs-card{padding:22px 20px 20px}}
-</style></head>
+</style><style id="badge-new">
+/* ===== odznaka NOWOSC — niebieski akcent z delikatna poswiata ===== */
+.badge-new{display:inline-flex;align-items:center;gap:5px;vertical-align:middle;
+  font-family:var(--mono,ui-monospace,monospace);font-size:8.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;line-height:1.6;
+  color:var(--accent,#2f6fe0);background:var(--accent-soft,rgba(47,111,224,.10));
+  border:1px solid rgba(47,111,224,.42);border-radius:9999px;padding:1px 7px;
+  margin-left:7px;white-space:nowrap;
+  animation:badgeGlow 2.9s ease-in-out infinite}
+.badge-new::before{content:"";width:4px;height:4px;border-radius:50%;
+  background:var(--accent,#2f6fe0);box-shadow:0 0 6px var(--accent,#2f6fe0)}
+@keyframes badgeGlow{
+  0%,100%{box-shadow:0 0 0 2px rgba(47,111,224,.05),0 0 7px rgba(47,111,224,.20)}
+  50%    {box-shadow:0 0 0 2px rgba(47,111,224,.10),0 0 14px rgba(47,111,224,.42)}}
+/* pasek zapowiedzi w hero */
+.hero-new{display:inline-flex;align-items:center;gap:11px;align-self:center;
+  margin:0 0 4px;padding:7px 18px 7px 11px;border-radius:9999px;
+  background:linear-gradient(90deg,rgba(47,111,224,.11),rgba(47,111,224,.045));
+  border:1px solid rgba(47,111,224,.34);
+  font-size:13.2px;letter-spacing:-.01em;color:var(--text,#0b0d10);
+  opacity:0;animation:fadeUp .9s var(--ease,cubic-bezier(.22,1,.36,1)) forwards,
+                      heroNewGlow 3.4s ease-in-out .9s infinite;
+  transition:border-color .25s,transform .25s var(--ease,cubic-bezier(.22,1,.36,1))}
+.hero-new:hover{border-color:rgba(47,111,224,.6);transform:translateY(-1px)}
+.hero-new b{font-family:var(--mono,ui-monospace,monospace);font-size:9px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent,#2f6fe0);
+  border-radius:9999px;padding:3px 9px;box-shadow:0 0 12px rgba(47,111,224,.55)}
+.hero-new span{color:var(--muted,#565d68)}
+.hero-new .ar{width:13px;height:13px;color:var(--accent,#2f6fe0);transition:transform .25s}
+.hero-new:hover .ar{transform:translateX(3px)}
+@keyframes heroNewGlow{
+  0%,100%{box-shadow:0 0 0 3px rgba(47,111,224,.04),0 0 16px rgba(47,111,224,.16)}
+  50%    {box-shadow:0 0 0 3px rgba(47,111,224,.08),0 0 26px rgba(47,111,224,.34)}}
+@media(max-width:560px){.hero-new{font-size:12px;padding:6px 13px 6px 8px;gap:8px}
+  .hero-new .hide-sm{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .badge-new,.hero-new{animation:none!important;opacity:1}}
+.offer-name .badge-new{font-size:9.5px;margin-left:11px;transform:translateY(-4px)}
+.blogs-tag .badge-new{margin-left:8px}
+</style>
+</head>
 <body>
 <style>.skip-link{position:absolute;left:8px;top:-52px;z-index:100000;background:#0b0d10;color:#fff;padding:10px 16px;border-radius:8px;font:500 14px "Geist",sans-serif;text-decoration:none;transition:top .2s}.skip-link:focus{top:8px}</style>
 <a class="skip-link" href="#tresc">Przejdź do treści</a>
@@ -1230,7 +1270,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
           <div class="dd-head"><span class="l">Oferta</span><a class="c" href="#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <a class="dd-row" href="oferta/strona-seo" role="menuitem"><span class="dd-n">01</span><span class="dd-tx"><b>Strona internetowa + SEO i GEO</b><i>Widoczna w Google i polecana przez AI</i></span></a>
           <a class="dd-row" href="oferta/geo-seo" role="menuitem"><span class="dd-n">02</span><span class="dd-tx"><b>Pozycjonowanie w AI — GEO i SEO</b><i>Masz stronę? Wypozycjonujemy ją w AI</i></span></a>
-          <a class="dd-row" href="oferta/reklamy-chatgpt" role="menuitem"><span class="dd-n">03</span><span class="dd-tx"><b>Reklamy w ChatGPT</b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
+          <a class="dd-row" href="oferta/reklamy-chatgpt" role="menuitem"><span class="dd-n">03</span><span class="dd-tx"><b>Reklamy w ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
           <a class="dd-row" href="oferta/automatyzacje-email" role="menuitem"><span class="dd-n">04</span><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
           <a class="dd-row" href="oferta/chatbot-ai" role="menuitem"><span class="dd-n">05</span><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
           <a class="dd-row" href="oferta/branding" role="menuitem"><span class="dd-n">06</span><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
@@ -1269,7 +1309,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
     <span class="mm-h">Oferta <span class="n">02</span></span>
     <a class="mm-sub" href="oferta/strona-seo">Strona internetowa + SEO i GEO</a>
     <a class="mm-sub" href="oferta/geo-seo">Pozycjonowanie w AI — GEO i SEO</a>
-    <a class="mm-sub" href="oferta/reklamy-chatgpt">Reklamy w ChatGPT</a>
+    <a class="mm-sub" href="oferta/reklamy-chatgpt">Reklamy w ChatGPT <span class="badge-new">Nowość</span></a>
     <a class="mm-sub" href="oferta/automatyzacje-email">Automatyzacje biznesowe AI</a>
     <a class="mm-sub" href="oferta/chatbot-ai">Asystent i chatbot AI</a>
     <a class="mm-sub" href="oferta/branding">Grafiki i branding</a>
@@ -1288,6 +1328,11 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 <header class="hero" id="start">
   <div class="hero-bg" aria-hidden="true"><canvas id="heroHills"></canvas></div>
   <div class="wrap hero-inner">
+    <a class="hero-new" href="oferta/reklamy-chatgpt">
+      <b>Nowość</b>
+      <span>Reklamy w ChatGPT — ruszyły w Polsce <span class="hide-sm">pod koniec sierpnia</span></span>
+      <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
     <p class="hero-eyebrow">Agencja transformacji cyfrowej dla firm</p>
     <h1>
       <span class="line">Wszystko, czego Twoja firma</span>
@@ -1541,12 +1586,12 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
       </div>
       <div class="offer-item" id="oferta-reklamy-chatgpt">
         <button class="offer-head" aria-expanded="false">
-          <span class="offer-num">03</span><span class="offer-name">Reklamy w ChatGPT</span><span class="offer-meta">ChatGPT Ads · AI Shopping</span>
+          <span class="offer-num">03</span><span class="offer-name">Reklamy w ChatGPT <span class="badge-new">Nowość</span></span><span class="offer-meta">ChatGPT Ads · AI Shopping</span>
           <span class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
         </button>
         <div class="offer-body"><div class="offer-body-in"><div class="offer-body-grid">
           <span></span>
-          <p class="offer-desc">Klienci przestali wpisywać frazy — <span class="hl">zaczęli pytać AI</span>. ChatGPT ma dziś własny system reklamowy i własne wyniki zakupowe, a w Polsce działa od sierpnia 2026. Prowadzimy całość: konto, feed produktowy, konteksty rozmów i pomiar sprzedaży. <span class="hl">Twojej konkurencji jeszcze tam nie ma</span>.</p>
+          <p class="offer-desc">Klienci przestali wpisywać frazy — <span class="hl">zaczęli pytać AI</span>. ChatGPT ma dziś własny system reklamowy i własne wyniki zakupowe, a w Polsce ruszyło to <span class="hl">pod koniec sierpnia 2026</span>. Prowadzimy całość: konto, feed produktowy, konteksty rozmów i pomiar sprzedaży. <span class="hl">Twojej konkurencji jeszcze tam nie ma</span>.</p>
           <ul class="offer-points"><li><strong>Kampanie ChatGPT Ads</strong> — sponsorowane miejsca przy odpowiedziach AI</li><li><strong>Reklamy z katalogu</strong> — feed produktowy zgodny z Google Merchant Center</li><li>Konteksty rozmów zamiast słów kluczowych — tu rozstrzyga się skuteczność</li><li>Pomiar sprzedaży: pixel, GA4 i CRM — raportujemy koszt pozyskania, nie kliknięcia</li><li>Uczciwie: liczymy opłacalność przed startem i ustalamy warunek stopu</li></ul>
           <div class="offer-ctas">
             <a class="offer-detail" href="kontakt">Chcę być widoczny w ChatGPT <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -2023,7 +2068,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="blogs-card" href="blog/reklamy-chatgpt" data-reveal>
-        <span class="blogs-tag">Reklamy AI</span>
+        <span class="blogs-tag">Reklamy AI <span class="badge-new">Nowość</span></span>
         <h3>Reklamy w ChatGPT 2026 — jak działają i ile kosztują</h3>
         <p>ChatGPT Ads, product feed ads i konteksty zamiast słów kluczowych. Przewodnik dla firm w Polsce.</p>
         <span class="blogs-more">Czytaj dalej <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -2323,7 +2368,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         <ul>
           <li><a href="oferta/strona-seo">Strony i SEO/GEO</a></li>
           <li><a href="oferta/geo-seo">GEO i SEO (widoczność w AI)</a></li>
-          <li><a href="oferta/reklamy-chatgpt">Reklamy w ChatGPT</a></li>
+          <li><a href="oferta/reklamy-chatgpt">Reklamy w ChatGPT <span class="badge-new">Nowość</span></a></li>
           <li><a href="oferta/automatyzacje-email">Automatyzacje AI</a></li>
           <li><a href="oferta/chatbot-ai">Chatbot AI</a></li>
           <li><a href="oferta/branding">Grafiki i branding</a></li>
