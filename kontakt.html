@@ -325,38 +325,37 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 .nav-item.open .dd-row:nth-of-type(7){transition-delay:.22s}
 .nav-item.open .dd-row:nth-of-type(8){transition-delay:.25s}
 </style><style id="badge-new">
-/* ===== odznaka NOWOSC — niebieski akcent z delikatna poswiata ===== */
+/* ===== oznaczenie NOWOSC — mono etykieta z kropka, bez pigulki ===== */
 .badge-new{display:inline-flex;align-items:center;gap:5px;vertical-align:middle;
   font-family:var(--mono,ui-monospace,monospace);font-size:8.5px;font-weight:600;
   letter-spacing:.14em;text-transform:uppercase;line-height:1.6;
-  color:var(--accent,#2f6fe0);background:var(--accent-soft,rgba(47,111,224,.10));
-  border:1px solid rgba(47,111,224,.42);border-radius:9999px;padding:1px 7px;
-  margin-left:7px;white-space:nowrap}
-.badge-new::before{content:"";width:4px;height:4px;border-radius:50%;
-  background:var(--accent,#2f6fe0);box-shadow:0 0 6px var(--accent,#2f6fe0)}
-/* pasek zapowiedzi w hero */
-.hero-new{display:inline-flex;align-items:center;gap:11px;align-self:center;
-  margin:0 0 4px;padding:7px 18px 7px 11px;border-radius:9999px;
-  background:linear-gradient(90deg,rgba(47,111,224,.11),rgba(47,111,224,.045));
-  border:1px solid rgba(47,111,224,.34);
+  color:var(--accent,#2f6fe0);margin-left:8px;white-space:nowrap}
+.badge-new::before{content:"";width:4px;height:4px;border-radius:50%;flex:none;
+  background:var(--accent,#2f6fe0)}
+/* pasek zapowiedzi w hero — jedna pigulka, etykieta oddzielona wlosowa kreska */
+.hero-new{display:inline-flex;align-items:center;gap:12px;align-self:center;
+  margin:0 0 4px;padding:8px 17px;border-radius:9999px;
+  background:rgba(47,111,224,.045);border:1px solid rgba(47,111,224,.20);
   font-size:13.2px;letter-spacing:-.01em;color:var(--text,#0b0d10);
-  opacity:0;animation:fadeUp .9s var(--ease,cubic-bezier(.22,1,.36,1)) forwards,
-                      heroNewGlow 3.4s ease-in-out .9s infinite;
-  transition:border-color .25s,transform .25s var(--ease,cubic-bezier(.22,1,.36,1))}
-.hero-new:hover{border-color:rgba(47,111,224,.6);transform:translateY(-1px)}
-.hero-new b{font-family:var(--mono,ui-monospace,monospace);font-size:9px;font-weight:600;
-  letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent,#2f6fe0);
-  border-radius:9999px;padding:3px 9px;box-shadow:0 0 12px rgba(47,111,224,.55)}
+  opacity:0;animation:fadeUp .9s var(--ease,cubic-bezier(.22,1,.36,1)) forwards;
+  transition:border-color .25s,background-color .25s,transform .25s var(--ease,cubic-bezier(.22,1,.36,1))}
+.hero-new:hover{border-color:rgba(47,111,224,.42);background:rgba(47,111,224,.075);transform:translateY(-1px)}
+.hero-new b{display:inline-flex;align-items:center;gap:6px;flex:none;
+  font-family:var(--mono,ui-monospace,monospace);font-size:9px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent,#2f6fe0);
+  padding-right:12px;border-right:1px solid rgba(47,111,224,.22)}
+.hero-new b::before{content:"";width:4px;height:4px;border-radius:50%;flex:none;
+  background:var(--accent,#2f6fe0)}
 .hero-new span{color:var(--muted,#565d68)}
-.hero-new .ar{width:13px;height:13px;color:var(--accent,#2f6fe0);transition:transform .25s}
+.hero-new .ar{width:13px;height:13px;flex:none;color:var(--accent,#2f6fe0);transition:transform .25s}
 .hero-new:hover .ar{transform:translateX(3px)}
-@keyframes heroNewGlow{
-  0%,100%{box-shadow:0 0 0 3px rgba(47,111,224,.04),0 0 16px rgba(47,111,224,.16)}
-  50%    {box-shadow:0 0 0 3px rgba(47,111,224,.08),0 0 26px rgba(47,111,224,.34)}}
-@media(max-width:560px){.hero-new{font-size:12px;padding:6px 13px 6px 8px;gap:8px}
+@media(max-width:560px){.hero-new{font-size:12px;padding:7px 14px;gap:10px}
+  .hero-new b{padding-right:10px;gap:5px}
   .hero-new .hide-sm{display:none}}
 @media (prefers-reduced-motion:reduce){
   .badge-new,.hero-new{animation:none!important;opacity:1}}
+.offer-name .badge-new{font-size:9.5px;margin-left:11px;transform:translateY(-3px)}
+.blogs-tag .badge-new{margin-left:8px}
 </style>
 </head>
 <body>
