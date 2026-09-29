@@ -92,7 +92,9 @@
 
   /* ---------- WIEDZA (tryb lokalny bez Workera) ---------- */
   let KB = "";
-  fetch(CONFIG.KNOWLEDGE_URL).then(r => r.text()).then(t => KB = t).catch(() => {});
+  /* pobierana dopiero, gdy naprawdę potrzebna (tryb lokalny / awaria Workera) — nie przy każdym wejściu na stronę */
+  let kbLoad = null;
+  function loadKB() { return kbLoad || (kbLoad = fetch(CONFIG.KNOWLEDGE_URL).then(r => r.text()).then(t => { KB = t; }).catch(() => {})); }
   const SECTIONS = {};
   function parseKB() {
     let cur = "ogolne";
@@ -135,7 +137,7 @@
         return { answer: d.answer, book: !!d.book };
       } catch (e) { /* fallback */ }
     }
-    await new Promise(r => setTimeout(r, 500 + Math.random() * 400));
+    await Promise.all([new Promise(r => setTimeout(r, 500 + Math.random() * 400)), loadKB()]);
     return answerLocal(question);
   }
 
