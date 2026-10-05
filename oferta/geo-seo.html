@@ -409,9 +409,16 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .blogs-tag .badge-new{margin-left:8px}
 </style>
 <style id="offer-groups">
-.dropdown--offer .dd-group{font-family:var(--mono,ui-monospace,monospace);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:12px 11px 4px}
-.dropdown--offer .dd-head+.dd-group{padding-top:4px}
-.dropdown--offer .dd-row{padding-top:7px;padding-bottom:7px}
+/* dropdown oferty: trzy grupy obok siebie, wysrodkowany pod calym menu (nie pod przyciskiem),
+   zeby przy ~880px szerokosci nie wychodzil za lewa krawedz ekranu na laptopach */
+.nav-links{position:relative}
+#ofertaItem{position:static}
+.dropdown--offer{left:50%;right:auto;width:880px;margin-left:-440px}
+.dropdown--offer .dd-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.dropdown--offer .dd-col{display:flex;flex-direction:column;min-width:0}
+.dropdown--offer .dd-col+.dd-col{border-left:1px solid var(--line-2);padding-left:8px}
+.dropdown--offer .dd-group{font-family:var(--mono,ui-monospace,monospace);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:4px 11px 8px}
+.dropdown--offer .dd-row{padding-top:8px;padding-bottom:8px}
 .mobile-menu .mm-group{display:block;font-family:var(--mono,ui-monospace,monospace);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:16px 0 2px}
 </style>
 </head>
@@ -433,17 +440,25 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
         </button>
         <div class="dropdown dropdown--offer" role="menu" aria-label="Nasza oferta">
           <div class="dd-head"><span class="l">Oferta</span><a class="c" href="../#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-          <div class="dd-group" role="presentation">Strona i widoczność</div>
-          <a class="dd-row" href="../oferta/strona-seo" role="menuitem"><span class="dd-n">01</span><span class="dd-tx"><b>Strona internetowa + SEO i GEO</b><i>Widoczna w Google i polecana przez AI</i></span></a>
-          <a class="dd-row" href="../oferta/geo-seo" role="menuitem"><span class="dd-n">02</span><span class="dd-tx"><b>Pozycjonowanie w AI — GEO i SEO</b><i>Masz stronę? Wypozycjonujemy ją w AI</i></span></a>
-          <a class="dd-row" href="../oferta/reklamy-chatgpt" role="menuitem"><span class="dd-n">03</span><span class="dd-tx"><b>Reklamy w ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
-          <div class="dd-group" role="presentation">Automatyzacje</div>
-          <a class="dd-row" href="../oferta/automatyzacje-email" role="menuitem"><span class="dd-n">04</span><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
-          <a class="dd-row" href="../oferta/chatbot-ai" role="menuitem"><span class="dd-n">05</span><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
-          <a class="dd-row" href="../oferta/audyt-cyfryzacji" role="menuitem"><span class="dd-n">06</span><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Raport PDF: widoczność, procesy, narzędzia</i></span></a>
-          <div class="dd-group" role="presentation">Branding</div>
-          <a class="dd-row" href="../oferta/branding" role="menuitem"><span class="dd-n">07</span><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
-          <a class="dd-row" href="../oferta/rolki-ai" role="menuitem"><span class="dd-n">08</span><span class="dd-tx"><b>Rolki i wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i lektor AI pod social media</i></span></a>
+          <div class="dd-cols">
+            <div class="dd-col">
+              <div class="dd-group" role="presentation">Strona i widoczność</div>
+              <a class="dd-row" href="../oferta/strona-seo" role="menuitem"><span class="dd-n">01</span><span class="dd-tx"><b>Strona internetowa + SEO i GEO</b><i>Widoczna w Google i polecana przez AI</i></span></a>
+              <a class="dd-row" href="../oferta/geo-seo" role="menuitem"><span class="dd-n">02</span><span class="dd-tx"><b>Pozycjonowanie w AI — GEO i SEO</b><i>Masz stronę? Wypozycjonujemy ją w AI</i></span></a>
+              <a class="dd-row" href="../oferta/reklamy-chatgpt" role="menuitem"><span class="dd-n">03</span><span class="dd-tx"><b>Reklamy w ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
+            </div>
+            <div class="dd-col">
+              <div class="dd-group" role="presentation">Automatyzacje</div>
+              <a class="dd-row" href="../oferta/automatyzacje-email" role="menuitem"><span class="dd-n">04</span><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
+              <a class="dd-row" href="../oferta/chatbot-ai" role="menuitem"><span class="dd-n">05</span><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
+              <a class="dd-row" href="../oferta/audyt-cyfryzacji" role="menuitem"><span class="dd-n">06</span><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Raport PDF: widoczność, procesy, narzędzia</i></span></a>
+            </div>
+            <div class="dd-col">
+              <div class="dd-group" role="presentation">Branding</div>
+              <a class="dd-row" href="../oferta/branding" role="menuitem"><span class="dd-n">07</span><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
+              <a class="dd-row" href="../oferta/rolki-ai" role="menuitem"><span class="dd-n">08</span><span class="dd-tx"><b>Rolki i wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i lektor AI pod social media</i></span></a>
+            </div>
+          </div>
         </div>
       </div>
       <a class="nav-link" href="../#case-studies">Case studies</a>
