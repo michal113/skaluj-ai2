@@ -125,7 +125,7 @@ Agencja transformacji cyfrowej dla firm
  - Umawianie spotkań — rezerwacje, potwierdzenia i przypomn
 
 === OFERTA: branding ===
-07 — Design / Branding 
+04 — Design / Branding 
 ## Grafiki i branding — AI podsuwa pomysły, tworzą doświadczeni graficy
  Identyfikacja wizualna, posty, banery i materiały sprzedażowe. AI błyskawicznie podsuwa koncepcje i warianty, a każdy projekt wykonuje nasz zespół profesjonalnych grafików z wieloletnim doświadczeniem. 
  Zbuduj spójną markę 
@@ -150,7 +150,7 @@ Agencja transformacji cyfrowej dla firm
  Kierunki, w których pracujemy: rozpoznawalna, spójna marka we wszystkich 
 
 === OFERTA: rolki-ai ===
-08 — Reels · Napisy · Lektor AI
+05 — Reels · Napisy · Lektor AI
 ## Rolki i wideo AI — krótkie wideo z napisami i lektorem AI
  Krótkie wideo na Instagram Reels, TikToka i YouTube Shorts dla firm. Piszemy scenariusz i hook, montujemy z pomocą AI, dodajemy napisy słowo po słowie i lektora AI — także w wersjach obcojęzycznych (najczęściej EN i DE). Każdą rolkę przed publikacją sprawdza człowiek. Szczegóły: https://skaluj.ai/oferta/rolki-ai
 ## Co dokładnie robimy
