@@ -403,6 +403,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .offer-name .badge-new{font-size:9.5px;margin-left:11px;transform:translateY(-3px)}
 .blogs-tag .badge-new{margin-left:8px}
 </style>
+<style id="offer-groups">
+.dropdown--offer .dd-group{font-family:var(--mono,ui-monospace,monospace);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:12px 11px 4px}
+.dropdown--offer .dd-head+.dd-group{padding-top:4px}
+.dropdown--offer .dd-row{padding-top:7px;padding-bottom:7px}
+.mobile-menu .mm-group{display:block;font-family:var(--mono,ui-monospace,monospace);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding:16px 0 2px}
+</style>
 </head>
 <body>
 <style>.skip-link{position:absolute;left:8px;top:-52px;z-index:100000;background:#0b0d10;color:#fff;padding:10px 16px;border-radius:8px;font:500 14px "Geist",sans-serif;text-decoration:none;transition:top .2s}.skip-link:focus{top:8px}</style>
@@ -422,13 +428,17 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
         </button>
         <div class="dropdown dropdown--offer" role="menu" aria-label="Nasza oferta">
           <div class="dd-head"><span class="l">Oferta</span><a class="c" href="../#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="dd-group" role="presentation">Strona i widoczność</div>
           <a class="dd-row" href="../oferta/strona-seo" role="menuitem"><span class="dd-n">01</span><span class="dd-tx"><b>Strona internetowa + SEO i GEO</b><i>Widoczna w Google i polecana przez AI</i></span></a>
           <a class="dd-row" href="../oferta/geo-seo" role="menuitem"><span class="dd-n">02</span><span class="dd-tx"><b>Pozycjonowanie w AI — GEO i SEO</b><i>Masz stronę? Wypozycjonujemy ją w AI</i></span></a>
           <a class="dd-row" href="../oferta/reklamy-chatgpt" role="menuitem"><span class="dd-n">03</span><span class="dd-tx"><b>Reklamy w ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
+          <div class="dd-group" role="presentation">Automatyzacje</div>
           <a class="dd-row" href="../oferta/automatyzacje-email" role="menuitem"><span class="dd-n">04</span><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
           <a class="dd-row" href="../oferta/chatbot-ai" role="menuitem"><span class="dd-n">05</span><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
-          <a class="dd-row" href="../oferta/branding" role="menuitem"><span class="dd-n">06</span><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
-          <a class="dd-row" href="../oferta/audyt-cyfryzacji" role="menuitem"><span class="dd-n">07</span><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Raport PDF: widoczność, procesy, narzędzia</i></span></a>
+          <a class="dd-row" href="../oferta/audyt-cyfryzacji" role="menuitem"><span class="dd-n">06</span><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Raport PDF: widoczność, procesy, narzędzia</i></span></a>
+          <div class="dd-group" role="presentation">Branding</div>
+          <a class="dd-row" href="../oferta/branding" role="menuitem"><span class="dd-n">07</span><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
+          <a class="dd-row" href="../oferta/rolki-ai" role="menuitem"><span class="dd-n">08</span><span class="dd-tx"><b>Rolki i wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i lektor AI pod social media</i></span></a>
         </div>
       </div>
       <a class="nav-link" href="../#case-studies">Case studies</a>
@@ -441,6 +451,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
         </button>
         <div class="dropdown dropdown--blog" role="menu" aria-label="Wpisy na blogu">
           <div class="dd-head"><span class="l">Blog</span><a class="c" href="../blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <a class="dd-row dd-row--post" href="../blog/rolki-ai" role="menuitem"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI — napisy, lektor i AI Act</b></span></a>
           <a class="dd-row dd-row--post" href="../blog/strona-seo" role="menuitem"><span class="dd-tx"><i>Strona i SEO</i><b>Strona, która sprzedaje</b></span></a>
           <a class="dd-row dd-row--post" href="../blog/automatyzacje-email" role="menuitem"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z AI — 5 scenariuszy</b></span></a>
           <a class="dd-row dd-row--post" href="../blog/chatbot-ai" role="menuitem"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI — kiedy warto, a kiedy szkodzi</b></span></a>
@@ -463,13 +474,17 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
   <a href="../#start"><span>Start</span><span class="n">01</span></a>
     <div class="mm-blog">
     <span class="mm-h">Oferta <span class="n">02</span></span>
+    <span class="mm-group">Strona i widoczność</span>
     <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i GEO</a>
     <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w AI — GEO i SEO</a>
     <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w ChatGPT <span class="badge-new">Nowość</span></a>
+    <span class="mm-group">Automatyzacje</span>
     <a class="mm-sub" href="../oferta/automatyzacje-email">Automatyzacje biznesowe AI</a>
     <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i chatbot AI</a>
-    <a class="mm-sub" href="../oferta/branding">Grafiki i branding</a>
     <a class="mm-sub" href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji firmy</a>
+    <span class="mm-group">Branding</span>
+    <a class="mm-sub" href="../oferta/branding">Grafiki i branding</a>
+    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i wideo AI <span class="badge-new">Nowość</span></a>
   </div>
   <a href="../#case-studies"><span>Case studies</span><span class="n">03</span></a>
   <a href="../#integracje"><span>Integracje</span><span class="n">04</span></a>
@@ -478,6 +493,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
   <a href="../#faq"><span>FAQ</span><span class="n">07</span></a>
     <div class="mm-blog">
     <span class="mm-h">Blog <span class="n">08</span></span>
+    <a class="mm-sub" href="../blog/rolki-ai">Rolki AI dla firm &mdash; napisy, lektor i AI Act</a>
     <a class="mm-sub" href="../blog/strona-seo">Strona internetowa dla firmy, kt&oacute;ra sprzedaje</a>
     <a class="mm-sub" href="../blog/automatyzacje-email">Automatyzacja e-mail marketingu z AI</a>
     <a class="mm-sub" href="../blog/chatbot-ai">Chatbot AI &mdash; kiedy warto, a kiedy szkodzi?</a>
@@ -610,13 +626,15 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
           <li><a href="../oferta/reklamy-chatgpt">Reklamy w ChatGPT <span class="badge-new">Nowość</span></a></li>
           <li><a href="../oferta/automatyzacje-email">Automatyzacje AI</a></li>
           <li><a href="../oferta/chatbot-ai">Chatbot AI</a></li>
-          <li><a href="../oferta/branding">Grafiki i branding</a></li>
           <li><a href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji</a></li>
+          <li><a href="../oferta/branding">Grafiki i branding</a></li>
+          <li><a href="../oferta/rolki-ai">Rolki i wideo AI <span class="badge-new">Nowość</span></a></li>
         </ul>
       </nav>
       <nav class="footer-col" aria-label="Blog">
         <h3>Blog</h3>
         <ul>
+          <li><a href="../blog/rolki-ai">Rolki AI</a></li>
           <li><a href="../blog/strona-seo">Strona i SEO</a></li>
           <li><a href="../blog/automatyzacje-email">Automatyzacje</a></li>
           <li><a href="../blog/chatbot-ai">Chatbot AI</a></li>

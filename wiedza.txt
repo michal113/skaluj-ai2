@@ -125,7 +125,7 @@ Agencja transformacji cyfrowej dla firm
  - Umawianie spotkań — rezerwacje, potwierdzenia i przypomn
 
 === OFERTA: branding ===
-06 — Design / Branding 
+07 — Design / Branding 
 ## Grafiki i branding — AI podsuwa pomysły, tworzą doświadczeni graficy
  Identyfikacja wizualna, posty, banery i materiały sprzedażowe. AI błyskawicznie podsuwa koncepcje i warianty, a każdy projekt wykonuje nasz zespół profesjonalnych grafików z wieloletnim doświadczeniem. 
  Zbuduj spójną markę 
@@ -148,6 +148,23 @@ Agencja transformacji cyfrowej dla firm
  Spójność bije pojedynczą ładną grafikę. Marki zapadają w pamięć dzięki powtarzalności — ten sam kolor, ta sama typografia, ten sam ton wszędzie. System ważniejszy niż efektowny pojedynczy projekt. 
 ## Efekty, których możesz oczekiwać
  Kierunki, w których pracujemy: rozpoznawalna, spójna marka we wszystkich 
+
+=== OFERTA: rolki-ai ===
+08 — Reels · Napisy · Lektor AI
+## Rolki i wideo AI — krótkie wideo z napisami i lektorem AI
+ Krótkie wideo na Instagram Reels, TikToka i YouTube Shorts dla firm. Piszemy scenariusz i hook, montujemy z pomocą AI, dodajemy napisy słowo po słowie i lektora AI — także w wersjach obcojęzycznych (najczęściej EN i DE). Każdą rolkę przed publikacją sprawdza człowiek. Szczegóły: https://skaluj.ai/oferta/rolki-ai
+## Co dokładnie robimy
+ - Scenariusz i hook pod konkretny cel: zasięg, ruch na stronę albo zapytania.
+ - Montaż wspierany przez AI — rytm, cięcia i finalny wybór robi montażysta.
+ - Transkrypcja i napisy animowane słowo po słowie, poprawione ręcznie, w kolorach marki.
+ - Lektor AI: syntetyczny głos z licencją komercyjną albo klon głosu wyłącznie za pisemną zgodą osoby.
+ - Wersje językowe z jednego nagrania: tłumaczenie, napisy i lektor.
+ - Seria rolek z jednego materiału: webinaru, wywiadu, podcastu.
+ - Formaty pod reklamy (9:16, 4:5, 1:1), opisy, okładki i oznaczenia treści AI.
+## Zasady
+ Oznaczenia AI ustawiamy zgodnie z art. 50 AI Act (obowiązuje od 2 sierpnia 2026) i zasadami Meta, TikToka i YouTube. Nie robimy deepfake'ów prawdziwych osób bez zgody i nie klonujemy głosów bez pisemnej zgody. Nie obiecujemy viralu.
+## Cena
+ Zależy od liczby rolek, wersji językowych i tego, czy pracujemy na materiale klienta. Zaczynamy od serii próbnej, bez abonamentu na rok z góry. Dokładną wycenę ustalamy na bezpłatnej konsultacji.
 
 === OFERTA: chatbot-ai ===
 03 — Obsługa klienta 

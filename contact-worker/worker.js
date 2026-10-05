@@ -18,6 +18,9 @@ const SERVICE_LABELS = {
   geo: "GEO / AI Search",
   ads: "Meta Ads",
   branding: "Branding",
+  "reklamy-chatgpt": "Reklamy w ChatGPT",
+  audyt: "Audyt cyfryzacji",
+  rolki: "Rolki i wideo AI",
 };
 
 function esc(s) {

@@ -115,6 +115,7 @@
       { k: ["automatyz","mailing","faktur","crm","lead"], s: "oferta: automatyzacje-email" },
       { k: ["chatbot","bot","asystent","obsług"], s: "oferta: chatbot-ai" },
       { k: ["branding","logo","grafik","marka"], s: "oferta: branding" },
+      { k: ["rolk","reels","tiktok","wideo","video","film","lektor","napis","shorts"], s: "oferta: rolki-ai" },
       { k: ["kontakt","mail","gdzie","rzeszów","lokaliz"], s: "kontakt" },
     ];
     let best = null, sc = 0;
