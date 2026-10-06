@@ -2839,9 +2839,22 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         removeEventListener("scroll", onScroll); removeEventListener("resize", syncRail); active = false;
       }
     }
-    if(canPin){
-      apply();
-      if(mq.addEventListener) mq.addEventListener("change", apply); else addEventListener("resize", apply);
+    /* pin wlaczamy leniwie, dopiero gdy sekcja zbliza sie do ekranu: wlaczenie przy ladowaniu
+       wymuszalo przeliczenie ukladu calej strony (~0,5 s blokady, TBT w Lighthouse). Sekcja jest
+       wtedy jeszcze pod ekranem, wiec zmiana jej wysokosci nie przesuwa niczego, co widac.
+       Gdy ktos wchodzi juz ponizej oferty (np. z kotwicy), nie pinujemy - nie skaczemy mu ekranem. */
+    if(canPin && "IntersectionObserver" in window){
+      var armed = false;
+      var near = new IntersectionObserver(function(es){
+        if(armed || !es[0].isIntersecting) return;
+        armed = true; near.disconnect();
+        if(sec.getBoundingClientRect().top < 0) return;
+        apply();
+        if(mq.addEventListener) mq.addEventListener("change", apply); else addEventListener("resize", apply);
+      }, { rootMargin: "0px 0px 100% 0px" });
+      /* obserwacja rusza dopiero po pierwszym scrollu - na wysokich ekranach sekcja jest "blisko"
+         juz przy ladowaniu i pin znow liczylby sie w czasie wczytywania strony */
+      addEventListener("scroll", function(){ near.observe(sec); }, { passive: true, once: true });
     }
 
     /* tryb bez pinu (mobile / mniejszy desktop / reduced-motion): sygnał, gdy karta 04
@@ -2867,7 +2880,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
         tabs.classList.toggle("can-l", tabs.scrollLeft>4);
         tabs.classList.toggle("can-r", tabs.scrollLeft<max-4);
       }
-      sync();
+      // po zaladowaniu strony, nie przy parsowaniu: odczyt scrollWidth wymuszal uklad calej strony
+      if(document.readyState==="complete") setTimeout(sync,0); else addEventListener("load", function(){ setTimeout(sync,0); }, {once:true});
       tabs.addEventListener("scroll", sync, {passive:true});
       window.addEventListener("resize", sync);
     })();
