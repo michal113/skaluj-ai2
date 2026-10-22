@@ -85,6 +85,20 @@ export async function getAccessToken(env) {
 
 /* ---------- GA4 ---------- */
 
+function prop(propertyId) {
+  return propertyId.startsWith("properties/") ? propertyId : "properties/" + propertyId;
+}
+
+async function runReport(token, propertyId, body, opis) {
+  const res = await fetch("https://analyticsdata.googleapis.com/v1beta/" + prop(propertyId) + ":runReport", {
+    method: "POST",
+    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error("GA4 " + opis + " " + res.status);
+  return res.json();
+}
+
 const GA4_METRICS = [
   "sessions",
   "totalUsers",
@@ -158,6 +172,55 @@ export async function fetchGa4Channels(token, propertyId, days) {
   }));
   const total = rows.reduce((s, r) => s + r.sessions, 0);
   return rows.map((r) => ({ ...r, pct: total > 0 ? Math.round((r.sessions / total) * 100) : 0 }));
+}
+
+function ymdUTC(d) {
+  return d.toISOString().slice(0, 10);
+}
+
+/**
+ * Sesje w pelnych tygodniach (pon–nd), ostatnie `tygodnie` zakonczone w miniona niedziele.
+ * Niepelny biezacy tydzien pomijamy celowo: na wykresie wygladalby jak spadek.
+ */
+export async function fetchGa4Weekly(token, propertyId, tygodnie = 12) {
+  const dzis = new Date();
+  const koniec = new Date(Date.UTC(dzis.getUTCFullYear(), dzis.getUTCMonth(), dzis.getUTCDate()));
+  koniec.setUTCDate(koniec.getUTCDate() - ((koniec.getUTCDay() + 6) % 7) - 1); /* ostatnia niedziela */
+  const start = new Date(koniec);
+  start.setUTCDate(start.getUTCDate() - 7 * tygodnie + 1);
+  const json = await runReport(token, propertyId, {
+    dateRanges: [{ startDate: ymdUTC(start), endDate: ymdUTC(koniec) }],
+    dimensions: [{ name: "date" }],
+    metrics: [{ name: "sessions" }],
+    limit: 1000,
+  }, "tygodnie");
+  const sumy = new Array(tygodnie).fill(0);
+  for (const r of json.rows || []) {
+    const d = r.dimensionValues?.[0]?.value || ""; /* YYYYMMDD */
+    const t = Date.UTC(+d.slice(0, 4), +d.slice(4, 6) - 1, +d.slice(6, 8));
+    const i = Math.floor((t - start.getTime()) / (7 * 86400000));
+    if (i >= 0 && i < tygodnie) sumy[i] += parseFloat(r.metricValues?.[0]?.value) || 0;
+  }
+  return sumy.map((sesje, i) => {
+    const s = new Date(start);
+    s.setUTCDate(s.getUTCDate() + 7 * i);
+    return { start: ymdUTC(s), sesje };
+  });
+}
+
+/** Najczesciej odwiedzane strony w okresie. */
+export async function fetchGa4Pages(token, propertyId, days, limit = 5) {
+  const json = await runReport(token, propertyId, {
+    dateRanges: [{ startDate: days + "daysAgo", endDate: "yesterday" }],
+    dimensions: [{ name: "pagePath" }],
+    metrics: [{ name: "screenPageViews" }],
+    orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
+    limit,
+  }, "strony");
+  return (json.rows || []).map((r) => ({
+    sciezka: r.dimensionValues?.[0]?.value || "—",
+    odslony: parseFloat(r.metricValues?.[0]?.value) || 0,
+  }));
 }
 
 /* ---------- Search Console ---------- */

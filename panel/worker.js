@@ -16,6 +16,8 @@ import {
   getAccessToken,
   fetchGa4Summary,
   fetchGa4Channels,
+  fetchGa4Weekly,
+  fetchGa4Pages,
   fetchGscTotals,
   fetchGscQueries,
 } from "./google.js";
@@ -53,11 +55,13 @@ function notFound() {
  */
 async function fetchWebsiteData(env, cfg, days) {
   const token = await getAccessToken(env);
-  const [ga4, channels, gsc, queries] = await Promise.allSettled([
+  const [ga4, channels, gsc, queries, weeks, pages] = await Promise.allSettled([
     fetchGa4Summary(token, cfg.ga4PropertyId, days),
     fetchGa4Channels(token, cfg.ga4PropertyId, days),
     cfg.gscSiteUrl ? fetchGscTotals(token, cfg.gscSiteUrl, days) : Promise.resolve(null),
     cfg.gscSiteUrl ? fetchGscQueries(token, cfg.gscSiteUrl, days) : Promise.resolve([]),
+    fetchGa4Weekly(token, cfg.ga4PropertyId),
+    fetchGa4Pages(token, cfg.ga4PropertyId, days),
   ]);
 
   /* GA4 to podstawa panelu — bez niego nie mamy czego pokazac. */
@@ -72,6 +76,9 @@ async function fetchWebsiteData(env, cfg, days) {
     channels: channels.status === "fulfilled" ? channels.value : [],
     gsc: gsc.status === "fulfilled" ? gsc.value : null,
     queries: queries.status === "fulfilled" ? queries.value : [],
+    /* wykres i strony sa dodatkiem: ich brak nie psuje panelu, sekcja po prostu znika */
+    weeks: weeks.status === "fulfilled" ? weeks.value : [],
+    pages: pages.status === "fulfilled" ? pages.value : [],
     /* Rozroznienie "Search Console nie jest czescia tego wdrozenia" (karty pomijamy)
        od "jest, ale nie odpowiedzial" (karty pokazujemy z myslnikiem) — inaczej brak
        dostepu wygladalby identycznie jak brak uslugi. */

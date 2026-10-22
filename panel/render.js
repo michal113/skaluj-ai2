@@ -30,11 +30,13 @@ const isNum = (v) => v != null && Number.isFinite(v);
 function fmtInt(v) {
   return isNum(v) ? nf(0, 0).format(Math.round(v)) : DASH;
 }
+/* przecinek dziesietny w kroju mono ma pelna komorke — "2 , 9%" czytaloby sie jak dwie liczby */
+const przecinek = (s) => s.replace(",", '<span class="dc">,</span>');
 function fmtPct(v, decimals = 1) {
-  return isNum(v) ? nf(decimals, decimals).format(v * 100) + "%" : DASH;
+  return isNum(v) ? przecinek(nf(decimals, decimals).format(v * 100)) + "%" : DASH;
 }
 function fmtNum1(v) {
-  return isNum(v) ? nf(1, 1).format(v) : DASH;
+  return isNum(v) ? przecinek(nf(1, 1).format(v)) : DASH;
 }
 function fmtDur(sec) {
   if (!isNum(sec)) return DASH;
@@ -43,33 +45,46 @@ function fmtDur(sec) {
   return m + ":" + String(s).padStart(2, "0");
 }
 
+/* Polska odmiana: 1 sesja, 2–4 sesje (bez 12–14), reszta sesji */
+function ses(v) {
+  v = Math.abs(Math.round(v));
+  const j = v % 10, d = v % 100;
+  return v === 1 ? "sesja" : j >= 2 && j <= 4 && (d < 12 || d > 14) ? "sesje" : "sesji";
+}
+
+const STRZALKI = {
+  up: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3.5 13 9H3z"/></svg>',
+  dn: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 12.5 3 7h10z"/></svg>',
+};
+
 /**
- * Znaczek trendu z realnego porownania okres/okres.
- * lowerIsBetter — dla metryk, gdzie spadek to poprawa (odrzucenia, pozycja w Google).
- * Brak porownania => brak znaczka (nie zgadujemy).
+ * Zmiana okres do okresu, w liczbach, ktore rozumie wlasciciel firmy.
+ * kind: "int" (roznica sztuk, procent tylko przy >= 100 — przy malych liczbach "+200%"
+ * brzmi niepowaznie), "pp" (wskazniki 0..1 jako punkty procentowe), "sec" (sekundy).
+ * lowerIsBetter — spadek jest poprawa (odrzucenia). Brak porownania => nic (nie zgadujemy).
  */
-function trend(cur, prev, { lowerIsBetter = false } = {}) {
-  if (!isNum(cur) || !isNum(prev) || prev === 0) return "";
+function trend(cur, prev, { lowerIsBetter = false, kind = "int" } = {}) {
+  if (!isNum(cur) || !isNum(prev) || (kind === "int" && prev === 0)) return "";
   const diff = cur - prev;
-  if (Math.abs(diff) < 1e-9) return '<span class="pa-trend pa-nu">bez zmian</span>';
-  const pct = (diff / Math.abs(prev)) * 100;
-  const better = lowerIsBetter ? diff < 0 : diff > 0;
-  return (
-    '<span class="pa-trend ' + (better ? "pa-up" : "pa-dn") + '">' +
-    (diff > 0 ? "↑" : "↓") + " " + esc(nf(0, 0).format(Math.abs(pct))) + "% vs poprz.</span>"
-  );
+  const r = kind === "pp" ? Math.round(diff * 100) : Math.round(diff);
+  const sign = r > 0 ? "+" : r < 0 ? "−" : "±";
+  const abs = Math.abs(r);
+  const txt = kind === "pp" ? sign + abs + " pp" : kind === "sec" ? sign + abs + " s" : sign + nf(0, 0).format(abs);
+  const pct = kind === "int" && prev >= 100 && r !== 0 ? " <small>(" + sign + Math.round((Math.abs(diff) / prev) * 100) + "%)</small>" : "";
+  if (r === 0) return '<span class="pa-d pa-d-flat"><span class="num">' + txt + "</span></span>";
+  const better = lowerIsBetter ? r < 0 : r > 0;
+  return '<span class="pa-d ' + (better ? "pa-d-up" : "pa-d-dn") + '">' + (r > 0 ? STRZALKI.up : STRZALKI.dn) +
+    '<span class="num">' + esc(txt) + "</span>" + pct + "</span>";
 }
 
 /**
- * Karta KPI. countTo — gdy podane, liczba doliczy sie od zera przy wejsciu
+ * Pozycja paska liczb. countTo — gdy podane, liczba doliczy sie od zera przy wejsciu
  * (tylko dla liczb calkowitych; procenty i czasy pojawiaja sie od razu).
  */
 function kpi(label, value, trendHtml, countTo) {
   const anim = isNum(countTo) ? ' data-to="' + Math.round(countTo) + '"' : "";
-  return (
-    '<div class="pa-kpi pa-stag"><span class="pa-kl">' + esc(label) + "</span>" +
-    '<span class="pa-kv"' + anim + ">" + value + "</span>" + (trendHtml || "") + "</div>"
-  );
+  return '<div class="pa-k"><dt>' + esc(label) + '</dt><dd class="pa-kv num"' + anim + ">" + value + "</dd>" +
+    (trendHtml ? "<dd>" + trendHtml + "</dd>" : "") + "</div>";
 }
 
 /* ---------- definicje 4 zakladek ---------- */
@@ -117,38 +132,82 @@ export const PANELS = [
 
 /* ---------- panel: dane na zywo (GA4 + Search Console) ---------- */
 
+/* GA4 zwraca nazwy kanalow po angielsku — klient czyta je po polsku */
+const KANALY = {
+  "Organic Search": "Google i wyszukiwarki", Direct: "Bezpośrednio", Referral: "Odesłania z innych stron",
+  "Organic Social": "Social media", "Paid Search": "Reklamy w wyszukiwarce", "Paid Social": "Reklamy w social media",
+  Email: "E-mail", "Organic Video": "Wideo", Display: "Reklamy displayowe", "Organic Shopping": "Zakupy",
+  "Paid Shopping": "Reklamy produktowe", "Cross-network": "Kampanie wielokanałowe", Affiliates: "Programy partnerskie",
+  "Organic Maps": "Mapy", "Paid Other": "Inne reklamy", Unassigned: "Nieprzypisane",
+};
+
 function channelRows(channels) {
   if (!channels || !channels.length) {
-    return '<p class="pa-note" style="margin-top:0">Brak danych o źródłach ruchu w tym okresie.</p>';
+    return '<p class="pa-empty">Brak danych o źródłach ruchu w tym okresie.</p>';
   }
-  return channels
-    .map(
-      (c) =>
-        '<div class="pa-bar-row"><span class="pa-brl">' + esc(c.label) + "</span>" +
-        '<span class="pa-brb"><span class="pa-brf" style="width:' + c.pct + '%"></span></span>' +
-        '<span class="pa-brv">' + c.pct + "%</span></div>"
-    )
-    .join("");
+  const max = Math.max(...channels.map((c) => c.sessions)) || 1;
+  return '<div class="pa-bars">' + channels.map((c) =>
+    '<div class="pa-bar"><span>' + esc(KANALY[c.label] || c.label) + "</span>" +
+    '<span class="pa-trk"><i style="width:' + ((c.sessions / max) * 100).toFixed(1) + '%"></i></span>' +
+    '<span class="num">' + fmtInt(c.sessions) + '</span><span class="num pa-share">' + c.pct + "%</span></div>"
+  ).join("") + "</div>";
+}
+
+function pageRows(pages) {
+  if (!pages || !pages.length) return '<p class="pa-empty">Brak danych o odwiedzanych stronach w tym okresie.</p>';
+  return '<ul class="pa-pages">' + pages.map((p) =>
+    '<li><span title="' + esc(p.sciezka) + '">' + esc(p.sciezka) + '</span><span class="num">' + fmtInt(p.odslony) + "</span></li>"
+  ).join("") + "</ul>";
 }
 
 function queryRows(queries) {
   if (!queries || !queries.length) {
-    return '<p class="pa-note" style="margin-top:0">Search Console nie zwrócił jeszcze fraz dla tego okresu.</p>';
+    return '<p class="pa-empty">Search Console nie zwrócił jeszcze fraz dla tego okresu.</p>';
   }
   return (
-    '<div class="pa-tbl-scroll"><table class="pa-tbl"><thead><tr><th>Fraza</th><th class="num">Kliknięcia</th>' +
-    '<th class="num">Wyśw.</th><th class="num">Poz.</th></tr></thead><tbody>' +
-    queries
-      .map(
-        (q) =>
-          "<tr><td>" + esc(q.query) + "</td>" +
-          '<td class="num">' + fmtInt(q.clicks) + "</td>" +
-          '<td class="num">' + fmtInt(q.impressions) + "</td>" +
-          '<td class="num">' + fmtNum1(q.position) + "</td></tr>"
-      )
-      .join("") +
+    '<div class="pa-tbl-scroll"><table class="pa-tbl"><thead><tr><th scope="col">Fraza</th><th scope="col" class="num" aria-label="Kliknięcia"><span class="dl">Kliknięcia</span><span class="kr" aria-hidden="true">Klik.</span></th>' +
+    '<th scope="col" class="num" aria-label="Wyświetlenia"><span class="dl">Wyświetlenia</span><span class="kr" aria-hidden="true">Wyśw.</span></th>' +
+    '<th scope="col" class="num" aria-label="Pozycja"><span class="dl">Pozycja</span><span class="kr" aria-hidden="true">Poz.</span></th></tr></thead><tbody>' +
+    queries.map((q) =>
+      "<tr><td>" + esc(q.query) + "</td>" +
+      '<td class="num">' + fmtInt(q.clicks) + "</td>" +
+      '<td class="num">' + fmtInt(q.impressions) + "</td>" +
+      '<td class="num">' + fmtNum1(q.position) + "</td></tr>"
+    ).join("") +
     "</tbody></table></div>"
   );
+}
+
+const MIES = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"];
+const dzien = (iso) => { const d = new Date(iso + "T00:00:00Z"); return d.getUTCDate() + " " + MIES[d.getUTCMonth()]; };
+
+/**
+ * Sesje w pelnych tygodniach, rysowane na serwerze (dziala bez JS).
+ * SVG rozciaga sie na szerokosc (preserveAspectRatio="none" + non-scaling-stroke), a podpisy osi
+ * sa w HTML: tekst w SVG skalowalby sie razem z wykresem i na telefonie mialby ~5 px.
+ */
+function weeklyChart(weeks) {
+  const W = 640, H = 170, P = { l: 2, r: 2, t: 20, b: 4 };
+  const v = weeks.map((w) => w.sesje), max = Math.max(...v), min = Math.min(...v);
+  const krok = max > 2000 ? 500 : max > 400 ? 100 : 50;
+  const top = Math.ceil((max * 1.1) / krok) * krok || krok, bot = Math.max(0, Math.floor((min * 0.7) / krok) * krok);
+  const x = (i) => P.l + (i * (W - P.l - P.r)) / (weeks.length - 1);
+  const y = (z) => P.t + (1 - (z - bot) / (top - bot || 1)) * (H - P.t - P.b);
+  const pc = (a, b) => ((a / b) * 100).toFixed(2) + "%";
+  const d = v.map((z, i) => (i ? "L" : "M") + x(i).toFixed(1) + " " + y(z).toFixed(1)).join(" ");
+  let siatka = "", osY = "";
+  for (const z of [bot, (bot + top) / 2, top]) {
+    siatka += '<line class="c-grid" x1="0" x2="' + W + '" y1="' + y(z) + '" y2="' + y(z) + '"/>';
+    osY += '<span class="pa-ay num" style="top:' + pc(y(z), H) + '">' + fmtInt(z) + "</span>";
+  }
+  const osX = [0, Math.round((weeks.length - 1) / 3), Math.round((2 * (weeks.length - 1)) / 3), weeks.length - 1]
+    .map((i, k, a) => '<span class="num" style="left:' + pc(x(i), W) + ";transform:translateX(" + (k === 0 ? "0" : k === a.length - 1 ? "-100%" : "-50%") + ')">' + dzien(weeks[i].start) + "</span>").join("");
+  /* niewidoczne punkty z <title>: natywny dymek z wartoscia tygodnia, bez JS */
+  const pkt = v.map((z, i) => '<circle class="c-pt" cx="' + x(i).toFixed(1) + '" cy="' + y(z).toFixed(1) + '" r="9"><title>Tydzień od ' + dzien(weeks[i].start) + ": " + fmtInt(z) + " " + ses(z) + "</title></circle>").join("");
+  return '<div class="pa-cw"><svg class="pa-chart" viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="none" role="img" aria-label="Sesje w ostatnich ' + weeks.length + " tygodniach: od " + fmtInt(v[0]) + " do " + fmtInt(v[v.length - 1]) + '">' +
+    '<defs><linearGradient id="pa-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6fe0" stop-opacity=".16"/><stop offset="1" stop-color="#2f6fe0" stop-opacity="0"/></linearGradient></defs>' +
+    siatka + '<path class="c-area" d="' + d + " L" + x(v.length - 1) + " " + y(bot) + " L" + x(0) + " " + y(bot) + 'Z"/>' +
+    '<path class="c-line" d="' + d + '"/>' + pkt + "</svg>" + osY + '</div><div class="pa-ax" aria-hidden="true">' + osX + "</div>";
 }
 
 function websitePanel(data, days) {
@@ -164,40 +223,43 @@ function websitePanel(data, days) {
   const cur = data.ga4?.current || {};
   const prev = data.ga4?.previous || {};
   const g = data.gsc;
-
   const newShare = cur.totalUsers ? cur.newUsers / cur.totalUsers : null;
   const newSharePrev = prev.totalUsers ? prev.newUsers / prev.totalUsers : null;
 
-  const cards =
+  const strip =
     kpi("Sesje", fmtInt(cur.sessions), trend(cur.sessions, prev.sessions), cur.sessions) +
     kpi("Użytkownicy", fmtInt(cur.totalUsers), trend(cur.totalUsers, prev.totalUsers), cur.totalUsers) +
-    kpi("Nowi użytkownicy", fmtPct(newShare, 0), trend(newShare, newSharePrev)) +
+    kpi("Nowi użytkownicy", fmtPct(newShare, 0), trend(newShare, newSharePrev, { kind: "pp" })) +
     kpi("Odsłony", fmtInt(cur.screenPageViews), trend(cur.screenPageViews, prev.screenPageViews), cur.screenPageViews) +
-    kpi("Współczynnik odrzuceń", fmtPct(cur.bounceRate), trend(cur.bounceRate, prev.bounceRate, { lowerIsBetter: true })) +
-    kpi("Śr. czas sesji", fmtDur(cur.averageSessionDuration), trend(cur.averageSessionDuration, prev.averageSessionDuration));
+    kpi("Odrzucenia", fmtPct(cur.bounceRate, 0), trend(cur.bounceRate, prev.bounceRate, { lowerIsBetter: true, kind: "pp" })) +
+    kpi("Śr. czas sesji", fmtDur(cur.averageSessionDuration), trend(cur.averageSessionDuration, prev.averageSessionDuration, { kind: "sec" }));
 
-  /* Karty pokazujemy tez wtedy, gdy Search Console jest skonfigurowany, ale nie odpowiedzial
-     — z myslnikiem. Ciche zniknienie wygladaloby, jakby SEO nie bylo czescia wdrozenia. */
-  const gscCards =
-    g || data.gscConfigured
-      ? '<div class="pa-kpis pa-kpis-4">' +
-        kpi("Kliknięcia z Google", fmtInt(g?.clicks), "", g?.clicks) +
-        kpi("Wyświetlenia w Google", fmtInt(g?.impressions), "", g?.impressions) +
-        kpi("CTR w wynikach", fmtPct(g?.ctr)) +
-        kpi("Średnia pozycja", fmtNum1(g?.position)) +
-        "</div>"
-      : "";
+  const weeks = (data.weeks || []).filter((w) => isNum(w.sesje));
+  const chart = weeks.length >= 4
+    ? '<div class="pa-sec"><div class="pa-sec-h"><h2>Sesje tygodniowo</h2><span>ostatnie ' + weeks.length + " pełnych tygodni</span></div>" + weeklyChart(weeks) + "</div>"
+    : "";
+
+  /* Search Console pokazujemy tez wtedy, gdy jest skonfigurowany, ale nie odpowiedzial
+     — z myslnikami. Ciche zniknienie wygladaloby, jakby SEO nie bylo czescia wdrozenia. */
+  const gscBox = g || data.gscConfigured
+    ? '<section class="pa-box pa-stag"><div class="pa-sec-h pa-sec-h-pad"><h2>W wynikach Google</h2><span>Search Console</span></div>' +
+      '<dl class="pa-strip pa-strip-4">' +
+      kpi("Kliknięcia", fmtInt(g?.clicks), "", g?.clicks) +
+      kpi("Wyświetlenia", fmtInt(g?.impressions), "", g?.impressions) +
+      kpi("CTR", fmtPct(g?.ctr)) +
+      kpi("Średnia pozycja", fmtNum1(g?.position)) +
+      "</dl>" +
+      '<div class="pa-sec"><div class="pa-sec-h"><h2>Frazy, po których trafiają do Ciebie</h2></div>' + queryRows(data.queries) + "</div></section>"
+    : "";
 
   return (
-    '<p class="pa-period">Strona + SEO · ostatnie ' + days + " dni wobec poprzednich " + days + "</p>" +
-    '<div class="pa-kpis">' + cards + "</div>" +
-    gscCards +
+    '<p class="pa-period"><span><span class="pa-nw">Strona + SEO · ostatnie ' + days + ' dni ·</span> <span class="pa-nw">zmiana wobec poprzednich ' + days + "</span></span></p>" +
+    '<section class="pa-box pa-stag"><dl class="pa-strip pa-strip-6">' + strip + "</dl>" + chart + "</section>" +
     '<div class="pa-lower">' +
-    '<div class="pa-box pa-stag"><div class="pa-box-head"><span class="pa-box-title">Źródła ruchu</span>' +
-    '<span class="pa-box-sub">Udział sesji</span></div>' + channelRows(data.channels) + "</div>" +
-    '<div class="pa-box pa-stag"><div class="pa-box-head"><span class="pa-box-title">Najlepsze frazy</span>' +
-    '<span class="pa-box-sub">Search Console</span></div>' + queryRows(data.queries) + "</div>" +
+    '<section class="pa-box pa-stag"><div class="pa-sec"><div class="pa-sec-h"><h2>Skąd przychodzą</h2><span>sesje · udział</span></div>' + channelRows(data.channels) + "</div></section>" +
+    '<section class="pa-box pa-stag"><div class="pa-sec"><div class="pa-sec-h"><h2>Najczęściej odwiedzane</h2><span>odsłony</span></div>' + pageRows(data.pages) + "</div></section>" +
     "</div>" +
+    gscBox +
     '<p class="pa-note">Dane: Google Analytics 4 i Google Search Console. Search Console raportuje ' +
     "z kilkudniowym opóźnieniem, więc jego okno jest przesunięte o 3 dni względem Analytics.</p>"
   );
@@ -254,7 +316,10 @@ function blueprintPanel(p, contactUrl, status) {
 export function renderPage({ config, data, days, brand, contactUrl, generatedAt }) {
   /* Trzy stany, nie dwa. "offer" to domyslna wartosc — panel, ktorego klient nie kupil. */
   const stan = (k) => config.panels?.[k]?.status || "offer";
-  const liveCount = PANELS.filter((p) => stan(p.key) === "live").length;
+  /* Blad pobrania danych: panel jest wdrozony, ale w tej chwili nie ma liczb — nie liczymy go jako "na zywo". */
+  const bezDanych = stan("website") === "live" && !!data?.error;
+  const naZywo = (k) => stan(k) === "live" && !(k === "website" && bezDanych);
+  const liveCount = PANELS.filter((p) => naZywo(p.key)).length;
   const pendingCount = PANELS.filter((p) => stan(p.key) === "pending").length;
 
   const KROPKI = {
@@ -266,7 +331,7 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
   const tabs = PANELS.map((p, i) => {
     return (
       '<button type="button" class="pa-tab' + (i === 0 ? " is-active" : "") + '" data-k="' + p.key + '">' +
-      ICONS[p.key] + esc(p.label) + (KROPKI[stan(p.key)] || KROPKI.offer) + "</button>"
+      ICONS[p.key] + esc(p.label) + (naZywo(p.key) ? KROPKI.live : stan(p.key) === "live" ? KROPKI.pending : KROPKI[stan(p.key)] || KROPKI.offer) + "</button>"
     );
   }).join("");
 
@@ -278,7 +343,9 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
 
   /* Podtytul musi byc prawdziwy takze wtedy, gdy nic nie jest jeszcze podlaczone —
      "Realne dane z Twoich narzedzi" nad samymi myslnikami czytaloby sie jak awaria. */
-  const sub = liveCount
+  const sub = bezDanych
+    ? "Chwilowo nie możemy pobrać Twoich danych. Liczby wrócą, gdy połączenie z Google znów zadziała."
+    : liveCount
     ? "Realne dane z Twoich narzędzi, pobierane na żywo przy każdym otwarciu tej strony."
     : pendingCount
     ? "Twoje wdrożenie pracuje. Podłączamy pomiar, żebyś widział jego wyniki w liczbach."
@@ -286,7 +353,8 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
 
   const licznik =
     "<b>" + liveCount + "</b> z " + PANELS.length + " paneli na żywo" +
-    (pendingCount ? " · " + pendingCount + (pendingCount === 1 ? " czeka" : " czekają") + " na pomiar" : "");
+    (pendingCount ? " · " + pendingCount + (pendingCount === 1 ? " czeka" : " czekają") + " na pomiar" : "") +
+    (bezDanych ? " · 1 chwilowo bez danych" : "");
 
   const stamp = new Intl.DateTimeFormat("pl-PL", {
     dateStyle: "long",
@@ -307,14 +375,17 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
 </head>
 <body>
 <header class="pnl-top"><div class="pnl-wrap pnl-top-in">
-  <a class="pnl-brand" href="https://skaluj.ai">
-    <img src="https://skaluj.ai/sygnet.png" alt="" width="140" height="170">${esc(brand)}
+  <a class="pnl-brand" href="https://skaluj.ai" aria-label="skaluj.ai">
+    <img src="https://skaluj.ai/sygnet.png" alt="" width="140" height="170">
+    <img class="pnl-word" src="https://skaluj.ai/samo%20skaluj.png" alt="skaluj.ai" width="478" height="112">
   </a>
+  <span class="pnl-sep" aria-hidden="true"></span>
+  <span class="pnl-client">${esc(config.clientName)}</span>
+  <span class="pnl-sp"></span>
   <span class="pnl-for">Panel prywatny</span>
 </div></header>
 
 <section class="pnl-hero"><div class="pnl-wrap pnl-hero-in">
-  <p class="pnl-eyebrow">Panel wyników · ${esc(config.clientName)}</p>
   <h1 class="pnl-h1">Co dowozi Twoje wdrożenie</h1>
   <p class="pnl-sub">${esc(sub)}</p>
   <p class="pnl-stamp">${licznik}</p>
@@ -389,10 +460,10 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
   function ozyw(panel){
     if(!panel) return;
     [].forEach.call(panel.querySelectorAll('.pa-kv[data-to]'), licz);
-    [].forEach.call(panel.querySelectorAll('.pa-brf'), function(el){
+    [].forEach.call(panel.querySelectorAll('.pa-trk i'), function(el){
       if(el.dataset.gotowe) return; el.dataset.gotowe='1';
-      var w=el.style.width; el.style.width='0%';
-      requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.style.width=w; }); });
+      el.style.transform='scaleX(0)';
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.style.transform=''; }); });
     });
   }
 
