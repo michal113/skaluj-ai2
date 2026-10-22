@@ -135,7 +135,7 @@
           body: JSON.stringify({ question, history }),
         });
         const d = await r.json();
-        return { answer: d.answer, book: !!d.book };
+        if (d && d.answer) return { answer: d.answer, book: !!d.book };
       } catch (e) { /* fallback */ }
     }
     await Promise.all([new Promise(r => setTimeout(r, 500 + Math.random() * 400)), loadKB()]);
@@ -218,13 +218,26 @@
     addMsg('Cześć! 👋 Jestem <b>wirtualnym asystentem AI</b> skaluj.ai — odpowiadam automatycznie. W czym mogę pomóc?', "bot");
     setChips(["Co oferujecie?", "Ile kosztuje strona?", "Umów spotkanie"]);
   }
+  /* tresc od AI i od uzytkownika wstawiamy jako tekst, nie HTML: model mozna naklonic (prompt injection)
+     do odpowiedzi z kodem HTML/JS. Dozwolone tylko **pogrubienie**, nowe linie i linki http(s). */
+  function esc(t) {
+    return String(t == null ? "" : t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+  function safeAnswer(t) {
+    return esc(t)
+      .replace(/\*\*([^*\n]{1,200})\*\*/g, "<strong>$1</strong>")
+      .replace(/(https?:\/\/[^\s<]{3,200})/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>')
+      .replace(/\n/g, "<br>");
+  }
   async function sendMsg(text) {
     text = (text || input.value).trim(); if (!text) return;
     input.value = ""; input.style.height = "auto"; send.disabled = true; chips.innerHTML = "";
-    addMsg(text.replace(/</g, "&lt;"), "user"); history.push({ role: "user", content: text });
+    addMsg(esc(text), "user");
     const t = typing();
-    const res = await askAI(text, history);
-    t.remove(); addMsg(res.answer, "bot"); history.push({ role: "assistant", content: res.answer });
+    /* do workera idzie tylko ostatnie 8 wiadomosci (bez biezacego pytania - worker dokleja je sam) */
+    const res = await askAI(text, history.slice(-8));
+    history.push({ role: "user", content: text });
+    t.remove(); addMsg(safeAnswer(res.answer), "bot"); history.push({ role: "assistant", content: res.answer });
     if (res.book) bookingCard();
     setChips(["Automatyzacje", "Chatbot AI", "Umów spotkanie"]);
     send.disabled = false; input.focus();

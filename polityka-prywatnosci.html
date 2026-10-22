@@ -405,6 +405,13 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
   .legal-content strong{color:var(--text);font-weight:600}
   .legal-content a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
   .legal-content a:hover{border-color:var(--accent)}
+  .legal-content{min-width:0}
+  .legal-table-wrap{overflow-x:auto;margin:18px 0 20px;-webkit-overflow-scrolling:touch}
+  .legal-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:620px}
+  .legal-table th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:500;padding:10px 12px;border-bottom:1.5px solid var(--line);vertical-align:bottom}
+  .legal-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;color:var(--muted)}
+  .legal-table td:first-child{color:var(--text);font-weight:500;width:24%}
+  .legal-content code{font-family:var(--mono);font-size:.9em;background:var(--bg-elev);padding:1px 5px;border-radius:5px}
   .legal-updated{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--faint)}
   @media(max-width:820px){.legal-body{grid-template-columns:1fr;gap:0}.legal-toc{display:none}.legal-hero{padding:120px 0 40px}}
 </style>
@@ -623,77 +630,99 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
     <nav class="legal-toc" aria-label="Na tej stronie">
       <div class="t-label">Na tej stronie</div>
       <a href="#administrator">Administrator danych</a>
-      <a href="#zakres">Zakres przetwarzanych danych</a>
-      <a href="#cele">Cele przetwarzania</a>
-      <a href="#podstawy">Podstawy prawne</a>
-      <a href="#odbiorcy">Odbiorcy danych</a>
+      <a href="#zakres">Jakie dane przetwarzamy</a>
+      <a href="#cele">Cele i podstawy prawne</a>
+      <a href="#czat">Asystent AI (czat)</a>
+      <a href="#odbiorcy">Odbiorcy i transfery poza EOG</a>
       <a href="#okres">Okres przechowywania</a>
-      <a href="#prawa">Prawa użytkownika</a>
+      <a href="#prawa">Twoje prawa</a>
       <a href="#dobrowolnosc">Dobrowolność podania danych</a>
-      <a href="#analityka">Dane techniczne i cookies</a>
-      <a href="#bezpieczenstwo">Bezpieczeństwo danych</a>
+      <a href="#analityka">Cookies i dane techniczne</a>
+      <a href="#bezpieczenstwo">Bezpieczeństwo i naruszenia</a>
+      <a href="#zmiany">Zmiany polityki</a>
     </nav>
 
     <div class="legal-content">
       <h2 id="administrator">Administrator danych</h2>
-      <p>Administratorem Twoich danych osobowych jest <strong>Sergiusz Serafin</strong>, prowadzący jednoosobową działalność gospodarczą pod firmą <strong>skaluj.ai Sergiusz Serafin</strong>, wpisaną do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG), <strong>NIP 8133960157</strong>, <strong>REGON 545915660</strong> (dalej „Administrator”).</p>
-      <p>We wszystkich sprawach dotyczących danych osobowych możesz skontaktować się mailowo pod adresem <a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a>. Administrator nie wyznaczył inspektora ochrony danych.</p>
+      <p>Administratorem Twoich danych osobowych jest <strong>Sergiusz Serafin</strong>, prowadzący jednoosobową działalność gospodarczą pod firmą <strong>skaluj.ai Sergiusz Serafin</strong>, wpisaną do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG), <strong>NIP 8133960157</strong>, <strong>REGON 545915660</strong> (dalej „Administrator”, „my”).</p>
+      <p>We wszystkich sprawach dotyczących danych osobowych napisz na <a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a>. Administrator nie wyznaczył inspektora ochrony danych (nie ma takiego obowiązku).</p>
 
-      <h2 id="zakres">Zakres przetwarzanych danych</h2>
-      <p>Przetwarzamy dane, które podajesz nam dobrowolnie — przede wszystkim w formularzu kontaktowym oraz w korespondencji e-mail. Mogą to być:</p>
+      <h2 id="zakres">Jakie dane przetwarzamy</h2>
+      <p><strong>Formularz kontaktowy i e-mail.</strong> Dane, które sam podajesz:</p>
       <ul>
-        <li>imię (lub imię i nazwisko),</li>
-        <li>adres e-mail,</li>
-        <li>numer telefonu — jeśli go podasz,</li>
-        <li>nazwa firmy — jeśli ją podasz,</li>
-        <li>wybrane usługi, treść wiadomości oraz informacje o Twoim projekcie lub potrzebach,</li>
-        <li>preferowany termin konsultacji — jeśli go wskażesz,</li>
-        <li>pliki, które ewentualnie przekażesz w korespondencji e-mail.</li>
+        <li>imię (lub imię i nazwisko) i adres e-mail,</li>
+        <li>numer telefonu i nazwa firmy — jeśli je podasz,</li>
+        <li>wybrane usługi, treść wiadomości, informacje o projekcie i preferowany termin konsultacji,</li>
+        <li>informacja, czy wyraziłeś zgodę na informacje handlowe, z datą jej udzielenia,</li>
+        <li>pliki i dane, które przekażesz w korespondencji e-mail.</li>
       </ul>
-      <p>Nie prosimy o dane szczególnych kategorii (tzw. dane wrażliwe) i prosimy o niepodawanie ich w wiadomościach.</p>
+      <p><strong>Czat z asystentem AI.</strong> Treść Twoich wiadomości i odpowiedzi asystenta (szczegóły w sekcji <a href="#czat">Asystent AI</a>).</p>
+      <p><strong>Dane techniczne.</strong> Adres IP i podstawowe informacje o przeglądarce, które automatycznie trafiają do dostawców infrastruktury przy wyświetlaniu strony i korzystaniu z czatu.</p>
+      <p>Nie prosimy o dane szczególnych kategorii (np. o zdrowiu) — prosimy, nie podawaj ich w formularzu ani w czacie.</p>
 
-      <h2 id="cele">Cele przetwarzania</h2>
-      <p>Twoje dane przetwarzamy w celu udzielenia odpowiedzi na zapytanie, przygotowania wstępnej propozycji lub wyceny, prowadzenia korespondencji, ustalenia zakresu ewentualnej współpracy, a także — jeżeli wyrazisz na to zgodę — w celu kontaktu w sprawie naszych usług.</p>
-
-      <h2 id="podstawy">Podstawy prawne</h2>
-      <p>Dane przetwarzamy na podstawie:</p>
+      <h2 id="cele">Cele i podstawy prawne</h2>
       <ul>
-        <li><strong>art. 6 ust. 1 lit. b RODO</strong> — podjęcie działań na Twoje żądanie przed ewentualnym zawarciem umowy (np. odpowiedź na zapytanie, przygotowanie wyceny),</li>
-        <li><strong>art. 6 ust. 1 lit. f RODO</strong> — nasz prawnie uzasadniony interes, jakim jest prowadzenie komunikacji i obsługa zgłoszeń,</li>
-        <li><strong>art. 6 ust. 1 lit. a RODO</strong> — Twoja zgoda, w zakresie, w jakim jej udzielisz (np. na kontakt marketingowy).</li>
+        <li><strong>Odpowiedź na zapytanie, przygotowanie propozycji lub wyceny i ustalenie warunków współpracy</strong> — art. 6 ust. 1 lit. b RODO (działania przed zawarciem umowy, na Twoje żądanie). Jeśli piszesz w imieniu firmy — art. 6 ust. 1 lit. f RODO (nasz prawnie uzasadniony interes: kontakt z osobą reprezentującą potencjalnego klienta). <em>Na to nie potrzebujemy Twojej zgody.</em></li>
+        <li><strong>Realizacja zawartej umowy</strong> — art. 6 ust. 1 lit. b RODO.</li>
+        <li><strong>Prowadzenie dokumentacji księgowej i podatkowej</strong> (gdy dojdzie do współpracy) — art. 6 ust. 1 lit. c RODO w związku z przepisami podatkowymi i o rachunkowości.</li>
+        <li><strong>Informacje handlowe o naszych usługach e-mailem lub telefonicznie</strong> — wyłącznie na podstawie Twojej odrębnej, dobrowolnej zgody (art. 6 ust. 1 lit. a RODO oraz zgoda wymagana przepisami ustawy Prawo komunikacji elektronicznej). Brak tej zgody nie ma wpływu na odpowiedź na zapytanie.</li>
+        <li><strong>Obsługa czatu z asystentem AI</strong> — art. 6 ust. 1 lit. f RODO (odpowiadanie na pytania osób odwiedzających stronę).</li>
+        <li><strong>Bezpieczeństwo strony i ochrona przed nadużyciami</strong> (np. limit liczby wiadomości w czacie, filtr spamu w formularzu) — art. 6 ust. 1 lit. f RODO.</li>
+        <li><strong>Ustalenie, dochodzenie lub obrona roszczeń</strong> oraz wykazanie zgodności z prawem (np. dowód udzielenia zgody) — art. 6 ust. 1 lit. f RODO.</li>
       </ul>
+      <p>Nie podejmujemy wobec Ciebie decyzji opartych wyłącznie na zautomatyzowanym przetwarzaniu, w tym profilowaniu, które wywoływałyby skutki prawne (art. 22 RODO).</p>
 
-      <h2 id="odbiorcy">Odbiorcy danych</h2>
-      <p>Dane powierzamy wyłącznie zaufanym podmiotom, które wspierają nas technicznie w prowadzeniu strony, obsłudze zgłoszeń oraz działaniu asystenta. Korzystamy tylko z narzędzi niezbędnych do świadczenia usług, a danych nie sprzedajemy. Aktualnie są to w szczególności:</p>
-      <ul>
-        <li><strong>GitHub, Inc.</strong> (GitHub Pages) — hosting strony internetowej;</li>
-        <li><strong>Make</strong> (Celonis s.r.o., Make.com) — odbiór i przekazanie zgłoszeń wysłanych przez formularz kontaktowy (imię, adres e-mail, telefon, nazwa firmy, wybrane usługi, treść wiadomości, preferowany termin);</li>
-        <li><strong>Cloudflare, Inc.</strong> — infrastruktura serwerowa obsługująca asystenta (czat) na stronie;</li>
-        <li><strong>OpenRouter, Inc.</strong> — pośrednik przekazujący treść rozmowy z asystentem do modelu sztucznej inteligencji;</li>
-        <li><strong>dostawcy modeli AI</strong> — w szczególności <strong>Google</strong> (Google Ireland Ltd / Google LLC); w razie niedostępności podstawowego modelu odpowiedź może wygenerować model zapasowy innego dostawcy, wybrany przez OpenRouter;</li>
-        <li><strong>Google</strong> (Google Ireland Ltd / Google LLC) — poczta i kalendarz, w których obsługujemy korespondencję i terminy konsultacji.</li>
-      </ul>
-      <p>Treść rozmowy z asystentem AI jest przekazywana dostawcy modelu AI wyłącznie w celu wygenerowania odpowiedzi; odpowiedzi asystenta generuje sztuczna inteligencja i mogą zawierać nieścisłości — wiążące informacje przekazujemy mailowo lub podczas konsultacji. Prosimy o niepodawanie w czacie danych wrażliwych ani cudzych danych osobowych.</p>
-      <p>Część powyższych podmiotów może przetwarzać dane poza Europejskim Obszarem Gospodarczym (m.in. w Stanach Zjednoczonych). Odbywa się to w oparciu o mechanizmy zgodne z RODO — standardowe klauzule umowne (SCC) lub uczestnictwo dostawcy w programie EU–U.S. Data Privacy Framework.</p>
+      <h2 id="czat">Asystent AI (czat)</h2>
+      <p>Czat na stronie obsługuje <strong>sztuczna inteligencja, nie człowiek</strong> — informujemy o tym w oknie czatu. Odpowiedzi mają charakter informacyjny i mogą zawierać nieścisłości; wiążące informacje przekazujemy mailowo lub podczas konsultacji.</p>
+      <p>Jak to działa: Twoja wiadomość (z kilkoma poprzednimi wiadomościami z tej samej rozmowy) trafia na nasz serwer w Cloudflare, a stamtąd przez OpenRouter do modelu AI, który generuje odpowiedź. <strong>Nie zapisujemy treści rozmów</strong> — nie ma ich w naszych logach ani bazach; rozmowa jest przechowywana tylko w Twojej przeglądarce do zamknięcia lub odświeżenia strony. Wymagamy, by zapytania trafiały wyłącznie do dostawców modeli, którzy według OpenRouter nie zbierają danych z zapytań.</p>
+      <p>Prosimy: nie podawaj w czacie danych osobowych innych osób ani danych wrażliwych. Do kontaktu w swojej sprawie użyj formularza albo napisz na <a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a>.</p>
+
+      <h2 id="odbiorcy">Odbiorcy i transfery poza EOG</h2>
+      <p>Dane powierzamy wyłącznie dostawcom, którzy przetwarzają je w naszym imieniu na podstawie umów powierzenia (DPA) lub warunków przetwarzania danych tych dostawców. Danych nie sprzedajemy.</p>
+      <div class="legal-table-wrap"><table class="legal-table">
+        <thead><tr><th>Dostawca</th><th>Rola</th><th>Gdzie</th><th>Podstawa transferu poza EOG</th></tr></thead>
+        <tbody>
+          <tr><td>GitHub, Inc. (GitHub Pages)</td><td>hosting strony; techniczne logi odwiedzin (m.in. adres IP)</td><td>USA</td><td>EU–U.S. Data Privacy Framework (decyzja KE stwierdzająca odpowiedni poziom ochrony) oraz standardowe klauzule umowne (SCC) w umowie powierzenia dostawcy</td></tr>
+          <tr><td>Celonis s.r.o. (Make.com)</td><td>odbiór zgłoszeń z formularza i przekazanie ich do naszej skrzynki</td><td>UE (scenariusz w regionie EU); podwykonawcy mogą być poza EOG</td><td>umowa powierzenia Make/Celonis; dla podwykonawców spoza EOG — SCC lub Data Privacy Framework</td></tr>
+          <tr><td>Cloudflare, Inc.</td><td>serwer obsługujący czat; ochrona przed nadużyciami</td><td>sieć globalna, USA</td><td>Data Privacy Framework oraz SCC w umowie powierzenia Cloudflare</td></tr>
+          <tr><td>OpenRouter, Inc.</td><td>pośrednik przekazujący treść czatu do modelu AI (domyślnie nie przechowuje treści zapytań)</td><td>USA</td><td>SCC w umowie powierzenia (DPA) OpenRouter</td></tr>
+          <tr><td>Dostawcy modeli AI (w szczególności Google; zapasowo inni dostawcy wybrani przez OpenRouter)</td><td>wygenerowanie odpowiedzi czatu</td><td>UE lub USA, zależnie od dostawcy</td><td>mechanizmy transferu stosowane przez OpenRouter i dostawców (SCC lub Data Privacy Framework)</td></tr>
+          <tr><td>Dostawca poczty e-mail i kalendarza</td><td>obsługa korespondencji i terminów konsultacji</td><td>zgodnie z warunkami dostawcy</td><td>jeśli poza EOG — SCC lub Data Privacy Framework</td></tr>
+        </tbody>
+      </table></div>
+      <p>Dane mogą też otrzymać podmioty uprawnione z mocy prawa (np. organy publiczne) oraz — gdy dojdzie do współpracy — biuro rachunkowe. Na Twoje żądanie przekażemy informacje o zabezpieczeniach stosowanych przy transferze poza EOG lub kopię odpowiednich klauzul.</p>
 
       <h2 id="okres">Okres przechowywania</h2>
-      <p>Dane przechowujemy przez czas niezbędny do obsługi zapytania i prowadzenia korespondencji, a następnie do czasu przedawnienia ewentualnych roszczeń lub do momentu wniesienia skutecznego sprzeciwu albo cofnięcia zgody — jeżeli przetwarzanie odbywało się na jej podstawie.</p>
+      <ul>
+        <li><strong>Zapytanie, które nie zakończyło się współpracą</strong> — do <strong>12 miesięcy</strong> od ostatniego kontaktu (na wypadek powrotu do rozmowy), potem usuwamy zgłoszenie i korespondencję.</li>
+        <li><strong>Współpraca</strong> — przez czas trwania umowy, a następnie do upływu terminu przedawnienia roszczeń (co do zasady <strong>3 lata</strong> dla roszczeń związanych z działalnością gospodarczą, licząc od końca roku kalendarzowego).</li>
+        <li><strong>Dokumenty księgowe i podatkowe</strong> — <strong>5 lat</strong> od końca roku kalendarzowego, w którym upłynął termin płatności podatku.</li>
+        <li><strong>Zgoda na informacje handlowe</strong> — do jej wycofania; informację o udzieleniu i wycofaniu zgody przechowujemy jeszcze do <strong>3 lat</strong>, aby móc wykazać zgodność z prawem.</li>
+        <li><strong>Sprzeciw lub żądanie usunięcia danych</strong> — notatkę o nim przechowujemy do <strong>3 lat</strong>, żeby go respektować.</li>
+        <li><strong>Treść czatu</strong> — nie przechowujemy jej na naszych serwerach; liczniki ochrony przed nadużyciami (powiązane z adresem IP) działają w pamięci przez około minutę i nie są nigdzie zapisywane.</li>
+        <li><strong>Logi techniczne dostawców</strong> (hosting, sieć) — zgodnie z politykami tych dostawców; sami nie prowadzimy analityki ani nie zapisujemy adresów IP.</li>
+      </ul>
 
-      <h2 id="prawa">Prawa użytkownika</h2>
-      <p>Przysługuje Ci prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych, wniesienia sprzeciwu wobec przetwarzania oraz cofnięcia zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania sprzed jej cofnięcia).</p>
-      <p>Masz również prawo wniesienia skargi do organu nadzorczego — <strong>Prezesa Urzędu Ochrony Danych Osobowych</strong>. Żądania związane z realizacją praw możesz kierować mailowo na <a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a>. W niektórych przypadkach możemy poprosić o dodatkowe informacje potrzebne do potwierdzenia Twojej tożsamości.</p>
+      <h2 id="prawa">Twoje prawa</h2>
+      <p>Masz prawo do: dostępu do swoich danych i otrzymania ich kopii, sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych (gdy podstawą jest umowa lub zgoda), <strong>sprzeciwu</strong> wobec przetwarzania opartego na naszym prawnie uzasadnionym interesie (art. 6 ust. 1 lit. f RODO) oraz <strong>cofnięcia zgody</strong> w dowolnym momencie — bez wpływu na zgodność z prawem przetwarzania przed jej cofnięciem.</p>
+      <p>Żądania kieruj na <a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a>. Odpowiemy bez zbędnej zwłoki, nie później niż w ciągu miesiąca. Możemy poprosić o informacje potrzebne do potwierdzenia Twojej tożsamości.</p>
+      <p>Masz też prawo wnieść skargę do organu nadzorczego: <strong>Prezes Urzędu Ochrony Danych Osobowych</strong>, ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl" target="_blank" rel="noopener">uodo.gov.pl</a>.</p>
 
       <h2 id="dobrowolnosc">Dobrowolność podania danych</h2>
-      <p>Podanie danych jest dobrowolne, ale niezbędne, aby odpowiedzieć na Twoją wiadomość lub przygotować propozycję współpracy. Bez podania podstawowych danych (np. adresu e-mail) nie będziemy w stanie skutecznie obsłużyć zapytania.</p>
+      <p>Podanie danych jest dobrowolne. Bez adresu e-mail i treści zapytania nie będziemy mogli odpowiedzieć na wiadomość. Zgoda na informacje handlowe jest całkowicie opcjonalna — możesz wysłać formularz bez niej.</p>
 
-      <h2 id="analityka">Dane techniczne i cookies</h2>
-      <p>Podczas korzystania ze strony mogą być przetwarzane dane techniczne, takie jak adres IP, informacje o urządzeniu i przeglądarce, źródło wejścia oraz sposób korzystania ze strony. Służą one zapewnieniu bezpieczeństwa, diagnozowaniu błędów oraz rozwijaniu strony.</p>
-      <p>Strona wykorzystuje pliki cookies oraz podobne technologie: <strong>niezbędne</strong> do jej działania (nie wymagają zgody), a za Twoją zgodą również <strong>analityczne</strong> i <strong>marketingowe</strong>. Przy pierwszej wizycie wyświetlamy baner, w którym możesz zaakceptować lub odrzucić cookies opcjonalne. Swój wybór możesz w każdej chwili zmienić lub wycofać, korzystając z opcji <a href="#" data-cookie-settings>„Ustawienia cookie”</a>, a także w ustawieniach przeglądarki. Czcionki na stronie hostujemy lokalnie, więc ich wyświetlenie nie wiąże się z przekazaniem Twoich danych zewnętrznym dostawcom.</p>
+      <h2 id="analityka">Cookies i dane techniczne</h2>
+      <p><strong>Obecnie strona nie używa narzędzi analitycznych ani marketingowych</strong> (np. Google Analytics, pikseli reklamowych) i nie ładuje treści z serwisów zewnętrznych. Czcionki hostujemy lokalnie.</p>
+      <p>W pamięci przeglądarki (localStorage) zapisujemy tylko <strong>Twój wybór dotyczący cookies</strong> (klucz <code>skaluj_consent_v1</code>) — jest niezbędny, żeby nie pytać Cię przy każdej wizycie. Baner zgody jest przygotowany na ewentualne narzędzia analityczne lub marketingowe w przyszłości: uruchomiłyby się wyłącznie po Twojej zgodzie, a przed ich dodaniem zaktualizujemy tę politykę. Swój wybór zmienisz w każdej chwili w <a href="#" data-cookie-settings>„Ustawieniach cookie”</a> lub w ustawieniach przeglądarki.</p>
+      <p>Przy wyświetlaniu strony i korzystaniu z czatu dostawcy infrastruktury (GitHub, Cloudflare) automatycznie otrzymują adres IP i podstawowe dane przeglądarki — jest to technicznie niezbędne do dostarczenia strony i ochrony przed nadużyciami.</p>
 
-      <h2 id="bezpieczenstwo">Bezpieczeństwo danych</h2>
-      <p>Stosujemy środki organizacyjne i techniczne adekwatne do charakteru przetwarzanych danych — m.in. ograniczenie dostępu do danych, zabezpieczenia kont oraz korzystanie ze sprawdzonych narzędzi hostingowych. Dokładamy starań, aby Twoje dane były odpowiednio chronione.</p>
+      <h2 id="bezpieczenstwo">Bezpieczeństwo i naruszenia</h2>
+      <p>Stosujemy środki organizacyjne i techniczne adekwatne do ryzyka, m.in.: szyfrowane połączenie (HTTPS), dostęp do zgłoszeń i narzędzi wyłącznie dla Administratora, klucze dostępowe przechowywane tylko po stronie serwera (nigdy w kodzie strony), ograniczenie czatu do naszej domeny z limitem liczby wiadomości oraz minimalizację danych — zbieramy tylko to, co potrzebne do odpowiedzi.</p>
+      <p>W razie naruszenia ochrony danych osobowych zgłaszamy je Prezesowi UODO w ciągu 72 godzin od jego stwierdzenia (o ile powoduje ryzyko dla praw lub wolności osób), a osoby, których dotyczy wysokie ryzyko, zawiadamiamy bez zbędnej zwłoki.</p>
 
-      <div class="legal-updated">Ostatnia aktualizacja: październik 2026 r.</div>
+      <h2 id="zmiany">Zmiany polityki</h2>
+      <p>Politykę aktualizujemy, gdy zmieniają się używane narzędzia lub przepisy. Aktualna wersja jest zawsze dostępna na tej stronie, z datą ostatniej zmiany poniżej.</p>
+      <div class="legal-updated">Ostatnia aktualizacja: 22 października 2026 r.</div>
     </div>
   </div>
 </section>

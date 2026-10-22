@@ -1,0 +1,19 @@
+# skaluj.ai - backend chatbota (Cloudflare Worker -> OpenRouter)
+# Wdrozenie z tego folderu:  npx wrangler deploy
+# Sekret ustaw raz (nie trafia do repo):  npx wrangler secret put OPENROUTER_API_KEY
+name = "botszkalu"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# nie kasuj zmiennych ustawionych recznie w panelu Cloudflare przy kazdym wdrozeniu
+keep_vars = true
+
+# Limiter zapytan Cloudflare (wymaga wrangler >= 4.36): 10 wiadomosci na 60 s na adres IP,
+# liczony w kazdej lokalizacji Cloudflare osobno. Bez tego bindingu worker uzywa limitu awaryjnego w pamieci.
+[[ratelimits]]
+name = "CHAT_LIMITER"
+namespace_id = "2001"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
