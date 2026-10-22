@@ -404,7 +404,9 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
 
   /* Podtytul musi byc prawdziwy takze wtedy, gdy nic nie jest jeszcze podlaczone —
      "Realne dane z Twoich narzedzi" nad samymi myslnikami czytaloby sie jak awaria. */
-  const sub = bezDanych
+  const sub = config.demo
+    ? "Przykładowe dane demonstracyjne — tak wygląda panel, gdy podłączymy Twoje Google Analytics i Search Console."
+    : bezDanych
     ? "Chwilowo nie możemy pobrać Twoich danych. Liczby wrócą, gdy połączenie z Google znów zadziała."
     : liveCount
     ? "Realne dane z Twoich narzędzi, pobierane na żywo przy każdym otwarciu tej strony."
@@ -443,7 +445,7 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
   <span class="pnl-sep" aria-hidden="true"></span>
   <span class="pnl-client">${esc(config.clientName)}</span>
   <span class="pnl-sp"></span>
-  <span class="pnl-for">Panel prywatny</span>
+  ${config.demo ? '<span class="pnl-demo">Demo<span class="pnl-demo-d"> · przykładowe dane</span></span>' : '<span class="pnl-for">Panel prywatny</span>'}
 </div></header>
 
 <section class="pnl-hero"><div class="pnl-wrap pnl-hero-in">

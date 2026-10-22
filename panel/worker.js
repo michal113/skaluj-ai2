@@ -22,6 +22,7 @@ import {
   fetchGscQueries,
 } from "./google.js";
 import { renderPage, renderNotFound } from "./render.js";
+import { demoStrona } from "./demo-klient.js";
 
 /* Slugi generujemy sami (base64url, ~128 bit) — odrzucamy wszystko innego ksztaltu,
    zeby nie robic zapytan do KV dla przypadkowego ruchu i botow. */
@@ -129,7 +130,10 @@ export default {
     const days = Number(site?.dateRangeDays) || Number(env.DEFAULT_RANGE_DAYS) || 28;
 
     let data = {};
-    if (site?.status === "live" && site.ga4PropertyId) {
+    if (config.demo) {
+      /* panel pokazowy: przykladowe dane, w naglowku etykieta "Demo" — nigdy dla prawdziwego klienta */
+      data = demoStrona(new Date());
+    } else if (site?.status === "live" && site.ga4PropertyId) {
       try {
         data = await getWebsiteData(env, slug, site, days, url.searchParams.get("odswiez") === "1");
       } catch (e) {

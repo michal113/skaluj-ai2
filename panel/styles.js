@@ -54,6 +54,10 @@ main{flex:1 0 auto}
 .pnl-client{font-size:14px;font-weight:550;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pnl-sp{flex:1}
 .pnl-for{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+/* panel pokazowy: etykieta jak "Demo" w oknie dema na stronie glownej; widoczna takze na telefonie */
+.pnl-demo{display:inline-flex;align-items:center;gap:7px;flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent-ink);background:var(--accent-soft);border-radius:9999px;padding:4px 10px;white-space:nowrap}
+.pnl-demo::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
 
 /* ===== hero: radialny wash jak w hero strony, wygaszony maska u dolu ===== */
 .pnl-hero{position:relative;overflow:hidden;padding:52px 0 32px}
@@ -338,7 +342,7 @@ main{flex:1 0 auto}
 @media(max-width:640px){
   .pnl-hero{padding:32px 0 24px}
   .pnl-top-in{gap:10px}
-  .pnl-for{display:none}
+  .pnl-for,.pnl-demo-d{display:none}
   .pa-bp{padding:22px 18px}
   .pa-box{padding:16px 16px 18px}
   .pa-hero{padding:20px 18px 18px}
