@@ -70,21 +70,37 @@ function trend(cur, prev, { lowerIsBetter = false, kind = "int" } = {}) {
   const sign = r > 0 ? "+" : r < 0 ? "−" : "±";
   const abs = Math.abs(r);
   const txt = kind === "pp" ? sign + abs + " pp" : kind === "sec" ? sign + abs + " s" : sign + nf(0, 0).format(abs);
-  const pct = kind === "int" && prev >= 100 && r !== 0 ? " <small>(" + sign + Math.round((Math.abs(diff) / prev) * 100) + "%)</small>" : "";
+  const proc = Math.round((Math.abs(diff) / prev) * 100);
+  const pct = kind === "int" && prev >= 100 && r !== 0 && proc > 0 ? " <small>(" + sign + proc + "%)</small>" : "";
   if (r === 0) return '<span class="pa-d pa-d-flat"><span class="num">' + txt + "</span></span>";
   const better = lowerIsBetter ? r < 0 : r > 0;
   return '<span class="pa-d ' + (better ? "pa-d-up" : "pa-d-dn") + '">' + (r > 0 ? STRZALKI.up : STRZALKI.dn) +
     '<span class="num">' + esc(txt) + "</span>" + pct + "</span>";
 }
 
-/**
- * Pozycja paska liczb. countTo — gdy podane, liczba doliczy sie od zera przy wejsciu
- * (tylko dla liczb calkowitych; procenty i czasy pojawiaja sie od razu).
- */
-function kpi(label, value, trendHtml, countTo) {
+/** Liczba w pasku Search Console: nazwa, wartosc, dopisek (np. znaczek miejsca w Google). */
+function kpi(label, value, extraHtml, countTo) {
   const anim = isNum(countTo) ? ' data-to="' + Math.round(countTo) + '"' : "";
-  return '<div class="pa-k"><dt>' + esc(label) + '</dt><dd class="pa-kv num"' + anim + ">" + value + "</dd>" +
-    (trendHtml ? "<dd>" + trendHtml + "</dd>" : "") + "</div>";
+  return '<div class="pa-k"><dt>' + esc(label) + '</dt><dd class="pa-kv"' + anim + ">" + value + "</dd>" +
+    (extraHtml ? "<dd>" + extraHtml + "</dd>" : "") + "</div>";
+}
+
+/* Ikony kafelkow — ten sam rysunek (obrys 2 px) co ikony zakladek i demo na stronie glownej. */
+const svgI = (d) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + "</svg>";
+const IK = {
+  users: svgI('<circle cx="10" cy="8" r="3.5"/><path d="M3.5 20v-1a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v1"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M20.5 20v-1a4 4 0 0 0-2.5-3.7"/>'),
+  nowi: svgI('<circle cx="9.5" cy="8" r="3.5"/><path d="M3 20v-1a4 4 0 0 1 4-4h5a4 4 0 0 1 4 4v1"/><path d="M19 8v6M16 11h6"/>'),
+  odslony: svgI('<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>'),
+  odrzucenia: svgI('<path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/>'),
+  czas: svgI('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  szukaj: svgI('<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/>'),
+};
+
+/** Kafelek jak w demo na stronie glownej: ikona, nazwa, wartosc, zmiana. countTo — liczba dolicza sie od zera. */
+function tile(ikona, label, value, trendHtml, countTo) {
+  const anim = isNum(countTo) ? ' data-to="' + Math.round(countTo) + '"' : "";
+  return '<div class="pa-kpi"><dt><span class="pa-ki">' + ikona + '</span><span class="pa-kl">' + esc(label) + "</span></dt>" +
+    '<dd class="pa-kv"' + anim + ">" + value + "</dd>" + (trendHtml ? "<dd>" + trendHtml + "</dd>" : "") + "</div>";
 }
 
 /* ---------- definicje 4 zakladek ---------- */
@@ -153,11 +169,23 @@ function channelRows(channels) {
   ).join("") + "</div>";
 }
 
+/* Strony jako wiersze-paski: dlugosc tla = odslony wzgledem najczesciej odwiedzanej. */
 function pageRows(pages) {
   if (!pages || !pages.length) return '<p class="pa-empty">Brak danych o odwiedzanych stronach w tym okresie.</p>';
+  const max = Math.max(...pages.map((p) => p.odslony)) || 1;
   return '<ul class="pa-pages">' + pages.map((p) =>
-    '<li><span title="' + esc(p.sciezka) + '">' + esc(p.sciezka) + '</span><span class="num">' + fmtInt(p.odslony) + "</span></li>"
+    '<li style="--w:' + ((p.odslony / max) * 100).toFixed(1) + '%"><span class="pa-pp" title="' + esc(p.sciezka) + '">' + esc(p.sciezka) + "</span>" +
+    '<span class="num">' + fmtInt(p.odslony) + "</span></li>"
   ).join("") + "</ul>";
+}
+
+/* Srednia pozycja przelozona na to, co widzi klient: czy jest na pierwszej stronie Google.
+   Liczone od wartosci po zaokragleniu do 0,1 — tej samej, ktora stoi obok znaczka. */
+function miejsce(pos) {
+  if (!isNum(pos)) return "";
+  const r = Math.round(pos * 10) / 10;
+  const [k, t] = r <= 3 ? ["g", "top 3"] : r <= 10 ? ["b", "1. strona"] : r <= 20 ? ["o", "2. strona"] : ["n", "dalej"];
+  return '<span class="pa-badge pa-badge-' + k + '">' + t + "</span>";
 }
 
 function queryRows(queries) {
@@ -165,14 +193,14 @@ function queryRows(queries) {
     return '<p class="pa-empty">Search Console nie zwrócił jeszcze fraz dla tego okresu.</p>';
   }
   return (
-    '<div class="pa-tbl-scroll"><table class="pa-tbl"><thead><tr><th scope="col">Fraza</th><th scope="col" class="num" aria-label="Kliknięcia"><span class="dl">Kliknięcia</span><span class="kr" aria-hidden="true">Klik.</span></th>' +
-    '<th scope="col" class="num" aria-label="Wyświetlenia"><span class="dl">Wyświetlenia</span><span class="kr" aria-hidden="true">Wyśw.</span></th>' +
-    '<th scope="col" class="num" aria-label="Pozycja"><span class="dl">Pozycja</span><span class="kr" aria-hidden="true">Poz.</span></th></tr></thead><tbody>' +
+    '<div class="pa-tbl-scroll"><table class="pa-tbl"><thead><tr><th scope="col">Fraza</th>' +
+    '<th scope="col" class="num" aria-label="Kliknięcia"><span class="dl">Kliknięcia</span><span class="kr" aria-hidden="true">Klik.</span></th>' +
+    '<th scope="col" class="num pa-col-imp">Wyświetlenia</th><th scope="col" class="num">Pozycja</th></tr></thead><tbody>' +
     queries.map((q) =>
       "<tr><td>" + esc(q.query) + "</td>" +
       '<td class="num">' + fmtInt(q.clicks) + "</td>" +
-      '<td class="num">' + fmtInt(q.impressions) + "</td>" +
-      '<td class="num">' + fmtNum1(q.position) + "</td></tr>"
+      '<td class="num pa-col-imp">' + fmtInt(q.impressions) + "</td>" +
+      '<td class="num"><span class="pa-pos">' + fmtNum1(q.position) + "</span>" + miejsce(q.position) + "</td></tr>"
     ).join("") +
     "</tbody></table></div>"
   );
@@ -180,34 +208,52 @@ function queryRows(queries) {
 
 const MIES = ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"];
 const dzien = (iso) => { const d = new Date(iso + "T00:00:00Z"); return d.getUTCDate() + " " + MIES[d.getUTCMonth()]; };
+const srednia = (a) => a.reduce((s, z) => s + z, 0) / (a.length || 1);
+
+/* Etykieta nad wykresem, wyliczona z tych samych tygodni: rekord, kierunek albo spokoj. */
+function trendTag(v) {
+  const n = v.length;
+  if (n >= 4 && v[n - 1] > Math.max(...v.slice(0, -1))) return ["up", "najlepszy tydzień"];
+  if (n < 8) return null;
+  const r = (srednia(v.slice(-4)) - srednia(v.slice(-8, -4))) / (srednia(v.slice(-8, -4)) || 1);
+  return r > 0.05 ? ["up", "rośnie"] : r < -0.05 ? ["dn", "spada"] : ["flat", "stabilnie"];
+}
 
 /**
  * Sesje w pelnych tygodniach, rysowane na serwerze (dziala bez JS).
- * SVG rozciaga sie na szerokosc (preserveAspectRatio="none" + non-scaling-stroke), a podpisy osi
- * sa w HTML: tekst w SVG skalowalby sie razem z wykresem i na telefonie mialby ~5 px.
+ * SVG rozciaga sie na szerokosc (preserveAspectRatio="none" + non-scaling-stroke); kropki, podpisy
+ * i dymek sa w HTML, bo w rozciagnietym SVG kolo zrobiloby sie elipsa, a tekst mialby ~5 px.
+ * data-pts: [tydzien, sesje, odmiana, x %, y %] — z tego skrypt rysuje celownik i dymek.
  */
 function weeklyChart(weeks) {
-  const W = 640, H = 170, P = { l: 2, r: 2, t: 20, b: 4 };
-  const v = weeks.map((w) => w.sesje), max = Math.max(...v), min = Math.min(...v);
+  const W = 640, H = 200, P = { t: 30, b: 6 };
+  const v = weeks.map((w) => w.sesje), max = Math.max(...v), n = v.length - 1;
   const krok = max > 2000 ? 500 : max > 400 ? 100 : 50;
-  const top = Math.ceil((max * 1.1) / krok) * krok || krok, bot = Math.max(0, Math.floor((min * 0.7) / krok) * krok);
-  const x = (i) => P.l + (i * (W - P.l - P.r)) / (weeks.length - 1);
+  /* os od zera: pole pod linia czyta sie jak ilosc, a obciete dno udawaloby wiekszy wzrost */
+  const top = Math.ceil((max * 1.1) / krok) * krok || krok, bot = 0;
+  const x = (i) => (i * W) / n;
   const y = (z) => P.t + (1 - (z - bot) / (top - bot || 1)) * (H - P.t - P.b);
-  const pc = (a, b) => ((a / b) * 100).toFixed(2) + "%";
+  const pc = (a, b) => +((a / b) * 100).toFixed(2);
   const d = v.map((z, i) => (i ? "L" : "M") + x(i).toFixed(1) + " " + y(z).toFixed(1)).join(" ");
   let siatka = "", osY = "";
   for (const z of [bot, (bot + top) / 2, top]) {
     siatka += '<line class="c-grid" x1="0" x2="' + W + '" y1="' + y(z) + '" y2="' + y(z) + '"/>';
-    osY += '<span class="pa-ay num" style="top:' + pc(y(z), H) + '">' + fmtInt(z) + "</span>";
+    osY += '<span class="pa-ay num" style="top:' + pc(y(z), H) + '%">' + fmtInt(z) + "</span>";
   }
-  const osX = [0, Math.round((weeks.length - 1) / 3), Math.round((2 * (weeks.length - 1)) / 3), weeks.length - 1]
-    .map((i, k, a) => '<span class="num" style="left:' + pc(x(i), W) + ";transform:translateX(" + (k === 0 ? "0" : k === a.length - 1 ? "-100%" : "-50%") + ')">' + dzien(weeks[i].start) + "</span>").join("");
-  /* niewidoczne punkty z <title>: natywny dymek z wartoscia tygodnia, bez JS */
-  const pkt = v.map((z, i) => '<circle class="c-pt" cx="' + x(i).toFixed(1) + '" cy="' + y(z).toFixed(1) + '" r="9"><title>Tydzień od ' + dzien(weeks[i].start) + ": " + fmtInt(z) + " " + ses(z) + "</title></circle>").join("");
-  return '<div class="pa-cw"><svg class="pa-chart" viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="none" role="img" aria-label="Sesje w ostatnich ' + weeks.length + " tygodniach: od " + fmtInt(v[0]) + " do " + fmtInt(v[v.length - 1]) + '">' +
-    '<defs><linearGradient id="pa-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6fe0" stop-opacity=".16"/><stop offset="1" stop-color="#2f6fe0" stop-opacity="0"/></linearGradient></defs>' +
-    siatka + '<path class="c-area" d="' + d + " L" + x(v.length - 1) + " " + y(bot) + " L" + x(0) + " " + y(bot) + 'Z"/>' +
-    '<path class="c-line" d="' + d + '"/>' + pkt + "</svg>" + osY + '</div><div class="pa-ax" aria-hidden="true">' + osX + "</div>";
+  const osX = [0, Math.round(n / 3), Math.round((2 * n) / 3), n]
+    .map((i, k, a) => '<span class="num" style="left:' + pc(x(i), W) + "%;transform:translateX(" + (k === 0 ? "0" : k === a.length - 1 ? "-100%" : "-50%") + ')">' + dzien(weeks[i].start) + "</span>").join("");
+  const pts = weeks.map((w, i) => [dzien(w.start), v[i], ses(v[i]), pc(x(i), W), pc(y(v[i]), H)]);
+  return '<div class="pa-cw">' + osY +
+    '<div class="pa-plot" tabindex="0" role="img" data-pts="' + esc(JSON.stringify(pts)) + '" aria-label="Sesje w ostatnich ' + weeks.length +
+    " tygodniach: od " + fmtInt(v[0]) + " do " + fmtInt(v[n]) + ". Strzałki w lewo i w prawo pokazują kolejne tygodnie.\">" +
+    '<svg class="pa-svg" viewBox="0 0 ' + W + " " + H + '" preserveAspectRatio="none" aria-hidden="true">' +
+    '<defs><linearGradient id="pa-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6fe0" stop-opacity=".2"/><stop offset="1" stop-color="#2f6fe0" stop-opacity="0"/></linearGradient></defs>' +
+    siatka + '<path class="c-area" d="' + d + " L" + W + " " + y(bot) + " L0 " + y(bot) + 'Z"/>' +
+    '<path class="c-line" d="' + d + '"/></svg>' +
+    '<span class="pa-end" style="left:' + pts[n][3] + "%;top:" + pts[n][4] + '%"></span>' +
+    '<span class="pa-end-v num" style="top:' + pts[n][4] + '%">' + fmtInt(v[n]) + "</span>" +
+    '<span class="pa-xh"></span><span class="pa-hd"></span><span class="pa-tip"></span>' +
+    '</div><span class="pa-sr" aria-live="polite"></span></div><div class="pa-ax" aria-hidden="true">' + osX + "</div>";
 }
 
 function websitePanel(data, days) {
@@ -226,38 +272,53 @@ function websitePanel(data, days) {
   const newShare = cur.totalUsers ? cur.newUsers / cur.totalUsers : null;
   const newSharePrev = prev.totalUsers ? prev.newUsers / prev.totalUsers : null;
 
-  const strip =
-    kpi("Sesje", fmtInt(cur.sessions), trend(cur.sessions, prev.sessions), cur.sessions) +
-    kpi("Użytkownicy", fmtInt(cur.totalUsers), trend(cur.totalUsers, prev.totalUsers), cur.totalUsers) +
-    kpi("Nowi użytkownicy", fmtPct(newShare, 0), trend(newShare, newSharePrev, { kind: "pp" })) +
-    kpi("Odsłony", fmtInt(cur.screenPageViews), trend(cur.screenPageViews, prev.screenPageViews), cur.screenPageViews) +
-    kpi("Odrzucenia", fmtPct(cur.bounceRate, 0), trend(cur.bounceRate, prev.bounceRate, { lowerIsBetter: true, kind: "pp" })) +
-    kpi("Śr. czas sesji", fmtDur(cur.averageSessionDuration), trend(cur.averageSessionDuration, prev.averageSessionDuration, { kind: "sec" }));
+  /* glowna liczba: sesje — z ta sama zmiana, co reszta, i srednia dzienna wyliczona z niej */
+  const zmiana = trend(cur.sessions, prev.sessions);
+  const dziennie = isNum(cur.sessions) ? Math.round(cur.sessions / days) : null;
+  const hero =
+    '<div class="pa-hero"><span class="pa-hero-ico" aria-hidden="true">' + ICONS.website + "</span>" +
+    '<p class="pa-hero-l">Sesje na Twojej stronie w ostatnich ' + days + " dniach</p>" +
+    '<p class="pa-hero-v"' + (isNum(cur.sessions) ? ' data-to="' + Math.round(cur.sessions) + '"' : "") + ">" + fmtInt(cur.sessions) + "</p>" +
+    (zmiana ? '<p class="pa-hero-d">' + zmiana + "<span>wobec poprzednich " + days + " dni</span></p>" : "") +
+    (isNum(dziennie) ? '<p class="pa-hero-note">Średnio <b>' + fmtInt(dziennie) + "</b> " + ses(dziennie) + " dziennie</p>" : "") +
+    "</div>";
 
   const weeks = (data.weeks || []).filter((w) => isNum(w.sesje));
+  const tag = weeks.length >= 4 ? trendTag(weeks.map((w) => w.sesje)) : null;
   const chart = weeks.length >= 4
-    ? '<div class="pa-sec"><div class="pa-sec-h"><h2>Sesje tygodniowo</h2><span>ostatnie ' + weeks.length + " pełnych tygodni</span></div>" + weeklyChart(weeks) + "</div>"
+    ? '<section class="pa-box pa-chartbox"><div class="pa-sec-h"><h2>Sesje w ostatnich ' + weeks.length + " tygodniach</h2>" +
+      (tag ? '<span class="pa-badge pa-badge-' + ({ up: "g", dn: "r", flat: "n" })[tag[0]] + '">' + tag[1] + "</span>" : "") + "</div>" + weeklyChart(weeks) + "</section>"
     : "";
+
+  const tiles =
+    '<dl class="pa-kpis pa-stag">' +
+    tile(IK.users, "Użytkownicy", fmtInt(cur.totalUsers), trend(cur.totalUsers, prev.totalUsers), cur.totalUsers) +
+    tile(IK.nowi, "Nowi użytkownicy", fmtPct(newShare, 0), trend(newShare, newSharePrev, { kind: "pp" })) +
+    tile(IK.odslony, "Odsłony", fmtInt(cur.screenPageViews), trend(cur.screenPageViews, prev.screenPageViews), cur.screenPageViews) +
+    tile(IK.odrzucenia, "Odrzucenia", fmtPct(cur.bounceRate, 0), trend(cur.bounceRate, prev.bounceRate, { lowerIsBetter: true, kind: "pp" })) +
+    tile(IK.czas, "Śr. czas sesji", fmtDur(cur.averageSessionDuration), trend(cur.averageSessionDuration, prev.averageSessionDuration, { kind: "sec" })) +
+    "</dl>";
 
   /* Search Console pokazujemy tez wtedy, gdy jest skonfigurowany, ale nie odpowiedzial
      — z myslnikami. Ciche zniknienie wygladaloby, jakby SEO nie bylo czescia wdrozenia. */
   const gscBox = g || data.gscConfigured
-    ? '<section class="pa-box pa-stag"><div class="pa-sec-h pa-sec-h-pad"><h2>W wynikach Google</h2><span>Search Console</span></div>' +
-      '<dl class="pa-strip pa-strip-4">' +
+    ? '<section class="pa-box pa-geo pa-stag"><div class="pa-geo-h"><span class="pa-geo-ico">' + IK.szukaj + "</span>" +
+      "<div><h2>W wynikach Google</h2><p>Search Console · ostatnie " + days + " dni</p></div></div>" +
+      '<dl class="pa-strip">' +
       kpi("Kliknięcia", fmtInt(g?.clicks), "", g?.clicks) +
       kpi("Wyświetlenia", fmtInt(g?.impressions), "", g?.impressions) +
       kpi("CTR", fmtPct(g?.ctr)) +
-      kpi("Średnia pozycja", fmtNum1(g?.position)) +
+      kpi("Średnia pozycja", fmtNum1(g?.position), miejsce(g?.position)) +
       "</dl>" +
-      '<div class="pa-sec"><div class="pa-sec-h"><h2>Frazy, po których trafiają do Ciebie</h2></div>' + queryRows(data.queries) + "</div></section>"
+      '<h3 class="pa-sub-h">Frazy, po których trafiają do Ciebie</h3>' + queryRows(data.queries) + "</section>"
     : "";
 
   return (
-    '<p class="pa-period"><span><span class="pa-nw">Strona + SEO · ostatnie ' + days + ' dni ·</span> <span class="pa-nw">zmiana wobec poprzednich ' + days + "</span></span></p>" +
-    '<section class="pa-box pa-stag"><dl class="pa-strip pa-strip-6">' + strip + "</dl>" + chart + "</section>" +
-    '<div class="pa-lower">' +
-    '<section class="pa-box pa-stag"><div class="pa-sec"><div class="pa-sec-h"><h2>Skąd przychodzą</h2><span>sesje · udział</span></div>' + channelRows(data.channels) + "</div></section>" +
-    '<section class="pa-box pa-stag"><div class="pa-sec"><div class="pa-sec-h"><h2>Najczęściej odwiedzane</h2><span>odsłony</span></div>' + pageRows(data.pages) + "</div></section>" +
+    '<div class="pa-hero-row pa-stag">' + hero + chart + "</div>" +
+    tiles +
+    '<div class="pa-lower pa-stag">' +
+    '<section class="pa-box"><div class="pa-sec-h"><h2>Skąd przychodzą</h2><span>sesje · udział</span></div>' + channelRows(data.channels) + "</section>" +
+    '<section class="pa-box"><div class="pa-sec-h"><h2>Najczęściej odwiedzane</h2><span>odsłony</span></div>' + pageRows(data.pages) + "</section>" +
     "</div>" +
     gscBox +
     '<p class="pa-note">Dane: Google Analytics 4 i Google Search Console. Search Console raportuje ' +
@@ -388,7 +449,7 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
 <section class="pnl-hero"><div class="pnl-wrap pnl-hero-in">
   <h1 class="pnl-h1">Co dowozi Twoje wdrożenie</h1>
   <p class="pnl-sub">${esc(sub)}</p>
-  <p class="pnl-stamp">${licznik}</p>
+  <p class="pnl-stamp">${liveCount ? '<span class="pnl-pulse" aria-hidden="true"></span>' : ""}${licznik}</p>
 </div></section>
 
 <main class="pnl-wrap">
@@ -459,13 +520,46 @@ export function renderPage({ config, data, days, brand, contactUrl, generatedAt 
   /* Paski rosna od zera po wejsciu w zakladke. */
   function ozyw(panel){
     if(!panel) return;
-    [].forEach.call(panel.querySelectorAll('.pa-kv[data-to]'), licz);
+    [].forEach.call(panel.querySelectorAll('[data-to]'), licz);
+    [].forEach.call(panel.querySelectorAll('.pa-plot.pa-pre'), function(p){
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ p.classList.add('is-on'); }); });
+    });
     [].forEach.call(panel.querySelectorAll('.pa-trk i'), function(el){
       if(el.dataset.gotowe) return; el.dataset.gotowe='1';
       el.style.transform='scaleX(0)';
       requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.style.transform=''; }); });
     });
   }
+
+  /* Wykres rysuje sie od lewej przy wejsciu; potem celownik i dymek pod kursorem, palcem albo strzalkami. */
+  var wykresy=[].slice.call(document.querySelectorAll('.pa-plot[data-pts]'));
+  if(!spokojnie) wykresy.forEach(function(p){ p.classList.add('pa-pre'); });
+  wykresy.forEach(function(pl){
+    var pts; try{ pts=JSON.parse(pl.dataset.pts); }catch(e){ return; }
+    var xh=pl.querySelector('.pa-xh'), hd=pl.querySelector('.pa-hd'), tip=pl.querySelector('.pa-tip'), akt=pts.length-1;
+    var sr=pl.parentNode.querySelector('.pa-sr'), ogl=false;
+    function pokaz(i){
+      akt=Math.max(0,Math.min(pts.length-1,i)); var p=pts[akt];
+      xh.style.left=hd.style.left=tip.style.left=p[3]+'%'; hd.style.top=tip.style.top=p[4]+'%';
+      /* dymek przesuwa sie o tyle, ile punkt od lewej — przy krawedziach nie wychodzi poza wykres */
+      tip.style.transform='translate(-'+p[3]+'%,calc(-100% - 16px))';
+      tip.innerHTML='<b>'+fmt.format(p[1])+'</b> '+p[2]+'<span>tydzień od '+p[0]+'</span>';
+      pl.classList.add('is-hover');
+      if(ogl) sr.textContent='Tydzień od '+p[0]+': '+fmt.format(p[1])+' '+p[2];
+    }
+    function zPozycji(e){ var r=pl.getBoundingClientRect(); pokaz(Math.round((e.clientX-r.left)/r.width*(pts.length-1))); }
+    function schowaj(){ pl.classList.remove('is-hover'); }
+    pl.addEventListener('pointermove', zPozycji);
+    pl.addEventListener('pointerdown', zPozycji);
+    pl.addEventListener('pointerleave', function(e){ if(e.pointerType==='mouse') schowaj(); });
+    document.addEventListener('pointerdown', function(e){ if(!pl.contains(e.target)) schowaj(); });
+    pl.addEventListener('blur', function(){ ogl=false; schowaj(); });
+    pl.addEventListener('focus', function(){ ogl=true; pokaz(akt); });
+    pl.addEventListener('keydown', function(e){
+      if(e.key==='ArrowLeft'||e.key==='ArrowRight'){ e.preventDefault(); ogl=true; pokaz(akt+(e.key==='ArrowRight'?1:-1)); }
+      else if(e.key==='Escape') schowaj();
+    });
+  });
 
   edges();
   if(btns[0]) moveGlider(btns[0]);
