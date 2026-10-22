@@ -170,7 +170,7 @@ tbody tr:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .bar{display:grid;grid-template-columns:118px minmax(0,1fr) 48px 52px;align-items:center;gap:10px;font-size:13px}
 .bar span:first-child{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar .trk{height:6px;border-radius:3px;background:var(--elev-2);overflow:hidden}
-.bar .trk i{display:block;height:100%;border-radius:3px;background:var(--accent);transition:width .5s var(--ease)}
+.bar .trk i{display:block;height:100%;border-radius:3px;background:var(--accent)}
 .bar .num{text-align:right;font-size:12px}
 .pages{list-style:none;display:grid}
 .pages li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;font-size:13px;border-top:1px solid var(--line-2)}
