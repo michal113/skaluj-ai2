@@ -4,6 +4,7 @@
 #   bash crm/setup.sh               # pierwsze uruchomienie albo aktualizacja kodu
 #   bash crm/setup.sh --klucze      # zapytaj ponownie o wszystkie klucze do statystyk
 #   bash crm/setup.sh --nowe-haslo  # wygeneruj nowe haslo do panelu
+#   bash crm/setup.sh --nowy-token  # nowy token dla Make (potem podmien go w module HTTP)
 #
 # Mozna uruchamiac wielokrotnie: istniejaca baza, zgloszenia i hasla zostaja.
 # Hasla i klucze trafiaja prosto do Cloudflare (wrangler secret put) — nie do repo i nie do plikow.
@@ -12,11 +13,12 @@ cd "$(dirname "$0")"
 
 W="npx --yes wrangler@4"
 DB_NAME="skaluj-crm"
-ASK_ALL=0; NEW_PASS=0
+ASK_ALL=0; NEW_PASS=0; NEW_TOKEN=0
 for a in "$@"; do
   case "$a" in
     --klucze) ASK_ALL=1 ;;
     --nowe-haslo) NEW_PASS=1 ;;
+    --nowy-token) NEW_TOKEN=1 ;;
     *) echo "Nieznana opcja: $a"; exit 1 ;;
   esac
 done
@@ -84,7 +86,7 @@ put() { printf '%s' "$2" | $W secret put "$1" >/dev/null && ok "$1 zapisany"; }
 step "5/6 Haslo do panelu i token dla Make"
 PASS=""; TOKEN=""
 if [ "$NEW_PASS" = 1 ] || ! has ADMIN_PASSWORD; then PASS="$(gen)"; put ADMIN_PASSWORD "$PASS"; else ok "haslo juz ustawione (nowe: --nowe-haslo)"; fi
-if ! has INGEST_TOKEN; then TOKEN="$(gen)"; put INGEST_TOKEN "$TOKEN"; else ok "token dla Make juz ustawiony"; fi
+if [ "$NEW_TOKEN" = 1 ] || ! has INGEST_TOKEN; then TOKEN="$(gen)"; put INGEST_TOKEN "$TOKEN"; else ok "token dla Make juz ustawiony (nowy: --nowy-token)"; fi
 # (haslo i token sa juz zapisane - panel dziala, nawet jesli przerwiesz pytania o klucze)
 
 step "6/6 Klucze do statystyk (Enter = pomin, mozesz dodac pozniej: bash crm/setup.sh --klucze)"

@@ -3,10 +3,11 @@
 #   powershell -ExecutionPolicy Bypass -File crm\setup.ps1              # pierwsze uruchomienie albo aktualizacja kodu
 #   powershell -ExecutionPolicy Bypass -File crm\setup.ps1 -Klucze      # zapytaj ponownie o wszystkie klucze do statystyk
 #   powershell -ExecutionPolicy Bypass -File crm\setup.ps1 -NoweHaslo   # wygeneruj nowe haslo do panelu
+#   powershell -ExecutionPolicy Bypass -File crm\setup.ps1 -NowyToken   # nowy token dla Make (potem podmien go w module HTTP)
 #
 # Mozna uruchamiac wielokrotnie: istniejaca baza, zgloszenia i hasla zostaja.
 # Hasla i klucze trafiaja prosto do Cloudflare - nie do repo. Ten sam skrypt dla macOS/Linux: crm/setup.sh
-param([switch]$Klucze, [switch]$NoweHaslo)
+param([switch]$Klucze, [switch]$NoweHaslo, [switch]$NowyToken)
 
 $ErrorActionPreference = "Continue"
 Set-Location $PSScriptRoot
@@ -119,7 +120,7 @@ $secrets = @{}
 Step "5/6 Haslo do panelu i token dla Make"
 $pass = ""; $token = ""
 if ($NoweHaslo -or -not (Has "ADMIN_PASSWORD")) { $pass = New-Secret; $secrets["ADMIN_PASSWORD"] = $pass } else { Ok "haslo juz ustawione (nowe: -NoweHaslo)" }
-if (-not (Has "INGEST_TOKEN")) { $token = New-Secret; $secrets["INGEST_TOKEN"] = $token } else { Ok "token dla Make juz ustawiony" }
+if ($NowyToken -or -not (Has "INGEST_TOKEN")) { $token = New-Secret; $secrets["INGEST_TOKEN"] = $token } else { Ok "token dla Make juz ustawiony (nowy: -NowyToken)" }
 # zapis od razu: panel dziala, nawet jesli przerwiesz pytania o klucze
 Save-Secrets $secrets
 $secrets = @{}
