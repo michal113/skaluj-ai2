@@ -151,9 +151,25 @@ Używamy tego samego konta serwisowego co panel klienta: `panel-reader@skaluj-pa
   Taki plik ma dane osobowe, więc nie wrzucaj go do repo.
 - **Marketing** wysyłaj tylko do osób z „zgoda: …” w polu Marketing.
 
+## Aktualizacje przez inne osoby (automatyczne wdrażanie)
+
+Po jednorazowej konfiguracji każdy, kto ma prawo pushowania do repo, aktualizuje panel i chatbota zwykłym pushem na `main`. GitHub Actions (`.github/workflows/deploy-workers.yml`) sam wdraża zmiany z `crm/` i `worker/` na Cloudflare. Nikt nie musi odpalać skryptu u siebie ani logować się do Cloudflare.
+
+Jednorazowo, robi to **właściciel repo** (michal113):
+1. Cloudflare → My Profile → API Tokens → Create Token → szablon **Edit Cloudflare Workers**. Dodaj uprawnienie **Account → D1 → Edit** i w „Account Resources” zostaw tylko konto z chatbotem.
+2. GitHub → repo → Settings → Secrets and variables → Actions → New repository secret:
+   - `CLOUDFLARE_API_TOKEN`: token z punktu 1,
+   - `CLOUDFLARE_ACCOUNT_ID`: ID konta (Cloudflare → Workers & Pages, prawa kolumna).
+
+Bez tych sekretów workflow kończy się bez błędu i niczego nie wdraża. Hasło do panelu i klucze API zostają w Cloudflare, więc wdrożenie ich nie rusza. Baza i zgłoszenia też zostają.
+
+Druga osoba może też wdrażać sama ze swojego komputera. Wtedy zaproś ją do konta Cloudflare (Manage Account → Members), a ona uruchamia `crm/setup.ps1` albo `crm/setup.sh`. Skrypt znajdzie istniejącą bazę i nie zmieni hasła.
+
+**RODO:** kto ma dostęp do konta Cloudflare albo do tokenu, może odczytać zgłoszenia z bazy. Dawaj go tylko zaufanym osobom. Współpracownikowi daj pisemne upoważnienie do przetwarzania danych (art. 29 RODO), a z firmą zewnętrzną podpisz umowę powierzenia.
+
 ## Zmiana hasła lub tokenu
 
-Ponownie uruchom `npx wrangler secret put ADMIN_PASSWORD` (albo `INGEST_TOKEN`). Po zmianie tokenu zaktualizuj nagłówek w module HTTP w Make.
+Uruchom skrypt z `-NoweHaslo` / `-NowyToken` (Windows) albo `--nowe-haslo` / `--nowy-token` (Mac/Linux). Po zmianie tokenu zaktualizuj nagłówek w module HTTP w Make.
 
 ## Pliki
 

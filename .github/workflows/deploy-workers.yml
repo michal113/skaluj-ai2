@@ -1,0 +1,70 @@
+# Automatyczne wdrozenie na Cloudflare po pushu na main: CRM (crm/) i chatbot (worker/).
+# Wymaga sekretow repo (Settings -> Secrets and variables -> Actions):
+#   CLOUDFLARE_API_TOKEN   token Cloudflare: szablon "Edit Cloudflare Workers" + uprawnienie D1: Edit, tylko jedno konto
+#   CLOUDFLARE_ACCOUNT_ID  ID konta, na ktorym stoja botszkalu i skaluj-crm
+# Bez nich workflow konczy sie bez bledu i niczego nie wdraza.
+# Sekrety workerow (haslo panelu, klucze API) zostaja w Cloudflare - deploy ich nie rusza.
+name: Wdrozenie workerow (Cloudflare)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "crm/**"
+      - "worker/**"
+      - "panel/google.js"
+      - ".github/workflows/deploy-workers.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-workers
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Sprawdz sekrety
+        id: check
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::notice::Brak CLOUDFLARE_API_TOKEN lub CLOUDFLARE_ACCOUNT_ID w sekretach repo - pomijam wdrozenie."
+            echo "skip=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.skip != '1'
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.skip != '1'
+        with:
+          node-version: 22
+
+      - name: CRM (skaluj-crm)
+        if: steps.check.outputs.skip != '1'
+        working-directory: crm
+        run: |
+          W="npx --yes wrangler@4"
+          # ID bazy bierzemy z konta (w repo jest placeholder) - baze zaklada raz crm/setup.ps1 lub crm/setup.sh
+          ID="$($W d1 list --json | node -e '
+            let s = ""; process.stdin.on("data", (d) => (s += d)).on("end", () => {
+              try { const db = JSON.parse(s.slice(s.indexOf("["))).find((d) => d.name === "skaluj-crm"); process.stdout.write(db ? db.uuid : ""); } catch {}
+            });')"
+          if [ -z "$ID" ]; then
+            echo "::error::Na koncie nie ma bazy skaluj-crm. Uruchom raz crm/setup.ps1 (Windows) albo crm/setup.sh."
+            exit 1
+          fi
+          sed -i -E "s/^database_id = \"[^\"]*\"/database_id = \"$ID\"/" wrangler.toml
+          $W d1 execute skaluj-crm --remote --yes --file=schema.sql > /dev/null
+          $W deploy
+
+      - name: Chatbot (botszkalu)
+        if: steps.check.outputs.skip != '1'
+        working-directory: worker
+        run: npx --yes wrangler@4 deploy
