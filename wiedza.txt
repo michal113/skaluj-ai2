@@ -1,268 +1,137 @@
-# BAZA WIEDZY — skaluj.ai
-# (edytuj ten plik; bot traktuje go jako źródło prawdy o firmie)
+# BAZA WIEDZY — skaluj.ai (źródło prawdy dla chatbota na stronie)
+# Aktualizuj razem ze stroną. Bot czyta pierwsze ~14 000 znaków, więc najważniejsze jest na górze.
+# Nie wpisuj tu cen ani liczb, których nie ma na stronie. Bot ma ich nie zmyślać.
 
-=== STRONA GŁÓWNA / OFERTA / PROCES / FAQ ===
-Agencja transformacji cyfrowej dla firm 
-## 
- Wszystko, czego Twoja firma
- potrzebuje w świecie AI.
- Projektujemy strony szyte na miarę — od pierwszego dnia zoptymalizowane pod SEO i widoczność
- w AI (GEO) . Wdrażamy automatyzacje , które oddają Ci czas, i budujemy branding, który sprzedaje .
- Umów bezpłatną konsultację 
- Zobacz case studies 
- 5,0 
- · 
- Opinie w Google 
- panel wyników · skaluj.ai 
- na żywo 
- Automatyzacja 
- Strona + SEO 
- Mailing 
- Chatbot AI 
- Czerwiec 2026 — dane bieżące 
- Godziny odzyskane / miesiąc 
- 0 
- ↑ +27% vs maj 
- ≈ 3,5 etatu zdjętego z powtarzalnych zadań 
- Godziny odzyskane — 6 miesięcy trend ↑ 
- sty lut mar kwi maj cze 
- Zadania zautomatyzowane 0 ↑ +22% vs maj 
- Obsłużone bez człowieka 0 ↑ +6 pp vs maj 
- Oszczędności / rok 0 ↑ +31% vs maj 
- Śr. czas odpowiedzi 0 ↓ -3 s (szybciej) 
- Gdzie AI przejęło pracę Udział zautomatyzowanych zadań 
- Obsługa zapytań 0 
- Raportowanie 0 
- Faktury / księgowość 0 
- Kwalifikacja leadów 0 
- Planowanie pracy 0 
- Aktywność automatyzacji na żywo 
- Umów rozmowę 
- Czerwiec 2026 — dane bieżące 
- Sesje / miesiąc 0 ↑ +18% vs maj 
- Nowi odwiedzający 0 ↑ +5 pp vs maj 
- Bounce rate 0 ↓ -6 pp (lepiej) 
- Śr. czas sesji 3:42 min ↑ +22% vs maj 
- Leady (konwersje) 0 ↑ +31% vs maj 
- Współcz. konwersji 0 ↑ +0.21 pp 
- Widoczność w wyszukiwarkach AI (GEO) 
- Generative Engine Optimization — wbudowane od startu 
- Strony budujemy pod odpowiedzi generowane przez AI, nie tylko pod klasyczne SEO — dzięki temu Twoja firma może pojawiać się także tam, gdzie klienci dziś szukają: 
- ChatGPT 
- Perplexity 
- Google AI Overviews 
- Źródła ruchu Udział sesji · czerwiec 
- Organic search 0 
- Direct 0 
- Referral 0 
- AI Search GEO 0 
- Paid 0 
- Aktywność strony na żywo 
- Umów rozmowę 
- Czerwiec 2026 — dane bieżące 
- Dostarczalność 0 ↑ +0.3 pp vs maj 
- Open rate 0 ↑ +8.4 pp vs maj 
- Click rate (CTR) 0 ↑ +3.1 pp vs maj 
- Konwersja z maila 0 ↑ +1.1 pp vs maj 
- Baza kontaktów 0 ↑ +498 w czerwcu 
- Aktywne kampanie 0 3 sekwencje · 4 jednoraz. 
- Ostatnie kampanie Open rate · konwersja 
- Kampania Otwarcia Konw. Status 
- Sekwencja powitalna v3 54.2% 5.1% aktywna 
- Follow-up — leady zimne 38.7% 2.9% aktywna 
- Newsletter Maj 44.1% 3.6% zakończona 
- Reaktywacja — 90 dni 29.3% 1.8% aktywna 
- Automatyzacja mailingu na żywo 
- Umów rozmowę 
- Czerwiec 2026 — dane bieżące 
- Rozmów / miesiąc 0 ↑ +24% vs maj 
- Sprzedaż przez chat 0 ↑ +38% vs maj 
- Umówione spotkania 0 ↑ +19% vs maj 
- Zamknięte bez człowieka 0 ↑ +4 pp vs maj 
- Śr. czas odpowiedzi 0 ↓ -2 s (szybciej) 
- Ocena klientów (CSAT) 0 ↑ +0.2 vs maj 
- Tematy rozmów Udział procentowy 
- Zapytania o produkt 0 
- Pytania o ceny 0 
- Umówienie spotkania 0 
- Obsługa posprzedażna 0 
- Inne 0 
- Rozmowy na żywo na żywo 
- Umów rozmowę 
- Podgląd panelu — przykładowe dane demonstracyjne. Realne metryki ustalamy i podpinamy przy wdrożeniu. 
- 01 — Oferta 
-## Pełen zakres. Jedna agencja.
- Od pierwszego audytu po utrzymanie produkcyjne — prowadzimy całość wdrożenia, więc nie potrzebujesz trzech dostawców i czterech ofert. 
- 01 Strony internetowe pod SEO i GEO Google + AI Search 
- Projektujemy strony, które zamieniają ruch w klientów — z SEO i widocznością w AI (GEO) wbudowanymi od pierwszego dnia, nie doklejonymi na końcu. AI przyspiesza projekt, copy i optymalizację, więc efekt dostajesz w tygodnie, nie w kwartały. 
- - Projekt UX, który prowadzi od problemu do kontaktu
-- SEO techniczne i treściowe wbudowane od startu
-- Widoczność w AI (GEO) — polecana w ChatGPT, Perplexity i Google AI Overviews
-- Copywriting sprzedażowy — język klienta, jasne CTA
-- Gotowa pod integracje: formularz, CRM, analityka GA4
- Szczegóły oferty 
- 02 Automatyzacje biznesowe AI Procesy / Workflow 
- Łączymy narzędzia, których już używasz, i budujemy automaty przejmujące powtarzalną pracę — od maili i faktur po raporty i CRM. Procesy robią się same, a zespół zajmuje się tym, co przynosi pieniądze . 
- - Mailing i follow-upy — sekwencje wysyłają się same, żaden lead nie czeka
-- Faktury i dokumenty — odczyt AI, księgowani
-
-=== OFERTA: automatyzacje-email ===
-02 — Automatyzacje AI 
-## Automatyzacje biznesowe AI — powtarzalna praca robi się sama
- Łączymy narzędzia, których już używasz, i budujemy automaty przejmujące rutynę: mailing, dokumenty, leady, oferty, raporty, terminy. Zespół zajmuje się tym, co przynosi pieniądze — resztę robi system. 
- Zautomatyzuj procesy 
- Cała oferta 
- Wróć do oferty 
-## Dla kogo to jest
- Dla firm, w których zespół codziennie robi ręcznie to, co system mógłby robić sam: przepisuje dane między narzędziami, wysyła te same maile, wystawia dokumenty, składa raporty. Jeśli słyszysz u siebie „zawsze tak robiliśmy" albo „to zajmuje tylko chwilę" — pomnóż tę chwilę przez liczbę powtórzeń w miesiącu. Właśnie tam leżą Twoje godziny i pieniądze. 
-## Co automatyzujemy
- Poniżej najczęstsze procesy, które przejmują nasze automaty. Każdy budujemy pod Twoje narzędzia i Twoją specyfikę — to lista możliwości, nie zamknięty katalog. 
- - Mailing i komunikacja z klientami — sekwencje powitalne, follow-upy po zapytaniu, nurturing, reaktywacja uśpionych kontaktów, przypomnienia o terminach. AI personalizuje treść i dobiera moment wysyłki.
- - Faktury i dokumenty — automatyczny odczyt faktur i dokumentów (AI + OCR), segregacja, przekazywanie do księgowości, przypomnienia o płatnościach i monitoring zaległości.
- - Leady i sprzedaż — lead z formularza lub reklamy trafia prosto do CRM, AI ocenia jego potencjał, przypisuje właściwemu handlowcowi i od razu odpala follow-up.
- - Oferty i wyceny — oferta generowana z szablonu i danych klienta w minuty, automatyczna wysyłka i przypomnienie, gdy klient długo nie odpowiada.
- - Raportowanie — dane ze sprzedaży, marketingu i finansów zbierane z wielu narzędzi w jeden raport lub dashboard — codziennie, tygodniowo, na żądanie.
- - Umawianie spotkań — rezerwacje, potwierdzenia i przypomn
-
-=== OFERTA: branding ===
-04 — Design / Branding 
-## Grafiki i branding — AI podsuwa pomysły, tworzą doświadczeni graficy
- Identyfikacja wizualna, posty, banery i materiały sprzedażowe. AI błyskawicznie podsuwa koncepcje i warianty, a każdy projekt wykonuje nasz zespół profesjonalnych grafików z wieloletnim doświadczeniem. 
- Zbuduj spójną markę 
- Cała oferta 
- Wróć do oferty 
-## Dla kogo to jest
- Dla nowych marek, które potrzebują spójnej identyfikacji na start. Dla firm w trakcie rebrandingu. I dla zespołów, które produkują dużo grafik (social, reklamy, oferty) i nie chcą czekać tygodniami ani trzymać grafika na etacie. 
-## Co dokładnie dostajesz
- - Logo i system wizualny — kolory, typografia, zasady użycia w mini brand booku.
- - Grafiki na social media — spójne posty, stories i okładki.
- - Kreacje reklamowe — warianty pod kampanie, gotowe do testów.
- - Materiały sprzedażowe — banery, oferty, prezentacje w jednym stylu.
- - Szablony do samodzielnego użycia — Twój zespół tworzy spójne grafiki bez grafika.
- - Spójność wielokanałowa — strona, reklamy i maile wyglądają jak jedna marka.
-## Jak pracujemy
- 1 Brief i kierunek. Ustalamy charakter marki, do kogo mówi i jak ma być odbierana. 
- 2 Koncepcje. AI podsuwa kierunki i inspiracje, a nasi graficy wybierają i rozwijają najlepsze z nich. 
- 3 Projekt. Zespół grafików dopracowuje formy, typografię i detale — ręcznie, projekt po projekcie. 
- 4 System i produkcja. Dostarczamy materiały i szablony, a Twój zespół uczy się tworzyć kolejne samodzielnie. 
- Spójność bije pojedynczą ładną grafikę. Marki zapadają w pamięć dzięki powtarzalności — ten sam kolor, ta sama typografia, ten sam ton wszędzie. System ważniejszy niż efektowny pojedynczy projekt. 
-## Efekty, których możesz oczekiwać
- Kierunki, w których pracujemy: rozpoznawalna, spójna marka we wszystkich 
-
-=== OFERTA: rolki-ai ===
-05 — Reels · Napisy · Lektor AI
-## Rolki i wideo AI — krótkie wideo z napisami i lektorem AI
- Krótkie wideo na Instagram Reels, TikToka i YouTube Shorts dla firm. Piszemy scenariusz i hook, montujemy z pomocą AI, dodajemy napisy słowo po słowie i lektora AI — także w wersjach obcojęzycznych (najczęściej EN i DE). Każdą rolkę przed publikacją sprawdza człowiek. Szczegóły: https://skaluj.ai/oferta/rolki-ai
-## Co dokładnie robimy
- - Scenariusz i hook pod konkretny cel: zasięg, ruch na stronę albo zapytania.
- - Montaż wspierany przez AI — rytm, cięcia i finalny wybór robi montażysta.
- - Transkrypcja i napisy animowane słowo po słowie, poprawione ręcznie, w kolorach marki.
- - Lektor AI: syntetyczny głos z licencją komercyjną albo klon głosu wyłącznie za pisemną zgodą osoby.
- - Wersje językowe z jednego nagrania: tłumaczenie, napisy i lektor.
- - Seria rolek z jednego materiału: webinaru, wywiadu, podcastu.
- - Formaty pod reklamy (9:16, 4:5, 1:1), opisy, okładki i oznaczenia treści AI.
-## Zasady
- Oznaczenia AI ustawiamy zgodnie z art. 50 AI Act (obowiązuje od 2 sierpnia 2026) i zasadami Meta, TikToka i YouTube. Nie robimy deepfake'ów prawdziwych osób bez zgody i nie klonujemy głosów bez pisemnej zgody. Nie obiecujemy viralu.
-## Cena
- Zależy od liczby rolek, wersji językowych i tego, czy pracujemy na materiale klienta. Zaczynamy od serii próbnej, bez abonamentu na rok z góry. Dokładną wycenę ustalamy na bezpłatnej konsultacji.
-
-=== OFERTA: chatbot-ai ===
-03 — Obsługa klienta 
-## Asystent i chatbot AI, który obsługuje klientów 24/7
- Asystenci, którzy znają Twoją ofertę, procedury i historię klienta — i zamykają większość rutynowych zgłoszeń bez angażowania człowieka. Na stronie, w mailu, na WhatsAppie i przez telefon. 
- Wdróż asystenta AI 
- Cała oferta 
- Wróć do oferty 
-## Dla kogo to jest
- Dla firm zalewanych powtarzalnymi pytaniami (godziny, dostępność, status zamówienia, cennik). Dla sklepów i usług, które tracą klientów po godzinach pracy biura. I dla zespołów, które chcą zająć się trudnymi sprawami zamiast odpowiadać po raz setny na to samo. 
-## Co dokładnie dostajesz
- - Asystent w wielu kanałach — na stronie, na WhatsApp, w e-mailu, a w razie potrzeby także głosowo.
- - Baza wiedzy firmy — asystent odpowiada na podstawie Twoich materiałów, procedur i oferty.
- - Płynna eskalacja do człowieka — z pełnym kontekstem rozmowy, gdy sprawa tego wymaga.
- - Obsługa 24/7 — po godzinach, w weekendy i w szczytach, bez kolejek.
- - Logi i raporty — wiesz, o co pytają klienci i gdzie warto poprawić ofertę lub stronę.
- - Aktualizacje wiedzy — gdy zmienia się oferta, asystent uczy się nowych odpowiedzi.
-## Jak pracujemy
- 1 Zebranie wiedzy. Spisujemy najczęstsze pytania, procedury i materiały, na których ma się opierać asystent. 
- 2 Konfiguracja i ton. Ustawiamy zakres, styl wypowiedzi i zasady eskalacji. 
- 3 Testy na realnych pytaniach. Sprawdzamy odpowiedzi i domykamy luki, zanim trafi do klientów. 
- 4 Wdrożenie i nadzór. Uruchamiamy w kanałach, monitorujemy i douczamy na bazie rozmów. 
- Człowiek w pętli (human-in-the-loop): asystent nie zgaduje. Gdy nie jest pewny lub sprawa jest delikatna, przekazuje rozmowę do człowieka razem z całym kontekstem — bez frustrującego „zacznijmy od początku". 
-## Efekty, których możesz oczekiwać
- Ust
-
-=== OFERTA: geo ===
-04 — ChatGPT / Perplexity 
-## GEO — bądź widoczny tam, gdzie klienci pytają AI
- Generative Engine Optimization optymalizuje Twoją obecność pod odpowiedzi ChatGPT, Perplexity i Google AI Overviews. Coraz więcej klientów pyta AI zamiast Google — zadbamy, żeby polecało właśnie Ciebie. 
- Sprawdź swoją widoczność 
- Cała oferta 
- Wróć do oferty 
-## Dlaczego GEO ma znaczenie
- Zmienia się sposób, w jaki ludzie szukają. Zamiast wpisywać frazę w Google i klikać kolejne linki, coraz częściej zadają pytanie ChatGPT, Perplexity czy w Google AI Overviews i dostają jedną, gotową odpowiedź — z kilkoma poleconymi markami. Jeśli Twojej firmy tam nie ma, nie istniejesz w tej rozmowie . 
-## Dla kogo to jest
- Dla firm, których klienci podejmują decyzje na podstawie researchu. Dla marek, które chcą być cytowane jako źródło i rekomendowane przez asystentów AI. I dla każdego, kto woli być o krok przed konkurencją, zanim GEO stanie się standardem. 
-## Co dokładnie dostajesz
- - Audyt widoczności w AI — sprawdzamy, czy i jak modele wymieniają Ciebie i konkurencję.
- - Optymalizacja treści pod modele językowe — format, struktura i jasne odpowiedzi na realne pytania.
- - Budowanie autorytetu — obecność w źródłach, które AI cytuje najczęściej.
- - Dane strukturalne i encje marki — żeby AI poprawnie rozumiało, czym się zajmujesz.
- - Monitoring — śledzenie wzmianek i pozycji Twojej marki w odpowiedziach AI.
-## Jak pracujemy
- 1 Audyt i pytania klientów. Ustalamy, o co klienci pytają AI w Twojej branży i jak wypadasz na tle konkurencji. 
- 2 Strategia treści i źródeł. Planujemy, co i gdzie publikować, żeby AI miało skąd Cię polecać. 
- 3 Wdrożenie. Optymalizujemy treści, dane strukturalne i obecność w cytowanych źródłach. 
- 4 Monitoring i iteracje. Sprawdzamy, jak zmienia się Twoja obecność w odpowiedziach A
-
-=== OFERTA: meta-ads ===
-05 — Reklamy / Social 
-## Meta Ads optymalizowane przez AI — niższy koszt, wyższy zwrot
- Kampanie na Facebooku i Instagramie tworzone i optymalizowane przez AI — od kreacji, przez copy, po targetowanie. Celujemy w niższy koszt pozyskania klienta i wyższy zwrot z reklam, bez codziennego nadzoru. 
- Skaluj reklamy z AI 
- Cała oferta 
- Wróć do oferty 
-## Dla kogo to jest
- Dla e-commerce i firm usługowych, które chcą przewidywalnie pozyskiwać klientów z reklam. Dla marek, które „coś tam puszczają na Facebooku", ale bez strategii i testów. I dla tych, którzy chcą skalować wydatki bez utraty kontroli nad kosztem pozyskania. 
-## Co dokładnie dostajesz
- - Kreacje i copy generowane przez AI — wiele wariantów grafik i tekstów gotowych do testu.
- - Automatyczna optymalizacja — budżet i grupy odbiorców dostrajane pod wyniki.
- - Szybkie testy A/B — sprawdzamy dziesiątki wariantów, nie kilka.
- - Lejki i remarketing — od pierwszego kontaktu po domknięcie sprzedaży.
- - Raportowanie w czasie rzeczywistym — wiesz, co działa i ile kosztuje klient.
- - Stała opieka nad kampaniami — bez konieczności codziennego zaglądania do menedżera reklam.
-## Jak pracujemy
- 1 Research i strategia. Ustalamy ofertę, grupę docelową, komunikaty i cele kampanii. 
- 2 Produkcja kreacji. AI generuje warianty grafik i copy, my wybieramy najlepsze do testu. 
- 3 Uruchomienie i testy. Startujemy z wieloma wariantami i szybko odcinamy słabe. 
- 4 Skalowanie zwycięzców. Budżet płynie do tego, co realnie dowozi sprzedaż. 
- W reklamie wygrywa szybkość uczenia się. Im więcej wariantów przetestujesz i im szybciej wyciągniesz wnioski, tym taniej pozyskasz klienta. AI testuje na skalę, której ręcznie nie da się ogarnąć. 
-## Efekty, których możesz oczekiwać
- Nie obiecujemy konkretnych liczb z góry — zależą od oferty, marży i ry
-
-=== OFERTA: strona-seo ===
-01 — Strona · SEO · GEO 
-## Strona internetowa, która zamienia ruch w klientów — zoptymalizowana pod GEO
- Projektujemy i budujemy strony nastawione na sprzedaż — z SEO i widocznością w AI (GEO) wbudowanymi od pierwszego dnia, nie doklejonymi na końcu. AI przyspiesza projekt, copy i optymalizację, więc efekt dostajesz szybciej i taniej. 
- Umów bezpłatny audyt 
- Cała oferta 
- Wróć do oferty 
-## Dla kogo to jest
- Dla firm, które mają ruch na stronie, ale mało zapytań. Dla firm usługowych i B2B, których obecna strona „tylko jest". I dla tych, którzy startują od zera i chcą od razu zbudować stronę nastawioną na pozyskiwanie klientów , a nie na ładne zdjęcia. 
-## Co dokładnie dostajesz
- - Projekt UX i architektura informacji — układ, który prowadzi użytkownika od problemu do kontaktu.
- - Wdrożenie w technologii AI — szybkie iteracje i niższy koszt niż klasyczny projekt.
- - SEO techniczne — Core Web Vitals, dane strukturalne, mapa strony, poprawne nagłówki i meta.
- - SEO treściowe — teksty pod realne frazy i pod odbiorcę, nie pod „upchanie słów kluczowych".
- - Widoczność w AI (GEO) — strona zoptymalizowana pod Generative Engine Optimization, żeby pojawiać się w odpowiedziach ChatGPT, Perplexity i Google AI Overviews, nie tylko w klasycznym Google.
- - Copywriting sprzedażowy — nagłówki na korzyściach, jasne CTA, język klienta.
- - Integracje — formularz, CRM, analityka GA4, piksele reklamowe.
- - Wersja mobilna i dostępność — strona działa i wygląda dobrze na każdym ekranie.
-## Zobacz, jak działa GEO — z perspektywy Twojego klienta
- Coraz więcej osób nie wpisuje frazy w Google, tylko pyta AI — i dostaje jedną odpowiedź z kilkoma poleconymi firmami. Strona zoptymalizowana pod GEO sprawia, że w tej odpowiedzi pojawiasz się Ty. Tak to wygląda w praktyce, na naszym własnym przykładzi
+=== O FIRMIE ===
+skaluj.ai to agencja transformacji cyfrowej dla firm z Rzeszowa. Pracujemy z firmami w całej Polsce. Robimy strony pod SEO i widoczność w AI (GEO), reklamy w ChatGPT, branding i rolki wideo oraz automatyzacje i chatboty AI. Prowadzimy całość w jednym miejscu, od audytu po opiekę po starcie, więc nie potrzebujesz trzech dostawców i czterech ofert. Jesteśmy kameralną ekipą: bierzemy tyle wdrożeń, ile możemy poprowadzić osobiście, a zapytanie trafia do konkretnego człowieka. AI przyspiesza naszą pracę, ale każdy projekt robi i sprawdza człowiek.
+Zasady: realne wdrożenia zamiast szablonów, uczciwość zamiast obietnic, bez lock-in (w każdej chwili możesz przejąć to, co dla Ciebie zbudowaliśmy). Opinie w Google: 5,0.
 
 === KONTAKT ===
-E-mail: kontakt@skaluj.ai
+E-mail: kontakt@skaluj.ai. Formularz: skaluj.ai/kontakt (wypełnienie zajmuje ok. 2 minuty). Siedziba: Rzeszów.
+Odpowiadamy w ciągu 24 godzin w dni robocze (pon–pt).
+Bezpłatna konsultacja trwa 30 minut i do niczego nie zobowiązuje. Na życzenie podpisujemy NDA przed rozmową o szczegółach.
 Dane firmy: skaluj.ai Sergiusz Serafin (jednoosobowa działalność gospodarcza, wpis w CEIDG), NIP 8133960157, REGON 545915660.
-Lokalizacja: Rzeszów
-Odpowiadamy w ciągu 24 h w dni robocze.
-Bezpłatna konsultacja: 30 minut, bez zobowiązań, z gotowym demo.
+
+=== OFERTA — PRZEGLĄD (3 grupy, 8 usług) ===
+1. Strona i widoczność: strona internetowa pod SEO i GEO (skaluj.ai/oferta/strona-seo), pozycjonowanie SEO i GEO istniejącej strony (skaluj.ai/oferta/geo-seo), reklamy w ChatGPT (skaluj.ai/oferta/reklamy-chatgpt).
+2. Branding i wideo: branding i grafiki (skaluj.ai/oferta/branding), rolki i wideo AI (skaluj.ai/oferta/rolki-ai), audyt cyfryzacji firmy (skaluj.ai/oferta/audyt-cyfryzacji).
+3. Automatyzacje i chatboty: automatyzacje biznesowe AI (skaluj.ai/oferta/automatyzacje-email), chatbot i asystent AI (skaluj.ai/oferta/chatbot-ai).
+Ceny: nie publikujemy cennika, bo wycena zależy od zakresu. Prosta strona to inny nakład niż pełne wdrożenie automatyzacji. Część rzeczy to koszt jednorazowy (np. strona), a opcjonalna opieka, hosting czy rozwój automatyzacji rozliczane są miesięcznie. Stawki ustalamy z góry, bez ukrytych opłat i bez abonamentu, którego nie potrzebujesz. Konkretną wycenę i demo przygotowujemy po formularzu lub konsultacji, zanim cokolwiek zapłacisz.
+
+=== JAK PRACUJEMY ===
+1. Formularz (2 minuty): kilka pytań o firmę, cel i potrzeby.
+2. Pełny audyt na start, całkowicie za darmo: sprawdzamy, które automatyzacje realnie da się u Ciebie wdrożyć i jak najlepiej zbudować stronę. Do niczego nie zobowiązuje.
+3. Brief i demo: spisujemy zakres i pokazujemy działające demo tej strony lub automatyzacji, zanim cokolwiek zapłacisz.
+4. Realizacja i opieka: jeśli demo trafia w punkt, wdrażamy, a po starcie dbamy o całość i wysyłamy raporty.
+Przy automatyzacjach działamy w modelu audyt → pilotaż → wdrożenie. Pierwsze działające automaty zwykle widać w tygodnie, a skalujemy tylko to, co udowodniło wartość. Umowę podpisujemy dopiero, gdy akceptujesz kierunek. Nie ma sztywnego okresu wypowiedzenia.
+Ważne: bezpłatny audyt na start współpracy to co innego niż osobna usługa „Audyt cyfryzacji firmy” (rozbudowany raport PDF). Cenę tej usługi ustalamy indywidualnie.
+Terminy: dzięki AI efekt dostajesz w tygodnie, nie w kwartały. Dokładny termin ustalamy na pierwszym spotkaniu.
+
+=== OFERTA: strona-seo ===
+Strona internetowa, która zamienia ruch w klientów, z SEO i widocznością w AI (GEO) wbudowanymi od pierwszego dnia. Dla firm, które mają ruch, ale mało zapytań, dla firm usługowych i B2B, których strona „tylko jest”, oraz dla startujących od zera.
+W cenie: projekt UX prowadzący od problemu do kontaktu, SEO techniczne (Core Web Vitals, dane strukturalne, mapa strony, nagłówki i meta), SEO treściowe, GEO (widoczność w ChatGPT, Perplexity, Google AI Overviews), copywriting sprzedażowy, integracje (formularz, CRM, GA4, piksele), wersja mobilna i dostępność.
+Proces: audyt i research fraz → architektura i makiety → projekt i teksty (AI pod nadzorem człowieka) → wdrożenie i optymalizacja → pomiar w GA4 i poprawki. Nie obiecujemy magicznych liczb, tylko ustalamy mierzalne cele (zapytania, pozycje, czas ładowania).
+
+=== OFERTA: geo-seo ===
+Pozycjonowanie dla firm, które już mają stronę: SEO w Google i GEO, czyli bycie polecanym w odpowiedziach ChatGPT, Perplexity, Gemini i Google AI Overviews. Bez przebudowy od zera, bo pracujemy na istniejącej stronie.
+Zakres:
+- audyt widoczności w AI i Google;
+- treści „odpowiadające wprost” (answer blocks), które AI cytuje;
+- uporządkowanie informacji o firmie (encje);
+- dane strukturalne (Organization, Service, FAQ, opinie, lokalizacja);
+- sygnały wiarygodności E-E-A-T;
+- SEO techniczne i treści pod realne pytania klientów;
+- regularne odświeżanie treści;
+- monitoring pozycji i cytowań w AI z raportem.
+GEO nie zastępuje SEO, tylko jest warstwą na dobrym SEO, dlatego prowadzimy oba. Część zmian działa szybko, a trwała widoczność w AI to praca liczona w tygodniach. Nie obiecujemy sztywnych terminów.
+
+=== OFERTA: reklamy-chatgpt ===
+Reklamy w ChatGPT (ChatGPT Ads) ruszyły w Polsce pod koniec sierpnia 2026. Prowadzimy całość:
+- audyt i decyzję go/no-go (jeśli matematyka marży nie wychodzi, mówimy to przed fakturą);
+- konto reklamowe;
+- feed produktowy zgodny z Google Merchant Center (reklamy z katalogu, karuzele produktów);
+- konteksty rozmów zamiast słów kluczowych;
+- pomiar (pixel, integracja serwerowa, GA4, CRM);
+- kreacje i landingi;
+- optymalizację i raport z kosztem pozyskania klienta;
+- sprawdzenie zgodności z RODO i kategoriami zakazanymi.
+Uczciwie: nie da się kupić miejsca w treści odpowiedzi ChatGPT. Reklama pojawia się obok odpowiedzi, oznaczona. Reklamy widzą użytkownicy darmowych planów ChatGPT. Na treść odpowiedzi wpływa się tylko organicznie, przez GEO.
+Budżet ustalasz Ty i kontrolujesz go codziennie, bez abonamentu. Zaczynamy od pilotażu z ustalonym z góry warunkiem stopu: tydzień 0 to fundament, tydzień 1 start, tygodnie 2–4 zbieranie danych, tygodnie 5–8 iteracja, potem decyzja o skalowaniu. Nie można reklamować m.in. hazardu, alkoholu, tytoniu, treści dla dorosłych i polityki.
+
+=== OFERTA: branding ===
+Identyfikacja wizualna i grafiki. AI podsuwa kierunki i warianty, ale cały projekt wykonuje nasz zespół grafików z wieloletnim doświadczeniem, więc marka jest dopracowana i Twoja, nie generyczna.
+Zakres: logo i system wizualny z mini brand bookiem, grafiki na social media, kreacje reklamowe, materiały sprzedażowe (banery, oferty, prezentacje), szablony do samodzielnego użycia, spójny styl na stronie, w reklamach i mailach.
+Dla nowych marek, firm w trakcie rebrandingu i zespołów, które potrzebują dużo grafik bez grafika na etacie. Proces: brief → koncepcje → projekt → system i szablony.
+
+=== OFERTA: rolki-ai ===
+Krótkie wideo na Instagram Reels, TikToka i YouTube Shorts. Zakres:
+- scenariusz i hook pod cel;
+- montaż wspierany przez AI (rytm i decyzje należą do montażysty);
+- transkrypcja poprawiona ręcznie;
+- napisy animowane słowo po słowie w kolorach marki;
+- lektor AI z licencją komercyjną albo klon Twojego głosu, wyłącznie za pisemną zgodą;
+- wersje EN i DE z jednego nagrania, z tłumaczeniem sprawdzonym przez człowieka;
+- seria rolek z webinaru, wywiadu lub podcastu;
+- formaty 9:16, 4:5 i 1:1 pod reklamy Meta;
+- opisy, okładki i oznaczenia AI.
+Zwykle wystarczy materiał, który już masz. Od 2 sierpnia 2026 AI Act wymaga oznaczania realistycznych treści AI (deepfake), a oznaczenia ustawiamy zgodnie z prawem i zasadami platform.
+Cena zależy od liczby rolek, wersji językowych i materiału. Zaczynamy od serii próbnej, bez abonamentu na rok. Raportujemy obejrzenia do końca, zapisania, udostępnienia i kliknięcia.
+
+=== OFERTA: audyt-cyfryzacji ===
+Audyt cyfryzacji firmy to diagnoza, nie wdrożenie. Dostajesz szczegółowy raport PDF oraz spotkanie, na którym go omawiamy.
+Sprawdzamy:
+- widoczność w Google (SEO);
+- widoczność w AI (czy ChatGPT i Perplexity wymieniają Ciebie, czy konkurencję);
+- procesy i powtarzalną pracę zespołu (ile godzin miesięcznie da się odzyskać);
+- narzędzia i integracje;
+- social media;
+- kondycję techniczną strony;
+- porównanie z konkurencją.
+W raporcie są priorytety w trzech koszykach (blokery, szybkie wygrane, budowanie), konkretne działania z szacunkiem czasu i kosztu oraz sekcja „zrób sam”.
+Trwa zwykle kilka dni roboczych. Strona nie jest wymagana. Raport jest Twój, bez haczyków. Może pomóc przy wniosku o dofinansowanie cyfryzacji (wymagania programu warto potwierdzić u operatora). Jeśli potem wdrażamy razem, audyt jest pierwszym etapem.
+
+=== OFERTA: automatyzacje-email ===
+Automatyzacje biznesowe AI łączą narzędzia, których już używasz, i przejmują powtarzalną pracę. Przykłady:
+- mailing i follow-upy (sekwencje powitalne, nurturing, reaktywacja);
+- faktury i dokumenty (odczyt AI i OCR, księgowanie, przypomnienia o płatnościach);
+- leady i CRM (kwalifikacja przez AI, przypisanie, natychmiastowy follow-up);
+- oferty i wyceny z szablonu;
+- raporty i dashboardy;
+- umawianie spotkań;
+- obsługa zgłoszeń;
+- synchronizacja danych;
+- alerty, np. na Slacku.
+Integracje: Gmail i Outlook, Slack, Notion, Airtable, CRM-y, sklepy, Make, n8n i własne API (jeśli narzędzie ma API, spinamy je).
+Zaczynamy od procesu, który powtarza się najczęściej i boli najbardziej. Automat wykonuje, człowiek nadzoruje: każdy automat ma logi, alerty i obsługę błędów, a wyjątki trafiają do człowieka z pełnym kontekstem. Automatyzacje nie zastępują ludzi, tylko zdejmują z nich powtarzalną robotę.
+
+=== OFERTA: chatbot-ai ===
+Asystent AI, który zna Twoją ofertę, procedury i historię klienta. Działa na stronie, w WhatsAppie i w mailu, a w razie potrzeby także głosowo, 24/7.
+Zakres: baza wiedzy firmy, eskalacja do człowieka z pełnym kontekstem rozmowy, logi i raporty (o co pytają klienci), aktualizacje wiedzy przy zmianach oferty.
+Dla firm zalewanych powtarzalnymi pytaniami (godziny, dostępność, status zamówienia, cennik) i tych, które tracą klientów po godzinach.
+Proces: zebranie wiedzy → konfiguracja i ton → testy na realnych pytaniach → wdrożenie i nadzór. Asystent nie zgaduje: gdy nie jest pewny, przekazuje rozmowę człowiekowi.
+
+=== CASE STUDY ===
+Odlewnia Leniar (odlewy ciśnieniowe Zamak 5) nie miała strony ani kanału sprzedaży. Wdrożyliśmy stronę B2B w trzech językach (PL, DE, EN) i automatyczny mailing. Efekt: 100/100 SEO w PageSpeed, widoczność w ChatGPT, Perplexity i Google AI, zapytania przychodzące same przez formularz, także z Niemiec, i mailing bez wpadania do spamu.
+
+=== FAQ ===
+SEO a GEO: SEO decyduje o pozycji w Google, a GEO o tym, czy AI (ChatGPT, Perplexity, Google AI Overviews) cytuje i poleca Twoją firmę. Łączymy oba od pierwszego dnia.
+Dla kogo: dla firm w Polsce z każdej branży, zarówno tych, które dopiero wchodzą do sieci, jak i tych, które chcą zdominować niszę.
+Bezpieczeństwo: pracujemy zgodnie z RODO, dostęp do systemów ograniczamy do minimum, NDA na życzenie, projektujemy pod EU AI Act.
+Dlaczego nie zrobić samemu: na start czasem tak, ale gdy strona i procesy mają zarabiać, liczą się SEO i GEO od podstaw, integracje, spójny branding i czas. Bierzemy całość na siebie.
+Co jeśli demo nie spełni oczekiwań: nic nie tracisz, bo demo powstaje przed płatnością, a bezpłatny audyt zostaje u Ciebie.
+Grafiki projektują ludzie z wieloletnim doświadczeniem, AI służy do researchu i wariantów.
+
+=== BLOG (poradniki: skaluj.ai/blog) ===
+- Strona internetowa dla firmy, która sprzedaje (2026): skaluj.ai/blog/strona-seo
+- GEO: jak pozycjonować firmę w ChatGPT i Google AI: skaluj.ai/blog/geo-ai-search
+- Reklamy w ChatGPT 2026: jak działają i ile kosztują: skaluj.ai/blog/reklamy-chatgpt
+- Meta Ads z AI: jak ciąć koszty reklam: skaluj.ai/blog/meta-ads-ai
+- Identyfikacja wizualna w 2026: skaluj.ai/blog/branding
+- Rolki AI dla firm: napisy, lektor AI i AI Act: skaluj.ai/blog/rolki-ai
+- Audyt widoczności: lista kontrolna do samodzielnego sprawdzenia: skaluj.ai/blog/audyt-widocznosci
+- Automatyzacja e-mail marketingu z AI, 5 scenariuszy: skaluj.ai/blog/automatyzacje-email
+- Chatbot AI na stronie: kiedy warto, a kiedy szkodzi: skaluj.ai/blog/chatbot-ai
+
+=== TEN CZAT I PRYWATNOŚĆ ===
+Ten czat obsługuje sztuczna inteligencja, nie człowiek. Odpowiedzi są informacyjne, a wiążące ustalenia przekazujemy mailowo lub na konsultacji. Treści rozmów nie zapisujemy. Nie podawaj w czacie danych wrażliwych ani danych innych osób. W swojej sprawie skorzystaj z formularza lub napisz na kontakt@skaluj.ai.
+Dane z formularza wykorzystujemy do odpowiedzi na zapytanie. Informacje handlowe wysyłamy tylko za osobną, dobrowolną zgodą. Szczegóły są na stronie skaluj.ai/polityka-prywatnosci.

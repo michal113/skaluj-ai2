@@ -46,7 +46,7 @@ const FRIENDLY_ERROR =
   "Przepraszam, chwilowo nie moge odpowiedziec — sprobuj ponownie za momencik. " +
   "Jesli sprawa jest pilna, napisz na kontakt@skaluj.ai albo wypelnij formularz, odezwiemy sie szybko.";
 
-const SYSTEM_RULES = `Jesteś asystentem na stronie skaluj.ai — agencji transformacji cyfrowej dla firm B2B (strony pod SEO i GEO, automatyzacje AI, chatboty, branding).
+const SYSTEM_RULES = `Jesteś asystentem na stronie skaluj.ai — agencji transformacji cyfrowej dla firm (strony pod SEO i GEO, reklamy w ChatGPT, branding, rolki wideo AI, audyt cyfryzacji, automatyzacje AI, chatboty).
 
 ZASADY:
 - Odpowiadaj po polsku, krótko i konkretnie (2–5 zdań), w tonie partnerskim i pomocnym.
