@@ -125,8 +125,10 @@ async function readBody(request) {
 
 async function ingest(request, env) {
   if (!env.INGEST_TOKEN) return json({ error: "INGEST_TOKEN not set" }, 503);
-  const auth = request.headers.get("Authorization") || "";
-  if (!auth.startsWith("Bearer ") || !(await safeEqual(auth.slice(7).trim(), env.INGEST_TOKEN))) {
+  /* wyrozumiale dla recznej konfiguracji w Make: "Bearer <t>", "Bearer Bearer <t>", sam "<t>" albo naglowek X-Api-Key */
+  const raw = request.headers.get("Authorization") || request.headers.get("X-Api-Key") || "";
+  const given = raw.trim().replace(/^(Bearer\s+)+/i, "").replace(/^["']+|["']+$/g, "").trim();
+  if (!given || !(await safeEqual(given, String(env.INGEST_TOKEN).trim()))) {
     return json({ error: "unauthorized" }, 401);
   }
   if (Number(request.headers.get("Content-Length") || 0) > MAX_INGEST_BYTES) return json({ error: "too large" }, 413);
