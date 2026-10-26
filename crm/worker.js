@@ -118,9 +118,14 @@ function sameOrigin(request, url) {
 
 async function readBody(request) {
   const type = request.headers.get("Content-Type") || "";
-  if (type.includes("application/json")) return request.json();
-  if (type.includes("form")) return Object.fromEntries(await request.formData());
-  return null;
+  let body = null;
+  if (type.includes("application/json")) body = await request.json();
+  else if (type.includes("form")) body = Object.fromEntries(await request.formData());
+  if (!body || typeof body !== "object") return null;
+  /* nazwy pol wpisywane recznie w Make: "Email", " email " i "e-mail" traktujemy jak "email" */
+  const out = {};
+  for (const [k, v] of Object.entries(body)) out[String(k).trim().toLowerCase().replace(/^e-mail$/, "email")] = v;
+  return out;
 }
 
 async function ingest(request, env) {
@@ -143,7 +148,10 @@ async function ingest(request, env) {
   if (clip(b._gotcha, 10)) return json({ ok: true, skipped: "spam" });
 
   const email = clip(b.email, LIMITS.email).toLowerCase();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "invalid email" }, 400);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    /* same nazwy pol (bez wartosci) - pomaga znalezc blad w mapowaniu w Make */
+    return json({ error: "invalid email", received_fields: Object.keys(b).slice(0, 30), email_empty: !email }, 400);
+  }
 
   const marketing = /^(tak|true|1|on|yes)$/i.test(clip(b.marketing, 10)) ? 1 : 0;
   const now = new Date().toISOString();
