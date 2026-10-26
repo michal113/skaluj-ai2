@@ -44,13 +44,13 @@ function trend(cur, prev, invert = false) {
 const kpi = (label, value, sub = "") =>
   `<div class="kpi"><div class="kpi-l">${esc(label)}</div><div class="kpi-v">${value}</div>${sub ? `<div class="kpi-s">${sub}</div>` : ""}</div>`;
 
-function bars(daily, label) {
+function bars(daily) {
   if (!daily?.length) return "";
   const max = Math.max(1, ...daily.map((x) => x.n));
   const cols = daily
     .map((x) => `<span class="bar" style="height:${x.n ? Math.max(6, Math.round((x.n / max) * 100)) : 0}%" title="${esc(x.d)}: ${x.n}"></span>`)
     .join("");
-  return `<figure class="chart"><div class="bars">${cols}</div><figcaption><span>${esc(daily[0].d.slice(5).split("-").reverse().join("."))}</span><span>${esc(label)} · maks. ${max} dziennie</span><span>${esc(daily[daily.length - 1].d.slice(5).split("-").reverse().join("."))}</span></figcaption></figure>`;
+  return `<figure class="chart"><div class="bars">${cols}</div><figcaption><span>${esc(daily[0].d.slice(5).split("-").reverse().join("."))}</span><span>${esc(daily[daily.length - 1].d.slice(5).split("-").reverse().join("."))}</span></figcaption></figure>`;
 }
 
 function hbars(rows) {
@@ -99,7 +99,7 @@ function leadsSection(s, leads, ctx) {
     ${kpi("Zgody marketingowe", int(s.marketing), `w ostatnich ${ctx.days} dniach`)}
   </div>
   <div class="grid2">
-    <div class="card"><h3>Zgłoszenia dziennie</h3>${bars(s.daily, "zgłoszenia")}</div>
+    <div class="card"><h3>Zgłoszenia dziennie</h3>${bars(s.daily)}</div>
     <div class="card"><h3>Czego dotyczą</h3>${hbars(s.services.map((r) => ({ label: serviceLabel(r.label), value: r.n })))}</div>
   </div>`;
 
@@ -220,7 +220,7 @@ function makeSection(s, ctx) {
           ${kpi("Operacje", int(sc.operations), sc.credits != null ? nf1.format(sc.credits) + " kredytów" : "")}
           ${kpi("Niedokończone", int(sc.incomplete), "do ponowienia w Make")}
         </div>
-        ${bars(sc.daily, "uruchomienia")}
+        ${bars(sc.daily)}
       </div>`;
     })
     .join("");
@@ -247,7 +247,7 @@ function chatSection(s, ctx) {
       ${key}
     </div>
     <div class="grid2">
-      <div class="card"><h3>Wiadomości dziennie</h3>${bars(s.daily, "zapytania")}</div>
+      <div class="card"><h3>Wiadomości dziennie</h3>${bars(s.daily)}</div>
       <div class="card"><h3>Modele</h3>${models}</div>
     </div>
     <p class="muted small">OpenRouter udostępnia ostatnie 30 pełnych dni (bez dzisiaj). Jedna wiadomość może dać więcej niż jedno zapytanie, jeśli zadziała model zapasowy. Treści rozmów nie są nigdzie zapisywane.</p>`;
