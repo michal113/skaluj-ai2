@@ -110,7 +110,7 @@ function leadsSection(s, leads, ctx) {
   const back = `?dni=${ctx.days}${ctx.status ? "&status=" + ctx.status : ""}`;
   const list = leads.length
     ? leads.map((l) => leadRow(l, ctx, back)).join("")
-    : `<p class="muted empty">${ctx.status ? "Brak zgłoszeń z tym statusem." : "Jeszcze nie ma zgłoszeń. Pojawią się tu, gdy Make zacznie je przesyłać (README, krok 5)."}</p>`;
+    : `<p class="muted empty">${ctx.status ? "Brak zgłoszeń z tym statusem." : "Jeszcze nie ma zgłoszeń. Pojawią się tu, gdy w scenariuszu formularza w Make dodasz moduł HTTP, który je tu wysyła (crm/README.md, punkt „Make → CRM”)."}</p>`;
 
   return top + `<div class="chips">${chips}<a class="chip ghost" href="/leady.csv">Eksport CSV</a></div><div class="leads">${list}</div>`;
 }
