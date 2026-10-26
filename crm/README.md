@@ -24,7 +24,15 @@ Osobny Cloudflare Worker (`skaluj-crm`), bez wpływu na stronę. Działa na darm
 
 ## Najszybciej: jeden skrypt (ok. 5 minut)
 
-Na Macu otwórz **Terminal** i wklej:
+**Windows** — otwórz **PowerShell** i wklej po kolei (każdą linię osobno):
+
+```powershell
+git clone https://github.com/michal113/skaluj-ai2.git "$HOME\skaluj-ai2"
+cd "$HOME\skaluj-ai2"
+powershell -ExecutionPolicy Bypass -File crm\setup.ps1
+```
+
+**Mac / Linux** — otwórz **Terminal** i wklej:
 
 ```bash
 git clone https://github.com/michal113/skaluj-ai2.git ~/skaluj-ai2   # pomiń, jeśli masz już repo
@@ -38,7 +46,7 @@ Skrypt sam:
 - wygeneruje hasło i token dla Make;
 - zapyta o klucze do statystyk. Na każde pytanie możesz nacisnąć Enter i dodać klucz później przez `bash crm/setup.sh --klucze`.
 
-Na końcu wypisze **adres panelu, hasło** (skopiowane do schowka) i gotowe ustawienia modułu HTTP do Make. Hasło zapisz w menedżerze haseł.
+Na końcu wypisze **adres panelu, hasło** (skopiowane do schowka) i gotowe ustawienia modułu HTTP do Make. Hasło zapisz w menedżerze haseł. Na Windows panel sam otworzy się w przeglądarce.
 
 Skrypt możesz uruchamiać wielokrotnie, np. po aktualizacji kodu. Baza i zgłoszenia zostają, a hasło zmienisz flagą `--nowe-haslo`. Potrzebny jest Node.js (wersja LTS z nodejs.org).
 
@@ -155,4 +163,4 @@ Ponownie uruchom `npx wrangler secret put ADMIN_PASSWORD` (albo `INGEST_TOKEN`).
 | `sources.js` | statystyki: D1, GA4/GSC (`../panel/google.js`), Make API, OpenRouter API |
 | `render.js` | HTML i CSS panelu, bez JavaScriptu |
 | `schema.sql` | tabela `leads` |
-| `setup.sh` | konfiguracja i wdrożenie jednym poleceniem |
+| `setup.sh` / `setup.ps1` | konfiguracja i wdrożenie jednym poleceniem (Mac/Linux / Windows) |
