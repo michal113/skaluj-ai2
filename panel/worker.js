@@ -16,10 +16,13 @@ import {
   getAccessToken,
   fetchGa4Summary,
   fetchGa4Channels,
+  fetchGa4Weekly,
+  fetchGa4Pages,
   fetchGscTotals,
   fetchGscQueries,
 } from "./google.js";
 import { renderPage, renderNotFound } from "./render.js";
+import { demoStrona } from "./demo-klient.js";
 
 /* Slugi generujemy sami (base64url, ~128 bit) — odrzucamy wszystko innego ksztaltu,
    zeby nie robic zapytan do KV dla przypadkowego ruchu i botow. */
@@ -53,11 +56,13 @@ function notFound() {
  */
 async function fetchWebsiteData(env, cfg, days) {
   const token = await getAccessToken(env);
-  const [ga4, channels, gsc, queries] = await Promise.allSettled([
+  const [ga4, channels, gsc, queries, weeks, pages] = await Promise.allSettled([
     fetchGa4Summary(token, cfg.ga4PropertyId, days),
     fetchGa4Channels(token, cfg.ga4PropertyId, days),
     cfg.gscSiteUrl ? fetchGscTotals(token, cfg.gscSiteUrl, days) : Promise.resolve(null),
     cfg.gscSiteUrl ? fetchGscQueries(token, cfg.gscSiteUrl, days) : Promise.resolve([]),
+    fetchGa4Weekly(token, cfg.ga4PropertyId),
+    fetchGa4Pages(token, cfg.ga4PropertyId, days),
   ]);
 
   /* GA4 to podstawa panelu — bez niego nie mamy czego pokazac. */
@@ -72,6 +77,9 @@ async function fetchWebsiteData(env, cfg, days) {
     channels: channels.status === "fulfilled" ? channels.value : [],
     gsc: gsc.status === "fulfilled" ? gsc.value : null,
     queries: queries.status === "fulfilled" ? queries.value : [],
+    /* wykres i strony sa dodatkiem: ich brak nie psuje panelu, sekcja po prostu znika */
+    weeks: weeks.status === "fulfilled" ? weeks.value : [],
+    pages: pages.status === "fulfilled" ? pages.value : [],
     /* Rozroznienie "Search Console nie jest czescia tego wdrozenia" (karty pomijamy)
        od "jest, ale nie odpowiedzial" (karty pokazujemy z myslnikiem) — inaczej brak
        dostepu wygladalby identycznie jak brak uslugi. */
@@ -122,7 +130,10 @@ export default {
     const days = Number(site?.dateRangeDays) || Number(env.DEFAULT_RANGE_DAYS) || 28;
 
     let data = {};
-    if (site?.status === "live" && site.ga4PropertyId) {
+    if (config.demo) {
+      /* panel pokazowy: przykladowe dane, w naglowku etykieta "Demo" — nigdy dla prawdziwego klienta */
+      data = demoStrona(new Date());
+    } else if (site?.status === "live" && site.ga4PropertyId) {
       try {
         data = await getWebsiteData(env, slug, site, days, url.searchParams.get("odswiez") === "1");
       } catch (e) {

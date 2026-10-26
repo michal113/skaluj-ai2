@@ -1406,28 +1406,8 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   color:var(--accent,#2f6fe0);margin-left:8px;white-space:nowrap}
 .badge-new::before{content:"";width:4px;height:4px;border-radius:50%;flex:none;
   background:var(--accent,#2f6fe0)}
-/* pasek zapowiedzi w hero — jedna pigulka, etykieta oddzielona wlosowa kreska */
-.hero-new{display:inline-flex;align-items:center;gap:12px;align-self:center;
-  margin:0 0 4px;padding:8px 17px;border-radius:9999px;
-  background:rgba(47,111,224,.045);border:1px solid rgba(47,111,224,.20);
-  font-size:13.2px;letter-spacing:-.01em;color:var(--text,#0b0d10);
-  opacity:0;animation:fadeUp .9s var(--ease,cubic-bezier(.22,1,.36,1)) forwards;
-  transition:border-color .25s,background-color .25s,transform .25s var(--ease,cubic-bezier(.22,1,.36,1))}
-.hero-new:hover{border-color:rgba(47,111,224,.42);background:rgba(47,111,224,.075);transform:translateY(-1px)}
-.hero-new b{display:inline-flex;align-items:center;gap:6px;flex:none;
-  font-family:var(--mono,ui-monospace,monospace);font-size:9px;font-weight:600;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--accent,#2f6fe0);
-  padding-right:12px;border-right:1px solid rgba(47,111,224,.22)}
-.hero-new b::before{content:"";width:4px;height:4px;border-radius:50%;flex:none;
-  background:var(--accent,#2f6fe0)}
-.hero-new span{color:var(--muted,#565d68)}
-.hero-new .ar{width:13px;height:13px;flex:none;color:var(--accent,#2f6fe0);transition:transform .25s}
-.hero-new:hover .ar{transform:translateX(3px)}
-@media(max-width:560px){.hero-new{font-size:12px;padding:7px 14px;gap:10px}
-  .hero-new b{padding-right:10px;gap:5px}
-  .hero-new .hide-sm{display:none}}
 @media (prefers-reduced-motion:reduce){
-  .badge-new,.hero-new{animation:none!important;opacity:1}}
+  .badge-new{animation:none!important;opacity:1}}
 .offer-name .badge-new{font-size:9.5px;margin-left:11px;transform:translateY(-3px)}
 .blogs-tag .badge-new{margin-left:8px}
 </style>
@@ -1546,11 +1526,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 <header class="hero" id="start">
   <div class="hero-bg" aria-hidden="true"><canvas id="heroHills"></canvas></div>
   <div class="wrap hero-inner">
-    <a class="hero-new" href="oferta/reklamy-chatgpt">
-      <b>Nowość</b>
-      <span>Reklamy w ChatGPT — ruszyły w Polsce <span class="hide-sm">pod koniec sierpnia</span></span>
-      <svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
     <p class="hero-eyebrow">Agencja transformacji cyfrowej dla firm</p>
     <h1>
       <span class="line">Wszystko, czego Twoja firma</span>

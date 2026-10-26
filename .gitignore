@@ -28,3 +28,6 @@ panel/*.json
 
 # Lokalny cache/stan wranglera (id konta, sesje dev)
 .wrangler/
+
+# Lokalne podglady panelu (dane demo) - nigdy na GitHub Pages
+panel/podglad/
