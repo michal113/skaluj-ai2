@@ -657,7 +657,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         <li>pliki i dane, które przekażesz w korespondencji e-mail.</li>
       </ul>
       <p><strong>Czat z asystentem AI.</strong> Treść Twoich wiadomości i odpowiedzi asystenta (szczegóły w sekcji <a href="#czat">Asystent AI</a>).</p>
-      <p><strong>Dane techniczne.</strong> Adres IP i podstawowe informacje o przeglądarce, które automatycznie trafiają do dostawców infrastruktury przy wyświetlaniu strony i korzystaniu z czatu.</p>
+      <p><strong>Dane techniczne.</strong> Adres IP i podstawowe informacje o przeglądarce, które automatycznie trafiają do dostawców infrastruktury przy wyświetlaniu strony i korzystaniu z czatu. Jeśli zgodzisz się na analitykę — także identyfikator z pliku cookie Google Analytics, odwiedzone podstrony, źródło wejścia, typ urządzenia i przybliżona lokalizacja (kraj, miasto).</p>
       <p>Nie prosimy o dane szczególnych kategorii (np. o zdrowiu) — prosimy, nie podawaj ich w formularzu ani w czacie.</p>
 
       <h2 id="cele">Cele i podstawy prawne</h2>
@@ -668,6 +668,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         <li><strong>Informacje handlowe o naszych usługach e-mailem lub telefonicznie</strong> — wyłącznie na podstawie Twojej odrębnej, dobrowolnej zgody (art. 6 ust. 1 lit. a RODO oraz zgoda wymagana przepisami ustawy Prawo komunikacji elektronicznej). Brak tej zgody nie ma wpływu na odpowiedź na zapytanie.</li>
         <li><strong>Obsługa czatu z asystentem AI</strong> — art. 6 ust. 1 lit. f RODO (odpowiadanie na pytania osób odwiedzających stronę).</li>
         <li><strong>Bezpieczeństwo strony i ochrona przed nadużyciami</strong> (np. limit liczby wiadomości w czacie, filtr spamu w formularzu) — art. 6 ust. 1 lit. f RODO.</li>
+        <li><strong>Statystyki odwiedzin strony (Google Analytics 4)</strong> — wyłącznie po Twojej zgodzie wyrażonej w banerze cookies: art. 6 ust. 1 lit. a RODO oraz zgoda wymagana ustawą Prawo komunikacji elektronicznej. Bez zgody narzędzie się nie uruchamia.</li>
         <li><strong>Ustalenie, dochodzenie lub obrona roszczeń</strong> oraz wykazanie zgodności z prawem (np. dowód udzielenia zgody) — art. 6 ust. 1 lit. f RODO.</li>
       </ul>
       <p>Nie podejmujemy wobec Ciebie decyzji opartych wyłącznie na zautomatyzowanym przetwarzaniu, w tym profilowaniu, które wywoływałyby skutki prawne (art. 22 RODO).</p>
@@ -683,10 +684,11 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
         <thead><tr><th>Dostawca</th><th>Rola</th><th>Gdzie</th><th>Podstawa transferu poza EOG</th></tr></thead>
         <tbody>
           <tr><td>GitHub, Inc. (GitHub Pages)</td><td>hosting strony; techniczne logi odwiedzin (m.in. adres IP)</td><td>USA</td><td>EU–U.S. Data Privacy Framework (decyzja KE stwierdzająca odpowiedni poziom ochrony) oraz standardowe klauzule umowne (SCC) w umowie powierzenia dostawcy</td></tr>
-          <tr><td>Celonis s.r.o. (Make.com)</td><td>odbiór zgłoszeń z formularza i przekazanie ich do naszej skrzynki</td><td>UE (scenariusz w regionie EU); podwykonawcy mogą być poza EOG</td><td>umowa powierzenia Make/Celonis; dla podwykonawców spoza EOG — SCC lub Data Privacy Framework</td></tr>
-          <tr><td>Cloudflare, Inc.</td><td>serwer obsługujący czat; ochrona przed nadużyciami</td><td>sieć globalna, USA</td><td>Data Privacy Framework oraz SCC w umowie powierzenia Cloudflare</td></tr>
+          <tr><td>Celonis s.r.o. (Make.com)</td><td>odbiór zgłoszeń z formularza i przekazanie ich do naszej skrzynki i panelu zgłoszeń</td><td>UE (scenariusz w regionie EU); podwykonawcy mogą być poza EOG</td><td>umowa powierzenia Make/Celonis; dla podwykonawców spoza EOG — SCC lub Data Privacy Framework</td></tr>
+          <tr><td>Cloudflare, Inc.</td><td>serwer obsługujący czat; panel zgłoszeń (baza danych przechowywana w UE); ochrona przed nadużyciami</td><td>baza zgłoszeń: UE; sieć: globalna, USA</td><td>Data Privacy Framework oraz SCC w umowie powierzenia Cloudflare</td></tr>
           <tr><td>OpenRouter, Inc.</td><td>pośrednik przekazujący treść czatu do modelu AI (domyślnie nie przechowuje treści zapytań)</td><td>USA</td><td>SCC w umowie powierzenia (DPA) OpenRouter</td></tr>
           <tr><td>Dostawcy modeli AI (w szczególności Google; zapasowo inni dostawcy wybrani przez OpenRouter)</td><td>wygenerowanie odpowiedzi czatu</td><td>UE lub USA, zależnie od dostawcy</td><td>mechanizmy transferu stosowane przez OpenRouter i dostawców (SCC lub Data Privacy Framework)</td></tr>
+          <tr><td>Google Ireland Ltd. / Google LLC (Google Analytics 4)</td><td>statystyki odwiedzin — tylko po zgodzie na analitykę</td><td>UE, USA</td><td>Data Privacy Framework oraz SCC w warunkach przetwarzania danych Google</td></tr>
           <tr><td>Dostawca poczty e-mail i kalendarza</td><td>obsługa korespondencji i terminów konsultacji</td><td>zgodnie z warunkami dostawcy</td><td>jeśli poza EOG — SCC lub Data Privacy Framework</td></tr>
         </tbody>
       </table></div>
@@ -694,13 +696,14 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 
       <h2 id="okres">Okres przechowywania</h2>
       <ul>
-        <li><strong>Zapytanie, które nie zakończyło się współpracą</strong> — do <strong>12 miesięcy</strong> od ostatniego kontaktu (na wypadek powrotu do rozmowy), potem usuwamy zgłoszenie i korespondencję.</li>
+        <li><strong>Zapytanie, które nie zakończyło się współpracą</strong> — do <strong>12 miesięcy</strong> od ostatniego kontaktu (na wypadek powrotu do rozmowy), potem usuwamy zgłoszenie i korespondencję. Panel zgłoszeń usuwa takie zgłoszenia automatycznie.</li>
         <li><strong>Współpraca</strong> — przez czas trwania umowy, a następnie do upływu terminu przedawnienia roszczeń (co do zasady <strong>3 lata</strong> dla roszczeń związanych z działalnością gospodarczą, licząc od końca roku kalendarzowego).</li>
         <li><strong>Dokumenty księgowe i podatkowe</strong> — <strong>5 lat</strong> od końca roku kalendarzowego, w którym upłynął termin płatności podatku.</li>
         <li><strong>Zgoda na informacje handlowe</strong> — do jej wycofania; informację o udzieleniu i wycofaniu zgody przechowujemy jeszcze do <strong>3 lat</strong>, aby móc wykazać zgodność z prawem.</li>
         <li><strong>Sprzeciw lub żądanie usunięcia danych</strong> — notatkę o nim przechowujemy do <strong>3 lat</strong>, żeby go respektować.</li>
         <li><strong>Treść czatu</strong> — nie przechowujemy jej na naszych serwerach; liczniki ochrony przed nadużyciami (powiązane z adresem IP) działają w pamięci przez około minutę i nie są nigdzie zapisywane.</li>
-        <li><strong>Logi techniczne dostawców</strong> (hosting, sieć) — zgodnie z politykami tych dostawców; sami nie prowadzimy analityki ani nie zapisujemy adresów IP.</li>
+        <li><strong>Statystyki Google Analytics</strong> (tylko przy zgodzie) — pliki cookie <code>_ga</code> i <code>_ga_*</code> do 13 miesięcy, dane w usłudze do 14 miesięcy; po wycofaniu zgody usuwamy te pliki cookie z Twojej przeglądarki.</li>
+        <li><strong>Logi techniczne dostawców</strong> (hosting, sieć) — zgodnie z politykami tych dostawców; sami nie zapisujemy adresów IP.</li>
       </ul>
 
       <h2 id="prawa">Twoje prawa</h2>
@@ -712,17 +715,18 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
       <p>Podanie danych jest dobrowolne. Bez adresu e-mail i treści zapytania nie będziemy mogli odpowiedzieć na wiadomość. Zgoda na informacje handlowe jest całkowicie opcjonalna — możesz wysłać formularz bez niej.</p>
 
       <h2 id="analityka">Cookies i dane techniczne</h2>
-      <p><strong>Obecnie strona nie używa narzędzi analitycznych ani marketingowych</strong> (np. Google Analytics, pikseli reklamowych) i nie ładuje treści z serwisów zewnętrznych. Czcionki hostujemy lokalnie.</p>
-      <p>W pamięci przeglądarki (localStorage) zapisujemy tylko <strong>Twój wybór dotyczący cookies</strong> (klucz <code>skaluj_consent_v1</code>) — jest niezbędny, żeby nie pytać Cię przy każdej wizycie. Baner zgody jest przygotowany na ewentualne narzędzia analityczne lub marketingowe w przyszłości: uruchomiłyby się wyłącznie po Twojej zgodzie, a przed ich dodaniem zaktualizujemy tę politykę. Swój wybór zmienisz w każdej chwili w <a href="#" data-cookie-settings>„Ustawieniach cookie”</a> lub w ustawieniach przeglądarki.</p>
+      <p><strong>Analityka — tylko za zgodą.</strong> Jeśli w banerze cookies zgodzisz się na analitykę, uruchamiamy Google Analytics 4, które zapisuje pliki cookie <code>_ga</code> i <code>_ga_*</code> (do 13 miesięcy) i pokazuje nam zbiorcze statystyki: ile osób odwiedza stronę, skąd przychodzą i które podstrony czytają. Funkcje reklamowe i Google Signals są wyłączone, a Google Analytics 4 nie zapisuje adresów IP. Bez Twojej zgody skrypt Google w ogóle się nie ładuje.</p>
+      <p><strong>Marketing:</strong> obecnie nie używamy pikseli reklamowych ani innych narzędzi marketingowych. Czcionki hostujemy lokalnie.</p>
+      <p>W pamięci przeglądarki (localStorage) zapisujemy tylko <strong>Twój wybór dotyczący cookies</strong> (klucz <code>skaluj_consent_v1</code>) — jest niezbędny, żeby nie pytać Cię przy każdej wizycie. Narzędzia marketingowe, gdybyśmy je kiedyś dodali, uruchomią się wyłącznie po Twojej zgodzie, a przed ich dodaniem zaktualizujemy tę politykę. Swój wybór zmienisz w każdej chwili w <a href="#" data-cookie-settings>„Ustawieniach cookie”</a> lub w ustawieniach przeglądarki.</p>
       <p>Przy wyświetlaniu strony i korzystaniu z czatu dostawcy infrastruktury (GitHub, Cloudflare) automatycznie otrzymują adres IP i podstawowe dane przeglądarki — jest to technicznie niezbędne do dostarczenia strony i ochrony przed nadużyciami.</p>
 
       <h2 id="bezpieczenstwo">Bezpieczeństwo i naruszenia</h2>
-      <p>Stosujemy środki organizacyjne i techniczne adekwatne do ryzyka, m.in.: szyfrowane połączenie (HTTPS), dostęp do zgłoszeń i narzędzi wyłącznie dla Administratora, klucze dostępowe przechowywane tylko po stronie serwera (nigdy w kodzie strony), ograniczenie czatu do naszej domeny z limitem liczby wiadomości oraz minimalizację danych — zbieramy tylko to, co potrzebne do odpowiedzi.</p>
+      <p>Stosujemy środki organizacyjne i techniczne adekwatne do ryzyka, m.in.: szyfrowane połączenie (HTTPS), dostęp do zgłoszeń i narzędzi wyłącznie dla Administratora (panel zgłoszeń chroniony hasłem, z limitem prób logowania), klucze dostępowe przechowywane tylko po stronie serwera (nigdy w kodzie strony), ograniczenie czatu do naszej domeny z limitem liczby wiadomości oraz minimalizację danych — zbieramy tylko to, co potrzebne do odpowiedzi.</p>
       <p>W razie naruszenia ochrony danych osobowych zgłaszamy je Prezesowi UODO w ciągu 72 godzin od jego stwierdzenia (o ile powoduje ryzyko dla praw lub wolności osób), a osoby, których dotyczy wysokie ryzyko, zawiadamiamy bez zbędnej zwłoki.</p>
 
       <h2 id="zmiany">Zmiany polityki</h2>
       <p>Politykę aktualizujemy, gdy zmieniają się używane narzędzia lub przepisy. Aktualna wersja jest zawsze dostępna na tej stronie, z datą ostatniej zmiany poniżej.</p>
-      <div class="legal-updated">Ostatnia aktualizacja: 22 października 2026 r.</div>
+      <div class="legal-updated">Ostatnia aktualizacja: 26 października 2026 r.</div>
     </div>
   </div>
 </section>

@@ -1,0 +1,47 @@
+# skaluj.ai - prywatny CRM i statystyki (Cloudflare Worker + D1)
+# Instrukcja krok po kroku: README.md w tym folderze.
+name = "skaluj-crm"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# nie kasuj zmiennych ustawionych recznie w panelu Cloudflare przy kazdym wdrozeniu
+keep_vars = true
+
+# Baza zgloszen. Utworz ja raz (dane tylko w UE):
+#   npx wrangler d1 create skaluj-crm --jurisdiction eu
+# i wklej ponizej wygenerowany database_id.
+[[d1_databases]]
+binding = "DB"
+database_name = "skaluj-crm"
+database_id = "WKLEJ_ID_BAZY_PO_UTWORZENIU"
+
+# Codziennie o 3:17 UTC usuwamy zgloszenia zgodnie z polityka prywatnosci
+# (12 miesiecy bez kontaktu, bez wspolpracy i bez zgody marketingowej).
+[triggers]
+crons = ["17 3 * * *"]
+
+# Limit nieudanych logowan: 10 prob na minute na adres IP (wymaga wrangler >= 4.36).
+[[ratelimits]]
+name = "AUTH_LIMITER"
+namespace_id = "2002"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
+
+[vars]
+# Region Make (z adresu webhooka: hook.eu1.make.com -> eu1.make.com)
+MAKE_ZONE = "eu1.make.com"
+# Ponizsze uzupelnij w panelu Cloudflare (Settings -> Variables) albo tutaj:
+# MAKE_SCENARIO_IDS = "1234567"          # ID scenariuszy z adresu w Make, po przecinku
+# MAKE_ORG_ID = "123456"                 # ID organizacji (limit operacji)
+# GA4_PROPERTY_ID = "123456789"          # numer uslugi GA4 skaluj.ai
+# GSC_SITE_URL = "sc-domain:skaluj.ai"   # wlasciwosc w Search Console
+# OPENROUTER_KEY_NAME = "chatbot"        # nazwa klucza chatbota w OpenRouter
+
+# SEKRETY (nigdy tutaj, tylko: npx wrangler secret put NAZWA):
+#   ADMIN_PASSWORD              haslo do panelu
+#   INGEST_TOKEN                token, ktorym Make wysyla zgloszenia
+#   OPENROUTER_MANAGEMENT_KEY   klucz "Management" z OpenRouter (tylko odczyt statystyk)
+#   MAKE_API_TOKEN              token API Make (zakresy: scenarios:read, organizations:read)
+#   GOOGLE_SERVICE_ACCOUNT_KEY  ten sam JSON konta serwisowego co w panelu klienta

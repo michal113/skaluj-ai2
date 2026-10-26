@@ -30,6 +30,41 @@
     window.skalujConsent = { analytics: consent.analytics, marketing: consent.marketing };
     window.dispatchEvent(new CustomEvent("skaluj:consent", { detail: window.skalujConsent }));
     activateScripts();
+    if (consent.analytics) ga4(); else dropGa4();
+  }
+
+  /* ---------- Google Analytics 4 — ładuje się WYŁĄCZNIE po zgodzie na analitykę ----------
+     Wpisz identyfikator strumienia z GA4 (G-XXXXXXXXXX). To jawny identyfikator, nie sekret.
+     Puste = GA4 wyłączone. Zmiana tego wymaga zgodności z polityką prywatności (sekcja cookies). */
+  var GA4_ID = "";
+  function ga4() {
+    if (!/^G-[A-Z0-9]+$/.test(GA4_ID) || window.__skalujGa4) return;
+    window.__skalujGa4 = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("consent", "default", { analytics_storage: "granted", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
+    window.gtag("js", new Date());
+    window.gtag("config", GA4_ID, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+      cookie_expires: 34128000 // 13 miesięcy, zgodnie z polityką prywatności
+    });
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_ID;
+    document.head.appendChild(s);
+  }
+  /* wycofanie zgody: GA przestaje zbierać, a jego pliki cookie znikają z przeglądarki */
+  function dropGa4() {
+    if (window.__skalujGa4 && window.gtag) window.gtag("consent", "update", { analytics_storage: "denied" });
+    var host = location.hostname, base = host.replace(/^www\./, "");
+    document.cookie.split(";").forEach(function (c) {
+      var name = c.split("=")[0].trim();
+      if (name.indexOf("_ga") !== 0) return;
+      ["", "; domain=" + host, "; domain=." + base].forEach(function (d) {
+        document.cookie = name + "=; Max-Age=0; path=/" + d;
+      });
+    });
   }
   /* uruchamia skrypty oznaczone type="text/plain" data-consent="..." po zgodzie */
   function activateScripts() {
@@ -80,7 +115,7 @@
   '.ck-opt p{margin:2px 0 0;font-size:11px;line-height:1.45;color:#6b7280}' +
   '.ck-sw{position:relative;flex:none;width:34px;height:20px;margin-top:1px}' +
   '.ck-sw input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}' +
-  '.ck-sw i{position:absolute;inset:0;border-radius:9999px;background:#cfd6e0;transition:background .2s}' +
+  '.ck-sw i{position:absolute;inset:0;border-radius:9999px;background:#cfd6e0;transition:background .2s;pointer-events:none}' +
   '.ck-sw i::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s}' +
   '.ck-sw input:checked + i{background:#2f6fe0}' +
   '.ck-sw input:checked + i::after{transform:translateX(14px)}' +
@@ -101,7 +136,7 @@
       '<p class="ck-t">Używamy plików cookie, aby strona działała poprawnie, a za Twoją zgodą także do <b>analityki i marketingu</b>. <a href="' + pp + '">Polityka prywatności</a></p>' +
       '<div class="ck-opts">' +
         '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" checked disabled aria-label="Niezbędne (zawsze aktywne)"><i></i></span><div><label>Niezbędne</label><p>Konieczne do działania strony. Zawsze aktywne.</p></div></div>' +
-        '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckAn"><i></i></span><div><label for="ckAn">Analityka</label><p>Anonimowe statystyki odwiedzin.</p></div></div>' +
+        '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckAn"><i></i></span><div><label for="ckAn">Analityka</label><p>Statystyki odwiedzin (Google Analytics).</p></div></div>' +
         '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckMk"><i></i></span><div><label for="ckMk">Marketing</label><p>Pomiar i personalizacja reklam.</p></div></div>' +
       '</div>' +
       '<div class="ck-row">' +
@@ -150,6 +185,7 @@
   var had = load();
   window.skalujConsent = { analytics: consent.analytics, marketing: consent.marketing };
   activateScripts(); // odpal skrypty dozwolone przez wcześniejszą zgodę
+  if (consent.analytics) ga4();
   document.addEventListener("click", function (e) {
     var t = e.target.closest && e.target.closest("[data-cookie-settings]");
     if (t) { e.preventDefault(); window.skalujCookies.open(); }
