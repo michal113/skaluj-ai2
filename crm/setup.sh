@@ -85,28 +85,33 @@ step "5/6 Haslo do panelu i token dla Make"
 PASS=""; TOKEN=""
 if [ "$NEW_PASS" = 1 ] || ! has ADMIN_PASSWORD; then PASS="$(gen)"; put ADMIN_PASSWORD "$PASS"; else ok "haslo juz ustawione (nowe: --nowe-haslo)"; fi
 if ! has INGEST_TOKEN; then TOKEN="$(gen)"; put INGEST_TOKEN "$TOKEN"; else ok "token dla Make juz ustawiony"; fi
+# (haslo i token sa juz zapisane - panel dziala, nawet jesli przerwiesz pytania o klucze)
 
 step "6/6 Klucze do statystyk (Enter = pomin, mozesz dodac pozniej: bash crm/setup.sh --klucze)"
 if [ ! -t 0 ]; then
   warn "brak terminala — pomijam pytania o klucze"
 else
-  ask() { # nazwa, opis, ukryj(1/0)
+  ask() { # nazwa, opis, ukryj(1/0), wzorzec (grep -E)
     if [ "$ASK_ALL" = 0 ] && has "$1"; then ok "$1 juz ustawiony"; return; fi
     local v=""
     if [ "$3" = 1 ]; then read -r -s -p "  $2: " v; echo; else read -r -p "  $2: " v; fi
-    [ -n "$v" ] && put "$1" "$v" || true
+    v="$(printf '%s' "$v" | sed -e 's/^ *//' -e 's/ *$//')"
+    [ -n "$v" ] || return 0
+    if [ -n "${4:-}" ] && ! printf '%s' "$v" | grep -Eq "$4"; then warn "to nie wyglada na poprawna wartosc - pomijam $1 (dodasz pozniej: --klucze)"; return 0; fi
+    put "$1" "$v"
   }
-  ask MAKE_API_TOKEN "Token API Make (Profile -> API access, zakresy scenarios:read i organizations:read)" 1
-  ask MAKE_SCENARIO_IDS "ID scenariusza formularza w Make (liczba z adresu .../scenarios/1234567/...)" 0
-  ask MAKE_ORG_ID "ID organizacji w Make (liczba z adresu .../organization/123456/...)" 0
-  ask OPENROUTER_MANAGEMENT_KEY "Klucz Management z OpenRouter (Settings -> Management Keys)" 1
+  ask MAKE_API_TOKEN "Token API Make (Profile -> API access, zakresy scenarios:read i organizations:read)" 1 '^[^[:space:]]{20,}$'
+  ask MAKE_SCENARIO_IDS "ID scenariusza formularza w Make (liczba z adresu .../scenarios/1234567/...)" 0 '^[0-9]+( *, *[0-9]+)*$'
+  ask MAKE_ORG_ID "ID organizacji w Make (liczba z adresu .../organization/123456/...)" 0 '^[0-9]+$'
+  ask OPENROUTER_MANAGEMENT_KEY "Klucz Management z OpenRouter (Settings -> Management Keys)" 1 '^[^[:space:]]{20,}$'
   ask OPENROUTER_KEY_NAME "Nazwa klucza chatbota w OpenRouter (np. chatbot)" 0
-  ask GA4_PROPERTY_ID "Numer uslugi GA4 skaluj.ai (sama liczba)" 0
-  ask GSC_SITE_URL "Wlasciwosc Search Console (np. sc-domain:skaluj.ai)" 0
+  ask GA4_PROPERTY_ID "Numer uslugi GA4 skaluj.ai (sama liczba)" 0 '^[0-9]{6,}$'
+  ask GSC_SITE_URL "Wlasciwosc Search Console (np. sc-domain:skaluj.ai)" 0 '^(sc-domain:[^[:space:]]+|https?://[^[:space:]]+)$'
   if [ "$ASK_ALL" = 1 ] || ! has GOOGLE_SERVICE_ACCOUNT_KEY; then
     read -r -p "  Plik JSON konta serwisowego Google (przeciagnij plik tutaj): " f
     f="$(printf '%s' "$f" | sed -e "s/^[\"']//" -e "s/[\"'] *$//" -e 's/\\ / /g' -e 's/ *$//')"
-    if [ -n "$f" ] && [ -f "$f" ]; then $W secret put GOOGLE_SERVICE_ACCOUNT_KEY < "$f" >/dev/null && ok "GOOGLE_SERVICE_ACCOUNT_KEY zapisany"
+    if [ -n "$f" ] && [ -f "$f" ] && ! { grep -q '"private_key"' "$f" && grep -q '"client_email"' "$f"; }; then warn "to nie jest plik JSON konta serwisowego - pomijam"
+    elif [ -n "$f" ] && [ -f "$f" ]; then $W secret put GOOGLE_SERVICE_ACCOUNT_KEY < "$f" >/dev/null && ok "GOOGLE_SERVICE_ACCOUNT_KEY zapisany"
     elif [ -n "$f" ]; then warn "nie ma takiego pliku: $f"; fi
   else ok "GOOGLE_SERVICE_ACCOUNT_KEY juz ustawiony"; fi
 fi

@@ -101,14 +101,31 @@ $j = $rawSecrets.IndexOf("[")
 if ($j -ge 0) { try { $existing = @($rawSecrets.Substring($j) | ConvertFrom-Json | ForEach-Object { $_.name }) } catch {} }
 function Has($n) { return ($existing -contains $n) }
 
+function Save-Secrets($h) {
+  if ($h.Count -eq 0) { return }
+  # jeden plik tymczasowy zamiast potoku: Windows PowerShell potrafi dokleic BOM do tekstu przekazanego potokiem
+  $tmp = Join-Path ([IO.Path]::GetTempPath()) ("skaluj-crm-" + [Guid]::NewGuid().ToString() + ".json")
+  try {
+    [IO.File]::WriteAllText($tmp, ($h | ConvertTo-Json -Compress), (New-Object Text.UTF8Encoding $false))
+    $out = WrText secret bulk $tmp
+    if ($LASTEXITCODE -ne 0) { Write-Host $out; Fail "nie udalo sie zapisac sekretow" }
+  } finally {
+    Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue
+  }
+  foreach ($k in $h.Keys) { Ok "$k zapisany" }
+}
+
 $secrets = @{}
 Step "5/6 Haslo do panelu i token dla Make"
 $pass = ""; $token = ""
 if ($NoweHaslo -or -not (Has "ADMIN_PASSWORD")) { $pass = New-Secret; $secrets["ADMIN_PASSWORD"] = $pass } else { Ok "haslo juz ustawione (nowe: -NoweHaslo)" }
 if (-not (Has "INGEST_TOKEN")) { $token = New-Secret; $secrets["INGEST_TOKEN"] = $token } else { Ok "token dla Make juz ustawiony" }
+# zapis od razu: panel dziala, nawet jesli przerwiesz pytania o klucze
+Save-Secrets $secrets
+$secrets = @{}
 
 Step "6/6 Klucze do statystyk (Enter = pomin, mozesz dodac pozniej z opcja -Klucze)"
-function Ask($name, $label, $hidden) {
+function Ask($name, $label, $hidden, $pattern) {
   if (-not $Klucze -and (Has $name)) { Ok "$name juz ustawiony"; return }
   if ($hidden) {
     $s = Read-Host -AsSecureString "  $label"
@@ -116,34 +133,29 @@ function Ask($name, $label, $hidden) {
   } else {
     $v = Read-Host "  $label"
   }
-  if ($v -and $v.Trim()) { $script:secrets[$name] = $v.Trim() }
+  if (-not ($v -and $v.Trim())) { return }
+  $v = $v.Trim()
+  if ($pattern -and $v -notmatch $pattern) { Warn "to nie wyglada na poprawna wartosc - pomijam $name (dodasz pozniej z opcja -Klucze)"; return }
+  $script:secrets[$name] = $v
 }
-Ask "MAKE_API_TOKEN" "Token API Make (Profile -> API access, zakresy scenarios:read i organizations:read)" $true
-Ask "MAKE_SCENARIO_IDS" "ID scenariusza formularza w Make (liczba z adresu .../scenarios/1234567/...)" $false
-Ask "MAKE_ORG_ID" "ID organizacji w Make (liczba z adresu .../organization/123456/...)" $false
-Ask "OPENROUTER_MANAGEMENT_KEY" "Klucz Management z OpenRouter (Settings -> Management Keys)" $true
-Ask "OPENROUTER_KEY_NAME" "Nazwa klucza chatbota w OpenRouter (np. chatbot)" $false
-Ask "GA4_PROPERTY_ID" "Numer uslugi GA4 skaluj.ai (sama liczba)" $false
-Ask "GSC_SITE_URL" "Wlasciwosc Search Console (np. sc-domain:skaluj.ai)" $false
+Ask "MAKE_API_TOKEN" "Token API Make (Profile -> API access, zakresy scenarios:read i organizations:read)" $true '^\S{20,}$'
+Ask "MAKE_SCENARIO_IDS" "ID scenariusza formularza w Make (liczba z adresu .../scenarios/1234567/...)" $false '^\d+(\s*,\s*\d+)*$'
+Ask "MAKE_ORG_ID" "ID organizacji w Make (liczba z adresu .../organization/123456/...)" $false '^\d+$'
+Ask "OPENROUTER_MANAGEMENT_KEY" "Klucz Management z OpenRouter (Settings -> Management Keys)" $true '^\S{20,}$'
+Ask "OPENROUTER_KEY_NAME" "Nazwa klucza chatbota w OpenRouter (np. chatbot)" $false '^[^\s].{0,80}$'
+Ask "GA4_PROPERTY_ID" "Numer uslugi GA4 skaluj.ai (sama liczba)" $false '^\d{6,}$'
+Ask "GSC_SITE_URL" "Wlasciwosc Search Console (np. sc-domain:skaluj.ai)" $false '^(sc-domain:\S+|https?://\S+)$'
 if ($Klucze -or -not (Has "GOOGLE_SERVICE_ACCOUNT_KEY")) {
   $f = Read-Host "  Plik JSON konta serwisowego Google (przeciagnij plik tutaj)"
   $f = $f.Trim().Trim('"').Trim("'")
-  if ($f -and (Test-Path -LiteralPath $f)) { $secrets["GOOGLE_SERVICE_ACCOUNT_KEY"] = [IO.File]::ReadAllText($f) }
+  if ($f -and (Test-Path -LiteralPath $f)) {
+    $txt = [IO.File]::ReadAllText($f)
+    if ($txt -match '"private_key"' -and $txt -match '"client_email"') { $secrets["GOOGLE_SERVICE_ACCOUNT_KEY"] = $txt } else { Warn "to nie jest plik JSON konta serwisowego - pomijam" }
+  }
   elseif ($f) { Warn "nie ma takiego pliku: $f" }
 } else { Ok "GOOGLE_SERVICE_ACCOUNT_KEY juz ustawiony" }
 
-if ($secrets.Count -gt 0) {
-  # jeden plik tymczasowy zamiast potoku: Windows PowerShell potrafi dokleic BOM do tekstu przekazanego potokiem
-  $tmp = Join-Path ([IO.Path]::GetTempPath()) ("skaluj-crm-" + [Guid]::NewGuid().ToString() + ".json")
-  try {
-    [IO.File]::WriteAllText($tmp, ($secrets | ConvertTo-Json -Compress), (New-Object Text.UTF8Encoding $false))
-    $out = WrText secret bulk $tmp
-    if ($LASTEXITCODE -ne 0) { Write-Host $out; Fail "nie udalo sie zapisac sekretow" }
-  } finally {
-    Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue
-  }
-  foreach ($k in $secrets.Keys) { Ok "$k zapisany" }
-}
+Save-Secrets $secrets
 
 $base = $url
 if (-not $base) { $base = "https://skaluj-crm.<twoja-subdomena>.workers.dev" }
