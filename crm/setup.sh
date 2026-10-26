@@ -64,9 +64,8 @@ if [ -z "$ID" ]; then
   ID="$(db_id || true)"
 fi
 [ -n "$ID" ] || { echo "Nie udalo sie ustalic ID bazy $DB_NAME."; exit 1; }
-if grep -q "WKLEJ_ID_BAZY_PO_UTWORZENIU" wrangler.toml; then
-  sed -i.bak "s/WKLEJ_ID_BAZY_PO_UTWORZENIU/$ID/" wrangler.toml && rm -f wrangler.toml.bak
-fi
+# zawsze ID bazy z AKTUALNEGO konta (np. po przelogowaniu na inne konto)
+sed -i.bak -E "s/^database_id = \"[^\"]*\"/database_id = \"$ID\"/" wrangler.toml && rm -f wrangler.toml.bak
 ok "baza $DB_NAME ($ID)"
 
 step "3/6 Tabela zgloszen"

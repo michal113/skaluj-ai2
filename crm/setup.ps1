@@ -78,10 +78,9 @@ if (-not $id) {
 if (-not $id) { Fail "nie udalo sie ustalic ID bazy $DbName" }
 $tomlPath = Join-Path $PSScriptRoot "wrangler.toml"
 $toml = [IO.File]::ReadAllText($tomlPath)
-if ($toml.Contains("WKLEJ_ID_BAZY_PO_UTWORZENIU")) {
-  # zapis bez BOM - inaczej wrangler nie przeczyta pliku
-  [IO.File]::WriteAllText($tomlPath, $toml.Replace("WKLEJ_ID_BAZY_PO_UTWORZENIU", $id), (New-Object Text.UTF8Encoding $false))
-}
+# zawsze ID bazy z AKTUALNEGO konta (np. po przelogowaniu na inne konto); zapis bez BOM - inaczej wrangler nie przeczyta pliku
+$newToml = [regex]::Replace($toml, '(?m)^database_id = "[^"]*"', ('database_id = "' + $id + '"'))
+if ($newToml -ne $toml) { [IO.File]::WriteAllText($tomlPath, $newToml, (New-Object Text.UTF8Encoding $false)) }
 Ok "baza $DbName ($id)"
 
 Step "3/6 Tabela zgloszen"
