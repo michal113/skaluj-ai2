@@ -42,6 +42,8 @@ function Get-DbId {
 }
 
 Step "1/6 Logowanie do Cloudflare"
+Write-Host "  Pobieram narzedzie Cloudflare (wrangler) - za pierwszym razem trwa to 1-3 minuty..."
+Wr --version
 if ((WrText whoami) -match "not authenticated") {
   Write-Host "  Otworzy sie przegladarka - zaloguj sie na konto Cloudflare, na ktorym stoi chatbot, i kliknij Allow."
   Wr login

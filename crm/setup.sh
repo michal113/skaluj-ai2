@@ -30,6 +30,8 @@ command -v npx >/dev/null 2>&1 || { echo "Brak Node.js. Zainstaluj wersje LTS z 
 command -v openssl >/dev/null 2>&1 || { echo "Brak openssl (potrzebny do wygenerowania hasla)."; exit 1; }
 
 step "1/6 Logowanie do Cloudflare"
+echo "  Pobieram narzedzie Cloudflare (wrangler) - za pierwszym razem trwa to 1-3 minuty..."
+$W --version
 WHO="$($W whoami 2>&1 || true)"
 if printf '%s' "$WHO" | grep -q "not authenticated"; then
   echo "  Otworzy sie przegladarka — zaloguj sie na konto Cloudflare, na ktorym stoi chatbot, i kliknij Allow."
