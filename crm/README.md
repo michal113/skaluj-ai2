@@ -22,7 +22,27 @@ Osobny Cloudflare Worker (`skaluj-crm`), bez wpływu na stronę. Działa na darm
 - Make wysyła zgłoszenia z osobnym tokenem, a zgłoszenia z wypełnionym `_gotcha` (boty) są odrzucane.
 - **Retencja**: codziennie o 3:17 UTC panel usuwa zgłoszenia bez współpracy i bez zgody marketingowej, nieruszane od 12 miesięcy. Tak obiecuje polityka prywatności. Klientów i osób ze zgodą marketingową nie usuwa automatycznie.
 
-Wszystkie komendy uruchamiaj w folderze `crm/`, zalogowany na konto Cloudflare (`npx wrangler login`).
+## Najszybciej: jeden skrypt (ok. 5 minut)
+
+Na Macu otwórz **Terminal** i wklej:
+
+```bash
+git clone https://github.com/michal113/skaluj-ai2.git ~/skaluj-ai2   # pomiń, jeśli masz już repo
+cd ~/skaluj-ai2 && git pull && bash crm/setup.sh
+```
+
+Skrypt sam:
+- zaloguje Cię do Cloudflare (przeglądarka → Allow);
+- założy bazę w UE i tabelę;
+- wdroży panel;
+- wygeneruje hasło i token dla Make;
+- zapyta o klucze do statystyk. Na każde pytanie możesz nacisnąć Enter i dodać klucz później przez `bash crm/setup.sh --klucze`.
+
+Na końcu wypisze **adres panelu, hasło** (skopiowane do schowka) i gotowe ustawienia modułu HTTP do Make. Hasło zapisz w menedżerze haseł.
+
+Skrypt możesz uruchamiać wielokrotnie, np. po aktualizacji kodu. Baza i zgłoszenia zostają, a hasło zmienisz flagą `--nowe-haslo`. Potrzebny jest Node.js (wersja LTS z nodejs.org).
+
+Poniżej te same kroki ręcznie, gdybyś wolał bez skryptu. Komendy uruchamiaj w folderze `crm/`, zalogowany na konto Cloudflare (`npx wrangler login`).
 **Sekrety wpisujesz tylko w terminalu po `secret put`.** Nigdy nie wklejaj ich do plików ani do czatu.
 
 ---
@@ -135,3 +155,4 @@ Ponownie uruchom `npx wrangler secret put ADMIN_PASSWORD` (albo `INGEST_TOKEN`).
 | `sources.js` | statystyki: D1, GA4/GSC (`../panel/google.js`), Make API, OpenRouter API |
 | `render.js` | HTML i CSS panelu, bez JavaScriptu |
 | `schema.sql` | tabela `leads` |
+| `setup.sh` | konfiguracja i wdrożenie jednym poleceniem |

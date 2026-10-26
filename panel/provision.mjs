@@ -4,6 +4,7 @@
  * Uzycie:
  *   node provision.mjs "Nazwa klienta"
  *   node provision.mjs "Nazwa klienta" --ga4 123456789 --gsc https://klient.pl/ --dni 28
+ *   node provision.mjs "Pokaz" --demo   (panel pokazowy na przykladowych danych, z etykieta "Demo")
  *
  * Bez --ga4 klient dostaje panel ze wszystkimi czterema zakladkami w stanie "wkrotce"
  * (mozna dopisac GA4 pozniej — patrz --pokaz / ponowne uruchomienie z tym samym --slug).
@@ -24,7 +25,7 @@ const BASE_URL = "https://skaluj-panel.ni4324234fdsfd.workers.dev";
 
 const argv = process.argv.slice(2);
 if (!argv.length || argv[0].startsWith("--")) {
-  console.error('Uzycie: node provision.mjs "Nazwa klienta" [--ga4 ID] [--gsc URL] [--dziala website,auto] [--dni 28] [--slug ISTNIEJACY]');
+  console.error('Uzycie: node provision.mjs "Nazwa klienta" [--ga4 ID] [--gsc URL] [--dziala website,auto] [--dni 28] [--slug ISTNIEJACY] [--demo]');
   process.exit(1);
 }
 
@@ -38,6 +39,7 @@ const ga4 = flag("ga4");
 const gsc = flag("gsc");
 const dni = Number(flag("dni")) || 28;
 const slug = flag("slug") || randomBytes(16).toString("base64url");
+const demo = argv.includes("--demo");
 
 /* --- walidacja: lepiej odmowic teraz niz wyslac klientowi zepsuty panel --- */
 if (ga4 && !/^\d{6,}$/.test(ga4.replace(/^properties\//, ""))) {
@@ -66,6 +68,8 @@ const stan = (k) => (dziala.has(k) ? "pending" : "offer");
 const config = {
   slug,
   clientName,
+  /* panel pokazowy (worker podstawia dane z demo-klient.js) — nigdy dla prawdziwego klienta */
+  ...(demo ? { demo: true } : {}),
   panels: {
     website: ga4
       ? { status: "live", ga4PropertyId: ga4.replace(/^properties\//, ""), gscSiteUrl: gsc || null, dateRangeDays: dni }

@@ -97,6 +97,12 @@ Bez `--ga4` klient dostaje panel ze wszystkimi zakładkami w stanie „wkrótce�
 gdy chcesz wysłać link przed nadaniem dostępów. Później uruchom to samo polecenie
 z `--slug <istniejący>`, żeby nadpisać wpis bez zmiany linku.
 
+Panel **pokazowy** (przykładowe dane, etykieta „Demo”) do pokazania na spotkaniu, zanim klient nada dostępy:
+
+```bash
+node provision.mjs "Pokaz" --demo
+```
+
 Skrypt wypisze gotowy link. **Zanim go wyślesz**, klient musi nadać kontu serwisowemu
 dostęp „Czytelnik” / Viewer:
 
