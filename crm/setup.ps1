@@ -175,6 +175,7 @@ if ($token) {
   Write-Host "  URL:     $base/api/lead"
   Write-Host "  Method:  POST"
   Write-Host "  Header:  Authorization = Bearer $token"
+  if (-not $pass) { try { Set-Clipboard -Value ("Bearer " + $token); Write-Host "           (\"Bearer token\" skopiowane do schowka - wklej w Make jako Key)" } catch {} }
   Write-Host "  Body:    application/x-www-form-urlencoded, pola z webhooka 1:1"
   Write-Host "           (name, email, company, phone, message, svc, termin, marketing, marketing_tresc, wyslano, _gotcha)"
 }

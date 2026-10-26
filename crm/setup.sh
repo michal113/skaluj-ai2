@@ -132,6 +132,7 @@ if [ -n "$TOKEN" ]; then
   echo "  URL:     ${URL:-https://skaluj-crm.<twoja-subdomena>.workers.dev}/api/lead"
   echo "  Method:  POST"
   echo "  Header:  Authorization = Bearer $TOKEN"
+  if [ -z "$PASS" ] && command -v pbcopy >/dev/null 2>&1; then printf 'Bearer %s' "$TOKEN" | pbcopy && echo '           ("Bearer token" skopiowane do schowka - wklej w Make jako Key)'; fi
   echo "  Body:    application/x-www-form-urlencoded, pola z webhooka 1:1"
   echo "           (name, email, company, phone, message, svc, termin, marketing, marketing_tresc, wyslano, _gotcha)"
 fi
