@@ -39,6 +39,18 @@ if printf '%s' "$WHO" | grep -q "not authenticated"; then
 fi
 ok "zalogowano"
 
+# Kilka kont pod jednym loginem: bez wskazania konta wrangler przerywa w trybie bez pytan.
+WHO="$($W whoami 2>&1 || true)"
+IDS="$(printf '%s' "$WHO" | grep -Eo '[0-9a-f]{32}' | awk '!seen[$0]++' || true)"
+if [ -z "${CLOUDFLARE_ACCOUNT_ID:-}" ] && [ "$(printf '%s\n' "$IDS" | grep -c .)" -gt 1 ]; then
+  echo "  Masz kilka kont Cloudflare:"
+  i=0; for id in $IDS; do i=$((i+1)); name="$(printf '%s' "$WHO" | grep "$id" | head -1 | sed -e "s/$id//" -e 's/[^[:alnum:] ._@()-]/ /g' -e 's/  */ /g' -e 's/^ //' -e 's/ $//')"; echo "   [$i] $name  ($id)"; done
+  read -r -p "  Numer konta, na ktorym ma stac CRM (to samo, na ktorym jest chatbot botszkalu): " n
+  sel="$(printf '%s\n' "$IDS" | sed -n "${n}p")"
+  [ -n "$sel" ] || { echo "Nieprawidlowy numer konta."; exit 1; }
+  export CLOUDFLARE_ACCOUNT_ID="$sel"; ok "konto $sel"
+fi
+
 step "2/6 Baza zgloszen (D1, dane tylko w UE)"
 db_id() {
   $W d1 list --json 2>/dev/null | node -e '

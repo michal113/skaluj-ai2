@@ -51,6 +51,24 @@ if ((WrText whoami) -match "not authenticated") {
 }
 Ok "zalogowano"
 
+# Kilka kont pod jednym loginem: bez wskazania konta wrangler przerywa w trybie bez pytan.
+$who = WrText whoami
+$ids = @([regex]::Matches($who, '[0-9a-f]{32}') | ForEach-Object { $_.Value } | Select-Object -Unique)
+if (-not $env:CLOUDFLARE_ACCOUNT_ID -and $ids.Count -gt 1) {
+  Write-Host "  Masz kilka kont Cloudflare:"
+  $lines = $who -split "`n"
+  for ($k = 0; $k -lt $ids.Count; $k++) {
+    $line = @($lines | Where-Object { $_ -match $ids[$k] })[0]
+    $name = (($line -replace $ids[$k], '') -replace '[^\p{L}\p{N} ._''@()-]', ' ').Trim() -replace '\s{2,}', ' '
+    Write-Host ("   [{0}] {1}  ({2})" -f ($k + 1), $name, $ids[$k])
+  }
+  $c = Read-Host "  Numer konta, na ktorym ma stac CRM (to samo, na ktorym jest chatbot botszkalu)"
+  $n = 0
+  if (-not [int]::TryParse($c, [ref]$n) -or $n -lt 1 -or $n -gt $ids.Count) { Fail "nieprawidlowy numer konta" }
+  $env:CLOUDFLARE_ACCOUNT_ID = $ids[$n - 1]
+  Ok "konto $($ids[$n - 1])"
+}
+
 Step "2/6 Baza zgloszen (D1, dane tylko w UE)"
 $id = Get-DbId
 if (-not $id) {
