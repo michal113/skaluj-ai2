@@ -462,6 +462,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 /* fokus: jeden markowy pierscien wszedzie; jasniejszy na ciemnych hero */
 :where(a,button,[tabindex]:not([tabindex="-1"]),summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .ctc :focus-visible,.svc-header :focus-visible,.blog-header :focus-visible{outline-color:#7fb0ff}
+.ctc-card :focus-visible{outline-color:var(--accent)}
 
 /* typografia: bez wdow w naglowkach i akapitach */
 h1,h2,h3,.sec-title,.integ-title,.svc-title,.blog-title,.ctc-title,.legal-hero h1,.hero h1 .line,.cs-title,.faq-q,.svc-cta-box h3,.blog-cta-box h3,.blogs-card h3,.bi-card h2,.blog-also-item .t{text-wrap:balance}
@@ -523,7 +524,7 @@ body.menu-open .nav-burger span:nth-child(2){top:21.5px;transform:rotate(-45deg)
 .dropdown--blog{width:428px;margin-left:-214px}
 .dd-head{display:flex;justify-content:flex-end;align-items:center;padding:2px 10px 10px;margin:0 0 6px;border-bottom:1px solid var(--line-2)}
 .dd-head .c{display:inline-flex;align-items:center;gap:5px;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:-.005em;text-transform:none;color:var(--accent);white-space:nowrap;transition:color .2s}
-.dd-head .c:hover{color:var(--accent-dim)}
+.dd-head .c:hover{color:var(--accent-dim,#2456b0)}
 .dd-head .c svg{display:block;width:12px;height:12px;transition:transform .25s var(--ease)}
 .dd-head .c:hover svg{transform:translateX(3px)}
 .dropdown--offer .dd-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -536,7 +537,7 @@ body.menu-open .nav-burger span:nth-child(2){top:21.5px;transform:rotate(-45deg)
 .dd-tx b{display:block;font-size:14px;font-weight:500;color:var(--text);letter-spacing:-.012em;line-height:1.35;margin:0}
 .dd-tx i{display:block;font-style:normal;font-family:var(--sans);font-size:13.5px;font-weight:400;letter-spacing:-.005em;text-transform:none;color:var(--muted);line-height:1.4;margin:2px 0 0}
 .dd-row--post .dd-tx i{font-size:12px;letter-spacing:0;margin:0 0 2px}
-.dd-tx .badge-new{display:inline-block;vertical-align:1px;margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(47,111,224,.08);color:var(--accent);font-family:var(--sans);font-size:11px;font-weight:500;line-height:1.45;letter-spacing:0;text-transform:none}
+.dd-tx .badge-new{display:inline-block;vertical-align:1px;margin-left:6px;padding:1px 6px;border-radius:6px;background:rgba(47,111,224,.08);color:var(--accent-dim,#2456b0);font-family:var(--sans);font-size:11px;font-weight:500;line-height:1.45;letter-spacing:0;text-transform:none}
 .dd-tx .badge-new::before{content:none}
 
 /* ---------- menu mobilne ---------- */
@@ -666,7 +667,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <a class="dd-row dd-row--post" href="blog/strona-seo"><span class="dd-tx"><i>Strona i SEO</i><b>Strona, która sprzedaje</b></span></a>
           <a class="dd-row dd-row--post" href="blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w ChatGPT i AI</b></span></a>
           <a class="dd-row dd-row--post" href="blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w ChatGPT — jak działają i ile kosztują</b></span></a>
-          <a class="dd-row dd-row--post" href="blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — tnij koszty nawet o 30%</b></span></a>
+          <a class="dd-row dd-row--post" href="blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — jak obniżyć koszt pozyskania klienta</b></span></a>
           <a class="dd-row dd-row--post" href="blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w 2026</b></span></a>
           <a class="dd-row dd-row--post" href="blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI — napisy, lektor i AI Act</b></span></a>
           <a class="dd-row dd-row--post" href="blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności — sprawdź, gdzie jesteś</b></span></a>
