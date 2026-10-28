@@ -214,16 +214,17 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blog-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#7fb0ff;margin-bottom:18px;display:block}
 .blog-header .wrap{max-width:720px}
 .blog-title{font-size:clamp(2rem,4vw,2.7rem);font-weight:500;letter-spacing:-.03em;line-height:1.1;max-width:880px;margin:0 0 22px;color:#fff}
+@media(max-width:389px){.blog-title{font-size:clamp(1.6875rem,7.6vw,2rem)}}
 .blog-meta{font-size:12.5px;color:rgba(255,255,255,.6);font-family:var(--mono);display:flex;align-items:center;gap:20px}
 .blog-body{max-width:720px;margin:0 auto;padding:60px clamp(24px,4vw,48px) 80px}
 .blog-body h2{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:52px 0 14px}
-.blog-body p{color:var(--muted);margin-bottom:16px;line-height:1.75;font-size:17px}
-.blog-body ul,.blog-body ol{color:var(--muted);padding-left:22px;margin-bottom:18px;line-height:1.75}
-.blog-body li{margin-bottom:8px;font-size:17px}
+.blog-body p{color:var(--muted);margin-bottom:16px;line-height:1.65;font-size:17px}
+.blog-body ul,.blog-body ol{color:var(--muted);padding-left:22px;margin-bottom:18px;line-height:1.65}
+.blog-body li{margin-bottom:12px;font-size:17px}
 .blog-body strong{color:var(--text);font-weight:600}
 .blog-body a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 .blog-body a strong{color:inherit}
-.blog-body .lead{font-size:1.2rem;color:var(--muted);line-height:1.75;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line-2)}
+.blog-body .lead{font-size:1.2rem;color:var(--muted);line-height:1.6;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line-2)}
 .blog-tip{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:var(--r-md);padding:16px 20px;margin:24px 0;font-size:15px;line-height:1.65;color:var(--muted)}
 .blog-tip strong{color:var(--text)}
 .blog-body a.blog-back{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-family:var(--sans);color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color .2s}
@@ -234,11 +235,11 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blog-cta-box p a{color:var(--accent-dim);text-decoration:underline;text-underline-offset:3px}
 .blog-cta-box .cta-alt{display:block;width:fit-content;margin:6px auto -12px;padding:12px 0;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;transition:color .2s}.blog-cta-box .cta-alt:hover{color:var(--text)}
 .blog-also{max-width:720px;margin:0 auto 80px}
-.blog-also h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.blog-also .also-h,.toc-box .toc-title{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 18px}
 .blog-also-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .blog-also-item{border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s,background .2s}
 .blog-also-item:hover{border-color:rgba(47,111,224,.4);background:var(--accent-soft)}
-.blog-also-item .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
+.blog-also-item .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
 .blog-also-item .t{display:block;font-size:15px;font-weight:500;color:var(--text);line-height:1.4}
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.blog-header{padding:120px 0 54px}.blog-hero-sygnet{display:none}.blog-cta-box{margin:0 24px 64px;padding:32px 22px;border-radius:20px}.blog-also-grid{grid-template-columns:1fr}}
@@ -469,21 +470,21 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <div class="dd-head"><a class="c" href="../#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-cols">
             <div class="dd-col">
-              <div class="dd-group">Strona i widoczność</div>
-              <a class="dd-row" href="../oferta/strona-seo"><span class="dd-tx"><b>Strona internetowa + SEO i GEO</b><i>Widoczna w Google i polecana przez AI</i></span></a>
-              <a class="dd-row" href="../oferta/geo-seo"><span class="dd-tx"><b>Pozycjonowanie w AI — GEO i SEO</b><i>Masz stronę? Wypozycjonujemy ją w AI</i></span></a>
-              <a class="dd-row" href="../oferta/reklamy-chatgpt"><span class="dd-tx"><b>Reklamy w ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
+              <div class="dd-group">Strona i&nbsp;widoczność</div>
+              <a class="dd-row" href="../oferta/strona-seo"><span class="dd-tx"><b>Strona internetowa + SEO i&nbsp;GEO</b><i>Widoczna w&nbsp;Google i&nbsp;polecana przez AI</i></span></a>
+              <a class="dd-row" href="../oferta/geo-seo"><span class="dd-tx"><b>Pozycjonowanie w&nbsp;AI&nbsp;— GEO i&nbsp;SEO</b><i>Masz stronę? Wypozycjonujemy ją w&nbsp;AI</i></span></a>
+              <a class="dd-row" href="../oferta/reklamy-chatgpt"><span class="dd-tx"><b>Reklamy w&nbsp;ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
             </div>
             <div class="dd-col">
               <div class="dd-group">Branding</div>
-              <a class="dd-row" href="../oferta/branding"><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
-              <a class="dd-row" href="../oferta/rolki-ai"><span class="dd-tx"><b>Rolki i wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i lektor AI pod social media</i></span></a>
+              <a class="dd-row" href="../oferta/branding"><span class="dd-tx"><b>Grafiki i&nbsp;branding</b><i>Spójna marka w&nbsp;każdym kanale</i></span></a>
+              <a class="dd-row" href="../oferta/rolki-ai"><span class="dd-tx"><b>Rolki i&nbsp;wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i&nbsp;lektor AI pod social media</i></span></a>
             </div>
             <div class="dd-col">
               <div class="dd-group">Automatyzacje</div>
-              <a class="dd-row" href="../oferta/audyt-cyfryzacji"><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Widoczność, procesy i narzędzia</i></span></a>
+              <a class="dd-row" href="../oferta/audyt-cyfryzacji"><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Widoczność, procesy i&nbsp;narzędzia</i></span></a>
               <a class="dd-row" href="../oferta/automatyzacje-email"><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
-              <a class="dd-row" href="../oferta/chatbot-ai"><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
+              <a class="dd-row" href="../oferta/chatbot-ai"><span class="dd-tx"><b>Asystent i&nbsp;chatbot AI</b><i>Klient obsłużony w&nbsp;sekundy, 24/7</i></span></a>
             </div>
           </div>
         </div>
@@ -498,15 +499,15 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
         </button>
         <div class="dropdown dropdown--blog" id="blogMenu">
           <div class="dd-head"><a class="c" href="../blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-          <a class="dd-row dd-row--post" href="../blog/strona-seo"><span class="dd-tx"><i>Strona i SEO</i><b>Strona, która sprzedaje</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w ChatGPT i AI</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w ChatGPT — jak działają i ile kosztują</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — jak obniżyć koszt pozyskania klienta</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w 2026</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI — napisy, lektor i AI Act</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności — sprawdź, gdzie jesteś</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z AI — 5 scenariuszy</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/chatbot-ai"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI — kiedy warto, a kiedy szkodzi</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/strona-seo"><span class="dd-tx"><i>Strona i&nbsp;SEO</i><b>Strona, która sprzedaje</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w&nbsp;ChatGPT i&nbsp;AI</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w&nbsp;ChatGPT&nbsp;— jak działają i&nbsp;ile kosztują</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z&nbsp;AI&nbsp;— jak obniżyć koszt pozyskania klienta</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w&nbsp;2026</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI&nbsp;— napisy, lektor i&nbsp;AI&nbsp;Act</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności&nbsp;— sprawdź, gdzie jesteś</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z&nbsp;AI&nbsp;— 5 scenariuszy</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/chatbot-ai"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI&nbsp;— kiedy warto, a&nbsp;kiedy szkodzi</b></span></a>
         </div>
       </div>
     </div>
@@ -521,22 +522,22 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   <a href="../"><span>Start</span></a>
   <div class="mm-blog">
     <span class="mm-h">Oferta</span>
-    <span class="mm-group">Strona i widoczność</span>
-    <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i GEO</a>
-    <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w AI — GEO i SEO</a>
-    <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w ChatGPT</a>
+    <span class="mm-group">Strona i&nbsp;widoczność</span>
+    <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i&nbsp;GEO</a>
+    <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w&nbsp;AI&nbsp;— GEO i&nbsp;SEO</a>
+    <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w&nbsp;ChatGPT</a>
     <span class="mm-group">Branding</span>
-    <a class="mm-sub" href="../oferta/branding">Grafiki i branding</a>
-    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i wideo AI</a>
+    <a class="mm-sub" href="../oferta/branding">Grafiki i&nbsp;branding</a>
+    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i&nbsp;wideo AI</a>
     <span class="mm-group">Automatyzacje</span>
     <a class="mm-sub" href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji firmy</a>
     <a class="mm-sub" href="../oferta/automatyzacje-email">Automatyzacje biznesowe AI</a>
-    <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i chatbot AI</a>
+    <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i&nbsp;chatbot AI</a>
   </div>
   <a href="../#case-studies"><span>Case studies</span></a>
   <a href="../#integracje"><span>Integracje</span></a>
   <a href="../#proces"><span>Proces</span></a>
-  <a href="../#o-nas"><span>O nas</span></a>
+  <a href="../#o-nas"><span>O&nbsp;nas</span></a>
   <a href="../#faq"><span>FAQ</span></a>
   <a href="../blog/"><span>Blog</span></a>
   <a href="../kontakt"><span>Kontakt</span></a>
@@ -551,9 +552,9 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     <span class="blog-eyebrow">Meta Ads</span>
     <h1 class="blog-title">Meta Ads z&nbsp;AI&nbsp;&mdash; jak obni&#380;y&#263; koszt pozyskania klienta</h1>
     <div class="blog-meta">
-      <span>30 maja 2026</span>
+      <span>30&nbsp;maja 2026</span>
       <span>&#183;</span>
-      <span>~6 min czytania</span>
+      <span>~6&nbsp;min czytania</span>
       
     </div>
   </div>
@@ -565,56 +566,56 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     Wszystkie wpisy
   </a>
 
-  <p class="lead">&#346;redni koszt pozyskania klienta (CPA) przez Meta Ads ro&#347;nie rok do roku &mdash; platformy staj&#261; si&#281; coraz bardziej zatłoczone, a reklamodawcy walcz&#261; o ten sam inventory. Firmy, kt&oacute;re potrafi&#261; wykorzysta&#263; AI do automatyzacji test&oacute;w kreacji i precyzyjnej optymalizacji bud&#380;etu, p&#322;yn&#261; pod pr&#261;d: ich CPA spada, podczas gdy konkurencja p&#322;aci coraz wi&#281;cej. W tym artykule pokazujemy konkretne mechanizmy.</p>
+  <p class="lead">&#346;redni koszt pozyskania klienta (CPA) przez Meta Ads ro&#347;nie rok do roku&nbsp;&mdash; platformy staj&#261; si&#281; coraz bardziej zatłoczone, a&nbsp;reklamodawcy walcz&#261; o&nbsp;ten sam inventory. Firmy, kt&oacute;re potrafi&#261; wykorzysta&#263; AI do automatyzacji test&oacute;w kreacji i&nbsp;precyzyjnej optymalizacji bud&#380;etu, p&#322;yn&#261; pod pr&#261;d: ich CPA spada, podczas gdy konkurencja p&#322;aci coraz wi&#281;cej. W&nbsp;tym artykule pokazujemy konkretne mechanizmy.</p>
 
   <h2>Dlaczego klasyczne podej&#347;cie do Meta Ads ju&#380; nie wystarcza?</h2>
-  <p>Jeszcze trzy lata temu skuteczna strategia Meta Ads polega&#322;a na precyzyjnym targetowaniu zainteresowa&#324;: wybierasz wiek, zainteresowania, lokalizacj&#281; i puszczasz reklam&#281;. To podej&#347;cie zacz&#281;&#322;o si&#281; sypać po aktualizacji iOS 14.5 w 2021 roku, kt&oacute;ra pozwoli&#322;a u&#380;ytkownikom blokować &#347;ledzenie. Meta straci&#322;a dost&#281;p do danych o zachowaniu u&#380;ytkownik&oacute;w poza w&#322;asn&#261; platform&#261;, co drastycznie obni&#380;y&#322;o skuteczno&#347;&#263; szczeg&oacute;&#322;owego targetowania.</p>
-  <p>Odpowiedzi&#261; Mety na ten kryzys by&#322;o rozbudowanie w&#322;asnych algorytm&oacute;w AI: mniej r&#281;cznego targetowania, wi&#281;cej automatyzacji. Advantage+ Audience, Advantage+ Shopping Campaigns, automatyczne miejsca do&#322;&#261;czenia reklam &mdash; to wszystko s&#261; systemy AI, kt&oacute;re Meta forsuje jako zast&#281;pnik klasycznego podej&#347;cia opartego na strukturze konto&ndash;kampania&ndash;zestaw reklam z r&#281;cznymi ustawieniami.</p>
-  <p>Problem w tym, &#380;e wi&#281;kszo&#347;&#263; reklamodawc&oacute;w w Polsce nadal podchodzi do Mety po staremu &mdash; r&#281;czne targetowanie, jeden zestaw kreacji na kampani&#281;, brak integracji z danymi first-party. Wynik: rosn&#261;ce CPA i frustracja. Firmy, kt&oacute;re przestawi&#322;y si&#281; na model AI-first, widz&#261; odwrotny trend.</p>
+  <p>Jeszcze trzy lata temu skuteczna strategia Meta Ads polega&#322;a na precyzyjnym targetowaniu zainteresowa&#324;: wybierasz wiek, zainteresowania, lokalizacj&#281; i&nbsp;puszczasz reklam&#281;. To podej&#347;cie zacz&#281;&#322;o si&#281; sypać po aktualizacji iOS 14.5 w&nbsp;2021 roku, kt&oacute;ra pozwoli&#322;a u&#380;ytkownikom blokować &#347;ledzenie. Meta straci&#322;a dost&#281;p do danych o&nbsp;zachowaniu u&#380;ytkownik&oacute;w poza w&#322;asn&#261; platform&#261;, co drastycznie obni&#380;y&#322;o skuteczno&#347;&#263; szczeg&oacute;&#322;owego targetowania.</p>
+  <p>Odpowiedzi&#261; Mety na ten kryzys by&#322;o rozbudowanie w&#322;asnych algorytm&oacute;w AI: mniej r&#281;cznego targetowania, wi&#281;cej automatyzacji. Advantage+ Audience, Advantage+ Shopping Campaigns, automatyczne miejsca do&#322;&#261;czenia reklam&nbsp;&mdash; to wszystko s&#261; systemy AI, kt&oacute;re Meta forsuje jako zast&#281;pnik klasycznego podej&#347;cia opartego na strukturze konto&ndash;kampania&ndash;zestaw reklam z&nbsp;r&#281;cznymi ustawieniami.</p>
+  <p>Problem w&nbsp;tym, &#380;e wi&#281;kszo&#347;&#263; reklamodawc&oacute;w w&nbsp;Polsce nadal podchodzi do Mety po staremu&nbsp;&mdash; r&#281;czne targetowanie, jeden zestaw kreacji na kampani&#281;, brak integracji z&nbsp;danymi first-party. Wynik: rosn&#261;ce CPA i&nbsp;frustracja. Firmy, kt&oacute;re przestawi&#322;y si&#281; na model AI-first, widz&#261; odwrotny trend.</p>
 
-  <h2>Advantage+ &mdash; czym jest i kiedy u&#380;ywa&#263;?</h2>
+  <h2>Advantage+&nbsp;&mdash; czym jest i&nbsp;kiedy u&#380;ywa&#263;?</h2>
   <p>Advantage+ to rodzina produkt&oacute;w Meta opartych na uczeniu maszynowym, kt&oacute;re automatyzuj&#261; kluczowe decyzje kampanijne. Najwa&#380;niejsze elementy:</p>
-  <p><strong>Advantage+ Shopping Campaigns (ASC)</strong> to autonomiczne kampanie e-commerce, w kt&oacute;rych Meta samodzielnie dobiera kreacje, audytoria i miejsca emisji. Firma dostarcza bud&#380;et i zestaw kreacji &mdash; algorytm robi reszt&#281;. Przej&#347;cie z kampanii manualnych na ASC mo&#380;e poprawi&#263; ROAS &mdash; najlepiej sprawdza si&#281; to w firmach z dobrze skalibrowanym pikselem i Conversion API.</p>
-  <p><strong>Advantage+ Audience</strong> (dawniej Broad Targeting) to tryb, w kt&oacute;rym zamiast definiowa&#263; szczeg&oacute;&#322;owe zainteresowania, dajesz AI sugestie demograficzne (np. wiek 25&ndash;55) i pozwalasz, &#380;eby algorytm sam znalaz&#322; najlepszych odbiorc&oacute;w. Sprawdza si&#281; dobrze przy produktach masowych i przy koncie z histori&#261; co najmniej 50 konwersji miesi&#281;cznie w danym pionie.</p>
-  <p>Kiedy NIE u&#380;ywa&#263; Advantage+: gdy masz nowe konto bez historii konwersji, gdy sprzedajesz produkt w bardzo w&#261;skiej niszy geograficznej lub demograficznej, gdy Tw&oacute;j piksel nie jest prawid&#322;owo skonfigurowany &mdash; AI b&#281;dzie optymalizowa&#263; pod z&#322;e zdarzenia.</p>
+  <p><strong>Advantage+ Shopping Campaigns (ASC)</strong> to autonomiczne kampanie e-commerce, w&nbsp;kt&oacute;rych Meta samodzielnie dobiera kreacje, audytoria i&nbsp;miejsca emisji. Firma dostarcza bud&#380;et i&nbsp;zestaw kreacji&nbsp;&mdash; algorytm robi reszt&#281;. Przej&#347;cie z&nbsp;kampanii manualnych na ASC mo&#380;e poprawi&#263; ROAS&nbsp;&mdash; najlepiej sprawdza si&#281; to w&nbsp;firmach z&nbsp;dobrze skalibrowanym pikselem i&nbsp;Conversion API.</p>
+  <p><strong>Advantage+ Audience</strong> (dawniej Broad Targeting) to tryb, w&nbsp;kt&oacute;rym zamiast definiowa&#263; szczeg&oacute;&#322;owe zainteresowania, dajesz AI sugestie demograficzne (np.&nbsp;wiek 25&ndash;55) i&nbsp;pozwalasz, &#380;eby algorytm sam znalaz&#322; najlepszych odbiorc&oacute;w. Sprawdza si&#281; dobrze przy produktach masowych i&nbsp;przy koncie z&nbsp;histori&#261; co najmniej 50 konwersji miesi&#281;cznie w&nbsp;danym pionie.</p>
+  <p>Kiedy NIE u&#380;ywa&#263; Advantage+: gdy masz nowe konto bez historii konwersji, gdy sprzedajesz produkt w&nbsp;bardzo w&#261;skiej niszy geograficznej lub demograficznej, gdy Tw&oacute;j piksel nie jest prawid&#322;owo skonfigurowany&nbsp;&mdash; AI b&#281;dzie optymalizowa&#263; pod z&#322;e zdarzenia.</p>
 
-  <h2>Automatyczne testowanie kreacji z AI</h2>
-  <p>Kreacja &mdash; czyli grafika, wideo i tekst reklamy &mdash; jest dzi&#347; najwa&#380;niejsz&#261; d&#378;wigni&#261; skuteczno&#347;ci kampanii Meta Ads. Algorytm targetuje coraz lepiej sam, ale tre&#347;&#263; reklamy nadal pochodzi od cz&#322;owieka. Tu AI wchodzi z prawdziwym ROI.</p>
-  <p>Podej&#347;cie AI-first do kreacji wygl&#261;da nast&#281;puj&#261;co: generujesz du&#380;&#261; liczb&#281; wariant&oacute;w (10&ndash;30) r&oacute;&#380;nych hook&oacute;w (pierwsze 3 sekundy wideo lub nag&#322;&#243;wek grafiki), tre&#347;ci i CTA za pomoc&#261; modeli j&#281;zykowych i generator&oacute;w obraz&oacute;w, a nast&#281;pnie testujesz je r&oacute;wnolegle z ma&#322;ymi bud&#380;etami. Algorytm Mety szybko identyfikuje zwyci&#281;zc&oacute;w i zaczyna kierowa&#263; wi&#281;kszy bud&#380;et do najlepiej konwertuj&#261;cych kombinacji.</p>
-  <p>Dynamic Creative Optimization (DCO) &mdash; wbudowana funkcja Mety &mdash; pozwala przes&#322;a&#263; do 10 obraz&oacute;w, 5 nag&#322;&#243;wk&oacute;w i 5 tre&#347;ci reklamy, a system sam sk&#322;ada optymalne kombinacje dla r&oacute;&#380;nych segment&oacute;w audytorium. To nie jest test A/B &mdash; to wielowymiarowe testowanie z automatyczn&#261; optymalizacj&#261;.</p>
+  <h2>Automatyczne testowanie kreacji z&nbsp;AI</h2>
+  <p>Kreacja&nbsp;&mdash; czyli grafika, wideo i&nbsp;tekst reklamy&nbsp;&mdash; jest dzi&#347; najwa&#380;niejsz&#261; d&#378;wigni&#261; skuteczno&#347;ci kampanii Meta Ads. Algorytm targetuje coraz lepiej sam, ale tre&#347;&#263; reklamy nadal pochodzi od cz&#322;owieka. Tu AI wchodzi z&nbsp;prawdziwym ROI.</p>
+  <p>Podej&#347;cie AI-first do kreacji wygl&#261;da nast&#281;puj&#261;co: generujesz du&#380;&#261; liczb&#281; wariant&oacute;w (10&ndash;30) r&oacute;&#380;nych hook&oacute;w (pierwsze 3 sekundy wideo lub nag&#322;&#243;wek grafiki), tre&#347;ci i&nbsp;CTA za pomoc&#261; modeli j&#281;zykowych i&nbsp;generator&oacute;w obraz&oacute;w, a&nbsp;nast&#281;pnie testujesz je r&oacute;wnolegle z&nbsp;ma&#322;ymi bud&#380;etami. Algorytm Mety szybko identyfikuje zwyci&#281;zc&oacute;w i&nbsp;zaczyna kierowa&#263; wi&#281;kszy bud&#380;et do najlepiej konwertuj&#261;cych kombinacji.</p>
+  <p>Dynamic Creative Optimization (DCO)&nbsp;&mdash; wbudowana funkcja Mety&nbsp;&mdash; pozwala przes&#322;a&#263; do 10 obraz&oacute;w, 5 nag&#322;&#243;wk&oacute;w i&nbsp;5 tre&#347;ci reklamy, a&nbsp;system sam sk&#322;ada optymalne kombinacje dla r&oacute;&#380;nych segment&oacute;w audytorium. To nie jest test A/B&nbsp;&mdash; to wielowymiarowe testowanie z&nbsp;automatyczn&#261; optymalizacj&#261;.</p>
 
-  <h2>Jak prawid&#322;owo skonfigurowa&#263; piksel i Conversion API?</h2>
-  <p>Piksel Meta to skrypt &#347;ledz&#261;cy zachowanie u&#380;ytkownik&oacute;w na stronie. Po iOS 14.5 jego skuteczno&#347;&#263; wyra&#378;nie spad&#322;a &mdash; u&#380;ytkownicy, kt&oacute;rzy blokowali &#347;ledzenie, stali si&#281; niewidzialni dla algorytmu. Conversion API (CAPI) jest rozwi&#261;zaniem po stronie serwera: dane o konwersjach s&#261; wysy&#322;ane bezpo&#347;rednio z Twojego backendu do Mety, z pomini&#281;ciem ogranicze&#324; przegl&#261;darkowych.</p>
-  <p>Prawid&#322;owa konfiguracja CAPI obejmuje: wysy&#322;anie event&oacute;w Purchase, Add to Cart, Lead i Initiate Checkout z parametrami customer_information (hash email, telefon), deduplikacj&#281; zdarze&#324; (&#380;eby te same konwersje nie by&#322;y zliczane dwa razy przez piksel i CAPI) i u&#380;ywanie event_match_quality score &mdash; wska&#378;nika jako&#347;ci dopasowania, kt&oacute;ry powinien wynosi&#263; co najmniej 6&ndash;7/10.</p>
-  <p>Firmy z dobrze skonfigurowanym CAPI zwykle widz&#261; wi&#281;cej zmierzonych konwersji ni&#380; przy samym pikselu &mdash; co bezpo&#347;rednio przek&#322;ada si&#281; na ni&#380;sze CPA, bo algorytm dostaje wi&#281;cej danych do optymalizacji.</p>
+  <h2>Jak prawid&#322;owo skonfigurowa&#263; piksel i&nbsp;Conversion API?</h2>
+  <p>Piksel Meta to skrypt &#347;ledz&#261;cy zachowanie u&#380;ytkownik&oacute;w na stronie. Po iOS 14.5 jego skuteczno&#347;&#263; wyra&#378;nie spad&#322;a&nbsp;&mdash; u&#380;ytkownicy, kt&oacute;rzy blokowali &#347;ledzenie, stali si&#281; niewidzialni dla algorytmu. Conversion API (CAPI) jest rozwi&#261;zaniem po stronie serwera: dane o&nbsp;konwersjach s&#261; wysy&#322;ane bezpo&#347;rednio z&nbsp;Twojego backendu do Mety, z&nbsp;pomini&#281;ciem ogranicze&#324; przegl&#261;darkowych.</p>
+  <p>Prawid&#322;owa konfiguracja CAPI obejmuje: wysy&#322;anie event&oacute;w Purchase, Add to Cart, Lead i&nbsp;Initiate Checkout z&nbsp;parametrami customer_information (hash email, telefon), deduplikacj&#281; zdarze&#324; (&#380;eby te same konwersje nie by&#322;y zliczane dwa razy przez piksel i&nbsp;CAPI) i&nbsp;u&#380;ywanie event_match_quality score&nbsp;&mdash; wska&#378;nika jako&#347;ci dopasowania, kt&oacute;ry powinien wynosi&#263; co najmniej 6&ndash;7/10.</p>
+  <p>Firmy z&nbsp;dobrze skonfigurowanym CAPI zwykle widz&#261; wi&#281;cej zmierzonych konwersji ni&#380; przy samym pikselu&nbsp;&mdash; co bezpo&#347;rednio przek&#322;ada si&#281; na ni&#380;sze CPA, bo algorytm dostaje wi&#281;cej danych do optymalizacji.</p>
 
   <h2>Budget optimization: CBO vs. ABO</h2>
-  <p>Dwie strategie alokacji bud&#380;etu w Meta Ads: Campaign Budget Optimization (CBO), gdzie bud&#380;et jest ustawiany na poziomie kampanii i AI rozdziela go mi&#281;dzy zestawy reklam, oraz Ad Set Budget Optimization (ABO), gdzie ka&#380;dy zestaw ma przydzielony sta&#322;y bud&#380;et.</p>
-  <p>CBO jest lepszym wyborem w wi&#281;kszo&#347;ci przypadk&oacute;w &mdash; AI dynamicznie przesuwa bud&#380;et do najlepiej performuj&#261;cych zestaw&oacute;w, co zwi&#281;ksza efektywno&#347;&#263; ca&#322;ej kampanii. ABO ma sens, gdy testujesz nowe audytoria lub kreacje i chcesz zapewni&#263; ka&#380;demu zestawowi r&oacute;wne szanse na zebranie danych bez faworyzowania przez algorytm.</p>
-  <p>Warto&#347;ciow&#261; strategi&#261; jest r&oacute;wnie&#380; struktura &bdquo;zawsze aktywna&rdquo; (always-on): jedna kampania Advantage+ z bud&#380;etem CBO, stale zasilana now&#261; kreacj&#261; co 1&ndash;2 tygodnie. Zamiast uruchamia&#263; nowych kampanii dla ka&#380;dej promocji, wymieniasz tylko kreacje. Algorytm nie traci danych i nie musi &bdquo;uczy&#263; si&#281;&rdquo; od nowa przy ka&#380;dej zmianie.</p>
+  <p>Dwie strategie alokacji bud&#380;etu w&nbsp;Meta Ads: Campaign Budget Optimization (CBO), gdzie bud&#380;et jest ustawiany na poziomie kampanii i&nbsp;AI rozdziela go mi&#281;dzy zestawy reklam, oraz Ad Set Budget Optimization (ABO), gdzie ka&#380;dy zestaw ma przydzielony sta&#322;y bud&#380;et.</p>
+  <p>CBO jest lepszym wyborem w&nbsp;wi&#281;kszo&#347;ci przypadk&oacute;w&nbsp;&mdash; AI dynamicznie przesuwa bud&#380;et do najlepiej performuj&#261;cych zestaw&oacute;w, co zwi&#281;ksza efektywno&#347;&#263; ca&#322;ej kampanii. ABO ma sens, gdy testujesz nowe audytoria lub kreacje i&nbsp;chcesz zapewni&#263; ka&#380;demu zestawowi r&oacute;wne szanse na zebranie danych bez faworyzowania przez algorytm.</p>
+  <p>Warto&#347;ciow&#261; strategi&#261; jest r&oacute;wnie&#380; struktura &bdquo;zawsze aktywna&rdquo; (always-on): jedna kampania Advantage+ z&nbsp;bud&#380;etem CBO, stale zasilana now&#261; kreacj&#261; co 1&ndash;2 tygodnie. Zamiast uruchamia&#263; nowych kampanii dla ka&#380;dej promocji, wymieniasz tylko kreacje. Algorytm nie traci danych i&nbsp;nie musi &bdquo;uczy&#263; si&#281;&rdquo; od nowa przy ka&#380;dej zmianie.</p>
 
   <h2>Metryki, kt&oacute;re naprawd&#281; maj&#261; znaczenie</h2>
-  <p>Wiele firm patrzy na CTR i CPC jako g&#322;&#243;wne wska&#378;niki sukcesu. To b&#322;&#261;d: niski CPC przy zerowej konwersji to po prostu tani spos&oacute;b na przepalenie bud&#380;etu. Metryki, kt&oacute;re powinny kierowa&#263; decyzjami:</p>
+  <p>Wiele firm patrzy na CTR i&nbsp;CPC jako g&#322;&#243;wne wska&#378;niki sukcesu. To b&#322;&#261;d: niski CPC przy zerowej konwersji to po prostu tani spos&oacute;b na przepalenie bud&#380;etu. Metryki, kt&oacute;re powinny kierowa&#263; decyzjami:</p>
   <ul>
-    <li><strong>CPA (Cost per Acquisition)</strong> &mdash; koszt pozyskania klienta lub leadu. Jedyna metryka, kt&oacute;ra bezpo&#347;rednio m&oacute;wi o efektywno&#347;ci w odniesieniu do celu biznesowego.</li>
-    <li><strong>ROAS (Return on Ad Spend)</strong> &mdash; przych&oacute;d generowany na ka&#380;d&#261; z&#322;ot&oacute;wk&#281; wydaną na reklamy. Minimalny ROAS, kt&oacute;ry pozwala zarabia&#263;, jest inny dla ka&#380;dej firmy i zale&#380;y od mar&#380;y produktu.</li>
-    <li><strong>Frequency</strong> &mdash; &#347;rednia liczba wy&#347;wietle&#324; reklamy przez jednego u&#380;ytkownika. Frequency powy&#380;ej 3&ndash;4 to sygna&#322;, &#380;e audytorium jest nasycone i potrzebujesz nowej kreacji lub rozszerzonego targetowania.</li>
-    <li><strong>Hook Rate i Hold Rate</strong> &mdash; jaki procent u&#380;ytkownik&oacute;w obejrza&#322; pierwsze 3 sekundy wideo (hook rate) i jaki procent dotrwa&#322; do ko&#324;ca (hold rate). Te metryki oceniaj&#261; jako&#347;&#263; kreacji niezale&#380;nie od konwersji.</li>
+    <li><strong>CPA (Cost per Acquisition)</strong>&nbsp;&mdash; koszt pozyskania klienta lub leadu. Jedyna metryka, kt&oacute;ra bezpo&#347;rednio m&oacute;wi o&nbsp;efektywno&#347;ci w&nbsp;odniesieniu do celu biznesowego.</li>
+    <li><strong>ROAS (Return on Ad Spend)</strong>&nbsp;&mdash; przych&oacute;d generowany na ka&#380;d&#261; z&#322;ot&oacute;wk&#281; wydaną na reklamy. Minimalny ROAS, kt&oacute;ry pozwala zarabia&#263;, jest inny dla ka&#380;dej firmy i&nbsp;zale&#380;y od mar&#380;y produktu.</li>
+    <li><strong>Frequency</strong>&nbsp;&mdash; &#347;rednia liczba wy&#347;wietle&#324; reklamy przez jednego u&#380;ytkownika. Frequency powy&#380;ej 3&ndash;4 to sygna&#322;, &#380;e audytorium jest nasycone i&nbsp;potrzebujesz nowej kreacji lub rozszerzonego targetowania.</li>
+    <li><strong>Hook Rate i&nbsp;Hold Rate</strong>&nbsp;&mdash; jaki procent u&#380;ytkownik&oacute;w obejrza&#322; pierwsze 3 sekundy wideo (hook rate) i&nbsp;jaki procent dotrwa&#322; do ko&#324;ca (hold rate). Te metryki oceniaj&#261; jako&#347;&#263; kreacji niezale&#380;nie od konwersji.</li>
   </ul>
 
   <div class="blog-tip">
-    <strong>Conversion API jest niezb&#281;dny po iOS 14.5:</strong> Bez CAPI Twoje konto Meta widzi tylko cz&#281;&#347;&#263; rzeczywistych konwersji z systemu iOS &mdash; algorytm optymalizuje pod niepełne dane i podejmuje gorsze decyzje. <strong>Wdro&#380;enie Conversion API po stronie serwera to jeden zabieg techniczny, kt&oacute;ry &mdash; bez zmiany bud&#380;etu ani kreacji &mdash; mo&#380;e obni&#380;y&#263; CPA</strong> przez sam fakt dostarczenia algorytmowi pe&#322;niejszych danych.
+    <strong>Conversion API jest niezb&#281;dny po iOS 14.5:</strong> Bez CAPI Twoje konto Meta widzi tylko cz&#281;&#347;&#263; rzeczywistych konwersji z&nbsp;systemu iOS&nbsp;&mdash; algorytm optymalizuje pod niepełne dane i&nbsp;podejmuje gorsze decyzje. <strong>Wdro&#380;enie Conversion API po stronie serwera to jeden zabieg techniczny, kt&oacute;ry&nbsp;&mdash; bez zmiany bud&#380;etu ani kreacji&nbsp;&mdash; mo&#380;e obni&#380;y&#263; CPA</strong> przez sam fakt dostarczenia algorytmowi pe&#322;niejszych danych.
   </div>
 </article>
 
 <div class="blog-cta-box wrap">
   <h3>Zoptymalizujemy Twoje kampanie Meta Ads</h3>
-  <p>Audyt konta, konfiguracja Conversion API, strategia kreacji i wdro&#380;enie Advantage+ &mdash; z mierzalnymi wynikami w 60 dniach.</p>
+  <p>Audyt konta, konfiguracja Conversion API, strategia kreacji i&nbsp;wdro&#380;enie Advantage+&nbsp;&mdash; z&nbsp;mierzalnymi wynikami w&nbsp;60 dniach.</p>
   <a href="../kontakt" class="btn btn-primary">Um&oacute;w bezp&#322;atn&#261; konsultacj&#281;</a>
 </div>
 
 <div class="blog-also wrap">
-  <h4>Przeczytaj r&oacute;wnie&#380;</h4>
+  <h2 class="also-h">Przeczytaj r&oacute;wnie&#380;</h2>
   <div class="blog-also-grid">
     <a class="blog-also-item" href="automatyzacje-email">
       <span class="eyebrow">Automatyzacje</span>
@@ -636,7 +637,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <img class="logo-mark" src="../sygnet.png" alt="" width="140" height="170" aria-hidden="true">
           <img class="logo-word" src="../samo%20skaluj.png" alt="skaluj.ai" width="478" height="112">
         </a>
-        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
+        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i&nbsp;widoczność w&nbsp;AI (GEO), automatyzacje i&nbsp;branding&nbsp;— od audytu po opiekę.</p>
         <div class="footer-social" aria-label="Social media">
           <a href="https://www.facebook.com/profile.php?id=61591091827937" target="_blank" rel="noopener" class="fsoc" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8H16l.5-3.1h-3V8.3c0-.9.25-1.5 1.5-1.5h1.6V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.6H8v3.1h2.5v8z"/></svg></a>
           <a href="https://www.instagram.com/skaluj.ai/" target="_blank" rel="noopener" class="fsoc" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.7" stroke="currentColor" stroke-width="1.7"/><circle cx="16.6" cy="7.4" r="1.15" fill="currentColor"/></svg></a>
@@ -645,11 +646,11 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <nav class="footer-col" aria-label="Oferta">
         <h3>Oferta</h3>
         <ul>
-          <li><a href="../oferta/strona-seo">Strony i SEO/GEO</a></li>
+          <li><a href="../oferta/strona-seo">Strony i&nbsp;SEO/GEO</a></li>
           <li><a href="../oferta/geo-seo">Widoczność w&nbsp;AI (GEO)</a></li>
           <li><a href="../oferta/reklamy-chatgpt">Reklamy w&nbsp;ChatGPT</a></li>
-          <li><a href="../oferta/branding">Grafiki i branding</a></li>
-          <li><a href="../oferta/rolki-ai">Rolki i wideo AI</a></li>
+          <li><a href="../oferta/branding">Grafiki i&nbsp;branding</a></li>
+          <li><a href="../oferta/rolki-ai">Rolki i&nbsp;wideo AI</a></li>
           <li><a href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji</a></li>
           <li><a href="../oferta/automatyzacje-email">Automatyzacje AI</a></li>
           <li><a href="../oferta/chatbot-ai">Chatbot AI</a></li>
@@ -658,7 +659,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <nav class="footer-col" aria-label="Blog">
         <h3>Blog</h3>
         <ul>
-          <li><a href="../blog/strona-seo">Strona i SEO</a></li>
+          <li><a href="../blog/strona-seo">Strona i&nbsp;SEO</a></li>
           <li><a href="../blog/geo-ai-search">GEO / AI Search</a></li>
           <li><a href="../blog/reklamy-chatgpt">Reklamy AI</a></li>
           <li><a href="../blog/meta-ads-ai">Meta Ads</a></li>
@@ -677,7 +678,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <li><a href="../#case-studies">Case studies</a></li>
           <li><a href="../#integracje">Integracje</a></li>
           <li><a href="../#proces">Proces</a></li>
-          <li><a href="../#o-nas">O nas</a></li>
+          <li><a href="../#o-nas">O&nbsp;nas</a></li>
           <li><a href="../#faq">FAQ</a></li>
         </ul>
       </nav>
@@ -695,7 +696,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       </div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj<span class="wm-dot">.</span>ai</div>
-    <div class="footer-bottom"><span>© 2026 skaluj.ai Sergiusz Serafin — wszystkie prawa zastrzeżone</span><span>NIP 8133960157 · REGON 545915660</span><span>Zaprojektowano w Polsce</span></div>
+    <div class="footer-bottom"><span>© 2026 skaluj.ai Sergiusz Serafin&nbsp;— wszystkie prawa zastrzeżone</span><span>NIP 8133960157 · REGON&nbsp;545915660</span><span>Zaprojektowano w&nbsp;Polsce</span></div>
   </div>
 </footer>
 

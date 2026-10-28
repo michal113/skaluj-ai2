@@ -288,38 +288,6 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .logo .brand-img{height:24px;width:auto;display:block}
 .footer{position:relative;overflow:hidden}
 .footer .wrap{position:relative;z-index:1}
-/* ===== widget: symulacja czatu AI (GEO demo) ===== */
-.geo-chat{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(165deg,#ffffff 0%,#f5f7fa 100%);box-shadow:0 24px 60px -24px rgba(15,30,60,.25),0 0 0 1px rgba(0,0,0,.03);margin:26px 0 8px}
-.gc-top{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.6)}
-.gc-dots{display:flex;gap:6px}
-.gc-dots i{width:8px;height:8px;border-radius:50%}
-.gc-dots i:nth-child(1){background:#ff5f57}.gc-dots i:nth-child(2){background:#febc2e}.gc-dots i:nth-child(3){background:#28c840}
-.gc-title{flex:1;text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.05em}
-.gc-replay{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--muted);background:none;border:1px solid var(--line);border-radius:9999px;padding:4px 11px;cursor:pointer;transition:color .2s,border-color .2s}
-.gc-replay:hover{color:var(--accent);border-color:rgba(47,111,224,.4)}
-.gc-body{padding:20px;display:flex;flex-direction:column;gap:14px;min-height:252px}
-.gc-msg{max-width:88%;opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
-.gc-msg.in{opacity:1;transform:none}
-.gc-user{align-self:flex-end;background:var(--text);color:#fff;border-radius:14px 14px 4px 14px;padding:11px 15px;font-size:13.5px;line-height:1.55}
-.gc-ai{align-self:flex-start;display:flex;gap:10px;width:100%}
-.gc-ava{flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-top:2px}
-.gc-ava svg{width:14px;height:14px}
-.gc-bubble{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:4px 14px 14px 14px;padding:12px 15px;font-size:13.5px;line-height:1.6;color:var(--muted);flex:1;min-width:0}
-.gc-bubble strong{color:var(--accent);font-weight:600}
-.gc-typing{display:inline-flex;gap:4px;padding:3px 0}
-.gc-typing i{width:6px;height:6px;border-radius:50%;background:var(--faint);animation:gcB 1.1s ease-in-out infinite}
-.gc-typing i:nth-child(2){animation-delay:.15s}.gc-typing i:nth-child(3){animation-delay:.3s}
-@keyframes gcB{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
-.gc-caret{display:inline-block;width:2px;height:1em;background:var(--accent);vertical-align:-2px;margin-left:1px;animation:gcC .85s step-end infinite}
-@keyframes gcC{50%{opacity:0}}
-.gc-src{display:none;align-items:center;gap:8px;margin-top:12px;padding-top:11px;border-top:1px solid var(--line-2)}
-.gc-src.in{display:flex}
-.gc-src-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
-.gc-src-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:9999px;background:#fff;border:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--text);transition:border-color .2s,color .2s}
-.gc-src-chip:hover{border-color:var(--accent);color:var(--accent)}
-.gc-src-chip svg{width:10px;height:10px;color:var(--accent)}
-.gc-note{font-size:11px;color:var(--faint);line-height:1.5;padding:0 20px 16px}
-@media (prefers-reduced-motion: reduce){.gc-msg{transition:none}.gc-typing i{animation:none}.gc-caret{display:none}}
 </style>
 <style>.svc-faq{margin:8px 0 8px}.svc-faq .faq-i{border-top:1px solid var(--line);padding:18px 0}.svc-faq .faq-i:last-child{border-bottom:1px solid var(--line)}.svc-faq h3{font-size:1.02rem;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}.svc-faq p{margin:0;color:var(--muted)}</style>
 <script type="application/ld+json">
@@ -615,21 +583,21 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <div class="dd-head"><a class="c" href="../#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-cols">
             <div class="dd-col">
-              <div class="dd-group">Strona i widoczność</div>
-              <a class="dd-row" href="../oferta/strona-seo"><span class="dd-tx"><b>Strona internetowa + SEO i GEO</b><i>Widoczna w Google i polecana przez AI</i></span></a>
-              <a class="dd-row" href="../oferta/geo-seo"><span class="dd-tx"><b>Pozycjonowanie w AI — GEO i SEO</b><i>Masz stronę? Wypozycjonujemy ją w AI</i></span></a>
-              <a class="dd-row" href="../oferta/reklamy-chatgpt"><span class="dd-tx"><b>Reklamy w ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
+              <div class="dd-group">Strona i&nbsp;widoczność</div>
+              <a class="dd-row" href="../oferta/strona-seo"><span class="dd-tx"><b>Strona internetowa + SEO i&nbsp;GEO</b><i>Widoczna w&nbsp;Google i&nbsp;polecana przez AI</i></span></a>
+              <a class="dd-row" href="../oferta/geo-seo"><span class="dd-tx"><b>Pozycjonowanie w&nbsp;AI&nbsp;— GEO i&nbsp;SEO</b><i>Masz stronę? Wypozycjonujemy ją w&nbsp;AI</i></span></a>
+              <a class="dd-row" href="../oferta/reklamy-chatgpt"><span class="dd-tx"><b>Reklamy w&nbsp;ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
             </div>
             <div class="dd-col">
               <div class="dd-group">Branding</div>
-              <a class="dd-row" href="../oferta/branding"><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
-              <a class="dd-row" href="../oferta/rolki-ai"><span class="dd-tx"><b>Rolki i wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i lektor AI pod social media</i></span></a>
+              <a class="dd-row" href="../oferta/branding"><span class="dd-tx"><b>Grafiki i&nbsp;branding</b><i>Spójna marka w&nbsp;każdym kanale</i></span></a>
+              <a class="dd-row" href="../oferta/rolki-ai"><span class="dd-tx"><b>Rolki i&nbsp;wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i&nbsp;lektor AI pod social media</i></span></a>
             </div>
             <div class="dd-col">
               <div class="dd-group">Automatyzacje</div>
-              <a class="dd-row" href="../oferta/audyt-cyfryzacji"><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Widoczność, procesy i narzędzia</i></span></a>
+              <a class="dd-row" href="../oferta/audyt-cyfryzacji"><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Widoczność, procesy i&nbsp;narzędzia</i></span></a>
               <a class="dd-row" href="../oferta/automatyzacje-email"><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
-              <a class="dd-row" href="../oferta/chatbot-ai"><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
+              <a class="dd-row" href="../oferta/chatbot-ai"><span class="dd-tx"><b>Asystent i&nbsp;chatbot AI</b><i>Klient obsłużony w&nbsp;sekundy, 24/7</i></span></a>
             </div>
           </div>
         </div>
@@ -644,15 +612,15 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
         </button>
         <div class="dropdown dropdown--blog" id="blogMenu">
           <div class="dd-head"><a class="c" href="../blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-          <a class="dd-row dd-row--post" href="../blog/strona-seo"><span class="dd-tx"><i>Strona i SEO</i><b>Strona, która sprzedaje</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w ChatGPT i AI</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w ChatGPT — jak działają i ile kosztują</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — jak obniżyć koszt pozyskania klienta</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w 2026</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI — napisy, lektor i AI Act</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności — sprawdź, gdzie jesteś</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z AI — 5 scenariuszy</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/chatbot-ai"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI — kiedy warto, a kiedy szkodzi</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/strona-seo"><span class="dd-tx"><i>Strona i&nbsp;SEO</i><b>Strona, która sprzedaje</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w&nbsp;ChatGPT i&nbsp;AI</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w&nbsp;ChatGPT&nbsp;— jak działają i&nbsp;ile kosztują</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z&nbsp;AI&nbsp;— jak obniżyć koszt pozyskania klienta</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w&nbsp;2026</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI&nbsp;— napisy, lektor i&nbsp;AI&nbsp;Act</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności&nbsp;— sprawdź, gdzie jesteś</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z&nbsp;AI&nbsp;— 5 scenariuszy</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/chatbot-ai"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI&nbsp;— kiedy warto, a&nbsp;kiedy szkodzi</b></span></a>
         </div>
       </div>
     </div>
@@ -667,22 +635,22 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   <a href="../"><span>Start</span></a>
   <div class="mm-blog">
     <span class="mm-h">Oferta</span>
-    <span class="mm-group">Strona i widoczność</span>
-    <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i GEO</a>
-    <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w AI — GEO i SEO</a>
-    <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w ChatGPT</a>
+    <span class="mm-group">Strona i&nbsp;widoczność</span>
+    <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i&nbsp;GEO</a>
+    <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w&nbsp;AI&nbsp;— GEO i&nbsp;SEO</a>
+    <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w&nbsp;ChatGPT</a>
     <span class="mm-group">Branding</span>
-    <a class="mm-sub" href="../oferta/branding">Grafiki i branding</a>
-    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i wideo AI</a>
+    <a class="mm-sub" href="../oferta/branding">Grafiki i&nbsp;branding</a>
+    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i&nbsp;wideo AI</a>
     <span class="mm-group">Automatyzacje</span>
     <a class="mm-sub" href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji firmy</a>
     <a class="mm-sub" href="../oferta/automatyzacje-email">Automatyzacje biznesowe AI</a>
-    <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i chatbot AI</a>
+    <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i&nbsp;chatbot AI</a>
   </div>
   <a href="../#case-studies"><span>Case studies</span></a>
   <a href="../#integracje"><span>Integracje</span></a>
   <a href="../#proces"><span>Proces</span></a>
-  <a href="../#o-nas"><span>O nas</span></a>
+  <a href="../#o-nas"><span>O&nbsp;nas</span></a>
   <a href="../#faq"><span>FAQ</span></a>
   <a href="../blog/"><span>Blog</span></a>
   <a href="../kontakt"><span>Kontakt</span></a>
@@ -697,9 +665,9 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   </video>
   <div class="svc-hero-overlay"></div>
   <div class="wrap">
-    <span class="svc-eyebrow">Rolki i wideo</span>
-    <h1 class="svc-title">Rolki, które ludzie oglądają do&nbsp;końca. <br><span class="tl-geo">Wideo, napisy i lektor AI</span></h1>
-    <p class="svc-sub">Krótkie wideo na Instagram Reels, TikToka i YouTube Shorts dla Twojej firmy. Piszemy scenariusz i hook, montujemy z pomocą AI, dodajemy napisy słowo po słowie i lektora AI — także w wersjach obcojęzycznych. Każdą rolkę przed publikacją sprawdza człowiek.</p>
+    <span class="svc-eyebrow">Rolki i&nbsp;wideo</span>
+    <h1 class="svc-title">Rolki, które ludzie oglądają do&nbsp;końca. <br><span class="tl-geo">Wideo, napisy i&nbsp;lektor AI</span></h1>
+    <p class="svc-sub">Krótkie wideo na Instagram Reels, TikToka i&nbsp;YouTube Shorts dla Twojej firmy. Piszemy scenariusz i&nbsp;hook, montujemy z&nbsp;pomocą AI, dodajemy napisy słowo po słowie i&nbsp;lektora AI&nbsp;— także w&nbsp;wersjach obcojęzycznych. Każdą rolkę przed publikacją sprawdza człowiek.</p>
     <div class="svc-cta-row">
       <a href="../kontakt" class="btn btn-primary">Umów bezpłatną konsultację</a>
       <a class="btn" href="../#oferta" style="border:1px solid var(--line)">Cała oferta</a>
@@ -709,85 +677,85 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 
 <article class="svc-body wrap">
   <h2>Dla kogo to jest</h2>
-  <p>Dla firm, które wiedzą, że powinny publikować krótkie wideo, ale <strong>nie mają na to ludzi ani czasu</strong>. Dla marek, które mają świetny materiał — webinary, wywiady, nagrania z produkcji, zdjęcia produktów — i nic z nim nie robią. I dla firm, które sprzedają za granicą i potrzebują tej samej rolki po polsku, angielsku i niemiecku, bez trzech osobnych produkcji.</p>
-  <p>Rolki to dziś główny format na Instagramie, TikToku i YouTube. Algorytmy pokazują je ludziom, którzy Cię jeszcze nie obserwują — dlatego to najtańszy sposób, żeby nowa osoba zobaczyła Twoją firmę po raz pierwszy.</p>
+  <p>Dla firm, które wiedzą, że powinny publikować krótkie wideo, ale <strong>nie mają na to ludzi ani czasu</strong>. Dla marek, które mają świetny materiał&nbsp;— webinary, wywiady, nagrania z&nbsp;produkcji, zdjęcia produktów&nbsp;— i&nbsp;nic z&nbsp;nim nie robią. I&nbsp;dla firm, które sprzedają za granicą i&nbsp;potrzebują tej samej rolki po polsku, angielsku i&nbsp;niemiecku, bez trzech osobnych produkcji.</p>
+  <p>Rolki to dziś główny format na Instagramie, TikToku i&nbsp;YouTube. Algorytmy pokazują je ludziom, którzy Cię jeszcze nie obserwują&nbsp;— dlatego to najtańszy sposób, żeby nowa osoba zobaczyła Twoją firmę po raz pierwszy.</p>
 
   <h2>Co dokładnie robimy</h2>
   <ul class="svc-list">
-    <li><strong>Scenariusz i hook.</strong> Pierwsze dwie sekundy decydują, czy ktoś przewinie dalej. Piszemy scenariusz pod konkretny cel — zasięg, ruch na stronę, zapytania — a nie „żeby coś wrzucić”.</li>
-    <li><strong>Montaż wspierany przez AI.</strong> AI wycina ciszę, wybiera najmocniejsze fragmenty i składa wersje robocze. Rytm, cięcia i finalny wybór robi montażysta.</li>
-    <li><strong>Transkrypcja i napisy.</strong> Automatyczna transkrypcja, poprawiona ręcznie — polskie odmiany, nazwy własne i branżowe słownictwo AI potrafi przekręcić. Napisy animowane słowo po słowie, w kolorach Twojej marki.</li>
-    <li><strong>Lektor AI.</strong> Naturalny głos z licencją komercyjną albo klon Twojego głosu — wyłącznie za pisemną zgodą osoby, do której należy.</li>
-    <li><strong>Wersje językowe.</strong> Z jednego nagrania robimy wersje EN i DE: tłumaczenie, napisy i lektor. Tłumaczenie sprawdza człowiek.</li>
-    <li><strong>Seria z jednego materiału.</strong> Godzinny webinar albo podcast to materiał na kilkanaście rolek. Wybieramy fragmenty, które bronią się bez kontekstu.</li>
-    <li><strong>Formaty pod reklamy.</strong> Wersje 9:16, 4:5 i 1:1 pod kampanie, gotowe do <a href="../blog/meta-ads-ai">testów w Meta Ads</a>.</li>
-    <li><strong>Opisy, okładki i oznaczenia AI.</strong> Opis z frazami, które ludzie wpisują w wyszukiwarkę platformy, okładka w stylu marki i świadomie ustawione oznaczenie treści AI tam, gdzie jest wymagane.</li>
+    <li><strong>Scenariusz i&nbsp;hook.</strong> Pierwsze dwie sekundy decydują, czy ktoś przewinie dalej. Piszemy scenariusz pod konkretny cel&nbsp;— zasięg, ruch na stronę, zapytania&nbsp;— a&nbsp;nie „żeby coś wrzucić”.</li>
+    <li><strong>Montaż wspierany przez AI.</strong> AI wycina ciszę, wybiera najmocniejsze fragmenty i&nbsp;składa wersje robocze. Rytm, cięcia i&nbsp;finalny wybór robi montażysta.</li>
+    <li><strong>Transkrypcja i&nbsp;napisy.</strong> Automatyczna transkrypcja, poprawiona ręcznie&nbsp;— polskie odmiany, nazwy własne i&nbsp;branżowe słownictwo AI potrafi przekręcić. Napisy animowane słowo po słowie, w&nbsp;kolorach Twojej marki.</li>
+    <li><strong>Lektor AI.</strong> Naturalny głos z&nbsp;licencją komercyjną albo klon Twojego głosu&nbsp;— wyłącznie za pisemną zgodą osoby, do której należy.</li>
+    <li><strong>Wersje językowe.</strong> Z&nbsp;jednego nagrania robimy wersje EN i&nbsp;DE: tłumaczenie, napisy i&nbsp;lektor. Tłumaczenie sprawdza człowiek.</li>
+    <li><strong>Seria z&nbsp;jednego materiału.</strong> Godzinny webinar albo podcast to materiał na kilkanaście rolek. Wybieramy fragmenty, które bronią się bez kontekstu.</li>
+    <li><strong>Formaty pod reklamy.</strong> Wersje 9:16, 4:5 i&nbsp;1:1 pod kampanie, gotowe do <a href="../blog/meta-ads-ai">testów w&nbsp;Meta Ads</a>.</li>
+    <li><strong>Opisy, okładki i&nbsp;oznaczenia AI.</strong> Opis z&nbsp;frazami, które ludzie wpisują w&nbsp;wyszukiwarkę platformy, okładka w&nbsp;stylu marki i&nbsp;świadomie ustawione oznaczenie treści AI tam, gdzie jest wymagane.</li>
   </ul>
 
 <div class="svc-table-wrap">
 <table class="svc-table">
-<thead><tr><th></th><th>Klasyczna produkcja wideo</th><th>Rolki z AI u nas</th></tr></thead>
+<thead><tr><th></th><th>Klasyczna produkcja wideo</th><th>Rolki z&nbsp;AI u&nbsp;nas</th></tr></thead>
 <tbody>
-<tr><td>Czas od briefu do rolki</td><td data-label="Klasyczna produkcja wideo">Zwykle tygodnie &mdash; plan zdjęciowy, nagranie, montaż</td><td data-label="Rolki z AI u nas">Dni &mdash; pracujemy na Twoim materiale albo ujęciach z licencją</td></tr>
-<tr><td>Wersja w innym języku</td><td data-label="Klasyczna produkcja wideo">Nowy lektor, nowe nagranie, nowy montaż</td><td data-label="Rolki z AI u nas">Tłumaczenie, napisy i lektor AI na tym samym montażu</td></tr>
-<tr><td>Poprawka w tekście</td><td data-label="Klasyczna produkcja wideo">Często dogranie lektora</td><td data-label="Rolki z AI u nas">Zmiana w scenariuszu i nowe wygenerowanie głosu</td></tr>
-<tr><td>Skala</td><td data-label="Klasyczna produkcja wideo">Kilka filmów na kampanię</td><td data-label="Rolki z AI u nas">Seria rolek z jednego nagrania</td></tr>
+<tr><td>Czas od briefu do rolki</td><td data-label="Klasyczna produkcja wideo">Zwykle tygodnie&nbsp;&mdash; plan zdjęciowy, nagranie, montaż</td><td data-label="Rolki z AI u nas">Dni&nbsp;&mdash; pracujemy na Twoim materiale albo ujęciach z&nbsp;licencją</td></tr>
+<tr><td>Wersja w&nbsp;innym języku</td><td data-label="Klasyczna produkcja wideo">Nowy lektor, nowe nagranie, nowy montaż</td><td data-label="Rolki z AI u nas">Tłumaczenie, napisy i&nbsp;lektor AI na tym samym montażu</td></tr>
+<tr><td>Poprawka w&nbsp;tekście</td><td data-label="Klasyczna produkcja wideo">Często dogranie lektora</td><td data-label="Rolki z AI u nas">Zmiana w&nbsp;scenariuszu i&nbsp;nowe wygenerowanie głosu</td></tr>
+<tr><td>Skala</td><td data-label="Klasyczna produkcja wideo">Kilka filmów na kampanię</td><td data-label="Rolki z AI u nas">Seria rolek z&nbsp;jednego nagrania</td></tr>
 <tr><td>Gdzie pracuje człowiek</td><td data-label="Klasyczna produkcja wideo">Wszędzie</td><td data-label="Rolki z AI u nas">Scenariusz, hook, decyzje montażowe, kontrola jakości</td></tr>
 </tbody>
 </table>
 </div>
 
   <h2>Napisy to nie detal</h2>
-  <p>Dużo osób ogląda rolki w miejscach, gdzie nie może włączyć dźwięku — w pracy, w komunikacji miejskiej, w kolejce. Bez napisów taka osoba widzi tylko ruszające się usta i przewija dalej. <strong>Napisy trzymają uwagę do końca</strong>, a ruch na ekranie podąża za tym, co właśnie słychać.</p>
-  <p>Druga rzecz: napisy i transkrypcja to tekst. Ludzie z niedosłuchem mogą obejrzeć Twoją rolkę, a wyszukiwarka platformy dostaje słowa, po których może ją znaleźć. Poprawiamy je ręcznie, bo jedna przekręcona nazwa produktu w napisach kosztuje więcej wiarygodności, niż zaoszczędził automat.</p>
+  <p>Dużo osób ogląda rolki w&nbsp;miejscach, gdzie nie może włączyć dźwięku&nbsp;— w&nbsp;pracy, w&nbsp;komunikacji miejskiej, w&nbsp;kolejce. Bez napisów taka osoba widzi tylko ruszające się usta i&nbsp;przewija dalej. <strong>Napisy trzymają uwagę do końca</strong>, a&nbsp;ruch na ekranie podąża za tym, co właśnie słychać.</p>
+  <p>Druga rzecz: napisy i&nbsp;transkrypcja to tekst. Ludzie z&nbsp;niedosłuchem mogą obejrzeć Twoją rolkę, a&nbsp;wyszukiwarka platformy dostaje słowa, po których może ją znaleźć. Poprawiamy je ręcznie, bo jedna przekręcona nazwa produktu w&nbsp;napisach kosztuje więcej wiarygodności, niż zaoszczędził automat.</p>
 
-  <h2>Lektor AI i Twój głos — tylko za zgodą</h2>
-  <p>Głos jest w Polsce chroniony podobnie jak wizerunek — sądy traktują go jako dobro osobiste. Sklonowanie czyjegoś głosu bez zgody to naruszenie, nawet jeśli brzmi tylko „podobnie”, a w Polsce są już pierwsze spory lektorów o głosy użyte w reklamach bez ich wiedzy.</p>
-  <p>Dlatego zasada jest prosta: <strong>klonujemy wyłącznie głos osoby, która podpisała zgodę</strong> — Twój, Twojego pracownika albo lektora, z którym masz umowę. W pozostałych przypadkach używamy syntetycznych głosów z licencją komercyjną. Żadnych głosów „jak ten znany lektor”.</p>
+  <h2>Lektor AI i&nbsp;Twój głos&nbsp;— tylko za zgodą</h2>
+  <p>Głos jest w&nbsp;Polsce chroniony podobnie jak wizerunek&nbsp;— sądy traktują go jako dobro osobiste. Sklonowanie czyjegoś głosu bez zgody to naruszenie, nawet jeśli brzmi tylko „podobnie”, a&nbsp;w&nbsp;Polsce są już pierwsze spory lektorów o&nbsp;głosy użyte w&nbsp;reklamach bez ich wiedzy.</p>
+  <p>Dlatego zasada jest prosta: <strong>klonujemy wyłącznie głos osoby, która podpisała zgodę</strong>&nbsp;— Twój, Twojego pracownika albo lektora, z&nbsp;którym masz umowę. W&nbsp;pozostałych przypadkach używamy syntetycznych głosów z&nbsp;licencją komercyjną. Żadnych głosów „jak ten znany lektor”.</p>
 
-  <h2>AI Act i oznaczenia — robimy to wprost</h2>
-  <p>Od <strong>2 sierpnia 2026</strong> obowiązuje art. 50 AI Act. Kto publikuje deepfake — realistyczny obraz, głos albo wydarzenie, które wyglądają na prawdziwe — musi to wyraźnie oznaczyć najpóźniej przy pierwszym kontakcie odbiorcy z treścią. Za naruszenia przewidziano kary do 15 mln euro albo 3% obrotu.</p>
-  <p>Do tego platformy działają same: Meta, TikTok i YouTube oznaczają realistyczne treści AI etykietą, a część z nich wykrywa je automatycznie po metadanych. Montaż, napisy czy korekta koloru zrobione z AI zwykle oznaczenia nie wymagają; realistyczna postać albo głos — tak.</p>
-  <p>Każdą rolkę klasyfikujemy przed publikacją i <strong>ustawiamy oznaczenie świadomie</strong>, tak żeby było zgodne z przepisami i nie zabijało przekazu. Lepiej, żeby etykietę postawił ktoś, kto o niej pomyślał, niż żeby platforma dokleiła ją sama.</p>
+  <h2>AI&nbsp;Act i&nbsp;oznaczenia&nbsp;— robimy to wprost</h2>
+  <p>Od <strong>2&nbsp;sierpnia 2026</strong> obowiązuje art.&nbsp;50 AI&nbsp;Act. Kto publikuje deepfake&nbsp;— realistyczny obraz, głos albo wydarzenie, które wyglądają na prawdziwe&nbsp;— musi to wyraźnie oznaczyć najpóźniej przy pierwszym kontakcie odbiorcy z&nbsp;treścią. Za naruszenia przewidziano kary do 15 mln euro albo 3% obrotu.</p>
+  <p>Do tego platformy działają same: Meta, TikTok i&nbsp;YouTube oznaczają realistyczne treści AI etykietą, a&nbsp;część z&nbsp;nich wykrywa je automatycznie po metadanych. Montaż, napisy czy korekta koloru zrobione z&nbsp;AI zwykle oznaczenia nie wymagają; realistyczna postać albo głos&nbsp;— tak.</p>
+  <p>Każdą rolkę klasyfikujemy przed publikacją i&nbsp;<strong>ustawiamy oznaczenie świadomie</strong>, tak żeby było zgodne z&nbsp;przepisami i&nbsp;nie zabijało przekazu. Lepiej, żeby etykietę postawił ktoś, kto o&nbsp;niej pomyślał, niż żeby platforma dokleiła ją sama.</p>
 
   <h2>Jak pracujemy</h2>
   <div class="svc-steps">
-    <div class="svc-step"><span class="num">1</span><span class="tx"><b>Brief.</b> Cel, odbiorcy, materiał, który już masz, i ton marki. Jeśli masz <a href="../oferta/branding">identyfikację wizualną</a>, napisy i okładki od razu idą w jej kolorach.</span></div>
-    <div class="svc-step"><span class="num">2</span><span class="tx"><b>Scenariusze.</b> Kilka hooków i scenariuszy do akceptacji, zanim cokolwiek zmontujemy.</span></div>
-    <div class="svc-step"><span class="num">3</span><span class="tx"><b>Seria próbna.</b> Kilka rolek w różnych formatach, żeby zobaczyć na danych, co działa w Twojej branży.</span></div>
-    <div class="svc-step"><span class="num">4</span><span class="tx"><b>Stały rytm.</b> Seria publikacji w ustalonym tempie, z poprawkami na podstawie wyników.</span></div>
-    <div class="svc-step"><span class="num">5</span><span class="tx"><b>Raport.</b> Obejrzenia do końca, zapisania, udostępnienia i kliknięcia — nie same wyświetlenia.</span></div>
+    <div class="svc-step"><span class="num">1</span><span class="tx"><b>Brief.</b> Cel, odbiorcy, materiał, który już masz, i&nbsp;ton marki. Jeśli masz <a href="../oferta/branding">identyfikację wizualną</a>, napisy i&nbsp;okładki od razu idą w&nbsp;jej kolorach.</span></div>
+    <div class="svc-step"><span class="num">2</span><span class="tx"><b>Scenariusze.</b> Kilka hooków i&nbsp;scenariuszy do akceptacji, zanim cokolwiek zmontujemy.</span></div>
+    <div class="svc-step"><span class="num">3</span><span class="tx"><b>Seria próbna.</b> Kilka rolek w&nbsp;różnych formatach, żeby zobaczyć na danych, co działa w&nbsp;Twojej branży.</span></div>
+    <div class="svc-step"><span class="num">4</span><span class="tx"><b>Stały rytm.</b> Seria publikacji w&nbsp;ustalonym tempie, z&nbsp;poprawkami na podstawie wyników.</span></div>
+    <div class="svc-step"><span class="num">5</span><span class="tx"><b>Raport.</b> Obejrzenia do końca, zapisania, udostępnienia i&nbsp;kliknięcia&nbsp;— nie same wyświetlenia.</span></div>
   </div>
 
   <h2>Ile to kosztuje</h2>
-  <p>Cena zależy od liczby rolek, wersji językowych i tego, czy pracujemy na Twoim materiale, czy coś trzeba wygenerować lub nagrać. Zaczynamy od <strong>serii próbnej</strong>, żebyś zobaczył efekt, zanim zdecydujesz o stałej współpracy. Budżet ustalamy z Tobą — bez abonamentu na rok z góry.</p>
+  <p>Cena zależy od liczby rolek, wersji językowych i&nbsp;tego, czy pracujemy na Twoim materiale, czy coś trzeba wygenerować lub nagrać. Zaczynamy od <strong>serii próbnej</strong>, żebyś zobaczył efekt, zanim zdecydujesz o&nbsp;stałej współpracy. Budżet ustalamy z&nbsp;Tobą&nbsp;— bez abonamentu na rok z&nbsp;góry.</p>
 
   <h2>Czego nie obiecujemy</h2>
-  <p>Nie obiecujemy viralu, bo nikt uczciwy tego nie obieca. Nie robimy deepfake'ów prawdziwych osób bez ich zgody i nie produkujemy masowo powtarzalnych filmów bez wartości — platformy coraz mocniej je ograniczają, a widzowie i tak je przewijają.</p>
-  <p>Obiecujemy natomiast rolki, które mają cel, napisy bez błędów i oznaczenia AI ustawione zgodnie z przepisami.</p>
+  <p>Nie obiecujemy viralu, bo nikt uczciwy tego nie obieca. Nie robimy deepfake'ów prawdziwych osób bez ich zgody i&nbsp;nie produkujemy masowo powtarzalnych filmów bez wartości&nbsp;— platformy coraz mocniej je ograniczają, a&nbsp;widzowie i&nbsp;tak je przewijają.</p>
+  <p>Obiecujemy natomiast rolki, które mają cel, napisy bez błędów i&nbsp;oznaczenia AI ustawione zgodnie z&nbsp;przepisami.</p>
 
   <h2>Najczęstsze pytania (FAQ)</h2>
   <div class="svc-faq">
-    <div class="faq-i"><h3>Czy rolki zrobione z AI trzeba oznaczać?</h3><p>Zależy, co w nich jest. Od 2 sierpnia 2026 AI Act wymaga wyraźnego oznaczenia deepfake'ów, czyli realistycznego obrazu, głosu albo wydarzenia, które wyglądają na prawdziwe. Do tego Meta, TikTok i YouTube same nakładają etykiety na realistyczne treści AI. Montaż, napisy czy korekta koloru robione z AI oznaczenia nie wymagają. Każdą rolkę klasyfikujemy przed publikacją.</p></div>
-    <div class="faq-i"><h3>Czy lektor AI może mówić moim głosem?</h3><p>Tak, ale wyłącznie za pisemną zgodą osoby, której głos klonujemy. Głos jest w Polsce chroniony jak wizerunek, więc nie robimy klonów bez zgody, także głosów znanych lektorów czy aktorów. Zamiast tego możesz wybrać syntetyczny głos z licencją komercyjną.</p></div>
-    <div class="faq-i"><h3>Musicie coś nagrywać czy wystarczy mój materiał?</h3><p>Najczęściej wystarczy to, co już masz: webinar, wywiad, podcast, nagrania z telefonu albo zdjęcia produktów. Jeśli materiału brakuje, część ujęć generujemy albo bierzemy z banków z licencją komercyjną, a nagranie u Ciebie planujemy tylko wtedy, gdy naprawdę coś wnosi.</p></div>
-    <div class="faq-i"><h3>W jakich językach robicie napisy i lektora?</h3><p>Po polsku oraz w wersjach obcojęzycznych, najczęściej angielskiej i niemieckiej. Z jednego nagrania przygotowujemy kilka wersji językowych z napisami i lektorem, a tłumaczenie sprawdza człowiek.</p></div>
-    <div class="faq-i"><h3>Ile rolek miesięcznie ma sens?</h3><p>Na start zwykle seria próbna: kilka rolek w różnych formatach, żeby sprawdzić, co działa w Twojej branży. Potem rytm ustalamy pod cel i budżet. Regularność daje więcej niż pojedynczy duży film.</p></div>
-    <div class="faq-i"><h3>Czy platformy obcinają zasięgi treściom z AI?</h3><p>Same oznaczenie AI nie jest karą. Problem mają treści realistyczne, których nie oznaczono, oraz masowe, powtarzalne wideo bez wartości, na które platformy coraz mocniej reagują. Dlatego każdą rolkę planuje i sprawdza człowiek.</p></div>
+    <div class="faq-i"><h3>Czy rolki zrobione z&nbsp;AI trzeba oznaczać?</h3><p>Zależy, co w&nbsp;nich jest. Od 2&nbsp;sierpnia 2026 AI&nbsp;Act wymaga wyraźnego oznaczenia deepfake'ów, czyli realistycznego obrazu, głosu albo wydarzenia, które wyglądają na prawdziwe. Do tego Meta, TikTok i&nbsp;YouTube same nakładają etykiety na realistyczne treści AI. Montaż, napisy czy korekta koloru robione z&nbsp;AI oznaczenia nie wymagają. Każdą rolkę klasyfikujemy przed publikacją.</p></div>
+    <div class="faq-i"><h3>Czy lektor AI może mówić moim głosem?</h3><p>Tak, ale wyłącznie za pisemną zgodą osoby, której głos klonujemy. Głos jest w&nbsp;Polsce chroniony jak wizerunek, więc nie robimy klonów bez zgody, także głosów znanych lektorów czy aktorów. Zamiast tego możesz wybrać syntetyczny głos z&nbsp;licencją komercyjną.</p></div>
+    <div class="faq-i"><h3>Musicie coś nagrywać czy wystarczy mój materiał?</h3><p>Najczęściej wystarczy to, co już masz: webinar, wywiad, podcast, nagrania z&nbsp;telefonu albo zdjęcia produktów. Jeśli materiału brakuje, część ujęć generujemy albo bierzemy z&nbsp;banków z&nbsp;licencją komercyjną, a&nbsp;nagranie u&nbsp;Ciebie planujemy tylko wtedy, gdy naprawdę coś wnosi.</p></div>
+    <div class="faq-i"><h3>W&nbsp;jakich językach robicie napisy i&nbsp;lektora?</h3><p>Po polsku oraz w&nbsp;wersjach obcojęzycznych, najczęściej angielskiej i&nbsp;niemieckiej. Z&nbsp;jednego nagrania przygotowujemy kilka wersji językowych z&nbsp;napisami i&nbsp;lektorem, a&nbsp;tłumaczenie sprawdza człowiek.</p></div>
+    <div class="faq-i"><h3>Ile rolek miesięcznie ma sens?</h3><p>Na start zwykle seria próbna: kilka rolek w&nbsp;różnych formatach, żeby sprawdzić, co działa w&nbsp;Twojej branży. Potem rytm ustalamy pod cel i&nbsp;budżet. Regularność daje więcej niż pojedynczy duży film.</p></div>
+    <div class="faq-i"><h3>Czy platformy obcinają zasięgi treściom z&nbsp;AI?</h3><p>Same oznaczenie AI nie jest karą. Problem mają treści realistyczne, których nie oznaczono, oraz masowe, powtarzalne wideo bez wartości, na które platformy coraz mocniej reagują. Dlatego każdą rolkę planuje i&nbsp;sprawdza człowiek.</p></div>
   </div>
 </article>
 
 <div class="svc-cta-box wrap">
   <h3>Zróbmy pierwszą rolkę</h3>
-  <p>Zaczniemy od serii próbnej, żebyś zobaczył efekt, zanim zdecydujesz o stałej współpracy.</p>
+  <p>Zaczniemy od serii próbnej, żebyś zobaczył efekt, zanim zdecydujesz o&nbsp;stałej współpracy.</p>
   <a href="../kontakt" class="btn btn-primary">Umów bezpłatną konsultację</a>
 </div>
 
 <div class="svc-also wrap">
   <h4>Zobacz też</h4>
   <div class="svc-also-grid">
-    <a class="svc-also-item" href="branding"><span class="t">Grafiki i branding — pomysły od AI, wykonanie od grafików</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a class="svc-also-item" href="reklamy-chatgpt"><span class="t">Reklamy w ChatGPT — Twój produkt tam, gdzie klient pyta AI</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="svc-also-item" href="branding"><span class="t">Grafiki i&nbsp;branding&nbsp;— pomysły od AI, wykonanie od grafików</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="svc-also-item" href="reklamy-chatgpt"><span class="t">Reklamy w&nbsp;ChatGPT&nbsp;— Twój produkt tam, gdzie klient pyta AI</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </div>
 </main>
@@ -801,7 +769,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <img class="logo-mark" src="../sygnet.png" alt="" width="140" height="170" aria-hidden="true">
           <img class="logo-word" src="../samo%20skaluj.png" alt="skaluj.ai" width="478" height="112">
         </a>
-        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
+        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i&nbsp;widoczność w&nbsp;AI (GEO), automatyzacje i&nbsp;branding&nbsp;— od audytu po opiekę.</p>
         <div class="footer-social" aria-label="Social media">
           <a href="https://www.facebook.com/profile.php?id=61591091827937" target="_blank" rel="noopener" class="fsoc" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8H16l.5-3.1h-3V8.3c0-.9.25-1.5 1.5-1.5h1.6V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.6H8v3.1h2.5v8z"/></svg></a>
           <a href="https://www.instagram.com/skaluj.ai/" target="_blank" rel="noopener" class="fsoc" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.7" stroke="currentColor" stroke-width="1.7"/><circle cx="16.6" cy="7.4" r="1.15" fill="currentColor"/></svg></a>
@@ -810,11 +778,11 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <nav class="footer-col" aria-label="Oferta">
         <h3>Oferta</h3>
         <ul>
-          <li><a href="../oferta/strona-seo">Strony i SEO/GEO</a></li>
+          <li><a href="../oferta/strona-seo">Strony i&nbsp;SEO/GEO</a></li>
           <li><a href="../oferta/geo-seo">Widoczność w&nbsp;AI (GEO)</a></li>
           <li><a href="../oferta/reklamy-chatgpt">Reklamy w&nbsp;ChatGPT</a></li>
-          <li><a href="../oferta/branding">Grafiki i branding</a></li>
-          <li><a href="../oferta/rolki-ai">Rolki i wideo AI</a></li>
+          <li><a href="../oferta/branding">Grafiki i&nbsp;branding</a></li>
+          <li><a href="../oferta/rolki-ai">Rolki i&nbsp;wideo AI</a></li>
           <li><a href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji</a></li>
           <li><a href="../oferta/automatyzacje-email">Automatyzacje AI</a></li>
           <li><a href="../oferta/chatbot-ai">Chatbot AI</a></li>
@@ -823,7 +791,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <nav class="footer-col" aria-label="Blog">
         <h3>Blog</h3>
         <ul>
-          <li><a href="../blog/strona-seo">Strona i SEO</a></li>
+          <li><a href="../blog/strona-seo">Strona i&nbsp;SEO</a></li>
           <li><a href="../blog/geo-ai-search">GEO / AI Search</a></li>
           <li><a href="../blog/reklamy-chatgpt">Reklamy AI</a></li>
           <li><a href="../blog/meta-ads-ai">Meta Ads</a></li>
@@ -842,7 +810,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <li><a href="../#case-studies">Case studies</a></li>
           <li><a href="../#integracje">Integracje</a></li>
           <li><a href="../#proces">Proces</a></li>
-          <li><a href="../#o-nas">O nas</a></li>
+          <li><a href="../#o-nas">O&nbsp;nas</a></li>
           <li><a href="../#faq">FAQ</a></li>
         </ul>
       </nav>
@@ -860,57 +828,10 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       </div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj<span class="wm-dot">.</span>ai</div>
-    <div class="footer-bottom"><span>© 2026 skaluj.ai Sergiusz Serafin — wszystkie prawa zastrzeżone</span><span>NIP 8133960157 · REGON 545915660</span><span>Zaprojektowano w Polsce</span></div>
+    <div class="footer-bottom"><span>© 2026 skaluj.ai Sergiusz Serafin&nbsp;— wszystkie prawa zastrzeżone</span><span>NIP 8133960157 · REGON&nbsp;545915660</span><span>Zaprojektowano w&nbsp;Polsce</span></div>
   </div>
 </footer>
 
-<!-- geo-chat: symulacja rozmowy z wyszukiwarka AI -->
-<script>
-(function(){
-  var chat=document.getElementById('geoChat'); if(!chat) return;
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var userM=document.getElementById('gcUser'), aiM=document.getElementById('gcAi'),
-      typing=document.getElementById('gcTyping'), out=document.getElementById('gcOut'),
-      caret=document.getElementById('gcCaret'), src=document.getElementById('gcSrc'),
-      replay=document.getElementById('gcReplay');
-  var SEG=[
-    {t:"Jeśli szukasz agencji, która łączy budowę strony z automatyzacjami AI, warto sprawdzić "},
-    {t:"skaluj.ai",b:1},
-    {t:". Budują szybkie strony B2B zoptymalizowane pod SEO i GEO (widoczne także w wyszukiwarkach AI) i wdrażają automatyzacje: mailing, chatboty, raportowanie. Na start oferują bezpłatny audyt."}
-  ];
-  var timers=[], playing=false;
-  function later(fn,ms){ timers.push(setTimeout(fn,ms)); }
-  function clearAll(){ timers.forEach(clearTimeout); timers=[]; }
-  function fillInstant(){
-    out.innerHTML="";
-    SEG.forEach(function(s){ if(s.b){ var b=document.createElement("strong"); b.textContent=s.t; out.appendChild(b); } else { out.appendChild(document.createTextNode(s.t)); } });
-  }
-  function typeSeg(i,j,node){
-    if(i>=SEG.length){ caret.style.display="none"; src.classList.add("in"); playing=false; return; }
-    var s=SEG[i];
-    if(j===0){ node = s.b ? out.appendChild(document.createElement("strong")) : out.appendChild(document.createTextNode("")); }
-    if(s.b){ node.textContent+=s.t[j]; } else { node.nodeValue+=s.t[j]; }
-    if(j+1<s.t.length) later(function(){ typeSeg(i,j+1,node); },13);
-    else later(function(){ typeSeg(i+1,0,null); },13);
-  }
-  function play(){
-    clearAll(); playing=true;
-    userM.classList.remove("in"); aiM.classList.remove("in"); src.classList.remove("in");
-    out.innerHTML=""; caret.style.display="none"; typing.style.display="";
-    if(reduce){ userM.classList.add("in"); aiM.classList.add("in"); typing.style.display="none"; fillInstant(); src.classList.add("in"); playing=false; return; }
-    later(function(){ userM.classList.add("in"); },300);
-    later(function(){ aiM.classList.add("in"); },1200);
-    later(function(){ typing.style.display="none"; caret.style.display=""; typeSeg(0,0,null); },2600);
-  }
-  replay.addEventListener("click",function(){ play(); });
-  var seen=false;
-  if(window.IntersectionObserver){
-    new IntersectionObserver(function(es,o){
-      if(es[0].isIntersecting && !seen){ seen=true; play(); o.disconnect(); }
-    },{threshold:.35}).observe(chat);
-  } else { play(); }
-})();
-</script>
 <!-- svc-hero-video -->
 <script>
 (function(){

@@ -300,8 +300,8 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .gc-dots{display:flex;gap:6px}
 .gc-dots i{width:8px;height:8px;border-radius:50%}
 .gc-dots i:nth-child(1){background:#ff5f57}.gc-dots i:nth-child(2){background:#febc2e}.gc-dots i:nth-child(3){background:#28c840}
-.gc-title{flex:1;text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.05em}
-.gc-replay{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--muted);background:none;border:1px solid var(--line);border-radius:9999px;padding:4px 11px;cursor:pointer;transition:color .2s,border-color .2s}
+.gc-title{flex:1;text-align:center;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.05em}
+.gc-replay{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);background:none;border:1px solid var(--line);border-radius:9999px;padding:4px 11px;cursor:pointer;transition:color .2s,border-color .2s}
 .gc-replay:hover{color:var(--accent);border-color:rgba(47,111,224,.4)}
 .gc-body{padding:20px;display:flex;flex-direction:column;gap:14px;min-height:252px}
 .gc-msg{max-width:88%;opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
@@ -320,11 +320,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 @keyframes gcC{50%{opacity:0}}
 .gc-src{display:none;align-items:center;gap:8px;margin-top:12px;padding-top:11px;border-top:1px solid var(--line-2)}
 .gc-src.in{display:flex}
-.gc-src-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
-.gc-src-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:9999px;background:#fff;border:1px solid var(--line);font-family:var(--mono);font-size:10.5px;color:var(--text);transition:border-color .2s,color .2s}
+.gc-src-l{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.gc-src-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:9999px;background:#fff;border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--text);transition:border-color .2s,color .2s}
 .gc-src-chip:hover{border-color:var(--accent);color:var(--accent)}
 .gc-src-chip svg{width:10px;height:10px;color:var(--accent)}
 .gc-note{font-size:11px;color:var(--faint);line-height:1.5;padding:0 20px 16px}
+@media(max-width:480px){.gc-dots{display:none}}
 @media (prefers-reduced-motion: reduce){.gc-msg{transition:none}.gc-typing i{animation:none}.gc-caret{display:none}}
 </style>
 <style id="badge-new">
@@ -550,21 +551,21 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <div class="dd-head"><a class="c" href="../#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-cols">
             <div class="dd-col">
-              <div class="dd-group">Strona i widoczność</div>
-              <a class="dd-row" href="../oferta/strona-seo"><span class="dd-tx"><b>Strona internetowa + SEO i GEO</b><i>Widoczna w Google i polecana przez AI</i></span></a>
-              <a class="dd-row" href="../oferta/geo-seo"><span class="dd-tx"><b>Pozycjonowanie w AI — GEO i SEO</b><i>Masz stronę? Wypozycjonujemy ją w AI</i></span></a>
-              <a class="dd-row" href="../oferta/reklamy-chatgpt"><span class="dd-tx"><b>Reklamy w ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
+              <div class="dd-group">Strona i&nbsp;widoczność</div>
+              <a class="dd-row" href="../oferta/strona-seo"><span class="dd-tx"><b>Strona internetowa + SEO i&nbsp;GEO</b><i>Widoczna w&nbsp;Google i&nbsp;polecana przez AI</i></span></a>
+              <a class="dd-row" href="../oferta/geo-seo"><span class="dd-tx"><b>Pozycjonowanie w&nbsp;AI&nbsp;— GEO i&nbsp;SEO</b><i>Masz stronę? Wypozycjonujemy ją w&nbsp;AI</i></span></a>
+              <a class="dd-row" href="../oferta/reklamy-chatgpt"><span class="dd-tx"><b>Reklamy w&nbsp;ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
             </div>
             <div class="dd-col">
               <div class="dd-group">Branding</div>
-              <a class="dd-row" href="../oferta/branding"><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
-              <a class="dd-row" href="../oferta/rolki-ai"><span class="dd-tx"><b>Rolki i wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i lektor AI pod social media</i></span></a>
+              <a class="dd-row" href="../oferta/branding"><span class="dd-tx"><b>Grafiki i&nbsp;branding</b><i>Spójna marka w&nbsp;każdym kanale</i></span></a>
+              <a class="dd-row" href="../oferta/rolki-ai"><span class="dd-tx"><b>Rolki i&nbsp;wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i&nbsp;lektor AI pod social media</i></span></a>
             </div>
             <div class="dd-col">
               <div class="dd-group">Automatyzacje</div>
-              <a class="dd-row" href="../oferta/audyt-cyfryzacji"><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Widoczność, procesy i narzędzia</i></span></a>
+              <a class="dd-row" href="../oferta/audyt-cyfryzacji"><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Widoczność, procesy i&nbsp;narzędzia</i></span></a>
               <a class="dd-row" href="../oferta/automatyzacje-email"><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
-              <a class="dd-row" href="../oferta/chatbot-ai"><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
+              <a class="dd-row" href="../oferta/chatbot-ai"><span class="dd-tx"><b>Asystent i&nbsp;chatbot AI</b><i>Klient obsłużony w&nbsp;sekundy, 24/7</i></span></a>
             </div>
           </div>
         </div>
@@ -579,15 +580,15 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
         </button>
         <div class="dropdown dropdown--blog" id="blogMenu">
           <div class="dd-head"><a class="c" href="../blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-          <a class="dd-row dd-row--post" href="../blog/strona-seo"><span class="dd-tx"><i>Strona i SEO</i><b>Strona, która sprzedaje</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w ChatGPT i AI</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w ChatGPT — jak działają i ile kosztują</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — jak obniżyć koszt pozyskania klienta</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w 2026</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI — napisy, lektor i AI Act</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności — sprawdź, gdzie jesteś</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z AI — 5 scenariuszy</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/chatbot-ai"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI — kiedy warto, a kiedy szkodzi</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/strona-seo"><span class="dd-tx"><i>Strona i&nbsp;SEO</i><b>Strona, która sprzedaje</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w&nbsp;ChatGPT i&nbsp;AI</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w&nbsp;ChatGPT&nbsp;— jak działają i&nbsp;ile kosztują</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z&nbsp;AI&nbsp;— jak obniżyć koszt pozyskania klienta</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w&nbsp;2026</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI&nbsp;— napisy, lektor i&nbsp;AI&nbsp;Act</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności&nbsp;— sprawdź, gdzie jesteś</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z&nbsp;AI&nbsp;— 5 scenariuszy</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/chatbot-ai"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI&nbsp;— kiedy warto, a&nbsp;kiedy szkodzi</b></span></a>
         </div>
       </div>
     </div>
@@ -602,22 +603,22 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   <a href="../"><span>Start</span></a>
   <div class="mm-blog">
     <span class="mm-h">Oferta</span>
-    <span class="mm-group">Strona i widoczność</span>
-    <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i GEO</a>
-    <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w AI — GEO i SEO</a>
-    <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w ChatGPT</a>
+    <span class="mm-group">Strona i&nbsp;widoczność</span>
+    <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i&nbsp;GEO</a>
+    <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w&nbsp;AI&nbsp;— GEO i&nbsp;SEO</a>
+    <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w&nbsp;ChatGPT</a>
     <span class="mm-group">Branding</span>
-    <a class="mm-sub" href="../oferta/branding">Grafiki i branding</a>
-    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i wideo AI</a>
+    <a class="mm-sub" href="../oferta/branding">Grafiki i&nbsp;branding</a>
+    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i&nbsp;wideo AI</a>
     <span class="mm-group">Automatyzacje</span>
     <a class="mm-sub" href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji firmy</a>
     <a class="mm-sub" href="../oferta/automatyzacje-email">Automatyzacje biznesowe AI</a>
-    <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i chatbot AI</a>
+    <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i&nbsp;chatbot AI</a>
   </div>
   <a href="../#case-studies"><span>Case studies</span></a>
   <a href="../#integracje"><span>Integracje</span></a>
   <a href="../#proces"><span>Proces</span></a>
-  <a href="../#o-nas"><span>O nas</span></a>
+  <a href="../#o-nas"><span>O&nbsp;nas</span></a>
   <a href="../#faq"><span>FAQ</span></a>
   <a href="../blog/"><span>Blog</span></a>
   <a href="../kontakt"><span>Kontakt</span></a>
@@ -632,9 +633,9 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   </video>
   <div class="svc-hero-overlay"></div>
   <div class="wrap">
-    <span class="svc-eyebrow">Strona z SEO i GEO</span>
+    <span class="svc-eyebrow">Strona z&nbsp;SEO i&nbsp;GEO</span>
     <h1 class="svc-title">Strona internetowa, która zamienia ruch w&nbsp;klientów&nbsp;— <span class="tl-geo">zoptymalizowana pod&nbsp;GEO</span></h1>
-    <p class="svc-sub">Projektujemy i budujemy strony nastawione na sprzedaż — z SEO i widocznością w AI (GEO) wbudowanymi od pierwszego dnia, nie doklejonymi na końcu. AI przyspiesza projekt, copy i optymalizację, więc efekt dostajesz szybciej i taniej.</p>
+    <p class="svc-sub">Projektujemy i&nbsp;budujemy strony nastawione na sprzedaż&nbsp;— z&nbsp;SEO i&nbsp;widocznością w&nbsp;AI (GEO) wbudowanymi od pierwszego dnia, nie doklejonymi na końcu. AI przyspiesza projekt, copy i&nbsp;optymalizację, więc efekt dostajesz szybciej i&nbsp;taniej.</p>
     <div class="svc-cta-row">
       <a href="../kontakt" class="btn btn-primary">Umów bezpłatny audyt</a>
       <a class="btn" href="../#oferta" style="border:1px solid var(--line)">Cała oferta</a>
@@ -644,22 +645,22 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 
 <article class="svc-body wrap">
   <h2>Dla kogo to jest</h2>
-  <p>Dla firm, które mają ruch na stronie, ale mało zapytań. Dla firm usługowych i B2B, których obecna strona „tylko jest". I dla tych, którzy startują od zera i chcą od razu zbudować stronę nastawioną na <strong>pozyskiwanie klientów</strong>, a nie na ładne zdjęcia.</p>
+  <p>Dla firm, które mają ruch na stronie, ale mało zapytań. Dla firm usługowych i&nbsp;B2B, których obecna strona „tylko jest”. I&nbsp;dla tych, którzy startują od zera i&nbsp;chcą od razu zbudować stronę nastawioną na <strong>pozyskiwanie klientów</strong>, a&nbsp;nie na ładne zdjęcia.</p>
 
   <h2>Co dokładnie dostajesz</h2>
   <ul class="svc-list">
-    <li><strong>Projekt UX i architektura informacji</strong> — układ, który prowadzi użytkownika od problemu do kontaktu.</li>
-    <li><strong>Wdrożenie w technologii AI</strong> — szybkie iteracje i niższy koszt niż klasyczny projekt.</li>
-    <li><strong>SEO techniczne</strong> — Core Web Vitals, dane strukturalne, mapa strony, poprawne nagłówki i meta.</li>
-    <li><strong>SEO treściowe</strong> — teksty pod realne frazy i pod odbiorcę, nie pod „upchanie słów kluczowych".</li>
-    <li><strong>Widoczność w AI (GEO)</strong> — strona zoptymalizowana pod Generative Engine Optimization, żeby pojawiać się w odpowiedziach ChatGPT, Perplexity i Google AI Overviews, nie tylko w klasycznym Google.</li>
-    <li><strong>Copywriting sprzedażowy</strong> — nagłówki na korzyściach, jasne CTA, język klienta.</li>
-    <li><strong>Integracje</strong> — formularz, CRM, analityka GA4, piksele reklamowe.</li>
-    <li><strong>Wersja mobilna i dostępność</strong> — strona działa i wygląda dobrze na każdym ekranie.</li>
+    <li><strong>Projekt UX i&nbsp;architektura informacji</strong>&nbsp;— układ, który prowadzi użytkownika od problemu do kontaktu.</li>
+    <li><strong>Wdrożenie w&nbsp;technologii AI</strong>&nbsp;— szybkie iteracje i&nbsp;niższy koszt niż klasyczny projekt.</li>
+    <li><strong>SEO techniczne</strong>&nbsp;— Core Web Vitals, dane strukturalne, mapa strony, poprawne nagłówki i&nbsp;meta.</li>
+    <li><strong>SEO treściowe</strong>&nbsp;— teksty pod realne frazy i&nbsp;pod odbiorcę, nie pod „upchanie słów kluczowych”.</li>
+    <li><strong>Widoczność w&nbsp;AI (GEO)</strong>&nbsp;— strona zoptymalizowana pod Generative Engine Optimization, żeby pojawiać się w&nbsp;odpowiedziach ChatGPT, Perplexity i&nbsp;Google AI Overviews, nie tylko w&nbsp;klasycznym Google.</li>
+    <li><strong>Copywriting sprzedażowy</strong>&nbsp;— nagłówki na korzyściach, jasne CTA, język klienta.</li>
+    <li><strong>Integracje</strong>&nbsp;— formularz, CRM, analityka GA4, piksele reklamowe.</li>
+    <li><strong>Wersja mobilna i&nbsp;dostępność</strong>&nbsp;— strona działa i&nbsp;wygląda dobrze na każdym ekranie.</li>
   </ul>
 
-  <h2>Zobacz, jak działa GEO — z perspektywy Twojego klienta</h2>
-  <p>Coraz więcej osób nie wpisuje frazy w Google, tylko <strong>pyta AI</strong> — i dostaje jedną odpowiedź z kilkoma poleconymi firmami. Strona zoptymalizowana pod GEO sprawia, że w tej odpowiedzi pojawiasz się Ty. Tak to wygląda w praktyce, na naszym własnym przykładzie:</p>
+  <h2>Zobacz, jak działa GEO&nbsp;— z&nbsp;perspektywy Twojego klienta</h2>
+  <p>Coraz więcej osób nie wpisuje frazy w&nbsp;Google, tylko <strong>pyta AI</strong>&nbsp;— i&nbsp;dostaje jedną odpowiedź z&nbsp;kilkoma poleconymi firmami. Strona zoptymalizowana pod GEO sprawia, że w&nbsp;tej odpowiedzi pojawiasz się Ty. Tak to wygląda w&nbsp;praktyce, na naszym własnym przykładzie:</p>
 
   <div class="geo-chat" id="geoChat" role="img" aria-label="Symulacja rozmowy z wyszukiwarką AI: użytkownik pyta o agencję AI, asystent poleca skaluj.ai">
     <div class="gc-top">
@@ -668,7 +669,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <button type="button" class="gc-replay" id="gcReplay">&#8635; odtwórz</button>
     </div>
     <div class="gc-body">
-      <div class="gc-msg gc-user" id="gcUser">Szukam agencji, która zbuduje mi stronę firmową i wdroży automatyzacje AI. Kogo polecasz w Polsce?</div>
+      <div class="gc-msg gc-user" id="gcUser">Szukam agencji, która zbuduje mi stronę firmową i&nbsp;wdroży automatyzacje AI. Kogo polecasz w&nbsp;Polsce?</div>
       <div class="gc-msg gc-ai" id="gcAi">
         <span class="gc-ava"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5c.6 3.7 2.3 5.4 6 6-3.7.6-5.4 2.3-6 6-.6-3.7-2.3-5.4-6-6 3.7-.6 5.4-2.3 6-6z"/></svg></span>
         <div class="gc-bubble">
@@ -681,38 +682,38 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
         </div>
       </div>
     </div>
-    <p class="gc-note">Symulacja poglądowa — pokazuje mechanizm rekomendacji w wyszukiwarkach AI. Dokładnie tak samo pracujemy nad widocznością Twojej firmy.</p>
+    <p class="gc-note">Symulacja poglądowa&nbsp;— pokazuje mechanizm rekomendacji w&nbsp;wyszukiwarkach AI. Dokładnie tak samo pracujemy nad widocznością Twojej firmy.</p>
   </div>
 
   <h2>Jak pracujemy</h2>
   <div class="svc-steps">
-    <div class="svc-step"><span class="num">1</span><span class="tx"><b>Audyt i research fraz.</b> Sprawdzamy obecną stronę, konkurencję i to, czego naprawdę szukają Twoi klienci.</span></div>
-    <div class="svc-step"><span class="num">2</span><span class="tx"><b>Architektura i makiety.</b> Ustalamy strukturę podstron i ścieżkę do kontaktu.</span></div>
-    <div class="svc-step"><span class="num">3</span><span class="tx"><b>Projekt + copy.</b> Design i teksty powstają równolegle, wspierane przez AI, pod nadzorem człowieka.</span></div>
-    <div class="svc-step"><span class="num">4</span><span class="tx"><b>Wdrożenie i optymalizacja.</b> Stawiamy stronę, optymalizujemy szybkość i SEO on-page.</span></div>
-    <div class="svc-step"><span class="num">5</span><span class="tx"><b>Pomiar i iteracje.</b> Podpinamy analitykę, ustalamy cele i poprawiamy na podstawie danych.</span></div>
+    <div class="svc-step"><span class="num">1</span><span class="tx"><b>Audyt i&nbsp;research fraz.</b> Sprawdzamy obecną stronę, konkurencję i&nbsp;to, czego naprawdę szukają Twoi klienci.</span></div>
+    <div class="svc-step"><span class="num">2</span><span class="tx"><b>Architektura i&nbsp;makiety.</b> Ustalamy strukturę podstron i&nbsp;ścieżkę do kontaktu.</span></div>
+    <div class="svc-step"><span class="num">3</span><span class="tx"><b>Projekt + copy.</b> Design i&nbsp;teksty powstają równolegle, wspierane przez AI, pod nadzorem człowieka.</span></div>
+    <div class="svc-step"><span class="num">4</span><span class="tx"><b>Wdrożenie i&nbsp;optymalizacja.</b> Stawiamy stronę, optymalizujemy szybkość i&nbsp;SEO on-page.</span></div>
+    <div class="svc-step"><span class="num">5</span><span class="tx"><b>Pomiar i&nbsp;iteracje.</b> Podpinamy analitykę, ustalamy cele i&nbsp;poprawiamy na podstawie danych.</span></div>
   </div>
 
-  <div class="svc-tip"><strong>Zasada jednego celu:</strong> strona główna sprzedaje kontakt, podstrona usługi sprzedaje konkretne zamówienie, blog buduje autorytet. Mieszanie celów rozwadnia konwersję — dlatego każdą podstronę projektujemy wokół jednego działania.</div>
+  <div class="svc-tip"><strong>Zasada jednego celu:</strong> strona główna sprzedaje kontakt, podstrona usługi sprzedaje konkretne zamówienie, blog buduje autorytet. Mieszanie celów rozwadnia konwersję&nbsp;— dlatego każdą podstronę projektujemy wokół jednego działania.</div>
 
   <h2>Efekty, których możesz oczekiwać</h2>
-  <p>Nie obiecujemy magicznych liczb. Zamiast tego na starcie ustalamy <strong>mierzalne cele</strong> (np. liczba zapytań z formularza, pozycje na kluczowe frazy, czas ładowania) i raportujemy je w GA4. Typowe kierunki, w których pracujemy: lepsza widoczność w Google i w wyszukiwarkach AI, więcej zapytań z tego samego ruchu, szybsze ładowanie i niższy współczynnik odrzuceń.</p>
+  <p>Nie obiecujemy magicznych liczb. Zamiast tego na starcie ustalamy <strong>mierzalne cele</strong> (np.&nbsp;liczba zapytań z&nbsp;formularza, pozycje na kluczowe frazy, czas ładowania) i&nbsp;raportujemy je w&nbsp;GA4. Typowe kierunki, w&nbsp;których pracujemy: lepsza widoczność w&nbsp;Google i&nbsp;w&nbsp;wyszukiwarkach AI, więcej zapytań z&nbsp;tego samego ruchu, szybsze ładowanie i&nbsp;niższy współczynnik odrzuceń.</p>
 
-  <h2>Dlaczego AI, ale z człowiekiem w pętli</h2>
-  <p>AI bierze na siebie najcięższą, powtarzalną część pracy — szkice kodu, warianty copy, optymalizację techniczną. My pilnujemy strategii, jakości i spójności marki. Dzięki temu dostajesz tempo i cenę AI, ale bez „generycznej strony jak z szablonu".</p>
+  <h2>Dlaczego AI, ale z&nbsp;człowiekiem w&nbsp;pętli</h2>
+  <p>AI bierze na siebie najcięższą, powtarzalną część pracy&nbsp;— szkice kodu, warianty copy, optymalizację techniczną. My pilnujemy strategii, jakości i&nbsp;spójności marki. Dzięki temu dostajesz tempo i&nbsp;cenę AI, ale bez „generycznej strony jak z&nbsp;szablonu”.</p>
 </article>
 
 <div class="svc-cta-box wrap">
   <h3>Zacznijmy od bezpłatnego audytu strony</h3>
-  <p>Sprawdzimy, gdzie tracisz klientów i co realnie poprawić — z policzonym kosztem i priorytetami.</p>
+  <p>Sprawdzimy, gdzie tracisz klientów i&nbsp;co realnie poprawić&nbsp;— z&nbsp;policzonym kosztem i&nbsp;priorytetami.</p>
   <a href="../kontakt" class="btn btn-primary">Umów bezpłatną konsultację</a>
 </div>
 
 <div class="svc-also wrap">
   <h4>Zobacz też</h4>
   <div class="svc-also-grid">
-    <a class="svc-also-item" href="chatbot-ai"><span class="t">Asystent i chatbot AI — obsługa klienta 24/7</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a class="svc-also-item" href="branding"><span class="t">Grafiki i branding — pomysły od AI, wykonanie od grafików</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="svc-also-item" href="chatbot-ai"><span class="t">Asystent i&nbsp;chatbot AI&nbsp;— obsługa klienta 24/7</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="svc-also-item" href="branding"><span class="t">Grafiki i&nbsp;branding&nbsp;— pomysły od AI, wykonanie od grafików</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </div>
 </main>
@@ -725,7 +726,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <img class="logo-mark" src="../sygnet.png" alt="" width="140" height="170" aria-hidden="true">
           <img class="logo-word" src="../samo%20skaluj.png" alt="skaluj.ai" width="478" height="112">
         </a>
-        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
+        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i&nbsp;widoczność w&nbsp;AI (GEO), automatyzacje i&nbsp;branding&nbsp;— od audytu po opiekę.</p>
         <div class="footer-social" aria-label="Social media">
           <a href="https://www.facebook.com/profile.php?id=61591091827937" target="_blank" rel="noopener" class="fsoc" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8H16l.5-3.1h-3V8.3c0-.9.25-1.5 1.5-1.5h1.6V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.6H8v3.1h2.5v8z"/></svg></a>
           <a href="https://www.instagram.com/skaluj.ai/" target="_blank" rel="noopener" class="fsoc" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.7" stroke="currentColor" stroke-width="1.7"/><circle cx="16.6" cy="7.4" r="1.15" fill="currentColor"/></svg></a>
@@ -734,11 +735,11 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <nav class="footer-col" aria-label="Oferta">
         <h3>Oferta</h3>
         <ul>
-          <li><a href="../oferta/strona-seo">Strony i SEO/GEO</a></li>
+          <li><a href="../oferta/strona-seo">Strony i&nbsp;SEO/GEO</a></li>
           <li><a href="../oferta/geo-seo">Widoczność w&nbsp;AI (GEO)</a></li>
           <li><a href="../oferta/reklamy-chatgpt">Reklamy w&nbsp;ChatGPT</a></li>
-          <li><a href="../oferta/branding">Grafiki i branding</a></li>
-          <li><a href="../oferta/rolki-ai">Rolki i wideo AI</a></li>
+          <li><a href="../oferta/branding">Grafiki i&nbsp;branding</a></li>
+          <li><a href="../oferta/rolki-ai">Rolki i&nbsp;wideo AI</a></li>
           <li><a href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji</a></li>
           <li><a href="../oferta/automatyzacje-email">Automatyzacje AI</a></li>
           <li><a href="../oferta/chatbot-ai">Chatbot AI</a></li>
@@ -747,7 +748,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <nav class="footer-col" aria-label="Blog">
         <h3>Blog</h3>
         <ul>
-          <li><a href="../blog/strona-seo">Strona i SEO</a></li>
+          <li><a href="../blog/strona-seo">Strona i&nbsp;SEO</a></li>
           <li><a href="../blog/geo-ai-search">GEO / AI Search</a></li>
           <li><a href="../blog/reklamy-chatgpt">Reklamy AI</a></li>
           <li><a href="../blog/meta-ads-ai">Meta Ads</a></li>
@@ -766,7 +767,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <li><a href="../#case-studies">Case studies</a></li>
           <li><a href="../#integracje">Integracje</a></li>
           <li><a href="../#proces">Proces</a></li>
-          <li><a href="../#o-nas">O nas</a></li>
+          <li><a href="../#o-nas">O&nbsp;nas</a></li>
           <li><a href="../#faq">FAQ</a></li>
         </ul>
       </nav>
@@ -784,7 +785,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       </div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj<span class="wm-dot">.</span>ai</div>
-    <div class="footer-bottom"><span>© 2026 skaluj.ai Sergiusz Serafin — wszystkie prawa zastrzeżone</span><span>NIP 8133960157 · REGON 545915660</span><span>Zaprojektowano w Polsce</span></div>
+    <div class="footer-bottom"><span>© 2026 skaluj.ai Sergiusz Serafin&nbsp;— wszystkie prawa zastrzeżone</span><span>NIP 8133960157 · REGON&nbsp;545915660</span><span>Zaprojektowano w&nbsp;Polsce</span></div>
   </div>
 </footer>
 
@@ -815,9 +816,9 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       caret=document.getElementById('gcCaret'), src=document.getElementById('gcSrc'),
       replay=document.getElementById('gcReplay');
   var SEG=[
-    {t:"Jeśli szukasz agencji, która łączy budowę strony z automatyzacjami AI, warto sprawdzić "},
+    {t:"Jeśli szukasz agencji, która łączy budowę strony z\u00a0automatyzacjami AI, warto sprawdzić "},
     {t:"skaluj.ai",b:1},
-    {t:". Budują szybkie strony B2B zoptymalizowane pod SEO i GEO (widoczne także w wyszukiwarkach AI) i wdrażają automatyzacje: mailing, chatboty, raportowanie. Na start oferują bezpłatny audyt."}
+    {t:". Budują szybkie strony B2B zoptymalizowane pod SEO i\u00a0GEO (widoczne także w\u00a0wyszukiwarkach AI) i\u00a0wdrażają automatyzacje: mailing, chatboty, raportowanie. Na start oferują bezpłatny audyt."}
   ];
   var timers=[], playing=false;
   function later(fn,ms){ timers.push(setTimeout(fn,ms)); }

@@ -290,17 +290,18 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blog-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#7fb0ff;margin-bottom:18px;display:block}
 .blog-header .wrap{max-width:720px}
 .blog-title{font-size:clamp(2rem,4vw,2.7rem);font-weight:500;letter-spacing:-.03em;line-height:1.1;max-width:880px;margin:0 0 22px;color:#fff}
+@media(max-width:389px){.blog-title{font-size:clamp(1.6875rem,7.6vw,2rem)}}
 .blog-meta{font-size:12.5px;color:rgba(255,255,255,.6);font-family:var(--mono);display:flex;align-items:center;gap:20px}
 .blog-body{max-width:720px;margin:0 auto;padding:60px clamp(24px,4vw,48px) 80px}
 .blog-body h2{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:52px 0 14px}
 .blog-body h3{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;line-height:1.3;margin:36px 0 10px;color:var(--text)}
-.blog-body p{color:var(--muted);margin-bottom:16px;line-height:1.75;font-size:17px}
-.blog-body ul,.blog-body ol{color:var(--muted);padding-left:22px;margin-bottom:18px;line-height:1.75}
-.blog-body li{margin-bottom:8px;font-size:17px}
+.blog-body p{color:var(--muted);margin-bottom:16px;line-height:1.65;font-size:17px}
+.blog-body ul,.blog-body ol{color:var(--muted);padding-left:22px;margin-bottom:18px;line-height:1.65}
+.blog-body li{margin-bottom:12px;font-size:17px}
 .blog-body strong{color:var(--text);font-weight:600}
 .blog-body a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 .blog-body a strong{color:inherit}
-.blog-body .lead{font-size:1.2rem;color:var(--muted);line-height:1.75;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line-2)}
+.blog-body .lead{font-size:1.2rem;color:var(--muted);line-height:1.6;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line-2)}
 .blog-tip{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:var(--r-md);padding:16px 20px;margin:24px 0;font-size:15px;line-height:1.65;color:var(--muted)}
 .blog-tip strong{color:var(--text)}
 .blog-body a.blog-back{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-family:var(--sans);color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color .2s}
@@ -311,18 +312,18 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blog-cta-box p a{color:var(--accent-dim);text-decoration:underline;text-underline-offset:3px}
 .blog-cta-box .cta-alt{display:block;width:fit-content;margin:6px auto -12px;padding:12px 0;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;transition:color .2s}.blog-cta-box .cta-alt:hover{color:var(--text)}
 .blog-also{max-width:720px;margin:0 auto 80px}
-.blog-also h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.blog-also .also-h,.toc-box .toc-title{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 18px}
 .blog-also-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .blog-also-item{border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s,background .2s}
 .blog-also-item:hover{border-color:rgba(47,111,224,.4);background:var(--accent-soft)}
-.blog-also-item .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
+.blog-also-item .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
 .blog-also-item .t{display:block;font-size:15px;font-weight:500;color:var(--text);line-height:1.4}
 .faq-section{max-width:720px;margin:0 auto 80px}
-.faq-section h2{font-size:1.4rem;font-weight:600;letter-spacing:-.025em;margin-bottom:28px}
+.faq-section h2{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;margin-bottom:28px}
 .faq-item{border-bottom:1px solid var(--line-2);padding:20px 0}
 .faq-item:last-child{border-bottom:0}
-.faq-q{font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-.01em}
-.faq-a{font-size:14.5px;color:var(--muted);line-height:1.7}
+.faq-q{font-size:17px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-.01em}
+.faq-a{font-size:16px;color:var(--muted);line-height:1.7}
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.blog-header{padding:120px 0 54px}.blog-hero-sygnet{display:none}.blog-cta-box{margin:0 24px 64px;padding:32px 22px;border-radius:20px}.blog-also-grid{grid-template-columns:1fr}}
 .logo .brand-img{height:24px;width:auto;display:block}
@@ -342,7 +343,6 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blog-table td:first-child{min-width:150px;color:var(--text);font-weight:500}
 @media(max-width:520px){.blog-table{min-width:0}.blog-table thead{display:none}.blog-table,.blog-table tbody,.blog-table tr,.blog-table td{display:block}.blog-table tr{padding:12px 0;border-bottom:1px solid var(--line)}.blog-table tr:last-child{border-bottom:0}.blog-table td,.blog-table tr:last-child td{border:0;padding:3px 0;min-width:0}.blog-table tr:hover td{background:none}.blog-table td[data-label]::before{content:attr(data-label);display:block;font-size:12px;color:var(--faint)}}
 .toc-box{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:14px;padding:20px 24px;margin:0 0 40px}
-.toc-box .toc-title{margin:0 0 14px;font-weight:500;line-height:1.55;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 .toc-box ol{color:var(--muted);padding-left:18px;font-size:14.5px;line-height:1.7;margin:0}
 .toc-box li{margin-bottom:5px;font-size:inherit}
 .toc-box a{color:var(--text);text-decoration:none}.toc-box a:hover{color:var(--accent)}
@@ -570,21 +570,21 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <div class="dd-head"><a class="c" href="../#oferta">Pełen zakres <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           <div class="dd-cols">
             <div class="dd-col">
-              <div class="dd-group">Strona i widoczność</div>
-              <a class="dd-row" href="../oferta/strona-seo"><span class="dd-tx"><b>Strona internetowa + SEO i GEO</b><i>Widoczna w Google i polecana przez AI</i></span></a>
-              <a class="dd-row" href="../oferta/geo-seo"><span class="dd-tx"><b>Pozycjonowanie w AI — GEO i SEO</b><i>Masz stronę? Wypozycjonujemy ją w AI</i></span></a>
-              <a class="dd-row" href="../oferta/reklamy-chatgpt"><span class="dd-tx"><b>Reklamy w ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
+              <div class="dd-group">Strona i&nbsp;widoczność</div>
+              <a class="dd-row" href="../oferta/strona-seo"><span class="dd-tx"><b>Strona internetowa + SEO i&nbsp;GEO</b><i>Widoczna w&nbsp;Google i&nbsp;polecana przez AI</i></span></a>
+              <a class="dd-row" href="../oferta/geo-seo"><span class="dd-tx"><b>Pozycjonowanie w&nbsp;AI&nbsp;— GEO i&nbsp;SEO</b><i>Masz stronę? Wypozycjonujemy ją w&nbsp;AI</i></span></a>
+              <a class="dd-row" href="../oferta/reklamy-chatgpt"><span class="dd-tx"><b>Reklamy w&nbsp;ChatGPT <span class="badge-new">Nowość</span></b><i>Twój produkt tam, gdzie klient pyta AI</i></span></a>
             </div>
             <div class="dd-col">
               <div class="dd-group">Branding</div>
-              <a class="dd-row" href="../oferta/branding"><span class="dd-tx"><b>Grafiki i branding</b><i>Spójna marka w każdym kanale</i></span></a>
-              <a class="dd-row" href="../oferta/rolki-ai"><span class="dd-tx"><b>Rolki i wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i lektor AI pod social media</i></span></a>
+              <a class="dd-row" href="../oferta/branding"><span class="dd-tx"><b>Grafiki i&nbsp;branding</b><i>Spójna marka w&nbsp;każdym kanale</i></span></a>
+              <a class="dd-row" href="../oferta/rolki-ai"><span class="dd-tx"><b>Rolki i&nbsp;wideo AI <span class="badge-new">Nowość</span></b><i>Wideo, napisy i&nbsp;lektor AI pod social media</i></span></a>
             </div>
             <div class="dd-col">
               <div class="dd-group">Automatyzacje</div>
-              <a class="dd-row" href="../oferta/audyt-cyfryzacji"><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Widoczność, procesy i narzędzia</i></span></a>
+              <a class="dd-row" href="../oferta/audyt-cyfryzacji"><span class="dd-tx"><b>Audyt cyfryzacji firmy</b><i>Widoczność, procesy i&nbsp;narzędzia</i></span></a>
               <a class="dd-row" href="../oferta/automatyzacje-email"><span class="dd-tx"><b>Automatyzacje biznesowe AI</b><i>Powtarzalną pracę przejmują automaty</i></span></a>
-              <a class="dd-row" href="../oferta/chatbot-ai"><span class="dd-tx"><b>Asystent i chatbot AI</b><i>Klient obsłużony w sekundy, 24/7</i></span></a>
+              <a class="dd-row" href="../oferta/chatbot-ai"><span class="dd-tx"><b>Asystent i&nbsp;chatbot AI</b><i>Klient obsłużony w&nbsp;sekundy, 24/7</i></span></a>
             </div>
           </div>
         </div>
@@ -599,15 +599,15 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
         </button>
         <div class="dropdown dropdown--blog" id="blogMenu">
           <div class="dd-head"><a class="c" href="../blog/">Wszystkie wpisy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-          <a class="dd-row dd-row--post" href="../blog/strona-seo"><span class="dd-tx"><i>Strona i SEO</i><b>Strona, która sprzedaje</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w ChatGPT i AI</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w ChatGPT — jak działają i ile kosztują</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z AI — jak obniżyć koszt pozyskania klienta</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w 2026</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI — napisy, lektor i AI Act</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności — sprawdź, gdzie jesteś</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z AI — 5 scenariuszy</b></span></a>
-          <a class="dd-row dd-row--post" href="../blog/chatbot-ai"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI — kiedy warto, a kiedy szkodzi</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/strona-seo"><span class="dd-tx"><i>Strona i&nbsp;SEO</i><b>Strona, która sprzedaje</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/geo-ai-search"><span class="dd-tx"><i>GEO / AI Search</i><b>Jak pozycjonować firmę w&nbsp;ChatGPT i&nbsp;AI</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/reklamy-chatgpt"><span class="dd-tx"><i>Reklamy AI</i><b>Reklamy w&nbsp;ChatGPT&nbsp;— jak działają i&nbsp;ile kosztują</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/meta-ads-ai"><span class="dd-tx"><i>Meta Ads</i><b>Meta Ads z&nbsp;AI&nbsp;— jak obniżyć koszt pozyskania klienta</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/branding"><span class="dd-tx"><i>Branding</i><b>Identyfikacja wizualna w&nbsp;2026</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/rolki-ai"><span class="dd-tx"><i>Wideo AI</i><b>Rolki AI&nbsp;— napisy, lektor i&nbsp;AI&nbsp;Act</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/audyt-widocznosci"><span class="dd-tx"><i>Audyt</i><b>Audyt widoczności&nbsp;— sprawdź, gdzie jesteś</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/automatyzacje-email"><span class="dd-tx"><i>Automatyzacje</i><b>Automatyzacja e-mail z&nbsp;AI&nbsp;— 5 scenariuszy</b></span></a>
+          <a class="dd-row dd-row--post" href="../blog/chatbot-ai"><span class="dd-tx"><i>Chatbot AI</i><b>Chatbot AI&nbsp;— kiedy warto, a&nbsp;kiedy szkodzi</b></span></a>
         </div>
       </div>
     </div>
@@ -622,22 +622,22 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   <a href="../"><span>Start</span></a>
   <div class="mm-blog">
     <span class="mm-h">Oferta</span>
-    <span class="mm-group">Strona i widoczność</span>
-    <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i GEO</a>
-    <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w AI — GEO i SEO</a>
-    <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w ChatGPT</a>
+    <span class="mm-group">Strona i&nbsp;widoczność</span>
+    <a class="mm-sub" href="../oferta/strona-seo">Strona internetowa + SEO i&nbsp;GEO</a>
+    <a class="mm-sub" href="../oferta/geo-seo">Pozycjonowanie w&nbsp;AI&nbsp;— GEO i&nbsp;SEO</a>
+    <a class="mm-sub" href="../oferta/reklamy-chatgpt">Reklamy w&nbsp;ChatGPT</a>
     <span class="mm-group">Branding</span>
-    <a class="mm-sub" href="../oferta/branding">Grafiki i branding</a>
-    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i wideo AI</a>
+    <a class="mm-sub" href="../oferta/branding">Grafiki i&nbsp;branding</a>
+    <a class="mm-sub" href="../oferta/rolki-ai">Rolki i&nbsp;wideo AI</a>
     <span class="mm-group">Automatyzacje</span>
     <a class="mm-sub" href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji firmy</a>
     <a class="mm-sub" href="../oferta/automatyzacje-email">Automatyzacje biznesowe AI</a>
-    <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i chatbot AI</a>
+    <a class="mm-sub" href="../oferta/chatbot-ai">Asystent i&nbsp;chatbot AI</a>
   </div>
   <a href="../#case-studies"><span>Case studies</span></a>
   <a href="../#integracje"><span>Integracje</span></a>
   <a href="../#proces"><span>Proces</span></a>
-  <a href="../#o-nas"><span>O nas</span></a>
+  <a href="../#o-nas"><span>O&nbsp;nas</span></a>
   <a href="../#faq"><span>FAQ</span></a>
   <a href="../blog/"><span>Blog</span></a>
   <a href="../kontakt"><span>Kontakt</span></a>
@@ -652,9 +652,9 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     <span class="blog-eyebrow">Branding</span>
     <h1 class="blog-title">Identyfikacja wizualna w&nbsp;2026&nbsp;&mdash; DNA skutecznej marki</h1>
     <div class="blog-meta">
-      <span>23 czerwca 2026</span>
+      <span>23&nbsp;czerwca 2026</span>
       <span>&#183;</span>
-      <span>~7 min czytania</span>
+      <span>~7&nbsp;min czytania</span>
       
     </div>
   </div>
@@ -666,68 +666,68 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     Wszystkie wpisy
   </a>
 
-  <p class="lead">Logo to nie marka. Marka to suma wszystkich do&#347;wiadcze&#324;, jakich klient dozna&#322; w kontakcie z Twoj&#261; firm&#261; &mdash; od pierwszej reklamy, przez stron&#281;, po obs&#322;ug&#281;. <strong>Identyfikacja wizualna marki</strong> jest tym, co sprawia, &#380;e to do&#347;wiadczenie jest sp&oacute;jne, rozpoznawalne i &mdash; je&#347;li zaprojektowane z my&#347;l&#261; o psychologii &mdash; buduje zaufanie szybciej ni&#380; jakikolwiek tekst.</p>
+  <p class="lead">Logo to nie marka. Marka to suma wszystkich do&#347;wiadcze&#324;, jakich klient dozna&#322; w&nbsp;kontakcie z&nbsp;Twoj&#261; firm&#261;&nbsp;&mdash; od pierwszej reklamy, przez stron&#281;, po obs&#322;ug&#281;. <strong>Identyfikacja wizualna marki</strong> jest tym, co sprawia, &#380;e to do&#347;wiadczenie jest sp&oacute;jne, rozpoznawalne i&nbsp;&mdash; je&#347;li zaprojektowane z&nbsp;my&#347;l&#261; o&nbsp;psychologii&nbsp;&mdash; buduje zaufanie szybciej ni&#380; jakikolwiek tekst.</p>
 
-  <p>I jeszcze jedno, skoro m&oacute;wimy o 2026: wi&#281;kszo&#347;&#263; rzeczy w marketingu da si&#281; dzi&#347; przyspieszy&#263; AI. Branding jest &#347;wiadomym wyj&#261;tkiem. Zaraz wyja&#347;nimy, dlaczego u nas projektuje go cz&#322;owiek.</p>
+  <p>I&nbsp;jeszcze jedno, skoro m&oacute;wimy o&nbsp;2026: wi&#281;kszo&#347;&#263; rzeczy w&nbsp;marketingu da si&#281; dzi&#347; przyspieszy&#263; AI. Branding jest &#347;wiadomym wyj&#261;tkiem. Zaraz wyja&#347;nimy, dlaczego u&nbsp;nas projektuje go cz&#322;owiek.</p>
 
   <div class="blog-tip">
-    <strong>Zasada na start:</strong> Sp&oacute;jna marka kumuluje rozpoznawalno&#347;&#263; z ka&#380;dym kontaktem. Niesp&oacute;jna &mdash; buduje j&#261; od zera za ka&#380;dym razem. To r&oacute;&#380;nica mi&#281;dzy procentem sk&#322;adanym a wiecznym startem od zera.
+    <strong>Zasada na start:</strong> Sp&oacute;jna marka kumuluje rozpoznawalno&#347;&#263; z&nbsp;ka&#380;dym kontaktem. Niesp&oacute;jna&nbsp;&mdash; buduje j&#261; od zera za ka&#380;dym razem. To r&oacute;&#380;nica mi&#281;dzy procentem sk&#322;adanym a&nbsp;wiecznym startem od zera.
   </div>
 
   <h2>Dlaczego sp&oacute;jna to&#380;samo&#347;&#263; wizualna przek&#322;ada si&#281; na przych&oacute;d?</h2>
-  <p>Badania (<a href="https://www.marq.com/" target="_blank" rel="noopener">Lucidpress/Marq, Brand Consistency Report</a>) wskazuj&#261;, &#380;e sp&oacute;jne prezentowanie marki we wszystkich kana&#322;ach zwi&#281;ksza przychody. To nie magia &mdash; sp&oacute;jno&#347;&#263; buduje znajomo&#347;&#263;, znajomo&#347;&#263; buduje zaufanie, a zaufanie obni&#380;a tarcie przy decyzji zakupowej.</p>
-  <p>Konsument potrzebuje wielu punkt&oacute;w styku z mark&#261;, zanim kupi. Je&#347;li ka&#380;dy wygl&#261;da inaczej &mdash; inna kolorystyka na Facebooku, inne fonty na stronie, inne logo na wiz&oacute;wkach &mdash; m&oacute;zg traktuje je jako odr&#281;bne bod&#378;ce i firma buduje rozpoznawalno&#347;&#263; od nowa przy ka&#380;dym kontakcie, zamiast j&#261; kumulowa&#263;.</p>
-  <p>Jest i bonus w mediach p&#322;atnych: rozpoznawalna marka w miniaturze reklamy podnosi CTR bez zmiany tre&#347;ci ani bud&#380;etu &mdash; co realnie obni&#380;a koszt pozyskania klienta. Dlatego identyfikacja i <a href="meta-ads-ai">kreacje reklamowe Meta Ads</a> powinny m&oacute;wi&#263; jednym j&#281;zykiem.</p>
+  <p>Badania (<a href="https://www.marq.com/" target="_blank" rel="noopener">Lucidpress/Marq, Brand Consistency Report</a>) wskazuj&#261;, &#380;e sp&oacute;jne prezentowanie marki we wszystkich kana&#322;ach zwi&#281;ksza przychody. To nie magia&nbsp;&mdash; sp&oacute;jno&#347;&#263; buduje znajomo&#347;&#263;, znajomo&#347;&#263; buduje zaufanie, a&nbsp;zaufanie obni&#380;a tarcie przy decyzji zakupowej.</p>
+  <p>Konsument potrzebuje wielu punkt&oacute;w styku z&nbsp;mark&#261;, zanim kupi. Je&#347;li ka&#380;dy wygl&#261;da inaczej&nbsp;&mdash; inna kolorystyka na Facebooku, inne fonty na stronie, inne logo na wiz&oacute;wkach&nbsp;&mdash; m&oacute;zg traktuje je jako odr&#281;bne bod&#378;ce i&nbsp;firma buduje rozpoznawalno&#347;&#263; od nowa przy ka&#380;dym kontakcie, zamiast j&#261; kumulowa&#263;.</p>
+  <p>Jest i&nbsp;bonus w&nbsp;mediach p&#322;atnych: rozpoznawalna marka w&nbsp;miniaturze reklamy podnosi CTR bez zmiany tre&#347;ci ani bud&#380;etu&nbsp;&mdash; co realnie obni&#380;a koszt pozyskania klienta. Dlatego identyfikacja i&nbsp;<a href="meta-ads-ai">kreacje reklamowe Meta Ads</a> powinny m&oacute;wi&#263; jednym j&#281;zykiem.</p>
 
-  <h2>Psychologia koloru &mdash; jak wybra&#263; w&#322;a&#347;ciwy dla marki?</h2>
-  <p>Kolor to pierwszy element, kt&oacute;ry dociera do m&oacute;zgu &mdash; jeszcze przed s&#322;owem i kszta&#322;tem. Decyzja o palecie to nie kwestia gustu w&#322;a&#347;ciciela, lecz strategii i analizy konkurencji.</p>
+  <h2>Psychologia koloru&nbsp;&mdash; jak wybra&#263; w&#322;a&#347;ciwy dla marki?</h2>
+  <p>Kolor to pierwszy element, kt&oacute;ry dociera do m&oacute;zgu&nbsp;&mdash; jeszcze przed s&#322;owem i&nbsp;kszta&#322;tem. Decyzja o&nbsp;palecie to nie kwestia gustu w&#322;a&#347;ciciela, lecz strategii i&nbsp;analizy konkurencji.</p>
   <ul>
-    <li><strong>Niebieski</strong> (od navy po cobalt) &mdash; zaufanie, kompetencje, profesjonalizm. Dominuje w finansach, technologii i B2B. Problem: tak powszechny, &#380;e trudno si&#281; wyr&oacute;&#380;ni&#263;.</li>
-    <li><strong>Zielony</strong> &mdash; zdrowie, naturalno&#347;&#263;, r&oacute;wnowaga. Silny w wellness, eko i fintechu nastawionym na oszcz&#281;dzanie.</li>
-    <li><strong>Pomara&#324;czowy i &#380;&oacute;&#322;ty</strong> &mdash; energia, optymizm, dost&#281;pno&#347;&#263;. Atrakcyjne dla marek konsumenckich; ostro&#380;nie w segmencie premium, bo mog&#261; sygnalizowa&#263; brak presti&#380;u.</li>
-    <li><strong>Czerń i granaty</strong> &mdash; luksus, ekskluzywnos&#263;, ponadczasowo&#347;&#263;. Dominuj&#261; w modzie premium, us&#322;ugach prawnych i konsultingu.</li>
+    <li><strong>Niebieski</strong> (od navy po cobalt)&nbsp;&mdash; zaufanie, kompetencje, profesjonalizm. Dominuje w&nbsp;finansach, technologii i&nbsp;B2B. Problem: tak powszechny, &#380;e trudno si&#281; wyr&oacute;&#380;ni&#263;.</li>
+    <li><strong>Zielony</strong>&nbsp;&mdash; zdrowie, naturalno&#347;&#263;, r&oacute;wnowaga. Silny w&nbsp;wellness, eko i&nbsp;fintechu nastawionym na oszcz&#281;dzanie.</li>
+    <li><strong>Pomara&#324;czowy i&nbsp;&#380;&oacute;&#322;ty</strong>&nbsp;&mdash; energia, optymizm, dost&#281;pno&#347;&#263;. Atrakcyjne dla marek konsumenckich; ostro&#380;nie w&nbsp;segmencie premium, bo mog&#261; sygnalizowa&#263; brak presti&#380;u.</li>
+    <li><strong>Czerń i&nbsp;granaty</strong>&nbsp;&mdash; luksus, ekskluzywnos&#263;, ponadczasowo&#347;&#263;. Dominuj&#261; w&nbsp;modzie premium, us&#322;ugach prawnych i&nbsp;konsultingu.</li>
   </ul>
 
   <div class="blog-tip">
-    <strong>Kluczowa zasada:</strong> R&oacute;&#380;nij si&#281; od dominuj&#261;cego koloru w bran&#380;y, nie upodabniaj. Je&#347;li wszyscy konkurenci s&#261; niebiescy &mdash; Tw&oacute;j pomara&#324;czowy akcent wyr&oacute;&#380;ni Ci&#281; natychmiast.
+    <strong>Kluczowa zasada:</strong> R&oacute;&#380;nij si&#281; od dominuj&#261;cego koloru w&nbsp;bran&#380;y, nie upodabniaj. Je&#347;li wszyscy konkurenci s&#261; niebiescy&nbsp;&mdash; Tw&oacute;j pomara&#324;czowy akcent wyr&oacute;&#380;ni Ci&#281; natychmiast.
   </div>
 
   <h2>Typografia, kt&oacute;ra m&oacute;wi bez s&#322;&oacute;w</h2>
-  <p>Typografia to drugi po kolorze najsilniejszy no&#347;nik osobowo&#347;ci marki. Komunikuje charakter, zanim kto&#347; przeczyta s&#322;owo. Kroje szeryfowe (Times, Garamond, Playfair) sugeruj&#261; tradycj&#281; i presti&#380;. Bezszeryfowe (Inter, DM Sans, Geist) &mdash; nowoczesno&#347;&#263; i klarowno&#347;&#263;. Geometryczne (Futura, Circular) &mdash; innowacyjno&#347;&#263; i minimalizm.</p>
-  <p>Typografia wp&#322;ywa te&#380; wprost na czytelno&#347;&#263; i konwersj&#281;. Rozmiar (min. 16 px dla tre&#347;ci), interlinia (1,5&ndash;1,75) i <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener">kontrast (min. 4,5:1 wg WCAG AA)</a> to nie estetyka, lecz funkcjonalne parametry, kt&oacute;re wp&#322;ywaj&#261; na zachowanie u&#380;ytkownika &mdash; temat dobrze opisuje <a href="https://www.nngroup.com/articles/" target="_blank" rel="noopener">Nielsen Norman Group</a>.</p>
+  <p>Typografia to drugi po kolorze najsilniejszy no&#347;nik osobowo&#347;ci marki. Komunikuje charakter, zanim kto&#347; przeczyta s&#322;owo. Kroje szeryfowe (Times, Garamond, Playfair) sugeruj&#261; tradycj&#281; i&nbsp;presti&#380;. Bezszeryfowe (Inter, DM Sans, Geist)&nbsp;&mdash; nowoczesno&#347;&#263; i&nbsp;klarowno&#347;&#263;. Geometryczne (Futura, Circular)&nbsp;&mdash; innowacyjno&#347;&#263; i&nbsp;minimalizm.</p>
+  <p>Typografia wp&#322;ywa te&#380; wprost na czytelno&#347;&#263; i&nbsp;konwersj&#281;. Rozmiar (min. 16 px dla tre&#347;ci), interlinia (1,5&ndash;1,75) i&nbsp;<a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener">kontrast (min. 4,5:1 wg WCAG AA)</a> to nie estetyka, lecz funkcjonalne parametry, kt&oacute;re wp&#322;ywaj&#261; na zachowanie u&#380;ytkownika&nbsp;&mdash; temat dobrze opisuje <a href="https://www.nngroup.com/articles/" target="_blank" rel="noopener">Nielsen Norman Group</a>.</p>
 
   <div class="blog-tip">
-    <strong>Zasada dw&oacute;ch kroj&oacute;w:</strong> Maksymalnie dwie rodziny font&oacute;w &mdash; zwykle jeden do nag&#322;&oacute;wk&oacute;w, jeden do tre&#347;ci (lub jeden w r&oacute;&#380;nych grubo&#347;ciach). Trzy i wi&#281;cej kroj&oacute;w to wizualny ha&#322;as, kt&oacute;ry odbiorcy pod&#347;wiadomie odczytuj&#261; jako brak profesjonalizmu &mdash; nawet je&#347;li ka&#380;dy font z osobna jest pi&#281;kny.
+    <strong>Zasada dw&oacute;ch kroj&oacute;w:</strong> Maksymalnie dwie rodziny font&oacute;w&nbsp;&mdash; zwykle jeden do nag&#322;&oacute;wk&oacute;w, jeden do tre&#347;ci (lub jeden w&nbsp;r&oacute;&#380;nych grubo&#347;ciach). Trzy i&nbsp;wi&#281;cej kroj&oacute;w to wizualny ha&#322;as, kt&oacute;ry odbiorcy pod&#347;wiadomie odczytuj&#261; jako brak profesjonalizmu&nbsp;&mdash; nawet je&#347;li ka&#380;dy font z&nbsp;osobna jest pi&#281;kny.
   </div>
 
   <h2>Sp&oacute;jno&#347;&#263; we wszystkich punktach styku</h2>
-  <p>Identyfikacja to nie tylko logo i kolory &mdash; to system obejmuj&#261;cy ka&#380;dy punkt kontaktu: strona, LinkedIn, Instagram, szablony e-mail, prezentacje, faktury, opakowania, wiz&oacute;wki. Ka&#380;dy no&#347;nik powinien by&#263; natychmiast rozpoznawalny jako produkt tej samej marki.</p>
-  <p>Najcz&#281;stszy b&#322;&#261;d polskich firm: profesjonalne logo z agencji, a reszta sk&#322;adana ad hoc &mdash; co&#347; w Wordzie, co&#347; w Canvie, co&#347; w PowerPoincie. Efekt: marka wygl&#261;da jak z&#322;o&#380;ona z fragment&oacute;w r&oacute;&#380;nych uk&#322;adanek. Klienci to wyczuwaj&#261;, nawet je&#347;li nie potrafi&#261; powiedzie&#263;, &bdquo;co im nie gra&rdquo;.</p>
-  <p>Rozwi&#261;zaniem jest <strong>system identyfikacji wizualnej (SIW)</strong> &mdash; zestaw komponent&oacute;w (kolory, fonty, ikony, szablony, siatka), z kt&oacute;rych ka&#380;dy w zespole z&#322;o&#380;y sp&oacute;jny materia&#322; nawet bez umiej&#281;tno&#347;ci graficznych. Ten sam system powinien rz&#261;dzi&#263; <a href="strona-seo">stron&#261; firmow&#261;, kt&oacute;ra sprzedaje</a>.</p>
+  <p>Identyfikacja to nie tylko logo i&nbsp;kolory&nbsp;&mdash; to system obejmuj&#261;cy ka&#380;dy punkt kontaktu: strona, LinkedIn, Instagram, szablony e-mail, prezentacje, faktury, opakowania, wiz&oacute;wki. Ka&#380;dy no&#347;nik powinien by&#263; natychmiast rozpoznawalny jako produkt tej samej marki.</p>
+  <p>Najcz&#281;stszy b&#322;&#261;d polskich firm: profesjonalne logo z&nbsp;agencji, a&nbsp;reszta sk&#322;adana ad hoc&nbsp;&mdash; co&#347; w&nbsp;Wordzie, co&#347; w&nbsp;Canvie, co&#347; w&nbsp;PowerPoincie. Efekt: marka wygl&#261;da jak z&#322;o&#380;ona z&nbsp;fragment&oacute;w r&oacute;&#380;nych uk&#322;adanek. Klienci to wyczuwaj&#261;, nawet je&#347;li nie potrafi&#261; powiedzie&#263;, &bdquo;co im nie gra&rdquo;.</p>
+  <p>Rozwi&#261;zaniem jest <strong>system identyfikacji wizualnej (SIW)</strong>&nbsp;&mdash; zestaw komponent&oacute;w (kolory, fonty, ikony, szablony, siatka), z&nbsp;kt&oacute;rych ka&#380;dy w&nbsp;zespole z&#322;o&#380;y sp&oacute;jny materia&#322; nawet bez umiej&#281;tno&#347;ci graficznych. Ten sam system powinien rz&#261;dzi&#263; <a href="strona-seo">stron&#261; firmow&#261;, kt&oacute;ra sprzedaje</a>.</p>
 
-  <h2>Dlaczego dobry branding wci&#261;&#380; projektuje cz&#322;owiek, a nie AI</h2>
-  <p>Tu stawiamy spraw&#281; jasno, bo to wyr&oacute;&#380;nia nasze podej&#347;cie. W skaluj.ai automatyzujemy AI tam, gdzie daje przewag&#281; &mdash; tre&#347;ci, kampanie, automatyzacje, chatboty. Ale identyfikacj&#281; wizualn&#261; projektuje u nas cz&#322;owiek. To nie sentyment, to decyzja oparta na tym, czego AI (jeszcze) nie robi dobrze:</p>
+  <h2>Dlaczego dobry branding wci&#261;&#380; projektuje cz&#322;owiek, a&nbsp;nie AI</h2>
+  <p>Tu stawiamy spraw&#281; jasno, bo to wyr&oacute;&#380;nia nasze podej&#347;cie. W&nbsp;skaluj.ai automatyzujemy AI tam, gdzie daje przewag&#281;&nbsp;&mdash; tre&#347;ci, kampanie, automatyzacje, chatboty. Ale identyfikacj&#281; wizualn&#261; projektuje u&nbsp;nas cz&#322;owiek. To nie sentyment, to decyzja oparta na tym, czego AI (jeszcze) nie robi dobrze:</p>
   <ul>
-    <li><strong>AI nie zna Twojej strategii.</strong> Branding zaczyna si&#281; od pozycjonowania, warto&#347;ci i tego, czym chcesz si&#281; r&oacute;&#380;ni&#263; &mdash; to praca strategiczna, nie generatywna.</li>
-    <li><strong>AI nie projektuje sp&oacute;jnego systemu.</strong> Wygeneruje &#322;adny obrazek, ale nie zbuduje logiki, kt&oacute;ra trzyma si&#281; przez dziesi&#261;tki no&#347;nik&oacute;w i lata.</li>
-    <li><strong>AI nie dostarcza produkcyjnych plik&oacute;w.</strong> Wektory do druku, warianty logo, pola ochronne, wersje monochromatyczne &mdash; to rzemios&#322;o, nie prompt.</li>
-    <li><strong>AI u&#347;rednia.</strong> Modele ci&#261;gn&#261; do tego, co najcz&#281;stsze. A celem brandingu jest dok&#322;adne przeciwie&#324;stwo: wyr&oacute;&#380;nienie.</li>
+    <li><strong>AI nie zna Twojej strategii.</strong> Branding zaczyna si&#281; od pozycjonowania, warto&#347;ci i&nbsp;tego, czym chcesz si&#281; r&oacute;&#380;ni&#263;&nbsp;&mdash; to praca strategiczna, nie generatywna.</li>
+    <li><strong>AI nie projektuje sp&oacute;jnego systemu.</strong> Wygeneruje &#322;adny obrazek, ale nie zbuduje logiki, kt&oacute;ra trzyma si&#281; przez dziesi&#261;tki no&#347;nik&oacute;w i&nbsp;lata.</li>
+    <li><strong>AI nie dostarcza produkcyjnych plik&oacute;w.</strong> Wektory do druku, warianty logo, pola ochronne, wersje monochromatyczne&nbsp;&mdash; to rzemios&#322;o, nie prompt.</li>
+    <li><strong>AI u&#347;rednia.</strong> Modele ci&#261;gn&#261; do tego, co najcz&#281;stsze. A&nbsp;celem brandingu jest dok&#322;adne przeciwie&#324;stwo: wyr&oacute;&#380;nienie.</li>
   </ul>
-  <p>Gdzie AI pomaga? Do moodboard&oacute;w, inspiracji i szybkich test&oacute;w koncepcji &mdash; jako wsparcie, nie zast&#281;pstwo. Finaln&#261; mark&#281; projektuje projektant, kt&oacute;ry rozumie Tw&oacute;j biznes. Zobacz <a href="../#case-studies">marki, kt&oacute;re zbudowali&#347;my</a>.</p>
+  <p>Gdzie AI pomaga? Do moodboard&oacute;w, inspiracji i&nbsp;szybkich test&oacute;w koncepcji&nbsp;&mdash; jako wsparcie, nie zast&#281;pstwo. Finaln&#261; mark&#281; projektuje projektant, kt&oacute;ry rozumie Tw&oacute;j biznes. Zobacz <a href="../#case-studies">marki, kt&oacute;re zbudowali&#347;my</a>.</p>
 
   <div class="blog-tip">
-    <strong>Twarda prawda:</strong> Logo wygenerowane w 30 sekund wygl&#261;da jak logo wygenerowane w 30 sekund. Klienci coraz lepiej to wyczuwaj&#261;. Marka, kt&oacute;ra ma si&#281; wyr&oacute;&#380;nia&#263;, nie mo&#380;e wygl&#261;da&#263; jak &#347;rednia z internetu.
+    <strong>Twarda prawda:</strong> Logo wygenerowane w&nbsp;30 sekund wygl&#261;da jak logo wygenerowane w&nbsp;30 sekund. Klienci coraz lepiej to wyczuwaj&#261;. Marka, kt&oacute;ra ma si&#281; wyr&oacute;&#380;nia&#263;, nie mo&#380;e wygl&#261;da&#263; jak &#347;rednia z&nbsp;internetu.
   </div>
 
   <h2>Co powinien zawiera&#263; brand book?</h2>
   <p>Brand book (ksi&#281;ga marki) to dokument definiuj&#261;cy zasady u&#380;ytkowania identyfikacji. Dobry zawiera co najmniej:</p>
   <ol>
-    <li><strong>Logo</strong> &mdash; wersja podstawowa, warianty (pozioma, pionowa, monochromatyczna), pole ochronne, minimalne rozmiary, niedozwolone u&#380;ycia.</li>
-    <li><strong>Paleta kolor&oacute;w</strong> &mdash; warto&#347;ci HEX, RGB, CMYK i Pantone; kt&oacute;ry kolor jest dominuj&#261;cy, kt&oacute;ry akcentowy.</li>
-    <li><strong>Typografia</strong> &mdash; kroje, hierarchia nag&#322;&oacute;wk&oacute;w (H1&ndash;H6), rozmiary, interlinie, odst&#281;py.</li>
-    <li><strong>Styl fotografii i ilustracji</strong> &mdash; jakie zdj&#281;cia pasuj&#261; do marki (klimat, &#347;wiat&#322;o, styl), a jakie nie.</li>
-    <li><strong>Ton komunikacji (tone of voice)</strong> &mdash; technicznie to brand voice, ale dobry brand book &#322;&#261;czy oba, bo razem tworz&#261; sp&oacute;jne do&#347;wiadczenie.</li>
-    <li><strong>Przyk&#322;ady zastosowa&#324;</strong> &mdash; jak identyfikacja wygl&#261;da na wiz&oacute;wce, w stopce maila, na LinkedIn, w prezentacji, na banerze.</li>
+    <li><strong>Logo</strong>&nbsp;&mdash; wersja podstawowa, warianty (pozioma, pionowa, monochromatyczna), pole ochronne, minimalne rozmiary, niedozwolone u&#380;ycia.</li>
+    <li><strong>Paleta kolor&oacute;w</strong>&nbsp;&mdash; warto&#347;ci HEX, RGB, CMYK i&nbsp;Pantone; kt&oacute;ry kolor jest dominuj&#261;cy, kt&oacute;ry akcentowy.</li>
+    <li><strong>Typografia</strong>&nbsp;&mdash; kroje, hierarchia nag&#322;&oacute;wk&oacute;w (H1&ndash;H6), rozmiary, interlinie, odst&#281;py.</li>
+    <li><strong>Styl fotografii i&nbsp;ilustracji</strong>&nbsp;&mdash; jakie zdj&#281;cia pasuj&#261; do marki (klimat, &#347;wiat&#322;o, styl), a&nbsp;jakie nie.</li>
+    <li><strong>Ton komunikacji (tone of voice)</strong>&nbsp;&mdash; technicznie to brand voice, ale dobry brand book &#322;&#261;czy oba, bo razem tworz&#261; sp&oacute;jne do&#347;wiadczenie.</li>
+    <li><strong>Przyk&#322;ady zastosowa&#324;</strong>&nbsp;&mdash; jak identyfikacja wygl&#261;da na wiz&oacute;wce, w&nbsp;stopce maila, na LinkedIn, w&nbsp;prezentacji, na banerze.</li>
   </ol>
   <div class="blog-table-wrap">
   <table class="blog-table">
@@ -740,7 +740,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     </thead>
     <tbody>
       <tr>
-        <td><strong>Logo i warianty</strong></td>
+        <td><strong>Logo i&nbsp;warianty</strong></td>
         <td data-label="Co zawiera">Wersja podstawowa, monochromatyczna, negatyw; pole ochronne; minimalne rozmiary</td>
         <td data-label="Priorytet">Obowiązkowe</td>
       </tr>
@@ -751,16 +751,16 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       </tr>
       <tr>
         <td><strong>Typografia</strong></td>
-        <td data-label="Co zawiera">Fonty nagłówkowe i body, hierarchia (H1–H4), interlinii, licencje</td>
+        <td data-label="Co zawiera">Fonty nagłówkowe i&nbsp;body, hierarchia (H1–H4), interlinii, licencje</td>
         <td data-label="Priorytet">Obowiązkowe</td>
       </tr>
       <tr>
         <td><strong>Ton głosu (brand voice)</strong></td>
-        <td data-label="Co zawiera">Słownik marki, czego unikać, przykłady poprawne i błędne</td>
+        <td data-label="Co zawiera">Słownik marki, czego unikać, przykłady poprawne i&nbsp;błędne</td>
         <td data-label="Priorytet">Zalecane</td>
       </tr>
       <tr>
-        <td><strong>Ikonografia i ilustracje</strong></td>
+        <td><strong>Ikonografia i&nbsp;ilustracje</strong></td>
         <td data-label="Co zawiera">Styl ikon, dopuszczone biblioteki, styl ilustracji</td>
         <td data-label="Priorytet">Zalecane</td>
       </tr>
@@ -771,7 +771,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       </tr>
       <tr>
         <td><strong>Przykłady zastosowań</strong></td>
-        <td data-label="Co zawiera">Wizytówka, stopka e-mail, banner, social media, prezentacja</td>
+        <td data-label="Co zawiera">Wizytówka, stopka e-&#8288;mail, banner, social media, prezentacja</td>
         <td data-label="Priorytet">Zalecane</td>
       </tr>
       <tr>
@@ -783,52 +783,52 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   </table>
 </div>
 
-<p>Dobrze zrobiony brand book to dokument, do kt&oacute;rego si&#281;ga si&#281; przez 5&ndash;10 lat &mdash; i kt&oacute;ry zwraca si&#281; tysi&#261;ce razy, oszcz&#281;dzaj&#261;c czas, koszty i frustracje przy ka&#380;dym nowym projekcie.</p>
+<p>Dobrze zrobiony brand book to dokument, do kt&oacute;rego si&#281;ga si&#281; przez 5&ndash;10 lat&nbsp;&mdash; i&nbsp;kt&oacute;ry zwraca si&#281; tysi&#261;ce razy, oszcz&#281;dzaj&#261;c czas, koszty i&nbsp;frustracje przy ka&#380;dym nowym projekcie.</p>
 
   <h2>Od strategii do sp&oacute;jnego systemu</h2>
-  <p>Skuteczna marka to sp&oacute;jno&#347;&#263;, unikalno&#347;&#263; i charakter &mdash; a te bior&#261; si&#281; ze strategii i rzemios&#322;a, nie z generatora. W skaluj.ai projektujemy <strong>identyfikacj&#281; wizualn&#261;</strong> od fundamentu: pozycjonowanie, j&#281;zyk wizualny, brand book i wdro&#380;enie na wszystkich no&#347;nikach. Sprawd&#378; zakres <a href="../oferta/branding">projektu identyfikacji wizualnej</a>.</p>
+  <p>Skuteczna marka to sp&oacute;jno&#347;&#263;, unikalno&#347;&#263; i&nbsp;charakter&nbsp;&mdash; a&nbsp;te bior&#261; si&#281; ze strategii i&nbsp;rzemios&#322;a, nie z&nbsp;generatora. W&nbsp;skaluj.ai projektujemy <strong>identyfikacj&#281; wizualn&#261;</strong> od fundamentu: pozycjonowanie, j&#281;zyk wizualny, brand book i&nbsp;wdro&#380;enie na wszystkich no&#347;nikach. Sprawd&#378; zakres <a href="../oferta/branding">projektu identyfikacji wizualnej</a>.</p>
 </article>
 
 <section class="faq-section wrap" aria-label="Najcz&#281;stsze pytania">
-  <h2>FAQ &mdash; identyfikacja wizualna marki</h2>
+  <h2>FAQ&nbsp;&mdash; identyfikacja wizualna marki</h2>
 
   <div class="faq-item">
-    <p class="faq-q">Czym r&oacute;&#380;ni si&#281; identyfikacja wizualna od logo?</p>
-    <p class="faq-a">Logo to jeden element. Identyfikacja wizualna to ca&#322;y system: logo, kolory, typografia, ikony, styl zdj&#281;&#263; i zasady ich u&#380;ycia na wszystkich no&#347;nikach. Logo bez systemu nie zbuduje sp&oacute;jnej marki.</p>
+    <h3 class="faq-q">Czym r&oacute;&#380;ni si&#281; identyfikacja wizualna od logo?</h3>
+    <p class="faq-a">Logo to jeden element. Identyfikacja wizualna to ca&#322;y system: logo, kolory, typografia, ikony, styl zdj&#281;&#263; i&nbsp;zasady ich u&#380;ycia na wszystkich no&#347;nikach. Logo bez systemu nie zbuduje sp&oacute;jnej marki.</p>
   </div>
 
   <div class="faq-item">
-    <p class="faq-q">Czym r&oacute;&#380;ni si&#281; ksi&#281;ga znaku od brand booka?</p>
-    <p class="faq-a">Ksi&#281;ga znaku opisuje wy&#322;&#261;cznie logo (warianty, pole ochronne, kolory, b&#322;&#281;dy stosowania). Brand book jest szerszy &mdash; obejmuje ca&#322;&#261; identyfikacj&#281; wizualn&#261; i komunikacyjn&#261; marki, &#322;&#261;cznie z tonem g&#322;osu i przyk&#322;adami zastosowa&#324;.</p>
+    <h3 class="faq-q">Czym r&oacute;&#380;ni si&#281; ksi&#281;ga znaku od brand booka?</h3>
+    <p class="faq-a">Ksi&#281;ga znaku opisuje wy&#322;&#261;cznie logo (warianty, pole ochronne, kolory, b&#322;&#281;dy stosowania). Brand book jest szerszy&nbsp;&mdash; obejmuje ca&#322;&#261; identyfikacj&#281; wizualn&#261; i&nbsp;komunikacyjn&#261; marki, &#322;&#261;cznie z&nbsp;tonem g&#322;osu i&nbsp;przyk&#322;adami zastosowa&#324;.</p>
   </div>
 
   <div class="faq-item">
-    <p class="faq-q">Czy AI wystarczy do zaprojektowania marki?</p>
-    <p class="faq-a">Do moodboardu, inspiracji i test&oacute;w koncepcji &mdash; tak, jako wsparcie. Do finalnej identyfikacji &mdash; nie. AI nie zna Twojej strategii, nie tworzy plik&oacute;w wektorowych do druku i nie projektuje sp&oacute;jnego systemu. Dlatego u nas mark&#281; projektuje cz&#322;owiek.</p>
+    <h3 class="faq-q">Czy AI wystarczy do zaprojektowania marki?</h3>
+    <p class="faq-a">Do moodboardu, inspiracji i&nbsp;test&oacute;w koncepcji&nbsp;&mdash; tak, jako wsparcie. Do finalnej identyfikacji&nbsp;&mdash; nie. AI nie zna Twojej strategii, nie tworzy plik&oacute;w wektorowych do druku i&nbsp;nie projektuje sp&oacute;jnego systemu. Dlatego u&nbsp;nas mark&#281; projektuje cz&#322;owiek.</p>
   </div>
 
   <div class="faq-item">
-    <p class="faq-q">Ile powinien zawiera&#263; dobry brand book?</p>
-    <p class="faq-a">Tyle, by wyeliminowa&#263; pytania i b&#322;&#281;dy: minimum logo z zasadami, palet&#281; kolor&oacute;w (CMYK/RGB/HEX/Pantone), typografi&#281;, styl zdj&#281;&#263;, ton g&#322;osu i przyk&#322;ady zastosowa&#324;. Zakres ro&#347;nie wraz z wielko&#347;ci&#261; firmy i liczb&#261; no&#347;nik&oacute;w.</p>
+    <h3 class="faq-q">Ile powinien zawiera&#263; dobry brand book?</h3>
+    <p class="faq-a">Tyle, by wyeliminowa&#263; pytania i&nbsp;b&#322;&#281;dy: minimum logo z&nbsp;zasadami, palet&#281; kolor&oacute;w (CMYK/RGB/HEX/Pantone), typografi&#281;, styl zdj&#281;&#263;, ton g&#322;osu i&nbsp;przyk&#322;ady zastosowa&#324;. Zakres ro&#347;nie wraz z&nbsp;wielko&#347;ci&#261; firmy i&nbsp;liczb&#261; no&#347;nik&oacute;w.</p>
   </div>
 
   <div class="faq-item">
-    <p class="faq-q">Jak kolor wp&#322;ywa na odbi&oacute;r marki?</p>
-    <p class="faq-a">Kolor dociera do odbiorcy jako pierwszy i uruchamia skojarzenia (np. niebieski &mdash; zaufanie, czerń &mdash; luksus). Kluczowe jest dobranie palety strategicznie i odró&#380;nienie si&#281; od dominuj&#261;cego koloru w bran&#380;y, zamiast upodabniania.</p>
+    <h3 class="faq-q">Jak kolor wp&#322;ywa na odbi&oacute;r marki?</h3>
+    <p class="faq-a">Kolor dociera do odbiorcy jako pierwszy i&nbsp;uruchamia skojarzenia (np.&nbsp;niebieski&nbsp;&mdash; zaufanie, czerń&nbsp;&mdash; luksus). Kluczowe jest dobranie palety strategicznie i&nbsp;odró&#380;nienie si&#281; od dominuj&#261;cego koloru w&nbsp;bran&#380;y, zamiast upodabniania.</p>
   </div>
 </section>
 
 <div class="blog-cta-box wrap">
-  <h3>Twoja marka wyr&oacute;&#380;nia si&#281; &mdash; czy wygl&#261;da jak &#347;rednia z internetu?</h3>
-  <p>Zaprojektujemy identyfikacj&#281; wizualn&#261;, kt&oacute;r&#261; klienci zapami&#281;taj&#261; &mdash; od strategii po brand book i wdro&#380;enie na wszystkich no&#347;nikach.</p>
+  <h3>Twoja marka wyr&oacute;&#380;nia si&#281;&nbsp;&mdash; czy wygl&#261;da jak &#347;rednia z&nbsp;internetu?</h3>
+  <p>Zaprojektujemy identyfikacj&#281; wizualn&#261;, kt&oacute;r&#261; klienci zapami&#281;taj&#261;&nbsp;&mdash; od strategii po brand book i&nbsp;wdro&#380;enie na wszystkich no&#347;nikach.</p>
   <a href="../kontakt" class="btn btn-primary">Um&oacute;w bezp&#322;atn&#261; konsultacj&#281;</a>
 </div>
 
 <div class="blog-also wrap">
-  <h4>Przeczytaj r&oacute;wnie&#380;</h4>
+  <h2 class="also-h">Przeczytaj r&oacute;wnie&#380;</h2>
   <div class="blog-also-grid">
     <a class="blog-also-item" href="strona-seo">
-      <span class="eyebrow">Strona i SEO</span>
+      <span class="eyebrow">Strona i&nbsp;SEO</span>
       <span class="t">Strona internetowa dla firmy, która sprzedaje (2026)</span>
     </a>
     <a class="blog-also-item" href="meta-ads-ai">
@@ -847,7 +847,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <img class="logo-mark" src="../sygnet.png" alt="" width="140" height="170" aria-hidden="true">
           <img class="logo-word" src="../samo%20skaluj.png" alt="skaluj.ai" width="478" height="112">
         </a>
-        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i widoczność w AI (GEO), automatyzacje i branding — od audytu po opiekę.</p>
+        <p>Agencja transformacji cyfrowej dla firm. Strony pod SEO i&nbsp;widoczność w&nbsp;AI (GEO), automatyzacje i&nbsp;branding&nbsp;— od audytu po opiekę.</p>
         <div class="footer-social" aria-label="Social media">
           <a href="https://www.facebook.com/profile.php?id=61591091827937" target="_blank" rel="noopener" class="fsoc" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-8H16l.5-3.1h-3V8.3c0-.9.25-1.5 1.5-1.5h1.6V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.6H8v3.1h2.5v8z"/></svg></a>
           <a href="https://www.instagram.com/skaluj.ai/" target="_blank" rel="noopener" class="fsoc" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.7" stroke="currentColor" stroke-width="1.7"/><circle cx="16.6" cy="7.4" r="1.15" fill="currentColor"/></svg></a>
@@ -856,11 +856,11 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <nav class="footer-col" aria-label="Oferta">
         <h3>Oferta</h3>
         <ul>
-          <li><a href="../oferta/strona-seo">Strony i SEO/GEO</a></li>
+          <li><a href="../oferta/strona-seo">Strony i&nbsp;SEO/GEO</a></li>
           <li><a href="../oferta/geo-seo">Widoczność w&nbsp;AI (GEO)</a></li>
           <li><a href="../oferta/reklamy-chatgpt">Reklamy w&nbsp;ChatGPT</a></li>
-          <li><a href="../oferta/branding">Grafiki i branding</a></li>
-          <li><a href="../oferta/rolki-ai">Rolki i wideo AI</a></li>
+          <li><a href="../oferta/branding">Grafiki i&nbsp;branding</a></li>
+          <li><a href="../oferta/rolki-ai">Rolki i&nbsp;wideo AI</a></li>
           <li><a href="../oferta/audyt-cyfryzacji">Audyt cyfryzacji</a></li>
           <li><a href="../oferta/automatyzacje-email">Automatyzacje AI</a></li>
           <li><a href="../oferta/chatbot-ai">Chatbot AI</a></li>
@@ -869,7 +869,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <nav class="footer-col" aria-label="Blog">
         <h3>Blog</h3>
         <ul>
-          <li><a href="../blog/strona-seo">Strona i SEO</a></li>
+          <li><a href="../blog/strona-seo">Strona i&nbsp;SEO</a></li>
           <li><a href="../blog/geo-ai-search">GEO / AI Search</a></li>
           <li><a href="../blog/reklamy-chatgpt">Reklamy AI</a></li>
           <li><a href="../blog/meta-ads-ai">Meta Ads</a></li>
@@ -888,7 +888,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
           <li><a href="../#case-studies">Case studies</a></li>
           <li><a href="../#integracje">Integracje</a></li>
           <li><a href="../#proces">Proces</a></li>
-          <li><a href="../#o-nas">O nas</a></li>
+          <li><a href="../#o-nas">O&nbsp;nas</a></li>
           <li><a href="../#faq">FAQ</a></li>
         </ul>
       </nav>
@@ -906,7 +906,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       </div>
     </div>
     <div class="footer-watermark" aria-hidden="true">skaluj<span class="wm-dot">.</span>ai</div>
-    <div class="footer-bottom"><span>© 2026 skaluj.ai Sergiusz Serafin — wszystkie prawa zastrzeżone</span><span>NIP 8133960157 · REGON 545915660</span><span>Zaprojektowano w Polsce</span></div>
+    <div class="footer-bottom"><span>© 2026 skaluj.ai Sergiusz Serafin&nbsp;— wszystkie prawa zastrzeżone</span><span>NIP 8133960157 · REGON&nbsp;545915660</span><span>Zaprojektowano w&nbsp;Polsce</span></div>
   </div>
 </footer>
 
