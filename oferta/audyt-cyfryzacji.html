@@ -241,9 +241,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint)}
 .svc-header{padding:130px 0 50px;border-bottom:1px solid var(--line)}
 .svc-header--video{position:relative;overflow:hidden;border-bottom:0;padding:170px 0 90px;isolation:isolate;background:#070c16}
-.svc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:0;transition:opacity .6s ease}
+.svc-header--video .wrap{max-width:760px}
+.svc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .svc-hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,12,22,.80) 0%,rgba(7,12,22,.60) 45%,rgba(7,12,22,.82) 100%)}
-.svc-header--video .svc-eyebrow{color:#7fb0ff}
+.svc-header--video .svc-eyebrow,.tl-geo{color:#7fb0ff}
 .svc-header--video .svc-title{color:#fff}
 .svc-header--video .svc-sub{color:rgba(255,255,255,.85)}
 .svc-header--video .btn-primary{background:#fff;color:#0b0d10}
@@ -251,43 +252,42 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .svc-header--video .svc-cta-row .btn:not(.btn-primary){border:1px solid rgba(255,255,255,.45)!important;color:#fff}
 .svc-header--video .svc-cta-row .btn:not(.btn-primary):hover{background:rgba(255,255,255,.12)}
 .svc-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
-.svc-title{font-size:clamp(2rem,5vw,3.3rem);font-weight:600;letter-spacing:-.04em;line-height:1.08;max-width:780px;margin:0 0 20px}
-.svc-sub{font-size:1.12rem;color:var(--muted);max-width:620px;line-height:1.6}
+.svc-title{font-size:clamp(2rem,4.4vw,3rem);font-weight:500;letter-spacing:-.03em;line-height:1.08;margin:0 0 20px}
+.svc-sub{font-size:1.12rem;color:var(--muted);line-height:1.6}
 .svc-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.svc-body{max-width:760px;margin:0 auto;padding:60px clamp(24px,4vw,48px) 70px}
-.svc-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-family:var(--mono);color:var(--muted);margin-bottom:34px;transition:color .2s}
-.svc-back:hover{color:var(--text)}.svc-back svg{width:14px;height:14px}
+.svc-body{max-width:760px;margin:0 auto;padding:72px clamp(24px,4vw,48px) 70px}
+.svc-body>h2:first-child{margin-top:0}
 .svc-body h2{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:50px 0 14px}
 .svc-body p{color:var(--muted);margin-bottom:16px;line-height:1.75}
 .svc-body strong{color:var(--text);font-weight:600}
+.svc-body p a,.svc-body li a,.svc-step .tx a{color:var(--text);text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(47,111,224,.45);text-underline-offset:3px;transition:color .2s,text-decoration-color .2s}
+.svc-body p a:hover,.svc-body li a:hover,.svc-step .tx a:hover{color:var(--accent);text-decoration-color:currentColor}
 .svc-list{list-style:none;display:grid;gap:12px;margin:8px 0 20px}
 .svc-list li{position:relative;padding-left:30px;color:var(--muted);line-height:1.6}
 .svc-list li::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:var(--accent-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f6fe0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");background-size:11px;background-repeat:no-repeat;background-position:center}
 .svc-list li strong{color:var(--text)}
-.svc-tip{background:var(--bg-elev);border-left:3px solid var(--accent);border-radius:0 var(--r-md) var(--r-md) 0;padding:16px 20px;margin:24px 0;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.svc-tip{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:var(--r-md);padding:18px 22px;margin:24px 0;font-size:14.5px;line-height:1.65;color:var(--muted)}
 .svc-tip strong{color:var(--text)}
 .svc-steps{display:grid;gap:14px;margin:10px 0 20px;counter-reset:s}
 .svc-step{display:flex;gap:16px;align-items:flex-start}
 .svc-step .num{flex:none;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:13px;display:grid;place-items:center;font-weight:500}
 .svc-step .tx{color:var(--muted);line-height:1.6;padding-top:3px}.svc-step .tx b{color:var(--text);font-weight:600}
-.svc-cta-box{background:var(--bg-elev);border-radius:24px;padding:44px 48px;text-align:center;max-width:760px;margin:0 auto 80px}
-.svc-cta-box .cta-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+.svc-cta-box{background:var(--bg-elev);border-radius:24px;padding:44px 40px;text-align:center;max-width:664px;margin:0 auto 80px}
 .svc-cta-box h3{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;margin-bottom:12px}
-.svc-cta-box p{color:var(--muted);margin-bottom:26px;font-size:15px}
+.svc-cta-box p{color:var(--muted);max-width:46ch;margin:0 auto 26px;font-size:15px}
 .svc-also{max-width:760px;margin:0 auto 80px}
-.svc-also h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.svc-also h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
 .svc-also-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.svc-also-item{border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .2s,background .2s}
+.svc-also-item{display:flex;justify-content:space-between;align-items:center;gap:16px;border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .2s,background .2s}
+.svc-also-item .ar{width:16px;flex:none;color:var(--accent);transition:transform .2s}.svc-also-item:hover .ar{transform:translateX(3px)}
 .svc-also-item:hover{border-color:rgba(47,111,224,.4);background:var(--accent-soft)}
-.svc-also-item .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
 .svc-also-item .t{display:block;font-size:14px;font-weight:500;color:var(--text);line-height:1.35}
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.svc-header{padding:110px 0 40px}.svc-cta-box{padding:32px 24px}.svc-also-grid{grid-template-columns:1fr}}
+@media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.svc-header{padding:110px 0 40px}.svc-cta-box{margin:0 24px 64px;padding:32px 22px;border-radius:20px}.svc-also-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.svc-cta-row{flex-direction:column}.svc-cta-row .btn{width:100%;justify-content:center}}
 .logo .brand-img{height:24px;width:auto;display:block}
 .footer{position:relative;overflow:hidden}
 .footer .wrap{position:relative;z-index:1}
-.tl-geo{color:#7aa9f5;white-space:nowrap}
-@media(max-width:640px){.tl-geo{white-space:normal}}
 /* ===== widget: symulacja czatu AI (GEO demo) ===== */
 .geo-chat{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(165deg,#ffffff 0%,#f5f7fa 100%);box-shadow:0 24px 60px -24px rgba(15,30,60,.25),0 0 0 1px rgba(0,0,0,.03);margin:26px 0 8px}
 .gc-top{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.6)}
@@ -417,10 +417,11 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 <style>
 .svc-table-wrap{overflow-x:auto;margin:26px 0;-webkit-overflow-scrolling:touch}
 .svc-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
-.svc-table th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:500;padding:11px 14px;border-bottom:1.5px solid var(--line);vertical-align:bottom}
+.svc-table th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:500;padding:11px 14px;border-bottom:1.5px solid var(--line);vertical-align:bottom}
 .svc-table td{padding:13px 14px;border-bottom:1px solid var(--line-2);color:var(--muted);vertical-align:top;line-height:1.55}
 .svc-table td:first-child{color:var(--text);font-weight:600;width:30%}
 .svc-table tr:last-child td{border-bottom:none}
+@media(max-width:600px){.svc-table{min-width:0}.svc-table thead{display:none}.svc-table tr{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;padding:12px 0;border-bottom:1px solid var(--line-2)}.svc-table td{border:0;padding:0}.svc-table td:first-child{grid-column:1/-1;width:auto;margin-bottom:4px;color:var(--text);font-weight:500}.svc-table td[data-label]::before{content:attr(data-label);display:block;font-size:12px;color:var(--faint);margin-bottom:2px}}
 </style>
 <style id="chrome">
 /* ============================================================
@@ -687,13 +688,13 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 
 <main id="tresc">
 <header class="svc-header svc-header--video">
-  <video class="svc-hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+  <video class="svc-hero-video" autoplay muted loop playsinline preload="metadata" poster="../assets/hero-audyt-cyfryzacji.webp" aria-hidden="true">
     <source src="../assets/hero-audyt-cyfryzacji.mp4" type="video/mp4" media="(min-width: 441px)">
     <source src="../assets/hero-audyt-cyfryzacji-mobile.mp4" type="video/mp4">
   </video>
   <div class="svc-hero-overlay"></div>
   <div class="wrap">
-    <span class="svc-eyebrow">06 — Audyt · Diagnostyka</span>
+    <span class="svc-eyebrow">Audyt cyfryzacji</span>
     <h1 class="svc-title">Audyt cyfryzacji firmy. <span class="tl-geo">Wiesz, na czym stoisz</span></h1>
     <p class="svc-sub">Sprawdzamy, jak Twoja firma radzi sobie cyfrowo — widoczność w Google i w AI, social media, kondycja strony, powtarzalne procesy i narzędzia, z których korzystacie. Dostajesz szczegółowy raport PDF z listą priorytetów i planem, co robić najpierw.</p>
     <div class="svc-cta-row">
@@ -704,8 +705,6 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 </header>
 
 <article class="svc-body wrap">
-  <a class="svc-back" href="../#oferta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Wróć do oferty</a>
-
   <h2>Dla kogo to jest</h2>
   <p>Dla firm, które wiedzą, że „coś trzeba zrobić z cyfryzacją", ale nie wiedzą, <strong>od czego zacząć ani ile to naprawdę da</strong>. Dla tych, które płacą za SEO albo social media i nie potrafią powiedzieć, czy to działa. I dla tych, które planują budżet na kolejny rok i nie chcą go rozdzielać na wyczucie.</p>
   <p>To nie jest oferta wdrożeniowa. To <strong>diagnoza</strong> — punkt wyjścia do decyzji, niezależnie od tego, kto będzie ją później realizował.</p>
@@ -723,25 +722,16 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 
   <h2>Co sprawdzamy</h2>
   <p>Sześć obszarów plus porównanie z konkurencją. Nie wszystkie będą u Ciebie równie ważne — to też wychodzi w raporcie.</p>
-  <ul class="svc-list">
-    <li><strong>Widoczność w Google (SEO)</strong> — na jakie frazy jesteś znajdowany, ile stron masz w indeksie, czy nie blokujesz się technicznie, jak wypadają nagłówki, opisy i dane strukturalne.</li>
-    <li><strong>Widoczność w AI (GEO)</strong> — czy ChatGPT, Perplexity i Google AI w ogóle wymieniają Twoją firmę, na jakie pytania i kogo wymieniają zamiast Ciebie. Obszar, którego klasyczne audyty nie dotykają.</li>
-    <li><strong>Procesy i powtarzalna praca</strong> — gdzie zespół traci godziny na czynności, które da się zautomatyzować: przepisywanie danych, ręczne oferty, faktury, raporty, follow-upy. Liczymy, ile to realnie kosztuje w skali miesiąca.</li>
-    <li><strong>Narzędzia i integracje</strong> — z czego korzystacie, co ze sobą nie rozmawia i w których miejscach dane wędrują ręcznie z jednego systemu do drugiego.</li>
-    <li><strong>Social media</strong> — gdzie faktycznie jesteś obecny, czy profile są spójne z marką i ze sobą, jak wygląda regularność publikacji i realne zaangażowanie w stosunku do zasięgu.</li>
-    <li><strong>Kondycja techniczna strony</strong> — szybkość, wersja mobilna, Core Web Vitals, błędy, certyfikat i wszystko, co po cichu obniża pozycje.</li>
-    <li><strong>Konkurencja</strong> — gdzie oni są widoczni, a Ciebie brakuje. Często najszybsze wnioski biorą się właśnie z tego zestawienia.</li>
-  </ul>
 
 <div class="svc-table-wrap">
 <table class="svc-table">
 <thead><tr><th>Obszar</th><th>Co sprawdzamy</th><th>Co dostajesz w raporcie</th></tr></thead>
 <tbody>
-<tr><td>Google</td><td>Pozycje na frazy klientów, wizytówka, indeksacja</td><td>Lista fraz z pozycjami i luki względem konkurencji</td></tr>
-<tr><td>Wyszukiwarki AI</td><td>Czy padasz w odpowiedziach ChatGPT i Perplexity</td><td>Zapis realnych odpowiedzi i kto jest cytowany zamiast Ciebie</td></tr>
-<tr><td>Strona</td><td>Szybkość, Core Web Vitals, wersja mobilna, błędy</td><td>Priorytetyzowana lista poprawek, nie surowy zrzut z narzędzia</td></tr>
-<tr><td>Social media</td><td>Spójność, aktualność, dopasowanie kanałów do branży</td><td>Ocena obecności i rekomendacja, w co nie inwestować</td></tr>
-<tr><td>Procesy i narzędzia</td><td>Gdzie pracownicy tracą czas na powtarzalne czynności</td><td>Miejsca do automatyzacji, z szacunkiem oszczędzonego czasu</td></tr>
+<tr><td>Google</td><td data-label="Co sprawdzamy">Pozycje na frazy klientów, wizytówka, indeksacja</td><td data-label="Co dostajesz w raporcie">Lista fraz z pozycjami i luki względem konkurencji</td></tr>
+<tr><td>Wyszukiwarki AI</td><td data-label="Co sprawdzamy">Czy padasz w odpowiedziach ChatGPT i Perplexity</td><td data-label="Co dostajesz w raporcie">Zapis realnych odpowiedzi i kto jest cytowany zamiast Ciebie</td></tr>
+<tr><td>Strona</td><td data-label="Co sprawdzamy">Szybkość, Core Web Vitals, wersja mobilna, błędy</td><td data-label="Co dostajesz w raporcie">Priorytetyzowana lista poprawek, nie surowy zrzut z narzędzia</td></tr>
+<tr><td>Social media</td><td data-label="Co sprawdzamy">Spójność, aktualność, dopasowanie kanałów do branży</td><td data-label="Co dostajesz w raporcie">Ocena obecności i rekomendacja, w co nie inwestować</td></tr>
+<tr><td>Procesy i narzędzia</td><td data-label="Co sprawdzamy">Gdzie pracownicy tracą czas na powtarzalne czynności</td><td data-label="Co dostajesz w raporcie">Miejsca do automatyzacji, z szacunkiem oszczędzonego czasu</td></tr>
 </tbody>
 </table>
 </div>
@@ -751,32 +741,41 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   <p>Sprawdzamy jedno i drugie, bo dopiero zestawienie tych dwóch obszarów pozwala uczciwie powiedzieć, gdzie zainwestowany budżet zwróci się szybciej: w bycie widocznym czy w odzyskanie czasu.</p>
 
   <h2>Jak to robimy</h2>
-  <ul class="svc-list">
-    <li><strong>Krótki wywiad.</strong> Pytamy, czym się zajmujesz, kto jest Twoim klientem, jak wygląda tydzień pracy zespołu i z kim się porównujesz.</li>
-    <li><strong>Zbieranie danych.</strong> Narzędzia analityczne, zapytania do wyszukiwarek AI, przegląd profili, testy techniczne strony i mapowanie powtarzalnych czynności.</li>
-    <li><strong>Analiza i priorytetyzacja.</strong> Surowe dane same nic nie mówią — sens powstaje z zestawienia ich z Twoim rynkiem i Twoimi kosztami.</li>
-    <li><strong>Raport i omówienie.</strong> Dostajesz PDF oraz rozmowę, na której tłumaczymy, co z niego wynika.</li>
-  </ul>
+  <div class="svc-steps">
+    <div class="svc-step"><span class="num">1</span><span class="tx"><b>Krótki wywiad.</b> Pytamy, czym się zajmujesz, kto jest Twoim klientem, jak wygląda tydzień pracy zespołu i z kim się porównujesz.</span></div>
+    <div class="svc-step"><span class="num">2</span><span class="tx"><b>Zbieranie danych.</b> Narzędzia analityczne, zapytania do wyszukiwarek AI, przegląd profili, testy techniczne strony i mapowanie powtarzalnych czynności.</span></div>
+    <div class="svc-step"><span class="num">3</span><span class="tx"><b>Analiza i priorytetyzacja.</b> Surowe dane same nic nie mówią — sens powstaje z zestawienia ich z Twoim rynkiem i Twoimi kosztami.</span></div>
+    <div class="svc-step"><span class="num">4</span><span class="tx"><b>Raport i omówienie.</b> Dostajesz PDF oraz rozmowę, na której tłumaczymy, co z niego wynika.</span></div>
+  </div>
 
   <h2>Co potem</h2>
   <p>Nic nie musisz. Raport jest Twój i możesz go wdrożyć samodzielnie, oddać innej agencji albo odłożyć na kwartał. <strong>Nie zaszywamy w nim haczyków</strong> zmuszających do dalszej współpracy — sekcja „zrób sam" istnieje właśnie po to, żeby część rzeczy dało się naprawić bez nas.</p>
   <p>Jeśli zdecydujesz, że chcesz to wdrożyć razem z nami, audyt staje się pierwszym etapem — nie robimy tej samej pracy dwa razy.</p>
 
   <h2>Najczęstsze pytania (FAQ)</h2>
-  <ul class="svc-list">
-    <li><strong>Czym to się różni od darmowego audytu SEO z internetu?</strong> Automatyczne narzędzia generują listę błędów bez kontekstu i bez hierarchii, i dotyczą wyłącznie strony. Tutaj dostajesz interpretację oraz obszary, których żaden skrypt nie sprawdzi — procesy, narzędzia i obecność w AI.</li>
-    <li><strong>Czy muszę mieć stronę, żeby zamówić audyt?</strong> Nie. Bez strony audyt pokazuje stan wyjściowy — obecność marki, procesy i narzędzia — oraz to, co warto zbudować najpierw.</li>
-    <li><strong>Sprawdzacie naprawdę obecność w ChatGPT?</strong> Tak. Zadajemy wyszukiwarkom AI pytania, które zadaje Twój klient, i sprawdzamy, czy pada Twoja nazwa, czy konkurencji. To osobny rozdział raportu.</li>
-    <li><strong>Ile to trwa?</strong> Zwykle kilka dni roboczych od wywiadu do gotowego raportu, zależnie od wielkości firmy i liczby obszarów do sprawdzenia.</li>
-    <li><strong>Czy dostanę coś, co zrozumiem bez specjalisty?</strong> Taki jest cel. Raport piszemy dla osoby decyzyjnej — wnioski i rekomendacje na wierzchu, techniczne szczegóły w załącznikach.</li>
-    <li><strong>Czy raport przyda się przy wniosku o dofinansowanie?</strong> Zawiera opis stanu wyjściowego, plan wdrożenia oraz szacunki czasu i kosztu — czyli to, czego zwykle wymagają wnioski o środki na cyfryzację. Wymagania konkretnego programu warto potwierdzić u jego operatora.</li>
-  </ul>
-
-  <div class="svc-cta-row" style="margin-top:40px">
-    <a href="../kontakt" class="btn btn-primary">Zamów audyt cyfryzacji</a>
-    <a class="btn" href="../blog/audyt-widocznosci" style="border:1px solid var(--line)">Sprawdź część rzeczy sam</a>
+  <div class="svc-faq">
+    <div class="faq-i"><h3>Czym to się różni od darmowego audytu SEO z internetu?</h3><p>Automatyczne narzędzia generują listę błędów bez kontekstu i bez hierarchii, i dotyczą wyłącznie strony. Tutaj dostajesz interpretację oraz obszary, których żaden skrypt nie sprawdzi — procesy, narzędzia i obecność w AI.</p></div>
+    <div class="faq-i"><h3>Czy muszę mieć stronę, żeby zamówić audyt?</h3><p>Nie. Bez strony audyt pokazuje stan wyjściowy — obecność marki, procesy i narzędzia — oraz to, co warto zbudować najpierw.</p></div>
+    <div class="faq-i"><h3>Sprawdzacie naprawdę obecność w ChatGPT?</h3><p>Tak. Zadajemy wyszukiwarkom AI pytania, które zadaje Twój klient, i sprawdzamy, czy pada Twoja nazwa, czy konkurencji. To osobny rozdział raportu.</p></div>
+    <div class="faq-i"><h3>Ile to trwa?</h3><p>Zwykle kilka dni roboczych od wywiadu do gotowego raportu, zależnie od wielkości firmy i liczby obszarów do sprawdzenia.</p></div>
+    <div class="faq-i"><h3>Czy dostanę coś, co zrozumiem bez specjalisty?</h3><p>Taki jest cel. Raport piszemy dla osoby decyzyjnej — wnioski i rekomendacje na wierzchu, techniczne szczegóły w załącznikach.</p></div>
+    <div class="faq-i"><h3>Czy raport przyda się przy wniosku o dofinansowanie?</h3><p>Zawiera opis stanu wyjściowego, plan wdrożenia oraz szacunki czasu i kosztu — czyli to, czego zwykle wymagają wnioski o środki na cyfryzację. Wymagania konkretnego programu warto potwierdzić u jego operatora.</p></div>
   </div>
 </article>
+
+<div class="svc-cta-box wrap">
+  <h3>Zamów audyt cyfryzacji</h3>
+  <p>Dostajesz raport PDF z priorytetami oraz szacunkiem czasu i kosztu. Wdrożysz go z nami, z inną agencją albo samodzielnie.</p>
+  <a href="../kontakt" class="btn btn-primary">Umów bezpłatną konsultację</a>
+</div>
+
+<div class="svc-also wrap">
+  <h4>Zobacz też</h4>
+  <div class="svc-also-grid">
+    <a class="svc-also-item" href="geo-seo"><span class="t">Pozycjonowanie w AI — GEO i SEO dla Twojej strony</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="svc-also-item" href="automatyzacje-email"><span class="t">Automatyzacje biznesowe AI — procesy robią się same</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</div>
 </main>
 
 <footer class="footer">
@@ -850,14 +849,13 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   </div>
 </footer>
 
-<!-- svc-hero-video-fadein -->
+<!-- svc-hero-video -->
 <script>
 (function(){
   var v = document.querySelector('.svc-hero-video');
   if(!v) return;
-  function show(){ v.style.opacity='1'; }
-  if(v.readyState >= 3){ show(); }
-  else { v.addEventListener('canplay', show, {once:true}); }
+  /* ograniczony ruch w systemie: zostaje pierwszy kadr (poster), film nie gra */
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); return; }
   /* telefony (<=440px) dostaja lzejsza wersje filmu: srodkowy pionowy wycinek 648x720 (to, co i tak
      widac przy object-fit:cover w wysokim hero). Po obrocie/zmianie szerokosci przez prog
      wybieramy zrodlo od nowa, zeby kadr zawsze pasowal do ekranu. */

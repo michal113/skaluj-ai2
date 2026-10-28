@@ -241,9 +241,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .footer-bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint)}
 .svc-header{padding:130px 0 50px;border-bottom:1px solid var(--line)}
 .svc-header--video{position:relative;overflow:hidden;border-bottom:0;padding:170px 0 90px;isolation:isolate;background:#070c16}
-.svc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:0;transition:opacity .6s ease}
+.svc-header--video .wrap{max-width:760px}
+.svc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .svc-hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,12,22,.80) 0%,rgba(7,12,22,.60) 45%,rgba(7,12,22,.82) 100%)}
-.svc-header--video .svc-eyebrow{color:#7fb0ff}
+.svc-header--video .svc-eyebrow,.tl-geo{color:#7fb0ff}
 .svc-header--video .svc-title{color:#fff}
 .svc-header--video .svc-sub{color:rgba(255,255,255,.85)}
 .svc-header--video .btn-primary{background:#fff;color:#0b0d10}
@@ -251,43 +252,42 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .svc-header--video .svc-cta-row .btn:not(.btn-primary){border:1px solid rgba(255,255,255,.45)!important;color:#fff}
 .svc-header--video .svc-cta-row .btn:not(.btn-primary):hover{background:rgba(255,255,255,.12)}
 .svc-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
-.svc-title{font-size:clamp(2rem,5vw,3.3rem);font-weight:600;letter-spacing:-.04em;line-height:1.08;max-width:780px;margin:0 0 20px}
-.svc-sub{font-size:1.12rem;color:var(--muted);max-width:620px;line-height:1.6}
+.svc-title{font-size:clamp(2rem,4.4vw,3rem);font-weight:500;letter-spacing:-.03em;line-height:1.08;margin:0 0 20px}
+.svc-sub{font-size:1.12rem;color:var(--muted);line-height:1.6}
 .svc-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.svc-body{max-width:760px;margin:0 auto;padding:60px clamp(24px,4vw,48px) 70px}
-.svc-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-family:var(--mono);color:var(--muted);margin-bottom:34px;transition:color .2s}
-.svc-back:hover{color:var(--text)}.svc-back svg{width:14px;height:14px}
+.svc-body{max-width:760px;margin:0 auto;padding:72px clamp(24px,4vw,48px) 70px}
+.svc-body>h2:first-child{margin-top:0}
 .svc-body h2{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:50px 0 14px}
 .svc-body p{color:var(--muted);margin-bottom:16px;line-height:1.75}
 .svc-body strong{color:var(--text);font-weight:600}
+.svc-body p a,.svc-body li a,.svc-step .tx a{color:var(--text);text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(47,111,224,.45);text-underline-offset:3px;transition:color .2s,text-decoration-color .2s}
+.svc-body p a:hover,.svc-body li a:hover,.svc-step .tx a:hover{color:var(--accent);text-decoration-color:currentColor}
 .svc-list{list-style:none;display:grid;gap:12px;margin:8px 0 20px}
 .svc-list li{position:relative;padding-left:30px;color:var(--muted);line-height:1.6}
 .svc-list li::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:var(--accent-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232f6fe0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");background-size:11px;background-repeat:no-repeat;background-position:center}
 .svc-list li strong{color:var(--text)}
-.svc-tip{background:var(--bg-elev);border-left:3px solid var(--accent);border-radius:0 var(--r-md) var(--r-md) 0;padding:16px 20px;margin:24px 0;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.svc-tip{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:var(--r-md);padding:18px 22px;margin:24px 0;font-size:14.5px;line-height:1.65;color:var(--muted)}
 .svc-tip strong{color:var(--text)}
 .svc-steps{display:grid;gap:14px;margin:10px 0 20px;counter-reset:s}
 .svc-step{display:flex;gap:16px;align-items:flex-start}
 .svc-step .num{flex:none;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent);font-family:var(--mono);font-size:13px;display:grid;place-items:center;font-weight:500}
 .svc-step .tx{color:var(--muted);line-height:1.6;padding-top:3px}.svc-step .tx b{color:var(--text);font-weight:600}
-.svc-cta-box{background:var(--bg-elev);border-radius:24px;padding:44px 48px;text-align:center;max-width:760px;margin:0 auto 80px}
-.svc-cta-box .cta-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+.svc-cta-box{background:var(--bg-elev);border-radius:24px;padding:44px 40px;text-align:center;max-width:664px;margin:0 auto 80px}
 .svc-cta-box h3{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;margin-bottom:12px}
-.svc-cta-box p{color:var(--muted);margin-bottom:26px;font-size:15px}
+.svc-cta-box p{color:var(--muted);max-width:46ch;margin:0 auto 26px;font-size:15px}
 .svc-also{max-width:760px;margin:0 auto 80px}
-.svc-also h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+.svc-also h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
 .svc-also-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.svc-also-item{border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .2s,background .2s}
+.svc-also-item{display:flex;justify-content:space-between;align-items:center;gap:16px;border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .2s,background .2s}
+.svc-also-item .ar{width:16px;flex:none;color:var(--accent);transition:transform .2s}.svc-also-item:hover .ar{transform:translateX(3px)}
 .svc-also-item:hover{border-color:rgba(47,111,224,.4);background:var(--accent-soft)}
-.svc-also-item .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
 .svc-also-item .t{display:block;font-size:14px;font-weight:500;color:var(--text);line-height:1.35}
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.svc-header{padding:110px 0 40px}.svc-cta-box{padding:32px 24px}.svc-also-grid{grid-template-columns:1fr}}
+@media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.svc-header{padding:110px 0 40px}.svc-cta-box{margin:0 24px 64px;padding:32px 22px;border-radius:20px}.svc-also-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.svc-cta-row{flex-direction:column}.svc-cta-row .btn{width:100%;justify-content:center}}
 .logo .brand-img{height:24px;width:auto;display:block}
 .footer{position:relative;overflow:hidden}
 .footer .wrap{position:relative;z-index:1}
-.tl-geo{color:#7aa9f5;white-space:nowrap}
-@media(max-width:640px){.tl-geo{white-space:normal}}
 /* ===== widget: symulacja czatu AI (GEO demo) ===== */
 .geo-chat{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(165deg,#ffffff 0%,#f5f7fa 100%);box-shadow:0 24px 60px -24px rgba(15,30,60,.25),0 0 0 1px rgba(0,0,0,.03);margin:26px 0 8px}
 .gc-top{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line-2);background:rgba(255,255,255,.6)}
@@ -630,13 +630,13 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 
 <main id="tresc">
 <header class="svc-header svc-header--video">
-  <video class="svc-hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+  <video class="svc-hero-video" autoplay muted loop playsinline preload="metadata" poster="../assets/hero-geo-seo.webp" aria-hidden="true">
     <source src="../assets/hero-geo-seo.mp4" type="video/mp4" media="(min-width: 441px)">
     <source src="../assets/hero-geo-seo-mobile.mp4" type="video/mp4">
   </video>
   <div class="svc-hero-overlay"></div>
   <div class="wrap">
-    <span class="svc-eyebrow">02 — GEO · SEO · AI Search</span>
+    <span class="svc-eyebrow">Widoczność w AI</span>
     <h1 class="svc-title">Masz już stronę? Spraw, by <span class="tl-geo">polecała Cię sztuczna inteligencja</span></h1>
     <p class="svc-sub">GEO i SEO dla istniejących stron. Optymalizujemy Twoją obecną witrynę pod wyszukiwarki AI — ChatGPT, Perplexity, Google AI Overviews — oraz pod klasyczne Google, żeby klient trafiał do Ciebie niezależnie od tego, gdzie zaczyna szukać. Bez przebudowy od zera.</p>
     <div class="svc-cta-row">
@@ -647,8 +647,6 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 </header>
 
 <article class="svc-body wrap">
-  <a class="svc-back" href="../#oferta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Wróć do oferty</a>
-
   <h2>Dla kogo to jest</h2>
   <p>Dla firm, które <strong>już mają stronę</strong>, ale nie widać ich tam, gdzie klienci naprawdę szukają — w Google, a coraz częściej w odpowiedziach AI. Reguły gry się zmieniły: dziś ogromna część wyszukiwań kończy się <strong>bez kliknięcia w jakikolwiek link</strong> — użytkownik dostaje gotową odpowiedź prosto od ChatGPT, Perplexity albo z Google AI Overviews i nie wchodzi na żadną stronę. Jeśli masz ruch, ale mało zapytań, albo konkurencja jest cytowana przez AI, a Ciebie tam nie ma — ta oferta jest dla Ciebie. Nie przebudowujemy strony od zera; wyciągamy maksimum z tego, co już masz.</p>
 
@@ -722,7 +720,6 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 </article>
 
 <div class="svc-cta-box wrap">
-  <span class="cta-label">Gotowy na następny krok?</span>
   <h3>Zacznijmy od bezpłatnego audytu widoczności</h3>
   <p>Sprawdzimy, gdzie jesteś — i gdzie Cię brakuje — w Google i w wyszukiwarkach AI, z konkretnymi priorytetami na start.</p>
   <a href="../kontakt" class="btn btn-primary">Umów bezpłatną konsultację</a>
@@ -731,8 +728,8 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 <div class="svc-also wrap">
   <h4>Zobacz też</h4>
   <div class="svc-also-grid">
-    <a class="svc-also-item" href="strona-seo"><span class="eyebrow">Strona + SEO i GEO</span><span class="t">Nowa strona z SEO i GEO wbudowanymi od pierwszego dnia</span></a>
-    <a class="svc-also-item" href="automatyzacje-email"><span class="eyebrow">Automatyzacje</span><span class="t">Automatyzacje biznesowe AI — procesy, które robią się same</span></a>
+    <a class="svc-also-item" href="strona-seo"><span class="t">Nowa strona z SEO i GEO wbudowanymi od pierwszego dnia</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="svc-also-item" href="automatyzacje-email"><span class="t">Automatyzacje biznesowe AI — procesy, które robią się same</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </div>
 </main>
@@ -808,14 +805,13 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   </div>
 </footer>
 
-<!-- svc-hero-video-fadein -->
+<!-- svc-hero-video -->
 <script>
 (function(){
   var v = document.querySelector('.svc-hero-video');
   if(!v) return;
-  function show(){ v.style.opacity='1'; }
-  if(v.readyState >= 3){ show(); }
-  else { v.addEventListener('canplay', show, {once:true}); }
+  /* ograniczony ruch w systemie: zostaje pierwszy kadr (poster), film nie gra */
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ v.removeAttribute('autoplay'); v.pause(); return; }
   /* telefony (<=440px) dostaja lzejsza wersje filmu: srodkowy pionowy wycinek 648x720 (to, co i tak
      widac przy object-fit:cover w wysokim hero). Po obrocie/zmianie szerokosci przez prog
      wybieramy zrodlo od nowa, zeby kadr zawsze pasowal do ekranu. */
