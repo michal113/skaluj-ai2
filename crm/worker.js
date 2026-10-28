@@ -65,7 +65,9 @@ function basicPassword(request) {
   const h = request.headers.get("Authorization") || "";
   if (!h.startsWith("Basic ")) return null;
   try {
-    const decoded = atob(h.slice(6));
+    /* przegladarki koduja login:haslo w UTF-8 - bez tego haslo z polskimi znakami nigdy by nie pasowalo */
+    const bytes = Uint8Array.from(atob(h.slice(6).trim()), (c) => c.charCodeAt(0));
+    const decoded = new TextDecoder().decode(bytes);
     return decoded.slice(decoded.indexOf(":") + 1);
   } catch {
     return null;
@@ -98,7 +100,8 @@ async function checkAdmin(request, env) {
     });
   const password = basicPassword(request);
   if (password === null) return unauthorized();
-  if (await safeEqual(password, env.ADMIN_PASSWORD)) return null;
+  /* spacje na koncach to prawie zawsze artefakt kopiowania z terminala, nie czesc hasla */
+  if (await safeEqual(password.trim(), String(env.ADMIN_PASSWORD).trim())) return null;
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
   if (await tooManyFailures(env, ip)) {
     return html(renderMessage("Za dużo prób", "Spróbuj ponownie za minutę."), 429, { "Retry-After": "60" });
