@@ -31,3 +31,4 @@ panel/*.json
 
 # Lokalne podglady panelu (dane demo) - nigdy na GitHub Pages
 panel/podglad/
+crm/podglad/

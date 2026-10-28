@@ -95,7 +95,7 @@ async function checkAdmin(request, env) {
     return html(renderMessage("Panel jest zablokowany", "Ustaw sekret ADMIN_PASSWORD (npx wrangler secret put ADMIN_PASSWORD)."), 503);
   }
   const unauthorized = () =>
-    html(renderMessage("Wymagane logowanie", "Podaj hasło do panelu."), 401, {
+    html(renderMessage("Wymagane logowanie", "Przeglądarka pokaże okienko logowania: wpisz dowolną nazwę użytkownika i hasło do panelu. Nie widzisz okienka? Odśwież stronę."), 401, {
       "WWW-Authenticate": 'Basic realm="skaluj CRM", charset="UTF-8"',
     });
   const password = basicPassword(request);
@@ -258,7 +258,11 @@ export default {
         return redirect(back);
       }
       await updateLead(env, m[1], form);
-      return redirect(back + "#l-" + m[1]);
+      /* zmiana statusu w przefiltrowanej liscie: zgloszenie wypadloby z filtra i "zapisano" nie mialoby gdzie sie pokazac */
+      const p = new URLSearchParams(q.startsWith("?") ? q.slice(1) : "");
+      if (p.get("status") && p.get("status") !== form.get("status")) p.delete("status");
+      const qs = p.toString();
+      return redirect("/" + (qs ? "?" + qs : "") + "#l-" + m[1]);
     }
 
     return html(renderMessage("Nie ma takiej strony", ""), 404);
