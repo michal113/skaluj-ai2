@@ -24,6 +24,14 @@
   addEventListener("scroll", onScroll, {passive:true});
   onScroll();
 
+  /* --- biezaca strona w menu Oferta / Blog / mobilnym --- */
+  function bare(p){ return p.replace(/\.html$|\/$/, ""); }
+  var here = bare(location.pathname);
+  var links = document.querySelectorAll(".dropdown a, .mobile-menu a");
+  for(var k = 0; k < links.length; k++){
+    if(here && !links[k].hash && bare(links[k].pathname) === here) links[k].setAttribute("aria-current", "page");
+  }
+
   /* --- menu mobilne --- */
   var burger = document.getElementById("burger");
   var mm = document.getElementById("mobileMenu");
