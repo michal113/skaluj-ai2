@@ -511,6 +511,8 @@ p,li,.sec-sub,.hero-sub,.svc-sub,.ctc-sub,.faq-a{text-wrap:pretty}
 /* miekki scrim nad pigulka: przewijany tekst nie przeswituje pociety w 14px pasku */
 .nav.scrolled::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(var(--bg) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .nav.scrolled.over-dark::before{content:none}
+/* otwarte menu przewija sie pod pigulka (onScroll wtedy stoi): ten sam scrim w kolorze tla menu; #nav przebija nadpisania stron */
+body.menu-open #nav::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(rgba(255,255,255,.97) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
 .logo-mark{height:25px;width:auto;display:block;transition:transform .45s var(--ease)}
 .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.06)}
@@ -1176,10 +1178,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
   -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
 }
-.ctc-card-head{
-  display:flex;align-items:center;justify-content:flex-end;gap:14px;
-  margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line-2);
-}
+.ctc-card-head{display:flex;align-items:center;justify-content:flex-end;gap:14px;margin-bottom:6px}
 .ctc-card-time{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--faint);white-space:nowrap}
 .ctc-card-time svg{width:14px;height:14px;flex:none}
 
@@ -1300,7 +1299,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   .ctc-card{padding:20px 17px;border-radius:18px}
   .ctc-card::before{border-radius:19px}
   .ctc .form-success{border-radius:18px;padding:36px 22px}
-  .ctc-card-head{margin-bottom:18px;padding-bottom:15px}
+  .ctc-card-head{margin-bottom:4px}
   .ctc .mf-stepper{gap:7px;margin-bottom:24px}
   .ctc .svc-tiles{grid-template-columns:1fr}
   .ctc .svc-tile:last-child:nth-child(odd){grid-column:auto}
@@ -1336,8 +1335,8 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 /* --- szyna postepu na gornej krawedzi karty; stepper zbedny --- */
 .mfx-host{position:relative;overflow:hidden}
 .mfx-rail{position:absolute;left:0;right:0;top:0;height:2px;background:rgba(15,30,60,.08);z-index:4}
-.mfx-rail i{display:block;height:100%;width:25%;border-radius:0 2px 2px 0;
-  background:linear-gradient(90deg,#5b96ff,#2158c8);transition:width .6s cubic-bezier(.22,1,.36,1)}
+.mfx-rail i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(.25);
+  background:linear-gradient(90deg,#5b96ff,#2158c8);transition:transform .6s cubic-bezier(.22,1,.36,1)}
 #contactForm .mf-stepper{display:none}
 
 /* --- plynna wysokosc zamiast sztywnego min-height --- */
@@ -1461,7 +1460,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   /* ---------- zmiana kroku: szyna, fokus, zapowiedz ---------- */
   var last = 0;
   function onStep(i){
-    if (railFill) railFill.style.width = Math.round((i+1)/steps.length*100) + '%';
+    if (railFill) railFill.style.transform = 'scaleX(' + ((i+1)/steps.length) + ')';
     if (live) live.textContent = 'Krok ' + (i+1) + ' z ' + steps.length + ': ' + (titles[i]||'');
     var head = steps[i].querySelector('.mf-step-head h2');
     if (head){
@@ -1633,7 +1632,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     }).observe(host, {attributes:true, attributeFilter:['class']});
   }
 
-  if (railFill) railFill.style.width = '25%';
+  if (railFill) railFill.style.transform = 'scaleX(.25)';
 
   /* link do /kontakt na tej samej stronie (CTA w nawigacji, menu): przewin do formularza zamiast przeladowania */
   document.addEventListener('click', function(e){
@@ -1673,8 +1672,8 @@ body{background:#08090c}
 }
 /* logo-word to czarny napis — na ciemnym potrzebny biały wariant */
 .footer-brand .logo-word{content:url("samo%20skaluj%20biale.png")}
-/* cala strona ciemna: bez jasnego scrimu nad pigulka, jasny pierscien fokusu w stopce */
-.nav.scrolled::before{content:none}
+/* cala strona ciemna: ciemny scrim nad pigulka (w kolorze tla), jasny pierscien fokusu w stopce */
+.nav.scrolled::before,.nav.scrolled.over-dark::before{content:"";background:linear-gradient(#08090c 45%,rgba(8,9,12,0))}
 .footer :focus-visible{outline-color:#7fb0ff}
 /* cień przycisku CTA dostrojony do ciemnego tła */
 .footer .footer-cta{box-shadow:0 3px 16px rgba(0,0,0,.4)}

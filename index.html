@@ -829,7 +829,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .offer-detail--ghost{background:transparent;color:var(--text);border:1px solid var(--line);box-shadow:none}
 .offer-detail--ghost:hover{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.22);box-shadow:none}
 /* srednie szerokosci: kolumna opisu za waska na 2 przyciski — CTA schodzi do wlasnego rzedu pod trescia */
-@media(max-width:1080px) and (min-width:721px){
+@media(max-width:890px) and (min-width:721px){
   .offer-ctas{grid-column:2/4;grid-row:3}
 }
 /* podsekcja z wideo — mailing */
@@ -932,6 +932,10 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .cs-proof{width:100%;flex-direction:column;align-items:stretch;justify-content:flex-start}
   .cs-score,.cs-proof-ai{display:grid;grid-template-columns:52px 1fr;align-items:center;gap:12px}
   .cs-proof-ai .cs-ps-spark{justify-self:center}
+  .cs-proof-ai span{letter-spacing:0}
+}
+@media(max-width:380px){
+  .cs-card-wrap{padding:24px 18px}
 }
 
 /* ============================================================
@@ -1390,6 +1394,8 @@ p,li,.sec-sub,.hero-sub,.svc-sub,.ctc-sub,.faq-a{text-wrap:pretty}
 /* miekki scrim nad pigulka: przewijany tekst nie przeswituje pociety w 14px pasku */
 .nav.scrolled::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(var(--bg) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .nav.scrolled.over-dark::before{content:none}
+/* otwarte menu przewija sie pod pigulka (onScroll wtedy stoi): ten sam scrim w kolorze tla menu; #nav przebija nadpisania stron */
+body.menu-open #nav::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(rgba(255,255,255,.97) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
 .logo-mark{height:25px;width:auto;display:block;transition:transform .45s var(--ease)}
 .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.06)}
@@ -3175,7 +3181,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       e.preventDefault();
       if (!validateForm()) return;
       var note=document.getElementById('mfNote');
-      function fail(msg){ submitBtn.disabled=false; submitBtn.style.opacity=''; submitBtn.classList.remove('mfx-loading'); if(note){ note.textContent=msg; note.style.color='#c02c2c'; } }
+      function fail(){ submitBtn.disabled=false; submitBtn.style.opacity=''; submitBtn.classList.remove('mfx-loading'); if(note){ note.innerHTML='Nie udało się wysłać. Spróbuj ponownie albo napisz na <a href="mailto:kontakt@skaluj.ai">kontakt@skaluj.ai</a>.'; note.style.color='#c02c2c'; } }
       submitBtn.disabled = true; submitBtn.style.opacity = '.6';
       if(note){ note.style.color=''; note.textContent='Wysyłam…'; }
       var data=new FormData();
@@ -3195,7 +3201,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       data.append('wyslano', new Date().toISOString());
       if(!FORM_ENDPOINT){ console.warn('[skaluj.ai] FORM_ENDPOINT nie ustawiony — formularz nie wysyla. Ustaw URL Workera (contact-worker/README.md).'); setTimeout(function(){ card.classList.add('sent'); }, 500); return; }
       var mfDone=false; function mfSent(){ if(mfDone) return; mfDone=true; card.classList.add('sent'); }
-      fetch(FORM_ENDPOINT,{method:'POST',body:data,mode:'no-cors'}).then(mfSent).catch(function(){ if(mfDone) return; mfDone=true; fail('Nie udało się wysłać. Napisz na kontakt@skaluj.ai'); });
+      fetch(FORM_ENDPOINT,{method:'POST',body:data,mode:'no-cors'}).then(mfSent).catch(function(){ if(mfDone) return; mfDone=true; fail(); });
       setTimeout(mfSent, 8000);
     });
 
@@ -3447,6 +3453,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 }
 .ctc .mf-back:hover{border-color:rgba(47,111,224,.45);color:var(--accent);background:var(--accent-soft)}
 .ctc .mf-note{margin-top:14px;font-size:12px;color:var(--faint)}
+.ctc .mf-note a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 
 /* — po wyslaniu karta obejmuje tylko potwierdzenie — */
 #formCard.sent #contactForm{visibility:hidden;max-height:0;overflow:hidden}
@@ -3577,8 +3584,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   background:#fff;border:2px solid var(--accent)}
 .mfx-next li:not(:last-child)::after{content:"";position:absolute;left:8px;top:16px;bottom:2px;width:1px;background:var(--line)}
 .mfx-next b{display:block;color:var(--text);font-weight:550;font-size:14px;margin-bottom:2px}
-.mfx-next .w{font-family:var(--mono,ui-monospace,monospace);font-size:11px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--accent);display:block;margin-bottom:3px}
+.mfx-next .w{font:500 12px var(--sans);letter-spacing:0;text-transform:none;color:var(--faint);display:block;margin-bottom:3px}
 
 /* --- rzad przyciskow: bez kreski (kolidowala z podkresleniem pola) --- */
 #contactForm .mf-nav{border-top:0;padding-top:22px}
@@ -3802,9 +3808,9 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
         var ol = document.createElement('ol');
         ol.className = 'mfx-next';
         ol.innerHTML =
-          '<li><span class="w">teraz</span><b>Zgłoszenie u nas</b>Mamy Twoje dane. Odezwiemy się na ' + esc(val('fEmail') || 'Twój e-mail') + '.</li>' +
-          '<li><span class="w">do 24 h roboczych</span><b>Bezpłatny audyt</b>Sprawdzamy, co realnie da się u Ciebie zautomatyzować, i odzywamy się z wyceną.</li>' +
-          '<li><span class="w">potem</span><b>Demo z Twojego briefu</b>Pokazujemy działające rozwiązanie, zanim cokolwiek zapłacisz.</li>';
+          '<li><span class="w">Teraz</span><b>Zgłoszenie u nas</b>Mamy Twoje dane. Odezwiemy się na ' + esc(val('fEmail') || 'Twój e-mail') + '.</li>' +
+          '<li><span class="w">Do 24 h roboczych</span><b>Bezpłatny audyt</b>Sprawdzamy, co realnie da się u Ciebie zautomatyzować, i odzywamy się z wyceną.</li>' +
+          '<li><span class="w">Potem</span><b>Demo z Twojego briefu</b>Pokazujemy działające rozwiązanie, zanim cokolwiek zapłacisz.</li>';
         box.appendChild(ol);
       }
       if (box){

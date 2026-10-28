@@ -260,6 +260,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .svc-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
 .svc-title{font-size:clamp(2rem,4.4vw,3rem);font-weight:500;letter-spacing:-.03em;line-height:1.08;margin:0 0 20px}
 .svc-sub{font-size:1.12rem;color:var(--muted);line-height:1.6}
+@media(max-width:389px){.svc-title{font-size:clamp(1.6875rem,7.6vw,2rem)}.svc-sub{font-size:1rem}}
 .svc-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .svc-body{max-width:760px;margin:0 auto;padding:72px clamp(24px,4vw,48px) 70px}
 .svc-body>h2:first-child{margin-top:0}
@@ -368,6 +369,8 @@ p,li,.sec-sub,.hero-sub,.svc-sub,.ctc-sub,.faq-a{text-wrap:pretty}
 /* miekki scrim nad pigulka: przewijany tekst nie przeswituje pociety w 14px pasku */
 .nav.scrolled::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(var(--bg) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .nav.scrolled.over-dark::before{content:none}
+/* otwarte menu przewija sie pod pigulka (onScroll wtedy stoi): ten sam scrim w kolorze tla menu; #nav przebija nadpisania stron */
+body.menu-open #nav::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(rgba(255,255,255,.97) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
 .logo-mark{height:25px;width:auto;display:block;transition:transform .45s var(--ease)}
 .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.06)}
@@ -622,7 +625,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     <li><strong>Leady i&nbsp;sprzedaż</strong>&nbsp;— lead z&nbsp;formularza lub reklamy trafia prosto do CRM, AI ocenia jego potencjał, przypisuje właściwemu handlowcowi i&nbsp;od razu odpala follow-up.</li>
     <li><strong>Oferty i&nbsp;wyceny</strong>&nbsp;— oferta generowana z&nbsp;szablonu i&nbsp;danych klienta w&nbsp;minuty, automatyczna wysyłka i&nbsp;przypomnienie, gdy klient długo nie odpowiada.</li>
     <li><strong>Raportowanie</strong>&nbsp;— dane ze sprzedaży, marketingu i&nbsp;finansów zbierane z&nbsp;wielu narzędzi w&nbsp;jeden raport lub dashboard&nbsp;— codziennie, tygodniowo, na żądanie.</li>
-    <li><strong>Umawianie spotkań</strong>&nbsp;— rezerwacje, potwierdzenia i&nbsp;przypomnienia bez mailowego ping-ponga; kalendarz pilnuje się sam.</li>
+    <li><strong>Umawianie spotkań</strong>&nbsp;— rezerwacje, potwierdzenia i&nbsp;przypomnienia bez mailowego <span style="white-space:nowrap">ping-ponga</span>; kalendarz pilnuje się sam.</li>
     <li><strong>Obsługa zgłoszeń</strong>&nbsp;— automatyczna segregacja i&nbsp;przydzielanie ticketów, odpowiedzi na powtarzalne pytania, eskalacja trudnych spraw do człowieka.</li>
     <li><strong>Synchronizacja danych</strong>&nbsp;— CRM, arkusze, sklep i&nbsp;księgowość mówią jednym głosem. Koniec z&nbsp;ręcznym przeklejaniem i&nbsp;rozjechanymi danymi.</li>
     <li><strong>Monitoring i&nbsp;alerty</strong>&nbsp;— powiadomienie tam, gdzie pracujesz (np.&nbsp;Slack), gdy dzieje się coś ważnego: nowy lead, płatność, opóźnienie, błąd w&nbsp;procesie.</li>
@@ -656,7 +659,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 <div class="svc-also wrap">
   <h4>Zobacz też</h4>
   <div class="svc-also-grid">
-    <a class="svc-also-item" href="chatbot-ai"><span class="t">Asystent i&nbsp;chatbot AI&nbsp;— obsługa klienta 24/7</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="svc-also-item" href="chatbot-ai"><span class="t">Asystent i&nbsp;chatbot AI&nbsp;— obsługa klienta&nbsp;24/7</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <a class="svc-also-item" href="strona-seo"><span class="t">Strona internetowa, która zamienia ruch w&nbsp;klientów</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </div>

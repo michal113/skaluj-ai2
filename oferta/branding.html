@@ -248,7 +248,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .svc-header{padding:130px 0 50px;border-bottom:1px solid var(--line)}
 .svc-header--video{position:relative;overflow:hidden;border-bottom:0;padding:170px 0 90px;isolation:isolate;background:#070c16}
 .svc-header--video .wrap{max-width:760px}
-.svc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.35)}
+.svc-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.35);transform:scaleX(-1)}
 .svc-hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,12,22,.9) 0%,rgba(7,12,22,.7) 45%,rgba(7,12,22,.45) 100%),linear-gradient(180deg,rgba(7,12,22,.6),rgba(7,12,22,.85))}
 .svc-header--video .svc-eyebrow,.tl-geo{color:#7fb0ff}
 .svc-header--video .svc-title{color:#fff}
@@ -260,6 +260,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .svc-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
 .svc-title{font-size:clamp(2rem,4.4vw,3rem);font-weight:500;letter-spacing:-.03em;line-height:1.08;margin:0 0 20px}
 .svc-sub{font-size:1.12rem;color:var(--muted);line-height:1.6}
+@media(max-width:389px){.svc-title{font-size:clamp(1.6875rem,7.6vw,2rem)}.svc-sub{font-size:1rem}}
 .svc-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .svc-body{max-width:760px;margin:0 auto;padding:72px clamp(24px,4vw,48px) 70px}
 .svc-body>h2:first-child{margin-top:0}
@@ -368,6 +369,8 @@ p,li,.sec-sub,.hero-sub,.svc-sub,.ctc-sub,.faq-a{text-wrap:pretty}
 /* miekki scrim nad pigulka: przewijany tekst nie przeswituje pociety w 14px pasku */
 .nav.scrolled::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(var(--bg) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .nav.scrolled.over-dark::before{content:none}
+/* otwarte menu przewija sie pod pigulka (onScroll wtedy stoi): ten sam scrim w kolorze tla menu; #nav przebija nadpisania stron */
+body.menu-open #nav::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(rgba(255,255,255,.97) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
 .logo-mark{height:25px;width:auto;display:block;transition:transform .45s var(--ease)}
 .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.06)}
@@ -601,7 +604,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   <div class="svc-hero-overlay"></div>
   <div class="wrap">
     <span class="svc-eyebrow">Grafiki i&nbsp;branding</span>
-    <h1 class="svc-title">Grafiki i&nbsp;branding&nbsp;— AI podsuwa pomysły, <span class="tl-geo">tworzą doświadczeni graficy</span></h1>
+    <h1 class="svc-title">Grafiki i&nbsp;branding&nbsp;— AI&nbsp;podsuwa pomysły, <span class="tl-geo">tworzą doświadczeni graficy</span></h1>
     <p class="svc-sub">Identyfikacja wizualna, posty, banery i&nbsp;materiały sprzedażowe. AI błyskawicznie podsuwa koncepcje i&nbsp;warianty, a&nbsp;każdy projekt wykonuje nasz zespół profesjonalnych grafików z&nbsp;wieloletnim doświadczeniem.</p>
     <div class="svc-cta-row">
       <a href="../kontakt" class="btn btn-primary">Zbuduj spójną markę</a>

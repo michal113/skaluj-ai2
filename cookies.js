@@ -132,8 +132,8 @@
   '.ck-row{display:flex;gap:8px;align-items:center}' +
   '.ck-btn{flex:1;border:none;cursor:pointer;border-radius:10px;font:550 12.5px "Geist",sans-serif;padding:9px 12px;transition:filter .2s,background .2s,box-shadow .2s,transform .15s}' +
   '.ck-btn:active{transform:translateY(1px)}' +
-  '.ck-acc{background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;box-shadow:0 6px 16px rgba(33,88,200,.24)}' +
-  '.ck-acc:hover{filter:brightness(1.05);box-shadow:0 8px 20px rgba(33,88,200,.30)}' +
+  '.ck-acc{background:#2f6fe0;color:#fff;box-shadow:none}' +
+  '.ck-acc:hover{background:#2456c9;filter:none;box-shadow:none}' +
   '.ck-nec{background:#eef1f6;color:#2b333f}' +
   '.ck-nec:hover{background:#e5e9f0}' +
   '.ck-set{background:none;border:none;cursor:pointer;color:#565d68;font:500 12.5px "Geist",sans-serif;padding:8px 2px 0;margin-top:4px;text-decoration:underline;text-underline-offset:2px}' +

@@ -260,6 +260,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .svc-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;display:block}
 .svc-title{font-size:clamp(2rem,4.4vw,3rem);font-weight:500;letter-spacing:-.03em;line-height:1.08;margin:0 0 20px}
 .svc-sub{font-size:1.12rem;color:var(--muted);line-height:1.6}
+@media(max-width:389px){.svc-title{font-size:clamp(1.6875rem,7.6vw,2rem)}.svc-sub{font-size:1rem}}
 .svc-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .svc-body{max-width:760px;margin:0 auto;padding:72px clamp(24px,4vw,48px) 70px}
 .svc-body>h2:first-child{margin-top:0}
@@ -308,6 +309,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible}
 .gc-msg.in{opacity:1;transform:none}
 .gc-user{align-self:flex-end;background:var(--text);color:#fff;border-radius:14px 14px 4px 14px;padding:11px 15px;font-size:13.5px;line-height:1.55}
 .gc-ai{align-self:flex-start;display:flex;gap:10px;width:100%}
+@media(max-width:560px){.gc-ai{max-width:none}}
 .gc-ava{flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-top:2px}
 .gc-ava svg{width:14px;height:14px}
 .gc-bubble{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:4px 14px 14px 14px;padding:12px 15px;font-size:13.5px;line-height:1.6;color:var(--muted);flex:1;min-width:0}
@@ -401,6 +403,8 @@ p,li,.sec-sub,.hero-sub,.svc-sub,.ctc-sub,.faq-a{text-wrap:pretty}
 /* miekki scrim nad pigulka: przewijany tekst nie przeswituje pociety w 14px pasku */
 .nav.scrolled::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(var(--bg) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .nav.scrolled.over-dark::before{content:none}
+/* otwarte menu przewija sie pod pigulka (onScroll wtedy stoi): ten sam scrim w kolorze tla menu; #nav przebija nadpisania stron */
+body.menu-open #nav::before{content:"";position:fixed;left:0;right:0;top:0;height:30px;background:linear-gradient(rgba(255,255,255,.97) 45%,rgba(255,255,255,0));pointer-events:none;z-index:-1}
 .logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
 .logo-mark{height:25px;width:auto;display:block;transition:transform .45s var(--ease)}
 .logo:hover .logo-mark{transform:rotate(-8deg) scale(1.06)}
@@ -690,7 +694,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     <div class="svc-step"><span class="num">1</span><span class="tx"><b>Audyt i&nbsp;research fraz.</b> Sprawdzamy obecną stronę, konkurencję i&nbsp;to, czego naprawdę szukają Twoi klienci.</span></div>
     <div class="svc-step"><span class="num">2</span><span class="tx"><b>Architektura i&nbsp;makiety.</b> Ustalamy strukturę podstron i&nbsp;ścieżkę do kontaktu.</span></div>
     <div class="svc-step"><span class="num">3</span><span class="tx"><b>Projekt + copy.</b> Design i&nbsp;teksty powstają równolegle, wspierane przez AI, pod nadzorem człowieka.</span></div>
-    <div class="svc-step"><span class="num">4</span><span class="tx"><b>Wdrożenie i&nbsp;optymalizacja.</b> Stawiamy stronę, optymalizujemy szybkość i&nbsp;SEO on-page.</span></div>
+    <div class="svc-step"><span class="num">4</span><span class="tx"><b>Wdrożenie i&nbsp;optymalizacja.</b> Stawiamy stronę, optymalizujemy szybkość i&nbsp;SEO <span style="white-space:nowrap">on-page</span>.</span></div>
     <div class="svc-step"><span class="num">5</span><span class="tx"><b>Pomiar i&nbsp;iteracje.</b> Podpinamy analitykę, ustalamy cele i&nbsp;poprawiamy na podstawie danych.</span></div>
   </div>
 
@@ -712,7 +716,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 <div class="svc-also wrap">
   <h4>Zobacz też</h4>
   <div class="svc-also-grid">
-    <a class="svc-also-item" href="chatbot-ai"><span class="t">Asystent i&nbsp;chatbot AI&nbsp;— obsługa klienta 24/7</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="svc-also-item" href="chatbot-ai"><span class="t">Asystent i&nbsp;chatbot AI&nbsp;— obsługa klienta&nbsp;24/7</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <a class="svc-also-item" href="branding"><span class="t">Grafiki i&nbsp;branding&nbsp;— pomysły od AI, wykonanie od grafików</span><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </div>
