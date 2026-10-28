@@ -176,12 +176,16 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;-webkit-font-smoothing:antialiased}
 .box{max-width:520px}
-.logo{height:26px;width:auto;margin:0 auto 40px;display:block}
+.logo-link{display:block;width:max-content;margin:0 auto 40px}
+.logo{height:26px;width:auto;display:block}
 .code{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:14px}
-h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:600;letter-spacing:-.035em;line-height:1.1;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:500;letter-spacing:-.035em;line-height:1.1;margin-bottom:14px}
 p{color:var(--muted);font-size:15.5px;line-height:1.6;margin-bottom:30px}
 .btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 24px;border-radius:9999px;background:var(--text);color:#fff;text-decoration:none;font-size:14.5px;font-weight:500;transition:background .2s,box-shadow .2s}
 .btn:hover{background:#000;box-shadow:0 0 0 3px var(--accent-soft)}
+.more{margin-top:22px;font-size:14px;color:var(--faint)}
+.more a{color:var(--muted);text-decoration:none;transition:color .2s}.more a:hover{color:var(--text)}
+.more span{margin:0 .5em}
 .sygnet{position:fixed;right:-40px;bottom:-40px;width:260px;opacity:.05;transform:rotate(-8deg);pointer-events:none}
 @font-face{font-family:"Geist Fallback";src:local("Arial");size-adjust:104%;ascent-override:96%;descent-override:24%;line-gap-override:0%}
 :where(a,button,[tabindex]:not([tabindex="-1"]),summary):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -190,13 +194,14 @@ p,li{text-wrap:pretty}
 </style>
 </head>
 <body>
-<div class="box">
-  <img class="logo" src="/logo-skaluj.png" alt="skaluj.ai">
+<main class="box">
+  <a class="logo-link" href="/" aria-label="skaluj.ai — strona główna"><img class="logo" src="/logo-skaluj.png" alt="" width="102" height="26"></a>
   <div class="code">Błąd 404</div>
-  <h1>Ta strona nie istnieje — ale Twoje oszczędności tak</h1>
+  <h1>Ta strona nie istnieje&nbsp;— ale&nbsp;Twoje oszczędności tak</h1>
   <p>Link jest nieaktualny albo strona została przeniesiona. Wróć na stronę główną i zobacz, co możemy zautomatyzować w Twojej firmie.</p>
-  <a class="btn" href="/">Wróć na stronę główną →</a>
-</div>
+  <a class="btn" href="/">Wróć na stronę główną <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <p class="more"><a href="/#oferta">Oferta</a><span aria-hidden="true">·</span><a href="/blog/">Blog</a><span aria-hidden="true">·</span><a href="/kontakt">Kontakt</a></p>
+</main>
 <img class="sygnet" src="/sygnet.png" alt="" aria-hidden="true">
 <script src="/nav.js" defer></script>
 <script src="/cookies.js" defer></script>

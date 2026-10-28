@@ -390,7 +390,7 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
 <style>
   .legal-hero{padding:150px 0 46px;border-bottom:1px solid var(--line)}
   .legal-hero .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px}
-  .legal-hero h1{font-size:clamp(2rem,4.6vw,3rem);font-weight:600;letter-spacing:-.035em;line-height:1.08;max-width:16ch}
+  .legal-hero h1{font-size:clamp(2rem,4.6vw,3rem);font-weight:500;letter-spacing:-.035em;line-height:1.08;max-width:16ch}
   .legal-hero p.lead{margin-top:18px;color:var(--muted);font-size:clamp(1rem,1.4vw,1.1rem);line-height:1.6;max-width:62ch}
   .legal-hero .contact-inline{margin-top:22px;display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:13px}
   .legal-hero .contact-inline a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
@@ -399,9 +399,10 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
   .legal-toc{position:sticky;top:96px;font-size:13.5px}
   .legal-toc .t-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
   .legal-toc a{display:block;color:var(--muted);text-decoration:none;padding:6px 0;border-left:2px solid var(--line);padding-left:14px;transition:color .2s,border-color .2s;line-height:1.4}
-  .legal-toc a:hover{color:var(--text);border-color:var(--accent)}
+  .legal-toc a:hover,.legal-toc a.is-active{color:var(--text);border-color:var(--accent)}
   .legal-content h2{font-size:1.28rem;font-weight:600;letter-spacing:-.02em;margin:40px 0 12px;scroll-margin-top:96px}
   .legal-content h2:first-child{margin-top:0}
+  .legal-content>p,.legal-content>ul,.legal-content>h2{max-width:34em}
   .legal-content p{color:var(--muted);line-height:1.75;margin-bottom:14px}
   .legal-content ul{color:var(--muted);line-height:1.7;margin:0 0 16px;padding-left:20px}
   .legal-content li{margin-bottom:7px}
@@ -414,6 +415,8 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;pointer-events:auto}
   .legal-table th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:500;padding:10px 12px;border-bottom:1.5px solid var(--line);vertical-align:bottom}
   .legal-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;color:var(--muted)}
   .legal-table td:first-child{color:var(--text);font-weight:500;width:24%}
+  /* telefon: wiersze tabeli jako opisane bloki zamiast przewijania w bok */
+  @media(max-width:600px){.legal-table{min-width:0}.legal-table thead{display:none}.legal-table tr{display:block;padding:14px 0;border-bottom:1px solid var(--line)}.legal-table td{display:block;border:0;padding:3px 0;width:auto!important}.legal-table td[data-label]::before{content:attr(data-label);display:block;font-size:12px;color:var(--faint)}}
   .legal-content code{font-family:var(--mono);font-size:.9em;background:var(--bg-elev);padding:1px 5px;border-radius:5px}
   .legal-updated{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--faint)}
   @media(max-width:820px){.legal-body{grid-template-columns:1fr;gap:0}.legal-toc{display:none}.legal-hero{padding:120px 0 40px}}
@@ -785,13 +788,13 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       <div class="legal-table-wrap"><table class="legal-table">
         <thead><tr><th>Dostawca</th><th>Rola</th><th>Gdzie</th><th>Podstawa transferu poza EOG</th></tr></thead>
         <tbody>
-          <tr><td>GitHub, Inc. (GitHub Pages)</td><td>hosting strony; techniczne logi odwiedzin (m.in. adres IP)</td><td>USA</td><td>EU–U.S. Data Privacy Framework (decyzja KE stwierdzająca odpowiedni poziom ochrony) oraz standardowe klauzule umowne (SCC) w umowie powierzenia dostawcy</td></tr>
-          <tr><td>Celonis s.r.o. (Make.com)</td><td>odbiór zgłoszeń z formularza i przekazanie ich do naszej skrzynki i panelu zgłoszeń</td><td>UE (scenariusz w regionie EU); podwykonawcy mogą być poza EOG</td><td>umowa powierzenia Make/Celonis; dla podwykonawców spoza EOG — SCC lub Data Privacy Framework</td></tr>
-          <tr><td>Cloudflare, Inc.</td><td>serwer obsługujący czat, panel zgłoszeń i licznik odwiedzin (baza danych przechowywana w UE); ochrona przed nadużyciami</td><td>baza zgłoszeń: UE; sieć: globalna, USA</td><td>Data Privacy Framework oraz SCC w umowie powierzenia Cloudflare</td></tr>
-          <tr><td>OpenRouter, Inc.</td><td>pośrednik przekazujący treść czatu do modelu AI (domyślnie nie przechowuje treści zapytań)</td><td>USA</td><td>SCC w umowie powierzenia (DPA) OpenRouter</td></tr>
-          <tr><td>Dostawcy modeli AI (w szczególności Google; zapasowo inni dostawcy wybrani przez OpenRouter)</td><td>wygenerowanie odpowiedzi czatu</td><td>UE lub USA, zależnie od dostawcy</td><td>mechanizmy transferu stosowane przez OpenRouter i dostawców (SCC lub Data Privacy Framework)</td></tr>
-          <tr><td>Google Ireland Ltd. / Google LLC (Google Analytics 4)</td><td>statystyki odwiedzin — tylko po zgodzie na analitykę</td><td>UE, USA</td><td>Data Privacy Framework oraz SCC w warunkach przetwarzania danych Google</td></tr>
-          <tr><td>Dostawca poczty e-mail i kalendarza</td><td>obsługa korespondencji i terminów konsultacji</td><td>zgodnie z warunkami dostawcy</td><td>jeśli poza EOG — SCC lub Data Privacy Framework</td></tr>
+          <tr><td>GitHub, Inc. (GitHub Pages)</td><td data-label="Rola">hosting strony; techniczne logi odwiedzin (m.in. adres IP)</td><td data-label="Gdzie">USA</td><td data-label="Podstawa transferu poza EOG">EU–U.S. Data Privacy Framework (decyzja KE stwierdzająca odpowiedni poziom ochrony) oraz standardowe klauzule umowne (SCC) w umowie powierzenia dostawcy</td></tr>
+          <tr><td>Celonis s.r.o. (Make.com)</td><td data-label="Rola">odbiór zgłoszeń z formularza i przekazanie ich do naszej skrzynki i panelu zgłoszeń</td><td data-label="Gdzie">UE (scenariusz w regionie EU); podwykonawcy mogą być poza EOG</td><td data-label="Podstawa transferu poza EOG">umowa powierzenia Make/Celonis; dla podwykonawców spoza EOG — SCC lub Data Privacy Framework</td></tr>
+          <tr><td>Cloudflare, Inc.</td><td data-label="Rola">serwer obsługujący czat, panel zgłoszeń i licznik odwiedzin (baza danych przechowywana w UE); ochrona przed nadużyciami</td><td data-label="Gdzie">baza zgłoszeń: UE; sieć: globalna, USA</td><td data-label="Podstawa transferu poza EOG">Data Privacy Framework oraz SCC w umowie powierzenia Cloudflare</td></tr>
+          <tr><td>OpenRouter, Inc.</td><td data-label="Rola">pośrednik przekazujący treść czatu do modelu AI (domyślnie nie przechowuje treści zapytań)</td><td data-label="Gdzie">USA</td><td data-label="Podstawa transferu poza EOG">SCC w umowie powierzenia (DPA) OpenRouter</td></tr>
+          <tr><td>Dostawcy modeli AI (w szczególności Google; zapasowo inni dostawcy wybrani przez OpenRouter)</td><td data-label="Rola">wygenerowanie odpowiedzi czatu</td><td data-label="Gdzie">UE lub USA, zależnie od dostawcy</td><td data-label="Podstawa transferu poza EOG">mechanizmy transferu stosowane przez OpenRouter i dostawców (SCC lub Data Privacy Framework)</td></tr>
+          <tr><td>Google Ireland Ltd. / Google LLC (Google Analytics 4)</td><td data-label="Rola">statystyki odwiedzin — tylko po zgodzie na analitykę</td><td data-label="Gdzie">UE, USA</td><td data-label="Podstawa transferu poza EOG">Data Privacy Framework oraz SCC w warunkach przetwarzania danych Google</td></tr>
+          <tr><td>Dostawca poczty e-mail i kalendarza</td><td data-label="Rola">obsługa korespondencji i terminów konsultacji</td><td data-label="Gdzie">zgodnie z warunkami dostawcy</td><td data-label="Podstawa transferu poza EOG">jeśli poza EOG — SCC lub Data Privacy Framework</td></tr>
         </tbody>
       </table></div>
       <p>Dane mogą też otrzymać podmioty uprawnione z mocy prawa (np. organy publiczne) oraz — gdy dojdzie do współpracy — biuro rachunkowe. Na Twoje żądanie przekażemy informacje o zabezpieczeniach stosowanych przy transferze poza EOG lub kopię odpowiednich klauzul.</p>
@@ -907,79 +910,18 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 </footer>
 
 <script>
+/* spis tresci: podswietl sekcje, ktora jest teraz czytana */
 (function(){
   "use strict";
-  /* multi-step form */
-  (function(){
-    var step = 1, card = document.getElementById("formCard");
-    var form = document.getElementById("contactForm");
-    if(!form) return;
-    var btnBack = document.getElementById("mfBack");
-    var btnNext = document.getElementById("mfNext");
-    var mfNote = document.getElementById("mfNote");
-    var webSub = document.getElementById("webSub");
-    var brandSub = document.getElementById("brandSub");
-    var svcStrona = document.getElementById("svcStrona");
-    var svcBranding = document.getElementById("svcBranding");
-
-    function showStep(n){
-      for(var i=1;i<=3;i++){
-        var p=document.getElementById("mfP"+i), d=document.getElementById("mfDot"+i);
-        if(p) p.classList.toggle("mf-active",i===n);
-        if(d){ d.classList.toggle("mf-active",i===n); d.classList.toggle("mf-done",i<n); }
-      }
-      var lines=form.querySelectorAll(".mf-line");
-      for(var j=0;j<lines.length;j++) lines[j].classList.toggle("mf-done",j<n-1);
-      btnBack.hidden=(n===1);
-      btnNext.textContent=n===3?"Wyślij zapytanie →":"Dalej →";
-      mfNote.classList.toggle("visible",n===3);
-      step=n;
-    }
-
-    function validateStep1(){
-      var fName=document.getElementById("fName"), fEmail=document.getElementById("fEmail"), fCompany=document.getElementById("fCompany");
-      var errName=document.getElementById("errName"), errEmail=document.getElementById("errEmail"), errCompany=document.getElementById("errCompany");
-      var ok=true;
-      if(!fName.value.trim()){ errName.textContent="Wpisz imi\u0119"; fName.style.borderColor="#c02c2c"; ok=false; }
-      else { errName.textContent=""; fName.style.borderColor=""; }
-      if(!fEmail.value.trim()||!/^\S+@\S+\.\S+$/.test(fEmail.value)){ errEmail.textContent="Podaj prawid\u0142owy e-mail"; fEmail.style.borderColor="#c02c2c"; ok=false; }
-      else { errEmail.textContent=""; fEmail.style.borderColor=""; }
-      if(!fCompany.value.trim()){ errCompany.textContent="Wpisz nazw\u0119 firmy"; fCompany.style.borderColor="#c02c2c"; ok=false; }
-      else { errCompany.textContent=""; fCompany.style.borderColor=""; }
-      return ok;
-    }
-
-    svcStrona&&svcStrona.addEventListener("change",function(){ webSub.classList.toggle("visible",this.checked); });
-    svcBranding&&svcBranding.addEventListener("change",function(){ brandSub.classList.toggle("visible",this.checked); });
-
-    var fBrandFiles=document.getElementById("fBrandFiles");
-    fBrandFiles&&fBrandFiles.addEventListener("change",function(){
-      var nameEl=document.getElementById("fFileName");
-      if(this.files.length){ nameEl.textContent=this.files.length>1?this.files.length+" plik\u00f3w":this.files[0].name; nameEl.classList.add("has-file"); }
-      else { nameEl.textContent=""; nameEl.classList.remove("has-file"); }
+  if(!("IntersectionObserver" in window)) return;
+  var links=document.querySelectorAll(".legal-toc a[href^='#']");
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(a){ a.classList.toggle("is-active", a.getAttribute("href")==="#"+e.target.id); });
     });
-
-    btnNext.addEventListener("click",function(){
-      if(step<3){ if(step===1&&!validateStep1()) return; showStep(step+1); }
-      else { form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
-    });
-    btnBack.addEventListener("click",function(){ if(step>1) showStep(step-1); });
-
-    var fAttach=document.getElementById("fAttach");
-    fAttach&&fAttach.addEventListener("change",function(){
-      var nameEl=document.getElementById("fAttachName");
-      if(this.files.length){ nameEl.textContent=this.files.length>1?this.files.length+" plików":this.files[0].name; }
-      else { nameEl.textContent=""; }
-    });
-
-    form.addEventListener("submit",function(e){
-      e.preventDefault();
-      btnNext.disabled=true; btnNext.style.opacity=".6";
-      setTimeout(function(){ card.classList.add("sent"); },700);
-    });
-
-    showStep(1);
-  })();
+  },{rootMargin:"-20% 0px -70% 0px"});
+  document.querySelectorAll(".legal-content h2[id]").forEach(function(h){ io.observe(h); });
 })();
 </script>
 <script src="nav.js" defer></script>
