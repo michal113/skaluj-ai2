@@ -25,7 +25,7 @@
 <link rel="preload" href="/assets/fonts/gyByhwUxId8gMEwcGFU.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/gyByhwUxId8gMEwSGFWfOw.woff2" as="font" type="font/woff2" crossorigin>
 <style id="fonts">
-/* fonty (Geist, Geist Mono, Azeret Mono) — kopia fonts.css wstawiona inline:
+/* fonty (Geist, Azeret Mono) — kopia fonts.css wstawiona inline:
    bez osobnego pliku CSS blokującego pierwsze renderowanie (o jeden round-trip szybciej) */
 /* latin-ext */
 @font-face {
@@ -127,60 +127,6 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 300 500;
-  font-display: swap;
-  src: url(/assets/fonts/or3nQ6H-1_WfwkMZI_qYFrodmgPn.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 300 500;
-  font-display: swap;
-  src: url(/assets/fonts/or3nQ6H-1_WfwkMZI_qYFrMdmgPn.woff2) format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* symbols2 */
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 300 500;
-  font-display: swap;
-  src: url(/assets/fonts/or3nQ6H-1_WfwkMZI_qYFg08vz7ehw.woff2) format('woff2');
-  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 300 500;
-  font-display: swap;
-  src: url(/assets/fonts/or3nQ6H-1_WfwkMZI_qYFrgdmgPn.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 300 500;
-  font-display: swap;
-  src: url(/assets/fonts/or3nQ6H-1_WfwkMZI_qYFrkdmgPn.woff2) format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Geist Mono';
-  font-style: normal;
-  font-weight: 300 500;
-  font-display: swap;
-  src: url(/assets/fonts/or3nQ6H-1_WfwkMZI_qYFrcdmg.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 </style>
 
 <script type="application/ld+json">
@@ -304,7 +250,7 @@
 </script>
 
 <style>
-:root{--bg:#ffffff;--bg-elev:#f7f8fa;--bg-elev-2:#eef1f5;--text:#0b0d10;--muted:#565d68;--faint:#626873;--line:rgba(0,0,0,.10);--line-2:rgba(0,0,0,.06);--accent:#2f6fe0;--accent-soft:rgba(47,111,224,.10);--r-lg:16px;--r-md:12px;--maxw:1180px;--sans:"Geist","Geist Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Geist Mono",ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#ffffff;--bg-elev:#f7f8fa;--bg-elev-2:#eef1f5;--text:#0b0d10;--muted:#565d68;--faint:#626873;--line:rgba(0,0,0,.10);--line-2:rgba(0,0,0,.06);--accent:#2f6fe0;--accent-dim:#2456b0;--accent-soft:rgba(47,111,224,.10);--r-lg:16px;--r-md:12px;--maxw:1180px;--sans:"Geist","Geist Fallback",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Azeret Mono",ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%;scrollbar-gutter:stable}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.55;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -372,35 +318,37 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .footer-bottom{margin-top:34px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--faint)}
 .blog-header{position:relative;overflow:hidden;isolation:isolate;background:#070c16;padding:168px 0 84px;border-bottom:0}
 .blog-hero-bg{position:absolute;inset:0;z-index:-1;background:radial-gradient(115% 95% at 10% 6%,rgba(47,111,224,.42),transparent 55%),radial-gradient(85% 80% at 90% 12%,rgba(96,160,245,.24),transparent 55%),radial-gradient(120% 130% at 78% 120%,rgba(24,58,140,.40),transparent 60%),linear-gradient(180deg,#0a1126,#070c16)}
-.blog-hero-bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(78% 78% at 50% 26%,#000,transparent 78%);mask-image:radial-gradient(78% 78% at 50% 26%,#000,transparent 78%);opacity:.6}
 .blog-hero-sygnet{position:absolute;right:-24px;top:50%;transform:translateY(-50%) rotate(8deg);width:min(33vw,380px);height:auto;opacity:.08;z-index:-1;pointer-events:none;filter:blur(.5px)}
 .blog-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#7fb0ff;margin-bottom:18px;display:block}
-.blog-title{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:600;letter-spacing:-.04em;line-height:1.1;max-width:880px;margin:0 0 22px;color:#fff}
+.blog-header .wrap{max-width:720px}
+.blog-title{font-size:clamp(2rem,4vw,2.7rem);font-weight:500;letter-spacing:-.03em;line-height:1.1;max-width:880px;margin:0 0 22px;color:#fff}
 .blog-meta{font-size:12.5px;color:rgba(255,255,255,.6);font-family:var(--mono);display:flex;align-items:center;gap:20px}
 .blog-body{max-width:720px;margin:0 auto;padding:60px clamp(24px,4vw,48px) 80px}
-.blog-body h2{font-size:1.4rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:52px 0 14px}
-.blog-body h3{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;line-height:1.3;margin:32px 0 10px;color:var(--text)}
-.blog-body p{color:var(--muted);margin-bottom:16px;line-height:1.75}
+.blog-body h2{font-size:1.5rem;font-weight:600;letter-spacing:-.025em;line-height:1.25;margin:52px 0 14px}
+.blog-body h3{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;line-height:1.3;margin:36px 0 10px;color:var(--text)}
+.blog-body p{color:var(--muted);margin-bottom:16px;line-height:1.75;font-size:17px}
 .blog-body ul,.blog-body ol{color:var(--muted);padding-left:22px;margin-bottom:18px;line-height:1.75}
-.blog-body li{margin-bottom:8px}
+.blog-body li{margin-bottom:8px;font-size:17px}
 .blog-body strong{color:var(--text);font-weight:600}
 .blog-body a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
-.blog-body .lead{font-size:1.1rem;color:var(--muted);line-height:1.75;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line-2)}
-.blog-tip{background:var(--bg-elev);border-left:3px solid var(--accent);border-radius:0 var(--r-md) var(--r-md) 0;padding:16px 20px;margin:24px 0;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.blog-body a strong{color:inherit}
+.blog-body .lead{font-size:1.2rem;color:var(--muted);line-height:1.75;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line-2)}
+.blog-tip{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:var(--r-md);padding:16px 20px;margin:24px 0;font-size:15px;line-height:1.65;color:var(--muted)}
 .blog-tip strong{color:var(--text)}
-.blog-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-family:var(--mono);color:var(--muted);margin-bottom:32px;transition:color .2s}
-.blog-back:hover{color:var(--text)}.blog-back svg{width:14px;height:14px}
-.blog-cta-box{background:var(--bg-elev);border-radius:24px;padding:44px 48px;text-align:center;max-width:720px;margin:0 auto 80px}
-.blog-cta-box .cta-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+.blog-body a.blog-back{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-family:var(--sans);color:var(--muted);text-decoration:none;margin-bottom:32px;transition:color .2s}
+.blog-body a.blog-back:hover{color:var(--text)}.blog-back svg{width:14px;height:14px}
+.blog-cta-box{background:var(--bg-elev);border-radius:24px;padding:44px 48px;text-align:center;max-width:624px;margin:0 auto 80px}
 .blog-cta-box h3{font-size:1.4rem;font-weight:600;letter-spacing:-.025em;margin-bottom:12px}
 .blog-cta-box p{color:var(--muted);margin-bottom:26px;font-size:15px}
+.blog-cta-box p a{color:var(--accent-dim);text-decoration:underline;text-underline-offset:3px}
+.blog-cta-box .cta-alt{display:block;width:fit-content;margin:6px auto -12px;padding:12px 0;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;transition:color .2s}.blog-cta-box .cta-alt:hover{color:var(--text)}
 .blog-also{max-width:720px;margin:0 auto 80px}
 .blog-also h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
 .blog-also-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.blog-also-item{border:1px solid var(--line);border-radius:14px;padding:18px 20px;transition:border-color .2s,background .2s}
+.blog-also-item{border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color .2s,background .2s}
 .blog-also-item:hover{border-color:rgba(47,111,224,.4);background:var(--accent-soft)}
 .blog-also-item .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;display:block}
-.blog-also-item .t{display:block;font-size:13.5px;font-weight:500;color:var(--text);line-height:1.35}
+.blog-also-item .t{display:block;font-size:15px;font-weight:500;color:var(--text);line-height:1.4}
 .faq-section{max-width:720px;margin:0 auto 80px}
 .faq-section h2{font-size:1.4rem;font-weight:600;letter-spacing:-.025em;margin-bottom:28px}
 .faq-item{border-bottom:1px solid var(--line-2);padding:20px 0}
@@ -408,7 +356,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .faq-q{font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-.01em}
 .faq-a{font-size:14.5px;color:var(--muted);line-height:1.7}
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.blog-header{padding:120px 0 54px}.blog-hero-sygnet{display:none}.blog-cta-box{padding:32px 24px}.blog-also-grid{grid-template-columns:1fr}}
+@media(max-width:1040px){.nav-links{display:none}.nav-burger{display:block}}@media(max-width:720px){.nav-links{display:none}.nav-burger{display:block}.nav-right .btn{display:none}.footer-grid{grid-template-columns:1fr}.dd-grid{grid-template-columns:1fr}.blog-header{padding:120px 0 54px}.blog-hero-sygnet{display:none}.blog-cta-box{margin:0 24px 64px;padding:32px 22px;border-radius:20px}.blog-also-grid{grid-template-columns:1fr}}
 .logo .brand-img{height:24px;width:auto;display:block}
 .footer{position:relative;overflow:hidden}
 .footer .wrap{position:relative;z-index:1}
@@ -423,11 +371,13 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .blog-table td{padding:10px 14px;border-bottom:1px solid var(--line-2);color:var(--muted);vertical-align:top;line-height:1.6}
 .blog-table tr:last-child td{border-bottom:0}
 .blog-table tr:hover td{background:var(--bg-elev)}
+.blog-table td:first-child{min-width:150px;color:var(--text);font-weight:500}
+@media(max-width:520px){.blog-table{min-width:0}.blog-table thead{display:none}.blog-table,.blog-table tbody,.blog-table tr,.blog-table td{display:block}.blog-table tr{padding:12px 0;border-bottom:1px solid var(--line)}.blog-table tr:last-child{border-bottom:0}.blog-table td,.blog-table tr:last-child td{border:0;padding:3px 0;min-width:0}.blog-table tr:hover td{background:none}.blog-table td[data-label]::before{content:attr(data-label);display:block;font-size:12px;color:var(--faint)}}
 .toc-box{background:var(--bg-elev);border:1px solid var(--line-2);border-radius:14px;padding:20px 24px;margin:0 0 40px}
-.toc-box h4{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+.toc-box .toc-title{margin:0 0 14px;font-weight:500;line-height:1.55;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 .toc-box ol{color:var(--muted);padding-left:18px;font-size:14.5px;line-height:1.7;margin:0}
-.toc-box li{margin-bottom:5px}
-.toc-box a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.toc-box li{margin-bottom:5px;font-size:inherit}
+.toc-box a{color:var(--text);text-decoration:none}.toc-box a:hover{color:var(--accent)}
 </style>
 <style id="badge-new">
 /* ===== oznaczenie NOWOSC — mono etykieta z kropka, bez pigulki ===== */
@@ -730,8 +680,8 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
   <div class="blog-hero-bg" aria-hidden="true"></div>
   <img class="blog-hero-sygnet" src="../sygnet-white.png" alt="" aria-hidden="true">
   <div class="wrap">
-    <span class="blog-eyebrow">Wideo AI / Rolki</span>
-    <h1 class="blog-title">Rolki AI dla firm 2026 —<br>napisy, lektor AI i oznaczenia zgodne z AI Act</h1>
+    <span class="blog-eyebrow">Wideo AI</span>
+    <h1 class="blog-title">Rolki AI dla firm 2026&nbsp;— napisy, lektor AI i&nbsp;oznaczenia zgodne z&nbsp;AI&nbsp;Act</h1>
     <div class="blog-meta">
       <span>5 października 2026</span>
       <span>&middot;</span>
@@ -743,7 +693,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 <article class="blog-body wrap">
   <a class="blog-back" href="../blog/">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Wróć na bloga
+    Wszystkie wpisy
   </a>
 
   <p class="lead">Krótkie wideo stało się podstawowym formatem na Instagramie, TikToku i YouTube, a AI sprawiło, że da się je robić szybciej i taniej niż kiedykolwiek: transkrypcja w minutę, napisy słowo po słowie, lektor w trzech językach z jednego nagrania. Jednocześnie od <strong>2 sierpnia 2026</strong> obowiązują przepisy AI Act o oznaczaniu treści AI, a platformy same doklejają etykiety. Ten poradnik pokazuje, jak robić <strong>rolki AI dla firmy</strong> tak, żeby działały i nie narobiły kłopotów.</p>
@@ -789,11 +739,11 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 <table class="blog-table">
 <thead><tr><th></th><th>Lektor — człowiek</th><th>Syntetyczny głos z licencją</th><th>Klon głosu (za zgodą)</th></tr></thead>
 <tbody>
-<tr><td>Brzmienie</td><td>Najbardziej naturalne, z interpretacją</td><td>Naturalne, ale neutralne</td><td>Brzmi jak konkretna osoba z firmy</td></tr>
-<tr><td>Poprawka w tekście</td><td>Ponowne nagranie</td><td>Nowe wygenerowanie w kilka minut</td><td>Nowe wygenerowanie w kilka minut</td></tr>
-<tr><td>Wersje językowe</td><td>Osobny lektor na każdy język</td><td>Ten sam głos w wielu językach</td><td>Twój głos w innym języku</td></tr>
-<tr><td>Ryzyko prawne</td><td>Umowa z lektorem</td><td>Sprawdź licencję komercyjną narzędzia</td><td>Wymaga pisemnej zgody osoby</td></tr>
-<tr><td>Kiedy wybrać</td><td>Spot wizerunkowy, emocje</td><td>Seria edukacyjna, produktowa</td><td>Ekspert lub właściciel jako twarz marki</td></tr>
+<tr><td>Brzmienie</td><td data-label="Lektor — człowiek">Najbardziej naturalne, z interpretacją</td><td data-label="Syntetyczny głos z licencją">Naturalne, ale neutralne</td><td data-label="Klon głosu (za zgodą)">Brzmi jak konkretna osoba z firmy</td></tr>
+<tr><td>Poprawka w tekście</td><td data-label="Lektor — człowiek">Ponowne nagranie</td><td data-label="Syntetyczny głos z licencją">Nowe wygenerowanie w kilka minut</td><td data-label="Klon głosu (za zgodą)">Nowe wygenerowanie w kilka minut</td></tr>
+<tr><td>Wersje językowe</td><td data-label="Lektor — człowiek">Osobny lektor na każdy język</td><td data-label="Syntetyczny głos z licencją">Ten sam głos w wielu językach</td><td data-label="Klon głosu (za zgodą)">Twój głos w innym języku</td></tr>
+<tr><td>Ryzyko prawne</td><td data-label="Lektor — człowiek">Umowa z lektorem</td><td data-label="Syntetyczny głos z licencją">Sprawdź licencję komercyjną narzędzia</td><td data-label="Klon głosu (za zgodą)">Wymaga pisemnej zgody osoby</td></tr>
+<tr><td>Kiedy wybrać</td><td data-label="Lektor — człowiek">Spot wizerunkowy, emocje</td><td data-label="Syntetyczny głos z licencją">Seria edukacyjna, produktowa</td><td data-label="Klon głosu (za zgodą)">Ekspert lub właściciel jako twarz marki</td></tr>
 </tbody>
 </table>
 </div>
@@ -846,31 +796,62 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     <li><strong>Tydzień 4:</strong> więcej tego, co działa, wersje językowe najlepszych rolek i decyzja o stałym rytmie.</li>
   </ul>
 
+</article>
+
+<section class="faq-section wrap" aria-label="Najczęstsze pytania">
   <h2>FAQ — rolki AI dla firm</h2>
 
-  <h3>Czy rolki zrobione z AI trzeba oznaczać?</h3>
-  <p>Nie każde użycie AI wymaga oznaczenia. Od 2 sierpnia 2026 AI Act wymaga wyraźnego ujawnienia deepfake'ów, czyli realistycznego obrazu, głosu albo wydarzenia wygenerowanego przez AI, które mogą uchodzić za prawdziwe. Montaż, napisy czy korekta koloru zrobione z AI zwykle oznaczenia nie wymagają. Niezależnie od tego Meta, TikTok i YouTube mają własne zasady etykietowania realistycznych treści AI.</p>
+  <div class="faq-item">
+    <p class="faq-q">Czy rolki zrobione z AI trzeba oznaczać?</p>
+    <p class="faq-a">Nie każde użycie AI wymaga oznaczenia. Od 2 sierpnia 2026 AI Act wymaga wyraźnego ujawnienia deepfake'ów, czyli realistycznego obrazu, głosu albo wydarzenia wygenerowanego przez AI, które mogą uchodzić za prawdziwe. Montaż, napisy czy korekta koloru zrobione z AI zwykle oznaczenia nie wymagają. Niezależnie od tego Meta, TikTok i YouTube mają własne zasady etykietowania realistycznych treści AI.</p>
+  </div>
 
-  <h3>Czy mogę użyć lektora AI w reklamie?</h3>
-  <p>Tak. Syntetyczny głos z licencją komercyjną można stosować w reklamach, a sam lektor AI na grafikach czy animacjach zwykle nie wymaga oznaczenia na platformach. Sprawdź licencję narzędzia i nie używaj głosów udających konkretne, rozpoznawalne osoby.</p>
+  <div class="faq-item">
+    <p class="faq-q">Czy mogę użyć lektora AI w reklamie?</p>
+    <p class="faq-a">Tak. Syntetyczny głos z licencją komercyjną można stosować w reklamach, a sam lektor AI na grafikach czy animacjach zwykle nie wymaga oznaczenia na platformach. Sprawdź licencję narzędzia i nie używaj głosów udających konkretne, rozpoznawalne osoby.</p>
+  </div>
 
-  <h3>Czy można sklonować głos pracownika?</h3>
-  <p>Tak, ale tylko za jego pisemną zgodą określającą zakres użycia: jakie treści, w jakich kanałach i na jak długo. Głos jest w Polsce chroniony jako dobro osobiste, podobnie jak wizerunek. Warto też ustalić, co dzieje się z klonem po odejściu pracownika z firmy.</p>
+  <div class="faq-item">
+    <p class="faq-q">Czy można sklonować głos pracownika?</p>
+    <p class="faq-a">Tak, ale tylko za jego pisemną zgodą określającą zakres użycia: jakie treści, w jakich kanałach i na jak długo. Głos jest w Polsce chroniony jako dobro osobiste, podobnie jak wizerunek. Warto też ustalić, co dzieje się z klonem po odejściu pracownika z firmy.</p>
+  </div>
 
-  <h3>Jak zrobić napisy do rolki?</h3>
-  <p>Najszybciej przez automatyczną transkrypcję, którą potem trzeba poprawić ręcznie, bo AI myli polskie odmiany i nazwy własne. Napisy powinny mieć krótkie linijki, dobry kontrast i znajdować się poza strefą zasłoniętą przez interfejs platformy.</p>
+  <div class="faq-item">
+    <p class="faq-q">Jak zrobić napisy do rolki?</p>
+    <p class="faq-a">Najszybciej przez automatyczną transkrypcję, którą potem trzeba poprawić ręcznie, bo AI myli polskie odmiany i nazwy własne. Napisy powinny mieć krótkie linijki, dobry kontrast i znajdować się poza strefą zasłoniętą przez interfejs platformy.</p>
+  </div>
 
-  <h3>Czy platformy ograniczają zasięgi treściom z AI?</h3>
-  <p>Samo użycie AI nie jest karane. Problem mają nieoznaczone realistyczne treści AI oraz masowo generowane, powtarzalne wideo bez wartości, które platformy coraz mocniej ograniczają.</p>
+  <div class="faq-item">
+    <p class="faq-q">Czy platformy ograniczają zasięgi treściom z AI?</p>
+    <p class="faq-a">Samo użycie AI nie jest karane. Problem mają nieoznaczone realistyczne treści AI oraz masowo generowane, powtarzalne wideo bez wartości, które platformy coraz mocniej ograniczają.</p>
+  </div>
 
-  <h3>Ile rolek publikować na start?</h3>
-  <p>Zacznij od krótkiej serii próbnej w kilku formatach, a dopiero po danych z pierwszych tygodni ustal stały rytm. W krótkim wideo regularność daje więcej niż pojedynczy duży film.</p>
+  <div class="faq-item">
+    <p class="faq-q">Ile rolek publikować na start?</p>
+    <p class="faq-a">Zacznij od krótkiej serii próbnej w kilku formatach, a dopiero po danych z pierwszych tygodni ustal stały rytm. W krótkim wideo regularność daje więcej niż pojedynczy duży film.</p>
+  </div>
+</section>
 
-  <h2>Chcesz rolki bez całej tej roboty?</h2>
+<div class="blog-cta-box wrap">
+  <h3>Chcesz rolki bez całej tej roboty?</h3>
   <p>Robimy rolki dla firm od scenariusza po publikację: montaż wspierany przez AI, poprawione napisy, lektor AI, wersje językowe i oznaczenia zgodne z AI Act. Zaczynamy od serii próbnej, żebyś zobaczył efekt, zanim zdecydujesz o czymkolwiek więcej.</p>
-  <p><a href="../oferta/rolki-ai"><strong>Zobacz ofertę: rolki i wideo AI</strong></a> albo <a href="../kontakt"><strong>umów bezpłatną konsultację</strong></a>.</p>
+  <a href="../kontakt" class="btn btn-primary">Umów bezpłatną konsultację</a>
+  <a class="cta-alt" href="../oferta/rolki-ai">Zobacz ofertę: rolki i wideo AI</a>
+</div>
 
-</article>
+<div class="blog-also wrap">
+  <h4>Przeczytaj również</h4>
+  <div class="blog-also-grid">
+    <a class="blog-also-item" href="meta-ads-ai">
+      <span class="eyebrow">Meta Ads</span>
+      <span class="t">Meta Ads z&nbsp;AI&nbsp;— jak obniżyć koszt pozyskania klienta</span>
+    </a>
+    <a class="blog-also-item" href="branding">
+      <span class="eyebrow">Branding</span>
+      <span class="t">Identyfikacja wizualna w&nbsp;2026&nbsp;— DNA skutecznej marki</span>
+    </a>
+  </div>
+</div>
 </main>
 
 <footer class="footer">
