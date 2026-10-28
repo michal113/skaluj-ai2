@@ -138,8 +138,8 @@
   '.ck-nec:hover{background:#e5e9f0}' +
   '.ck-set{background:none;border:none;cursor:pointer;color:#565d68;font:500 12.5px "Geist",sans-serif;padding:8px 2px 0;margin-top:4px;text-decoration:underline;text-underline-offset:2px}' +
   '.ck-set:hover{color:#2456c9}' +
-  '.ck-opts{max-height:0;overflow:hidden;transition:max-height .35s var(--ease,cubic-bezier(.22,1,.36,1))}' +
-  '.ck.open .ck-opts{max-height:320px}' +
+  '.ck-opts{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease,cubic-bezier(.22,1,.36,1))}' +
+  '.ck-opts>div{min-height:0;overflow:hidden}.ck.open .ck-opts{grid-template-rows:1fr}' +
   '.ck-opt{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-top:1px solid rgba(15,30,60,.07)}' +
   '.ck-opt:first-child{margin-top:10px}' +
   '.ck-opt label{font-size:12px;font-weight:550;color:#0b0d10;cursor:pointer}' +
@@ -167,10 +167,10 @@
     box.setAttribute("aria-label", "Zgoda na pliki cookie");
     box.innerHTML =
       '<p class="ck-t">Używamy plików cookie, aby strona działała poprawnie, a&nbsp;za Twoją zgodą także do <b>analityki i&nbsp;marketingu</b>. <a href="' + pp + '">Polityka prywatności</a></p>' +
-      '<div class="ck-opts">' +
+      '<div class="ck-opts"><div>' +
         '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" checked disabled aria-label="Niezbędne (zawsze aktywne)"><i></i></span><div><label>Niezbędne</label><p>Konieczne do działania strony. Zawsze aktywne.</p></div></div>' +
         '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckAn"><i></i></span><div><label for="ckAn">Analityka</label><p>Statystyki odwiedzin (Google Analytics).</p></div></div>' +
-        '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckMk"><i></i></span><div><label for="ckMk">Marketing</label><p>Pomiar i&nbsp;personalizacja reklam.</p></div></div>' +
+        '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckMk"><i></i></span><div><label for="ckMk">Marketing</label><p>Pomiar i&nbsp;personalizacja reklam.</p></div></div></div>' +
       '</div>' +
       '<div class="ck-row">' +
         '<button class="ck-btn ck-nec" id="ckNec">Tylko niezbędne</button>' +
