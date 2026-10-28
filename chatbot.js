@@ -21,23 +21,24 @@
 
   /* ---------- STYLE ---------- */
   const CSS = `
-  .cb-launcher{position:fixed;right:24px;bottom:24px;z-index:99998;height:58px;width:58px;border:none;cursor:pointer;border-radius:50%;
-    background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;box-shadow:0 12px 34px rgba(33,88,200,.38),0 3px 10px rgba(15,30,60,.14);
-    display:grid;place-items:center;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .3s;
+  .cb-launcher{position:fixed;right:24px;bottom:24px;z-index:99998;height:52px;width:52px;border:none;cursor:pointer;border-radius:50%;
+    background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;box-shadow:0 6px 16px rgba(15,30,60,.18);
+    display:grid;place-items:center;transition:box-shadow .25s,opacity .3s,visibility .3s;
     opacity:0;pointer-events:none}
-  .cb-launcher.cb-ready{opacity:1;pointer-events:auto;animation:cbEnter .62s cubic-bezier(.34,1.56,.64,1)}
-  @keyframes cbEnter{0%{opacity:0;transform:scale(.2) translateY(34px)}55%{opacity:1;transform:scale(1.14) translateY(0)}100%{transform:scale(1)}}
-  .cb-launcher:hover{transform:translateY(-2px);box-shadow:0 0 0 4px rgba(47,111,224,.18),0 14px 38px rgba(33,88,200,.44)}
+  .cb-launcher.cb-ready{opacity:1;pointer-events:auto;animation:cbEnter .62s cubic-bezier(.22,1,.36,1)}
+  @keyframes cbEnter{0%{opacity:0;transform:translateY(16px) scale(.9)}100%{opacity:1;transform:none}}
+  .cb-launcher:hover{box-shadow:inset 0 0 0 40px rgba(10,25,60,.12),0 6px 16px rgba(15,30,60,.18)}
+  .cb-launcher:focus-visible{outline:2px solid #2f6fe0;outline-offset:3px}
+  /* baner cookies (na telefonie na cala szerokosc) i otwarte menu mobilne maja pierwszenstwo: launcher znika, zamiast zaslaniac ich przyciski */
+  body.menu-open .cb-launcher,body.menu-open .cb-panel{opacity:0!important;visibility:hidden;pointer-events:none!important}
+  @media(max-width:600px){body:has(.ck.in) .cb-launcher{opacity:0!important;visibility:hidden;pointer-events:none!important}}
   .cb-launcher .ic{width:22px;height:22px;transition:transform .4s cubic-bezier(.22,1,.36,1)}
   .cb-launcher .ic-close{position:absolute;transform:scale(0) rotate(90deg)}
   .cb-launcher.open .ic-chat{transform:scale(0) rotate(-90deg)}
   .cb-launcher.open .ic-close{transform:scale(1) rotate(0)}
-  .cb-launcher .pulse{position:absolute;inset:0;border-radius:50%;animation:cbpulse 2.8s infinite}
+  .cb-launcher .pulse{position:absolute;inset:0;border-radius:50%;animation:cbpulse 2.8s 2}
   @keyframes cbpulse{0%{box-shadow:0 0 0 0 rgba(47,111,224,.34)}70%{box-shadow:0 0 0 14px rgba(47,111,224,0)}100%{box-shadow:0 0 0 0 rgba(47,111,224,0)}}
-  .cb-badge{position:fixed;right:21px;bottom:64px;z-index:99999;background:var(--cb-accent,#2f6fe0);color:#fff;font:600 11px "Geist Mono",monospace;
-    min-width:19px;height:19px;border-radius:10px;display:grid;place-items:center;padding:0 6px;box-shadow:0 2px 8px rgba(0,0,0,.18);opacity:0;transition:opacity .3s}
-  .cb-launcher.open ~ .cb-badge{opacity:0;pointer-events:none}
-  .cb-panel{position:fixed;right:24px;bottom:94px;z-index:99999;width:312px;max-width:calc(100vw - 32px);height:472px;max-height:calc(100dvh - 128px);
+  .cb-panel{position:fixed;right:24px;bottom:88px;z-index:99999;width:360px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100dvh - 120px);
     background:#fff;border:1px solid rgba(15,30,60,.09);border-radius:20px;box-shadow:0 30px 90px rgba(15,30,60,.20),0 8px 24px rgba(15,30,60,.08);
     display:flex;flex-direction:column;overflow:hidden;font-family:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#0b0d10;position:fixed;
     opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;visibility:hidden;transform-origin:bottom right;
@@ -50,18 +51,16 @@
   .cb-hava svg{width:17px;height:auto;color:#fff}
   .cb-id{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:3px}
   .cb-id b{font-size:14px;font-weight:600;letter-spacing:-.01em;color:#0b0d10;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-  .cb-live{display:inline-flex;align-items:center;gap:6px;font-family:"Geist Mono",monospace;font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#2f6fe0;flex:none;background:rgba(47,111,224,.08);border:1px solid rgba(47,111,224,.18);border-radius:9999px;padding:4px 9px}
-  .cb-live::before{content:"";width:6px;height:6px;border-radius:50%;background:#2f6fe0;animation:cblive 2.2s infinite}
-  @keyframes cblive{0%,100%{box-shadow:0 0 0 0 rgba(47,111,224,.4)}55%{box-shadow:0 0 0 4px rgba(47,111,224,0)}}
+  .cb-live{font:400 12px/1.2 "Geist",sans-serif;color:#565d68}
   .cb-hbtn{background:none;border:none;color:#565d68;width:26px;height:26px;border-radius:7px;cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s;flex:none}
   .cb-hbtn:hover{background:rgba(0,0,0,.05);color:#0b0d10}
-  .cb-body{flex:1;overflow-y:auto;padding:20px 16px 8px;background:#fbfcfe url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='-8%200%20152%20177'%3E%3Cg%20fill='%232f6fe0'%20fill-opacity='.045'%3E%3Cpath%20d='M94.3%200L130.4%200Q143.4%200%20133.9%208.9L55.5%2081.9Q48.9%2088%2039.9%2088L5.4%2088Q-7.6%2088%201.8%2079L78.8%206.2Q85.3%200%2094.3%200Z'/%3E%3Cpath%20d='M94.3%2089L130.4%2089Q143.4%2089%20133.9%2097.9L55.5%20170.9Q48.9%20177%2039.9%20177L5.4%20177Q-7.6%20177%201.8%20168L78.8%2095.2Q85.3%2089%2094.3%2089Z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/148px auto}
+  .cb-body{flex:1;overflow-y:auto;padding:20px 16px 8px;background:#fbfcfe}
   .cb-body::-webkit-scrollbar{width:8px}.cb-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.12);border-radius:4px;border:2px solid transparent;background-clip:padding-box}
   .cb-msg{display:flex;gap:9px;margin-bottom:14px;align-items:flex-start;animation:cbin .4s cubic-bezier(.22,1,.36,1) both}
   @keyframes cbin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   .cb-msg .mava{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,#3d7ef0,#2158c8);display:grid;place-items:center;flex:none;box-shadow:0 3px 8px rgba(33,88,200,.24)}
   .cb-msg .mava svg{width:13px;height:auto;color:#fff}
-  .cb-bubble{max-width:78%;padding:11px 14px;border-radius:15px;font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}
+  .cb-bubble{max-width:84%;padding:11px 14px;border-radius:15px;font-size:14px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}
   .cb-msg.bot .cb-bubble{background:#f1f4f9;border:1px solid rgba(15,30,60,.05);border-bottom-left-radius:5px}
   .cb-msg.user{flex-direction:row-reverse}.cb-msg.user .cb-bubble{background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;border-bottom-right-radius:5px;box-shadow:0 4px 14px rgba(33,88,200,.22)}
   .cb-bubble a{color:inherit;text-decoration:underline;text-underline-offset:2px}
@@ -71,7 +70,7 @@
   @keyframes cbdot{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-5px);opacity:.9}}
   .cb-chips{display:flex;flex-wrap:wrap;gap:5px;padding:4px 10px 12px;overflow-x:auto;scrollbar-width:none}
   .cb-chips::-webkit-scrollbar{display:none}
-  .cb-chip{flex:none;background:#fff;border:1px solid rgba(47,111,224,.26);color:#2456c9;font:500 9.5px "Geist",sans-serif;padding:5px 8px;border-radius:9999px;cursor:pointer;transition:all .2s;white-space:nowrap}
+  .cb-chip{flex:none;background:#fff;border:1px solid rgba(47,111,224,.26);color:#2456c9;font:500 12.5px "Geist",sans-serif;padding:7px 12px;border-radius:9999px;cursor:pointer;transition:all .2s;white-space:nowrap}
   .cb-chip:hover{border-color:#2f6fe0;color:#fff;background:linear-gradient(135deg,#3d7ef0,#2158c8);box-shadow:0 4px 12px rgba(33,88,200,.24)}
   .cb-book{margin:2px 0 4px 37px;max-width:84%;border:1px solid rgba(47,111,224,.18);border-radius:15px;overflow:hidden;background:#fff;box-shadow:0 8px 24px rgba(15,30,60,.07);animation:cbin .4s cubic-bezier(.22,1,.36,1) both}
   .cb-book-top{padding:13px 15px;border-bottom:1px solid rgba(15,30,60,.06);display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(102,176,255,.08),rgba(33,88,200,.05))}
@@ -79,7 +78,7 @@
   .cb-book .cta{display:block;margin:12px 15px 14px;text-align:center;background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;text-decoration:none;font-size:13.5px;font-weight:500;padding:11px;border-radius:11px;transition:box-shadow .2s,filter .2s}
   .cb-book .cta:hover{filter:brightness(1.06);box-shadow:0 6px 18px rgba(33,88,200,.32)}.cb-book iframe{width:100%;height:520px;border:0;display:block}
   .cb-foot{padding:12px 14px;border-top:1px solid rgba(15,30,60,.07);background:#fff}
-  .cb-disc{margin:8px 2px 0;font-size:10px;line-height:1.4;color:#5c636e;text-align:center}
+  .cb-disc{margin:8px 2px 0;font-size:11.5px;line-height:1.45;color:#5c636e;text-align:center;text-wrap:balance}
   .cb-disc a{color:#565d68;text-decoration:underline;text-underline-offset:2px}
   .cb-disc a:hover{color:#2f6fe0}
   .cb-inrow{display:flex;align-items:flex-end;gap:9px;background:#f6f8fb;border:1px solid rgba(15,30,60,.08);border-radius:9999px;padding:5px 5px 5px 16px;transition:border-color .2s,background .2s,box-shadow .2s}
@@ -87,7 +86,12 @@
   .cb-in{flex:1;border:none;background:none;outline:none;font:14px "Geist",sans-serif;color:#0b0d10;resize:none;max-height:96px;line-height:1.5;padding:8px 0}
   .cb-send{width:38px;height:38px;flex:none;border:none;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,#3d7ef0,#2158c8);color:#fff;display:grid;place-items:center;transition:box-shadow .2s,filter .2s,transform .2s}
   .cb-send:hover{filter:brightness(1.06);transform:scale(1.05);box-shadow:0 4px 14px rgba(33,88,200,.34)}.cb-send:disabled{opacity:.4;cursor:default;box-shadow:none;transform:none}
-  @media(max-width:600px){.cb-panel{right:12px;left:12px;bottom:84px;width:auto;height:min(70vh,540px);max-height:calc(100dvh - 92px)}.cb-launcher{right:16px;bottom:16px}.cb-badge{right:16px;bottom:60px}}
+  /* telefon: czat jako arkusz od dolnej krawedzi; zamyka go X w naglowku */
+  @media(max-width:600px){.cb-panel{left:0;right:0;bottom:0;width:100%;max-width:none;height:min(88dvh,640px);max-height:none;border-radius:20px 20px 0 0}
+    .cb-foot{padding-bottom:max(12px,env(safe-area-inset-bottom))}.cb-in{font-size:16px}
+    .cb-launcher{right:16px;bottom:16px}.cb-launcher.open{opacity:0;pointer-events:none}}
+  @media(prefers-reduced-motion:reduce){.cb-launcher .pulse,.cb-launcher.cb-ready,.cb-msg,.cb-book,.cb-typing i{animation:none!important}
+    .cb-launcher .ic{transition:none}.cb-panel{transform:none!important;transition:opacity .2s,visibility .2s}}
   `;
 
   /* ---------- WIEDZA (tryb lokalny bez Workera) ---------- */
@@ -108,8 +112,8 @@
     parseKB();
     const t = q.toLowerCase();
     const map = [
-      { k: ["cześć","czesc","hej","witam","siema","hello","dzień"], a: "Cześć! 👋 Jestem asystentem skaluj.ai. Zapytaj o ofertę, strony, automatyzacje, chatboty albo umów bezpłatną konsultację." },
-      { k: ["spotkani","konsultacj","umów","umow","rozmow","demo","kalendarz","termin"], a: "Jasne — umówmy 30-minutową bezpłatną konsultację. Przyjdziemy z gotowym demo. Wybierz termin:", book: true },
+      { k: ["cześć","czesc","hej","witam","siema","hello","dzień"], a: "Cześć! 👋 Jestem asystentem skaluj.ai. Zapytaj o ofertę, strony, automatyzacje, chatboty albo umów bezpłatną konsultację." },
+      { k: ["spotkani","konsultacj","umów","umow","rozmow","demo","kalendarz","termin"], a: "Jasne — umówmy 30-minutową bezpłatną konsultację. Przyjdziemy z gotowym demo. Wybierz termin:", book: true },
       { k: ["cena","koszt","ile","wycena","cennik","budż"], s: "kontakt" },
       { k: ["strona","stronę","www","landing"], s: "oferta: strona-seo" },
       { k: ["seo","geo","pozycjon","widoczn","perplexity","google"], s: "oferta: geo-seo" },
@@ -156,11 +160,10 @@
       <svg class="ic ic-chat" viewBox="-8 0 152 177" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M94.3 0L130.4 0Q143.4 0 133.9 8.9L55.5 81.9Q48.9 88 39.9 88L5.4 88Q-7.6 88 1.8 79L78.8 6.2Q85.3 0 94.3 0Z"/><path d="M94.3 89L130.4 89Q143.4 89 133.9 97.9L55.5 170.9Q48.9 177 39.9 177L5.4 177Q-7.6 177 1.8 168L78.8 95.2Q85.3 89 94.3 89Z"/></svg>
       <svg class="ic ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
-    <span class="cb-badge" id="cbBadge">1</span>
     <div class="cb-panel" id="cbPanel" role="dialog" aria-label="Czat skaluj.ai">
       <div class="cb-head">
         <span class="cb-hava">${AV}</span>
-        <div class="cb-id"><b>Asystent AI skaluj.ai</b><span class="cb-live">Online</span></div>
+        <div class="cb-id"><b>skaluj.ai</b><span class="cb-live">Asystent AI</span></div>
         <button class="cb-hbtn" id="cbClose" aria-label="Zamknij"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
       <div class="cb-body" id="cbBody" role="log" aria-live="polite" aria-atomic="false" aria-label="Historia rozmowy"></div>
@@ -176,18 +179,19 @@
 
   const $ = s => wrap.querySelector(s);
   const launcher = $("#cbLauncher"), panel = $("#cbPanel"), body = $("#cbBody"), chips = $("#cbChips"),
-        input = $("#cbIn"), send = $("#cbSend"), badge = $("#cbBadge");
+        input = $("#cbIn"), send = $("#cbSend");
   let opened = false, greeted = false; const history = [];
 
-  function toggle() {
+  /* fromUser=false: otwarcie/zamkniecie automatyczne — nie przenosi fokusu (nie kradnie klawiatury) */
+  function toggle(fromUser) {
     opened = !opened; launcher.classList.toggle("open", opened); panel.classList.toggle("open", opened);
     launcher.setAttribute("aria-expanded", opened ? "true" : "false");
     launcher.setAttribute("aria-label", opened ? "Zamknij czat" : "Otwórz czat");
-    if (opened) { badge.style.opacity = "0"; if (!greeted) { greeted = true; greet(); } setTimeout(() => input.focus(), 300); }
-    else { launcher.focus(); }
+    if (opened) { if (!greeted) { greeted = true; greet(); } if (fromUser) setTimeout(() => input.focus(), 300); }
+    else if (fromUser || panel.contains(document.activeElement)) { launcher.focus(); }
   }
-  launcher.onclick = toggle; $("#cbClose").onclick = toggle;
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && opened) toggle(); });
+  launcher.onclick = () => toggle(true); $("#cbClose").onclick = () => toggle(true);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && opened) toggle(true); });
 
   function addMsg(text, who) {
     const d = document.createElement("div"); d.className = "cb-msg " + who;
@@ -218,7 +222,7 @@
   }
   async function greet() {
     const t = typing(); await new Promise(r => setTimeout(r, 650)); t.remove();
-    addMsg('Cześć! 👋 Jestem <b>wirtualnym asystentem AI</b> skaluj.ai — odpowiadam automatycznie. W czym mogę pomóc?', "bot");
+    addMsg('Cześć! 👋 Jestem <b>wirtualnym asystentem AI</b> skaluj.ai — odpowiadam automatycznie. W&nbsp;czym mogę pomóc?', "bot");
     setChips(["Co oferujecie?", "Ile kosztuje strona?", "Umów spotkanie"]);
   }
   /* tresc od AI i od uzytkownika wstawiamy jako tekst, nie HTML: model mozna naklonic (prompt injection)
@@ -249,32 +253,22 @@
   input.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMsg(); } });
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 96) + "px"; });
 
-  /* ---------- POKAZANIE: strona główna wysuwa się przy sekcji Oferta; podstrony tylko pokazują launcher (bez auto-otwarcia) ---------- */
-  function isMobile() { return window.matchMedia("(max-width: 600px)").matches; }
+  /* ---------- POKAZANIE: launcher pojawia sie sam, panel otwiera sie WYLACZNIE po kliknieciu ---------- */
   let revealed = false;
-  function reveal(autoOpen) {
-    if (revealed) return; revealed = true;
-    launcher.classList.add("cb-ready");
-    if (isMobile()) {
-      setTimeout(() => { badge.style.opacity = "1"; }, 500);   // telefon: tylko launcher + odznaka, bez otwierania
-    } else if (autoOpen) {
-      setTimeout(() => { if (!opened) toggle(); }, 1500);       // desktop + strona główna: sam się otwiera po chwili
-    }
-    // desktop + podstrona: tylko launcher — panel otwiera się DOPIERO po kliknięciu
-  }
+  function reveal() { if (revealed) return; revealed = true; launcher.classList.add("cb-ready"); }
   const offerSection = document.getElementById("oferta");
   if (offerSection) {
-    // strona główna: widżet pokazuje się (i na desktopie sam otwiera) DOPIERO, gdy user
+    // strona główna: launcher pokazuje się DOPIERO, gdy user
     // dojedzie scrollem do oferty 04 „Asystent i chatbot AI". Sygnał emituje index.html
     // (event „skaluj:chatbot-offer") — w trybie pin-scroll dokładnie przy tej karcie,
     // a w zwykłym accordionie gdy karta wejdzie w widok.
     let armed = false;
-    const armChat = function () { if (armed) return; armed = true; reveal(true); };
+    const armChat = function () { if (armed) return; armed = true; reveal(); };
     window.addEventListener("skaluj:chatbot-offer", armChat, { once: true });
     if (window.__skalujChatbotOffer) armChat();   // sygnał mógł paść, zanim tu doszliśmy
   } else {
-    // podstrony (brak sekcji Oferta): pokaż sam launcher po załadowaniu — NIGDY nie otwieraj panelu bez kliknięcia
-    if (document.readyState === "complete") setTimeout(() => reveal(false), 650);
-    else window.addEventListener("load", () => setTimeout(() => reveal(false), 650));
+    // podstrony (brak sekcji Oferta): pokaż launcher po załadowaniu
+    if (document.readyState === "complete") setTimeout(reveal, 650);
+    else window.addEventListener("load", () => setTimeout(reveal, 650));
   }
 })();

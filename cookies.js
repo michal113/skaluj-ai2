@@ -136,7 +136,7 @@
   '.ck-acc:hover{filter:brightness(1.05);box-shadow:0 8px 20px rgba(33,88,200,.30)}' +
   '.ck-nec{background:#eef1f6;color:#2b333f}' +
   '.ck-nec:hover{background:#e5e9f0}' +
-  '.ck-set{background:none;border:none;cursor:pointer;color:#565d68;font:500 11px "Geist",sans-serif;padding:8px 2px 0;margin-top:4px;text-decoration:underline;text-underline-offset:2px}' +
+  '.ck-set{background:none;border:none;cursor:pointer;color:#565d68;font:500 12.5px "Geist",sans-serif;padding:8px 2px 0;margin-top:4px;text-decoration:underline;text-underline-offset:2px}' +
   '.ck-set:hover{color:#2456c9}' +
   '.ck-opts{max-height:0;overflow:hidden;transition:max-height .35s var(--ease,cubic-bezier(.22,1,.36,1))}' +
   '.ck.open .ck-opts{max-height:320px}' +
@@ -152,7 +152,9 @@
   '.ck-sw input:checked + i::after{transform:translateX(14px)}' +
   '.ck-sw input:disabled + i{background:#2f6fe0;opacity:.5}' +
   '@media(max-width:600px){.ck{left:12px;right:12px;bottom:12px;width:auto}}' +
-  '@media(prefers-reduced-motion:reduce){.ck{transition:none}.ck-opts{transition:none}}';
+  '@media(prefers-reduced-motion:reduce){.ck{transition:none}.ck-opts{transition:none}}' +
+  /* otwarte menu mobilne ma wlasne CTA na dole; baner wraca po zamknieciu menu */
+  'body.menu-open .ck{opacity:0!important;visibility:hidden;pointer-events:none}';
 
   function injectStyle() { var s = document.createElement("style"); s.textContent = CSS; document.head.appendChild(s); }
 
@@ -164,11 +166,11 @@
     box.setAttribute("role", "dialog");
     box.setAttribute("aria-label", "Zgoda na pliki cookie");
     box.innerHTML =
-      '<p class="ck-t">Używamy plików cookie, aby strona działała poprawnie, a za Twoją zgodą także do <b>analityki i marketingu</b>. <a href="' + pp + '">Polityka prywatności</a></p>' +
+      '<p class="ck-t">Używamy plików cookie, aby strona działała poprawnie, a&nbsp;za Twoją zgodą także do <b>analityki i&nbsp;marketingu</b>. <a href="' + pp + '">Polityka prywatności</a></p>' +
       '<div class="ck-opts">' +
         '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" checked disabled aria-label="Niezbędne (zawsze aktywne)"><i></i></span><div><label>Niezbędne</label><p>Konieczne do działania strony. Zawsze aktywne.</p></div></div>' +
         '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckAn"><i></i></span><div><label for="ckAn">Analityka</label><p>Statystyki odwiedzin (Google Analytics).</p></div></div>' +
-        '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckMk"><i></i></span><div><label for="ckMk">Marketing</label><p>Pomiar i personalizacja reklam.</p></div></div>' +
+        '<div class="ck-opt"><span class="ck-sw"><input type="checkbox" id="ckMk"><i></i></span><div><label for="ckMk">Marketing</label><p>Pomiar i&nbsp;personalizacja reklam.</p></div></div>' +
       '</div>' +
       '<div class="ck-row">' +
         '<button class="ck-btn ck-nec" id="ckNec">Tylko niezbędne</button>' +
@@ -184,6 +186,7 @@
       var open = box.classList.toggle("open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
       this.textContent = open ? "Ukryj ustawienia" : "Ustawienia";
+      box.querySelector("#ckAcc").textContent = open ? "Zapisz wybór" : "Akceptuję"; // przy otwartych przełącznikach przycisk zapisuje wybór
     });
     box.querySelector("#ckAcc").addEventListener("click", function () {
       // "Akceptuję" respektuje przełączniki jeśli otwarto ustawienia; domyślnie akceptuje wszystko
@@ -207,7 +210,7 @@
 
   /* ---------- ponowne otwarcie (np. link „Ustawienia cookie" w stopce) ---------- */
   window.skalujCookies = {
-    open: function () { if (!box) { injectedOnce || (injectStyle(), injectedOnce = true); build(); } else { box.classList.add("open"); } },
+    open: function () { if (!box) { injectedOnce || (injectStyle(), injectedOnce = true); build(); } else if (!box.classList.contains("open")) { box.querySelector("#ckSet").click(); } },
     reset: function () { try { localStorage.removeItem(KEY); } catch (e) {} }
   };
   var injectedOnce = false;
