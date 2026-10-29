@@ -432,7 +432,11 @@ function makeSection(s, ctx) {
       (share != null ? `<div class="meter${share >= 0.9 ? " bad" : share >= 0.8 ? " warn" : ""}"><i style="width:${Math.round(share * 100)}%"></i></div><p class="fine">${pct(share)} limitu w tym okresie rozliczeniowym</p>` : ""),
       "plan");
   } else {
-    plan = s.orgError ? errBox("Organizacja: " + s.orgError) : `<p class="fine">Ustaw <code>MAKE_ORG_ID</code>, żeby widzieć zużycie limitu planu.</p>`;
+    plan = s.orgError
+      ? errBox("Organizacja: " + s.orgError)
+      : s.orgNoRights
+        ? `<p class="fine">Zużycie limitu planu Make widzi tylko administrator organizacji. Żeby je tu mieć, wygeneruj token API na koncie administratora (albo usuń sekret <code>MAKE_ORG_ID</code>, wtedy ta notka zniknie).</p>`
+        : `<p class="fine">Ustaw <code>MAKE_ORG_ID</code>, żeby widzieć zużycie limitu planu.</p>`;
   }
 
   const cards = s.scenarios

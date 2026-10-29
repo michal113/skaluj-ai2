@@ -154,8 +154,9 @@ async function makeGet(env, path, query) {
   return res.json();
 }
 
-const MAKE_PAGE = 100;
-const MAKE_MAX_PAGES = 5;
+/* Make przyjmuje najwyzej 50 wpisow na strone ("Available maximum limit 50") */
+const MAKE_PAGE = 50;
+const MAKE_MAX_PAGES = 10;
 
 /** Uruchomienia scenariusza w okresie. Status: 1 = OK, 2 = ostrzezenie, 3 = blad. */
 async function makeScenario(env, id, days) {
@@ -233,7 +234,9 @@ async function make(env, days) {
           nextReset: o.nextReset || null,
         }
       : null,
-    orgError: org?.error || null,
+    /* 403 = token bez roli administratora organizacji: limit planu widzi tylko admin, to nie awaria */
+    orgNoRights: / 403/.test(org?.error || ""),
+    orgError: / 403/.test(org?.error || "") ? null : org?.error || null,
   };
 }
 
