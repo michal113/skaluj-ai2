@@ -154,8 +154,9 @@ async function ingest(request, env) {
 
   const email = clip(b.email, LIMITS.email).toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    /* same nazwy pol (bez wartosci) - pomaga znalezc blad w mapowaniu w Make */
-    return json({ error: "invalid email", received_fields: Object.keys(b).slice(0, 30), email_empty: !email }, 400);
+    /* 200, nie 400: Make wylacza scenariusz z webhookiem po pierwszym bledzie, a smieciowe zgloszenia (boty)
+       nie moga zatrzymac formularza. Same nazwy pol (bez wartosci) pomagaja znalezc blad w mapowaniu w Make. */
+    return json({ ok: false, skipped: "invalid email", received_fields: Object.keys(b).slice(0, 30), email_empty: !email });
   }
 
   const marketing = /^(tak|true|1|on|yes)$/i.test(clip(b.marketing, 10)) ? 1 : 0;
