@@ -88,6 +88,7 @@ const IC = {
   search: svg('<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/>'),
   wallet: svg('<path d="M4 7.5h14.5A1.5 1.5 0 0 1 20 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5z"/><path d="M4 7.5 15.5 4v3.5M16 13.5h.1"/>'),
   coin: svg('<circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.6 0-2.7.8-2.7 2s1.1 1.7 2.7 2 2.7.8 2.7 2-1.1 2-2.7 2c-1.1 0-2-.4-2.5-1.2M12 6.5V8M12 16v1.5"/>'),
+  trash: svg('<path d="M4.5 7h15M10 11v6M14 11v6"/><path d="M6.5 7l.9 11.6a1.5 1.5 0 0 0 1.5 1.4h6.2a1.5 1.5 0 0 0 1.5-1.4L17.5 7"/><path d="M9.5 7V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2"/>'),
   plug: svg('<path d="M9 3.5v4M15 3.5v4M6.5 7.5h11v3a5.5 5.5 0 0 1-11 0zM12 16v4.5"/>'),
 };
 const ARR = {
@@ -305,6 +306,14 @@ function leadRow(l, ctx, back) {
       <div class="l-act">
         ${l.email ? `<a class="btn" href="mailto:${esc(l.email)}?subject=${temat}">${IC.mail}Napisz e-mail</a>` : ""}
         ${tel ? `<a class="btn ghost" href="tel:${esc(tel)}">${IC.phone}Zadzwoń</a>` : ""}
+        <details class="l-del">
+          <summary class="btn ghost del">${IC.trash}Usuń</summary>
+          <form method="post" action="/leady/${esc(l.id)}/usun">
+            <input type="hidden" name="back" value="${esc(back)}">
+            <label><input type="checkbox" name="confirm" value="tak" required> tak, usuń to zgłoszenie na stałe (np. testowe albo na prośbę tej osoby, art. 17 RODO)</label>
+            <button type="submit" class="danger">Usuń na stałe</button>
+          </form>
+        </details>
       </div>
       <dl class="l-meta">
         <div><dt>E-mail</dt><dd>${l.email ? `<a href="mailto:${esc(l.email)}">${esc(l.email)}</a>` : DASH}</dd></div>
@@ -323,14 +332,6 @@ function leadRow(l, ctx, back) {
       <label class="full">Notatka<textarea name="note" rows="3" maxlength="2000" placeholder="np. dzwonić po 15, prosi o wycenę strony + SEO">${esc(l.note || "")}</textarea></label>
       <div class="l-save"><button type="submit">Zapisz zmiany</button><span>ostatnia zmiana ${esc(when(l.updated_at))}</span></div>
     </form>
-    <details class="l-del">
-      <summary>Usuń zgłoszenie…</summary>
-      <form method="post" action="/leady/${esc(l.id)}/usun">
-        <input type="hidden" name="back" value="${esc(back)}">
-        <label><input type="checkbox" name="confirm" value="tak" required> usuń na stałe (np. na prośbę tej osoby, art. 17 RODO)</label>
-        <button type="submit" class="danger">Usuń</button>
-      </form>
-    </details>
   </div>
 </details>`;
 }
@@ -814,11 +815,11 @@ textarea{resize:vertical;min-height:84px}
 button{font:550 13.5px var(--sans);border:0;border-radius:999px;height:40px;padding:0 20px;cursor:pointer;background:var(--accent);color:#fff;
   box-shadow:0 6px 16px -8px rgba(47,111,224,.8);transition:background-color .2s,transform .2s var(--ease)}
 button:hover{background:var(--accent-ink);transform:translateY(-1px)}
-.l-del{grid-column:1/-1;border-top:1px dashed var(--line);padding-top:12px}
-.l-del>summary{list-style:none;display:inline-flex;cursor:pointer;font-size:12.5px;color:var(--faint);transition:color .2s}
+.l-del[open]{flex-basis:100%}
+.l-del>summary{list-style:none;cursor:pointer}
 .l-del>summary::-webkit-details-marker{display:none}
-.l-del>summary:hover{color:var(--bad)}
-.l-del form{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:12.5px;color:var(--muted)}
+.btn.del{color:var(--bad);border-color:rgba(180,50,31,.3)}.btn.del:hover{background:var(--bad-bg)}.l-del[open]>summary{background:var(--bad-bg)}
+.l-del form{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px;padding:12px 14px;border:1px solid rgba(180,50,31,.25);background:var(--bad-bg);border-radius:12px;font-size:12.5px;color:var(--muted)}
 .l-del label{display:flex;gap:8px;align-items:center}
 button.danger{background:#fff;color:var(--bad);border:1px solid rgba(180,50,31,.35);box-shadow:none;height:34px;padding:0 14px;font-size:12.5px}
 button.danger:hover{background:var(--bad-bg)}
