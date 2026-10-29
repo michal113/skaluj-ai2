@@ -63,29 +63,83 @@ async function leadStats(env, days) {
   };
 }
 
-/* ---------- strona: GA4 + Search Console (to samo konto serwisowe co panel klienta) ---------- */
+/* ---------- strona: wlasny licznik (site_daily) + opcjonalnie GA4 i Search Console ---------- */
 
-async function website(env, days) {
-  if (!env.GA4_PROPERTY_ID && !env.GSC_SITE_URL) return off("GA4_PROPERTY_ID", "GSC_SITE_URL");
-  if (!env.GOOGLE_SERVICE_ACCOUNT_KEY) return off("GOOGLE_SERVICE_ACCOUNT_KEY");
+/** Wlasne statystyki z licznika na stronie: wszyscy odwiedzajacy, bez cookies (patrz hits.js). */
+async function siteOwn(env, days) {
+  const from = ymd(new Date(Date.now() - (days - 1) * DAY));
+  const prevFrom = ymd(new Date(Date.now() - (2 * days - 1) * DAY));
+  const top = (col, sum, extra = "") =>
+    env.DB.prepare(`SELECT ${col} AS label, SUM(${sum}) AS value FROM site_daily WHERE day >= ?1 ${extra} GROUP BY ${col} HAVING value > 0 ORDER BY value DESC LIMIT 8`).bind(from);
+  const [tot, byDay, pages, sources, devices, countries] = await env.DB.batch([
+    env.DB.prepare(
+      `SELECT SUM(CASE WHEN day >= ?1 THEN views END) AS views, SUM(CASE WHEN day >= ?2 AND day < ?1 THEN views END) AS prev_views,
+              SUM(CASE WHEN day >= ?1 THEN entries END) AS entries, SUM(CASE WHEN day >= ?2 AND day < ?1 THEN entries END) AS prev_entries,
+              SUM(CASE WHEN day >= ?1 THEN time_sum END) AS time_sum, SUM(CASE WHEN day >= ?1 THEN time_n END) AS time_n,
+              SUM(CASE WHEN day >= ?2 AND day < ?1 THEN time_sum END) AS prev_time_sum, SUM(CASE WHEN day >= ?2 AND day < ?1 THEN time_n END) AS prev_time_n
+         FROM site_daily WHERE day >= ?2`
+    ).bind(from, prevFrom),
+    env.DB.prepare("SELECT day AS d, SUM(views) AS n FROM site_daily WHERE day >= ?1 GROUP BY day").bind(from),
+    top("path", "views"),
+    top("source", "entries", "AND source <> '(wewnętrzne)'"),
+    top("device", "views"),
+    top("country", "views"),
+  ]);
+  const t = tot.results[0] || {};
+  const perDay = Object.fromEntries(byDay.results.map((r) => [r.d, r.n]));
+  const avg = (sum, n) => (n ? sum / n : null);
+  return {
+    views: t.views || 0,
+    prevViews: t.prev_views || 0,
+    entries: t.entries || 0,
+    prevEntries: t.prev_entries || 0,
+    avgTime: avg(t.time_sum, t.time_n),
+    prevAvgTime: avg(t.prev_time_sum, t.prev_time_n),
+    daily: dayList(days).map((d) => ({ d, n: perDay[d] || 0 })),
+    pages: pages.results,
+    sources: sources.results,
+    devices: devices.results,
+    countries: countries.results,
+  };
+}
+
+async function google(env, days) {
+  const ga4Configured = !!env.GA4_PROPERTY_ID, gscConfigured = !!env.GSC_SITE_URL;
+  const out = { ga4Configured, gscConfigured, ga4: null, ga4Error: null, channels: [], gsc: null, gscError: null, queries: [] };
+  if (!ga4Configured && !gscConfigured) return out;
+  if (!env.GOOGLE_SERVICE_ACCOUNT_KEY) {
+    out.ga4Error = out.gscError = "brak GOOGLE_SERVICE_ACCOUNT_KEY";
+    return out;
+  }
   const token = await getAccessToken(env);
   const [ga4, channels, gsc, queries] = await Promise.allSettled([
-    env.GA4_PROPERTY_ID ? fetchGa4Summary(token, env.GA4_PROPERTY_ID, days) : null,
-    env.GA4_PROPERTY_ID ? fetchGa4Channels(token, env.GA4_PROPERTY_ID, days) : [],
-    env.GSC_SITE_URL ? fetchGscTotals(token, env.GSC_SITE_URL, days) : null,
-    env.GSC_SITE_URL ? fetchGscQueries(token, env.GSC_SITE_URL, days, 10) : [],
+    ga4Configured ? fetchGa4Summary(token, env.GA4_PROPERTY_ID, days) : null,
+    ga4Configured ? fetchGa4Channels(token, env.GA4_PROPERTY_ID, days) : [],
+    gscConfigured ? fetchGscTotals(token, env.GSC_SITE_URL, days) : null,
+    gscConfigured ? fetchGscQueries(token, env.GSC_SITE_URL, days, 10) : [],
   ]);
   const err = (r) => (r.status === "rejected" ? String(r.reason?.message || r.reason).slice(0, 200) : null);
   return {
-    state: "ok",
-    ga4Configured: !!env.GA4_PROPERTY_ID,
-    gscConfigured: !!env.GSC_SITE_URL,
+    ...out,
     ga4: ga4.status === "fulfilled" ? ga4.value : null,
     ga4Error: err(ga4),
     channels: channels.status === "fulfilled" ? channels.value : [],
     gsc: gsc.status === "fulfilled" ? gsc.value : null,
     gscError: err(gsc),
     queries: queries.status === "fulfilled" ? queries.value : [],
+  };
+}
+
+async function website(env, days) {
+  const [own, g] = await Promise.allSettled([siteOwn(env, days), google(env, days)]);
+  const why = (r) => String(r.reason?.message || r.reason).slice(0, 200);
+  return {
+    state: "ok",
+    own: own.status === "fulfilled" ? own.value : null,
+    ownError: own.status === "rejected" ? why(own) : null,
+    ...(g.status === "fulfilled"
+      ? g.value
+      : { ga4Configured: !!env.GA4_PROPERTY_ID, gscConfigured: !!env.GSC_SITE_URL, ga4: null, gsc: null, channels: [], queries: [], ga4Error: why(g), gscError: why(g) }),
   };
 }
 
@@ -193,9 +247,7 @@ async function orGet(env, path) {
   return (await res.json()).data;
 }
 
-async function chatbot(env, days) {
-  if (!env.OPENROUTER_MANAGEMENT_KEY) return off("OPENROUTER_MANAGEMENT_KEY");
-
+async function openrouter(env, days) {
   const [credits, keys] = await Promise.all([orGet(env, "/credits"), orGet(env, "/keys")]);
   const wanted = String(env.OPENROUTER_KEY_NAME || "").trim().toLowerCase();
   const key = wanted ? (keys || []).find((k) => [k.name, k.label].some((v) => String(v || "").toLowerCase() === wanted)) : null;
@@ -223,7 +275,6 @@ async function chatbot(env, days) {
   }
 
   return {
-    state: "ok",
     span,
     keyName: key ? key.name || key.label : null,
     keyMissing: !!wanted && !key,
@@ -236,6 +287,51 @@ async function chatbot(env, days) {
     tokens,
     models: Object.values(models).sort((a, b) => b.requests - a.requests),
     daily: daysInRange.map((d) => ({ d, n: perDay[d] || 0 })),
+  };
+}
+
+/** Wlasne liczniki czatu (chat_daily, zapisuje worker botszkalu): rozmowy, wiadomosci, propozycje konsultacji, bledy. */
+async function chatOwn(env, days) {
+  const from = ymd(new Date(Date.now() - (days - 1) * DAY));
+  const prevFrom = ymd(new Date(Date.now() - (2 * days - 1) * DAY));
+  const [tot, byDay] = await env.DB.batch([
+    env.DB.prepare(
+      `SELECT SUM(CASE WHEN day >= ?1 THEN conversations END) AS conversations, SUM(CASE WHEN day >= ?2 AND day < ?1 THEN conversations END) AS prev_conversations,
+              SUM(CASE WHEN day >= ?1 THEN messages END) AS messages, SUM(CASE WHEN day >= ?2 AND day < ?1 THEN messages END) AS prev_messages,
+              SUM(CASE WHEN day >= ?1 THEN booking END) AS booking, SUM(CASE WHEN day >= ?1 THEN errors END) AS errors,
+              SUM(CASE WHEN day >= ?1 THEN limited END) AS limited
+         FROM chat_daily WHERE day >= ?2`
+    ).bind(from, prevFrom),
+    env.DB.prepare("SELECT day AS d, conversations AS n FROM chat_daily WHERE day >= ?1").bind(from),
+  ]);
+  const t = tot.results[0] || {};
+  const perDay = Object.fromEntries(byDay.results.map((r) => [r.d, r.n]));
+  return {
+    conversations: t.conversations || 0,
+    prevConversations: t.prev_conversations || 0,
+    messages: t.messages || 0,
+    prevMessages: t.prev_messages || 0,
+    booking: t.booking || 0,
+    errors: t.errors || 0,
+    limited: t.limited || 0,
+    daily: dayList(days).map((d) => ({ d, n: perDay[d] || 0 })),
+  };
+}
+
+/* Wlasne liczniki sa zawsze; koszty i modele z OpenRouter tylko z kluczem Management (pola jak dotad na wierzchu). */
+async function chatbot(env, days) {
+  const [own, or] = await Promise.allSettled([
+    chatOwn(env, days),
+    env.OPENROUTER_MANAGEMENT_KEY ? openrouter(env, days) : Promise.resolve(null),
+  ]);
+  const why = (r) => String(r.reason?.message || r.reason).slice(0, 200);
+  return {
+    state: "ok",
+    own: own.status === "fulfilled" ? own.value : null,
+    ownError: own.status === "rejected" ? why(own) : null,
+    orConfigured: !!env.OPENROUTER_MANAGEMENT_KEY,
+    orError: or.status === "rejected" ? why(or) : null,
+    ...(or.status === "fulfilled" && or.value ? or.value : {}),
   };
 }
 

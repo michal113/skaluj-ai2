@@ -5,9 +5,9 @@ Prywatny panel w jednym miejscu:
 | Sekcja | Skąd dane |
 |---|---|
 | **Zgłoszenia (CRM)** | formularz na stronie → Make → `POST /api/lead` → baza D1 (w UE) |
-| **Strona** | Google Analytics 4 (tylko osoby, które zgodziły się na analitykę) i Search Console |
+| **Strona** | własny licznik odwiedzin bez cookies (`cookies.js` → `POST /api/hit` → baza D1); opcjonalnie Search Console i GA4 |
 | **Automatyzacje** | Make API: uruchomienia, błędy, operacje, limit planu |
-| **Chatbot** | OpenRouter API: liczba wiadomości, koszt, modele, saldo |
+| **Chatbot** | dzienne liczniki z workera chatbota (rozmowy, wiadomości, propozycje konsultacji, awarie); opcjonalnie koszty z OpenRouter |
 
 W CRM każde zgłoszenie ma status (Nowy → W kontakcie → Oferta wysłana → Klient / Przegrany), wartość w zł i notatkę. Jest też eksport CSV i przycisk usuwania (gdy ktoś poprosi o usunięcie danych).
 
@@ -138,6 +138,27 @@ Używamy tego samego konta serwisowego co panel klienta: `panel-reader@skaluj-pa
 
 ---
 
+## Klucze do statystyk bez terminala
+
+Własne statystyki strony i chatbota działają od razu, bez kluczy. Klucze są potrzebne tylko do Make (obowiązkowo dla sekcji Automatyzacje) i do dodatków: kosztów z OpenRouter, Search Console i GA4.
+
+Najprościej dodać je jako **sekrety repo w GitHubie** (Settings → Secrets and variables → Actions → New repository secret). Automat wdrożenia sam przeniesie każdy z nich do CRM przy najbliższym wdrożeniu, czyli po pushu na `main` albo po ręcznym **Actions → Wdrozenie workerow → Run workflow**:
+
+| Sekret | Skąd |
+|---|---|
+| `MAKE_API_TOKEN` | Make → Profile → API access → Add token (zakresy `scenarios:read`, `organizations:read`) |
+| `MAKE_SCENARIO_IDS` | liczba z adresu scenariusza w Make (`…/scenarios/1234567/…`), kilka po przecinku |
+| `MAKE_ORG_ID` | liczba z adresu organizacji w Make (`…/organization/123456/…`) |
+| `OPENROUTER_MANAGEMENT_KEY` | OpenRouter → Settings → Management Keys |
+| `OPENROUTER_KEY_NAME` | nazwa klucza chatbota w OpenRouter (np. `chatbot`) |
+| `GSC_SITE_URL` | `sc-domain:skaluj.ai` |
+| `GA4_PROPERTY_ID` | numer usługi GA4 (sama liczba) |
+| `GOOGLE_SERVICE_ACCOUNT_KEY` | cały plik JSON konta serwisowego (potrzebny do GSC i GA4) |
+
+Możesz je też wpisać ręcznie w Cloudflare (Workers & Pages → skaluj-crm → Settings → Variables and Secrets). Automat nie rusza kluczy, których nie ma w GitHubie.
+
+**Licznik odwiedzin** (`cookies.js`) nie używa cookies ani identyfikatorów. Wysyła podstronę, domenę strony odsyłającej, `utm_source` i czas na podstronie. Zapisywane są wyłącznie sumy dzienne, bez IP i bez User-Agenta. Przeglądarki z GPC/DNT, boty i przeglądarki automatyczne nie są liczone. Szczegóły w `hits.js` i w polityce prywatności.
+
 ## Codzienna praca
 
 - **Okres** przełączasz u góry (7 / 30 / 90 dni). Dane pobierane są na żywo przy każdym wejściu.
@@ -178,5 +199,6 @@ Uruchom skrypt z `-NoweHaslo` / `-NowyToken` (Windows) albo `--nowe-haslo` / `--
 | `worker.js` | trasy, logowanie, CSRF, przyjmowanie zgłoszeń, edycja, CSV, retencja (cron) |
 | `sources.js` | statystyki: D1, GA4/GSC (`../panel/google.js`), Make API, OpenRouter API |
 | `render.js` | HTML i CSS panelu, bez JavaScriptu |
-| `schema.sql` | tabela `leads` |
+| `schema.sql` | tabele `leads`, `site_daily` (odwiedziny), `chat_daily` (liczniki czatu) |
+| `hits.js` | licznik odwiedzin `POST /api/hit`: normalizacja ścieżek, źródła, urządzenia, ochrona przed spamem |
 | `setup.sh` / `setup.ps1` | konfiguracja i wdrożenie jednym poleceniem (Mac/Linux / Windows) |

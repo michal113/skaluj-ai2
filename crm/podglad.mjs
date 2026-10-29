@@ -62,7 +62,23 @@ function stats(days) {
   return {
     leads: leadStats(LEADY, days),
     site: {
-      state: "ok", ga4Configured: true, gscConfigured: true, ga4Error: null, gscError: null,
+      state: "ok", ownError: null,
+      own: {
+        views: 4870, prevViews: 4210, entries: 1690, prevEntries: 1488, avgTime: 74, prevAvgTime: 69,
+        daily: runs(days, 160, 1),
+        pages: [
+          { label: "/", value: 1820 }, { label: "/oferta/strona-seo", value: 610 }, { label: "/oferta/reklamy-chatgpt", value: 488 },
+          { label: "/blog/reklamy-chatgpt", value: 431 }, { label: "/kontakt", value: 395 }, { label: "/oferta/chatbot-ai", value: 288 },
+          { label: "/blog/geo-ai-search", value: 240 }, { label: "/oferta/rolki-ai", value: 176 },
+        ],
+        sources: [
+          { label: "Google", value: 812 }, { label: "Bezpośrednio", value: 431 }, { label: "ChatGPT", value: 168 },
+          { label: "Facebook", value: 121 }, { label: "LinkedIn", value: 84 }, { label: "Perplexity", value: 41 },
+        ],
+        devices: [{ label: "telefon", value: 2780 }, { label: "komputer", value: 1960 }, { label: "tablet", value: 130 }],
+        countries: [{ label: "PL", value: 4510 }, { label: "DE", value: 160 }, { label: "GB", value: 92 }, { label: "US", value: 64 }],
+      },
+      ga4Configured: true, gscConfigured: true, ga4Error: null, gscError: null,
       ga4: {
         current: { sessions: 1174, totalUsers: 902, newUsers: 664, bounceRate: 0.412, averageSessionDuration: 118, screenPageViews: 3391 },
         previous: { sessions: 1031, totalUsers: 823, newUsers: 618, bounceRate: 0.436, averageSessionDuration: 121, screenPageViews: 2944 },
@@ -91,7 +107,12 @@ function stats(days) {
       ],
     },
     chat: {
-      state: "ok", span: Math.min(days, 30), keyName: "skaluj-chatbot", keyMissing: false, balance: 3.42,
+      state: "ok", orConfigured: true, orError: null, ownError: null,
+      own: {
+        conversations: 186, prevConversations: 151, messages: 412, prevMessages: 330, booking: 23, errors: 2, limited: 5,
+        daily: dayList(days).map((d, i) => ({ d, n: Math.max(0, Math.round(6 + Math.sin(i * 0.7) * 3 + (i % 6 === 0 ? 3 : 0))) })),
+      },
+      span: Math.min(days, 30), keyName: "skaluj-chatbot", keyMissing: false, balance: 3.42,
       key: { today: 0.06, week: 0.41, month: 1.71, limit: 5, remaining: 3.29, lastUsed: iso(25 * 60000) },
       requests: 412, cost: 1.84, tokens: 623400,
       models: [
@@ -113,9 +134,10 @@ out("crm-puste.html", renderDashboard({
   leads: [], days: 30, status: "", ...wspolne,
   stats: {
     leads: { state: "ok", total: 0, status: {}, current: 0, previous: 0, marketing: 0, services: [], daily: dayList(30).map((d) => ({ d, n: 0 })) },
-    site: { state: "off", missing: ["GA4_PROPERTY_ID", "GSC_SITE_URL"] },
-    make: { state: "error", error: "Make API 401: token wygasł albo nie ma zakresu scenarios:read" },
-    chat: { state: "off", missing: ["OPENROUTER_MANAGEMENT_KEY"] },
+    site: { state: "ok", ownError: null, ga4Configured: false, gscConfigured: false, channels: [], queries: [],
+      own: { views: 0, prevViews: 0, entries: 0, prevEntries: 0, avgTime: null, prevAvgTime: null, daily: dayList(30).map((d) => ({ d, n: 0 })), pages: [], sources: [], devices: [], countries: [] } },
+    make: { state: "off", missing: ["MAKE_API_TOKEN", "MAKE_SCENARIO_IDS"] },
+    chat: { state: "ok", orConfigured: false, ownError: null, own: { conversations: 0, prevConversations: 0, messages: 0, prevMessages: 0, booking: 0, errors: 0, limited: 0, daily: dayList(30).map((d) => ({ d, n: 0 })) } },
   },
 }));
 out("logowanie.html", renderMessage("Wymagane logowanie", "Przeglądarka pokaże okienko logowania: wpisz dowolną nazwę użytkownika i hasło do panelu. Nie widzisz okienka? Odśwież stronę."));

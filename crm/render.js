@@ -154,10 +154,15 @@ function miejsce(pos) {
   return `<span class="pb pb-${k}">${t}</span>`;
 }
 
+const codes = (list) => list.map((m) => `<code>${esc(m)}</code>`).join(" ");
+const WHERE = "GitHub → Settings → Secrets and variables → Actions (wejdą przy najbliższym wdrożeniu) albo Cloudflare → skaluj-crm → Settings → Variables and Secrets";
+
 const offBox = (missing) =>
-  `<div class="setup">${IC.plug}<div><p class="setup-h">Jeszcze nie podłączone</p><p>Ustaw w Cloudflare (Worker → Settings → Variables): ${missing
-    .map((m) => `<code>${esc(m)}</code>`)
-    .join(" ")}. Instrukcja: <code>crm/README.md</code>.</p></div></div>`;
+  `<div class="setup">${IC.plug}<div><p class="setup-h">Jeszcze nie podłączone</p><p>Dodaj jako sekrety w ${WHERE}: ${codes(missing)}. Instrukcja: <code>crm/README.md</code>.</p></div></div>`;
+
+/* dodatek, bez ktorego sekcja i tak dziala */
+const optBox = (title, text, missing) =>
+  `<div class="setup">${IC.plug}<div><p class="setup-h">${title}</p><p>${text} Dodaj jako sekrety w ${WHERE}: ${codes(missing)}.</p></div></div>`;
 
 const errBox = (e) => `<div class="err">${IC.alert}<div><p class="setup-h">Źródło nie odpowiedziało</p><p>${esc(e)}</p></div></div>`;
 
@@ -209,6 +214,10 @@ function attention(stats, leads, ctx) {
   }
   const C = stats.chat;
   if (C?.state === "ok") {
+    if (C.own?.errors)
+      out.push({ lvl: "warn", href: "#chatbot", text: `Chatbot nie odpowiedział <b>${int(C.own.errors)}</b> ${pl(C.own.errors, "raz", "razy", "razy")} w ${ctx.days} dni — sprawdź saldo OpenRouter` });
+    if (C.ownError) out.push({ lvl: "bad", href: "#chatbot", text: "<b>Liczniki czatu</b> nie odpowiadają" });
+    if (C.orError) out.push({ lvl: "bad", href: "#chatbot", text: "<b>OpenRouter</b> nie odpowiada" });
     if (C.key?.limit && C.key.remaining != null && C.key.remaining / C.key.limit < 0.2)
       out.push({ lvl: "warn", href: "#chatbot", text: `Klucz chatbota: zostało <b>${esc(usd(C.key.remaining))}</b> z limitu ${esc(usd(C.key.limit))}` });
     /* ponytail: staly prog 1 USD; przy wiekszym ruchu lepiej liczyc dni do wyczerpania z kosztu dziennego */
@@ -217,10 +226,11 @@ function attention(stats, leads, ctx) {
   }
   const S = stats.site;
   if (S?.state === "ok") {
+    if (S.ownError) out.push({ lvl: "bad", href: "#strona", text: "<b>Licznik odwiedzin</b> nie odpowiada" });
     if (S.ga4Configured && !S.ga4) out.push({ lvl: "bad", href: "#strona", text: "<b>Google Analytics</b> nie odpowiada" });
     if (S.gscConfigured && !S.gsc && S.gscError) out.push({ lvl: "bad", href: "#strona", text: "<b>Search Console</b> nie odpowiada" });
   }
-  for (const [k, nazwa, href] of [["leads", "Baza zgłoszeń", "#leady"], ["site", "Statystyki strony", "#strona"], ["make", "Make", "#make"], ["chat", "OpenRouter", "#chatbot"]])
+  for (const [k, nazwa, href] of [["leads", "Baza zgłoszeń", "#leady"], ["site", "Statystyki strony", "#strona"], ["make", "Make", "#make"], ["chat", "Statystyki chatbota", "#chatbot"]])
     if (stats[k]?.state === "error") out.push({ lvl: "bad", href, text: `<b>${nazwa}</b> nie odpowiada` });
   return out;
 }
@@ -327,28 +337,57 @@ function leadRow(l, ctx, back) {
 
 /* ---------- strona ---------- */
 
+const PAGE = { "/": "Strona główna", "/kontakt": "Kontakt", "/blog": "Blog", "/polityka-prywatnosci": "Polityka prywatności", "/regulamin": "Regulamin" };
+const pageLabel = (p) => PAGE[p] || p.replace(/^\/(oferta|blog)\//, (m, k) => (k === "oferta" ? "Oferta: " : "Blog: "));
+const DEVICE = { telefon: "Telefon", komputer: "Komputer", tablet: "Tablet" };
+let regions = null;
+try {
+  regions = new Intl.DisplayNames(["pl"], { type: "region" });
+} catch {}
+const country = (c) => (c === "XX" ? "nieznany" : (regions && regions.of(c)) || c);
+
+/** Wlasny licznik: wszyscy odwiedzajacy (bez cookies), z wyjatkiem botow i przegladarek z blokada sledzenia. */
+function ownSite(o, ctx) {
+  const perVisit = o.entries ? o.views / o.entries : null;
+  const konw = o.entries && ctx.leadsCurrent != null ? pct(ctx.leadsCurrent / o.entries) : DASH;
+  const dv = delta(o.views, o.prevViews);
+  return `<div class="row r-hero">
+      ${hero(IC.eye, `Odsłony strony w ostatnich ${ctx.days} dniach`, int(o.views), dv ? `${dv}<span>wobec poprzednich ${ctx.days} dni</span>` : "",
+        `Średnio <b>${int(o.views / ctx.days)}</b> ${pl(Math.round(o.views / ctx.days) || 0, "odsłona", "odsłony", "odsłon")} dziennie`)}
+      <dl class="tiles t4">
+        ${tile(IC.users, "Wejścia na stronę", int(o.entries), delta(o.entries, o.prevEntries))}
+        ${tile(IC.globe, "Podstron na wejście", perVisit == null ? DASH : dc(nf1.format(perVisit)))}
+        ${tile(IC.clock, "Śr. czas na podstronie", esc(mmss(o.avgTime)), delta(o.avgTime, o.prevAvgTime, { kind: "sec" }))}
+        ${tile(IC.target, "Konwersja na zgłoszenie", konw, "zgłoszenia ÷ wejścia")}
+      </dl>
+    </div>
+    <div class="row r-2">
+      ${box("Odsłony dziennie", `${ctx.days} dni`, bars(o.daily, "Odsłony"))}
+      ${box("Skąd przychodzą", "wejścia", hbars(o.sources.map((r) => ({ label: r.label, value: r.value }))))}
+    </div>
+    <div class="row r-2">
+      ${box("Najczęściej oglądane", "odsłony", hbars(o.pages.map((r) => ({ label: pageLabel(r.label), value: r.value }))))}
+      ${box("Urządzenia i kraje", "odsłony",
+        hbars(o.devices.map((r) => ({ label: DEVICE[r.label] || r.label, value: r.value }))) +
+        `<h4 class="sub-h">Kraje</h4>` + hbars(o.countries.map((r) => ({ label: country(r.label), value: r.value }))))}
+    </div>
+    <p class="fine">Własny licznik bez cookies liczy wszystkich odwiedzających, poza botami i przeglądarkami z włączoną blokadą śledzenia. „Wejście” to otwarcie strony z zewnątrz albo bezpośrednio, czyli przybliżona liczba wizyt.</p>`;
+}
+
 function siteSection(s, ctx) {
-  let out = "";
+  let out = s.own ? ownSite(s.own, ctx) : errBox("Licznik odwiedzin: " + (s.ownError || "brak danych"));
   if (s.ga4Configured) {
     const c = s.ga4?.current, p = s.ga4?.previous;
-    const konw = c?.sessions && ctx.leadsCurrent != null ? pct(ctx.leadsCurrent / c.sessions) : DASH;
     out += s.ga4
-      ? `<div class="row r-hero">
-        ${hero(IC.globe, `Sesje na stronie w ostatnich ${ctx.days} dniach`, int(c?.sessions),
-          delta(c?.sessions, p?.sessions) ? `${delta(c?.sessions, p?.sessions)}<span>wobec poprzednich ${ctx.days} dni</span>` : "",
-          `Średnio <b>${int(c?.sessions / ctx.days)}</b> ${pl(Math.round(c?.sessions / ctx.days) || 0, "sesja", "sesje", "sesji")} dziennie`)}
-        <dl class="tiles t4">
-          ${tile(IC.users, "Użytkownicy", int(c?.totalUsers), delta(c?.totalUsers, p?.totalUsers))}
-          ${tile(IC.eye, "Odsłony", int(c?.screenPageViews), delta(c?.screenPageViews, p?.screenPageViews))}
-          ${tile(IC.clock, "Śr. czas sesji", esc(mmss(c?.averageSessionDuration)), delta(c?.averageSessionDuration, p?.averageSessionDuration, { kind: "sec" }))}
-          ${tile(IC.target, "Konwersja na zgłoszenie", konw, "zgłoszenia ÷ sesje, orientacyjnie")}
+      ? `<div class="box geo"><div class="geo-h"><span class="ki">${IC.users}</span><div><h3>Google Analytics</h3><p>osoby ze zgodą na analitykę · ${ctx.days} dni do wczoraj</p></div></div>
+        <dl class="strip">
+          <div><dt>Użytkownicy</dt><dd>${int(c?.totalUsers)}</dd><dd>${delta(c?.totalUsers, p?.totalUsers)}</dd></div>
+          <div><dt>Sesje</dt><dd>${int(c?.sessions)}</dd><dd>${delta(c?.sessions, p?.sessions)}</dd></div>
+          <div><dt>Nowi użytkownicy</dt><dd>${int(c?.newUsers)}</dd><dd>${delta(c?.newUsers, p?.newUsers)}</dd></div>
+          <div><dt>Śr. czas sesji</dt><dd>${esc(mmss(c?.averageSessionDuration))}</dd><dd>${delta(c?.averageSessionDuration, p?.averageSessionDuration, { kind: "sec" })}</dd></div>
         </dl>
-      </div>
-      ${box("Skąd przychodzą", "sesje · udział", hbars((s.channels || []).map((r) => ({ label: KANALY[r.label] || r.label, value: r.sessions, text: int(r.sessions) + " · " + r.pct + "%" }))))}
-      <p class="fine">GA4 liczy tylko osoby, które zgodziły się na analitykę w banerze cookies, więc liczby są niższe niż realny ruch. Okres kończy się wczoraj.</p>`
+        <h4 class="sub-h">Kanały</h4>${hbars((s.channels || []).map((r) => ({ label: KANALY[r.label] || r.label, value: r.sessions, text: int(r.sessions) + " · " + r.pct + "%" })))}</div>`
       : errBox("GA4: " + (s.ga4Error || "brak danych"));
-  } else {
-    out += offBox(["GA4_PROPERTY_ID"]);
   }
   if (s.gscConfigured) {
     out += s.gsc
@@ -362,9 +401,12 @@ function siteSection(s, ctx) {
         <h4 class="sub-h">Frazy, po których Cię znajdują</h4>${queriesTable(s.queries)}</div>
       <p class="fine">Search Console raportuje z ok. 3-dniowym opóźnieniem.</p>`
       : errBox("Search Console: " + (s.gscError || "brak danych w tym okresie"));
-  } else {
-    out += offBox(["GSC_SITE_URL"]);
   }
+  const brak = [];
+  if (!s.gscConfigured) brak.push("GSC_SITE_URL");
+  if (!s.ga4Configured) brak.push("GA4_PROPERTY_ID");
+  if (brak.length)
+    out += optBox("Opcjonalnie: dane z Google", "Search Console pokaże frazy i pozycje w wynikach Google, a GA4 dokładniejsze dane o osobach, które zgodzą się na analitykę.", [...brak, "GOOGLE_SERVICE_ACCOUNT_KEY"]);
   return out;
 }
 
@@ -418,33 +460,50 @@ function makeSection(s, ctx) {
 
 /* ---------- chatbot ---------- */
 
-function chatSection(s, ctx) {
-  const scope = s.keyName ? `klucz „${esc(s.keyName)}”` : "całe konto OpenRouter";
-  const warn = s.keyMissing ? `<div class="setup">${IC.plug}<div><p>Nie znalazłem klucza o nazwie z <code>OPENROUTER_KEY_NAME</code>. Pokazuję dane całego konta.</p></div></div>` : "";
+/** Wlasne liczniki z workera chatbota: same liczby, bez tresci rozmow. */
+function ownChat(o, ctx) {
+  const dc_ = delta(o.conversations, o.prevConversations);
+  const perConv = o.conversations ? o.messages / o.conversations : null;
+  return `<div class="row r-hero">
+      ${hero(IC.chat, `Rozmowy z chatbotem w ostatnich ${ctx.days} dniach`, int(o.conversations), dc_ ? `${dc_}<span>wobec poprzednich ${ctx.days} dni</span>` : "",
+        `Łącznie <b>${int(o.messages)}</b> ${pl(o.messages, "wiadomość", "wiadomości", "wiadomości")} od odwiedzających`)}
+      <dl class="tiles t4">
+        ${tile(IC.inbox, "Wiadomości na rozmowę", perConv == null ? DASH : dc(nf1.format(perConv)))}
+        ${tile(IC.target, "Propozycje konsultacji", int(o.booking), o.conversations ? pct(o.booking / o.conversations) + " rozmów" : "")}
+        ${tile(IC.alert, "Bot nie odpowiedział", `<span${o.errors ? ' class="bad"' : ""}>${int(o.errors)}</span>`, o.errors ? "sprawdź saldo OpenRouter" : "bez awarii")}
+        ${tile(IC.clock, "Odrzucone przez limit", int(o.limited), "ochrona przed spamem")}
+      </dl>
+    </div>
+    ${box("Rozmowy dziennie", `${ctx.days} dni`, bars(o.daily, "Rozmowy"))}
+    <p class="fine">Chatbot zapisuje tylko liczby: treści rozmów ani adresów IP nie zapisujemy nigdzie.</p>`;
+}
+
+/** Koszty i modele z OpenRouter (klucz Management). */
+function costBox(s) {
   const k = s.key;
-  const limitSub = k?.limit != null
-    ? `<span class="meter sm"><i style="width:${Math.min(100, Math.round(((k.limit - (k.remaining ?? k.limit)) / k.limit) * 100))}%"></i></span>zostało ${esc(usd(k.remaining))} z ${esc(usd(k.limit))}`
-    : "bez limitu na kluczu";
-  const models = s.models.length
+  const warn = s.keyMissing ? `<div class="setup">${IC.plug}<div><p>Nie znalazłem klucza o nazwie z <code>OPENROUTER_KEY_NAME</code>. Pokazuję dane całego konta.</p></div></div>` : "";
+  const models = s.models?.length
     ? `<div class="tw"><table><thead><tr><th>Model</th><th class="n">Zapytania</th><th class="n col-imp">Tokeny</th><th class="n">Koszt</th></tr></thead><tbody>${s.models
         .map((m) => `<tr><td><code>${esc(m.model)}</code></td><td class="n">${int(m.requests)}</td><td class="n col-imp">${int(m.tokens)}</td><td class="n">${dc(esc(usd(m.cost)))}</td></tr>`)
         .join("")}</tbody></table></div>`
     : `<p class="empty">Brak zapytań w tym okresie.</p>`;
-  return `${warn}<div class="row r-hero">
-      ${hero(IC.chat, `Wiadomości do chatbota w ostatnich ${s.span} dniach`, int(s.requests), `<span>${scope}</span>`,
-        s.requests ? `Średnio <b>${esc(usd(s.cost / s.requests))}</b> za wiadomość` : "Brak wiadomości w tym okresie")}
-      <dl class="tiles t4">
-        ${tile(IC.coin, `Koszt w ${s.span} dni`, esc(usd(s.cost)))}
-        ${tile(IC.wallet, "Saldo kredytów", esc(usd(s.balance)), "OpenRouter")}
-        ${k ? tile(IC.clock, "Koszt dziś", esc(usd(k.today))) : ""}
-        ${k ? tile(IC.coin, "Koszt w tym miesiącu", esc(usd(k.month)), limitSub) : ""}
+  const limit = k?.limit != null ? `<dd class="s">zostało ${esc(usd(k.remaining))} z ${esc(usd(k.limit))}</dd>` : "";
+  return `${warn}<div class="box geo"><div class="geo-h"><span class="ki">${IC.coin}</span><div><h3>Koszty · OpenRouter</h3><p>${s.keyName ? `klucz „${esc(s.keyName)}”` : "całe konto"} · ${s.span} pełnych dni</p></div></div>
+      <dl class="strip">
+        <div><dt>Zapytania do modeli</dt><dd>${int(s.requests)}</dd></div>
+        <div><dt>Koszt w okresie</dt><dd>${dc(esc(usd(s.cost)))}</dd>${s.requests ? `<dd class="s">${dc(esc(usd(s.cost / s.requests)))} za zapytanie</dd>` : ""}</div>
+        <div><dt>Koszt w tym miesiącu</dt><dd>${k ? dc(esc(usd(k.month))) : DASH}</dd>${limit}</div>
+        <div><dt>Saldo kredytów</dt><dd>${dc(esc(usd(s.balance)))}</dd></div>
       </dl>
-    </div>
-    <div class="row r-2">
-      ${box("Wiadomości dziennie", `${s.span} dni`, bars(s.daily, "Wiadomości"))}
-      ${box("Modele", "", models)}
-    </div>
-    <p class="fine">OpenRouter udostępnia ostatnie 30 pełnych dni (bez dzisiaj). Jedna wiadomość może dać więcej niż jedno zapytanie, jeśli zadziała model zapasowy. Treści rozmów nie są nigdzie zapisywane.</p>`;
+      <h4 class="sub-h">Modele</h4>${models}</div>
+    <p class="fine">OpenRouter udostępnia ostatnie 30 pełnych dni (bez dzisiaj). Jedna wiadomość może dać więcej niż jedno zapytanie, jeśli zadziała model zapasowy.</p>`;
+}
+
+function chatSection(s, ctx) {
+  let out = s.own ? ownChat(s.own, ctx) : errBox("Liczniki czatu: " + (s.ownError || "brak danych"));
+  if (s.orConfigured) out += s.orError ? errBox("OpenRouter: " + s.orError) : costBox(s);
+  else out += optBox("Opcjonalnie: koszty i modele", "Koszt rozmów, saldo i modele pokaże OpenRouter (klucz typu Management, tylko do odczytu statystyk).", ["OPENROUTER_MANAGEMENT_KEY", "OPENROUTER_KEY_NAME"]);
+  return out;
 }
 
 /* ---------- strona ---------- */
@@ -463,9 +522,9 @@ export function renderDashboard({ leads, stats, days, status, periods, statuses,
   const body =
     attentionStrip(attention(stats, leads, ctx)) +
     section("leady", "Zgłoszenia", "Formularz na stronie → Make → tutaj. Kliknij zgłoszenie, żeby zmienić status, wpisać wartość i notatkę.", gate(stats.leads, (s) => leadsSection(s, leads, ctx)), ctx) +
-    section("strona", "Ruch i Google", "Google Analytics 4 i Search Console dla skaluj.ai.", gate(stats.site, (s) => siteSection(s, ctx)), ctx) +
+    section("strona", "Ruch na stronie", "Własny licznik odwiedzin skaluj.ai (bez cookies), opcjonalnie Search Console i Google Analytics.", gate(stats.site, (s) => siteSection(s, ctx)), ctx) +
     section("make", "Automatyzacje", "Scenariusze w Make.com: uruchomienia, błędy i zużycie planu.", gate(stats.make, (s) => makeSection(s, ctx)), ctx) +
-    section("chatbot", "Chatbot", "Asystent AI na stronie: ruch i koszty w OpenRouter.", gate(stats.chat, (s) => chatSection(s, ctx)), ctx);
+    section("chatbot", "Chatbot", "Asystent AI na stronie: rozmowy, propozycje konsultacji i awarie; koszty z OpenRouter.", gate(stats.chat, (s) => chatSection(s, ctx)), ctx);
 
   return page(
     "CRM · skaluj.ai",
@@ -883,4 +942,7 @@ tbody tr:hover{background:rgba(47,111,224,.04)}
 }
 @media(max-width:380px){.brand .word{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.tile .v .bad{color:var(--bad)}
+.strip dd.s{font-size:12.5px;font-weight:450;letter-spacing:0;color:var(--faint);white-space:normal}
+.box .hb+.sub-h{margin-top:18px}
 `;

@@ -4,6 +4,8 @@
 #   CLOUDFLARE_ACCOUNT_ID  ID konta, na ktorym stoja botszkalu i skaluj-crm
 # Bez nich workflow konczy sie bez bledu i niczego nie wdraza.
 # Sekrety workerow (haslo panelu, klucze API) zostaja w Cloudflare - deploy ich nie rusza.
+# Opcjonalnie, w tych samych sekretach repo: MAKE_API_TOKEN, MAKE_SCENARIO_IDS, MAKE_ORG_ID, OPENROUTER_MANAGEMENT_KEY,
+# OPENROUTER_KEY_NAME, GA4_PROPERTY_ID, GSC_SITE_URL, GOOGLE_SERVICE_ACCOUNT_KEY - kazdy obecny trafia do CRM.
 name: Wdrozenie workerow (Cloudflare)
 
 on:
@@ -61,10 +63,40 @@ jobs:
             exit 1
           fi
           sed -i -E "s/^database_id = \"[^\"]*\"/database_id = \"$ID\"/" wrangler.toml
+          echo "CRM_DB_ID=$ID" >> "$GITHUB_ENV"
           $W d1 execute skaluj-crm --remote --yes --file=schema.sql > /dev/null
           $W deploy
+
+      # Klucze do statystyk (Make, OpenRouter, Google): kazdy, ktory jest w sekretach repo, trafia do CRM.
+      # Brakujacych nie ruszamy, wiec klucze dodane recznie w Cloudflare zostaja.
+      - name: Klucze CRM z sekretow GitHuba
+        if: steps.check.outputs.skip != '1'
+        working-directory: crm
+        env:
+          MAKE_API_TOKEN: ${{ secrets.MAKE_API_TOKEN }}
+          MAKE_SCENARIO_IDS: ${{ secrets.MAKE_SCENARIO_IDS }}
+          MAKE_ORG_ID: ${{ secrets.MAKE_ORG_ID }}
+          OPENROUTER_MANAGEMENT_KEY: ${{ secrets.OPENROUTER_MANAGEMENT_KEY }}
+          OPENROUTER_KEY_NAME: ${{ secrets.OPENROUTER_KEY_NAME }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          F="$RUNNER_TEMP/crm-secrets.json"
+          node -e '
+            const names = ["MAKE_API_TOKEN", "MAKE_SCENARIO_IDS", "MAKE_ORG_ID", "OPENROUTER_MANAGEMENT_KEY", "OPENROUTER_KEY_NAME", "GA4_PROPERTY_ID", "GSC_SITE_URL", "GOOGLE_SERVICE_ACCOUNT_KEY"];
+            const out = {};
+            for (const n of names) if ((process.env[n] || "").trim()) out[n] = process.env[n].trim();
+            require("fs").writeFileSync(process.argv[1], JSON.stringify(out));
+            console.log(Object.keys(out).length ? "Przenosze do CRM: " + Object.keys(out).join(", ") : "Brak kluczy do przeniesienia");
+          ' "$F"
+          if [ "$(cat "$F")" != "{}" ]; then npx --yes wrangler@4 secret bulk "$F" > /dev/null; fi
+          rm -f "$F"
 
       - name: Chatbot (botszkalu)
         if: steps.check.outputs.skip != '1'
         working-directory: worker
-        run: npx --yes wrangler@4 deploy
+        run: |
+          # ta sama baza co CRM: chatbot zapisuje w niej dzienne liczniki rozmow
+          sed -i -E "s/^database_id = \"[^\"]*\"/database_id = \"$CRM_DB_ID\"/" wrangler.toml
+          npx --yes wrangler@4 deploy

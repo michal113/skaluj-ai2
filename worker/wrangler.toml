@@ -1,5 +1,6 @@
 # skaluj.ai - backend chatbota (Cloudflare Worker -> OpenRouter)
-# Wdrozenie z tego folderu:  npx wrangler deploy
+# Wdraza sie samo po pushu na main (.github/workflows/deploy-workers.yml), ktory wpisuje tez ID bazy ponizej.
+# Recznie z tego folderu: wpisz database_id bazy skaluj-crm i  npx wrangler deploy
 # Sekret ustaw raz (nie trafia do repo):  npx wrangler secret put OPENROUTER_API_KEY
 name = "botszkalu"
 main = "worker.js"
@@ -17,3 +18,10 @@ namespace_id = "2001"
   [ratelimits.simple]
   limit = 10
   period = 60
+
+# Dzienne liczniki rozmow do panelu CRM (ta sama baza co CRM). Same liczby, bez tresci i bez IP.
+# ID wpisuje automat wdrozenia (z konta Cloudflare); recznie: npx wrangler d1 list
+[[d1_databases]]
+binding = "STATS_DB"
+database_name = "skaluj-crm"
+database_id = "WKLEJ_ID_BAZY_PO_UTWORZENIU"

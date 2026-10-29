@@ -14,11 +14,13 @@
  */
 import { collectStats } from "./sources.js";
 import { renderDashboard, renderMessage } from "./render.js";
+import { hit } from "./hits.js";
 
 export const STATUSES = ["nowy", "kontakt", "oferta", "klient", "przegrany"];
 const PERIODS = [7, 30, 90];
 const ID_RE = /^[A-Za-z0-9-]{8,40}$/;
 const RETENTION_DAYS = 365;
+const STATS_DAYS = 760;
 const MAX_INGEST_BYTES = 64 * 1024;
 const LIMITS = { name: 120, email: 160, phone: 40, company: 160, service: 60, message: 5000, termin: 120, marketing_text: 300, note: 2000 };
 
@@ -238,6 +240,8 @@ export default {
     if (path === "/api/lead") {
       return request.method === "POST" ? ingest(request, env) : json({ error: "method" }, 405);
     }
+    /* licznik odwiedzin skaluj.ai (publiczny, bez hasla; same sumy dzienne) */
+    if (path === "/api/hit") return hit(request, env);
 
     const denied = await checkAdmin(request, env);
     if (denied) return denied;
@@ -277,5 +281,11 @@ export default {
       .bind(cutoff)
       .run();
     console.log("crm: retencja, usuniete zgloszenia:", r.meta.changes);
+    /* statystyki strony i czatu to sumy bez danych osobowych; trzymamy 25 miesiecy, zeby bylo porownanie rok do roku */
+    const day = new Date(Date.now() - STATS_DAYS * 86400000).toISOString().slice(0, 10);
+    await env.DB.batch([
+      env.DB.prepare("DELETE FROM site_daily WHERE day < ?1").bind(day),
+      env.DB.prepare("DELETE FROM chat_daily WHERE day < ?1").bind(day),
+    ]);
   },
 };

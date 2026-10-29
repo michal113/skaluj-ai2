@@ -54,6 +54,37 @@
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_ID;
     document.head.appendChild(s);
   }
+  /* ---------- Własny licznik odwiedzin skaluj.ai (bez cookies, więc bez zgody z banera) ----------
+     Bez plików cookie i bez identyfikatorów: wysyłamy tylko podstronę, domenę strony, z której ktoś
+     przyszedł, utm_source i czas na podstronie. Panel CRM zapisuje z tego wyłącznie sumy dzienne.
+     Przeglądarek z Global Privacy Control / Do Not Track nie liczymy. Opis: polityka prywatności. */
+  var STATS_URL = "https://skaluj-crm.sergiuszserafin26.workers.dev/api/hit";
+  function countVisit() {
+    if (window.__skalujHit || !navigator.sendBeacon || navigator.webdriver) return;
+    if (navigator.globalPrivacyControl || navigator.doNotTrack === "1" || window.doNotTrack === "1") return;
+    if (!/(^|\.)skaluj\.ai$/.test(location.hostname)) return; // bez podglądów lokalnych i kopii strony
+    window.__skalujHit = true;
+    var ref = "", utm = "";
+    try { ref = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+    try { utm = (new URLSearchParams(location.search).get("utm_source") || "").slice(0, 40); } catch (e) {}
+    function send(t) {
+      var b = { p: location.pathname, r: ref, u: utm };
+      if (t) b.t = t;
+      try { navigator.sendBeacon(STATS_URL, JSON.stringify(b)); } catch (e) {}
+    }
+    send(0);
+    /* czas na podstronie: od wejścia do pierwszego schowania karty albo wyjścia (na telefonach "pagehide" bywa zawodny) */
+    var start = Date.now(), left = false;
+    function leave() {
+      if (left) return;
+      left = true;
+      var t = Math.round((Date.now() - start) / 1000);
+      if (t >= 1) send(Math.min(t, 1800));
+    }
+    document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") leave(); });
+    window.addEventListener("pagehide", leave);
+  }
+
   /* wycofanie zgody: GA przestaje zbierać, a jego pliki cookie znikają z przeglądarki */
   function dropGa4() {
     if (window.__skalujGa4 && window.gtag) window.gtag("consent", "update", { analytics_storage: "denied" });
@@ -186,6 +217,7 @@
   window.skalujConsent = { analytics: consent.analytics, marketing: consent.marketing };
   activateScripts(); // odpal skrypty dozwolone przez wcześniejszą zgodę
   if (consent.analytics) ga4();
+  countVisit();
   document.addEventListener("click", function (e) {
     var t = e.target.closest && e.target.closest("[data-cookie-settings]");
     if (t) { e.preventDefault(); window.skalujCookies.open(); }

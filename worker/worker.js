@@ -8,6 +8,7 @@
  *                       OPENROUTER_ZDR     = "1" -> tylko endpointy Zero Data Retention
  *                       DEBUG              = "1"  (pokazuje szczegoly bledu w odpowiedzi)
  * Binding (wrangler.toml): CHAT_LIMITER - limiter zapytan Cloudflare (bez niego dziala limit awaryjny w pamieci)
+ *                          STATS_DB     - baza skaluj-crm: dzienne liczniki rozmow do panelu CRM (bez tresci i bez IP)
  *
  * Ochrona przed naduzyciami: tylko nasze domeny (Origin), limit zapytan na IP, limity dlugosci,
  * max_tokens, brak logowania tresci rozmow. Dodatkowo ustaw limit kredytow na kluczu w OpenRouter.
@@ -168,8 +169,28 @@ async function callModel(apiKey, model, messages, env) {
   };
 }
 
+/**
+ * Dzienne liczniki do panelu CRM (tabela chat_daily w bazie skaluj-crm). Same liczby: ani tresci
+ * rozmow, ani adresu IP. Zapis po wyslaniu odpowiedzi (waitUntil), wiec nie spowalnia czatu;
+ * bez bindingu STATS_DB (np. lokalnie) po prostu nic nie robi.
+ */
+function count(env, ctx, c) {
+  if (!env.STATS_DB || !ctx) return;
+  const day = new Date().toISOString().slice(0, 10);
+  ctx.waitUntil(
+    env.STATS_DB.prepare(
+      `INSERT INTO chat_daily (day, conversations, messages, booking, errors, limited) VALUES (?1, ?2, ?3, ?4, ?5, ?6)
+       ON CONFLICT (day) DO UPDATE SET conversations = conversations + excluded.conversations, messages = messages + excluded.messages,
+         booking = booking + excluded.booking, errors = errors + excluded.errors, limited = limited + excluded.limited`
+    )
+      .bind(day, c.conversations || 0, c.messages || 0, c.booking || 0, c.errors || 0, c.limited || 0)
+      .run()
+      .catch((e) => console.log("statystyki czatu:", e.message))
+  );
+}
+
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const reqOrigin = request.headers.get("Origin") || "";
     const okOrigin = allowedOrigins(env).includes(reqOrigin) ? reqOrigin : null;
 
@@ -186,7 +207,10 @@ export default {
     if (len > MAX_BODY_BYTES) return json({ answer: FRIENDLY_ERROR, book: false }, 413, okOrigin);
 
     const ip = request.headers.get("CF-Connecting-IP") || "unknown";
-    if (!(await allowRequest(env, ip))) return json({ answer: LIMIT_MSG, book: false }, 429, okOrigin);
+    if (!(await allowRequest(env, ip))) {
+      count(env, ctx, { limited: 1 });
+      return json({ answer: LIMIT_MSG, book: false }, 429, okOrigin);
+    }
 
     let payload;
     try {
@@ -206,9 +230,16 @@ export default {
 
     if (!question) return json({ answer: "Zadaj proszę pytanie 🙂", book: false }, 200, okOrigin);
 
+    /* pierwsza wiadomosc (bez historii) = nowa rozmowa */
+    const base = { messages: 1, conversations: history.length ? 0 : 1 };
+    const failed = (body) => {
+      count(env, ctx, { ...base, errors: 1 });
+      return json(body, 200, okOrigin);
+    };
+
     if (!env.OPENROUTER_API_KEY) {
       console.log("BLAD KONFIGURACJI: brak sekretu OPENROUTER_API_KEY");
-      return json({ answer: FRIENDLY_ERROR, book: false }, 200, okOrigin);
+      return failed({ answer: FRIENDLY_ERROR, book: false });
     }
 
     const knowledge = await getKnowledge(env.KNOWLEDGE_URL || KNOWLEDGE_URL_DEFAULT);
@@ -235,7 +266,9 @@ export default {
           if (attempt > 1 || problems.length) {
             console.log(`OK na ${model} (proba ${attempt}); wczesniejsze problemy:`, problems.join(" | "));
           }
-          return json({ answer: r.text, book: detectBooking(question) || detectBooking(r.text) }, 200, okOrigin);
+          const book = detectBooking(question) || detectBooking(r.text);
+          count(env, ctx, { ...base, booking: book ? 1 : 0 });
+          return json({ answer: r.text, book }, 200, okOrigin);
         }
 
         problems.push(`${model} [${r.status}] ${r.message}`);
@@ -243,13 +276,13 @@ export default {
         // 402 = brak kredytow. Kolejne modele tez nie przejda — nie ma sensu probowac.
         if (r.status === 402) {
           console.log("BRAK KREDYTOW OpenRouter — doladuj konto:", r.message);
-          return json({ answer: FRIENDLY_ERROR, book: false, ...(debug ? { debug: problems } : {}) }, 200, okOrigin);
+          return failed({ answer: FRIENDLY_ERROR, book: false, ...(debug ? { debug: problems } : {}) });
         }
 
         // 401/403 = zly klucz. To samo.
         if (r.status === 401 || r.status === 403) {
           console.log("BLAD AUTORYZACJI OpenRouter:", r.message);
-          return json({ answer: FRIENDLY_ERROR, book: false, ...(debug ? { debug: problems } : {}) }, 200, okOrigin);
+          return failed({ answer: FRIENDLY_ERROR, book: false, ...(debug ? { debug: problems } : {}) });
         }
 
         const transient = r.status === 0 || isTransient(r.status);
@@ -262,6 +295,6 @@ export default {
     }
 
     console.log("Wszystkie modele zawiodly:", problems.join(" | "));
-    return json({ answer: FRIENDLY_ERROR, book: false, ...(debug ? { debug: problems } : {}) }, 200, okOrigin);
+    return failed({ answer: FRIENDLY_ERROR, book: false, ...(debug ? { debug: problems } : {}) });
   },
 };

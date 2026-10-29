@@ -29,6 +29,15 @@ namespace_id = "2002"
   limit = 10
   period = 60
 
+# Limit licznika odwiedzin: 60 zapytan na minute na adres IP.
+[[ratelimits]]
+name = "HIT_LIMITER"
+namespace_id = "2003"
+
+  [ratelimits.simple]
+  limit = 60
+  period = 60
+
 [vars]
 # Region Make (z adresu webhooka: hook.eu1.make.com -> eu1.make.com)
 MAKE_ZONE = "eu1.make.com"
