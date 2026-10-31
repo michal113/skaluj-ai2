@@ -11,8 +11,9 @@
    ===================================================================== */
 (function(){
   /* Rysuje wzgórza na canvasie (HTMLCanvasElement albo OffscreenCanvas).
-     Zwraca {resize(w,h), visible(bool)} albo null, gdy brak WebGL lub brak sprzętowego GPU. */
-  function hills(canvas, pixelRatio, raf){
+     Zwraca {resize(w,h), visible(bool)} albo null, gdy brak WebGL lub brak sprzętowego GPU.
+     onFirst() woła się po pierwszej narysowanej klatce (strona wtedy płynnie pokazuje canvas). */
+  function hills(canvas, pixelRatio, raf, onFirst){
     /* kontekst jak w three.js r160: WebGL2 z fallbackiem na WebGL1, alpha + MSAA */
     var attrs = { alpha:true, depth:true, stencil:false, antialias:true, premultipliedAlpha:true,
                   preserveDrawingBuffer:false, powerPreference:"default", failIfMajorPerformanceCaveat:false };
@@ -187,6 +188,7 @@
       gl.uniform1f(uTime, time);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
+      if(onFirst){ onFirst(); onFirst = null; }
     }
     var MIN_DT = 1/30, acc = 0, last = -1;   /* limit ~30 kl/s: drift jest wolny, 30fps wyglada identycznie, a o polowe taniej */
     function getDelta(){                     /* = THREE.Clock#getDelta: pierwsze wywołanie zwraca 0 */
@@ -239,7 +241,7 @@
       }catch(err){ ok = false; }
       self.postMessage({ probe:true, ok:ok, soft:soft });
     } else if(m.canvas){
-      R = hills(m.canvas, m.pr, raf);
+      R = hills(m.canvas, m.pr, raf, function(){ self.postMessage({ drawn:true }); });
       if(R) R.resize(m.w, m.h);
     } else if(R && m.size){ R.resize(m.w, m.h); }
     else if(R && "vis" in m){ R.visible(m.vis); }

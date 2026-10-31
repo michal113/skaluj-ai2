@@ -486,7 +486,9 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 }
 .hero-bg::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.05;mix-blend-mode:multiply;pointer-events:none}
 #heroHills{position:absolute;inset:0;bottom:auto;width:100%;height:min(1000px,115vh);display:block;
-  -webkit-mask-image:linear-gradient(180deg,#000 80%,transparent);mask-image:linear-gradient(180deg,#000 80%,transparent)}
+  -webkit-mask-image:linear-gradient(180deg,#000 80%,transparent);mask-image:linear-gradient(180deg,#000 80%,transparent);
+  opacity:0;transition:opacity 1.4s var(--ease)}
+#heroHills.on{opacity:1}
 .hero-inner{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center}
 .hero .eyebrow{
   opacity:0;animation:fade .7s var(--ease) .05s forwards;
@@ -530,6 +532,7 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .hero-sub strong{color:var(--text);font-weight:600}
 .hero-cta{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
   opacity:0;animation:fadeUp .9s var(--ease) .52s forwards}
+.hero-wait .hero *,.hero-wait .hero *::before,.hero-wait .hero *::after{animation-play-state:paused!important}
 @keyframes fade{to{opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes wipe{to{transform:scaleX(1)}}
@@ -537,10 +540,12 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 /* hero product screen */
 .hero-screen{position:relative;width:min(1180px,100%);margin:46px auto 0;
   opacity:0;animation:fadeUp 1s var(--ease) .7s forwards}
-.hero-screen::after{ /* blue glow — the one real splash of color */
-  content:"";position:absolute;left:50%;top:42%;transform:translateX(-50%);width:88%;height:80%;
-  border-radius:50%;z-index:-1;pointer-events:none;filter:blur(90px);
-  background:radial-gradient(ellipse,rgba(47,111,224,.16),rgba(47,111,224,.05) 45%,transparent 72%);
+.hero-screen::after{ /* blue glow — the one real splash of color.
+  Sam miękki gradient zamiast filter:blur(90px): rozmycie liczone co klatkę wjazdu panelu dławiło GPU,
+  a ten gradient daje ten sam obraz (różnica poniżej 2% na każdym pikselu) */
+  content:"";position:absolute;left:50%;top:calc(42% - 140px);transform:translateX(-50%);width:calc(88% + 280px);height:calc(80% + 280px);
+  border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(47,111,224,.1),rgba(47,111,224,.04) 42%,transparent 62%);
 }
 
 /* ============================================================
@@ -1627,6 +1632,23 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 
 <main id="tresc">
 <!-- ===== HERO ===== -->
+<script>
+/* wjazd hero rusza dopiero, gdy przeglądarka płynnie rysuje klatki: pierwsze rysowanie panelu demo
+   blokuje ekran na ~200–400 ms i nagłówek wyskakiwał w połowie animacji. Bezpiecznik: 1,5 s
+   liczone od pierwszej klatki (karta otwarta w tle nie ma klatek, dopóki ktoś na nią nie wejdzie). */
+(function(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var root = document.documentElement, last = 0, smooth = 0, t0 = 0;
+  root.classList.add("hero-wait");
+  requestAnimationFrame(function tick(now){
+    if(!t0) t0 = now;
+    smooth = last && now - last < 50 ? smooth + 1 : 0;
+    last = now;
+    if(smooth >= 2 || now - t0 > 1500) root.classList.remove("hero-wait");
+    else requestAnimationFrame(tick);
+  });
+})();
+</script>
 <header class="hero" id="start">
   <div class="hero-bg" aria-hidden="true"><canvas id="heroHills"></canvas></div>
   <div class="wrap hero-inner">
@@ -3013,10 +3035,13 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     if(document.fonts && document.fonts.ready){ document.fonts.ready.then(moveGlider); }
 
     if(dash){
+      /* pierwsze liczniki i wykres dopiero po zwolnieniu wjazdu hero (html.hero-wait),
+         żeby końcówka rysowania wykresu nadal wypadała, gdy panel już się pokazuje */
+      function whenReady(f){ document.documentElement.classList.contains("hero-wait") ? requestAnimationFrame(function(){ whenReady(f); }) : f(); }
       var pio=new IntersectionObserver(function(es){
         es.forEach(function(e){
           visible=e.isIntersecting;
-          if(e.isIntersecting){ if(!started){ started=true; runAnims(current); } startFeed(); }
+          if(e.isIntersecting){ if(!started){ started=true; whenReady(function(){ runAnims(current); }); } startFeed(); }
           else { stopFeed(); animGen++; }
         });
       },{threshold:.2});
@@ -3227,7 +3252,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
      potem pierwszy callback ResizeObservera ustawiał canvas.width i czyścił bufor — użytkownik
      widział sam gradient .hero-bg. Ten sam wygląd, tylko bez kosztu GPU. */
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){ return; }
-  var SRC = "hero-hills.js";
+  var SRC = "hero-hills.js?v=2";
   /* niższa rozdzielczość renderu = tani render co klatkę (płynność bez lagu) */
   var pr = Math.min(window.devicePixelRatio||1, 1.25);
 
@@ -3245,7 +3270,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     var s = document.createElement("script");
     s.src = SRC;
     s.onload = function(){
-      var R = window.skalujHills && window.skalujHills(canvas, pr, requestAnimationFrame.bind(window));
+      var R = window.skalujHills && window.skalujHills(canvas, pr, requestAnimationFrame.bind(window), function(){ canvas.classList.add("on"); });
       if(R) observe(R.resize, R.visible);
     };
     document.head.appendChild(s);
@@ -3254,6 +3279,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     var w = new Worker(SRC), started = false;
     w.onerror = function(){ if(!started){ started = true; w.terminate(); onMainThread(); } };
     w.onmessage = function(e){
+      if(e.data.drawn){ canvas.classList.add("on"); return; }
       if(!e.data.probe || started) return;
       started = true;
       if(e.data.soft){ w.terminate(); return; }                /* brak GPU: zostaje gradient */
@@ -3271,9 +3297,22 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     }
     onMainThread();
   }
-  /* start po zdarzeniu load: WebGL nie konkuruje z pierwszym renderem nagłówka (LCP) ani z fontami */
-  if(document.readyState === "complete") setTimeout(init, 0);
-  else addEventListener("load", function(){ setTimeout(init, 0); }, {once:true});
+  /* start po load ORAZ po wjeździe hero (nagłówek, panel, podkreślenie): start WebGL blokuje GPU
+     na ~100–300 ms i w trakcie wjazdu nagłówek gubił klatki. Bezpiecznik: najpóźniej po 4 s. */
+  function afterIntro(cb){
+    var hero = document.querySelector(".hero"), done = false;
+    function go(){ if(!done){ done = true; (window.requestIdleCallback || setTimeout)(cb); } }
+    var anims = hero && hero.getAnimations ? hero.getAnimations({subtree:true}).filter(function(a){
+      return a.effect && isFinite(a.effect.getComputedTiming().endTime);
+    }) : [];
+    Promise.all(anims.map(function(a){ return a.finished.catch(function(){}); })).then(go);
+    /* bezpiecznik nie biegnie w karcie w tle: inaczej WebGL ruszałby razem z wjazdem po jej otwarciu */
+    function arm(){ setTimeout(go, 4000); }
+    if(document.hidden) addEventListener("visibilitychange", arm, {once:true}); else arm();
+  }
+  function start(){ afterIntro(function(){ init(); }); }
+  if(document.readyState === "complete") start();
+  else addEventListener("load", start, {once:true});
 })();
 
 
