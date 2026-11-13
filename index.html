@@ -816,6 +816,12 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
 .offer-item.open .offer-icon svg{color:var(--accent)}
 .offer-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease-io)}
 .offer-item.open .offer-body{grid-template-rows:1fr}
+/* telefon i zwykly scroll (bez przypiecia): karta otwiera sie od razu, jednym przeliczeniem ukladu,
+   a tresc wjezdza na transform/opacity. Animacja wysokosci przeliczala i malowala cala dluga
+   strone w kazdej klatce i na telefonie klikanie ofert laggowalo */
+#oferta:not(.pinned-track) .offer-body{transition:none}
+#oferta:not(.pinned-track) .offer-item.open .offer-body-grid{animation:offerIn .45s var(--ease) both}
+@keyframes offerIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 .offer-body-in{overflow:hidden}
 .offer-body-grid{display:grid;grid-template-columns:64px 1fr 1fr;grid-template-rows:auto 1fr;gap:22px;padding:2px 6px 32px}
 .offer-desc{grid-column:2;grid-row:1;color:var(--muted);font-size:15px;line-height:1.7;max-width:50ch}
@@ -3554,6 +3560,8 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 @media(min-width:721px){
   .ctc .mf-step.is-on{min-height:430px}
 }
+/* telefon: poswiaty stoja (rozmycie 100px liczone co klatke dryfu dlawilo GPU przy przewijaniu) */
+@media(max-width:768px){.ctc-glow{animation:none;will-change:auto}}
 @media(prefers-reduced-motion:reduce){
   .ctc-glow{animation:none}
   .ctc-title em::after{transition:none;transform:scaleX(1)}

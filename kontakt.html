@@ -1138,6 +1138,8 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
 }
 @keyframes ctcDriftA{from{transform:translate3d(0,0,0)}to{transform:translate3d(38px,26px,0)}}
 @keyframes ctcDriftB{from{transform:translate3d(0,0,0)}to{transform:translate3d(-34px,-22px,0)}}
+/* telefon: poswiaty stoja (rozmycie 100px liczone co klatke dryfu dlawilo GPU przy przewijaniu) */
+@media(max-width:768px){.ctc-glow{animation:none;will-change:auto}}
 /* delikatna siatka punktow — glebia bez halasu */
 .ctc-bg::after{
   content:"";position:absolute;inset:0;

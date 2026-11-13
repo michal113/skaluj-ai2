@@ -36,8 +36,11 @@
   .cb-launcher .ic-close{position:absolute;transform:scale(0) rotate(90deg)}
   .cb-launcher.open .ic-chat{transform:scale(0) rotate(-90deg)}
   .cb-launcher.open .ic-close{transform:scale(1) rotate(0)}
-  .cb-launcher .pulse{position:absolute;inset:0;border-radius:50%;animation:cbpulse 2.8s 2}
-  @keyframes cbpulse{0%{box-shadow:0 0 0 0 rgba(47,111,224,.34)}70%{box-shadow:0 0 0 14px rgba(47,111,224,0)}100%{box-shadow:0 0 0 0 rgba(47,111,224,0)}}
+  /* puls tylko na transform/opacity (karta graficzna): animowany box-shadow przemalowywal sie co klatke
+     i dlawil telefon akurat przy klikaniu ofert; rusza dopiero, gdy launcher sie pokaze */
+  .cb-launcher .pulse{position:absolute;inset:0;z-index:-1;border-radius:50%;background:rgba(47,111,224,.34);opacity:0;pointer-events:none}
+  .cb-launcher.cb-ready .pulse{animation:cbpulse 2.8s .5s 2}
+  @keyframes cbpulse{0%{opacity:1;transform:scale(1)}70%,100%{opacity:0;transform:scale(1.5)}}
   .cb-panel{position:fixed;right:24px;bottom:88px;z-index:99999;width:360px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100dvh - 120px);
     background:#fff;border:1px solid rgba(15,30,60,.09);border-radius:20px;box-shadow:0 30px 90px rgba(15,30,60,.20),0 8px 24px rgba(15,30,60,.08);
     display:flex;flex-direction:column;overflow:hidden;font-family:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#0b0d10;position:fixed;
