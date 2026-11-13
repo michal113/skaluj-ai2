@@ -1,0 +1,94 @@
+# Liveo Meble
+
+> Liveo Meble sp. z o.o. to polski producent mebli skrzyniowych i systemowych z Raniżowa (Podkarpacie).
+> Meble są projektowane w kolekcjach: szafka RTV, komoda, witryna czy szafa z jednej kolekcji mają te same kolory.
+> Liveo nie ma własnych salonów i nie sprzedaje mebli na tej stronie: meble kupuje się w salonach partnerskich, które podają cenę i termin dostawy.
+
+Uwaga: Wersja robocza strony. Katalog pochodzi z kart produktu Liveo, salony partnerskie z liveomeble.pl. Ceny podaje salon partnerski.
+
+## Jak kupić
+- [Gdzie kupić](https://liveomeble.pl/gdzie-kupic/): wyszukiwarka salonów partnerskich po kodzie pocztowym.
+
+## Kolekcje
+- [DANTE](https://liveomeble.pl/kolekcje/dante/): Dąb cremona torro i fronty w 5 kolorach. 24 meble do pokoju młodzieżowego, sypialni i salonu. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb cremona torro / antracyt mat, Dąb cremona torro / biały mat, Dąb cremona torro / kaszmir mat, Dąb cremona torro / szary mat, Dąb cremona torro / zielony mat, Dąb cremona torro.
+- [REMI](https://liveomeble.pl/kolekcje/remi/): Biały i dąb evoke. 19 mebli do salonu, pokoju młodzieżowego i jadalni. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy, przedpokój. Kolory: Biały / dąb evoke, Dąb castello, Dąb evoke, Dąb sonoma, Biały.
+- [MILTON](https://liveomeble.pl/kolekcje/milton/): Dąb cremona torro i fronty w 4 kolorach. 12 mebli do salonu i jadalni. Pomieszczenia: salon, jadalnia. Kolory: Dąb cremona torro / antracyt mat, Dąb cremona torro / biały mat, Dąb cremona torro / kaszmir mat, Dąb cremona torro / szary mat, Dąb cremona torro.
+- [IRMA](https://liveomeble.pl/kolekcje/irma/): Biały połysk. 23 meble do sypialni, salonu i jadalni. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy, przedpokój. Kolory: Biały połysk, Dąb / biały połysk, Biały / dąb magia, Dąb, Biały.
+- [ATE](https://liveomeble.pl/kolekcje/ate/): Dąb kamienny i czarny. 25 mebli do salonu, sypialni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy, przedpokój, domowe biuro. Kolory: Dąb kamienny / czarny, Dąb kamienny.
+- [MATI](https://liveomeble.pl/kolekcje/mati/): Dąb cremona cotta i czarny. 23 meble do salonu, jadalni i sypialni. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy, przedpokój. Kolory: Dąb cremona cotta / czarny, Dąb cremona cotta.
+- [YORK](https://liveomeble.pl/kolekcje/york/): Dąb grandson i grafit. 23 meble do sypialni, salonu i jadalni. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy, przedpokój. Kolory: Dąb grandson / grafit, Dąb grandson.
+- [FERRO](https://liveomeble.pl/kolekcje/ferro/): Dąb cremona torro i czarny. 22 meble do salonu, jadalni i sypialni. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb cremona torro / czarny, Dąb cremona torro, Dąb cremona.
+- [LIONEL](https://liveomeble.pl/kolekcje/lionel/): Dąb sonoma truflowy i biały połysk. 21 mebli do sypialni, pokoju młodzieżowego i salonu. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb sonoma truflowy / biały połysk, Dąb sonoma truflowy / biały.
+- [ARIS](https://liveomeble.pl/kolekcje/aris/): Dąb evoke i czarny połysk. 19 mebli do salonu, jadalni i sypialni. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb evoke / czarny połysk, Dąb evoke / czarny, Dąb evoke.
+- [FORREST](https://liveomeble.pl/kolekcje/forrest/): Orzech ciemny i dąb milano. 18 mebli do salonu, jadalni i sypialni. Pomieszczenia: salon, jadalnia, sypialnia. Kolory: Orzech ciemny / dąb milano.
+- [BESTO](https://liveomeble.pl/kolekcje/besto/): Dąb evoke i biały połysk. 17 mebli do salonu, jadalni i sypialni. Pomieszczenia: salon, jadalnia, sypialnia. Kolory: Dąb evoke / biały połysk, Dąb evoke.
+- [DORIAN](https://liveomeble.pl/kolekcje/dorian/): Dąb april, czarny i listwa drewno sosnowe. 17 mebli do salonu, jadalni i sypialni. Pomieszczenia: salon, jadalnia, sypialnia. Kolory: Dąb april / czarny / listwa drewno sosnowe, Dąb april / czarny.
+- [ASTON](https://liveomeble.pl/kolekcje/aston/): Dąb cremona i kaszmir. 16 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb cremona / kaszmir, Dąb cremona.
+- [TIFFANY](https://liveomeble.pl/kolekcje/tiffany/): Biały połysk. 5 mebli do kuchni. Pomieszczenia: kuchnia. Kolory: Biały połysk, Biały połysk / szary połysk, Biały / szary połysk.
+- [SNOBI](https://liveomeble.pl/kolekcje/snobi/): Dąb craft złoty i biel alpejska połysk. 14 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb craft złoty / biel alpejska połysk.
+- [INTENSO](https://liveomeble.pl/kolekcje/intenso/): Dąb evoke. 13 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb evoke.
+- [IVO](https://liveomeble.pl/kolekcje/ivo/): Dąb april. 13 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb april.
+- [NAOMI](https://liveomeble.pl/kolekcje/naomi/): Orzech i wenge. 13 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Orzech / wenge, Orzech.
+- [KRIS](https://liveomeble.pl/kolekcje/kris/): Dąb evoke i czarny. 12 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy, przedpokój. Kolory: Dąb evoke / czarny, Dąb evoke.
+- [KUBO](https://liveomeble.pl/kolekcje/kubo/): Dąb nagano i biały połysk. 12 mebli do pokoju młodzieżowego, sypialni i salonu. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb nagano / biały połysk, Dąb nagano.
+- [MARCO](https://liveomeble.pl/kolekcje/marco/): Biały mat i czarny. 12 mebli do salonu i jadalni. Pomieszczenia: salon, jadalnia. Kolory: Biały mat / czarny.
+- [VERO](https://liveomeble.pl/kolekcje/vero/): Orzech opera i czarny. 12 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy, przedpokój. Kolory: Orzech opera / czarny, Orzech opera mat, Orzech opera.
+- [LUXOR](https://liveomeble.pl/kolekcje/luxor/): Biały połysk. 11 mebli do salonu, jadalni i sypialni. Pomieszczenia: salon, jadalnia, sypialnia. Kolory: Biały połysk.
+- [NOEL](https://liveomeble.pl/kolekcje/noel/): Dąb evoke i czarny. 11 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb evoke / czarny, Dąb evoke.
+- [S-LINE](https://liveomeble.pl/kolekcje/s-line/): Czarny i dąb evoke. 11 mebli do salonu, jadalni i przedpokoju. Pomieszczenia: salon, jadalnia, przedpokój. Kolory: Czarny / dąb evoke, Dąb evoke.
+- [SANDY](https://liveomeble.pl/kolekcje/sandy/): Dąb grandson. 11 mebli do salonu, jadalni i przedpokoju. Pomieszczenia: salon, jadalnia, przedpokój. Kolory: Dąb grandson.
+- [BRANDO](https://liveomeble.pl/kolekcje/brando/): Beton i biały połysk. 10 mebli do salonu, jadalni i przedpokoju. Pomieszczenia: salon, jadalnia, przedpokój. Kolory: Beton / biały połysk.
+- [PRISCO](https://liveomeble.pl/kolekcje/prisco/): Dąb craft złoty i czarny. 10 mebli do salonu i jadalni. Pomieszczenia: salon, jadalnia. Kolory: Dąb craft złoty / czarny, Dąb craft złoty.
+- [VIGO](https://liveomeble.pl/kolekcje/vigo/): Kaszmir. 9 mebli do salonu. Pomieszczenia: salon. Kolory: Kaszmir.
+- [MONTANA](https://liveomeble.pl/kolekcje/montana/): Biały. 4 meble do salonu, sypialni i przedpokoju. Pomieszczenia: salon, sypialnia, przedpokój. Kolory: Biały, Dąb evoke.
+- [G-TE](https://liveomeble.pl/kolekcje/g-te/): Dąb i czarny połysk. 7 mebli do salonu, jadalni i pokoju młodzieżowego. Pomieszczenia: salon, jadalnia, sypialnia, pokój młodzieżowy. Kolory: Dąb / czarny połysk.
+
+## Rodzaje mebli
+- [Szafki RTV](https://liveomeble.pl/meble/szafki-rtv/): 34 meble.
+- [Komody](https://liveomeble.pl/meble/komody/): 77 mebli.
+- [Witryny](https://liveomeble.pl/meble/witryny/): 64 meble.
+- [Kredensy](https://liveomeble.pl/meble/kredensy/): 18 mebli.
+- [Regały](https://liveomeble.pl/meble/regaly/): 18 mebli.
+- [Szafki](https://liveomeble.pl/meble/szafki/): 25 mebli.
+- [Półki](https://liveomeble.pl/meble/polki/): 45 mebli.
+- [Ławy](https://liveomeble.pl/meble/lawy/): 26 mebli.
+- [Stoły](https://liveomeble.pl/meble/stoly/): 25 mebli.
+- [Łóżka](https://liveomeble.pl/meble/lozka/): 46 mebli.
+- [Szafki nocne](https://liveomeble.pl/meble/szafki-nocne/): 20 mebli.
+- [Szafy](https://liveomeble.pl/meble/szafy/): 50 mebli.
+- [Toaletki](https://liveomeble.pl/meble/toaletki/): 3 meble.
+- [Lustra](https://liveomeble.pl/meble/lustra/): 2 meble.
+- [Biurka](https://liveomeble.pl/meble/biurka/): 8 mebli.
+- [Szafki na buty](https://liveomeble.pl/meble/szafki-na-buty/): 1 mebel.
+- [Wieszaki](https://liveomeble.pl/meble/wieszaki/): 2 meble.
+- [Zestawy kuchenne](https://liveomeble.pl/meble/zestawy-kuchenne/): 5 mebli.
+
+## Pomieszczenia
+- [Salon](https://liveomeble.pl/pomieszczenia/salon/): Szafki RTV, komody, witryny, regały, ławy i półki do strefy dziennej.
+- [Jadalnia](https://liveomeble.pl/pomieszczenia/jadalnia/): Stoły, kredensy, witryny i komody: miejsce na zastawę i wspólne posiłki.
+- [Sypialnia](https://liveomeble.pl/pomieszczenia/sypialnia/): Łóżka, szafki nocne, szafy, komody, toaletki i lustra.
+- [Pokój młodzieżowy](https://liveomeble.pl/pomieszczenia/pokoj-mlodziezowy/): Biurka, łóżka, regały, komody i szafy do pokoju nastolatka.
+- [Przedpokój](https://liveomeble.pl/pomieszczenia/przedpokoj/): Szafy, szafki na buty, wieszaki, lustra i komody do strefy wejścia.
+- [Domowe biuro](https://liveomeble.pl/pomieszczenia/biuro/): Biurka, regały, komody i półki do pracy w domu.
+- [Kuchnia](https://liveomeble.pl/pomieszczenia/kuchnia/): Gotowe zestawy kuchenne o długości od 180 do 260 cm.
+
+## Blog
+- [Jak dobrać stół do jadalni do liczby osób](https://liveomeble.pl/blog/jak-dobrac-stol-do-jadalni/): Licz ok. 60 cm długości blatu na osobę i 80–90 cm szerokości blatu, a za krzesłami zostaw 75–90 cm wolnego miejsca. Stół 160 × 90 cm wygodnie mieści 6 osób, a po rozłożeniu do 200 cm nawet 8.
+- [Jak wybrać producenta mebli do salonu meblowego: pytania przed współpracą](https://liveomeble.pl/blog/jak-wybrac-producenta-mebli-do-salonu/): Zanim podpiszesz umowę z producentem mebli, sprawdź pięć rzeczy: czy meble tworzą kolekcje, które klient dokupuje, jak szybko i w jakiej formie przychodzą, jakie dane produktowe dostaniesz do sklepu i internetu, jak wyglądają zamówienia i reklamacje oraz czy producent kieruje do Ciebie klientów.
+- [Jaka komoda do sypialni? Wymiary, szuflady i bezpieczeństwo](https://liveomeble.pl/blog/jaka-komoda-do-sypialni/): Do sypialni wybierz komodę, przed którą zmieści się wysunięta szuflada i Ty. Niska i szeroka sprawdzi się pod telewizorem albo lustrem, wysoka i wąska tam, gdzie brakuje podłogi. Wyższą komodę przymocuj do ściany.
+- [Szafa do przedpokoju: głębokość, drzwi i ile miejsca zostawić](https://liveomeble.pl/blog/szafa-do-przedpokoju/): W przedpokoju najważniejsze jest przejście. Od szerokości korytarza odejmij głębokość szafy i sprawdź, czy zmieści się otwarte skrzydło drzwi albo wybierz drzwi przesuwne. Szafy Liveo mają najczęściej 52–57,5 cm głębokości.
+- [Jak dobrać szafkę RTV do telewizora i salonu](https://liveomeble.pl/blog/jak-dobrac-szafke-rtv/): Szafka RTV powinna być szersza od telewizora i od rozstawu jego nóżek, na tyle głęboka, żeby zmieścić podstawę i sprzęt, a na tyle niska, żeby środek ekranu wypadał mniej więcej na wysokości oczu osoby siedzącej na kanapie.
+- [Jak urządzić małą sypialnię: meble i ustawienie](https://liveomeble.pl/blog/jak-urzadzic-mala-sypialnie/): Zacznij od łóżka i przejść wokół niego, wybierz szafę z drzwiami przesuwnymi albo wysoką komodę zamiast kilku niskich mebli, a dodatkowego miejsca na rzeczy szukaj pod łóżkiem i na ścianach.
+- [Jak zmierzyć wnękę pod szafę, żeby mebel pasował](https://liveomeble.pl/blog/jak-zmierzyc-wneke-pod-szafe/): Zmierz szerokość, wysokość i głębokość wnęki w kilku miejscach, zapisz najmniejsze wartości, zostaw zapas na montaż i sprawdź, czy szafa zmieści się pod sufitem, gdy będziesz ją podnosić z pozycji leżącej.
+- [Płyta meblowa laminowana: co warto wiedzieć przed zakupem](https://liveomeble.pl/blog/plyta-meblowa-laminowana/): Płyta laminowana to płyta wiórowa pokryta warstwą dekoracyjną. Dobrze znosi codzienne użytkowanie i łatwo ją czyścić, a o trwałości mebla w dużej mierze decydują szczelne obrzeża, dobre okucia i ochrona krawędzi przed wodą.
+
+## Firma
+- [O nas](https://liveomeble.pl/o-nas/): kim jest Liveo i dlaczego meble w kolekcjach.
+- [Kontakt](https://liveomeble.pl/kontakt/): dane producenta; zakup i reklamacje załatwia sklep partnerski.
+- [Dla partnerów](https://liveomeble.pl/dla-partnerow/): współpraca dla sklepów meblowych.
+- [Doradca wnętrz](https://liveomeble.pl/doradca-wnetrz/): asystent AI, który dobiera komplet z jednej kolekcji do zdjęcia pokoju; zdjęcie zostaje na urządzeniu.
+
+## Optional
+- [Polityka prywatności](https://liveomeble.pl/polityka-prywatnosci/)
+- [Regulamin](https://liveomeble.pl/regulamin/)
+- [Pełna treść artykułów z bloga i FAQ](https://liveomeble.pl/llms-full.txt)
