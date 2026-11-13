@@ -1257,6 +1257,14 @@ body.menu-open .mobile-menu .mm-blog{opacity:1;transform:none}
   .offer-sticky::before{background:radial-gradient(120vw 50vh at 88% 46%,rgba(47,111,224,.05),transparent 66%)}
   .offer-brand-bg{width:78vw;right:-26%;opacity:.07}
 }
+/* bez przypiecia sekcja rosnie przy otwieraniu ofert: sygnet i aura liczone od jej wysokosci
+   przeskakiwaly; tu stoja w stalym miejscu od gory (tam, gdzie sa przy starcie) */
+#oferta:not(.pinned-track) .offer-brand-bg{top:740px}
+#oferta:not(.pinned-track) .offer-sticky::before{bottom:auto;height:1480px}
+@media(max-width:680px){
+  #oferta:not(.pinned-track) .offer-brand-bg{top:920px}
+  #oferta:not(.pinned-track) .offer-sticky::before{height:1840px}
+}
 
 /* ============================================================
    RESPONSIVE
