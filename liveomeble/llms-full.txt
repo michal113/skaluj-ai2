@@ -99,28 +99,25 @@ Reklamację złóż w salonie, w którym kupiłeś mebel. To sprzedawca odpowiad
 ### Doradca wnętrz (https://liveomeble.pl/doradca-wnetrz/)
 
 **Czy doradca wnętrz jest bezpłatny?**
-Tak, doradca wnętrz jest bezpłatny i nie wymaga zakładania konta. Wystarczy dodać zdjęcie pokoju albo wybrać pomieszczenie.
+Tak. Doradca jest bezpłatny i nie wymaga zakładania konta.
 
 **Czy moje zdjęcie jest gdzieś wysyłane?**
-Nie, zdjęcie analizuje Twoja przeglądarka i nie wysyłamy go na żaden serwer. Do modelu AI może trafić tylko tekst, który wpiszesz.
+Nie. Zdjęcie analizuje Twoja przeglądarka i nigdzie go nie wysyłamy. Do modelu AI (przez serwis OpenRouter) trafia tylko tekst, który wpiszesz w polu „Napisz, czego szukasz”. Nie zapisujemy go, ale nie wpisuj tam danych osobowych.
 
 **Jak doradca dobiera meble do zdjęcia?**
-Doradca rozpoznaje rodzaj pokoju i dominujące kolory podłogi, ścian i dodatków, a potem wybiera kolekcję i kolor mebli, które do nich pasują. Proponuje meble z jednej kolekcji, żeby komplet był spójny.
+Rozpoznaje rodzaj pokoju i kolory podłogi, ścian i dodatków, a potem wybiera kolekcję i kolor mebli, które do nich pasują. Proponuje meble z jednej kolekcji, żeby komplet był spójny.
 
-**Czym różni się ta strona od okienka czatu?**
-Okienko czatu na innych stronach pokazuje jeden komplet na szybko. Tutaj porównasz kilka kolekcji naraz i ustawisz ton oraz rodzaj mebla. Z czatu przejdziesz tu jednym przyciskiem, razem ze zdjęciem.
+**Czy kolor mebla na ekranie będzie taki sam jak w salonie?**
+Nie zawsze. Kolor zależy od ekranu i światła na zdjęciu. Przed zakupem obejrzyj meble w salonie partnerskim.
 
 **Czy doradca sprawdzi, czy mebel zmieści się w pokoju?**
-Nie, doradca nie mierzy pokoju ze zdjęcia. Wymiary znajdziesz na stronie każdego mebla. Porównaj je z miejscem zmierzonym miarką.
+Nie. Doradca nie mierzy pokoju ze zdjęcia. Wymiary są na stronie każdego mebla: porównaj je z miejscem zmierzonym miarką.
 
 **Czy mogę kupić meble przez doradcę?**
-Nie, doradca pomaga wybrać meble, a kupisz je w sklepie partnerskim. W ostatnim kroku pokażemy najbliższe sklepy z wybraną kolekcją.
-
-**Dlaczego doradca proponuje meble tylko z jednej kolekcji?**
-Bo meble z jednej kolekcji mają te same kolory i wykończenie, więc razem wyglądają spokojnie. Jeśli chcesz, wybierz pojedynczy rodzaj mebla albo inną kolekcję.
+Nie. Doradca pomaga wybrać meble, a kupisz je w salonie partnerskim. W ostatnim kroku pokażemy najbliższe salony z wybraną kolekcją.
 
 **Czy doradca działa na telefonie?**
-Tak, doradca działa w przeglądarce na telefonie i komputerze. Na telefonie możesz od razu zrobić zdjęcie aparatem.
+Tak. Na telefonie możesz od razu zrobić zdjęcie aparatem.
 
 ### Dla partnerów (https://liveomeble.pl/dla-partnerow/)
 
