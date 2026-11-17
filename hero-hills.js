@@ -155,7 +155,7 @@
     var uProj, uTime, ready = false;
     function setup(){
       if(!gl.getProgramParameter(prog, gl.LINK_STATUS)){
-        console.warn("Tło hero: shader się nie skompilował — zostaje gradient zapasowy", gl.getProgramInfoLog(prog));
+        console.warn("Tło hero: shader się nie skompilował, zostaje gradient zapasowy", gl.getProgramInfoLog(prog));
         return false;
       }
       gl.useProgram(prog);

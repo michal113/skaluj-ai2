@@ -116,7 +116,7 @@
     const t = q.toLowerCase();
     const map = [
       { k: ["cześć","czesc","hej","witam","siema","hello","dzień"], a: "Cześć! 👋 Jestem asystentem skaluj.ai. Zapytaj o ofertę, strony, automatyzacje, chatboty albo umów bezpłatną konsultację." },
-      { k: ["spotkani","konsultacj","umów","umow","rozmow","demo","kalendarz","termin"], a: "Jasne — umówmy 30-minutową bezpłatną konsultację. Przyjdziemy z gotowym demo. Wybierz termin:", book: true },
+      { k: ["spotkani","konsultacj","umów","umow","rozmow","demo","kalendarz","termin"], a: "Jasne, umówmy 30-minutową bezpłatną konsultację. Przyjdziemy z gotowym demo. Wybierz termin:", book: true },
       { k: ["cena","koszt","ile","wycena","cennik","budż"], s: "kontakt" },
       { k: ["strona","stronę","www","landing"], s: "oferta: strona-seo" },
       { k: ["seo","geo","pozycjon","widoczn","perplexity","google"], s: "oferta: geo-seo" },
@@ -133,7 +133,7 @@
     if (!best) return { answer: "Chętnie pomogę! Po podłączeniu AI odpowiem na każde pytanie. Chcesz od razu umówić bezpłatną konsultację?", book: false };
     if (best.a && !best.s) return { answer: best.a, book: !!best.book };
     const txt = (SECTIONS[best.s] || SECTIONS["kontakt"] || "").trim().slice(0, 320);
-    return { answer: txt || "Napisz na kontakt@skaluj.ai — chętnie pomożemy.", book: false };
+    return { answer: txt || "Napisz na kontakt@skaluj.ai. Chętnie pomożemy.", book: false };
   }
 
   /* ---------- MÓZG: Worker albo lokalnie ---------- */
@@ -208,7 +208,7 @@
   }
   function bookingCard() {
     const d = document.createElement("div"); d.className = "cb-book";
-    const head = `<div class="cb-book-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div><b>Bezpłatna konsultacja · 30 min</b><span>Rzeszów / online — bez zobowiązań</span></div></div>`;
+    const head = `<div class="cb-book-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div><b>Bezpłatna konsultacja · 30 min</b><span>Rzeszów / online · bez zobowiązań</span></div></div>`;
     if (CONFIG.BOOKING_URL && CONFIG.EMBED_CALENDAR) {
       d.innerHTML = head + `<iframe src="${CONFIG.BOOKING_URL}" loading="lazy"></iframe>`;
     } else if (CONFIG.BOOKING_URL) {
@@ -225,7 +225,7 @@
   }
   async function greet() {
     const t = typing(); await new Promise(r => setTimeout(r, 650)); t.remove();
-    addMsg('Cześć! 👋 Jestem <b>wirtualnym asystentem AI</b> skaluj.ai — odpowiadam automatycznie. W&nbsp;czym mogę pomóc?', "bot");
+    addMsg('Cześć! 👋 Jestem <b>wirtualnym asystentem AI</b> skaluj.ai i odpowiadam automatycznie. W&nbsp;czym mogę pomóc?', "bot");
     setChips(["Co oferujecie?", "Ile kosztuje strona?", "Umów spotkanie"]);
   }
   /* tresc od AI i od uzytkownika wstawiamy jako tekst, nie HTML: model mozna naklonic (prompt injection)
