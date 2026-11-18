@@ -1,5 +1,5 @@
 /* =====================================================================
-   skaluj.ai — widżet czatu (self-injecting)
+   skaluj.ai: widżet czatu (self-injecting)
    Dodaj na każdej stronie przed </body>:  <script src="chatbot.js" defer></script>
    (na podstronach w /oferta i /blog użyj ścieżki ../chatbot.js)
    ===================================================================== */
@@ -48,7 +48,7 @@
     transition:opacity .32s cubic-bezier(.22,1,.36,1),transform .32s cubic-bezier(.22,1,.36,1),visibility .32s}
   .cb-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;z-index:9;background:linear-gradient(90deg,#66b0ff,#2158c8)}
   .cb-panel.open{opacity:1;transform:none;pointer-events:auto;visibility:visible}
-  /* naglowek — czysty brand: kafelek z sygnetem + nazwa + status */
+  /* naglowek: czysty brand: kafelek z sygnetem + nazwa + status */
   .cb-head{display:flex;align-items:center;gap:11px;padding:13px 15px;border-bottom:1px solid rgba(15,30,60,.07);background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
   .cb-hava{flex:none;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#3d7ef0,#2158c8);display:grid;place-items:center;box-shadow:0 4px 12px rgba(33,88,200,.28)}
   .cb-hava svg{width:17px;height:auto;color:#fff}
@@ -99,7 +99,7 @@
 
   /* ---------- WIEDZA (tryb lokalny bez Workera) ---------- */
   let KB = "";
-  /* pobierana dopiero, gdy naprawdę potrzebna (tryb lokalny / awaria Workera) — nie przy każdym wejściu na stronę */
+  /* pobierana dopiero, gdy naprawdę potrzebna (tryb lokalny / awaria Workera): nie przy każdym wejściu na stronę */
   let kbLoad = null;
   function loadKB() { return kbLoad || (kbLoad = fetch(CONFIG.KNOWLEDGE_URL).then(r => r.text()).then(t => { KB = t; }).catch(() => {})); }
   const SECTIONS = {};
@@ -185,7 +185,7 @@
         input = $("#cbIn"), send = $("#cbSend");
   let opened = false, greeted = false; const history = [];
 
-  /* fromUser=false: otwarcie/zamkniecie automatyczne — nie przenosi fokusu (nie kradnie klawiatury) */
+  /* fromUser=false: otwarcie/zamkniecie automatyczne: nie przenosi fokusu (nie kradnie klawiatury) */
   function toggle(fromUser) {
     opened = !opened; launcher.classList.toggle("open", opened); panel.classList.toggle("open", opened);
     launcher.setAttribute("aria-expanded", opened ? "true" : "false");
@@ -263,7 +263,7 @@
   if (offerSection) {
     // strona główna: launcher pokazuje się DOPIERO, gdy user
     // dojedzie scrollem do oferty 04 „Asystent i chatbot AI". Sygnał emituje index.html
-    // (event „skaluj:chatbot-offer") — w trybie pin-scroll dokładnie przy tej karcie,
+    // (event „skaluj:chatbot-offer"): w trybie pin-scroll dokładnie przy tej karcie,
     // a w zwykłym accordionie gdy karta wejdzie w widok.
     let armed = false;
     const armChat = function () { if (armed) return; armed = true; reveal(); };

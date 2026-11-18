@@ -1,5 +1,5 @@
 /* =====================================================================
-   skaluj.ai — tło hero strony głównej: shader "płynących wzgórz" (czysty WebGL)
+   skaluj.ai: tło hero strony głównej: shader "płynących wzgórz" (czysty WebGL)
    Zastępuje three.js r160 z CDN (250 KB + ~200 ms ewaluacji modułu). Ten sam shader,
    siatka (PlaneGeometry 256x256/128), kamera (PerspectiveCamera 45°, (0,16,125) -> (0,28,0))
    i blending (NormalBlending, FrontSide, depthTest/Write), więc obraz jest identyczny.
@@ -20,7 +20,7 @@
     var gl = canvas.getContext("webgl2", attrs) || canvas.getContext("webgl", attrs);
     if(!gl) return null;
     /* WebGL software-render (SwiftShader/llvmpipe) = brak GPU: maszyny bez akceleracji.
-       Render 66k wierzcholkow na CPU zabija wydajnosc. Wtedy nie rysujemy —
+       Render 66k wierzcholkow na CPU zabija wydajnosc. Wtedy nie rysujemy:
        zostaje statyczny gradient .hero-bg. Uzytkownicy z GPU dostaja pelny efekt. */
     try{
       var dbg = gl.getExtension("WEBGL_debug_renderer_info");
@@ -31,7 +31,7 @@
       }
     }catch(e){ return null; }
 
-    /* drift peryferyjny: ledwo zauważalny ruch (pełny cykl wzoru ~30s) —
+    /* drift peryferyjny: ledwo zauważalny ruch (pełny cykl wzoru ~30s):
        tło ma być odczuwalne kątem oka, nigdy konkurować z CTA */
     var SPEED = 0.008, SIZE = 256, SEG = 128;   /* SEG: segmenty siatki (256 -> 128 = 4x mniej wierzcholkow, wizualnie identycznie) */
 
@@ -101,7 +101,7 @@
     `;
 
     /* kompilacja shaderów: z KHR_parallel_shader_compile sterownik kompiluje w tle,
-       a my tylko sprawdzamy status co klatkę — bez długiego blokowania wątku */
+       a my tylko sprawdzamy status co klatkę: bez długiego blokowania wątku */
     function sh(type, src){ var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
     var prog = gl.createProgram();
     gl.attachShader(prog, sh(gl.VERTEX_SHADER, vert));

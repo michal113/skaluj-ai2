@@ -1,5 +1,5 @@
 /* =====================================================================
-   skaluj.ai — dyskretna zgoda na cookies (self-injecting, bez zależności)
+   skaluj.ai: dyskretna zgoda na cookies (self-injecting, bez zależności)
    Dodaj na każdej stronie przed </body>:  <script src="cookies.js" defer></script>
    (na podstronach w /oferta i /blog użyj ścieżki ../cookies.js)
 
@@ -33,7 +33,7 @@
     if (consent.analytics) ga4(); else dropGa4();
   }
 
-  /* ---------- Google Analytics 4 — ładuje się WYŁĄCZNIE po zgodzie na analitykę ----------
+  /* ---------- Google Analytics 4: ładuje się WYŁĄCZNIE po zgodzie na analitykę ----------
      Wpisz identyfikator strumienia z GA4 (G-XXXXXXXXXX). To jawny identyfikator, nie sekret.
      Puste = GA4 wyłączone. Zmiana tego wymaga zgodności z polityką prywatności (sekcja cookies). */
   var GA4_ID = "";
