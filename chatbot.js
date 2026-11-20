@@ -122,7 +122,7 @@
       { k: ["seo","geo","pozycjon","widoczn","perplexity","google"], s: "oferta: geo-seo" },
       { k: ["reklam","ads","chatgpt"], s: "oferta: reklamy-chatgpt" },
       { k: ["audyt","diagnoz","cyfryzac","dofinans"], s: "oferta: audyt-cyfryzacji" },
-      { k: ["automatyz","mailing","faktur","crm","lead"], s: "oferta: automatyzacje-email" },
+      { k: ["automatyz","mailing","crm","lead"], s: "oferta: automatyzacje-email" },
       { k: ["chatbot","bot","asystent","obsług"], s: "oferta: chatbot-ai" },
       { k: ["branding","logo","grafik","marka"], s: "oferta: branding" },
       { k: ["rolk","reels","tiktok","wideo","video","film","lektor","napis","shorts"], s: "oferta: rolki-ai" },

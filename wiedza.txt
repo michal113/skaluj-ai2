@@ -93,7 +93,6 @@ Trwa zwykle kilka dni roboczych. Strona nie jest wymagana. Raport jest Twój, be
 === OFERTA: automatyzacje-email ===
 Automatyzacje biznesowe AI łączą narzędzia, których już używasz, i przejmują powtarzalną pracę. Przykłady:
 - mailing i follow-upy (sekwencje powitalne, nurturing, reaktywacja);
-- faktury i dokumenty (odczyt AI i OCR, księgowanie, przypomnienia o płatnościach);
 - leady i CRM (kwalifikacja przez AI, przypisanie, natychmiastowy follow-up);
 - oferty i wyceny z szablonu;
 - raporty i dashboardy;
