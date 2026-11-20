@@ -57,3 +57,9 @@ CREATE TABLE IF NOT EXISTS stats_cache (
   data       TEXT NOT NULL,      -- JSON
   updated_at INTEGER NOT NULL    -- ms od 1970
 );
+
+-- Uwagi z "Wymaga uwagi" ukryte krzyzykiem. Klucz zalezy od tresci, wiec gdy cos sie zmieni, uwaga wraca.
+CREATE TABLE IF NOT EXISTS alert_dismissed (
+  key TEXT PRIMARY KEY,
+  at  TEXT NOT NULL   -- kiedy ukryto (ISO); po 60 dniach wpis znika
+);

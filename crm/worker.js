@@ -6,6 +6,7 @@
  *   POST /leady/<id>        zmiana statusu, wartosci i notatki
  *   POST /leady/<id>/usun   usuniecie zgloszenia (np. zadanie usuniecia danych, art. 17 RODO)
  *   GET  /manifest.webmanifest, /ikona-*.png, /apple-touch-icon.png   aplikacja na telefon (publiczne)
+ *   POST /uwagi/ukryj, /uwagi/przywroc   ukrycie uwagi z "Wymaga uwagi" i przywrocenie wszystkich
  *   GET  /leady.csv         eksport (kopia zapasowa, zadanie kopii danych, art. 15/20 RODO)
  *   POST /api/lead          zgloszenie z Make (naglowek Authorization: Bearer <INGEST_TOKEN>)
  *
@@ -256,6 +257,17 @@ async function cachedExternal(env, days, ctx) {
   return { data: JSON.parse(row.data), at };
 }
 
+/* ---------- ukryte uwagi ("Wymaga uwagi" -> x) ---------- */
+
+async function dismissedAlerts(env) {
+  try {
+    const { results } = await env.DB.prepare("SELECT key FROM alert_dismissed").all();
+    return new Set(results.map((r) => r.key));
+  } catch {
+    return new Set(); /* brak tabeli (stara baza): nic nie jest ukryte */
+  }
+}
+
 async function dashboard(env, url, ctx) {
   const days = PERIODS.includes(Number(url.searchParams.get("dni"))) ? Number(url.searchParams.get("dni")) : 30;
   const status = STATUSES.includes(url.searchParams.get("status")) ? url.searchParams.get("status") : "";
@@ -264,7 +276,7 @@ async function dashboard(env, url, ctx) {
     : env.DB.prepare("SELECT * FROM leads ORDER BY created_at DESC LIMIT 300");
   const [{ results: leads }, leadStats, external] = await Promise.all([listQuery.all(), collectLeadStats(env, days), cachedExternal(env, days, ctx)]);
   const stats = { leads: leadStats, ...external.data };
-  return html(renderDashboard({ leads, stats, days, status, periods: PERIODS, statuses: STATUSES, generatedAt: new Date(), statsAt: new Date(external.at) }));
+  return html(renderDashboard({ leads, stats, days, status, periods: PERIODS, statuses: STATUSES, generatedAt: new Date(), statsAt: new Date(external.at), dismissed: await dismissedAlerts(env) }));
 }
 
 /* ---------- routing ---------- */
@@ -291,6 +303,21 @@ export default {
 
     if (request.method === "GET" && path === "/") return dashboard(env, url, ctx);
     if (request.method === "GET" && path === "/leady.csv") return exportCsv(env);
+
+    if (request.method === "POST" && (path === "/uwagi/ukryj" || path === "/uwagi/przywroc")) {
+      if (!sameOrigin(request, url)) return html(renderMessage("Odrzucono", "Żądanie spoza panelu."), 403);
+      const form = await request.formData();
+      const q = String(form.get("back") || "").replace(/[^a-z0-9=&?]/gi, "");
+      if (path === "/uwagi/przywroc") {
+        await env.DB.prepare("DELETE FROM alert_dismissed").run();
+      } else {
+        const key = String(form.get("key") || "");
+        if (/^[a-z]+:[a-z0-9]{1,40}$/i.test(key)) {
+          await env.DB.prepare("INSERT OR REPLACE INTO alert_dismissed (key, at) VALUES (?1, ?2)").bind(key, new Date().toISOString()).run();
+        }
+      }
+      return redirect("/" + (q.startsWith("?") ? q : ""));
+    }
 
     const m = path.match(/^\/leady\/([^/]+)(\/usun)?$/);
     if (request.method === "POST" && m && ID_RE.test(m[1])) {
@@ -334,6 +361,8 @@ export default {
     await env.DB.batch([
       env.DB.prepare("DELETE FROM site_daily WHERE day < ?1").bind(day),
       env.DB.prepare("DELETE FROM chat_daily WHERE day < ?1").bind(day),
+      /* ukryte uwagi starsze niz 60 dni: tresc i tak juz dawno sie zmienila */
+      env.DB.prepare("DELETE FROM alert_dismissed WHERE at < ?1").bind(new Date(Date.now() - 60 * 86400000).toISOString()),
     ]);
   },
 };

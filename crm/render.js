@@ -197,6 +197,8 @@ function attention(stats, leads, ctx) {
       const dni = Math.floor(najdluzej / 86400000);
       out.push({
         lvl: dni >= 1 ? "bad" : "warn",
+        /* klucz bez liczby dni: ukryta uwaga wraca dopiero, gdy zmieni sie liczba nowych zgloszen */
+        key: "nowe:" + n,
         href: `?dni=${ctx.days}&amp;status=nowy#lista`,
         text: `<b>${int(n)} ${pl(n, "nowe zgłoszenie", "nowe zgłoszenia", "nowych zgłoszeń")}</b> ${pl(n, "czeka", "czekają", "czeka")} na kontakt` +
           (dni >= 1 ? ` · najstarsze od ${dni} ${pl(dni, "dnia", "dni", "dni")}` : ""),
@@ -237,11 +239,30 @@ function attention(stats, leads, ctx) {
   return out;
 }
 
-function attentionStrip(items) {
+/** Staly klucz uwagi (FNV-1a z tresci): ukryta uwaga wraca sama, gdy jej tresc sie zmieni (np. przybedzie bledow). */
+export function alertKey(item) {
+  if (item.key) return String(item.key).slice(0, 60);
+  const t = item.text.replace(/<[^>]*>/g, "");
+  let h = 0x811c9dc5;
+  for (let i = 0; i < t.length; i++) h = Math.imul(h ^ t.charCodeAt(i), 0x01000193);
+  return "t:" + (h >>> 0).toString(36);
+}
+
+function attentionStrip(all, ctx) {
+  const items = all.filter((i) => !ctx.dismissed.has(alertKey(i)));
+  const hidden = all.length - items.length;
+  const back = `?dni=${ctx.days}${ctx.status ? "&status=" + ctx.status : ""}`;
+  const restore = hidden
+    ? `<form class="att-restore" method="post" action="/uwagi/przywroc"><input type="hidden" name="back" value="${esc(back)}"><button type="submit">Pokaż ukryte (${int(hidden)})</button></form>`
+    : "";
   if (!items.length)
-    return `<div class="att-ok">${IC.ok}<span>Nic nie czeka na Ciebie: nowe zgłoszenia obsłużone, źródła odpowiadają.</span></div>`;
-  return `<section class="att" aria-labelledby="h-att"><h2 class="att-h" id="h-att">${IC.alert}Wymaga uwagi <span>${items.length}</span></h2><ul>${items
-    .map((i) => `<li><a class="att-i ${i.lvl}" href="${i.href}"><i aria-hidden="true"></i><span>${i.text}</span>${IC.chevron}</a></li>`)
+    return `<div class="att-ok">${IC.ok}<span>Nic nie czeka na Ciebie: nowe zgłoszenia obsłużone, źródła odpowiadają.</span>${restore}</div>`;
+  return `<section class="att" aria-labelledby="h-att"><h2 class="att-h" id="h-att">${IC.alert}Wymaga uwagi <span>${items.length}</span>${restore}</h2><ul>${items
+    .map(
+      (i) => `<li><a class="att-i ${i.lvl}" href="${i.href}"><i aria-hidden="true"></i><span>${i.text}</span>${IC.chevron}</a>` +
+        `<form class="att-x" method="post" action="/uwagi/ukryj"><input type="hidden" name="key" value="${esc(alertKey(i))}"><input type="hidden" name="back" value="${esc(back)}">` +
+        `<button type="submit" aria-label="Usuń tę uwagę" title="Usuń (wróci, jeśli coś się zmieni)">×</button></form></li>`
+    )
     .join("")}</ul></section>`;
 }
 
@@ -514,8 +535,8 @@ function chatSection(s, ctx) {
 
 /* ---------- strona ---------- */
 
-export function renderDashboard({ leads, stats, days, status, periods, statuses, generatedAt, statsAt = generatedAt }) {
-  const ctx = { days, status, statuses, periods, now: generatedAt.getTime(), leadsCurrent: stats.leads?.state === "ok" ? stats.leads.current : null };
+export function renderDashboard({ leads, stats, days, status, periods, statuses, generatedAt, statsAt = generatedAt, dismissed = new Set() }) {
+  const ctx = { days, status, statuses, periods, dismissed, now: generatedAt.getTime(), leadsCurrent: stats.leads?.state === "ok" ? stats.leads.current : null };
   const nowe = stats.leads?.state === "ok" ? stats.leads.status?.nowy?.n || 0 : 0;
 
   const tabs = `<nav class="tabs" aria-label="Sekcje panelu">
@@ -526,7 +547,7 @@ export function renderDashboard({ leads, stats, days, status, periods, statuses,
     </nav>`;
 
   const body =
-    attentionStrip(attention(stats, leads, ctx)) +
+    attentionStrip(attention(stats, leads, ctx), ctx) +
     section("leady", "Zgłoszenia", "Formularz na stronie → Make → tutaj. Kliknij zgłoszenie, żeby zmienić status, wpisać wartość i notatkę.", gate(stats.leads, (s) => leadsSection(s, leads, ctx)), ctx) +
     section("strona", "Ruch na stronie", "Własny licznik odwiedzin skaluj.ai (bez cookies), opcjonalnie Search Console i Google Analytics.", gate(stats.site, (s) => siteSection(s, ctx)), ctx) +
     section("make", "Automatyzacje", "Scenariusze w Make.com: uruchomienia, błędy i zużycie planu.", gate(stats.make, (s) => makeSection(s, ctx)), ctx) +
@@ -625,6 +646,13 @@ body:has(#strona:target) .t-leady .ic,body:has(#make:target) .t-leady .ic,body:h
 .att-i{display:flex;align-items:center;gap:11px;padding:8px 10px;margin:0 -10px;border-radius:10px;font-size:13.5px;color:var(--muted);
   transition:background-color .2s}
 .att-i:hover{background:rgba(47,111,224,.05)}
+.att li{display:flex;align-items:center;gap:2px}
+.att li>.att-i{flex:1;min-width:0}
+.att-x button{width:30px;height:30px;padding:0;border-radius:50%;background:transparent;box-shadow:none;color:var(--faint);font:400 19px/1 var(--sans);flex:none}
+.att-x button:hover{background:var(--elev2);color:var(--text);transform:none}
+.att-restore{margin-left:auto}
+.att-restore button{box-shadow:none;height:auto;padding:3px 10px;background:transparent;border:1px solid var(--line);color:var(--muted);font:500 12px var(--sans)}
+.att-restore button:hover{background:var(--elev2);color:var(--text);transform:none}
 .att-i>i{width:8px;height:8px;border-radius:50%;flex:none}
 .att-i.warn>i{background:#ea580c;box-shadow:0 0 0 3px var(--warn-bg)}
 .att-i.bad>i{background:#dc2626;box-shadow:0 0 0 3px var(--bad-bg)}
