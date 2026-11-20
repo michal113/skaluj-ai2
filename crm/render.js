@@ -216,14 +216,14 @@ function attention(stats, leads, ctx) {
   const C = stats.chat;
   if (C?.state === "ok") {
     if (C.own?.errors)
-      out.push({ lvl: "warn", href: "#chatbot", text: `Chatbot nie odpowiedział <b>${int(C.own.errors)}</b> ${pl(C.own.errors, "raz", "razy", "razy")} w ${ctx.days} dni — sprawdź saldo OpenRouter` });
+      out.push({ lvl: "warn", href: "#chatbot", text: `Chatbot nie odpowiedział <b>${int(C.own.errors)}</b> ${pl(C.own.errors, "raz", "razy", "razy")} w ${ctx.days} dni, sprawdź saldo OpenRouter` });
     if (C.ownError) out.push({ lvl: "bad", href: "#chatbot", text: "<b>Liczniki czatu</b> nie odpowiadają" });
     if (C.orError) out.push({ lvl: "bad", href: "#chatbot", text: "<b>OpenRouter</b> nie odpowiada" });
     if (C.key?.limit && C.key.remaining != null && C.key.remaining / C.key.limit < 0.2)
       out.push({ lvl: "warn", href: "#chatbot", text: `Klucz chatbota: zostało <b>${esc(usd(C.key.remaining))}</b> z limitu ${esc(usd(C.key.limit))}` });
     /* ponytail: staly prog 1 USD; przy wiekszym ruchu lepiej liczyc dni do wyczerpania z kosztu dziennego */
     if (C.balance != null && C.balance < 1)
-      out.push({ lvl: C.balance <= 0 ? "bad" : "warn", href: "#chatbot", text: `Saldo OpenRouter: <b>${esc(usd(C.balance))}</b> — doładuj konto` });
+      out.push({ lvl: C.balance <= 0 ? "bad" : "warn", href: "#chatbot", text: `Saldo OpenRouter: <b>${esc(usd(C.balance))}</b>, doładuj konto` });
   }
   const S = stats.site;
   if (S?.state === "ok") {
@@ -266,7 +266,7 @@ function leadsSection(s, leads, ctx) {
   const stage = (k) =>
     `<a class="st s-${k}${ctx.status === k ? " on" : ""}" href="?dni=${ctx.days}&amp;status=${k}#lista"${ctx.status === k ? ' aria-current="true"' : ""}>` +
     `<span class="st-l"><i></i>${STATUS_LABEL[k]}</span><span class="st-n">${int(n(k))}</span><span class="st-v">${v(k) ? esc(pln(v(k))) : STAGE_HINT[k]}</span></a>`;
-  const pipe = `<nav class="pipe" aria-label="Lejek sprzedaży — filtruj listę">${ctx.statuses.map(stage).join("")}
+  const pipe = `<nav class="pipe" aria-label="Lejek sprzedaży: filtruj listę">${ctx.statuses.map(stage).join("")}
     <div class="pipe-sum"><span class="st-l">Skuteczność</span><span class="st-n">${decided ? pct(n("klient") / decided) : DASH}</span><span class="st-v">${decided ? `${int(n("klient"))} z ${int(decided)} zamkniętych` : "nic jeszcze nie zamknięto"}</span></div></nav>`;
 
   const back = `?dni=${ctx.days}${ctx.status ? "&status=" + ctx.status : ""}`;
@@ -321,7 +321,7 @@ function leadRow(l, ctx, back) {
         <div><dt>Usługa</dt><dd>${esc(serviceLabel(l.service))}</dd></div>
         <div><dt>Termin</dt><dd>${esc(l.termin || DASH)}</dd></div>
         <div><dt>Wysłano</dt><dd>${esc(when(l.sent_at || l.created_at))}</dd></div>
-        <div><dt>Marketing</dt><dd>${l.marketing ? `<span class="yes">zgoda</span> ${esc(l.marketing_text || "")}` : `<span class="no">brak zgody</span> — nie wysyłaj ofert handlowych`}</dd></div>
+        <div><dt>Marketing</dt><dd>${l.marketing ? `<span class="yes">zgoda</span> ${esc(l.marketing_text || "")}` : `<span class="no">brak zgody</span>, nie wysyłaj ofert handlowych`}</dd></div>
       </dl>
       <blockquote class="l-msg">${esc(l.message || "(bez treści)")}</blockquote>
     </div>
@@ -534,12 +534,12 @@ export function renderDashboard({ leads, stats, days, status, periods, statuses,
   return page(
     "CRM · skaluj.ai",
     `<header class="top"><div class="wrap top-in">
-      <a class="brand" href="/" aria-label="CRM skaluj.ai — początek"><img src="https://skaluj.ai/sygnet.png" alt="" width="140" height="170"><img class="word" src="https://skaluj.ai/samo%20skaluj.png" alt="skaluj.ai" width="478" height="112"><span class="brand-sep" aria-hidden="true"></span><span class="brand-tag">CRM</span></a>
+      <a class="brand" href="/" aria-label="CRM skaluj.ai, początek"><img src="https://skaluj.ai/sygnet.png" alt="" width="140" height="170"><img class="word" src="https://skaluj.ai/samo%20skaluj.png" alt="skaluj.ai" width="478" height="112"><span class="brand-sep" aria-hidden="true"></span><span class="brand-tag">CRM</span></a>
       ${tabs}
       <span class="stamp">statystyki z ${esc(when(statsAt.toISOString()))}</span>
     </div></header>
     <main class="wrap">${body}</main>
-    <footer class="wrap foot"><span>Zgłoszenia są zawsze aktualne. Statystyki z ${esc(when(statsAt.toISOString()))}, odświeżają się same co kilkanaście minut.</span><span>Panel prywatny — nie udostępniaj hasła.</span></footer>`
+    <footer class="wrap foot"><span>Zgłoszenia są zawsze aktualne. Statystyki z ${esc(when(statsAt.toISOString()))}, odświeżają się same co kilkanaście minut.</span><span>Panel prywatny, nie udostępniaj hasła.</span></footer>`
   );
 }
 
@@ -913,7 +913,8 @@ tbody tr:hover{background:rgba(47,111,224,.04)}
   .l-svc{display:none}
 }
 @media(max-width:860px){
-  .top-in{flex-wrap:wrap;gap:10px;padding:10px 0}
+  /* tylko gora i dol: .top-in ma tez klase .wrap, ktora daje boczne marginesy */
+  .top-in{flex-wrap:wrap;gap:10px;padding-top:12px;padding-bottom:12px}
   .tabs{order:3;width:100%;margin:0}
   .stamp{margin-left:auto}
   .lt,.lead{scroll-margin-top:124px}
@@ -949,6 +950,13 @@ tbody tr:hover{background:rgba(47,111,224,.04)}
   .tab .ic,.tl{display:none}
   .ts{display:inline}
   .att ul{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:560px){
+  /* telefon: wiecej powietrza po bokach, spokojniejsze kafelki i zakladki */
+  .wrap{padding-left:22px;padding-right:22px}
+  .tabs{padding:3px}
+  .tab{padding:7px 6px;font-size:12px}
+  .tile{border-radius:14px}
 }
 @media(max-width:380px){.brand .word{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
