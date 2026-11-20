@@ -341,11 +341,18 @@ async function chatbot(env, days) {
 /* ---------- wszystko naraz ---------- */
 
 export async function collectStats(env, days) {
-  const [leads, site, automations, chat] = await Promise.allSettled([
-    leadStats(env, days),
-    website(env, days),
-    make(env, days),
-    chatbot(env, days),
-  ]);
-  return { leads: settled(leads), site: settled(site), make: settled(automations), chat: settled(chat) };
+  const [leads, external] = await Promise.all([collectLeadStats(env, days), collectExternal(env, days)]);
+  return { leads, ...external };
+}
+
+/** Liczby z bazy zgloszen: szybkie, liczone przy kazdym otwarciu panelu. */
+export async function collectLeadStats(env, days) {
+  const [leads] = await Promise.allSettled([leadStats(env, days)]);
+  return settled(leads);
+}
+
+/** Strona, Make i chatbot: wolne (zewnetrzne API), dlatego worker trzyma je w stats_cache. */
+export async function collectExternal(env, days) {
+  const [site, automations, chat] = await Promise.allSettled([website(env, days), make(env, days), chatbot(env, days)]);
+  return { site: settled(site), make: settled(automations), chat: settled(chat) };
 }

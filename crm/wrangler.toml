@@ -17,8 +17,9 @@ database_id = "WKLEJ_ID_BAZY_PO_UTWORZENIU"
 
 # Codziennie o 3:17 UTC usuwamy zgloszenia zgodnie z polityka prywatnosci
 # (12 miesiecy bez kontaktu, bez wspolpracy i bez zgody marketingowej).
+# Co 15 minut odswiezamy statystyki w tle, zeby panel otwieral sie od razu.
 [triggers]
-crons = ["17 3 * * *"]
+crons = ["17 3 * * *", "*/15 * * * *"]
 
 # Limit nieudanych logowan: 10 prob na minute na adres IP (wymaga wrangler >= 4.36).
 [[ratelimits]]

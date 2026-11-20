@@ -513,7 +513,7 @@ function chatSection(s, ctx) {
 
 /* ---------- strona ---------- */
 
-export function renderDashboard({ leads, stats, days, status, periods, statuses, generatedAt }) {
+export function renderDashboard({ leads, stats, days, status, periods, statuses, generatedAt, statsAt = generatedAt }) {
   const ctx = { days, status, statuses, periods, now: generatedAt.getTime(), leadsCurrent: stats.leads?.state === "ok" ? stats.leads.current : null };
   const nowe = stats.leads?.state === "ok" ? stats.leads.status?.nowy?.n || 0 : 0;
 
@@ -536,10 +536,10 @@ export function renderDashboard({ leads, stats, days, status, periods, statuses,
     `<header class="top"><div class="wrap top-in">
       <a class="brand" href="/" aria-label="CRM skaluj.ai — początek"><img src="https://skaluj.ai/sygnet.png" alt="" width="140" height="170"><img class="word" src="https://skaluj.ai/samo%20skaluj.png" alt="skaluj.ai" width="478" height="112"><span class="brand-sep" aria-hidden="true"></span><span class="brand-tag">CRM</span></a>
       ${tabs}
-      <span class="stamp">dane z ${esc(when(generatedAt.toISOString()))}</span>
+      <span class="stamp">statystyki z ${esc(when(statsAt.toISOString()))}</span>
     </div></header>
     <main class="wrap">${body}</main>
-    <footer class="wrap foot"><span>Dane pobrane ${esc(when(generatedAt.toISOString()))}. Odśwież stronę, żeby pobrać nowe.</span><span>Panel prywatny — nie udostępniaj hasła.</span></footer>`
+    <footer class="wrap foot"><span>Zgłoszenia są zawsze aktualne. Statystyki z ${esc(when(statsAt.toISOString()))}, odświeżają się same co kilkanaście minut.</span><span>Panel prywatny — nie udostępniaj hasła.</span></footer>`
   );
 }
 
@@ -552,7 +552,7 @@ export function renderMessage(title, text) {
 
 function page(title, inner) {
   return `<!doctype html><html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>${esc(title)}</title>
+<meta name="robots" content="noindex,nofollow"><meta name="color-scheme" content="light"><title>${esc(title)}</title>
 <link rel="icon" type="image/png" href="https://skaluj.ai/sygnet.png">
 <link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#ffffff"><meta name="application-name" content="CRM">
@@ -570,6 +570,7 @@ const CSS = `
 --sans:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:"Azeret Mono",ui-monospace,Menlo,monospace;
 --ease:cubic-bezier(.22,1,.36,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{background:#fff}
 html{scrollbar-color:#c5cad3 transparent;scrollbar-width:thin;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font:15px/1.55 var(--sans);letter-spacing:-.011em;-webkit-font-smoothing:antialiased;
   min-height:100vh;display:flex;flex-direction:column}

@@ -13,7 +13,7 @@
  * Panel nie uzywa JavaScriptu — CSP blokuje wszystkie skrypty, wiec nawet zlosliwa tresc
  * w zgloszeniu nie ma czego uruchomic (i tak wszystko jest escapowane).
  */
-import { collectStats } from "./sources.js";
+import { collectLeadStats, collectExternal } from "./sources.js";
 import { renderDashboard, renderMessage } from "./render.js";
 import { hit } from "./hits.js";
 import { appAsset } from "./app.js";
@@ -22,6 +22,7 @@ export const STATUSES = ["nowy", "kontakt", "oferta", "klient", "przegrany"];
 const PERIODS = [7, 30, 90];
 const ID_RE = /^[A-Za-z0-9-]{8,40}$/;
 const RETENTION_DAYS = 365;
+const RETENTION_CRON = "17 3 * * *"; /* musi byc identyczny z wrangler.toml */
 const STATS_DAYS = 760;
 const MAX_INGEST_BYTES = 64 * 1024;
 const LIMITS = { name: 120, email: 160, phone: 40, company: 160, service: 60, message: 5000, termin: 120, marketing_text: 300, note: 2000 };
@@ -220,20 +221,56 @@ async function exportCsv(env) {
   });
 }
 
-async function dashboard(env, url) {
+/* ---------- pamiec statystyk ----------
+ * GA4, Search Console, Make i OpenRouter odpowiadaja kilka sekund, a panel (takze jako aplikacja na telefonie)
+ * ma sie otwierac od razu. Dlatego te liczby bierzemy z tabeli stats_cache, a odswiezamy je w tle:
+ * po otwarciu panelu, gdy sa starsze niz STATS_FRESH_MS, i co 15 minut z crona (domyslny widok 30 dni).
+ * Leady i ich liczby zawsze ida prosto z bazy, wiec zmiana statusu widac od razu. */
+const STATS_FRESH_MS = 10 * 60 * 1000;
+
+async function refreshExternal(env, days) {
+  const data = await collectExternal(env, days);
+  const at = Date.now();
+  try {
+    await env.DB.prepare(
+      "INSERT INTO stats_cache (key, data, updated_at) VALUES (?1, ?2, ?3) ON CONFLICT(key) DO UPDATE SET data = excluded.data, updated_at = excluded.updated_at"
+    )
+      .bind("ext:" + days, JSON.stringify(data), at)
+      .run();
+  } catch (e) {
+    console.log("crm: nie zapisano stats_cache:", e?.message || e);
+  }
+  return { data, at };
+}
+
+async function cachedExternal(env, days, ctx) {
+  let row = null;
+  try {
+    row = await env.DB.prepare("SELECT data, updated_at FROM stats_cache WHERE key = ?1").bind("ext:" + days).first();
+  } catch {
+    /* brak tabeli (stara baza): liczymy na zywo */
+  }
+  if (!row) return refreshExternal(env, days);
+  const at = Number(row.updated_at);
+  if (Date.now() - at > STATS_FRESH_MS && ctx) ctx.waitUntil(refreshExternal(env, days));
+  return { data: JSON.parse(row.data), at };
+}
+
+async function dashboard(env, url, ctx) {
   const days = PERIODS.includes(Number(url.searchParams.get("dni"))) ? Number(url.searchParams.get("dni")) : 30;
   const status = STATUSES.includes(url.searchParams.get("status")) ? url.searchParams.get("status") : "";
   const listQuery = status
     ? env.DB.prepare("SELECT * FROM leads WHERE status = ?1 ORDER BY created_at DESC LIMIT 300").bind(status)
     : env.DB.prepare("SELECT * FROM leads ORDER BY created_at DESC LIMIT 300");
-  const [{ results: leads }, stats] = await Promise.all([listQuery.all(), collectStats(env, days)]);
-  return html(renderDashboard({ leads, stats, days, status, periods: PERIODS, statuses: STATUSES, generatedAt: new Date() }));
+  const [{ results: leads }, leadStats, external] = await Promise.all([listQuery.all(), collectLeadStats(env, days), cachedExternal(env, days, ctx)]);
+  const stats = { leads: leadStats, ...external.data };
+  return html(renderDashboard({ leads, stats, days, status, periods: PERIODS, statuses: STATUSES, generatedAt: new Date(), statsAt: new Date(external.at) }));
 }
 
 /* ---------- routing ---------- */
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const path = url.pathname.replace(/\/+$/, "") || "/";
 
@@ -252,7 +289,7 @@ export default {
     const denied = await checkAdmin(request, env);
     if (denied) return denied;
 
-    if (request.method === "GET" && path === "/") return dashboard(env, url);
+    if (request.method === "GET" && path === "/") return dashboard(env, url, ctx);
     if (request.method === "GET" && path === "/leady.csv") return exportCsv(env);
 
     const m = path.match(/^\/leady\/([^/]+)(\/usun)?$/);
@@ -280,6 +317,11 @@ export default {
 
   /** Retencja: zgloszenia bez wspolpracy i bez zgody marketingowej znikaja po 12 miesiacach od ostatniej zmiany. */
   async scheduled(controller, env) {
+    /* co 15 minut: tylko odswiezenie statystyk, zeby panel otwieral sie od razu */
+    if (controller.cron !== RETENTION_CRON) {
+      await refreshExternal(env, 30);
+      return;
+    }
     const cutoff = new Date(Date.now() - RETENTION_DAYS * 86400000).toISOString();
     const r = await env.DB.prepare(
       "DELETE FROM leads WHERE status IN ('nowy','kontakt','oferta','przegrany') AND marketing = 0 AND updated_at < ?1"

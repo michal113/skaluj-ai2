@@ -49,3 +49,11 @@ CREATE TABLE IF NOT EXISTS chat_daily (
   errors        INTEGER NOT NULL DEFAULT 0,   -- bot nie odpowiedzial (np. brak kredytow, awaria modeli)
   limited       INTEGER NOT NULL DEFAULT 0    -- odrzucone przez limit wiadomosci
 );
+
+-- Pamiec statystyk z zewnetrznych API (strona, Make, chatbot): same sumy, bez danych osobowych.
+-- Dzieki niej panel otwiera sie od razu, a liczby odswiezaja sie w tle (worker.js, cachedExternal).
+CREATE TABLE IF NOT EXISTS stats_cache (
+  key        TEXT PRIMARY KEY,   -- ext:<dni>
+  data       TEXT NOT NULL,      -- JSON
+  updated_at INTEGER NOT NULL    -- ms od 1970
+);
