@@ -1,4 +1,4 @@
-/* nav.js — wspolna nawigacja wszystkich podstron:
+/* nav.js: wspolna nawigacja wszystkich podstron:
    - .nav.scrolled po przewinieciu (pigulka + scrim),
    - menu mobilne z blokada przewijania (powrot dokladnie w to samo miejsce),
    - dropdowny Oferta / Blog jako disclosure (bez role=menu): hover na myszce,
@@ -88,7 +88,7 @@
       item.addEventListener("mouseenter", open);
       item.addEventListener("mouseleave", function(){ clearTimeout(t); t = setTimeout(close, 180); });
     }
-    /* e.detail === 0 to klik z klawiatury (Enter/Spacja) — zawsze przelacza;
+    /* e.detail === 0 to klik z klawiatury (Enter/Spacja): zawsze przelacza;
        klik myszka na urzadzeniu z hoverem tylko otwiera (hover juz otworzyl panel) */
     btn.addEventListener("click", function(e){ e.preventDefault(); (hover && e.detail) ? open() : toggle(); });
     btn.addEventListener("keydown", function(e){

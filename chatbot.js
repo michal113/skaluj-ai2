@@ -1,5 +1,5 @@
 /* =====================================================================
-   skaluj.ai — widżet czatu (self-injecting)
+   skaluj.ai: widżet czatu (self-injecting)
    Dodaj na każdej stronie przed </body>:  <script src="chatbot.js" defer></script>
    (na podstronach w /oferta i /blog użyj ścieżki ../chatbot.js)
    ===================================================================== */
@@ -48,7 +48,7 @@
     transition:opacity .32s cubic-bezier(.22,1,.36,1),transform .32s cubic-bezier(.22,1,.36,1),visibility .32s}
   .cb-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;z-index:9;background:linear-gradient(90deg,#66b0ff,#2158c8)}
   .cb-panel.open{opacity:1;transform:none;pointer-events:auto;visibility:visible}
-  /* naglowek — czysty brand: kafelek z sygnetem + nazwa + status */
+  /* naglowek: czysty brand: kafelek z sygnetem + nazwa + status */
   .cb-head{display:flex;align-items:center;gap:11px;padding:13px 15px;border-bottom:1px solid rgba(15,30,60,.07);background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
   .cb-hava{flex:none;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#3d7ef0,#2158c8);display:grid;place-items:center;box-shadow:0 4px 12px rgba(33,88,200,.28)}
   .cb-hava svg{width:17px;height:auto;color:#fff}
@@ -99,7 +99,7 @@
 
   /* ---------- WIEDZA (tryb lokalny bez Workera) ---------- */
   let KB = "";
-  /* pobierana dopiero, gdy naprawdę potrzebna (tryb lokalny / awaria Workera) — nie przy każdym wejściu na stronę */
+  /* pobierana dopiero, gdy naprawdę potrzebna (tryb lokalny / awaria Workera): nie przy każdym wejściu na stronę */
   let kbLoad = null;
   function loadKB() { return kbLoad || (kbLoad = fetch(CONFIG.KNOWLEDGE_URL).then(r => r.text()).then(t => { KB = t; }).catch(() => {})); }
   const SECTIONS = {};
@@ -116,7 +116,7 @@
     const t = q.toLowerCase();
     const map = [
       { k: ["cześć","czesc","hej","witam","siema","hello","dzień"], a: "Cześć! 👋 Jestem asystentem skaluj.ai. Zapytaj o ofertę, strony, automatyzacje, chatboty albo umów bezpłatną konsultację." },
-      { k: ["spotkani","konsultacj","umów","umow","rozmow","demo","kalendarz","termin"], a: "Jasne — umówmy 30-minutową bezpłatną konsultację. Przyjdziemy z gotowym demo. Wybierz termin:", book: true },
+      { k: ["spotkani","konsultacj","umów","umow","rozmow","demo","kalendarz","termin"], a: "Jasne, umówmy 30-minutową bezpłatną konsultację. Przyjdziemy z gotowym demo. Wybierz termin:", book: true },
       { k: ["cena","koszt","ile","wycena","cennik","budż"], s: "kontakt" },
       { k: ["strona","stronę","www","landing"], s: "oferta: strona-seo" },
       { k: ["seo","geo","pozycjon","widoczn","perplexity","google"], s: "oferta: geo-seo" },
@@ -133,7 +133,7 @@
     if (!best) return { answer: "Chętnie pomogę! Po podłączeniu AI odpowiem na każde pytanie. Chcesz od razu umówić bezpłatną konsultację?", book: false };
     if (best.a && !best.s) return { answer: best.a, book: !!best.book };
     const txt = (SECTIONS[best.s] || SECTIONS["kontakt"] || "").trim().slice(0, 320);
-    return { answer: txt || "Napisz na kontakt@skaluj.ai — chętnie pomożemy.", book: false };
+    return { answer: txt || "Napisz na kontakt@skaluj.ai. Chętnie pomożemy.", book: false };
   }
 
   /* ---------- MÓZG: Worker albo lokalnie ---------- */
@@ -185,7 +185,7 @@
         input = $("#cbIn"), send = $("#cbSend");
   let opened = false, greeted = false; const history = [];
 
-  /* fromUser=false: otwarcie/zamkniecie automatyczne — nie przenosi fokusu (nie kradnie klawiatury) */
+  /* fromUser=false: otwarcie/zamkniecie automatyczne: nie przenosi fokusu (nie kradnie klawiatury) */
   function toggle(fromUser) {
     opened = !opened; launcher.classList.toggle("open", opened); panel.classList.toggle("open", opened);
     launcher.setAttribute("aria-expanded", opened ? "true" : "false");
@@ -208,7 +208,7 @@
   }
   function bookingCard() {
     const d = document.createElement("div"); d.className = "cb-book";
-    const head = `<div class="cb-book-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div><b>Bezpłatna konsultacja · 30 min</b><span>Rzeszów / online — bez zobowiązań</span></div></div>`;
+    const head = `<div class="cb-book-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><div><b>Bezpłatna konsultacja · 30 min</b><span>Rzeszów / online · bez zobowiązań</span></div></div>`;
     if (CONFIG.BOOKING_URL && CONFIG.EMBED_CALENDAR) {
       d.innerHTML = head + `<iframe src="${CONFIG.BOOKING_URL}" loading="lazy"></iframe>`;
     } else if (CONFIG.BOOKING_URL) {
@@ -225,7 +225,7 @@
   }
   async function greet() {
     const t = typing(); await new Promise(r => setTimeout(r, 650)); t.remove();
-    addMsg('Cześć! 👋 Jestem <b>wirtualnym asystentem AI</b> skaluj.ai — odpowiadam automatycznie. W&nbsp;czym mogę pomóc?', "bot");
+    addMsg('Cześć! 👋 Jestem <b>wirtualnym asystentem AI</b> skaluj.ai i odpowiadam automatycznie. W&nbsp;czym mogę pomóc?', "bot");
     setChips(["Co oferujecie?", "Ile kosztuje strona?", "Umów spotkanie"]);
   }
   /* tresc od AI i od uzytkownika wstawiamy jako tekst, nie HTML: model mozna naklonic (prompt injection)
@@ -263,7 +263,7 @@
   if (offerSection) {
     // strona główna: launcher pokazuje się DOPIERO, gdy user
     // dojedzie scrollem do oferty 04 „Asystent i chatbot AI". Sygnał emituje index.html
-    // (event „skaluj:chatbot-offer") — w trybie pin-scroll dokładnie przy tej karcie,
+    // (event „skaluj:chatbot-offer"): w trybie pin-scroll dokładnie przy tej karcie,
     // a w zwykłym accordionie gdy karta wejdzie w widok.
     let armed = false;
     const armChat = function () { if (armed) return; armed = true; reveal(); };

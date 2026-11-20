@@ -1,4 +1,4 @@
-# BAZA WIEDZY — skaluj.ai (źródło prawdy dla chatbota na stronie)
+# BAZA WIEDZY: skaluj.ai (źródło prawdy dla chatbota na stronie)
 # Aktualizuj razem ze stroną. Bot czyta pierwsze ~14 000 znaków, więc najważniejsze jest na górze.
 # Nie wpisuj tu cen ani liczb, których nie ma na stronie. Bot ma ich nie zmyślać.
 
@@ -12,7 +12,7 @@ Odpowiadamy w ciągu 24 godzin w dni robocze (pon–pt).
 Bezpłatna konsultacja trwa 30 minut i do niczego nie zobowiązuje. Na życzenie podpisujemy NDA przed rozmową o szczegółach.
 Dane firmy: skaluj.ai Sergiusz Serafin (jednoosobowa działalność gospodarcza, wpis w CEIDG), NIP 8133960157, REGON 545915660.
 
-=== OFERTA — PRZEGLĄD (3 grupy, 8 usług) ===
+=== OFERTA: PRZEGLĄD (3 grupy, 8 usług) ===
 1. Strona i widoczność: strona internetowa pod SEO i GEO (skaluj.ai/oferta/strona-seo), pozycjonowanie SEO i GEO istniejącej strony (skaluj.ai/oferta/geo-seo), reklamy w ChatGPT (skaluj.ai/oferta/reklamy-chatgpt).
 2. Branding i wideo: branding i grafiki (skaluj.ai/oferta/branding), rolki i wideo AI (skaluj.ai/oferta/rolki-ai), audyt cyfryzacji firmy (skaluj.ai/oferta/audyt-cyfryzacji).
 3. Automatyzacje i chatboty: automatyzacje biznesowe AI (skaluj.ai/oferta/automatyzacje-email), chatbot i asystent AI (skaluj.ai/oferta/chatbot-ai).
