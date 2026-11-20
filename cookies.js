@@ -31,6 +31,7 @@
     window.dispatchEvent(new CustomEvent("skaluj:consent", { detail: window.skalujConsent }));
     activateScripts();
     if (consent.analytics) ga4(); else dropGa4();
+    if (consent.marketing) metaPixel(); else dropMeta();
   }
 
   /* ---------- Google Analytics 4: ładuje się WYŁĄCZNIE po zgodzie na analitykę ----------
@@ -54,6 +55,41 @@
     s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_ID;
     document.head.appendChild(s);
   }
+  /* ---------- Piksel Meta: ładuje się WYŁĄCZNIE po zgodzie na marketing ----------
+     Jawny identyfikator zbioru danych z Menedżera zdarzeń Meta (nie sekret). Puste = piksel wyłączony.
+     Zbiera: PageView na każdej podstronie i Lead po wysłaniu formularza kontaktowego (window.skalujTrack).
+     Opis w polityce prywatności (Meta, piksel tylko za zgodą, współadministrowanie art. 26 RODO). */
+  var META_PIXEL_ID = "2069672570361011";
+  function metaPixel() {
+    if (!/^\d{10,20}$/.test(META_PIXEL_ID) || !/(^|\.)skaluj\.ai$/.test(location.hostname)) return;
+    if (window.__skalujMeta) { if (window.fbq) window.fbq("consent", "grant"); return; }
+    window.__skalujMeta = true;
+    /* oficjalny kod Meta (fbevents.js), bez <noscript>: bez JS nie da się sprawdzić zgody */
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    window.fbq("init", META_PIXEL_ID);
+    window.fbq("track", "PageView");
+  }
+  /* wycofanie zgody: piksel przestaje wysyłać, a pliki _fbp/_fbc znikają */
+  function dropMeta() {
+    if (window.__skalujMeta && window.fbq) window.fbq("consent", "revoke");
+    var host = location.hostname, base = host.replace(/^www\./, "");
+    document.cookie.split(";").forEach(function (c) {
+      var name = c.split("=")[0].trim();
+      if (name !== "_fbp" && name !== "_fbc") return;
+      ["", "; domain=" + host, "; domain=." + base].forEach(function (d) {
+        document.cookie = name + "=; Max-Age=0; path=/" + d;
+      });
+    });
+  }
+  /* zdarzenia z formularzy (np. skalujTrack("Lead")): wysyłane tylko, gdy jest zgoda i piksel działa */
+  window.skalujTrack = function (ev) {
+    try { if (consent.marketing && window.__skalujMeta && window.fbq) window.fbq("track", ev); } catch (e) {}
+  };
+
   /* ---------- Własny licznik odwiedzin skaluj.ai (bez cookies, więc bez zgody z banera) ----------
      Bez plików cookie i bez identyfikatorów: wysyłamy tylko podstronę, domenę strony, z której ktoś
      przyszedł, utm_source i czas na podstronie. Panel CRM zapisuje z tego wyłącznie sumy dzienne.
@@ -220,6 +256,7 @@
   window.skalujConsent = { analytics: consent.analytics, marketing: consent.marketing };
   activateScripts(); // odpal skrypty dozwolone przez wcześniejszą zgodę
   if (consent.analytics) ga4();
+  if (consent.marketing) metaPixel();
   countVisit();
   document.addEventListener("click", function (e) {
     var t = e.target.closest && e.target.closest("[data-cookie-settings]");

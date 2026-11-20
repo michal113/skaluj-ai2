@@ -1099,7 +1099,7 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
       data.append('marketing_tresc', mk && mk.checked ? 'Zgoda na informacje handlowe e-mail/telefon od skaluj.ai Sergiusz Serafin (wersja 2026-10)' : '');
       data.append('wyslano', new Date().toISOString());
       if(!FORM_ENDPOINT){ console.warn('[skaluj.ai] FORM_ENDPOINT nie ustawiony, formularz nie wysyla. Ustaw URL Workera (contact-worker/README.md).'); setTimeout(function(){ card.classList.add('sent'); }, 500); return; }
-      var mfDone=false; function mfSent(){ if(mfDone) return; mfDone=true; card.classList.add('sent'); }
+      var mfDone=false; function mfSent(){ if(mfDone) return; mfDone=true; card.classList.add('sent'); if(window.skalujTrack) window.skalujTrack('Lead'); }
       fetch(FORM_ENDPOINT,{method:'POST',body:data,mode:'no-cors'}).then(mfSent).catch(function(){ if(mfDone) return; mfDone=true; fail(); });
       /* ponytail: bez odpowiedzi po 8 s zakladamy, ze zgloszenie doszlo (no-cors nie zwraca statusu) */
       setTimeout(mfSent, 8000);
@@ -1503,6 +1503,14 @@ body.menu-open .mobile-menu a:nth-child(n){transition-delay:0s}
     audyt:'Raport PDF: widoczność, procesy i\u00a0narzędzia',
     rolki:'Krótkie wideo z\u00a0napisami i\u00a0lektorem AI'
   };
+  /* link z reklamy albo z podstrony uslugi moze od razu zaznaczyc usluge: /kontakt?usluga=strona (wartosci jak w name="svc") */
+  try {
+    var pre = new URLSearchParams(location.search).get('usluga');
+    if (pre) pre.split(',').forEach(function(v){
+      var box = form.querySelector('[name="svc"][value="' + v.replace(/[^a-z-]/g, '') + '"]');
+      if (box && !box.checked){ box.checked = true; box.dispatchEvent(new Event('change', { bubbles: true })); }
+    });
+  } catch (e) {}
   [].slice.call(form.querySelectorAll('[name="svc"]')).forEach(function(inp){
     var body = inp.nextElementSibling;
     if (!body || body.querySelector('.mfx-txt')) return;
