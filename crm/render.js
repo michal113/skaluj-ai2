@@ -553,7 +553,11 @@ export function renderMessage(title, text) {
 function page(title, inner) {
   return `<!doctype html><html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>${esc(title)}</title>
-<link rel="icon" type="image/png" href="https://skaluj.ai/sygnet.png"><link rel="stylesheet" href="https://skaluj.ai/fonts.css">
+<link rel="icon" type="image/png" href="https://skaluj.ai/sygnet.png">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#ffffff"><meta name="application-name" content="CRM">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CRM"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="stylesheet" href="https://skaluj.ai/fonts.css">
 <style>${CSS}</style></head><body>${inner}</body></html>`;
 }
 

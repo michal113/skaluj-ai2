@@ -159,6 +159,15 @@ Możesz je też wpisać ręcznie w Cloudflare (Workers & Pages → skaluj-crm �
 
 **Licznik odwiedzin** (`cookies.js`) nie używa cookies ani identyfikatorów. Wysyła podstronę, domenę strony odsyłającej, `utm_source` i czas na podstronie. Zapisywane są wyłącznie sumy dzienne, bez IP i bez User-Agenta. Przeglądarki z GPC/DNT, boty i przeglądarki automatyczne nie są liczone. Szczegóły w `hits.js` i w polityce prywatności.
 
+## Aplikacja na telefonie
+
+Panel instaluje się jak aplikacja: ikona skaluj.ai na ekranie głównym, otwiera się bez paska przeglądarki.
+
+- **Android (Chrome):** wejdź na adres panelu, zaloguj się, menu ⋮ → **Dodaj do ekranu głównego** → **Zainstaluj**.
+- **iPhone (Safari):** wejdź na adres panelu, zaloguj się, przycisk **Udostępnij** → **Do ekranu początkowego** → **Dodaj**.
+
+Hasło wpisujesz przy pierwszym otwarciu aplikacji. Na iPhonie system może pytać o nie po każdym zamknięciu aplikacji.
+
 ## Codzienna praca
 
 - **Okres** przełączasz u góry (7 / 30 / 90 dni). Dane pobierane są na żywo przy każdym wejściu.

@@ -5,6 +5,7 @@
  *   GET  /                  panel: leady + strona (GA4/GSC) + Make + chatbot (OpenRouter)
  *   POST /leady/<id>        zmiana statusu, wartosci i notatki
  *   POST /leady/<id>/usun   usuniecie zgloszenia (np. zadanie usuniecia danych, art. 17 RODO)
+ *   GET  /manifest.webmanifest, /ikona-*.png, /apple-touch-icon.png   aplikacja na telefon (publiczne)
  *   GET  /leady.csv         eksport (kopia zapasowa, zadanie kopii danych, art. 15/20 RODO)
  *   POST /api/lead          zgloszenie z Make (naglowek Authorization: Bearer <INGEST_TOKEN>)
  *
@@ -15,6 +16,7 @@
 import { collectStats } from "./sources.js";
 import { renderDashboard, renderMessage } from "./render.js";
 import { hit } from "./hits.js";
+import { appAsset } from "./app.js";
 
 export const STATUSES = ["nowy", "kontakt", "oferta", "klient", "przegrany"];
 const PERIODS = [7, 30, 90];
@@ -36,7 +38,7 @@ function headers(type, extra) {
     "Referrer-Policy": "same-origin",
     "Content-Security-Policy":
       "default-src 'none'; style-src 'unsafe-inline' https://skaluj.ai; font-src https://skaluj.ai; " +
-      "img-src https://skaluj.ai; form-action 'self'; frame-ancestors 'none'; base-uri 'none'",
+      "img-src 'self' https://skaluj.ai; manifest-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'",
     ...extra,
   };
 }
@@ -241,6 +243,9 @@ export default {
     if (path === "/api/lead") {
       return request.method === "POST" ? ingest(request, env) : json({ error: "method" }, 405);
     }
+    /* manifest i ikony aplikacji na telefon: publiczne, bez danych */
+    const asset = request.method === "GET" ? appAsset(path) : null;
+    if (asset) return asset;
     /* licznik odwiedzin skaluj.ai (publiczny, bez hasla; same sumy dzienne) */
     if (path === "/api/hit") return hit(request, env);
 
