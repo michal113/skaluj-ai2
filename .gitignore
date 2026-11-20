@@ -32,3 +32,7 @@ panel/*.json
 # Lokalne podglady panelu (dane demo) - nigdy na GitHub Pages
 panel/podglad/
 crm/podglad/
+
+# Źródło oferty PDF (nie jest częścią strony)
+_oferta-pdf/
+_meta-ads/
